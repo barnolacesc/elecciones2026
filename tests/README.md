@@ -8,6 +8,9 @@ This directory contains automated tests for the election comparison platform.
 - `test_editorial_policy.py`: Validates editorial policy rules, quotation limits (<= 40 words, <= 300 chars), unsupported quote rejection, reviewer roles and four-eyes segregation, and internal correction workflow with relationship invalidation (package `E0.2`).
 - `test_decision_record.py`: Validates policy contracts defined in ADR-0001 (package `E0.3`), including release service level targets (p95 latency, cache-hit ratios, error budgets, availability), domain architecture, privacy notice requirements, cost ceiling, role ownership, and documentation cross-references across `docs/ARCHITECTURE.md`, `docs/SECURITY.md`, and `tasks.md`.
 - `test_source_register.py`: Verifies source register integrity, mandatory provenance fields, status enums, SHA-256 hash formatting, replacement history, rights review structure, and Task 1.2 pilot programmes registration (package `E0.4`).
+- `test_schemas.py`: Validates JSON Schemas (Draft 2020-12) for programmes, statements, relationships, coverage, and corrections against positive and negative fixtures (package `E1.1`).
+- `test_importer.py`: Validates isolated offline source import boundaries: PDF/URL size ceilings, streamed limits, `%PDF-` magic bytes, polyglot rejection, active content inspection (`/JavaScript`, `/Launch`, `/EmbeddedFiles`, `/SubmitForm`), zero source code execution, SSRF network boundaries, redirect safety, timeouts, and constant-time SHA-256 hash checks (package `E1.2`).
+- `test_component_plan.py` & `test_design_tokens.py`: Validates accessible component specifications, CSS variables, and design tokens (package `E2.1`).
 
 ## Running tests
 
