@@ -1,8 +1,8 @@
 # Content and Editorial Methodology
 
-**Document version:** 1.0.0  
+**Document version:** 1.1.0  
 **Effective date:** 2026-10-09  
-**Status:** Draft policy submitted for human gate G0 approval.  
+**Status:** Draft policy submitted for human gate G0 approval by project owners (Cesc and Project Partner). Roadmap packages E0.1 and E0.2 incorporated.  
 **Election identifier:** `es-gen-2026` (Spanish General Election, 29 November 2026)  
 **Governing reference:** [BOE-A-2026-20742](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742)
 
@@ -212,20 +212,202 @@ The topic taxonomy organizes policy proposals into clear, mutually exclusive cat
 
 ---
 
-## 6. Verification and Dual-Review Workflow
+## 6. Source Rights, Quotation Limits, and Verification Workflow
 
-To ensure publication integrity, every published position follows a mandatory 5-step process:
-
-1. **Extraction Proposal:** An offline extraction tool or human editor extracts the exact text, identifies the document, records page/section coordinates, and drafts a neutral Spanish summary.
-2. **Source Integrity Check:** The editorial pipeline verifies that the document URL, retrieval date, SHA-256 hash, and publication rights record match the official registry.
-3. **Neutral Phrasing Check:** The reviewer verifies that the summary does not use emotive, partisan, or evaluative adjectives. The summary must describe only the factual measure.
-4. **Independent Secondary Review:** A second human reviewer verifies the proposal text against the original PDF/document context, checking for conditions, qualifications, and scope limits.
-5. **Human Gate Approval:** Substantive claims are published only when both human reviews are recorded.
+To protect legal integrity, editorial fairness, and citizen trust, every policy claim must satisfy strict intellectual property rules, quotation limits, and an independent dual-review process before publication.
 
 ---
 
-## 7. Correction and Invalidation Policy
+### 6.1 Source Rights and Intellectual Property Framework
 
-1. **Immutable Identifiers:** Every published statement has an immutable identifier (for example, `stmt-psoe-housing-001`).
-2. **Versioned Corrections:** If a factual or classification error occurs, the team publishes a dated correction record. The correction record identifies the affected statement ID, the previous text, the corrected text, the reason, and the reviewer.
-3. **Invalidation of Dependent Comparisons:** When a source statement is corrected or a programme is marked `replaced`, all comparative relationships referencing that statement are marked invalidated until re-reviewed.
+Electoral programmes published by political parties are intellectual creations protected under Spanish intellectual property law (*Real Decreto Legislativo 1/1996, de 12 de abril, por el que se aprueba el texto refundido de la Ley de Propiedad Intelectual* - TRLPI).
+
+#### Governing Legal Principles
+
+1. **Copyright Ownership:** Political parties, coalitions, and candidacies retain all moral and exploitation rights in their official programmes, manifestos, and published campaign documents, unless an express Creative Commons or public domain license is attached.
+2. **Right of Quotation (*Derecho de Cita* - Art. 32 TRLPI):**
+   - The platform reproduces excerpts of electoral programmes strictly pursuant to Article 32.1 TRLPI:
+     > «Es lícita la inclusión en una obra propia de fragmentos de otras, ajenas de sentido plástico o fónico, y la de obras aisladas de carácter plástico o fotográfico figurativo, siempre que se trate de obras ya divulgadas y su inclusión se realice a título de cita o para su análisis, comentario o juicio crítico. Tal utilización sólo podrá realizarse con fines docentes o de investigación, en la medida justificada por el fin de esa incorporación e indicando la fuente y el nombre del autor de la obra utilizada.»
+   - The platform’s analysis and comparison constitute public civic research and critical comparison of public campaign proposals.
+3. **Prohibition of Third-Party PDF Hosting / Redistribution:**
+   - To respect copyright and minimize bandwidth and legal exposure, the platform **MUST NOT** host, mirror, or redistribute complete PDF files or substantial reproductions of political party programmes.
+   - The platform **MUST** provide direct outbound HTTPS links pointing to the party's official publication URL or official direct PDF link.
+4. **Official Acts and Public Decrees (Art. 13 TRLPI):**
+   - Official election decrees (e.g. Royal Decrees dissolving Cortes and calling elections) and JEC proclamations published in the *Boletín Oficial del Estado* (BOE) are excluded from intellectual property protection under Article 13 TRLPI.
+
+#### Source Rights Taxonomy
+
+Every source registered in the source register (`content/sources/register.json`) is assigned one of five explicit rights review statuses:
+
+| Status | Permitted Use | Build Rule |
+|---|---|---|
+| `link_and_short_quote` | Outbound links and short verbatim quotes within statutory limits (<= 40 words). | Verbatim quotes permitted if verified and dual-reviewed. |
+| `public_domain` | Outbound links and quotes from public-domain or CC0-licensed documents. | Verbatim quotes permitted if verified and dual-reviewed. |
+| `link_only` | Outbound links to official document; **NO** verbatim quotation permitted. | Build rejects any verbatim quotation referencing this source. |
+| `permission_denied` | Rights holder explicitly objected or restricted usage. | Build rejects any quotation and requires editorial review of linking. |
+| `not_reviewed` | Rights status analysis pending. | Build rejects any extracted quotation referencing this source. |
+
+---
+
+### 6.2 Verbatim Quotation Limits and Unsupported Quote Prohibition
+
+The platform prioritizes neutral, objective summaries drafted by the editorial team. Verbatim quotations serve exclusively as supporting evidence for specific technical commitments, figures, regulatory mechanisms, or distinctive phrases.
+
+#### Quantitative and Qualitative Quotation Limits
+
+1. **Maximum Word and Character Ceiling:**
+   - A verbatim quote **MUST NOT** exceed **40 words**.
+   - A verbatim quote **MUST NOT** exceed **300 characters** (including whitespace).
+2. **Mandatory Citation Coordinates:**
+   - Every quotation **MUST** cite an exact locator within the official document: either `page` (e.g. `112`), `section` (e.g. `Medida 84`), or both.
+   - General citations (e.g. "Programa general" without page/section) are strictly prohibited for verbatim quotes.
+3. **Operative Substance Rule:**
+   - Verbatim quotations must extract strictly operative policy commitments (target numbers, dates, fiscal percentages, administrative bodies, statutory thresholds).
+   - Quotations must **NOT** extract rhetorical flourishes, party slogans, personal attacks, ideological preambles, or electoral appeals.
+4. **Typographical Delimitation:**
+   - Verbatim quotes must be clearly set off with quotation marks (`«...»` or `"..."`) in the summary or qualification text.
+5. **Unsupported Quote Prohibition:**
+   - **NO UNSUPPORTED QUOTE CAN PASS REVIEW.**
+   - An extracted quote is considered unsupported and **MUST FAIL** automated build validation if:
+     1. It lacks verified source coordinates (`page` or `section`).
+     2. The referenced source document does not exist in the verified source register.
+     3. The referenced source is not in `verified` status (e.g. `missing`, `announced`, `partial`, or `published-unverified`).
+     4. The source rights review status is `not_reviewed`, `link_only`, or `permission_denied`.
+     5. The quote text exceeds 40 words or 300 characters.
+     6. The statement lacks approval from two distinct human reviewers.
+
+---
+
+### 6.3 Editorial Reviewer Roles and Segregation of Duties
+
+To eliminate individual bias, human error, and arbitrary classifications, the editorial team operates under the **Four-Eyes Principle** (Dual Review) with strict segregation of duties.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 1. Drafter / Extractor                                      │
+│    - Extracts candidate proposal & short operative quote    │
+│    - Records page/section locator                           │
+│    - Drafts neutral Spanish summary                         │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│ 2. Editorial Reviewer 1 (Factual and Citation Auditor)      │
+│    - Checks quote against original PDF page/section         │
+│    - Enforces <= 40 word / <= 300 char limits               │
+│    - Verifies source rights status (link_and_short_quote)   │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│ 3. Editorial Reviewer 2 (Neutrality and Balance Auditor)    │
+│    - Checks neutral phrasing (no evaluative adjectives)     │
+│    - Verifies taxonomy classification (Section 5)           │
+│    - Verifies absence != opposition                         │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+                  ┌────────────┴────────────┐
+             All Agree                 Dispute
+                  │                         │
+                  ▼                         ▼
+┌───────────────────────────┐ ┌───────────────────────────────┐
+│ Publication Approved      │ │ 4. Lead Editor Dispute        │
+│ Dual-review record signed │ │    Resolution & G0/G2 Signoff │
+└───────────────────────────┘ └───────────────────────────────┘
+```
+
+#### Reviewer Roles
+
+1. **Drafter / Extractor (`drafter`):**
+   - Extracts policy proposals from registered, verified programmes.
+   - Extracts short verbatim quotes (<= 40 words) and records exact page/section locators.
+   - Drafts the objective Spanish summary (`summary_es`) using factual, non-evaluative verbs.
+   - Assigns provisional topic and subtopic according to the Section 5 taxonomy.
+   - Note: May be a human researcher or an assistive extraction script. A drafter **CANNOT** approve their own extraction as a reviewer.
+2. **Editorial Reviewer 1 (`editorial_reviewer_1` - Factual and Citation Auditor):**
+   - Inspects the original document PDF at the exact page/section coordinates.
+   - Verifies quote fidelity against the original source text.
+   - Verifies that quotation limits (<= 40 words, <= 300 chars) are respected.
+   - Verifies that source rights permit quotation (`link_and_short_quote` or `public_domain`).
+   - Verifies single-proposal granularity (one discrete policy per record).
+3. **Editorial Reviewer 2 (`editorial_reviewer_2` - Neutrality and Balance Auditor):**
+   - Independent second reviewer.
+   - Verifies that the summary uses strictly descriptive, objective, non-partisan language without praise or condemnation.
+   - Confirms correct primary operational topic and subtopic alignment.
+   - Verifies that lack of proposal coverage is recorded as `not_found`, never conflated with active opposition.
+   - Verifies conditions and qualifications are accurately represented.
+4. **Lead Editor (`lead_editor` - Dispute Resolver and Signoff Gatekeeper):**
+   - Resolves formal disagreements between Reviewer 1 and Reviewer 2.
+   - Authorizes and signs off on correction records.
+   - Represents the editorial team for human release gates G0 and G2.
+
+#### Segregation Rules and Impartiality Code
+
+1. **Four-Eyes Principle:** Every published position requires explicit, recorded approval by at least two distinct human reviewers (`reviewed_by_1 != reviewed_by_2`).
+2. **Separation of Drafter and Second Reviewer:** A drafter may act as Reviewer 1 if human capacity requires, but **CANNOT** act as Reviewer 2 (`drafter != reviewed_by_2`).
+3. **Conflict of Interest Policy:**
+   - All reviewers must disclose any formal political party affiliation, candidacy, or campaign advisory role.
+   - A reviewer with an active affiliation to a political party is strictly disqualified from reviewing statements or proposals associated with that party or its direct electoral competitors in the same constituency.
+
+---
+
+## 7. Internal Correction Process and Invalidation Protocol
+
+Errors in transcription, page citation, topic classification, or source replacement must be resolved swiftly through a disciplined, transparent, and auditable process.
+
+---
+
+### 7.1 Correction Triggers and Severity Levels
+
+Corrections are initiated via three channels:
+1. **Internal Audit:** Discrepancies identified during routine editorial checks or comparison authoring.
+2. **Source Replacement:** Political party releases an errata sheet or superseded programme version (`replaced` status).
+3. **External Notice:** Inquiries submitted to the project editorial contact (`editorial@elecciones2026.es`).
+
+#### Severity Classification and SLA Targets
+
+| Severity | Definition | Examples | Response / Triage SLA | Publication SLA |
+|---|---|---|---|---|
+| **Critical (Sev-1)** | Factual inversion, misattributed quote, copyright breach, or non-existent proposal. | Statement claims party supports a tax hike when programme promises a tax cut; quote from unverified document. | **<= 4 hours** (immediate public quarantine) | **<= 12 hours** |
+| **Major (Sev-2)** | Substantive inaccuracy in proposal mechanism, incorrect page/section locator, or primary topic misclassification. | Page cited is 44 instead of 144; measure classifies rental assistance under tax instead of housing. | **<= 12 hours** | **<= 24 hours** |
+| **Minor (Sev-3)** | Typographical error in summary, punctuation fix, or subtopic refinement without altering comparison meaning. | Minor spelling error in Spanish summary; refined subtopic classification. | **<= 24 hours** | **<= 48 hours** |
+
+---
+
+### 7.2 Immutable Versioning and Correction Records
+
+1. **Immutability of Identifiers:** Published statement IDs (`id`, e.g. `stmt-pp-housing-001`) are immutable. They are never deleted or silently overwritten.
+2. **Correction Record Structure:**
+   Every substantive edit generates an immutable, dated `CorrectionRecord`:
+   - `id`: Unique identifier (e.g. `corr-2026-001`).
+   - `statement_id`: Affected statement identifier.
+   - `election_id`: Target election (e.g. `es-gen-2026`).
+   - `date`: Date of correction (YYYY-MM-DD).
+   - `correction_type`: One of `factual_error`, `classification_error`, or `source_replacement`.
+   - `severity`: One of `critical`, `major`, or `minor`.
+   - `prior_value`: Exact previous text, quote, or classification.
+   - `new_value`: Corrected text, quote, or classification.
+   - `reason`: Concise public explanation of the correction rationale.
+   - `reviewed_by`: Identifier of the auditing reviewer.
+   - `approved_by`: Lead Editor signoff.
+
+---
+
+### 7.3 Automatic Invalidation of Dependent Comparison Relationships
+
+A policy comparison (`ComparisonRelationship`) depends directly on the integrity of the underlying party statements.
+
+#### Invalidation Rules
+
+1. When a statement is corrected or marked `invalidated`, the static build pipeline **MUST AUTOMATICALLY INVALIDATE** all comparison records that reference that statement ID.
+2. An invalidated comparison is assigned `status: "invalidated"` and receives a documented `invalidation_reason`.
+3. Invalidated comparisons **MUST NOT** be rendered in the public comparative views until two editorial reviewers re-evaluate the comparative relationship and record fresh approval.
+4. When a programme version is marked `replaced`, all derived comparison relationships are flagged for mandatory re-review against the successor document.
+
+---
+
+### 7.4 Public Errata Log and Transparency
+
+1. The public site publishes an authoritative, chronological errata log at `/correcciones/` and summarized on the methodology page.
+2. Each errata entry discloses the affected party, topic, date, prior text, corrected text, and explanation.
+3. Factual corrections are acknowledged transparently without concealing editorial revisions.

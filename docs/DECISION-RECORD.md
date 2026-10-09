@@ -260,3 +260,172 @@ To ensure clear operational accountability and satisfy acceptance criteria, the 
 - **Automated Validation:** Test suite in `tests/test_service_levels.py` and `tests/test_decision_record.py` verifies all targets, thresholds, owners, and notice elements programmatically.
 - **OpenSpec Task Alignment:** Recorded in `openspec/changes/mvp-programme-comparison/tasks.md` under tasks 4.3, 4.6, and 4.7.
 - **Human Gate Signoff:** Recorded upon final approval of Milestone G0 by Cesc and the project partner.
+
+---
+
+# Decision Record: Source Rights, Quotation Limits, Reviewer Roles, and Internal Correction Process
+
+- **Record ID:** ADR-0002 (Roadmap Package `E0.2`)
+- **Date:** 2026-10-09
+- **Status:** Proposed — Awaiting Human Gate G0 Approval (Cesc and Project Partner)
+- **Applicable OpenSpec Change:** `mvp-programme-comparison`
+- **Related Issues:** Issue #4 ([E0.2])
+- **Related OpenSpec Tasks:** 1.1, 1.2, 2.2
+- **Dependencies:** Blocked by Issue #1 (`E0.1`) — Predecessor work merged in commit `6542704`
+
+---
+
+## 1. Context and Problem Statement
+
+The platform extracts, synthesizes, and compares electoral proposals across competing political parties for the 29 November 2026 Spanish general election (`es-gen-2026`).
+
+Because political parties retain intellectual property in their manifestos and public campaigns, reproducing and comparing political statements creates legal, editorial, and reputational challenges:
+1. **Source Rights & Copyright:** Unregulated reproduction of full documents or extensive excerpts risks copyright infringement under the Spanish Intellectual Property Law (*Real Decreto Legislativo 1/1996* - TRLPI).
+2. **Quotation Scope & Context:** Publishing out-of-context, unverified, or excessive quotations undermines neutrality and risks misleading voters.
+3. **Reviewer Bias & Segregation:** Individual editors could introduce personal partisan bias or inadvertent errors if proposals are published without strict separation of duties and dual review.
+4. **Error Correction & Invalidation:** Errors in source text or classification must be corrected swiftly without breaking historical audit trails or leaving invalid comparisons active on the public site.
+
+This decision record defines the binding editorial and operational policies governing source rights, quotation limits, reviewer roles, and error correction.
+
+---
+
+## 2. Decision Summary
+
+| Area | Decision | Reference / Target |
+|---|---|---|
+| **Governing Copyright Law** | Spanish Intellectual Property Law (TRLPI), Art. 32 (*derecho de cita*) | Civic analysis and critical comparison; Art. 13 for official acts |
+| **PDF Hosting Policy** | Full PDF hosting or redistribution is strictly forbidden | Direct outbound HTTPS links to official party URLs only |
+| **Source Rights Taxonomy** | 5 explicit states: `link_and_short_quote`, `public_domain`, `link_only`, `permission_denied`, `not_reviewed` | Stored in `content/sources/register.json`; only first two allow quotes |
+| **Quotation Word Limit** | Maximum **40 words** per verbatim extract | Strict ceiling; quotes must be enclosed in quotation marks |
+| **Quotation Char Limit** | Maximum **300 characters** per verbatim extract | Accommodates short sentences with precise statutory figures |
+| **Mandatory Locators** | Non-empty `page`, `section`, or both required for every quotation | Vague citations rejected at build time |
+| **Unsupported Quote Rule** | **No unsupported quote can pass review** | Build fails if source is unverified, missing, or lacks dual review |
+| **Reviewer Segregation** | Four-Eyes Principle: 2 distinct human reviewers required per statement | Drafter cannot act as Reviewer 2 (`drafter != reviewed_by_2`) |
+| **Editorial Roles** | `drafter`, `editorial_reviewer_1` (Fact/Citation), `editorial_reviewer_2` (Neutrality), `lead_editor` | Segregated checklists and conflict-of-interest declarations |
+| **Correction Severities** | Critical (Sev-1: <= 4h/12h SLA), Major (Sev-2: <= 12h/24h SLA), Minor (Sev-3: <= 24h/48h SLA) | Standardized triage and resolution deadlines |
+| **Invalidation Protocol** | Automatic invalidation of dependent comparison relationships | Invalidation propagated at build time; public errata log updated |
+| **Editorial Signoff** | Cesc and Project Partner under Human Gate G0 / G2 | Agents cannot approve source rights or publish claims unilaterally |
+
+---
+
+## 3. Decision 1: Source Rights and Copyright Framework
+
+### 3.1 Statutory Basis (TRLPI Article 32)
+- Political programmes are protected literary and political works.
+- Quotations on the platform are permitted exclusively under the statutory right of quotation (*derecho de cita*) set forth in Article 32.1 TRLPI:
+  - Works must have already been lawfully disclosed (*obras ya divulgadas*).
+  - Excerpts are included strictly for civic analysis, commentary, and critical comparison.
+  - Excerpts must be strictly proportionate to the objective of informing voters.
+  - The source author and title must be explicitly cited with exact locators.
+
+### 3.2 Outbound Linking vs. Redistribution
+- The platform **MUST NOT** store, re-host, or mirror complete third-party party programme PDFs.
+- All statements and source references **MUST** provide direct outbound HTTPS links pointing to the party's official publication landing page or official direct PDF link.
+- Links to official BOE publications (e.g. Royal Decrees and JEC proclamations) are public domain under Article 13 TRLPI.
+
+### 3.3 Rights Review Regimes
+Every document in `content/sources/register.json` must undergo rights review before quotation extraction:
+1. `link_and_short_quote`: Permitted for verified electoral programmes. Verbatim quotes allowed within quantitative limits.
+2. `public_domain`: Permitted for public-domain works or CC0 releases.
+3. `link_only`: Verbatim quotations prohibited. Only neutral editorial summaries permitted.
+4. `permission_denied`: The rights holder has explicitly forbidden use. No quotes permitted.
+5. `not_reviewed`: Default state for unverified documents. Build rejects any quote extraction.
+
+---
+
+## 4. Decision 2: Verbatim Quotation Limits and Unsupported Quote Prohibition
+
+### 4.1 Quantitative Limits
+- **Maximum 40 words** per quotation.
+- **Maximum 300 characters** per quotation.
+- Quotations exceeding these thresholds must be paraphrased into neutral editorial summaries or shortened to the operative commitment.
+
+### 4.2 Qualitative Boundaries
+- Quotations must capture exclusively operative policy mechanisms (numerical goals, tax percentages, budget allocations, dates, statutory thresholds).
+- Rhetorical slogans, partisan attacks, campaign mottos, and ideological preambles are strictly prohibited from quotation.
+- Quotations must be wrapped in quotation marks (`«...»` or `"..."`).
+
+### 4.3 Unsupported Quote Prohibition
+- **No unsupported quote can pass review.**
+- Automated validation (`elecciones2026.editorial` and CI) enforces this rule:
+  - If a quote lacks a valid `source_id` in `content/sources/register.json`, validation fails.
+  - If the referenced source has status other than `verified`, validation fails.
+  - If the source rights status is not `link_and_short_quote` or `public_domain`, validation fails.
+  - If page and section locators are both absent, validation fails.
+  - If the statement lacks a completed `ReviewRecord` with two distinct reviewers, validation fails.
+
+---
+
+## 5. Decision 3: Reviewer Roles, Segregation of Duties, and Dual Review
+
+### 5.1 Role Definitions
+1. **Drafter / Extractor (`drafter`):** Extracts proposals from verified sources, drafts the neutral Spanish summary (`summary_es`), extracts operative quotes (<= 40 words), and records page/section locators.
+2. **Editorial Reviewer 1 (`editorial_reviewer_1` - Factual & Citation Auditor):** Verifies quote accuracy against the source document PDF, confirms page/section locators, enforces quotation limits, and confirms source rights status.
+3. **Editorial Reviewer 2 (`editorial_reviewer_2` - Neutrality & Balance Auditor):** Verifies objective tone without evaluative adjectives, validates topic/subtopic taxonomy alignment, confirms that missing proposals are marked `not_found` rather than opposition, and ensures qualification accuracy.
+4. **Lead Editor (`lead_editor`):** Resolves reviewer disputes, approves correction records, and validates human gates G0 and G2.
+
+### 5.2 Four-Eyes Principle and Segregation Rules
+- **Four-Eyes Requirement:** Every published statement must be audited and approved by at least two distinct human reviewers (`reviewed_by_1 != reviewed_by_2`).
+- **Segregation of Drafter:** A drafter cannot act as Reviewer 2 (`drafter != reviewed_by_2`).
+- **Conflict of Interest:** Reviewers must disclose political party affiliations. Active party members or campaign participants are disqualified from reviewing materials for that party and its direct electoral opponents.
+
+---
+
+## 6. Decision 4: Internal Correction Workflow, Severity SLAs, and Invalidation Protocol
+
+### 6.1 Severity Taxonomy and SLAs
+- **Critical (Sev-1):** Inverted party positions, fabricated or misattributed quotes, or copyright violations.
+  - Triage SLA: **<= 4 hours** (immediate removal/quarantine from public site).
+  - Resolution SLA: **<= 12 hours**.
+- **Major (Sev-2):** Substantive errors in proposal mechanisms, incorrect page locators, or primary topic misclassification.
+  - Triage SLA: **<= 12 hours**.
+  - Resolution SLA: **<= 24 hours**.
+- **Minor (Sev-3):** Typographical errors in summary, grammatical corrections, or subtopic refinement.
+  - Triage SLA: **<= 24 hours**.
+  - Resolution SLA: **<= 48 hours**.
+
+### 6.2 Immutable Correction Records
+- Published statement IDs are immutable.
+- Substantive edits create an auditable `CorrectionRecord` containing:
+  `id`, `statement_id`, `election_id`, `date`, `correction_type`, `severity`, `prior_value`, `new_value`, `reason`, `reviewed_by`, and `approved_by`.
+
+### 6.3 Invalidation Protocol for Dependent Comparisons
+- Comparisons (`ComparisonRelationship`) link statements together.
+- When any referenced statement is corrected or invalidated, all dependent comparisons are automatically marked `status: "invalidated"`.
+- The build excludes invalidated comparisons from public presentation until two editorial reviewers re-audit the comparative relationship and sign off on a new version.
+
+### 6.4 Public Errata Log
+- All corrections are published chronologically at `/correcciones/` and summarized on the methodology page, detailing date, party, topic, prior text, and rationale.
+
+---
+
+## 7. Decision 5: Signoff Matrix and Human Release Gates
+
+| Milestone / Gate | Description | Required Signoff |
+|---|---|---|
+| **Gate G0** | Project Contract & Editorial Policies (E0.1–E0.4) | Cesc and Project Partner |
+| **Gate G1** | MVP Specification & Data Model (E1.1–E1.3) | Cesc and Engineering Lead |
+| **Gate G2** | Two-Programme Pilot Approval (E1.4) | Cesc and Editorial Reviewers |
+| **Gate G3** | Staging / MVP Preview Security & Accessibility | Release Engineering Lead |
+| **Gate G4** | Public MVP Launch | Cesc, Project Partner, Infrastructure Lead |
+
+---
+
+## 8. Consequences and Compliance Verification
+
+### 8.1 Positive Consequences
+- Strict compliance with Spanish Intellectual Property Law (TRLPI Art. 32) protects the project from copyright claims.
+- The 40-word / 300-character ceiling prevents excessive verbatim quoting while preserving exact documentary citations.
+- The Four-Eyes principle guarantees neutrality, preventing single-editor bias.
+- Automatic relationship invalidation guarantees that stale or corrected positions never persist in active comparisons.
+
+### 8.2 Negative Consequences and Mitigations
+- *Constraint:* Dual human review slows extraction velocity.  
+  *Mitigation:* Essential for non-partisan credibility; assistive tooling drafts proposals while humans retain approval.
+- *Constraint:* Prohibition of PDF hosting means users must rely on external party websites that may change or experience downtime.  
+  *Mitigation:* Retain verified SHA-256 hashes and archival retrieval timestamps in the source register; display last-verified dates.
+
+### 8.3 Verification and Acceptance Evidence
+- **Automated Validation:** Test suite in `tests/test_editorial_policy.py` validates quotation limits, unsupported quote rejection, reviewer role segregation, correction records, and relationship invalidations.
+- **OpenSpec Task Alignment:** Recorded in `openspec/changes/mvp-programme-comparison/tasks.md` under tasks 1.1, 1.2, and 2.2.
+- **Human Gate Signoff:** Formally submitted for human gate G0 approval by Cesc and the project partner.

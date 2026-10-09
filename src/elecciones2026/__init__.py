@@ -1,1 +1,1 @@
-"""Planned offline validation and static build pipeline (not implemented yet)."""
+"""Offline validation and static build pipeline for elecciones2026."""

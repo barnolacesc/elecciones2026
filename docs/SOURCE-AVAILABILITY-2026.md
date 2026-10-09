@@ -56,13 +56,21 @@ The register enforces strict separation between elections:
    - `published-unverified`: A document is available but pending verification against official sources.
    - `verified`: Complete official programme verified on official channel, downloaded, and hashed.
    - `replaced`: Document superseded by a newer version or errata.
-5. **Rights review:**
-   - Status must be one of: `not_reviewed`, `link_only`, `link_and_short_quote`, `public_domain`, `permission_denied`.
-   - Prefer an official source link and short reviewed quotation over full PDF redistribution (pursuant to Spanish intellectual property law, Real Decreto Legislativo 1/1996, art. 32).
+5. **Rights review and quotation boundaries (Package E0.2 / ADR-0002):**
+   - Rights status must be one of: `not_reviewed`, `link_only`, `link_and_short_quote`, `public_domain`, `permission_denied`.
+   - **Legal Framework:** Pursuant to Spanish intellectual property law (*Real Decreto Legislativo 1/1996, de 12 de abril, por el que se aprueba el texto refundido de la Ley de Propiedad Intelectual* - TRLPI, art. 32), the platform reproduces excerpts strictly under the statutory right of quotation (*derecho de cita*) for civic research, factual commentary, and public comparison.
+   - **Prohibition of Full PDF Redistribution:** Hosting, mirroring, or redistributing full PDF documents is strictly prohibited. The platform provides outbound HTTPS links pointing directly to the official party download URLs.
+   - **Quotation Limits:** Verbatim quotations extracted from verified sources must satisfy:
+     - Maximum **40 words** per quotation.
+     - Maximum **300 characters** per quotation.
+     - Mandatory locators: non-empty `page` or `section`.
+     - Strict operative policy substance (numerical targets, dates, fiscal percentages, administrative instruments); rhetorical slogans and campaign appeals are excluded.
+   - **Pilot Sources:** The four registered 2023 pilot sources (`PP`, `ERC`, `EAJ-PNV`, `Sumar`) have undergone rights review and are assigned `status: "link_and_short_quote"`, permitting outbound links and short verbatim quotes within the 40-word / 300-character limits with exact page citations.
+   - **Monitored 2026 Sources:** All nine monitored 2026 sources remain in `missing` and `not_reviewed` status. No quotations may be extracted or published until the complete official documents are retrieved, verified against SHA-256 hashes, and approved by editorial reviewers.
 6. **Replacement history and invalidation:**
    - If a party releases a revised programme or errata, register the new version.
    - Mark the earlier version as `replaced`, and add a `ReplacementRecord` with `prior_version`, `superseded_by`, `replacement_date`, and `reason`.
-   - Invalidate dependent comparisons derived from the prior document in accordance with the editorial statements specification.
+   - Automatically invalidate dependent comparisons derived from the prior document in accordance with the editorial statements specification and ADR-0002.
 7. **Cadence and integrity:**
    - Recheck official paths at a measured cadence and after public announcements. Avoid aggressive automated scraping.
    - Verify SHA-256 hashes offline. Reject oversized files (>50 MB) and do not execute embedded macros or scripts.

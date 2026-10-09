@@ -37,3 +37,40 @@ Every published position SHALL belong to exactly one of the 8 core topics define
 - **WHEN** a proposal touches multiple topics (e.g. rent assistance for youth workers)
 - **THEN** reviewers classify it under the topic matching its primary operational mechanism (`housing`), and document the classification rationale.
 
+### Requirement: Verbatim quotation limits and unsupported quote rejection
+Verbatim quotations extracted from official sources SHALL NOT exceed 40 words or 300 characters, SHALL be enclosed in quotation marks, and SHALL include exact locators (page or section). The system SHALL reject any statement containing an unsupported quote where the source is unverified, rights do not permit quotation, locators are missing, or quotation limits are exceeded.
+
+#### Scenario: Compliant verbatim quotation
+- **WHEN** an operative commitment of 25 words is extracted with page citation from a verified source with `link_and_short_quote` rights
+- **THEN** the validator approves the quotation record for editorial review.
+
+#### Scenario: Quotation exceeding word limit
+- **WHEN** an extracted quote contains more than 40 words
+- **THEN** the validator rejects the statement and requires shortening or neutral paraphrasing.
+
+#### Scenario: Unsupported quote from restricted or unverified source
+- **WHEN** a quote references an unverified source (`missing`, `announced`) or a source with rights status `link_only`, `permission_denied`, or `not_reviewed`
+- **THEN** the build fails and rejects publication of the unsupported quote.
+
+### Requirement: Independent dual review and reviewer segregation
+Every published position SHALL require recorded approvals from at least two distinct human reviewers (`reviewed_by_1` and `reviewed_by_2`). The drafter of a proposal SHALL NOT serve as the secondary reviewer (`reviewed_by_2`).
+
+#### Scenario: Dual review approved
+- **WHEN** two distinct human reviewers audit factual citation and neutrality and record approval
+- **THEN** the statement passes publication validation.
+
+#### Scenario: Four-eyes violation
+- **WHEN** a single individual is entered as both primary and secondary reviewer
+- **THEN** validation fails with a Four-Eyes principle violation.
+
+#### Scenario: Drafter acting as secondary reviewer
+- **WHEN** the drafter who extracted the proposal also acts as secondary reviewer
+- **THEN** validation fails with a segregation of duties violation.
+
+### Requirement: Invalidation of dependent comparison relationships
+When a source statement is corrected or marked invalidated, all comparison relationships that reference that statement ID SHALL automatically be marked `invalidated` with a documented reason, and SHALL NOT be displayed in public comparisons until re-audited.
+
+#### Scenario: Statement correction triggers relationship invalidation
+- **WHEN** a published statement is updated via a dated `CorrectionRecord`
+- **THEN** all comparative relationships linking that statement are marked `status: "invalidated"` and removed from active public comparison output.
+
