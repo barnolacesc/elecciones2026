@@ -62,3 +62,11 @@ jobs:
       - name: Validate editorial approval gates and build rejection rules
         run: |
           PYTHONPATH="src" python -m elecciones2026.editorial validate-build
+
+      - name: Verify static build determinism
+        run: |
+          PYTHONPATH="src" python -m elecciones2026.generator check-determinism
+
+      - name: Run deterministic static site build
+        run: |
+          PYTHONPATH="src" python -m elecciones2026.generator build --output-dir dist/
