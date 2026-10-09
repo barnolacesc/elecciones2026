@@ -4,7 +4,8 @@ This directory contains automated tests for the election comparison platform.
 
 ## Test modules
 
-- `test_methodology_examples.py`: Validates the topic taxonomy, candidate inclusion and party naming standard, and programme status lifecycle fixtures (`official`, `partial`, `replaced`, `missing`).
+- `test_methodology_examples.py`: Validates the topic taxonomy, candidate inclusion and party naming standard, and programme status lifecycle fixtures (`official`, `partial`, `replaced`, `missing`) (package `E0.1`).
+- `test_decision_record.py`: Validates policy contracts defined in ADR-0001 (package `E0.3`), including release service level targets (p95 latency, cache-hit ratios, error budgets, availability), domain architecture, privacy notice requirements, cost ceiling, role ownership, and documentation cross-references across `docs/ARCHITECTURE.md`, `docs/SECURITY.md`, and `tasks.md`.
 
 ## Running tests
 

@@ -43,8 +43,14 @@ This is an empty repository and a draft specification, not a running service. Pr
 3. Preview a non-production artifact; verify provenance, accessibility, security and load profile.
 4. Publish an immutable static release behind HTTPS. Keep the preceding artifact for one-step rollback and make editorial corrections via new versioned release.
 
-## Open Questions
+## Decisions Resolved and Remaining Questions
 
-- Final brand and UI language(s).
-- Domain and Hetzner region; these do not change the static architecture.
-- Public correction contact and named editorial reviewer.
+- **Resolved by E0.3 (ADR-0001):**
+  - UI Language: Spanish (`es-ES`) for public MVP, with decoupled strings for future Catalan (`ca-ES`).
+  - Domain: `elecciones2026.es` canonical apex, with `elecciones2026.org` and `programaselectorales.es` defensive redirects.
+  - Contacts & Privacy: `privacidad@elecciones2026.es` and `seguridad@elecciones2026.es` defined with full public notice text.
+  - Release targets: Explicit p95, error rate, edge cache, and €50/mo cost ceiling codified.
+  - Named owners: Assigned in `docs/DECISION-RECORD.md`.
+- **Remaining Open Questions:**
+  - Exact Hetzner datacenter location (e.g. Falkenstein vs Nuremberg).
+  - Human Gate G0 signoff by Cesc and the project partner.
