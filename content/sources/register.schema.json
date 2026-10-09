@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/source-register.json",
+  "title": "ElectionSourceRegister",
+  "description": "Versioned source register for official electoral candidacies and programme publications.",
+  "type": "object",
+  "required": ["version", "last_updated", "elections", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "description": {
+      "type": "string"
+    },
+    "elections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Election"
+      },
+      "minItems": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Source"
+      }
+    }
+  },
+  "$defs": {
+    "Election": {
+      "type": "object",
+      "required": ["id", "name", "election_date", "call_decree", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "election_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "call_decree": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active_monitoring", "pilot_rehearsal", "archived"]
+        }
+      }
+    },
+    "RightsReview": {
+      "type": "object",
+      "required": ["status", "reviewed_by", "review_date", "terms_notes"],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "not_reviewed",
+            "link_only",
+            "link_and_short_quote",
+            "public_domain",
+            "permission_denied"
+          ]
+        },
+        "reviewed_by": {
+          "type": ["string", "null"]
+        },
+        "review_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "terms_notes": {
+          "type": "string"
+        }
+      }
+    },
+    "ReplacementRecord": {
+      "type": "object",
+      "required": ["prior_version", "superseded_by", "replacement_date", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "prior_version": {
+          "type": "string"
+        },
+        "superseded_by": {
+          "type": "string"
+        },
+        "replacement_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "Source": {
+      "type": "object",
+      "required": [
+        "id",
+        "election_id",
+        "party_id",
+        "candidature_name",
+        "publisher",
+        "scope",
+        "official_url",
+        "direct_url",
+        "filename",
+        "publication_date",
+        "retrieval_date",
+        "language",
+        "version",
+        "sha256",
+        "status",
+        "rights_review",
+        "replacement_history",
+        "notes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "election_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "party_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "candidature_name": {
+          "type": "string"
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string",
+          "enum": ["general"]
+        },
+        "official_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "direct_url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "filename": {
+          "type": ["string", "null"]
+        },
+        "publication_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "retrieval_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "language": {
+          "type": ["string", "null"]
+        },
+        "version": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "missing",
+            "announced",
+            "partial",
+            "published-unverified",
+            "verified",
+            "replaced"
+          ]
+        },
+        "rights_review": {
+          "$ref": "#/$defs/RightsReview"
+        },
+        "replacement_history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReplacementRecord"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
