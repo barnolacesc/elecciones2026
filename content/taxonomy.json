@@ -1,0 +1,279 @@
+{
+  "schema_version": "1.0.0",
+  "taxonomy_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "topics": [
+    {
+      "id": "housing",
+      "name_es": "Vivienda",
+      "name_en": "Housing",
+      "description_es": "Regulación del alquiler, parque público de vivienda, avales e hipotecas y suelo.",
+      "description_en": "Rental regulation, public housing stock, mortgage assistance, and urban land.",
+      "subtopics": [
+        {
+          "id": "rental-regulation",
+          "name_es": "Regulación del alquiler y precios",
+          "name_en": "Rental regulation and price limits"
+        },
+        {
+          "id": "public-housing-stock",
+          "name_es": "Parque público y vivienda social",
+          "name_en": "Public housing stock and social housing"
+        },
+        {
+          "id": "mortgage-and-purchasing",
+          "name_es": "Hipotecas y ayudas para la compra",
+          "name_en": "Mortgages and purchase assistance"
+        },
+        {
+          "id": "evictions-and-vulnerability",
+          "name_es": "Desahucios y protección de vulnerabilidad",
+          "name_en": "Evictions and vulnerability protections"
+        },
+        {
+          "id": "tourist-accommodation",
+          "name_es": "Viviendas de uso turístico",
+          "name_en": "Tourist accommodations"
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "name_es": "Educación",
+      "name_en": "Education",
+      "description_es": "Financiación educativa, ratios, tasas universitarias, formación profesional y currículo.",
+      "description_en": "Educational funding, student-teacher ratios, university fees, vocational training, and curriculum.",
+      "subtopics": [
+        {
+          "id": "school-funding-and-ratios",
+          "name_es": "Financiación escolar, centros concertados y ratios",
+          "name_en": "School funding, subsidized schools, and ratios"
+        },
+        {
+          "id": "early-childhood-education",
+          "name_es": "Educación infantil (0-3 años)",
+          "name_en": "Early childhood education (0-3 years)"
+        },
+        {
+          "id": "vocational-training",
+          "name_es": "Formación profesional",
+          "name_en": "Vocational training"
+        },
+        {
+          "id": "university-and-scholarships",
+          "name_es": "Tasas universitarias y becas",
+          "name_en": "University fees and scholarships"
+        },
+        {
+          "id": "curriculum-and-languages",
+          "name_es": "Currículo educativo y lenguas",
+          "name_en": "Curriculum and educational languages"
+        }
+      ]
+    },
+    {
+      "id": "health-social-services",
+      "name_es": "Sanidad y servicios sociales",
+      "name_en": "Health and Social Services",
+      "description_es": "Atención primaria, listas de espera, salud mental, dependencia y servicios sociales.",
+      "description_en": "Primary healthcare, waiting lists, mental health, dependency care, and social services.",
+      "subtopics": [
+        {
+          "id": "primary-care-and-sns",
+          "name_es": "Atención primaria y refuerzo del SNS",
+          "name_en": "Primary care and NHS reinforcement"
+        },
+        {
+          "id": "waiting-lists-and-management",
+          "name_es": "Listas de espera y gestión sanitaria",
+          "name_en": "Waiting lists and healthcare management"
+        },
+        {
+          "id": "mental-health-and-coverage",
+          "name_es": "Salud mental y prestaciones bucodentales/ópticas",
+          "name_en": "Mental health and dental/optical coverage"
+        },
+        {
+          "id": "dependency-and-eldercare",
+          "name_es": "Sistema de dependencia y residencias de mayores",
+          "name_en": "Dependency system and elderly care homes"
+        },
+        {
+          "id": "disability-and-inclusion",
+          "name_es": "Discapacidad e inclusión social",
+          "name_en": "Disability and social inclusion"
+        }
+      ]
+    },
+    {
+      "id": "economy-work-tax",
+      "name_es": "Economía, trabajo y fiscalidad",
+      "name_en": "Economy, Work, and Tax",
+      "description_es": "Fiscalidad, mercado de trabajo, salario mínimo, jornada laboral y pensiones.",
+      "description_en": "Taxation, labor market, minimum wage, working hours, and pensions.",
+      "subtopics": [
+        {
+          "id": "tax-reform-and-brackets",
+          "name_es": "Reforma fiscal, IRPF y sociedades",
+          "name_en": "Tax reform, income tax, and corporate tax"
+        },
+        {
+          "id": "labor-regulations-and-smi",
+          "name_es": "Normativa laboral, contratos y salario mínimo",
+          "name_en": "Labor regulations, contracts, and minimum wage"
+        },
+        {
+          "id": "working-hours-reduction",
+          "name_es": "Jornada laboral y conciliación",
+          "name_en": "Working week reduction and work-life balance"
+        },
+        {
+          "id": "pensions-and-social-security",
+          "name_es": "Sostenibilidad de pensiones y Seguridad Social",
+          "name_en": "Pension sustainability and Social Security"
+        },
+        {
+          "id": "industrial-policy-and-smes",
+          "name_es": "Política industrial, autónomos y pymes",
+          "name_en": "Industrial policy, self-employed, and SMEs"
+        }
+      ]
+    },
+    {
+      "id": "immigration",
+      "name_es": "Inmigración",
+      "name_en": "Immigration",
+      "description_es": "Regularización, control de fronteras, acogida, asilo y permisos de trabajo.",
+      "description_en": "Regularization, border management, reception facilities, asylum, and work permits.",
+      "subtopics": [
+        {
+          "id": "regularization-processes",
+          "name_es": "Procesos de regularización extraordinaria",
+          "name_en": "Extraordinary regularization processes"
+        },
+        {
+          "id": "border-control-and-security",
+          "name_es": "Control de fronteras y fuerzas de seguridad",
+          "name_en": "Border control and security forces"
+        },
+        {
+          "id": "reception-and-asylum",
+          "name_es": "Centros de acogida y derecho de asilo",
+          "name_en": "Reception centers and right to asylum"
+        },
+        {
+          "id": "unaccompanied-minors",
+          "name_es": "Menores no acompañados (MENA)",
+          "name_en": "Unaccompanied foreign minors"
+        },
+        {
+          "id": "labor-migration-channels",
+          "name_es": "Canales de migración laboral",
+          "name_en": "Labor migration channels"
+        }
+      ]
+    },
+    {
+      "id": "foreign-policy-eu",
+      "name_es": "Política exterior y Unión Europea",
+      "name_en": "Foreign Policy and the EU",
+      "description_es": "Unión Europea, compromisos OTAN y defensa, diplomacia y cooperación internacional.",
+      "description_en": "European Union, NATO and defense commitments, diplomacy, and international cooperation.",
+      "subtopics": [
+        {
+          "id": "eu-treaties-and-fiscal-rules",
+          "name_es": "Tratados de la UE y reglas fiscales comunitarias",
+          "name_en": "EU treaties and community fiscal rules"
+        },
+        {
+          "id": "defense-spending-and-nato",
+          "name_es": "Gasto en defensa y alianzas de seguridad",
+          "name_en": "Defense spending and security alliances"
+        },
+        {
+          "id": "bilateral-relations",
+          "name_es": "Relaciones bilaterales (Iberoamérica y Mediterráneo)",
+          "name_en": "Bilateral relations (Latin America and Mediterranean)"
+        },
+        {
+          "id": "development-cooperation",
+          "name_es": "Cooperación al desarrollo y ayuda humanitaria",
+          "name_en": "Development cooperation and humanitarian aid"
+        },
+        {
+          "id": "international-trade-treaties",
+          "name_es": "Tratados comerciales y acuerdos arancelarios",
+          "name_en": "International trade treaties and tariffs"
+        }
+      ]
+    },
+    {
+      "id": "climate-energy",
+      "name_es": "Clima y energía",
+      "name_en": "Climate and Energy",
+      "description_es": "Transición energética, renovables, energía nuclear, gestión del agua y descarbonización.",
+      "description_en": "Energy transition, renewables, nuclear energy, water management, and decarbonization.",
+      "subtopics": [
+        {
+          "id": "emission-targets-and-decarbonization",
+          "name_es": "Objetivos de emisiones y descarbonización",
+          "name_en": "Emission targets and decarbonization"
+        },
+        {
+          "id": "renewables-and-grid",
+          "name_es": "Despliegue de energías renovables y red eléctrica",
+          "name_en": "Renewable energy deployment and electricity grid"
+        },
+        {
+          "id": "nuclear-energy-lifecycle",
+          "name_es": "Calendario nuclear y gestión de residuos",
+          "name_en": "Nuclear calendar and waste management"
+        },
+        {
+          "id": "water-management-and-drought",
+          "name_es": "Gestión del agua e infraestructuras contra la sequía",
+          "name_en": "Water management and drought infrastructure"
+        },
+        {
+          "id": "biodiversity-and-circular-economy",
+          "name_es": "Protección de la biodiversidad y economía circular",
+          "name_en": "Biodiversity protection and circular economy"
+        }
+      ]
+    },
+    {
+      "id": "institutions-rights",
+      "name_es": "Instituciones, justicia y derechos fundamentales",
+      "name_en": "Institutions, Justice, and Fundamental Rights",
+      "description_es": "Reforma constitucional, ley electoral, justicia, modelo territorial, igualdad y libertades.",
+      "description_en": "Constitutional reform, electoral law, justice, territorial model, equality, and civil liberties.",
+      "subtopics": [
+        {
+          "id": "electoral-law-and-constitution",
+          "name_es": "Reforma constitucional y régimen electoral (LOREG)",
+          "name_en": "Constitutional reform and electoral regime (LOREG)"
+        },
+        {
+          "id": "judicial-governance-and-cgpj",
+          "name_es": "Gobernanza judicial y elección del CGPJ",
+          "name_en": "Judicial governance and CGPJ election"
+        },
+        {
+          "id": "transparency-and-anti-corruption",
+          "name_es": "Transparencia pública y medidas anticorrupción",
+          "name_en": "Public transparency and anti-corruption measures"
+        },
+        {
+          "id": "territorial-model-and-sfa",
+          "name_es": "Modelo territorial y financiación autonómica",
+          "name_en": "Territorial model and autonomous financing"
+        },
+        {
+          "id": "civil-liberties-and-equality",
+          "name_es": "Libertades públicas, igualdad y derechos LGTBI+",
+          "name_en": "Civil liberties, equality, and LGBTI+ rights"
+        }
+      ]
+    }
+  ]
+}

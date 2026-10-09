@@ -2,7 +2,9 @@
 
 ## 1. Editorial contract and pilot sources
 
-- [ ] 1.1 Agree the topic taxonomy, candidate inclusion and coverage policy; verify a reviewed methodology document and representative missing-source cases exist.
+- [x] 1.1 Agree the topic taxonomy, candidate inclusion and coverage policy; verify a reviewed methodology document and representative missing-source cases exist.
+  - Evidence: Policy version 1.0.0 documented in `docs/CONTENT-METHODOLOGY.md`; taxonomy v1.0.0 in `content/taxonomy.json`; party naming fixtures in `content/examples/parties.json`; programme status examples in `content/examples/programmes/` covering official, partial, replaced, and missing states; 14 automated tests passing in `tests/test_methodology_examples.py` and CI workflow `.github/workflows/ci.yml`. Awaiting human gate G0 approval.
+
 - [ ] 1.2 Register two lawful pilot programme versions with official URLs, dates, rights status and SHA-256; verify hashes against downloaded originals and document accessibility.
 - [ ] 1.3 Define versioned programme, claim, relationship and correction schemas; verify example valid and invalid records against the schema validator.
 - [ ] 1.4 Add an immutable election ID to sources, positions, and builds; verify 2023 pilot pages are labelled 2023 and a 2023 source cannot appear in a 2026 comparison.

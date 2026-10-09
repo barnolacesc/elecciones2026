@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "prog-fixture-party-a-2026-v1",
+  "candidacy_id": "partido-ejemplo-a",
+  "title": "Programa Electoral Elecciones Generales 2026 (Ejemplo Fixture)",
+  "status": "official",
+  "version": "1.0.0",
+  "publisher": "Partido Ejemplo A",
+  "official_url": "https://partido-ejemplo-a.es/programa-2026.pdf",
+  "publication_date": "2026-10-15",
+  "retrieval_date": "2026-10-16T10:00:00Z",
+  "language": "es",
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "rights_status": "verified_public_manifesto",
+  "coverage_notes": "Programa oficial completo verificado desde la web oficial del partido.",
+  "supersedes": null,
+  "superseded_by": null,
+  "replacement_reason": null,
+  "is_fixture": true
+}

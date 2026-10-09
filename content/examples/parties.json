@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "description": "Labelled test fixtures illustrating the candidate inclusion and party naming standard. Not real political claims.",
+  "parties": [
+    {
+      "id": "partido-ejemplo-a",
+      "official_name": "Partido Ejemplo A",
+      "display_name": "Partido Ejemplo A",
+      "short_name": "PEA",
+      "ballot_name": "Partido Ejemplo A (PEA)",
+      "is_coalition": false,
+      "coalition_members": [],
+      "territorial_scope": "national",
+      "inclusion_criterion": "criterion_a_parliamentary_representation",
+      "is_fixture": true
+    },
+    {
+      "id": "partido-ejemplo-b",
+      "official_name": "Partido Ejemplo B",
+      "display_name": "Partido Ejemplo B",
+      "short_name": "PEB",
+      "ballot_name": "Partido Ejemplo B (PEB)",
+      "is_coalition": false,
+      "coalition_members": [],
+      "territorial_scope": "national",
+      "inclusion_criterion": "criterion_a_parliamentary_representation",
+      "is_fixture": true
+    },
+    {
+      "id": "coalicion-ejemplo-c",
+      "official_name": "Coalición Electoral Ejemplo C",
+      "display_name": "Coalición Ejemplo C",
+      "short_name": "CEC",
+      "ballot_name": "Coalición Ejemplo C (CEC)",
+      "is_coalition": true,
+      "coalition_members": [
+        "partido-ejemplo-c1",
+        "partido-ejemplo-c2"
+      ],
+      "territorial_scope": "national",
+      "inclusion_criterion": "criterion_a_parliamentary_representation",
+      "is_fixture": true
+    },
+    {
+      "id": "partido-ejemplo-d",
+      "official_name": "Partido Territorial Ejemplo D",
+      "display_name": "Partido Territorial Ejemplo D",
+      "short_name": "PED",
+      "ballot_name": "Partido Territorial Ejemplo D (PED)",
+      "is_coalition": false,
+      "coalition_members": [],
+      "territorial_scope": "Cataluña",
+      "inclusion_criterion": "criterion_a_parliamentary_representation",
+      "is_fixture": true
+    }
+  ]
+}
