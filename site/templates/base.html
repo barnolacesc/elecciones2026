@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="{{ description }}">
+  <title>{{ title }}</title>
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="stylesheet" href="{{ root_path }}styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">{{ skip_to_content }}</a>
+
+  <aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
+    {{ preview_banner_text }}
+  </aside>
+
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <a class="brand" href="{{ root_path }}" aria-label="Elecciones 2026 - Inicio">
+        <span class="brand-mark" aria-hidden="true">◧</span>
+        <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>
+        <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>
+        <a class="nav-link" href="{{ root_path }}partidos/">{{ nav_parties }}</a>
+        <a class="nav-link" href="{{ root_path }}metodo/">{{ nav_methodology }}</a>
+        <a class="nav-link" href="{{ root_path }}fuentes/">{{ nav_sources }}</a>
+        <a class="nav-link" href="{{ root_path }}correcciones/">{{ nav_corrections }}</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+{{ content }}
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>{{ footer_org }}</span>
+      <span>{{ footer_values }}</span>
+    </div>
+  </footer>
+</body>
+</html>

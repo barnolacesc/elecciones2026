@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "language": "es",
+    "version": "1.0.0",
+    "canonical_base": "https://elecciones2026.es",
+    "site_name": "Elecciones 2026",
+    "site_tagline": "Comparador neutral de programas para las elecciones generales de 2026 en España",
+    "site_description": "Comparador neutral de programas electorales para las elecciones generales de 2026 en España. Citas exactas y trazabilidad a fuentes originales."
+  },
+  "nav": {
+    "skip_to_content": "Saltar al contenido principal",
+    "home": "Inicio",
+    "comparator": "Comparador",
+    "topics": "Temas",
+    "parties": "Partidos",
+    "methodology": "Metodología",
+    "sources": "Fuentes",
+    "corrections": "Correcciones"
+  },
+  "preview_banner": {
+    "badge": "VISTA PREVIA",
+    "text": "Datos de prueba · No publicar como información electoral definitiva"
+  },
+  "hero": {
+    "eyebrow": "ELECCIONES GENERALES · 29 NOV 2026",
+    "title_part1": "Los programas,",
+    "title_part2": "puestos en claro.",
+    "intro": "Compara propuestas políticas sobre los temas que te importan. Cada posición enlaza directamente a su programa original y página exacta. Sin recomendaciones de voto.",
+    "cta": "Explorar comparador"
+  },
+  "mock_notice": {
+    "title": "Aviso de maqueta técnica:",
+    "text": "«Partido A» y «Partido B» son ejemplos de prueba. No existen programas oficiales incorporados en esta versión previa ni comparaciones verificadas publicadas."
+  },
+  "selector": {
+    "eyebrow": "01 / COMPARAR",
+    "heading": "Una cuestión, distintas propuestas.",
+    "description": "Selecciona un tema y dos candidaturas para revisar coincidencias, matices y divergencias agrupadas por medida.",
+    "topic_label": "Tema de comparación",
+    "party_a_label": "Primer partido",
+    "party_b_label": "Segundo partido"
+  },
+  "status_badges": {
+    "official": "Programa oficial",
+    "partial": "Documento parcial",
+    "missing": "Programa no disponible",
+    "not_found": "No consta en el programa",
+    "announced": "Anunciado",
+    "replaced": "Versión sustituida",
+    "published_unverified": "Publicado sin verificar"
+  },
+  "relationship_badges": {
+    "agreement": "Coincidencia en la medida",
+    "divergence": "Diferencia en instrumento o alcance",
+    "partial_overlap": "Coincidencia parcial con matices",
+    "single_party": "Posición exclusiva de una candidatura",
+    "not_found": "Sin posición comparable"
+  },
+  "statement": {
+    "caveat_label": "Matiz o condición:",
+    "not_found_statement": "El programa revisado no incluye una propuesta explícita sobre esta medida concreta.",
+    "not_found_explanation": "La ausencia de una medida en el programa no debe interpretarse como oposición ni como apoyo.",
+    "source_prefix": "Fuente:",
+    "source_pending": "pendiente de programa oficial",
+    "page": "pág.",
+    "section": "sección",
+    "review_prefix": "Rev.",
+    "opens_new_window": "(se abre en una ventana nueva)"
+  },
+  "analysis": {
+    "heading": "Coincidencias y diferencias",
+    "note": "Solo se publicarán relaciones revisadas entre propuestas concretas. «No consta» nunca se interpretará como oposición política."
+  },
+  "share": {
+    "button_text": "Compartir esta comparación"
+  },
+  "methodology_summary": {
+    "eyebrow": "02 / MÉTODO",
+    "heading": "Compara sin perder la fuente.",
+    "text": "Cada afirmación publicada contará con documento oficial, versión, página o sección y fecha de revisión editorial. La función para avisar de errores estará disponible más adelante."
+  },
+  "coverage_summary": {
+    "eyebrow": "03 / COBERTURA",
+    "heading": "Lo que falta también importa.",
+    "text": "Indicaremos qué candidaturas y programas están verificados, parciales o no disponibles. Nunca rellenaremos vacíos documentales con suposiciones."
+  },
+  "footer": {
+    "org": "Elecciones 2026 · Proyecto cívico independiente",
+    "values": "Neutralidad · Fuentes directas · Transparencia"
+  }
+}
