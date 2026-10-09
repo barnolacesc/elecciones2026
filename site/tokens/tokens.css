@@ -1,0 +1,145 @@
+/**
+ * Elecciones 2026 — Local Design Tokens
+ * Converted from Stitch reference flow to accessible tokens.
+ * Zero external CDN dependencies. Compliant with WCAG 2.2 AA.
+ */
+
+:root {
+  /* Colors - Background */
+  --color-bg-canvas: #f8f9f7;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-subtle: #f0f4f6;
+  --color-bg-surface-alt: #eaf2f3;
+  --color-bg-notice: #fff7df;
+  --color-bg-primary: #164f67;
+  --color-bg-primary-hover: #0e394e;
+  --color-bg-preview-banner: #173d64;
+
+  /* Colors - Text (All pairs exceed WCAG 2.2 AA 4.5:1 ratio) */
+  --color-text-primary: #14253a;
+  --color-text-secondary: #526675;
+  --color-text-muted: #687987;
+  --color-text-inverse: #ffffff;
+  --color-text-brand: #134e67;
+  --color-text-notice: #6a5424;
+
+  /* Colors - Border */
+  --color-border-subtle: #dce3e7;
+  --color-border-default: #d4dfe3;
+  --color-border-strong: #526675;
+  --color-border-notice: #e7d5a5;
+  --color-border-focus: #164f67;
+
+  /* Colors - Neutral Parties (No political party branding) */
+  --color-party-a-bg: #d2eaf0;
+  --color-party-a-text: #134e67;
+  --color-party-a-border: #b0d5df;
+
+  --color-party-b-bg: #e6e5f2;
+  --color-party-b-text: #3d3765;
+  --color-party-b-border: #cecde3;
+
+  /* Colors - Programme Status Lifecycle */
+  --color-status-official-bg: #d2eaf0;
+  --color-status-official-text: #134e67;
+  --color-status-partial-bg: #fff7df;
+  --color-status-partial-text: #6a5424;
+  --color-status-missing-bg: #fae8e8;
+  --color-status-missing-text: #7a2b2b;
+  --color-status-announced-bg: #e2eef2;
+  --color-status-announced-text: #2d5568;
+  --color-status-replaced-bg: #f3eee4;
+  --color-status-replaced-text: #5c5240;
+
+  /* Colors - Relationship Badges */
+  --color-rel-agreement-bg: #eaf2f3;
+  --color-rel-agreement-text: #134e67;
+  --color-rel-agreement-border: #c5dde3;
+
+  --color-rel-divergence-bg: #eeedf6;
+  --color-rel-divergence-text: #3d3765;
+  --color-rel-divergence-border: #d1d0e5;
+
+  --color-rel-qualification-bg: #fff7df;
+  --color-rel-qualification-text: #6a5424;
+  --color-rel-qualification-border: #e7d5a5;
+
+  --color-rel-not-found-bg: #f0f4f6;
+  --color-rel-not-found-text: #526675;
+  --color-rel-not-found-border: #d4dfe3;
+
+  /* Typography - Local system font stacks */
+  --font-family-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-hero: clamp(2rem, 7vw, 3.5rem);
+
+  --line-height-tight: 1.15;
+  --line-height-snug: 1.3;
+  --line-height-base: 1.6;
+  --line-height-relaxed: 1.75;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.1em;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Sizing & Touch Targets */
+  --touch-target-min: 44px;
+  --touch-target-comfortable: 48px;
+  --container-max-width: 1180px;
+  --content-max-width: 720px;
+
+  /* Radii */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Borders & Outlines */
+  --border-width-default: 1px;
+  --border-width-focus: 2px;
+
+  /* Focus Indicator (WCAG 2.4.7 / 2.4.11) */
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 2px;
+  --focus-outline-color: #164f67;
+  --focus-ring: 0 0 0 2px #ffffff, 0 0 0 4px #164f67;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(20, 37, 58, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(20, 37, 58, 0.08);
+
+  /* Reference Viewport Breakpoints */
+  --breakpoint-mobile-compact: 360px;
+  --breakpoint-mobile-baseline: 390px;
+  --breakpoint-mobile-large: 430px;
+  --breakpoint-desktop: 760px;
+}

@@ -4,32 +4,161 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <title>Elecciones 2026 · Vista previa</title>
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="description" content="Comparador neutral de programas para las elecciones generales de 2026 en España. Citas exactas y trazabilidad a fuentes originales.">
+  <title>Elecciones 2026 · Comparador de programas</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <a class="skip" href="#contenido">Saltar al contenido</a>
-  <div class="preview" role="status">VISTA PREVIA · DATOS FICTICIOS · NO PUBLICAR COMO INFORMACIÓN ELECTORAL</div>
-  <header class="topbar">
-    <div class="brand"><span class="brandmark" aria-hidden="true">◧</span><span>Elecciones<span class="brandyear">2026</span></span></div>
-    <nav aria-label="Navegación principal"><a href="#comparador">Comparador</a><a href="#metodo">Metodología</a><a href="#fuentes">Fuentes</a></nav>
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
+    VISTA PREVIA · DATOS FICTICIOS DE PRUEBA · NO PUBLICAR COMO INFORMACIÓN ELECTORAL DEFINITIVA
+  </aside>
+
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <a class="brand" href="./" aria-label="Elecciones 2026 - Inicio">
+        <span class="brand-mark" aria-hidden="true">◧</span>
+        <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a class="nav-link" href="#comparador">Comparador</a>
+        <a class="nav-link" href="#metodo">Metodología</a>
+        <a class="nav-link" href="#fuentes">Fuentes</a>
+      </nav>
+    </div>
   </header>
+
   <main id="contenido">
-    <section class="hero" aria-labelledby="titulo">
-      <p class="eyebrow">ELECCIONES GENERALES · 29 NOV 2026</p>
-      <h1 id="titulo">Los programas,<br><em>puestos en claro.</em></h1>
-      <p class="intro">Compara propuestas sobre los temas que te importan. Cada posición enlaza a su programa original. Sin recomendaciones de voto.</p>
-      <a class="primary" href="#comparador">Explorar comparador <span aria-hidden="true">→</span></a>
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="hero-eyebrow">ELECCIONES GENERALES · 29 NOV 2026</p>
+      <h1 id="hero-title" class="hero-title">Los programas,<br><span class="hero-em">puestos en claro.</span></h1>
+      <p class="hero-intro">Compara propuestas políticas sobre los temas que te importan. Cada posición enlaza directamente a su programa original y página exacta. Sin recomendaciones de voto.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#comparador">
+          <span>Explorar comparador</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
     </section>
-    <section class="notice" aria-label="Aviso de la vista previa"><strong>Esto es una maqueta.</strong> «Partido A» y «Partido B» son ejemplos inventados. No hay programas incorporados ni comparaciones verificadas.</section>
-    <section id="comparador" class="compare" aria-labelledby="compare-title">
-      <div class="section-head"><div><p class="eyebrow">01 / COMPARAR</p><h2 id="compare-title">Una cuestión, distintas propuestas.</h2></div><p>Selecciona un tema y dos partidos para ver dónde coinciden y en qué difieren.</p></div>
-      <div class="controls" aria-label="Selección de ejemplo"><label for="tema">Tema<select id="tema" disabled><option>Vivienda (ejemplo)</option></select></label><label for="partido-a">Primer partido<select id="partido-a" disabled><option>Partido A (ficticio)</option></select></label><label for="partido-b">Segundo partido<select id="partido-b" disabled><option>Partido B (ficticio)</option></select></label></div>
-      <div class="cards"><article class="card"><div class="card-top"><span class="pill">A</span><span>PROGRAMA DE EJEMPLO</span></div><h3>Partido A</h3><p>Esta tarjeta mostrará una propuesta resumida y revisada, con sus condiciones y contexto.</p><div class="source">Fuente: <span>pendiente de programa oficial</span></div></article><article class="card"><div class="card-top"><span class="pill pill-alt">B</span><span>PROGRAMA DE EJEMPLO</span></div><h3>Partido B</h3><p>La segunda propuesta aparecerá junto a la primera, con igual espacio y trazabilidad.</p><div class="source">Fuente: <span>pendiente de programa oficial</span></div></article></div>
-      <aside class="analysis" aria-label="Lectura comparada"><span class="analysis-icon" aria-hidden="true">↔</span><div><h3>Coincidencias y diferencias</h3><p>Solo se mostrarán relaciones revisadas entre propuestas concretas. «No consta» nunca se interpretará como oposición.</p></div></aside>
+
+    <aside class="notice" aria-label="Aviso de la maqueta">
+      <strong>Aviso de maqueta técnica:</strong> «Partido A» y «Partido B» son ejemplos de prueba. No existen programas oficiales incorporados en esta versión previa ni comparaciones verificadas publicadas.
+    </aside>
+
+    <section id="comparador" class="compare-section" aria-labelledby="compare-title">
+      <div class="section-head">
+        <p class="hero-eyebrow">01 / COMPARAR</p>
+        <h2 id="compare-title">Una cuestión, distintas propuestas.</h2>
+        <p>Selecciona un tema y dos candidaturas para revisar coincidencias, matices y divergencias agrupadas por medida.</p>
+      </div>
+
+      <form class="controls-form" role="search" aria-label="Filtro de comparación">
+        <div class="control-field">
+          <label for="topic-select" class="control-label">Tema de comparación</label>
+          <select id="topic-select" name="topic" class="control-select" disabled>
+            <option value="housing">Vivienda (ejemplo)</option>
+          </select>
+        </div>
+        <div class="control-field">
+          <label for="party-a-select" class="control-label">Primer partido</label>
+          <select id="party-a-select" name="partyA" class="control-select" disabled>
+            <option value="party-a">Partido A (ficticio)</option>
+          </select>
+        </div>
+        <div class="control-field">
+          <label for="party-b-select" class="control-label">Segundo partido</label>
+          <select id="party-b-select" name="partyB" class="control-select" disabled>
+            <option value="party-b">Partido B (ficticio)</option>
+          </select>
+        </div>
+      </form>
+
+      <section class="measure-comparison" aria-labelledby="measure-1-title">
+        <h3 id="measure-1-title" class="sr-only">Medida: Parque público y alquiler asequible</h3>
+
+        <div class="measure-cards">
+          <article class="party-card party-card-a" aria-labelledby="party-a-name">
+            <div class="party-card-header">
+              <span class="party-pill party-pill-a" aria-hidden="true">A</span>
+              <div class="party-card-meta">
+                <h4 id="party-a-name" class="party-name">Partido A</h4>
+                <span class="status-badge status-badge-official">Programa de ejemplo</span>
+              </div>
+            </div>
+            <div class="party-card-body">
+              <p class="party-statement">Esta tarjeta muestra una propuesta concreta, resumida de forma neutral y revisada por el equipo editorial.</p>
+              <div class="party-caveat" role="note" aria-label="Matiz registrado">
+                <strong>Matiz o condición:</strong> Se registrarán aquí condiciones de financiación, plazos o ámbito competencial.
+              </div>
+            </div>
+            <div class="party-card-footer">
+              <span class="source-citation">
+                <span aria-hidden="true">↗</span> Fuente: <em>pendiente de programa oficial</em>
+              </span>
+              <time class="source-date" datetime="2026-10-09">Rev. pendiente</time>
+            </div>
+          </article>
+
+          <article class="party-card party-card-b" aria-labelledby="party-b-name">
+            <div class="party-card-header">
+              <span class="party-pill party-pill-b" aria-hidden="true">B</span>
+              <div class="party-card-meta">
+                <h4 id="party-b-name" class="party-name">Partido B</h4>
+                <span class="status-badge status-badge-official">Programa de ejemplo</span>
+              </div>
+            </div>
+            <div class="party-card-body">
+              <p class="party-statement">La segunda propuesta aparece en paralelo con idéntico espacio, rigor descriptivo y trazabilidad a la fuente original.</p>
+              <div class="party-caveat" role="note" aria-label="Matiz registrado">
+                <strong>Matiz o condición:</strong> Toda exclusión o requisito particular quedará reflejado de manera explícita.
+              </div>
+            </div>
+            <div class="party-card-footer">
+              <span class="source-citation">
+                <span aria-hidden="true">↗</span> Fuente: <em>pendiente de programa oficial</em>
+              </span>
+              <time class="source-date" datetime="2026-10-09">Rev. pendiente</time>
+            </div>
+          </article>
+        </div>
+
+        <aside class="analysis-callout" aria-label="Lectura comparada">
+          <span class="analysis-icon" aria-hidden="true">↔</span>
+          <div>
+            <h3>Coincidencias y diferencias</h3>
+            <p>Solo se publicarán relaciones revisadas entre propuestas concretas. «No consta» nunca se interpretará como oposición política.</p>
+          </div>
+        </aside>
+
+        <div class="share-section">
+          <button type="button" class="btn-share" id="share-button" aria-haspopup="false">
+            <span aria-hidden="true">🔗</span>
+            <span>Compartir esta comparación</span>
+          </button>
+        </div>
+      </section>
     </section>
-    <section class="lower"><div id="metodo"><p class="eyebrow">02 / MÉTODO</p><h2>Compara sin perder la fuente.</h2><p>Cada afirmación tendrá documento, versión, página y fecha de revisión. Publicaremos también las lagunas y correcciones.</p></div><div id="fuentes"><p class="eyebrow">03 / COBERTURA</p><h2>Lo que falta también importa.</h2><p>Indicaremos qué candidaturas y programas están disponibles, incompletos o pendientes. Nunca rellenaremos huecos con suposiciones.</p></div></section>
+
+    <section class="lower-sections">
+      <div id="metodo">
+        <p class="hero-eyebrow">02 / MÉTODO</p>
+        <h2>Compara sin perder la fuente.</h2>
+        <p>Cada afirmación publicada contará con documento oficial, versión, página o sección y fecha de revisión editorial. La función para avisar de errores estará disponible más adelante.</p>
+      </div>
+      <div id="fuentes">
+        <p class="hero-eyebrow">03 / COBERTURA</p>
+        <h2>Lo que falta también importa.</h2>
+        <p>Indicaremos qué candidaturas y programas están verificados, parciales o no disponibles. Nunca rellenaremos vacíos documentales con suposiciones.</p>
+      </div>
+    </section>
   </main>
-  <footer><span>Elecciones 2026 · Concepto visual</span><span>Neutralidad · Fuentes · Transparencia</span></footer>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Elecciones 2026 · Proyecto cívico independiente</span>
+      <span>Neutralidad · Fuentes directas · Transparencia</span>
+    </div>
+  </footer>
 </body>
 </html>

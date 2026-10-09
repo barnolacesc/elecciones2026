@@ -26,9 +26,11 @@
 
 - [ ] 3.1 Implement a deterministic Python 3.14 static build; verify identical reviewed input produces identical output without network access or runtime secrets.
 - [ ] 3.2 Implement one-topic/two-party selection and claims grouped by measure; verify a phone user sees both party positions and source links before moving to the next measure, without tabs or horizontal scroll.
+  - Evidence (E2.1): Accessible component plan and wireframes for one-topic/two-party selection and grouped measure comparisons documented in `site/COMPONENT-PLAN.md`; local design tokens in `site/tokens/tokens.json` and `site/tokens/tokens.css`; verified by `tests/test_component_plan.py` and `tests/test_design_tokens.py`.
 - [ ] 3.3 Show reviewed agreements, divergences, qualifications and missing/partial coverage; verify missing data is never rendered as opposition or agreement.
 - [ ] 3.4 Publish a concise source coverage/method page, update timestamp and correction history; verify every visible claim exposes its provenance without a separate proposal-detail page.
 - [ ] 3.5 Add keyboard/screen-reader and mobile-first checks at 360, 390 and 430 CSS px; verify no horizontal overflow, 44-px touch targets, readable comparison without zoom and source links reachable in one-column flow.
+  - Evidence (E2.1): Mobile-first constraints at 360, 390, and 430 CSS px codified with min 44-px touch targets, zero external CDN dependencies, and WCAG 2.2 AA contrast rules in `site/tokens/tokens.json` and `site/COMPONENT-PLAN.md`; automated token and plan validation suites integrated into CI.
 - [ ] 3.6 Use Spanish for every public UI/editorial string and structure strings for future reviewed translations; verify the released artifact declares `lang=es` and contains no accidental Catalan UI copy.
 - [ ] 3.7 Render crawlable topic, party, methodology and source pages with canonical URLs, update dates, a sitemap and accurate `robots.txt`; verify a text-only fetch exposes approved claims and source references without JavaScript.
 - [ ] 3.8 Add one neutral Share control to home, topic, and comparison views with native share and copy-link fallback; verify stable allowlisted URL state, no tracking/political-answer parameters, keyboard access, and iOS/Android behavior.

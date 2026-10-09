@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   test:
-    name: Test and validate methodology, policies, source register, and content schemas
+    name: Test and validate methodology, policies, and source register
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -42,3 +42,11 @@ jobs:
       - name: Validate schemas and content fixtures
         run: |
           PYTHONPATH="src" python -m elecciones2026.schemas validate-all
+
+      - name: Validate local design tokens
+        run: |
+          PYTHONPATH="src" python -m elecciones2026.tokens validate site/tokens/tokens.json
+
+      - name: Validate accessible component plan
+        run: |
+          PYTHONPATH="src" python -m elecciones2026.component_plan validate site/COMPONENT-PLAN.md
