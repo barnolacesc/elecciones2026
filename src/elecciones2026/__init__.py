@@ -34,6 +34,8 @@ __all__ = [
     "QuoteRecord",
     "ComparisonRelationship",
     "validate_editorial_corpus",
+    "validate_selection",
+    "validate_ui_flow_files",
 ]
 
 
@@ -89,4 +91,11 @@ def __getattr__(name: str) -> Any:
         import elecciones2026.editorial as ed
 
         return getattr(ed, name)
+    if name in {
+        "validate_selection",
+        "validate_ui_flow_files",
+    }:
+        import elecciones2026.ui_flow as uf
+
+        return getattr(uf, name)
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

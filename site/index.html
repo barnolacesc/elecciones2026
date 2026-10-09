@@ -53,81 +53,133 @@
         <p>Selecciona un tema y dos candidaturas para revisar coincidencias, matices y divergencias agrupadas por medida.</p>
       </div>
 
-      <form class="controls-form" role="search" aria-label="Filtro de comparación">
+      <form id="selection-form" class="controls-form" role="search" action="#comparador" method="get" aria-label="Filtro de comparación">
         <div class="control-field">
           <label for="topic-select" class="control-label">Tema de comparación</label>
-          <select id="topic-select" name="topic" class="control-select" disabled>
-            <option value="housing">Vivienda (ejemplo)</option>
-          </select>
+          <div class="select-wrapper">
+            <select id="topic-select" name="topic" class="control-select">
+              <option value="housing" selected>Vivienda</option>
+              <option value="education">Educación</option>
+              <option value="health-social-services">Sanidad y servicios sociales</option>
+              <option value="economy-work-tax">Economía, trabajo y fiscalidad</option>
+              <option value="immigration">Inmigración</option>
+              <option value="foreign-policy-eu">Política exterior y UE</option>
+              <option value="climate-energy">Clima y energía</option>
+              <option value="institutions-rights">Instituciones, justicia y derechos fundamentales</option>
+            </select>
+          </div>
         </div>
         <div class="control-field">
           <label for="party-a-select" class="control-label">Primer partido</label>
-          <select id="party-a-select" name="partyA" class="control-select" disabled>
-            <option value="party-a">Partido A (ficticio)</option>
-          </select>
+          <div class="select-wrapper">
+            <select id="party-a-select" name="partyA" class="control-select" aria-describedby="selection-error">
+              <optgroup label="Partidos de prueba (maqueta técnica)">
+                <option value="party-a" selected>Partido A (ficticio)</option>
+                <option value="party-b">Partido B (ficticio)</option>
+              </optgroup>
+              <optgroup label="Candidaturas oficiales (seguimiento 2026)">
+                <option value="bng">BNG (Bloque Nacionalista Galego)</option>
+                <option value="pnv">EAJ-PNV (Partido Nacionalista Vasco)</option>
+                <option value="ehbildu">EH Bildu (Euskal Herria Bildu)</option>
+                <option value="erc">ERC (Esquerra Republicana de Catalunya)</option>
+                <option value="junts">Junts per Catalunya</option>
+                <option value="sumar">Movimiento Sumar</option>
+                <option value="pp">Partido Popular (PP)</option>
+                <option value="psoe">Partido Socialista Obrero Español (PSOE)</option>
+                <option value="vox">VOX</option>
+              </optgroup>
+            </select>
+          </div>
         </div>
         <div class="control-field">
           <label for="party-b-select" class="control-label">Segundo partido</label>
-          <select id="party-b-select" name="partyB" class="control-select" disabled>
-            <option value="party-b">Partido B (ficticio)</option>
-          </select>
+          <div class="select-wrapper">
+            <select id="party-b-select" name="partyB" class="control-select" aria-describedby="selection-error">
+              <optgroup label="Partidos de prueba (maqueta técnica)">
+                <option value="party-a">Partido A (ficticio)</option>
+                <option value="party-b" selected>Partido B (ficticio)</option>
+              </optgroup>
+              <optgroup label="Candidaturas oficiales (seguimiento 2026)">
+                <option value="bng">BNG (Bloque Nacionalista Galego)</option>
+                <option value="pnv">EAJ-PNV (Partido Nacionalista Vasco)</option>
+                <option value="ehbildu">EH Bildu (Euskal Herria Bildu)</option>
+                <option value="erc">ERC (Esquerra Republicana de Catalunya)</option>
+                <option value="junts">Junts per Catalunya</option>
+                <option value="sumar">Movimiento Sumar</option>
+                <option value="pp">Partido Popular (PP)</option>
+                <option value="psoe">Partido Socialista Obrero Español (PSOE)</option>
+                <option value="vox">VOX</option>
+              </optgroup>
+            </select>
+          </div>
         </div>
+        <div class="control-actions">
+          <button type="submit" id="compare-submit" class="btn-compare">
+            <span>Comparar propuestas</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <div id="selection-error" class="selection-error sr-only" role="alert" aria-live="assertive"></div>
       </form>
 
       <section class="measure-comparison" aria-labelledby="measure-1-title">
-        <h3 id="measure-1-title" class="sr-only">Medida: Parque público y alquiler asequible</h3>
+        <div class="measure-head">
+          <p id="measure-topic-label" class="measure-topic-label">TEMA: VIVIENDA</p>
+          <h3 id="measure-1-title" class="measure-title">Medida: Parque público y alquiler asequible</h3>
+          <p id="measure-summary" class="measure-summary">Políticas de impulso a la oferta de vivienda en régimen de alquiler social y regulación.</p>
+        </div>
 
         <div class="measure-cards">
           <article class="party-card party-card-a" aria-labelledby="party-a-name">
             <div class="party-card-header">
-              <span class="party-pill party-pill-a" aria-hidden="true">A</span>
+              <span id="party-pill-a" class="party-pill party-pill-a" aria-hidden="true">A</span>
               <div class="party-card-meta">
                 <h4 id="party-a-name" class="party-name">Partido A</h4>
-                <span class="status-badge status-badge-official">Programa de ejemplo</span>
+                <span id="party-a-status" class="status-badge status-badge-official">Programa de ejemplo</span>
               </div>
             </div>
             <div class="party-card-body">
-              <p class="party-statement">Esta tarjeta muestra una propuesta concreta, resumida de forma neutral y revisada por el equipo editorial.</p>
-              <div class="party-caveat" role="note" aria-label="Matiz registrado">
+              <p id="party-a-statement" class="party-statement">Esta tarjeta muestra una propuesta concreta, resumida de forma neutral y revisada por el equipo editorial.</p>
+              <div id="party-a-caveat" class="party-caveat" role="note" aria-label="Matiz registrado">
                 <strong>Matiz o condición:</strong> Se registrarán aquí condiciones de financiación, plazos o ámbito competencial.
               </div>
             </div>
             <div class="party-card-footer">
               <span class="source-citation">
-                <span aria-hidden="true">↗</span> Fuente: <em>pendiente de programa oficial</em>
+                <span aria-hidden="true">↗</span> <span id="party-a-source">Fuente: <em>pendiente de programa oficial</em></span>
               </span>
-              <time class="source-date" datetime="2026-10-09">Rev. pendiente</time>
+              <time id="party-a-date" class="source-date" datetime="2026-10-09">Rev. pendiente</time>
             </div>
           </article>
 
           <article class="party-card party-card-b" aria-labelledby="party-b-name">
             <div class="party-card-header">
-              <span class="party-pill party-pill-b" aria-hidden="true">B</span>
+              <span id="party-pill-b" class="party-pill party-pill-b" aria-hidden="true">B</span>
               <div class="party-card-meta">
                 <h4 id="party-b-name" class="party-name">Partido B</h4>
-                <span class="status-badge status-badge-official">Programa de ejemplo</span>
+                <span id="party-b-status" class="status-badge status-badge-official">Programa de ejemplo</span>
               </div>
             </div>
             <div class="party-card-body">
-              <p class="party-statement">La segunda propuesta aparece en paralelo con idéntico espacio, rigor descriptivo y trazabilidad a la fuente original.</p>
-              <div class="party-caveat" role="note" aria-label="Matiz registrado">
+              <p id="party-b-statement" class="party-statement">La segunda propuesta aparece en paralelo con idéntico espacio, rigor descriptivo y trazabilidad a la fuente original.</p>
+              <div id="party-b-caveat" class="party-caveat" role="note" aria-label="Matiz registrado">
                 <strong>Matiz o condición:</strong> Toda exclusión o requisito particular quedará reflejado de manera explícita.
               </div>
             </div>
             <div class="party-card-footer">
               <span class="source-citation">
-                <span aria-hidden="true">↗</span> Fuente: <em>pendiente de programa oficial</em>
+                <span aria-hidden="true">↗</span> <span id="party-b-source">Fuente: <em>pendiente de programa oficial</em></span>
               </span>
-              <time class="source-date" datetime="2026-10-09">Rev. pendiente</time>
+              <time id="party-b-date" class="source-date" datetime="2026-10-09">Rev. pendiente</time>
             </div>
           </article>
         </div>
 
-        <aside class="analysis-callout" aria-label="Lectura comparada">
+        <aside id="analysis-callout" class="analysis-callout" aria-label="Lectura comparada">
           <span class="analysis-icon" aria-hidden="true">↔</span>
           <div>
-            <h3>Coincidencias y diferencias</h3>
-            <p>Solo se publicarán relaciones revisadas entre propuestas concretas. «No consta» nunca se interpretará como oposición política.</p>
+            <h4 id="analysis-title">Coincidencias y diferencias</h4>
+            <p id="analysis-text">Solo se publicarán relaciones revisadas entre propuestas concretas. «No consta» nunca se interpretará como oposición política.</p>
           </div>
         </aside>
 
@@ -136,6 +188,7 @@
             <span aria-hidden="true">🔗</span>
             <span>Compartir esta comparación</span>
           </button>
+          <div id="share-feedback" class="sr-only" role="status" aria-live="polite"></div>
         </div>
       </section>
     </section>
@@ -144,7 +197,7 @@
       <div id="metodo">
         <p class="hero-eyebrow">02 / MÉTODO</p>
         <h2>Compara sin perder la fuente.</h2>
-        <p>Cada afirmación publicada contará con documento oficial, versión, página o sección y fecha de revisión editorial. La función para avisar de errores estará disponible más adelante.</p>
+        <p>Cada afirmación publicada dispondrá de documento oficial, versión, página o sección y fecha de revisión editorial. La función para avisar de errores estará disponible más adelante.</p>
       </div>
       <div id="fuentes">
         <p class="hero-eyebrow">03 / COBERTURA</p>
@@ -160,5 +213,6 @@
       <span>Neutralidad · Fuentes directas · Transparencia</span>
     </div>
   </footer>
+  <script src="./app.js" defer></script>
 </body>
 </html>

@@ -4,6 +4,7 @@
  * Elecciones 2026 — Accessible Static Stylesheet
  * Generated from approved component plan and local design tokens.
  * Zero external CDN dependencies. WCAG 2.2 Level AA compliant.
+ * Validated target mobile viewports: 360px, 390px, 430px.
  */
 
 *, *::before, *::after {
@@ -13,11 +14,13 @@
 html {
   scroll-behavior: smooth;
   font-size: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   background-color: var(--color-bg-canvas);
   color: var(--color-text-primary);
   font-family: var(--font-family-sans);
@@ -281,6 +284,11 @@ main {
   color: var(--color-text-secondary);
 }
 
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .control-select {
   display: block;
   width: 100%;
@@ -292,6 +300,90 @@ main {
   color: var(--color-text-primary);
   font: inherit;
   font-size: var(--font-size-base); /* Prevents iOS auto-zoom on focus */
+  cursor: pointer;
+}
+
+.control-select:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.control-select[aria-invalid="true"] {
+  border-color: var(--color-status-missing-text);
+  box-shadow: 0 0 0 1px var(--color-status-missing-text);
+  background-color: var(--color-status-missing-bg);
+}
+
+.control-actions {
+  display: flex;
+  margin-top: var(--space-2);
+}
+
+.btn-compare {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target-comfortable);
+  padding: var(--space-3) var(--space-5);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.btn-compare:hover {
+  background-color: var(--color-bg-primary-hover);
+}
+
+.btn-compare:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.selection-error:not(.sr-only) {
+  display: block;
+  margin-top: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-status-missing-bg);
+  color: var(--color-status-missing-text);
+  border: var(--border-width-default) solid var(--color-status-missing-text);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+}
+
+.measure-head {
+  margin-bottom: var(--space-4);
+}
+
+.measure-topic-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-text-brand);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-1);
+}
+
+.measure-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  margin: 0 0 var(--space-2);
+}
+
+.measure-summary {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 /* --------------------------------------------------
@@ -556,6 +648,18 @@ footer {
 
   .controls-form {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .control-actions {
+    grid-column: 1 / -1;
+  }
+
+  .btn-compare {
+    width: auto;
+  }
+
+  .selection-error {
+    grid-column: 1 / -1;
   }
 
   .measure-cards {
