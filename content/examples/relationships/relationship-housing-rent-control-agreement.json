@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "rel-housing-rental-regulation-party-a-party-b",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "measure_label": "Regulación de precios de alquiler en zonas de mercado tensionado",
+  "party_ids": [
+    "partido-ejemplo-a",
+    "partido-ejemplo-b"
+  ],
+  "statement_ids": [
+    "stmt-party-a-housing-001",
+    "stmt-party-b-housing-001"
+  ],
+  "relationship_type": "agreement",
+  "summary": "Ambas formaciones políticas proponen establecer techos vinculantes de precios para alquileres de vivienda en áreas declaradas de mercado tensionado.",
+  "differences": [
+    "Partido A condiciona la medida a un índice estatal único; Partido B prevé que las comunidades autónomas puedan fijar índices más restrictivos.",
+    "Partido A introduce una exención de 2 años por rehabilitación integral; Partido B no contempla exenciones temporales."
+  ],
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-editorial-1",
+      "review_date": "2026-10-17",
+      "verdict": "approved",
+      "review_notes": "Acuerdo en el mecanismo nuclear de contención de precios. Diferencias de alcance autonómico y exenciones documentadas."
+    },
+    {
+      "reviewer_id": "rev-editorial-2",
+      "review_date": "2026-10-18",
+      "verdict": "approved",
+      "review_notes": "Segunda revisión conforme. Clasificación de acuerdo válida con matices de alcance explícitos."
+    }
+  ],
+  "status": "active",
+  "invalidation_reason": null,
+  "invalidated_by_correction_id": null,
+  "is_fixture": true
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "cor-invalid-single-reviewer-001",
+  "target_type": "statement",
+  "target_id": "stmt-party-a-housing-001",
+  "correction_type": "topic_reclassification",
+  "prior_state": {
+    "topic_id": "economy-work-tax"
+  },
+  "corrected_state": {
+    "topic_id": "housing"
+  },
+  "reason": "Corrección firmada por un solo revisor sin la segunda aprobación independiente obligatoria.",
+  "correction_date": "2026-10-18",
+  "reporter": "internal_audit",
+  "reviewed_by": "rev-editorial-1",
+  "approved_by": "rev-editorial-1",
+  "invalidated_relationship_ids": [],
+  "is_fixture": true
+}

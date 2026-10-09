@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/statement.schema.json",
+  "title": "StatementRecord",
+  "description": "Versioned, source-linked political position statement with dual-review tracking.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "election_id",
+    "id",
+    "party_id",
+    "topic_id",
+    "subtopic_id",
+    "statement_type",
+    "summary",
+    "review_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "election_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "party_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "programme_id": {
+      "type": ["string", "null"],
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "topic_id": {
+      "type": "string",
+      "enum": [
+        "housing",
+        "education",
+        "health-social-services",
+        "economy-work-tax",
+        "immigration",
+        "foreign-policy-eu",
+        "climate-energy",
+        "institutions-rights"
+      ]
+    },
+    "subtopic_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "statement_type": {
+      "type": "string",
+      "enum": [
+        "explicit_proposal",
+        "explicit_opposition",
+        "qualification",
+        "not_found"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "summary_en": {
+      "type": ["string", "null"]
+    },
+    "quote": {
+      "type": ["string", "null"],
+      "maxLength": 1000
+    },
+    "source_url": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "source_version": {
+      "type": ["string", "null"]
+    },
+    "source_page": {
+      "type": ["string", "null"]
+    },
+    "source_section": {
+      "type": ["string", "null"]
+    },
+    "qualifications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "policy_instrument": {
+      "type": ["string", "null"]
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "under_review",
+        "approved",
+        "rejected",
+        "invalidated"
+      ]
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ReviewEntry"
+      }
+    },
+    "last_reviewed_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "correction_id": {
+      "type": ["string", "null"],
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "is_fixture": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ReviewEntry": {
+      "type": "object",
+      "required": ["reviewer_id", "review_date", "verdict", "review_notes"],
+      "properties": {
+        "reviewer_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "review_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "verdict": {
+          "type": "string",
+          "enum": ["approved", "rejected", "needs_changes"]
+        },
+        "review_notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

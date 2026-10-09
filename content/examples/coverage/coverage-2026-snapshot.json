@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "snapshot_id": "cov-snapshot-2026-10-18",
+  "snapshot_date": "2026-10-18",
+  "description": "Estado de cobertura de candidaturas y programas para las Elecciones Generales 2026 (Fixture).",
+  "candidacies": [
+    {
+      "id": "cov-2026-partido-a",
+      "election_id": "es-gen-2026",
+      "candidacy_id": "partido-ejemplo-a",
+      "programme_id": "prog-fixture-party-a-2026-v1",
+      "status": "official",
+      "banner_text_es": "Programa oficial verificado",
+      "banner_text_en": "Official verified programme",
+      "has_verified_programme": true,
+      "topics_covered": [
+        "housing",
+        "education",
+        "economy-work-tax"
+      ],
+      "topics_absent": [],
+      "total_statements": 12,
+      "last_audit_date": "2026-10-17",
+      "notes": "Programa completo verificado con SHA-256."
+    },
+    {
+      "id": "cov-2026-partido-b",
+      "election_id": "es-gen-2026",
+      "candidacy_id": "partido-ejemplo-b",
+      "programme_id": "prog-fixture-party-b-2026-partial",
+      "status": "partial",
+      "banner_text_es": "Programa parcial: resumen temático",
+      "banner_text_en": "Partial programme: thematic summary",
+      "has_verified_programme": false,
+      "topics_covered": [
+        "housing",
+        "economy-work-tax"
+      ],
+      "topics_absent": [
+        "foreign-policy-eu"
+      ],
+      "total_statements": 5,
+      "last_audit_date": "2026-10-17",
+      "notes": "Manifiesto preliminar con compromisos seleccionados."
+    },
+    {
+      "id": "cov-2026-coalicion-c",
+      "election_id": "es-gen-2026",
+      "candidacy_id": "coalicion-ejemplo-c",
+      "programme_id": "prog-fixture-party-c-2026-v2",
+      "status": "official",
+      "banner_text_es": "Programa oficial verificado (versión 2)",
+      "banner_text_en": "Official verified programme (version 2)",
+      "has_verified_programme": true,
+      "topics_covered": [
+        "housing",
+        "climate-energy"
+      ],
+      "topics_absent": [],
+      "total_statements": 8,
+      "last_audit_date": "2026-10-18",
+      "notes": "Sustituye a la versión 1 tras corrección formal."
+    },
+    {
+      "id": "cov-2026-partido-d",
+      "election_id": "es-gen-2026",
+      "candidacy_id": "partido-ejemplo-d",
+      "programme_id": "prog-fixture-party-d-2026-missing",
+      "status": "missing",
+      "banner_text_es": "Programa no disponible",
+      "banner_text_en": "Programme not available",
+      "has_verified_programme": false,
+      "topics_covered": [],
+      "topics_absent": [
+        "housing",
+        "education",
+        "health-social-services",
+        "economy-work-tax",
+        "immigration",
+        "foreign-policy-eu",
+        "climate-energy",
+        "institutions-rights"
+      ],
+      "total_statements": 0,
+      "last_audit_date": "2026-10-17",
+      "notes": "Candidatura proclamada sin programa localizado en canales oficiales."
+    }
+  ],
+  "is_fixture": true
+}

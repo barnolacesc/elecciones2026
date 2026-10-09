@@ -1,0 +1,19 @@
+{
+  "id": "cov-2026-partido-a",
+  "election_id": "es-gen-2026",
+  "candidacy_id": "partido-ejemplo-a",
+  "programme_id": "prog-fixture-party-a-2026-v1",
+  "status": "official",
+  "banner_text_es": "Programa oficial verificado",
+  "banner_text_en": "Official verified programme",
+  "has_verified_programme": true,
+  "topics_covered": [
+    "housing",
+    "education",
+    "economy-work-tax"
+  ],
+  "topics_absent": [],
+  "total_statements": 12,
+  "last_audit_date": "2026-10-17",
+  "notes": "Programa completo verificado con SHA-256."
+}

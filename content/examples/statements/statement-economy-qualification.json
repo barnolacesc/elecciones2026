@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-party-b-economy-001",
+  "party_id": "partido-ejemplo-b",
+  "programme_id": "prog-fixture-party-b-2026-partial",
+  "topic_id": "economy-work-tax",
+  "subtopic_id": "working-hours-reduction",
+  "statement_type": "explicit_proposal",
+  "summary": "Reducir la jornada laboral máxima legal a 37,5 horas semanales sin reducción de salario, con calendario de adaptación sectorial.",
+  "summary_en": "Reduce maximum legal working week to 37.5 hours with no salary reduction, with a sectoral phase-in schedule.",
+  "quote": "Avanzaremos hacia la jornada laboral de 37,5 horas semanales sin merma salarial mediante diálogo social.",
+  "source_url": "https://partido-ejemplo-b.es/manifiesto-2026-resumen.pdf",
+  "source_version": "0.9.0-partial",
+  "source_page": "12",
+  "source_section": "Pilar Económico: Empleo de calidad",
+  "qualifications": [
+    "Sujeto a acuerdos en mesas de diálogo social tripartito.",
+    "Período transitorio de dos años para pequeñas y medianas empresas con menos de 10 trabajadores."
+  ],
+  "policy_instrument": "Modificación del Estatuto de los Trabajadores",
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-editorial-1",
+      "review_date": "2026-10-16",
+      "verdict": "approved",
+      "review_notes": "Verificado en página 12 del manifiesto parcial. Se identifican las cláusulas de adaptación temporal para pymes."
+    },
+    {
+      "reviewer_id": "rev-editorial-2",
+      "review_date": "2026-10-17",
+      "verdict": "approved",
+      "review_notes": "Segunda verificación conforme. Las limitaciones están adecuadamente documentadas en qualifications."
+    }
+  ],
+  "last_reviewed_date": "2026-10-17",
+  "correction_id": null,
+  "is_fixture": true
+}

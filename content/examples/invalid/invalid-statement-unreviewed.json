@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-invalid-unreviewed-001",
+  "party_id": "partido-ejemplo-a",
+  "programme_id": "prog-fixture-party-a-2026-v1",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "statement_type": "explicit_proposal",
+  "summary": "Propuesta que afirma estar aprobada pero solo cuenta con un revisor registrado.",
+  "summary_en": "Proposal claiming approved status with only a single registered reviewer.",
+  "quote": "Texto sin verificar",
+  "source_url": "https://partido-ejemplo-a.es/programa-2026.pdf",
+  "source_version": "1.0.0",
+  "source_page": "15",
+  "source_section": "Vivienda",
+  "qualifications": [],
+  "policy_instrument": "Regulación",
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-editorial-1",
+      "review_date": "2026-10-16",
+      "verdict": "approved",
+      "review_notes": "Solo una revisión completada; falta la segunda revisión independiente obligatoria."
+    }
+  ],
+  "last_reviewed_date": "2026-10-16",
+  "correction_id": null,
+  "is_fixture": true
+}

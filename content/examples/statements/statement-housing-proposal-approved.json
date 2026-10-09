@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-party-a-housing-001",
+  "party_id": "partido-ejemplo-a",
+  "programme_id": "prog-fixture-party-a-2026-v1",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "statement_type": "explicit_proposal",
+  "summary": "Limitar los precios de alquiler en zonas tensionadas mediante un índice estatal de referencia y sanciones a grandes tenedores infractores.",
+  "summary_en": "Cap rental prices in stressed areas using a national reference index and penalties for non-compliant large landlords.",
+  "quote": "Estableceremos un límite de precios vinculante en zonas de mercado residencial tensionado basado en el índice de precios de referencia.",
+  "source_url": "https://partido-ejemplo-a.es/programa-2026.pdf",
+  "source_version": "1.0.0",
+  "source_page": "34",
+  "source_section": "Capítulo 3: Vivienda asequible y derechos residenciales",
+  "qualifications": [
+    "Aplica exclusivamente en municipios declarados como zona de mercado tensionado.",
+    "Exención temporal de dos años para viviendas objeto de rehabilitación energética integral."
+  ],
+  "policy_instrument": "Regulación de precios de alquiler e índice de referencia vinculante",
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-editorial-1",
+      "review_date": "2026-10-16",
+      "verdict": "approved",
+      "review_notes": "Verificado contra la página 34 del PDF oficial. El resumen es neutral y describe el mecanismo operativo sin valoraciones."
+    },
+    {
+      "reviewer_id": "rev-editorial-2",
+      "review_date": "2026-10-17",
+      "verdict": "approved",
+      "review_notes": "Segunda revisión independiente completada. Se confirman las calificaciones de aplicación y la cita literal."
+    }
+  ],
+  "last_reviewed_date": "2026-10-17",
+  "correction_id": null,
+  "is_fixture": true
+}

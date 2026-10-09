@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/coverage.schema.json",
+  "title": "ElectionCoverageRecord",
+  "description": "Coverage tracking record for election candidacies and topic breakdown.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "election_id",
+    "snapshot_id",
+    "snapshot_date",
+    "candidacies"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "election_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "snapshot_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "description": {
+      "type": "string"
+    },
+    "candidacies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CandidacyCoverage"
+      },
+      "minItems": 1
+    },
+    "is_fixture": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "CandidacyCoverage": {
+      "type": "object",
+      "required": [
+        "id",
+        "election_id",
+        "candidacy_id",
+        "status",
+        "banner_text_es",
+        "has_verified_programme",
+        "topics_covered",
+        "topics_absent",
+        "total_statements",
+        "last_audit_date"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "election_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "candidacy_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "programme_id": {
+          "type": ["string", "null"],
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "missing",
+            "announced",
+            "partial",
+            "published-unverified",
+            "official",
+            "replaced"
+          ]
+        },
+        "banner_text_es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "banner_text_en": {
+          "type": ["string", "null"]
+        },
+        "has_verified_programme": {
+          "type": "boolean"
+        },
+        "topics_covered": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "housing",
+              "education",
+              "health-social-services",
+              "economy-work-tax",
+              "immigration",
+              "foreign-policy-eu",
+              "climate-energy",
+              "institutions-rights"
+            ]
+          }
+        },
+        "topics_absent": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "housing",
+              "education",
+              "health-social-services",
+              "economy-work-tax",
+              "immigration",
+              "foreign-policy-eu",
+              "climate-energy",
+              "institutions-rights"
+            ]
+          }
+        },
+        "total_statements": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "last_audit_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "notes": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

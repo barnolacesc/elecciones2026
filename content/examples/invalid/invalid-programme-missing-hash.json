@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "prog-invalid-official-no-hash",
+  "candidacy_id": "partido-ejemplo-a",
+  "title": "Programa Inválido sin Hash SHA-256",
+  "status": "official",
+  "version": "1.0.0",
+  "publisher": "Partido Ejemplo A",
+  "official_url": "https://partido-ejemplo-a.es/programa-2026.pdf",
+  "publication_date": "2026-10-15",
+  "retrieval_date": "2026-10-16T10:00:00Z",
+  "language": "es",
+  "sha256": null,
+  "rights_status": "verified_public_manifesto",
+  "coverage_notes": "Inválido: estado official requiere sha256 no nulo.",
+  "supersedes": null,
+  "superseded_by": null,
+  "replacement_reason": null,
+  "is_fixture": true
+}
