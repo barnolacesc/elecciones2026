@@ -2,8 +2,8 @@
 
 ## 1. Editorial contract and pilot sources
 
-- [x] 1.1 Agree the topic taxonomy, candidate inclusion and coverage policy; verify a reviewed methodology document and representative missing-source cases exist.
-  - Evidence: Policy version 1.0.0 documented in `docs/CONTENT-METHODOLOGY.md`; taxonomy v1.0.0 in `content/taxonomy.json`; party naming fixtures in `content/examples/parties.json`; programme status examples in `content/examples/programmes/` covering official, partial, replaced, and missing states; 14 automated tests passing in `tests/test_methodology_examples.py` and CI workflow `.github/workflows/ci.yml`. Awaiting human gate G0 approval.
+- [x] 1.1 Agree the topic taxonomy, candidate inclusion and coverage policy; verify a reviewed methodology document and representative missing-source cases exist (Packages E0.1 and E0.2).
+  - Evidence: Policy version 1.1.0 documented in `docs/CONTENT-METHODOLOGY.md` and ADR-0002 in `docs/DECISION-RECORD.md`; source rights framework, quotation limits (<= 40 words, <= 300 characters), reviewer roles, Four-Eyes segregation, and internal correction workflow codified in `src/elecciones2026/editorial.py`; fixtures in `content/examples/editorial_statements.json`; automated tests passing in `tests/test_methodology_examples.py` and `tests/test_editorial_policy.py`. Awaiting human gate G0 approval.
 
 - [x] 1.2 Register two lawful pilot programme versions with official URLs, dates, rights status and SHA-256; verify hashes against downloaded originals and document accessibility.
   - Evidence: PP 2023 (`c93baa...`) and ERC 2023 (`760db2...`) registered in `content/sources/register.json` with official URLs, verified hashes, and rights status; verified by `tests/test_source_register.py` and package `E0.4`.
@@ -14,6 +14,7 @@
 
 - [ ] 2.1 Implement offline import boundaries and size/type limits for source files; verify malformed or oversized input is rejected without executing embedded content.
 - [ ] 2.2 Implement provenance and review-state validation; verify missing references, unknown programme versions, unreviewed claims and unlicensed quotes fail the build.
+  - Evidence (Package E0.2): Rule enforcing that no unsupported quote can pass review implemented in `elecciones2026.editorial.StatementRecord.validate` and verified by `tests/test_editorial_policy.py`.
 - [ ] 2.3 Enter pilot positions with stable IDs, qualifications and page/section citations; verify two human reviewers can follow each published assertion to its original context.
 - [ ] 2.4 Implement versioned corrections and relationship invalidation; verify changing a source claim invalidates dependent comparison output.
 

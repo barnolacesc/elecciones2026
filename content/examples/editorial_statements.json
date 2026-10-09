@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "description": "Representative fixture examples for statement quotes, dual-review records, corrections, and comparison invalidations under policy package E0.2.",
+  "valid_statement_with_short_quote": {
+    "id": "stmt-pilot-pp-housing-001",
+    "election_id": "es-gen-2023",
+    "party_id": "pp",
+    "topic_id": "housing",
+    "subtopic_id": "rental-regulation",
+    "summary_es": "Ayuda a la emancipación juvenil mediante un aval estatal de hasta el 15% del valor de tasación para la fianza o compra de primera vivienda.",
+    "source_id": "src-2023-pp-v1",
+    "source_version": "23J-v1",
+    "status": "published",
+    "quote": {
+      "text": "un aval bancario del 15% para facilitar la fianza de los jóvenes en alquiler",
+      "source_id": "src-2023-pp-v1",
+      "page": "112",
+      "section": "Medida 84"
+    },
+    "review": {
+      "drafter": "researcher-ext-1",
+      "reviewed_by_1": "editor-fact-check",
+      "reviewed_by_2": "editor-neutrality",
+      "review_date_1": "2026-10-09",
+      "review_date_2": "2026-10-09",
+      "lead_editor_signoff": "cesc"
+    }
+  },
+  "invalid_statement_unsupported_quote_missing_coordinates": {
+    "id": "stmt-invalid-no-coords",
+    "election_id": "es-gen-2023",
+    "party_id": "pp",
+    "topic_id": "housing",
+    "subtopic_id": "rental-regulation",
+    "summary_es": "Resumen sin coordenadas de cita.",
+    "source_id": "src-2023-pp-v1",
+    "source_version": "23J-v1",
+    "status": "published",
+    "quote": {
+      "text": "cita textual sin indicación de página ni sección",
+      "source_id": "src-2023-pp-v1",
+      "page": null,
+      "section": null
+    },
+    "review": {
+      "reviewed_by_1": "editor-a",
+      "reviewed_by_2": "editor-b",
+      "review_date_1": "2026-10-09",
+      "review_date_2": "2026-10-09"
+    },
+    "expected_error": "Quotation must specify at least one locator: non-empty page or section."
+  },
+  "invalid_statement_unsupported_quote_exceeds_length": {
+    "id": "stmt-invalid-long-quote",
+    "election_id": "es-gen-2023",
+    "party_id": "pp",
+    "topic_id": "housing",
+    "subtopic_id": "rental-regulation",
+    "summary_es": "Resumen con cita excesiva.",
+    "source_id": "src-2023-pp-v1",
+    "source_version": "23J-v1",
+    "status": "published",
+    "quote": {
+      "text": "Uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciséis diecisiete dieciocho diecinueve veinte veintiuno veintidós veintitrés veinticuatro veinticinco veintiséis veintisiete veintiocho veintinueve treinta treinta_y_uno treinta_y_dos treinta_y_tres treinta_y_cuatro treinta_y_cinco treinta_y_seis treinta_y_siete treinta_y_ocho treinta_y_nueve cuarenta cuarenta_y_uno cuarenta_y_dos",
+      "source_id": "src-2023-pp-v1",
+      "page": "12",
+      "section": "1"
+    },
+    "review": {
+      "reviewed_by_1": "editor-a",
+      "reviewed_by_2": "editor-b",
+      "review_date_1": "2026-10-09",
+      "review_date_2": "2026-10-09"
+    },
+    "expected_error": "Quotation exceeds maximum limit of 40 words"
+  },
+  "invalid_statement_four_eyes_violation": {
+    "id": "stmt-invalid-single-reviewer",
+    "election_id": "es-gen-2023",
+    "party_id": "pp",
+    "topic_id": "housing",
+    "subtopic_id": "rental-regulation",
+    "summary_es": "Resumen revisado por una sola persona en ambos roles.",
+    "source_id": "src-2023-pp-v1",
+    "source_version": "23J-v1",
+    "status": "published",
+    "quote": {
+      "text": "cita válida pero sin doble revisión independiente",
+      "source_id": "src-2023-pp-v1",
+      "page": "10",
+      "section": "2"
+    },
+    "review": {
+      "reviewed_by_1": "editor-single",
+      "reviewed_by_2": "editor-single",
+      "review_date_1": "2026-10-09",
+      "review_date_2": "2026-10-09"
+    },
+    "expected_error": "Four-eyes principle violation"
+  },
+  "valid_correction_record": {
+    "id": "corr-2026-001",
+    "statement_id": "stmt-pilot-pp-housing-001",
+    "election_id": "es-gen-2023",
+    "date": "2026-10-09",
+    "correction_type": "factual_error",
+    "severity": "major",
+    "prior_value": "aval estatal de hasta el 20%",
+    "new_value": "aval estatal de hasta el 15%",
+    "reason": "Corrección de errata en el porcentaje del aval bancario recogido en la medida 84 de la pág. 112.",
+    "reviewed_by": "editor-fact-check",
+    "approved_by": "cesc"
+  },
+  "valid_comparison_relationship": {
+    "id": "rel-housing-rent-001",
+    "election_id": "es-gen-2023",
+    "topic_id": "housing",
+    "party_ids": ["pp", "erc"],
+    "statement_ids": ["stmt-pilot-pp-housing-001", "stmt-pilot-erc-housing-001"],
+    "relationship_type": "divergence",
+    "description_es": "El PP propone avales para la compra y fianza juvenil mientras que ERC defiende la regulación de precios de alquiler y movilización forzosa de pisos vacíos.",
+    "status": "reviewed"
+  }
+}
