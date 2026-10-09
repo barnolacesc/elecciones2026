@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "prog-fixture-party-d-2026-missing",
+  "candidacy_id": "partido-ejemplo-d",
+  "title": "Programa Electoral Elecciones Generales 2026 (Pendiente de Publicación)",
+  "status": "missing",
+  "version": null,
+  "publisher": "Partido Territorial Ejemplo D",
+  "official_url": null,
+  "publication_date": null,
+  "retrieval_date": null,
+  "language": "es",
+  "sha256": null,
+  "rights_status": "pending",
+  "coverage_notes": "Candidatura proclamada por la JEC que cumple los criterios de inclusión. No se ha localizado programa oficial para las elecciones generales de 2026 en los canales oficiales revisados.",
+  "supersedes": null,
+  "superseded_by": null,
+  "replacement_reason": null,
+  "is_fixture": true
+}

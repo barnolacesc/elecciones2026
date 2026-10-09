@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "prog-fixture-party-c-2026-v2",
+  "candidacy_id": "coalicion-ejemplo-c",
+  "title": "Programa Electoral Común 2026 - Versión Definitiva con Anexo (Ejemplo Fixture)",
+  "status": "official",
+  "version": "2.0.0",
+  "publisher": "Coalición Electoral Ejemplo C",
+  "official_url": "https://coalicion-ejemplo-c.es/programa-v2.pdf",
+  "publication_date": "2026-10-20",
+  "retrieval_date": "2026-10-20T16:00:00Z",
+  "language": "es",
+  "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+  "rights_status": "verified_public_manifesto",
+  "coverage_notes": "Versión oficial definitiva con anexo presupuestario revisado.",
+  "supersedes": "prog-fixture-party-c-2026-v1",
+  "superseded_by": null,
+  "replacement_reason": null,
+  "is_fixture": true
+}

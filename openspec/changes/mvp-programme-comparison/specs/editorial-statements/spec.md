@@ -29,3 +29,11 @@ Published substantive changes SHALL retain the prior statement ID/version, corre
 #### Scenario: Misclassification reported
 - **WHEN** a reviewer corrects a topic classification
 - **THEN** the old classification remains traceable and affected comparisons are rebuilt.
+
+### Requirement: Topic taxonomy alignment
+Every published position SHALL belong to exactly one of the 8 core topics defined in taxonomy version 1.0.0 (`housing`, `education`, `health-social-services`, `economy-work-tax`, `immigration`, `foreign-policy-eu`, `climate-energy`, `institutions-rights`) and an approved subtopic matching its primary operational instrument.
+
+#### Scenario: Cross-cutting proposal classified
+- **WHEN** a proposal touches multiple topics (e.g. rent assistance for youth workers)
+- **THEN** reviewers classify it under the topic matching its primary operational mechanism (`housing`), and document the classification rationale.
+

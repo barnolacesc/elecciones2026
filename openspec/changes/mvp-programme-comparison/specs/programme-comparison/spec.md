@@ -6,11 +6,12 @@ Help readers compare concrete policy positions across candidatures without hidin
 ## ADDED Requirements
 
 ### Requirement: Topic and party selection
-The MVP SHALL let users select exactly two parties and one topic at a time and SHALL provide a mobile- and keyboard-usable comparison view grouped by measure. Each measure section SHALL show both parties before the next measure.
+The MVP SHALL let users select exactly two parties and one topic at a time, restricted to the 8 core topics defined in taxonomy version 1.0.0, and SHALL provide a mobile- and keyboard-usable comparison view grouped by measure. Each measure section SHALL show both parties before the next measure.
 
 #### Scenario: Valid selection
 - **WHEN** the reader selects two parties and housing
 - **THEN** the site shows each reviewed housing position with source links and caveats.
+
 
 #### Scenario: Phone comparison
 - **WHEN** the reader opens a measure at a phone-sized viewport
