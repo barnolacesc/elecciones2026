@@ -20,18 +20,39 @@ Version the original document URL and hash, editorial records, and corrections. 
 
 ## Public service
 
-The Spanish MVP is a static site. Comparison runs in the browser. No user account, database, PDF parser, editorial secret, or visitor profile is required. Docker runs the same serving model in local preview and production. Use a non-privileged user, read-only filesystem, resource limits, and a pinned, scanned image in production. FastAPI is a future option only if a separate change needs server logic.
+The Spanish MVP is a static site. Public interface text, summaries, and navigation use Spanish (`es-ES`), with `<html lang="es">`. Repository documentation, specifications, and code use controlled English (following ASD-STE100 principles). UI strings are stored in versioned text dictionaries decoupled from Python rendering logic, enabling future reviewed Catalan (`ca-ES`) localization without template rewrites.
+
+Comparison runs in the browser. No user account, database, PDF parser, editorial secret, or visitor profile is required. Docker runs the same serving model in local preview and production. Use a non-privileged user, read-only filesystem, resource limits, and a pinned, scanned image in production. FastAPI is a future option only if a separate change needs server logic.
 
 Build phone layouts first at 360–430 CSS px. Stack party cards, keep source links near claims, use 44-px touch targets, and avoid horizontal scroll. Add wide layouts as progressive enhancement. Aim for WCAG 2.2 AA and verify the actual flow.
 
-## Edge, host, and scale
+## Edge, domain, and service levels
 
-Cloudflare Free will manage DNS and proxy traffic. Cache fingerprinted assets for a long time. Revalidate HTML and correction pages quickly. Check actual plan features before setting WAF or rate limits. Use targeted challenges only for abusive patterns. A challenge for all readers would harm access and discovery.
+The primary canonical domain is `elecciones2026.es`, with `elecciones2026.org` and `programaselectorales.es` as defensive domains returning permanent 301 redirects to the HTTPS apex. Staging runs at `preview.elecciones2026.es` behind authentication with indexing blocked (`noindex`). Cloudflare manages DNS with DNSSEC and proxies traffic to the Hetzner origin.
 
-The target origin is a Hetzner VM near 2 vCPU and 8 GB RAM. A static cache can absorb many readers, but 10,000 concurrent visitors is not the same as 10,000 origin requests per second. Benchmark cache-hit ratio, p95 latency, errors, memory, bandwidth, and cost. Test bursts, cold cache, and origin loss. Scale or change hosting if the measured service level fails.
+Edge caching policy:
+- Fingerprinted static assets (`/static/*`, CSS, JS, images): `Cache-Control: public, max-age=31536000, immutable` (edge TTL 365 days).
+- Mutable HTML pages (`/`, `/temas/*`, `/fuentes/`, `/metodo/`): `Cache-Control: public, max-age=300, stale-while-revalidate=86400` (edge TTL 300s).
 
-Protect origin access where feasible. Expose only required ports. Use HTTPS, restrictive headers, updates, health checks, logs without personal data, and a retained prior artifact. Keep source records and build inputs in a separate backup. Test restoration before launch.
+Approved release service level objectives (see `docs/DECISION-RECORD.md`):
+- **Availability:** >= 99.5% monthly uptime (~3.6h error budget); >= 99.9% during election week.
+- **Latency (p95):** < 150 ms edge cache hit; < 250 ms origin response; < 500 ms mobile delivery on fast 4G.
+- **Cache-hit ratio:** >= 99.0% static assets; >= 90.0% HTML pages; >= 95.0% aggregate steady-state; >= 85.0% cold-cache phase.
+- **Error budget:** HTTP 5xx < 0.05% steady-state; < 0.50% during peak load tests.
+- **Recovery:** Recovery Time Objective (RTO) < 5 minutes (rollback to previous Docker artifact); Recovery Point Objective (RPO) = 0 (Git-versioned deterministic builds).
 
-## Decisions deferred
+The target origin is a Hetzner VM with 2 vCPU and 8 GB RAM. A 10,000-concurrent-visitor scenario models 1,000–2,000 requests/s at the edge, yielding <= 200 requests/s to the origin at >= 90% edge cache offload. The 2-vCPU static server handles 500+ requests/s with < 40% CPU and < 150 MB RAM. Tiered caching and origin connection pooling protect against cold-cache surges.
 
-Confirm domain, Cloudflare plan features, VM region, exact server image/digest, release automation, source file format, source rights, and measurable load target before public release.
+Monthly infrastructure costs are capped at a **€50.00 / month hard ceiling**, with baseline operations expected at ~€9.00–€15.00 / month. Uncapped serverless or metered bandwidth services are forbidden.
+
+Protect origin access where feasible: restrict ports to Cloudflare IPs, enable TLS and HSTS, apply updates, monitor availability, use ephemeral access logs without personal data (<= 14 days retention), and retain the preceding immutable artifact for one-command rollback.
+
+## Decisions confirmed and pre-release gates
+
+Package `E0.3` confirmed the language architecture, domain strategy, privacy notice, release service levels, cost ceiling, and role ownership matrix in `docs/DECISION-RECORD.md`.
+
+Before public release, the following gates remain:
+- Formal human approval of Milestone G0 by Cesc and the project partner.
+- Final Hetzner datacenter location selection (e.g., Falkenstein or Nuremberg).
+- Container base image digest pinning and automated vulnerability scan verification.
+- Verification of 10,000-concurrent-visitor benchmarks against approved service levels (tasks 4.3, 4.6, 4.7).

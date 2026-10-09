@@ -32,11 +32,11 @@
 
 - [ ] 4.1 Add least-privilege CI for formatting, tests, schema validation, deterministic build and secret/dependency scans; verify a fork PR cannot access deploy credentials.
 - [ ] 4.2 Review actual pinned build dependencies and PDF-processing tools for supported versions/advisories; verify the dependency inventory and scan report are attached to release evidence.
-- [ ] 4.3 Preview the immutable artifact, complete editorial/security review and benchmark on the intended 2-vCPU/8-GB class; verify recorded latency, memory and release checklist.
-- [ ] 4.4 Deploy read-only static output over HTTPS with minimal host privileges, health monitoring and retained prior artifact; verify rollback restores the preceding version.
+- [ ] 4.3 Preview the immutable artifact, complete editorial/security review and benchmark on the intended 2-vCPU/8-GB class; verify recorded latency (origin p95 < 250 ms), memory (< 150 MB), and release checklist against targets in `docs/DECISION-RECORD.md`.
+- [ ] 4.4 Deploy read-only static output over HTTPS with minimal host privileges, health monitoring and retained prior artifact; verify rollback restores the preceding version (RTO < 5 min).
 - [ ] 4.5 Pin and scan the Docker serving image by digest and verify local Compose preview and production serve the same artifact with a non-privileged user, read-only filesystem and no build-only tools.
-- [ ] 4.6 Configure Cloudflare DNS/proxy and tested cache rules for the Hetzner origin; verify edge cache behavior, direct-origin restrictions where feasible, and the current plan limits for targeted abuse rules.
-- [ ] 4.7 Run a representative 10,000-concurrent-visitor scenario with cold-cache and burst phases; record p95, error rate, cache-hit ratio, origin load and cost, and verify each approved release target or document a capacity change.
+- [ ] 4.6 Configure Cloudflare DNS/proxy and tested cache rules for the Hetzner origin; verify edge cache behavior (ADR-0001 targets: >= 99% static assets, >= 90% HTML documents, >= 95% aggregate steady-state), direct-origin restrictions where feasible, and the current plan limits for targeted abuse rules.
+- [ ] 4.7 Run a representative 10,000-concurrent-visitor scenario with cold-cache and burst phases; record p95 (edge < 150 ms, peak < 200 ms), error rate (5xx < 0.05% normal, < 0.5% burst), cache-hit ratio (>= 85% cold-cache recovery), origin load (<= 200 req/s, CPU < 70%), and cost (within €50.00/mo ceiling), and verify each approved release target in `docs/DECISION-RECORD.md` or document a capacity change.
 - [ ] 4.8 Review repository documents and OpenSpec artifacts against the current ASD-STE100 controlled dictionary with a qualified reviewer; verify the review record before any strict-compliance claim.
 
 ## Workflow follow-up
