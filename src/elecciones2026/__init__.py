@@ -36,6 +36,32 @@ __all__ = [
     "validate_editorial_corpus",
     "validate_selection",
     "validate_ui_flow_files",
+    "ImportConfig",
+    "ImportResult",
+    "SourceImportError",
+    "SizeLimitExceededError",
+    "EmptyFileError",
+    "InvalidFileFormatError",
+    "ActiveContentDetectedError",
+    "HashMismatchError",
+    "InvalidHashFormatError",
+    "NetworkSecurityError",
+    "SSRFSecurityError",
+    "DisallowedSchemeError",
+    "DisallowedHostError",
+    "RedirectSecurityError",
+    "NetworkTimeoutError",
+    "HTTPStatusError",
+    "OfflineModeViolationError",
+    "import_source_from_bytes",
+    "import_source_from_file",
+    "import_source_from_url",
+    "verify_source_record",
+    "verify_register_sources_offline",
+    "validate_url",
+    "verify_hash",
+    "compute_bytes_sha256",
+    "compute_file_sha256",
 ]
 
 
@@ -98,4 +124,35 @@ def __getattr__(name: str) -> Any:
         import elecciones2026.ui_flow as uf
 
         return getattr(uf, name)
+    if name in {
+        "ImportConfig",
+        "ImportResult",
+        "SourceImportError",
+        "SizeLimitExceededError",
+        "EmptyFileError",
+        "InvalidFileFormatError",
+        "ActiveContentDetectedError",
+        "HashMismatchError",
+        "InvalidHashFormatError",
+        "NetworkSecurityError",
+        "SSRFSecurityError",
+        "DisallowedSchemeError",
+        "DisallowedHostError",
+        "RedirectSecurityError",
+        "NetworkTimeoutError",
+        "HTTPStatusError",
+        "OfflineModeViolationError",
+        "import_source_from_bytes",
+        "import_source_from_file",
+        "import_source_from_url",
+        "verify_source_record",
+        "verify_register_sources_offline",
+        "validate_url",
+        "verify_hash",
+        "compute_bytes_sha256",
+        "compute_file_sha256",
+    }:
+        import elecciones2026.importer as imp
+
+        return getattr(imp, name)
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
