@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/relationship.schema.json",
+  "title": "RelationshipRecord",
+  "description": "Evidence-based comparative relationship between statements for a specific policy measure.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "election_id",
+    "id",
+    "topic_id",
+    "subtopic_id",
+    "measure_label",
+    "party_ids",
+    "statement_ids",
+    "relationship_type",
+    "summary",
+    "review_status",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "election_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "topic_id": {
+      "type": "string",
+      "enum": [
+        "housing",
+        "education",
+        "health-social-services",
+        "economy-work-tax",
+        "immigration",
+        "foreign-policy-eu",
+        "climate-energy",
+        "institutions-rights"
+      ]
+    },
+    "subtopic_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "measure_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "party_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true
+    },
+    "statement_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "minItems": 1,
+      "maxItems": 2
+    },
+    "relationship_type": {
+      "type": "string",
+      "enum": [
+        "agreement",
+        "divergence",
+        "partial_overlap",
+        "single_party"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "differences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["draft", "approved", "invalidated"]
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ReviewEntry"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "invalidated"]
+    },
+    "invalidation_reason": {
+      "type": ["string", "null"]
+    },
+    "invalidated_by_correction_id": {
+      "type": ["string", "null"],
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "is_fixture": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ReviewEntry": {
+      "type": "object",
+      "required": ["reviewer_id", "review_date", "verdict", "review_notes"],
+      "properties": {
+        "reviewer_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "review_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "verdict": {
+          "type": "string",
+          "enum": ["approved", "rejected", "needs_changes"]
+        },
+        "review_notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-party-b-housing-001",
+  "party_id": "partido-ejemplo-b",
+  "programme_id": "prog-fixture-party-b-2026-partial",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "statement_type": "explicit_proposal",
+  "summary": "Intervenir los precios del alquiler en áreas tensionadas mediante índices autonómicos y movilización de viviendas desocupadas.",
+  "summary_en": "Regulate rental prices in stressed areas through regional indices and mobilization of vacant housing.",
+  "quote": "Toparemos los precios abusivos del alquiler en las zonas residenciales declaradas tensionadas.",
+  "source_url": "https://partido-ejemplo-b.es/manifiesto-2026-resumen.pdf",
+  "source_version": "0.9.0-partial",
+  "source_page": "8",
+  "source_section": "Derecho a techo",
+  "qualifications": [
+    "Prevé competencia transferida a las comunidades autónomas para ajustar los índices a la baja."
+  ],
+  "policy_instrument": "Regulación de precios de alquiler",
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-editorial-1",
+      "review_date": "2026-10-16",
+      "verdict": "approved",
+      "review_notes": "Verificado en la página 8 del manifiesto oficial de Partido B."
+    },
+    {
+      "reviewer_id": "rev-editorial-3",
+      "review_date": "2026-10-17",
+      "verdict": "approved",
+      "review_notes": "Revisión conforme de Partido B para alquiler."
+    }
+  ],
+  "last_reviewed_date": "2026-10-17",
+  "correction_id": null,
+  "is_fixture": true
+}

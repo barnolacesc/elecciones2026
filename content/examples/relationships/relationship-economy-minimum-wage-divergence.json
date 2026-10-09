@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "rel-economy-smi-party-a-partido-d",
+  "topic_id": "economy-work-tax",
+  "subtopic_id": "labor-regulations-and-smi",
+  "measure_label": "Evolución y fijación del Salario Mínimo Interprofesional (SMI)",
+  "party_ids": [
+    "partido-ejemplo-a",
+    "partido-ejemplo-d"
+  ],
+  "statement_ids": [
+    "stmt-party-a-economy-smi-001"
+  ],
+  "relationship_type": "single_party",
+  "summary": "Partido A propone blindar por ley que el SMI alcance el 60% del salario medio neto, mientras que Partido D no dispone de programa ni posición localizada sobre la materia.",
+  "differences": [
+    "Partido D tiene estado 'missing' de programa para 2026; la ausencia no constituye oposición."
+  ],
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-editorial-1",
+      "review_date": "2026-10-17",
+      "verdict": "approved",
+      "review_notes": "Tratamiento correcto de ausencia unilateral sin inferir oposición."
+    },
+    {
+      "reviewer_id": "rev-editorial-2",
+      "review_date": "2026-10-18",
+      "verdict": "approved",
+      "review_notes": "Aprobado para visualización en comparador con advertencia de datos no disponibles."
+    }
+  ],
+  "status": "active",
+  "invalidation_reason": null,
+  "invalidated_by_correction_id": null,
+  "is_fixture": true
+}

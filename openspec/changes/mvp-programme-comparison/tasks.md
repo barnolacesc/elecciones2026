@@ -7,8 +7,12 @@
 
 - [x] 1.2 Register two lawful pilot programme versions with official URLs, dates, rights status and SHA-256; verify hashes against downloaded originals and document accessibility.
   - Evidence: PP 2023 (`c93baa...`) and ERC 2023 (`760db2...`) registered in `content/sources/register.json` with official URLs, verified hashes, and rights status; verified by `tests/test_source_register.py` and package `E0.4`.
-- [ ] 1.3 Define versioned programme, claim, relationship and correction schemas; verify example valid and invalid records against the schema validator.
-- [ ] 1.4 Add an immutable election ID to sources, positions, and builds; verify 2023 pilot pages are labelled 2023 and a 2023 source cannot appear in a 2026 comparison.
+- [x] 1.3 Define versioned programme, claim, relationship and correction schemas; verify example valid and invalid records against the schema validator.
+  - Evidence: Five JSON Schema (Draft 2020-12) specifications implemented in `content/schemas/` (`programme.schema.json`, `statement.schema.json`, `relationship.schema.json`, `coverage.schema.json`, `correction.schema.json`). Typed dataclasses, loaders, and validators implemented in `src/elecciones2026/schemas.py`. Versioned example fixtures in `content/examples/` for all record types (statements, relationships, coverage, corrections) and negative fixtures in `content/examples/invalid/` verifying rejection of unreviewed claims, missing provenance, `not_found` with coordinates, and single-reviewer corrections. Verified by 27 schema tests in `tests/test_schemas.py` and CLI `elecciones2026.schemas validate-all` integrated into CI.
+
+- [x] 1.4 Add an immutable election ID to sources, positions, and builds; verify 2023 pilot pages are labelled 2023 and a 2023 source cannot appear in a 2026 comparison.
+  - Evidence: Immutable `election_id` enforced across sources (`source_register.py`), programmes (`methodology.py`, `programme.schema.json`), position statements (`statement.schema.json`), comparative relationships (`relationship.schema.json`), and coverage records (`coverage.schema.json`). Verified by `test_election_scoping_isolation` in `tests/test_source_register.py`, `test_valid_2023_pilot_statement_labeled_2023` in `tests/test_schemas.py`, and `test_task_1_4_reject_cross_election_relationship` in `tests/test_schemas.py`, strictly rejecting cross-election comparisons between `es-gen-2023` and `es-gen-2026`.
+
 
 ## 2. Source and editorial validation
 

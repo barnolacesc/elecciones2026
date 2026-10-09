@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/correction.schema.json",
+  "title": "CorrectionRecord",
+  "description": "Versioned correction record documenting substantive changes and dependent invalidations.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "election_id",
+    "id",
+    "target_type",
+    "target_id",
+    "correction_type",
+    "prior_state",
+    "corrected_state",
+    "reason",
+    "correction_date",
+    "reviewed_by",
+    "approved_by",
+    "invalidated_relationship_ids"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "election_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "target_type": {
+      "type": "string",
+      "enum": ["statement", "programme", "relationship"]
+    },
+    "target_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "correction_type": {
+      "type": "string",
+      "enum": [
+        "factual_error",
+        "topic_reclassification",
+        "citation_update",
+        "scope_amendment",
+        "programme_replacement",
+        "retraction"
+      ]
+    },
+    "prior_state": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "corrected_state": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 5
+    },
+    "correction_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "reporter": {
+      "type": ["string", "null"]
+    },
+    "reviewed_by": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "approved_by": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "invalidated_relationship_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      }
+    },
+    "is_fixture": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

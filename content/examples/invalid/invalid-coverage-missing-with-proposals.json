@@ -1,0 +1,17 @@
+{
+  "id": "cov-invalid-missing-with-proposals",
+  "election_id": "es-gen-2026",
+  "candidacy_id": "partido-ejemplo-d",
+  "programme_id": null,
+  "status": "missing",
+  "banner_text_es": "Programa disponible (Falso)",
+  "banner_text_en": "Programme available (False)",
+  "has_verified_programme": true,
+  "topics_covered": [
+    "housing"
+  ],
+  "topics_absent": [],
+  "total_statements": 3,
+  "last_audit_date": "2026-10-17",
+  "notes": "Inválido: estado missing no puede tener has_verified_programme=true ni propuestas atribuidas."
+}

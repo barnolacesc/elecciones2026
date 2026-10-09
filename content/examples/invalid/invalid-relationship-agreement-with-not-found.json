@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "rel-invalid-agreement-with-not-found",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "measure_label": "Falso acuerdo con partido sin posición documentada",
+  "party_ids": [
+    "partido-ejemplo-a",
+    "partido-ejemplo-d"
+  ],
+  "statement_ids": [
+    "stmt-party-a-housing-001",
+    "stmt-party-d-housing-not-found"
+  ],
+  "relationship_type": "agreement",
+  "summary": "Inválido: no se puede declarar acuerdo cuando una de las partes tiene estado not_found.",
+  "differences": [],
+  "review_status": "draft",
+  "reviews": [],
+  "status": "active",
+  "invalidation_reason": null,
+  "invalidated_by_correction_id": null,
+  "is_fixture": true
+}

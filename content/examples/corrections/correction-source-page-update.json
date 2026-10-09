@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "cor-2026-002",
+  "target_type": "statement",
+  "target_id": "stmt-party-b-economy-001",
+  "correction_type": "citation_update",
+  "prior_state": {
+    "source_page": "11"
+  },
+  "corrected_state": {
+    "source_page": "12"
+  },
+  "reason": "Subsanación de errata en coordenada de página: la propuesta sobre reducción de jornada laboral a 37,5 horas figura en la página 12 del documento PDF de resumen, no en la página 11.",
+  "correction_date": "2026-10-18",
+  "reporter": "reader_inquiry",
+  "reviewed_by": "rev-editorial-1",
+  "approved_by": "rev-editorial-3",
+  "invalidated_relationship_ids": [],
+  "is_fixture": true
+}

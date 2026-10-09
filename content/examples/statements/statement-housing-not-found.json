@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-party-d-housing-not-found",
+  "party_id": "partido-ejemplo-d",
+  "programme_id": "prog-fixture-party-d-2026-missing",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "statement_type": "not_found",
+  "summary": "No se localiza propuesta ni posición sobre regulación de precios de alquiler en las fuentes oficiales revisadas de esta candidatura.",
+  "summary_en": "No proposal or position on rental price regulation was located in the reviewed official sources for this candidacy.",
+  "quote": null,
+  "source_url": null,
+  "source_version": null,
+  "source_page": null,
+  "source_section": null,
+  "qualifications": [],
+  "policy_instrument": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-editorial-1",
+      "review_date": "2026-10-16",
+      "verdict": "approved",
+      "review_notes": "Búsqueda sistemática realizada en canales oficiales del partido. No se localiza posición sobre alquiler."
+    },
+    {
+      "reviewer_id": "rev-editorial-2",
+      "review_date": "2026-10-17",
+      "verdict": "approved",
+      "review_notes": "Confirmada ausencia documental. Se registra como not_found sin inferir oposición."
+    }
+  ],
+  "last_reviewed_date": "2026-10-17",
+  "correction_id": null,
+  "is_fixture": true
+}

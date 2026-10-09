@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/programme.schema.json",
+  "title": "ProgrammeRecord",
+  "description": "Versioned electoral programme provenance and coverage lifecycle record.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "election_id",
+    "programme_id",
+    "candidacy_id",
+    "title",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "election_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "programme_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "candidacy_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "missing",
+        "announced",
+        "partial",
+        "published-unverified",
+        "official",
+        "replaced"
+      ]
+    },
+    "version": {
+      "type": ["string", "null"]
+    },
+    "publisher": {
+      "type": ["string", "null"]
+    },
+    "official_url": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "publication_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "retrieval_date": {
+      "type": ["string", "null"]
+    },
+    "language": {
+      "type": "string"
+    },
+    "sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "rights_status": {
+      "type": "string",
+      "enum": [
+        "not_reviewed",
+        "link_only",
+        "link_and_short_quote",
+        "verified_public_manifesto",
+        "verified_quotation_permitted",
+        "public_domain",
+        "permission_denied",
+        "pending"
+      ]
+    },
+    "coverage_notes": {
+      "type": ["string", "null"]
+    },
+    "supersedes": {
+      "type": ["string", "null"]
+    },
+    "superseded_by": {
+      "type": ["string", "null"]
+    },
+    "replacement_reason": {
+      "type": ["string", "null"]
+    },
+    "is_fixture": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

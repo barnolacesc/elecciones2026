@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "rel-housing-youth-subsidy-party-a-coalicion-c",
+  "topic_id": "housing",
+  "subtopic_id": "mortgage-and-purchasing",
+  "measure_label": "Ayudas públicas directas y avales para acceso a la vivienda para jóvenes",
+  "party_ids": [
+    "partido-ejemplo-a",
+    "coalicion-ejemplo-c"
+  ],
+  "statement_ids": [
+    "stmt-party-a-housing-002",
+    "stmt-coalicion-c-housing-001"
+  ],
+  "relationship_type": "partial_overlap",
+  "summary": "Ambas candidaturas contemplan apoyo público al acceso a la vivienda para menores de 35 años, pero mediante instrumentos operativos distintos: Partido A propone bonificación de tipos de interés y Coalición C propone avales directos del 20% del valor de tasación.",
+  "differences": [
+    "Instrumento principal: subvención al tipo de interés (Partido A) frente a aval estatal de entrada hipotecaria (Coalición C).",
+    "Umbral de renta: Partido A limita a 3,5 veces el IPREM; Coalición C limita a 4 veces el IPREM."
+  ],
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-editorial-1",
+      "review_date": "2026-10-17",
+      "verdict": "approved",
+      "review_notes": "Solapamiento parcial bien fundamentado en los textos de ambos programas."
+    },
+    {
+      "reviewer_id": "rev-editorial-2",
+      "review_date": "2026-10-18",
+      "verdict": "approved",
+      "review_notes": "Confirmada distinción de instrumentos operativos. No se fuerza acuerdo inexistente."
+    }
+  ],
+  "status": "active",
+  "invalidation_reason": null,
+  "invalidated_by_correction_id": null,
+  "is_fixture": true
+}
