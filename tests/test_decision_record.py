@@ -58,6 +58,7 @@ class TestDecisionRecord(unittest.TestCase):
         self.assertIn("301", text, "Permanent 301 redirects must be required")
         self.assertIn("DNSSEC", text, "DNSSEC must be specified")
         self.assertIn("Cloudflare", text, "Cloudflare DNS/proxy must be specified")
+        self.assertIn("placeholder", text.lower(), "Domain documentation must note placeholder status pending acquisition")
 
     def test_privacy_notice_and_data_minimization_defined(self):
         text = self.decision_record_text

@@ -33,9 +33,9 @@ This decision record establishes these operational and editorial contracts.
 | **Repository Language** | English (Controlled Technical English) | ASD-STE100 principles; all code, PRs, docs, and comments |
 | **Public Interface Language** | Spanish (`es-ES`) | Build generates `<html lang="es">`; external copy in Spanish |
 | **Localization Sequence** | Spanish MVP → Reviewed Catalan (Phase 5 / G8) → English (optional, demand-gated) | No unreviewed machine translation in public output |
-| **Primary Domain** | `elecciones2026.es` | Registered via accredited registrar; DNSSEC enabled |
-| **Defensive Domains** | `elecciones2026.org`, `programaselectorales.es` | Permanent 301 redirects to canonical domain |
-| **Preview / Staging Domain** | `preview.elecciones2026.es` | Gated by Cloudflare Access or HTTP authentication; `noindex` |
+| **Primary Domain** | `elecciones2026.es` (placeholder target; pending acquisition) | Target domain pending registration; DNSSEC to be enabled upon acquisition |
+| **Defensive Domains** | `elecciones2026.org`, `programaselectorales.es` (placeholder targets) | Permanent 301 redirects to canonical domain once acquired |
+| **Preview / Staging Domain** | `preview.elecciones2026.es` (placeholder target) | Target staging domain; local/dev previews use localhost or temporary preview URLs |
 | **Privacy Architecture** | Zero personal data collection; zero tracking cookies; no cookie banner required | Complies with GDPR Art. 5, 6, 9 and LSSI-CE Art. 22.2 |
 | **Technical Log Retention** | Ephemeral edge/origin logs retained <= 14 days solely for network security and DoS defense | IP anonymization; no behavioral profiling |
 | **Edge Cache-Hit Target** | >= 95% steady-state; >= 85% cold-cache phase; >= 99% for fingerprinted assets | Cloudflare CDN proxy in front of Hetzner origin |
@@ -76,9 +76,10 @@ This decision record establishes these operational and editorial contracts.
 ## 4. Decision 2: Domain, Branding, and DNS Architecture
 
 ### 4.1 Domain Selection
-- **Primary Canonical Domain:** `elecciones2026.es`
-- **Defensive / Secondary Domains:** `elecciones2026.org` and `programaselectorales.es`. These domains prevent phishing and brand confusion.
-- **Staging / Preview Domain:** `preview.elecciones2026.es`.
+- **Status:** **Placeholder Target**. The domain names below are the agreed architectural targets, but **have not yet been purchased**. All tooling, static site generator configs, metadata generators, and local test setups MUST treat these domains as placeholders and must not assume live domain ownership, working DNS resolution, or active email routing until domain registration is executed under human Gate G0.
+- **Primary Canonical Domain:** `elecciones2026.es` (placeholder target pending purchase).
+- **Defensive / Secondary Domains:** `elecciones2026.org` and `programaselectorales.es`. These domains prevent phishing and brand confusion once acquired.
+- **Staging / Preview Domain:** `preview.elecciones2026.es` (placeholder target; staging runs locally or on internal preview URLs in interim).
 
 ### 4.2 Canonical Routing and Redirects
 - Canonical base URL: `https://elecciones2026.es/`.
