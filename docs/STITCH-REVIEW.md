@@ -2,27 +2,42 @@
 
 ## Input
 
-The user provided a ZIP with seven PNG screens, seven generated HTML files, and one design-system document. The ZIP was inspected as data. No generated script was run. The files remain outside the project repository in a local review folder.
+The user provided a ZIP file with seven PNG screens, seven generated HTML files, and one design-system document. The ZIP file was inspected as reference data only. No generated script was run. The original files remain outside the project repository in a local review folder.
 
 ## Decision
 
-Use the **comparison grouped by measure** screen as the mobile MVP reference. It puts both party positions under the same measure. This structure supports direct comparison better than the tab view, which hides one party at a time. Keep tabs only as a possible secondary reading mode after usability tests.
+Use the **comparison grouped by measure** screen as the mobile MVP reference. It places both party positions under the same measure. This structure supports direct comparison better than a tab view, which hides one party at a time. Do not use tab switches in the MVP.
 
-Use the home, selection, source coverage, statement detail, and method screens as visual references. Keep the four-item bottom navigation only if testing shows that each item has a distinct MVP purpose. Remove the profile icon: the MVP has no user accounts.
+Use the home, selection, source coverage, statement detail, and method screens as visual references. Replace the permanent bottom navigation bar with a compact top header and footer to preserve vertical space on mobile viewports. Remove the profile icon completely: the MVP has no user accounts.
 
-## Changes required before implementation
+The complete component plan and mobile wireframes are codified in [`site/COMPONENT-PLAN.md`](../site/COMPONENT-PLAN.md). Local design tokens are codified in [`site/tokens/tokens.json`](../site/tokens/tokens.json) and [`site/tokens/tokens.css`](../site/tokens/tokens.css).
 
-1. Replace all fictional programme quotes, policy claims, party counts, page numbers, official record IDs, dates, review badges, file hashes, and download links with explicit placeholders. The current images look like verified political evidence, but they are generated examples.
-2. Reduce density on the grouped comparison screen. Show a short neutral summary, then one measure at a time or compact measure sections. Expand source detail on demand. Keep both party positions and the source path in the same flow.
-3. Distinguish direct quotation, neutral summary, reviewed inference, and missing mention. Do not label all summaries as literal transcription. Remove claims such as “100% verified” until editorial evidence supports them.
-4. Remove generated runtime dependencies on Tailwind CDN, Google Fonts, and externally hosted images. Build audited local assets. Do not copy the generated HTML or JavaScript directly into production.
-5. Test actual mobile interaction at 360, 390, and 430 CSS px: tap targets, scrolling, focus, screen reader, source links, layout overflow, and perceived load time. The PNG screens alone do not prove these behaviors.
-6. Remove the working discrepancy-report form and per-statement report actions from the MVP. The static site has no write API or database. The method page can identify the feature as planned. Implement it only through the separate `source-feedback-reporting` change.
+## Resolution of changes required before implementation (Package E2.1)
 
-## Open design questions
+1. **Fictional content isolation:** All fictional quotes, claims, record IDs, and download links in Stitch are classified as reference mockups. The component plan uses explicit placeholder labels (`Partido A (ficticio)`, `Programa de ejemplo`) until official sources are ingested via package E1.4.
+2. **Density and structure on comparison screen:** The grouped comparison flow shows a short neutral measure summary, followed by vertically stacked party position cards with source citations in the same flow.
+3. **Factual provenance over deceptive verification:** Removed all claims such as “100% verificado”. Statements expose factual citations (document, version, page, and review date). Negative evidence is explicitly marked as `no consta` ("No consta posición en el programa analizado"), preventing confusion with political opposition.
+4. **Zero external CDN dependencies:** Eliminated Tailwind CDN, Google Fonts, and external image dependencies. The project uses local design tokens (`--color-*`, `--space-*`, `--font-*`) and native system font stacks.
+5. **Mobile viewport verification at 360, 390, and 430 CSS px:** Codified single-column wireframes across 360 px (compact phone), 390 px (baseline phone), and 430 px (large phone). All interactive controls strictly enforce touch targets of at least 44 CSS px (WCAG 2.5.5 / 2.5.8).
+6. **Removal of interactive report form:** The static site has no backend database or write API. Removed the interactive discrepancy form. Replaced it with a clear informational notice stating that error reporting is planned for a later phase.
 
-- Do users prefer grouped measure cards with expandable detail, or a shorter summary-first path?
-- Should the source coverage page show technical fields such as hashes to all readers, or place them in an advanced detail view?
-- Is the permanent bottom navigation useful with only four MVP destinations, or does it take too much phone space?
+## Design system mapping
 
-The design is a reference, not an approved content source or production implementation.
+| Stitch Mockup Feature | Elecciones 2026 Architecture | Design Token / Specification |
+|---|---|---|
+| Tailwind CDN utility classes | Local CSS Custom Properties | `site/tokens/tokens.css` |
+| Google Fonts (Inter web font) | System sans-serif stack | `var(--font-family-sans)` |
+| Arbitrary brand colors | Calm civic neutral palette | `var(--color-bg-canvas)`, `var(--color-bg-primary)` |
+| Party brand colors / logos | Neutral soft tint identifiers | `var(--color-party-a-*)`, `var(--color-party-b-*)` |
+| "100% verificado" badge | Factual provenance link | `Component 7: PartyPositionCard` |
+| Working feedback form | Static explanatory notice | `Component 11: MethodologyNotice` |
+| User profile / account icon | Explicitly prohibited | `site/COMPONENT-PLAN.md` Section 6 |
+| Multi-column comparison card | Stacked single-column card | Wireframes at 360, 390, 430 CSS px |
+
+## Resolved design questions
+
+- **Card structure:** Grouped measure cards with visible source links provide the most direct comparison without obscuring qualifications or party differences.
+- **Coverage details:** The source coverage screen displays official document names, status badges (`Oficial`, `Parcial`, `No disponible`), retrieval dates, and SHA-256 hashes in a clean monospace block.
+- **Navigation model:** Discarded permanent bottom navigation. Four MVP destinations fit cleanly in the top header and footer, maximizing screen space for policy text on mobile phones.
+
+The Stitch design is a visual reference only, not an approved content source or production implementation.
