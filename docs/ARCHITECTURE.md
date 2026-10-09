@@ -28,7 +28,7 @@ Build phone layouts first at 360–430 CSS px. Stack party cards, keep source li
 
 ## Edge, domain, and service levels
 
-The primary canonical domain is `elecciones2026.es`, with `elecciones2026.org` and `programaselectorales.es` as defensive domains returning permanent 301 redirects to the HTTPS apex. Staging runs at `preview.elecciones2026.es` behind authentication with indexing blocked (`noindex`). Cloudflare manages DNS with DNSSEC and proxies traffic to the Hetzner origin.
+The target primary canonical domain is `elecciones2026.es` (currently a placeholder target pending domain acquisition), with `elecciones2026.org` and `programaselectorales.es` as defensive domains planned to return permanent 301 redirects to the HTTPS apex once acquired. Staging targets `preview.elecciones2026.es` behind authentication with indexing blocked (`noindex`). Cloudflare will manage DNS with DNSSEC and proxy traffic to the Hetzner origin upon domain activation.
 
 Edge caching policy:
 - Fingerprinted static assets (`/static/*`, CSS, JS, images): `Cache-Control: public, max-age=31536000, immutable` (edge TTL 365 days).

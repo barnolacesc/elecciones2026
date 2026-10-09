@@ -34,9 +34,9 @@ The public MVP operates on a zero-personal-data, static-serving model:
 
 ## Security and privacy contacts
 
-- **Security reports:** `seguridad@elecciones2026.es`
-- **Privacy inquiries and rights:** `privacidad@elecciones2026.es` (Data Controller: C2 Ventures)
-- **Vulnerability disclosure policy:** Coordinate disclosure with 48-hour initial response. Good-faith security research testing against staging (`preview.elecciones2026.es`) without disrupting service is welcomed under standard safe harbor principles.
+- **Security reports:** `seguridad@elecciones2026.es` (provisional placeholder email pending domain purchase; report via repository maintainers in interim)
+- **Privacy inquiries and rights:** `privacidad@elecciones2026.es` (Data Controller: C2 Ventures; provisional placeholder pending domain purchase)
+- **Vulnerability disclosure policy:** Coordinate disclosure with 48-hour initial response. Good-faith security research testing against staging (`preview.elecciones2026.es` placeholder or authenticated preview environments) without disrupting service is welcomed under standard safe harbor principles.
 
 ## Publication gates
 
