@@ -50,3 +50,7 @@ jobs:
       - name: Validate accessible component plan
         run: |
           PYTHONPATH="src" python -m elecciones2026.component_plan validate site/COMPONENT-PLAN.md
+
+      - name: Validate Spanish UI flow and selectors
+        run: |
+          PYTHONPATH="src" python -m elecciones2026.ui_flow validate site/index.html
