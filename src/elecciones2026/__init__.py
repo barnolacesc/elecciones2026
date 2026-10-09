@@ -8,6 +8,7 @@ __all__ = [
     "ProgrammeRecord",
     "ProgrammeStatus",
     "Taxonomy",
+    "load_parties",
     "load_programme",
     "load_taxonomy",
     "ReviewRecord",
@@ -62,6 +63,11 @@ __all__ = [
     "verify_hash",
     "compute_bytes_sha256",
     "compute_file_sha256",
+    "EditorialApprovalGate",
+    "validate_build_corpus",
+    "filter_publishable_comparisons",
+    "apply_correction_and_invalidate",
+    "validate_quote_limits",
 ]
 
 
@@ -72,6 +78,7 @@ def __getattr__(name: str) -> Any:
         "ProgrammeRecord",
         "ProgrammeStatus",
         "Taxonomy",
+        "load_parties",
         "load_programme",
         "load_taxonomy",
     }:
@@ -113,6 +120,11 @@ def __getattr__(name: str) -> Any:
         "QuoteRecord",
         "ComparisonRelationship",
         "validate_editorial_corpus",
+        "EditorialApprovalGate",
+        "validate_build_corpus",
+        "filter_publishable_comparisons",
+        "apply_correction_and_invalidate",
+        "validate_quote_limits",
     }:
         import elecciones2026.editorial as ed
 

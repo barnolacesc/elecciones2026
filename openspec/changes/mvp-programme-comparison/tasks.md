@@ -16,12 +16,19 @@
 
 ## 2. Source and editorial validation
 
+<<<<<<< HEAD
 - [x] 2.1 Implement offline import boundaries and size/type limits for source files; verify malformed or oversized input is rejected without executing embedded content (Package E1.2).
   - Evidence: Isolated offline source import and verification module implemented in `src/elecciones2026/importer.py` with zero source code execution. Security controls enforce: maximum file size (50 MB default ceiling, incremental streaming memory limits, and Content-Length pre-checks), minimum length (rejecting empty/sub-minimum files), PDF magic byte validation (`%PDF-` header parsing and polyglot/executable signature rejection), static active content inspection (detecting and rejecting `/JavaScript`, `/JS`, `/Launch`, `/EmbeddedFiles`, `/SubmitForm`, `/ImportData`, `/RichMedia`, `/Screen`, `/Sound`, and `#xx` hex-obfuscated name tokens without executing code), network isolation (SSRF guard blocking IPv4/IPv6 loopback, RFC 1918 private subnets, CGNAT, link-local, cloud metadata `169.254.169.254`, scheme restrictions, redirect cycle/limit controls, and offline-only mode), and constant-time SHA-256 cryptographic verification. Verified by 35 dedicated unit and boundary tests in `tests/test_importer.py` and CLI `elecciones2026.importer` integrated into CI.
 - [ ] 2.2 Implement provenance and review-state validation; verify missing references, unknown programme versions, unreviewed claims and unlicensed quotes fail the build.
   - Evidence (Package E0.2): Rule enforcing that no unsupported quote can pass review implemented in `elecciones2026.editorial.StatementRecord.validate` and verified by `tests/test_editorial_policy.py`.
+=======
+- [ ] 2.1 Implement offline import boundaries and size/type limits for source files; verify malformed or oversized input is rejected without executing embedded content.
+- [x] 2.2 Implement provenance and review-state validation; verify missing references, unknown programme versions, unreviewed claims and unlicensed quotes fail the build.
+  - Evidence (Package E1.3): Provenance, review-state, quote bounds (<= 40 words, <= 300 characters, locators under TRLPI Art. 32), source licensing verification against SourceRegister rights reviews, and referential integrity (topic/subtopic taxonomy, party IDs, registered programme versions, and replaced programmes) implemented in `EditorialApprovalGate` (`src/elecciones2026/editorial.py`) and `StatementRecord.validate` (`src/elecciones2026/schemas.py`). Negative build rejection enforced for unreviewed claims, missing references, unknown programme versions, and unlicensed quotes; verified by 17 gate tests in `tests/test_editorial_gates.py` and `validate-build` CLI step integrated into CI.
+>>>>>>> 4607491 (feat(editorial): implement editorial approval gates and correction invalidation (#8))
 - [ ] 2.3 Enter pilot positions with stable IDs, qualifications and page/section citations; verify two human reviewers can follow each published assertion to its original context.
-- [ ] 2.4 Implement versioned corrections and relationship invalidation; verify changing a source claim invalidates dependent comparison output.
+- [x] 2.4 Implement versioned corrections and relationship invalidation; verify changing a source claim invalidates dependent comparison output.
+  - Evidence (Package E1.3): Versioned `CorrectionRecord` schema with dual-reviewer approval and auditable prior/corrected state (`src/elecciones2026/schemas.py`). Dependency invalidation engine (`invalidate_dependent_relationships` and `apply_correction_and_invalidate` in `src/elecciones2026/editorial.py` and `schemas.py`) automatically marks dependent comparison relationships as invalidated with linked correction ID and audit reason. Build rejection of invalidated comparisons enforced by `EditorialApprovalGate` and `RelationshipRecord.validate(for_build=True)`. Publication filtering (`filter_publishable_comparisons`) segregates publishable comparisons from invalidated errata while re-audit workflow supports restoring updated claims; verified by `tests/test_editorial_gates.py` and `tests/test_schemas.py`.
 
 ## 3. Comparator and public artifact
 
