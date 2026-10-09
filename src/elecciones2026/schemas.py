@@ -235,6 +235,27 @@ class StatementRecord:
                     f"Statement {self.id}: {self.statement_type} must specify at least one of source_page or source_section."
                 )
 
+        # Quotation quantitative bounds and mandatory locators (TRLPI Art. 32)
+        if self.quote is not None:
+            clean_quote = self.quote.strip()
+            if not clean_quote:
+                errors.append(f"Statement {self.id}: quotation text cannot be empty or whitespace.")
+            else:
+                words = len(clean_quote.split())
+                if words > 40:
+                    errors.append(
+                        f"Statement {self.id}: quotation exceeds maximum limit of 40 words (found {words} words)."
+                    )
+                chars = len(clean_quote)
+                if chars > 300:
+                    errors.append(
+                        f"Statement {self.id}: quotation exceeds maximum limit of 300 characters (found {chars} characters)."
+                    )
+            if not self.source_page and not self.source_section:
+                errors.append(
+                    f"Statement {self.id}: quotation must specify at least one locator: source_page or source_section."
+                )
+
         # Dual review requirement for approved status
         if self.review_status == "approved":
             approved_reviews = [r for r in self.reviews if r.verdict == "approved"]
@@ -306,6 +327,7 @@ class RelationshipRecord:
         self,
         target_election_id: Optional[str] = None,
         statements_by_id: Optional[dict[str, StatementRecord]] = None,
+        for_build: bool = False,
     ) -> list[str]:
         errors: list[str] = []
 
@@ -365,6 +387,16 @@ class RelationshipRecord:
         if self.status == "invalidated" and not self.invalidation_reason:
             errors.append(f"Relationship {self.id}: invalidated status requires invalidation_reason.")
 
+        if for_build:
+            if self.status == "invalidated":
+                errors.append(
+                    f"Relationship {self.id}: invalidated comparison cannot be published in build (reason: {self.invalidation_reason})."
+                )
+            if self.review_status != "approved":
+                errors.append(
+                    f"Relationship {self.id}: unreviewed comparison with review_status '{self.review_status}' cannot be published in build."
+                )
+
         # Review structural validation
         for r in self.reviews:
             r_errors = r.validate()
@@ -399,6 +431,16 @@ class RelationshipRecord:
                     errors.append(
                         f"Relationship {self.id}: agreement cannot be asserted with not_found statement '{s_id}'."
                     )
+
+                if for_build:
+                    if stmt.review_status == "invalidated":
+                        errors.append(
+                            f"Relationship {self.id}: cannot reference invalidated statement '{s_id}' in build."
+                        )
+                    elif stmt.review_status != "approved":
+                        errors.append(
+                            f"Relationship {self.id}: cannot reference unreviewed statement '{s_id}' (status '{stmt.review_status}') in build."
+                        )
 
         return errors
 

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-party-a-economy-smi-001",
+  "party_id": "partido-ejemplo-a",
+  "programme_id": "prog-fixture-party-a-2026-v1",
+  "topic_id": "economy-work-tax",
+  "subtopic_id": "labor-regulations-and-smi",
+  "statement_type": "explicit_proposal",
+  "summary": "Blindar por ley que el Salario Mínimo Interprofesional alcance de manera permanente el 60% del salario medio neto en España.",
+  "summary_en": "Enshrine into law that the National Minimum Wage permanently reaches 60% of average net wage in Spain.",
+  "quote": "Garantizaremos por ley que el salario mínimo interprofesional sea siempre equivalente al 60% del salario medio neto.",
+  "source_url": "https://partido-ejemplo-a.es/programa-2026.pdf",
+  "source_version": "1.0.0",
+  "source_page": "19",
+  "source_section": "Capítulo 1: Trabajo digno y salarios justos",
+  "qualifications": [
+    "Revisión anual vinculada a los datos del Comité de Expertos del Ministerio de Trabajo."
+  ],
+  "policy_instrument": "Reforma del artículo 27 del Estatuto de los Trabajadores",
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-editorial-1",
+      "review_date": "2026-10-16",
+      "verdict": "approved",
+      "review_notes": "Verificado contra la página 19 del PDF oficial de Partido A."
+    },
+    {
+      "reviewer_id": "rev-editorial-2",
+      "review_date": "2026-10-17",
+      "verdict": "approved",
+      "review_notes": "Segunda revisión independiente completada y conforme con la taxonomía laboral."
+    }
+  ],
+  "last_reviewed_date": "2026-10-17",
+  "correction_id": null,
+  "is_fixture": true
+}

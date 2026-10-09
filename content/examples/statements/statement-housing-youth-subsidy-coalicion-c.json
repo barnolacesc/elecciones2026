@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-coalicion-c-housing-001",
+  "party_id": "coalicion-ejemplo-c",
+  "programme_id": "prog-fixture-party-c-2026-v2",
+  "topic_id": "housing",
+  "subtopic_id": "mortgage-and-purchasing",
+  "statement_type": "explicit_proposal",
+  "summary": "Línea de avales públicos directos del Estado de hasta el 20% del valor de tasación para la fianza o entrada hipotecaria de menores de 35 años con renta hasta 4 veces el IPREM.",
+  "summary_en": "State guarantee line up to 20% of appraised value for mortgage down payments for youth under 35 with income up to 4 times IPREM.",
+  "quote": "Habilitaremos un aval público del 20% para la compra de primera vivienda por personas jóvenes con ingresos de hasta cuatro veces el IPREM.",
+  "source_url": "https://coalicion-ejemplo-c.es/programa-v2.pdf",
+  "source_version": "2.0.0",
+  "source_page": "52",
+  "source_section": "Bloque 2: Acceso a vivienda y servicios esenciales",
+  "qualifications": [
+    "Límite de ingresos de 4 veces el IPREM.",
+    "Compatible con ayudas autonómicas de emancipación juvenil."
+  ],
+  "policy_instrument": "Línea de avales públicos del Ministerio de Vivienda",
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-editorial-1",
+      "review_date": "2026-10-17",
+      "verdict": "approved",
+      "review_notes": "Verificado contra la página 52 de la versión definitiva (v2) del programa de Coalición C."
+    },
+    {
+      "reviewer_id": "rev-editorial-2",
+      "review_date": "2026-10-18",
+      "verdict": "approved",
+      "review_notes": "Segunda revisión independiente completada y conforme con la taxonomía."
+    }
+  ],
+  "last_reviewed_date": "2026-10-18",
+  "correction_id": null,
+  "is_fixture": true
+}

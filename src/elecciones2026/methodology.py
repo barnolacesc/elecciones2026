@@ -286,8 +286,31 @@ def load_taxonomy(path: Path) -> Taxonomy:
     return Taxonomy.from_dict(data)
 
 
-def load_programme(path: Path) -> ProgrammeRecord:
+def load_programme(path: Path | str) -> ProgrammeRecord:
     """Load programme record from JSON file."""
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
     return ProgrammeRecord.from_dict(data)
+
+
+def load_parties(path: Path | str) -> list[PartyRecord]:
+    """Load party records from JSON file."""
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    parties = []
+    for item in data.get("parties", []):
+        parties.append(
+            PartyRecord(
+                id=item["id"],
+                official_name=item["official_name"],
+                display_name=item["display_name"],
+                short_name=item["short_name"],
+                ballot_name=item["ballot_name"],
+                is_coalition=item.get("is_coalition", False),
+                coalition_members=list(item.get("coalition_members", [])),
+                territorial_scope=item.get("territorial_scope", "national"),
+                inclusion_criterion=item.get("inclusion_criterion", ""),
+                is_fixture=item.get("is_fixture", False),
+            )
+        )
+    return parties

@@ -58,3 +58,7 @@ jobs:
       - name: Verify offline source importer CLI
         run: |
           PYTHONPATH="src" python -m elecciones2026.importer --help
+
+      - name: Validate editorial approval gates and build rejection rules
+        run: |
+          PYTHONPATH="src" python -m elecciones2026.editorial validate-build
