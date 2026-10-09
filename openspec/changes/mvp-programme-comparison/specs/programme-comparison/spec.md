@@ -1,0 +1,35 @@
+# Programme comparison
+
+## Purpose
+Help readers compare concrete policy positions across candidatures without hiding differences, source gaps or editorial uncertainty.
+
+## ADDED Requirements
+
+### Requirement: Topic and party selection
+The MVP SHALL let users select exactly two parties and one topic at a time and SHALL provide a mobile- and keyboard-usable comparison view grouped by measure. Each measure section SHALL show both parties before the next measure.
+
+#### Scenario: Valid selection
+- **WHEN** the reader selects two parties and housing
+- **THEN** the site shows each reviewed housing position with source links and caveats.
+
+#### Scenario: Phone comparison
+- **WHEN** the reader opens a measure at a phone-sized viewport
+- **THEN** both party positions and their source links appear in one vertical section without switching tabs.
+
+### Requirement: Evidence-based agreement and difference
+The site SHALL show an agreement only when reviewers have approved a specific comparable measure; it SHALL show relevant scope, funding or timing differences beside any shared headline.
+
+#### Scenario: Similar slogans but different measures
+- **WHEN** two programmes share a broad aim but propose different instruments
+- **THEN** no exact agreement is asserted and the difference is explained.
+
+#### Scenario: Matched measure with caveat
+- **WHEN** two positions share a measure but differ in eligibility
+- **THEN** the common measure and eligibility difference both appear.
+
+### Requirement: Transparent ordering and methodology
+The site SHALL use neutral/stable ordering, disclose comparison rules and coverage, and SHALL not rank parties by an undisclosed score.
+
+#### Scenario: Reader opens methodology
+- **WHEN** the reader requests the methodology
+- **THEN** criteria, review roles, source dates and correction process are available.

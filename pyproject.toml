@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "elecciones2026"
+version = "0.0.0"
+description = "Draft tooling for an auditable electoral programme comparison site"
+requires-python = ">=3.14"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
