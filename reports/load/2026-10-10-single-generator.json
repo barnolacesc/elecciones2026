@@ -1,0 +1,1306 @@
+{
+  "schema_version": 1,
+  "package": "E3.4",
+  "environment": "local-rehearsal",
+  "date": "2026-10-10T12:10:55.968038+00:00",
+  "git_revision": "cf44b59adb5fc1fbd8354648d4dbb96b1606a7ef",
+  "image_id": "sha256:f7469d4a85e47ef81be091460d9a5cd86a75aa56a56afbb817ad0fdba3d20904",
+  "docker": {
+    "NCPU": 10,
+    "MemTotal": 8217575424,
+    "OperatingSystem": "Docker Desktop",
+    "ServerVersion": "27.5.1"
+  },
+  "origin_limits": {
+    "cpu_quota": 2,
+    "memory_limit_bytes": 300000000
+  },
+  "plan": {
+    "schema_version": 1,
+    "seed": 20261010,
+    "readers": 10000,
+    "think_seconds": [
+      5,
+      10
+    ],
+    "asset_reload_fraction": 0.1,
+    "max_inflight": 512,
+    "request_timeout_ms": 5000,
+    "scenarios": [
+      {
+        "name": "steady",
+        "seconds": 60,
+        "start_spread_seconds": 10,
+        "cold_cache": false
+      },
+      {
+        "name": "cold-cache",
+        "seconds": 60,
+        "start_spread_seconds": 10,
+        "cold_cache": true
+      },
+      {
+        "name": "burst",
+        "seconds": 30,
+        "start_spread_seconds": 1,
+        "cold_cache": false
+      }
+    ],
+    "cost_assumptions": {
+      "status": "proposed ADR-0001 inputs, not billing evidence",
+      "fixed_monthly_eur": 16,
+      "included_origin_egress_gb": 20000,
+      "egress_eur_per_gb": null,
+      "monthly_scenario_hours": {
+        "steady": 700,
+        "cold-cache": 1,
+        "burst": 19
+      },
+      "budget_eur": 50
+    }
+  },
+  "scenarios": [
+    {
+      "name": "steady",
+      "client": {
+        "offered": 121516,
+        "sent": 121516,
+        "completed": 121516,
+        "dropped": 0,
+        "network_errors": 0,
+        "body_bytes": 577381143,
+        "status": {
+          "200": 121516
+        },
+        "cache": {
+          "HIT": 121498,
+          "MISS": 18
+        },
+        "classes": {
+          "asset": {
+            "responses": 40260,
+            "hits": 40256,
+            "unknown": 0
+          },
+          "html": {
+            "responses": 81256,
+            "hits": 81242,
+            "unknown": 0
+          }
+        },
+        "peak_inflight": 111,
+        "scenario": {
+          "name": "steady",
+          "seconds": 60,
+          "start_spread_seconds": 10,
+          "cold_cache": false
+        },
+        "readers": 10000,
+        "readers_served": 10000,
+        "measurement_seconds": 60,
+        "elapsed_seconds": 60.002319666000005,
+        "offered_rps": 2025.2666666666667,
+        "achieved_rps": 2025.2666666666667,
+        "response_p95_ms": 3.2146670000001905,
+        "scheduled_response_p95_ms": 4.323061422150204,
+        "cache_hit_p95_ms": 3.2116670000032173,
+        "scheduling_lag_p95_ms": 1.7592821193884447,
+        "event_loop_p95_ms": 10.985471,
+        "body_mbps": 76.9841524,
+        "seconds": {
+          "0": {
+            "requests": 1507,
+            "body_bytes": 7316654,
+            "errors": 0
+          },
+          "1": {
+            "requests": 1529,
+            "body_bytes": 7384673,
+            "errors": 0
+          },
+          "2": {
+            "requests": 1568,
+            "body_bytes": 7612928,
+            "errors": 0
+          },
+          "3": {
+            "requests": 1365,
+            "body_bytes": 6056226,
+            "errors": 0
+          },
+          "4": {
+            "requests": 1575,
+            "body_bytes": 7784897,
+            "errors": 0
+          },
+          "5": {
+            "requests": 1700,
+            "body_bytes": 8215604,
+            "errors": 0
+          },
+          "6": {
+            "requests": 1888,
+            "body_bytes": 8811377,
+            "errors": 0
+          },
+          "7": {
+            "requests": 2294,
+            "body_bytes": 10823415,
+            "errors": 0
+          },
+          "8": {
+            "requests": 2428,
+            "body_bytes": 11406162,
+            "errors": 0
+          },
+          "9": {
+            "requests": 2995,
+            "body_bytes": 14490411,
+            "errors": 0
+          },
+          "10": {
+            "requests": 1547,
+            "body_bytes": 7312011,
+            "errors": 0
+          },
+          "11": {
+            "requests": 1683,
+            "body_bytes": 8060908,
+            "errors": 0
+          },
+          "12": {
+            "requests": 1877,
+            "body_bytes": 8788517,
+            "errors": 0
+          },
+          "13": {
+            "requests": 2129,
+            "body_bytes": 10278902,
+            "errors": 0
+          },
+          "14": {
+            "requests": 2213,
+            "body_bytes": 10761646,
+            "errors": 0
+          },
+          "15": {
+            "requests": 2272,
+            "body_bytes": 10978988,
+            "errors": 0
+          },
+          "16": {
+            "requests": 2181,
+            "body_bytes": 10384476,
+            "errors": 0
+          },
+          "17": {
+            "requests": 2169,
+            "body_bytes": 10546457,
+            "errors": 0
+          },
+          "18": {
+            "requests": 2029,
+            "body_bytes": 9645829,
+            "errors": 0
+          },
+          "19": {
+            "requests": 2033,
+            "body_bytes": 9591212,
+            "errors": 0
+          },
+          "20": {
+            "requests": 1893,
+            "body_bytes": 8642021,
+            "errors": 0
+          },
+          "21": {
+            "requests": 2091,
+            "body_bytes": 9893042,
+            "errors": 0
+          },
+          "22": {
+            "requests": 2249,
+            "body_bytes": 11272248,
+            "errors": 0
+          },
+          "23": {
+            "requests": 2080,
+            "body_bytes": 9930570,
+            "errors": 0
+          },
+          "24": {
+            "requests": 1961,
+            "body_bytes": 9098613,
+            "errors": 0
+          },
+          "25": {
+            "requests": 2169,
+            "body_bytes": 10454255,
+            "errors": 0
+          },
+          "26": {
+            "requests": 2112,
+            "body_bytes": 10020113,
+            "errors": 0
+          },
+          "27": {
+            "requests": 2073,
+            "body_bytes": 10000667,
+            "errors": 0
+          },
+          "28": {
+            "requests": 2124,
+            "body_bytes": 10126053,
+            "errors": 0
+          },
+          "29": {
+            "requests": 2053,
+            "body_bytes": 9752626,
+            "errors": 0
+          },
+          "30": {
+            "requests": 2009,
+            "body_bytes": 9315186,
+            "errors": 0
+          },
+          "31": {
+            "requests": 1948,
+            "body_bytes": 9043365,
+            "errors": 0
+          },
+          "32": {
+            "requests": 2103,
+            "body_bytes": 10093662,
+            "errors": 0
+          },
+          "33": {
+            "requests": 2020,
+            "body_bytes": 9493619,
+            "errors": 0
+          },
+          "34": {
+            "requests": 2123,
+            "body_bytes": 9828631,
+            "errors": 0
+          },
+          "35": {
+            "requests": 2092,
+            "body_bytes": 10123939,
+            "errors": 0
+          },
+          "36": {
+            "requests": 2036,
+            "body_bytes": 9423588,
+            "errors": 0
+          },
+          "37": {
+            "requests": 2004,
+            "body_bytes": 9332923,
+            "errors": 0
+          },
+          "38": {
+            "requests": 2066,
+            "body_bytes": 9944010,
+            "errors": 0
+          },
+          "39": {
+            "requests": 2117,
+            "body_bytes": 10298183,
+            "errors": 0
+          },
+          "40": {
+            "requests": 1935,
+            "body_bytes": 8722903,
+            "errors": 0
+          },
+          "41": {
+            "requests": 2054,
+            "body_bytes": 9669634,
+            "errors": 0
+          },
+          "42": {
+            "requests": 2095,
+            "body_bytes": 10181480,
+            "errors": 0
+          },
+          "43": {
+            "requests": 2042,
+            "body_bytes": 9401977,
+            "errors": 0
+          },
+          "44": {
+            "requests": 2063,
+            "body_bytes": 9544285,
+            "errors": 0
+          },
+          "45": {
+            "requests": 2065,
+            "body_bytes": 9664902,
+            "errors": 0
+          },
+          "46": {
+            "requests": 1965,
+            "body_bytes": 9093625,
+            "errors": 0
+          },
+          "47": {
+            "requests": 1930,
+            "body_bytes": 9120796,
+            "errors": 0
+          },
+          "48": {
+            "requests": 2045,
+            "body_bytes": 9723068,
+            "errors": 0
+          },
+          "49": {
+            "requests": 2050,
+            "body_bytes": 9570818,
+            "errors": 0
+          },
+          "50": {
+            "requests": 2205,
+            "body_bytes": 10788855,
+            "errors": 0
+          },
+          "51": {
+            "requests": 2090,
+            "body_bytes": 9826638,
+            "errors": 0
+          },
+          "52": {
+            "requests": 2008,
+            "body_bytes": 9499227,
+            "errors": 0
+          },
+          "53": {
+            "requests": 2011,
+            "body_bytes": 9446386,
+            "errors": 0
+          },
+          "54": {
+            "requests": 2169,
+            "body_bytes": 10336515,
+            "errors": 0
+          },
+          "55": {
+            "requests": 2013,
+            "body_bytes": 9497940,
+            "errors": 0
+          },
+          "56": {
+            "requests": 2103,
+            "body_bytes": 10447888,
+            "errors": 0
+          },
+          "57": {
+            "requests": 2181,
+            "body_bytes": 10560027,
+            "errors": 0
+          },
+          "58": {
+            "requests": 2113,
+            "body_bytes": 10161845,
+            "errors": 0
+          },
+          "59": {
+            "requests": 2068,
+            "body_bytes": 9737817,
+            "errors": 0
+          },
+          "60": {
+            "requests": 6,
+            "body_bytes": 45910,
+            "errors": 0
+          }
+        },
+        "generator_rss_bytes": 182173696
+      },
+      "origin": {
+        "requests": 21,
+        "rps": 0.35,
+        "peak_one_second_rps": 18,
+        "response_p95_ms": 0.0,
+        "body_bytes": 116958,
+        "body_mbps": 0.0155944,
+        "cpu_average_percent_of_quota": 0.02807692307692308,
+        "cpu_peak_percent_of_quota": 0.555,
+        "memory_peak_bytes": 9551478.784,
+        "resource_samples": 26
+      },
+      "resource_sampling_errors": [],
+      "checks": {
+        "edge_scheduled_p95_ms": {
+          "value": 4.323061422150204,
+          "operator": "<",
+          "target": 150,
+          "status": "pass"
+        },
+        "edge_cache_hit_p95_ms": {
+          "value": 3.2116670000032173,
+          "operator": "<",
+          "target": 150,
+          "status": "pass"
+        },
+        "origin_p95_ms": {
+          "value": 0.0,
+          "operator": "<",
+          "target": 250,
+          "status": "pass"
+        },
+        "http_5xx_rate": {
+          "value": 0.0,
+          "operator": "<",
+          "target": 0.0005,
+          "status": "pass"
+        },
+        "http_4xx_rate": {
+          "value": 0.0,
+          "operator": "<",
+          "target": 0.005,
+          "status": "pass"
+        },
+        "network_errors": {
+          "value": 0,
+          "operator": "<=",
+          "target": 0,
+          "status": "pass"
+        },
+        "dropped_requests": {
+          "value": 0,
+          "operator": "<=",
+          "target": 0,
+          "status": "pass"
+        },
+        "all_readers_served": {
+          "value": 10000,
+          "operator": ">=",
+          "target": 10000,
+          "status": "pass"
+        },
+        "generator_scheduling_lag_p95_ms": {
+          "value": 1.7592821193884447,
+          "operator": "<=",
+          "target": 100,
+          "status": "pass"
+        },
+        "aggregate_hit_ratio": {
+          "value": 0.9998518713585043,
+          "operator": ">=",
+          "target": 0.95,
+          "status": "pass"
+        },
+        "html_hit_ratio": {
+          "value": 0.9998277050310131,
+          "operator": ">=",
+          "target": 0.9,
+          "status": "pass"
+        },
+        "asset_hit_ratio": {
+          "value": 0.9999006458022851,
+          "operator": ">=",
+          "target": 0.99,
+          "status": "pass"
+        },
+        "origin_peak_one_second_rps": {
+          "value": 18,
+          "operator": "<=",
+          "target": 200,
+          "status": "pass"
+        },
+        "origin_cpu_percent_of_quota": {
+          "value": 0.02807692307692308,
+          "operator": "<",
+          "target": 30,
+          "status": "pass"
+        },
+        "origin_memory_bytes": {
+          "value": 9551478.784,
+          "operator": "<",
+          "target": 150000000,
+          "status": "pass"
+        }
+      }
+    },
+    {
+      "name": "cold-cache",
+      "client": {
+        "offered": 121516,
+        "sent": 121516,
+        "completed": 121516,
+        "dropped": 0,
+        "network_errors": 0,
+        "body_bytes": 577381143,
+        "status": {
+          "200": 121516
+        },
+        "cache": {
+          "MISS": 19,
+          "HIT": 121497
+        },
+        "classes": {
+          "asset": {
+            "responses": 40260,
+            "hits": 40255,
+            "unknown": 0
+          },
+          "html": {
+            "responses": 81256,
+            "hits": 81242,
+            "unknown": 0
+          }
+        },
+        "peak_inflight": 127,
+        "scenario": {
+          "name": "cold-cache",
+          "seconds": 60,
+          "start_spread_seconds": 10,
+          "cold_cache": true
+        },
+        "readers": 10000,
+        "readers_served": 10000,
+        "measurement_seconds": 60,
+        "elapsed_seconds": 60.002666624999996,
+        "offered_rps": 2025.2666666666667,
+        "achieved_rps": 2025.2666666666667,
+        "response_p95_ms": 3.3250410000036936,
+        "scheduled_response_p95_ms": 4.4953854272462195,
+        "cache_hit_p95_ms": 3.3219169999997575,
+        "scheduling_lag_p95_ms": 1.7868248482627678,
+        "event_loop_p95_ms": 11.001855,
+        "body_mbps": 76.9841524,
+        "seconds": {
+          "0": {
+            "requests": 1507,
+            "body_bytes": 7316654,
+            "errors": 0
+          },
+          "1": {
+            "requests": 1528,
+            "body_bytes": 7382885,
+            "errors": 0
+          },
+          "2": {
+            "requests": 1571,
+            "body_bytes": 7621154,
+            "errors": 0
+          },
+          "3": {
+            "requests": 1363,
+            "body_bytes": 6049788,
+            "errors": 0
+          },
+          "4": {
+            "requests": 1575,
+            "body_bytes": 7784897,
+            "errors": 0
+          },
+          "5": {
+            "requests": 1698,
+            "body_bytes": 8211979,
+            "errors": 0
+          },
+          "6": {
+            "requests": 1890,
+            "body_bytes": 8815002,
+            "errors": 0
+          },
+          "7": {
+            "requests": 2296,
+            "body_bytes": 10829830,
+            "errors": 0
+          },
+          "8": {
+            "requests": 2425,
+            "body_bytes": 11397881,
+            "errors": 0
+          },
+          "9": {
+            "requests": 2996,
+            "body_bytes": 14492277,
+            "errors": 0
+          },
+          "10": {
+            "requests": 1547,
+            "body_bytes": 7312011,
+            "errors": 0
+          },
+          "11": {
+            "requests": 1681,
+            "body_bytes": 8053818,
+            "errors": 0
+          },
+          "12": {
+            "requests": 1879,
+            "body_bytes": 8795607,
+            "errors": 0
+          },
+          "13": {
+            "requests": 2127,
+            "body_bytes": 10272506,
+            "errors": 0
+          },
+          "14": {
+            "requests": 2215,
+            "body_bytes": 10768042,
+            "errors": 0
+          },
+          "15": {
+            "requests": 2281,
+            "body_bytes": 11029262,
+            "errors": 0
+          },
+          "16": {
+            "requests": 2174,
+            "body_bytes": 10343418,
+            "errors": 0
+          },
+          "17": {
+            "requests": 2167,
+            "body_bytes": 10537241,
+            "errors": 0
+          },
+          "18": {
+            "requests": 2029,
+            "body_bytes": 9645829,
+            "errors": 0
+          },
+          "19": {
+            "requests": 2033,
+            "body_bytes": 9591212,
+            "errors": 0
+          },
+          "20": {
+            "requests": 1894,
+            "body_bytes": 8646629,
+            "errors": 0
+          },
+          "21": {
+            "requests": 2089,
+            "body_bytes": 9883826,
+            "errors": 0
+          },
+          "22": {
+            "requests": 2249,
+            "body_bytes": 11275068,
+            "errors": 0
+          },
+          "23": {
+            "requests": 2081,
+            "body_bytes": 9932358,
+            "errors": 0
+          },
+          "24": {
+            "requests": 1962,
+            "body_bytes": 9100401,
+            "errors": 0
+          },
+          "25": {
+            "requests": 2169,
+            "body_bytes": 10457075,
+            "errors": 0
+          },
+          "26": {
+            "requests": 2112,
+            "body_bytes": 10017371,
+            "errors": 0
+          },
+          "27": {
+            "requests": 2073,
+            "body_bytes": 10003409,
+            "errors": 0
+          },
+          "28": {
+            "requests": 2123,
+            "body_bytes": 10121445,
+            "errors": 0
+          },
+          "29": {
+            "requests": 2053,
+            "body_bytes": 9752626,
+            "errors": 0
+          },
+          "30": {
+            "requests": 2009,
+            "body_bytes": 9315186,
+            "errors": 0
+          },
+          "31": {
+            "requests": 1949,
+            "body_bytes": 9045231,
+            "errors": 0
+          },
+          "32": {
+            "requests": 2102,
+            "body_bytes": 10091796,
+            "errors": 0
+          },
+          "33": {
+            "requests": 2022,
+            "body_bytes": 9498953,
+            "errors": 0
+          },
+          "34": {
+            "requests": 2119,
+            "body_bytes": 9816917,
+            "errors": 0
+          },
+          "35": {
+            "requests": 2097,
+            "body_bytes": 10137442,
+            "errors": 0
+          },
+          "36": {
+            "requests": 2031,
+            "body_bytes": 9412886,
+            "errors": 0
+          },
+          "37": {
+            "requests": 2006,
+            "body_bytes": 9336502,
+            "errors": 0
+          },
+          "38": {
+            "requests": 2069,
+            "body_bytes": 9951189,
+            "errors": 0
+          },
+          "39": {
+            "requests": 2114,
+            "body_bytes": 10291004,
+            "errors": 0
+          },
+          "40": {
+            "requests": 1942,
+            "body_bytes": 8771384,
+            "errors": 0
+          },
+          "41": {
+            "requests": 2049,
+            "body_bytes": 9627503,
+            "errors": 0
+          },
+          "42": {
+            "requests": 2092,
+            "body_bytes": 10173358,
+            "errors": 0
+          },
+          "43": {
+            "requests": 2043,
+            "body_bytes": 9403749,
+            "errors": 0
+          },
+          "44": {
+            "requests": 2063,
+            "body_bytes": 9544285,
+            "errors": 0
+          },
+          "45": {
+            "requests": 2063,
+            "body_bytes": 9659495,
+            "errors": 0
+          },
+          "46": {
+            "requests": 1968,
+            "body_bytes": 9102525,
+            "errors": 0
+          },
+          "47": {
+            "requests": 1929,
+            "body_bytes": 9117303,
+            "errors": 0
+          },
+          "48": {
+            "requests": 2045,
+            "body_bytes": 9723068,
+            "errors": 0
+          },
+          "49": {
+            "requests": 2056,
+            "body_bytes": 9614956,
+            "errors": 0
+          },
+          "50": {
+            "requests": 2199,
+            "body_bytes": 10744717,
+            "errors": 0
+          },
+          "51": {
+            "requests": 2092,
+            "body_bytes": 9833083,
+            "errors": 0
+          },
+          "52": {
+            "requests": 2007,
+            "body_bytes": 9494619,
+            "errors": 0
+          },
+          "53": {
+            "requests": 2009,
+            "body_bytes": 9441978,
+            "errors": 0
+          },
+          "54": {
+            "requests": 2170,
+            "body_bytes": 10339086,
+            "errors": 0
+          },
+          "55": {
+            "requests": 2013,
+            "body_bytes": 9497940,
+            "errors": 0
+          },
+          "56": {
+            "requests": 2104,
+            "body_bytes": 10449725,
+            "errors": 0
+          },
+          "57": {
+            "requests": 2176,
+            "body_bytes": 10546490,
+            "errors": 0
+          },
+          "58": {
+            "requests": 2117,
+            "body_bytes": 10173545,
+            "errors": 0
+          },
+          "59": {
+            "requests": 2074,
+            "body_bytes": 9783727,
+            "errors": 0
+          }
+        },
+        "generator_rss_bytes": 179191808
+      },
+      "origin": {
+        "requests": 22,
+        "rps": 0.36666666666666664,
+        "peak_one_second_rps": 19,
+        "response_p95_ms": 0.0,
+        "body_bytes": 139041,
+        "body_mbps": 0.018538799999999998,
+        "cpu_average_percent_of_quota": 0.028846153846153848,
+        "cpu_peak_percent_of_quota": 0.39,
+        "memory_peak_bytes": 9621733.376,
+        "resource_samples": 26
+      },
+      "resource_sampling_errors": [],
+      "checks": {
+        "edge_scheduled_p95_ms": {
+          "value": 4.4953854272462195,
+          "operator": "<",
+          "target": 200,
+          "status": "pass"
+        },
+        "edge_cache_hit_p95_ms": {
+          "value": 3.3219169999997575,
+          "operator": "<",
+          "target": 200,
+          "status": "pass"
+        },
+        "origin_p95_ms": {
+          "value": 0.0,
+          "operator": "<",
+          "target": 400,
+          "status": "pass"
+        },
+        "http_5xx_rate": {
+          "value": 0.0,
+          "operator": "<",
+          "target": 0.005,
+          "status": "pass"
+        },
+        "http_4xx_rate": {
+          "value": 0.0,
+          "operator": "<",
+          "target": 0.01,
+          "status": "pass"
+        },
+        "network_errors": {
+          "value": 0,
+          "operator": "<=",
+          "target": 0,
+          "status": "pass"
+        },
+        "dropped_requests": {
+          "value": 0,
+          "operator": "<=",
+          "target": 0,
+          "status": "pass"
+        },
+        "all_readers_served": {
+          "value": 10000,
+          "operator": ">=",
+          "target": 10000,
+          "status": "pass"
+        },
+        "generator_scheduling_lag_p95_ms": {
+          "value": 1.7868248482627678,
+          "operator": "<=",
+          "target": 100,
+          "status": "pass"
+        },
+        "aggregate_hit_ratio": {
+          "value": 0.9998436419895322,
+          "operator": ">=",
+          "target": 0.85,
+          "status": "pass"
+        },
+        "html_hit_ratio": {
+          "value": 0.9998277050310131,
+          "operator": ">=",
+          "target": 0.85,
+          "status": "pass"
+        },
+        "asset_hit_ratio": {
+          "value": 0.9998758072528564,
+          "operator": ">=",
+          "target": 0.98,
+          "status": "pass"
+        },
+        "origin_peak_one_second_rps": {
+          "value": 19,
+          "operator": "<=",
+          "target": 200,
+          "status": "pass"
+        },
+        "origin_cpu_percent_of_quota": {
+          "value": 0.39,
+          "operator": "<",
+          "target": 70,
+          "status": "pass"
+        },
+        "origin_memory_bytes": {
+          "value": 9621733.376,
+          "operator": "<",
+          "target": 300000000,
+          "status": "pass"
+        }
+      }
+    },
+    {
+      "name": "burst",
+      "client": {
+        "offered": 68779,
+        "sent": 66796,
+        "completed": 66796,
+        "dropped": 1983,
+        "network_errors": 0,
+        "body_bytes": 316661030,
+        "status": {
+          "200": 66796
+        },
+        "cache": {
+          "HIT": 66796
+        },
+        "classes": {
+          "html": {
+            "responses": 44801,
+            "hits": 44801,
+            "unknown": 0
+          },
+          "asset": {
+            "responses": 21995,
+            "hits": 21995,
+            "unknown": 0
+          }
+        },
+        "peak_inflight": 512,
+        "scenario": {
+          "name": "burst",
+          "seconds": 30,
+          "start_spread_seconds": 1,
+          "cold_cache": false
+        },
+        "readers": 10000,
+        "readers_served": 10000,
+        "measurement_seconds": 30,
+        "elapsed_seconds": 30.001012959,
+        "offered_rps": 2292.633333333333,
+        "achieved_rps": 2226.5333333333333,
+        "response_p95_ms": 24.473749999999995,
+        "scheduled_response_p95_ms": 41.215091333623434,
+        "cache_hit_p95_ms": 24.473749999999995,
+        "scheduling_lag_p95_ms": 12.355029765823133,
+        "event_loop_p95_ms": 11.149311,
+        "body_mbps": 84.44294133333332,
+        "seconds": {
+          "0": {
+            "requests": 13058,
+            "body_bytes": 62113616,
+            "errors": 0
+          },
+          "1": {
+            "requests": 19,
+            "body_bytes": 106770,
+            "errors": 0
+          },
+          "5": {
+            "requests": 1395,
+            "body_bytes": 6525136,
+            "errors": 0
+          },
+          "6": {
+            "requests": 2943,
+            "body_bytes": 13889081,
+            "errors": 0
+          },
+          "7": {
+            "requests": 3099,
+            "body_bytes": 14992620,
+            "errors": 0
+          },
+          "8": {
+            "requests": 3082,
+            "body_bytes": 14660170,
+            "errors": 0
+          },
+          "9": {
+            "requests": 3006,
+            "body_bytes": 14376716,
+            "errors": 0
+          },
+          "10": {
+            "requests": 2185,
+            "body_bytes": 10509712,
+            "errors": 0
+          },
+          "11": {
+            "requests": 1456,
+            "body_bytes": 6895001,
+            "errors": 0
+          },
+          "12": {
+            "requests": 1548,
+            "body_bytes": 7692574,
+            "errors": 0
+          },
+          "13": {
+            "requests": 1503,
+            "body_bytes": 7070326,
+            "errors": 0
+          },
+          "14": {
+            "requests": 1491,
+            "body_bytes": 7103629,
+            "errors": 0
+          },
+          "15": {
+            "requests": 2020,
+            "body_bytes": 9551028,
+            "errors": 0
+          },
+          "16": {
+            "requests": 2643,
+            "body_bytes": 12702730,
+            "errors": 0
+          },
+          "17": {
+            "requests": 2386,
+            "body_bytes": 11356208,
+            "errors": 0
+          },
+          "18": {
+            "requests": 2444,
+            "body_bytes": 11553258,
+            "errors": 0
+          },
+          "19": {
+            "requests": 2450,
+            "body_bytes": 11697110,
+            "errors": 0
+          },
+          "20": {
+            "requests": 2040,
+            "body_bytes": 9449058,
+            "errors": 0
+          },
+          "21": {
+            "requests": 1766,
+            "body_bytes": 8432333,
+            "errors": 0
+          },
+          "22": {
+            "requests": 1800,
+            "body_bytes": 8514093,
+            "errors": 0
+          },
+          "23": {
+            "requests": 1738,
+            "body_bytes": 8234469,
+            "errors": 0
+          },
+          "24": {
+            "requests": 1716,
+            "body_bytes": 7929870,
+            "errors": 0
+          },
+          "25": {
+            "requests": 1929,
+            "body_bytes": 8774453,
+            "errors": 0
+          },
+          "26": {
+            "requests": 2291,
+            "body_bytes": 10816442,
+            "errors": 0
+          },
+          "27": {
+            "requests": 2289,
+            "body_bytes": 10735104,
+            "errors": 0
+          },
+          "28": {
+            "requests": 2354,
+            "body_bytes": 11380531,
+            "errors": 0
+          },
+          "29": {
+            "requests": 2145,
+            "body_bytes": 9598992,
+            "errors": 0
+          }
+        },
+        "generator_rss_bytes": 188022784
+      },
+      "origin": {
+        "requests": 1,
+        "rps": 0.03333333333333333,
+        "peak_one_second_rps": 1,
+        "response_p95_ms": 0.0,
+        "body_bytes": 18391,
+        "body_mbps": 0.004904266666666666,
+        "cpu_average_percent_of_quota": 0.0,
+        "cpu_peak_percent_of_quota": 0.0,
+        "memory_peak_bytes": 9564061.696,
+        "resource_samples": 13
+      },
+      "resource_sampling_errors": [],
+      "checks": {
+        "edge_scheduled_p95_ms": {
+          "value": 41.215091333623434,
+          "operator": "<",
+          "target": 200,
+          "status": "pass"
+        },
+        "edge_cache_hit_p95_ms": {
+          "value": 24.473749999999995,
+          "operator": "<",
+          "target": 200,
+          "status": "pass"
+        },
+        "origin_p95_ms": {
+          "value": 0.0,
+          "operator": "<",
+          "target": 400,
+          "status": "pass"
+        },
+        "http_5xx_rate": {
+          "value": 0.0,
+          "operator": "<",
+          "target": 0.005,
+          "status": "pass"
+        },
+        "http_4xx_rate": {
+          "value": 0.0,
+          "operator": "<",
+          "target": 0.01,
+          "status": "pass"
+        },
+        "network_errors": {
+          "value": 0,
+          "operator": "<=",
+          "target": 0,
+          "status": "pass"
+        },
+        "dropped_requests": {
+          "value": 1983,
+          "operator": "<=",
+          "target": 0,
+          "status": "fail"
+        },
+        "all_readers_served": {
+          "value": 10000,
+          "operator": ">=",
+          "target": 10000,
+          "status": "pass"
+        },
+        "generator_scheduling_lag_p95_ms": {
+          "value": 12.355029765823133,
+          "operator": "<=",
+          "target": 100,
+          "status": "pass"
+        },
+        "aggregate_hit_ratio": {
+          "value": 1.0,
+          "operator": ">=",
+          "target": 0.85,
+          "status": "pass"
+        },
+        "html_hit_ratio": {
+          "value": 1.0,
+          "operator": ">=",
+          "target": 0.85,
+          "status": "pass"
+        },
+        "asset_hit_ratio": {
+          "value": 1.0,
+          "operator": ">=",
+          "target": 0.98,
+          "status": "pass"
+        },
+        "origin_peak_one_second_rps": {
+          "value": 1,
+          "operator": "<=",
+          "target": 200,
+          "status": "pass"
+        },
+        "origin_cpu_percent_of_quota": {
+          "value": 0.0,
+          "operator": "<",
+          "target": 70,
+          "status": "pass"
+        },
+        "origin_memory_bytes": {
+          "value": 9564061.696,
+          "operator": "<",
+          "target": 300000000,
+          "status": "pass"
+        }
+      }
+    }
+  ],
+  "production_acceptance": "pending",
+  "limits": [
+    "Local nginx caching is a fixture, not Cloudflare. No public DNS/TLS, geography, WAF, or live Hetzner evidence.",
+    "The origin has a two-core quota; Docker shares a host with the generator and edge. It is not a dedicated 2-vCPU/8-GB VM.",
+    "HTTP workload samples page navigation and 10% resource reloads; it does not execute JavaScript, fetch original programmes, or measure mobile rendering.",
+    "CPU is sampled container CPU divided by its two-core quota; whole-VM CPU, sub-sample peaks, monthly availability, and billing are unverified.",
+    "ADR-0001 is proposed pending G0 approval. Task 4.7 uses a stricter 200 origin req/s limit than ADR cold-cache estimates.",
+    "Any dropped requests or large scheduling delays invalidate capacity claims; distribute generators before a live rerun.",
+    "If origin targets fail, inspect cache-key cardinality/revalidation, then propose an owner-approved capacity increase within EUR 50/month and rerun.",
+    "This baseline predates the harness-only origin-log filter: origin observations include Docker health probes and are not workload-only measurements. Use the final report for origin/cost evaluation."
+  ],
+  "cost": {
+    "status": "projection_only",
+    "assumptions": {
+      "status": "proposed ADR-0001 inputs, not billing evidence",
+      "fixed_monthly_eur": 16,
+      "included_origin_egress_gb": 20000,
+      "egress_eur_per_gb": null,
+      "monthly_scenario_hours": {
+        "steady": 700,
+        "cold-cache": 1,
+        "burst": 19
+      },
+      "budget_eur": 50
+    },
+    "projected_origin_body_gb_per_month": 4.96250994,
+    "projected_monthly_eur": 16,
+    "within_proposed_budget": true,
+    "limits": "Body bytes exclude HTTP/TCP/TLS overhead. No current invoice or price evidence; no uncapped spend authorized."
+  },
+  "local_measured_checks_pass": false,
+  "superseded_diagnostic_run": true
+}

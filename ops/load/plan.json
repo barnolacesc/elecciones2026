@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "seed": 20261010,
+  "readers": 10000,
+  "think_seconds": [
+    5,
+    10
+  ],
+  "asset_reload_fraction": 0.1,
+  "max_inflight": 1024,
+  "request_timeout_ms": 5000,
+  "scenarios": [
+    {
+      "name": "steady",
+      "seconds": 60,
+      "start_spread_seconds": 10,
+      "cold_cache": false
+    },
+    {
+      "name": "cold-cache",
+      "seconds": 60,
+      "start_spread_seconds": 10,
+      "cold_cache": true
+    },
+    {
+      "name": "burst",
+      "seconds": 30,
+      "start_spread_seconds": 1,
+      "cold_cache": false
+    }
+  ],
+  "cost_assumptions": {
+    "status": "proposed ADR-0001 inputs, not billing evidence",
+    "fixed_monthly_eur": 16,
+    "included_origin_egress_gb": 20000,
+    "egress_eur_per_gb": null,
+    "monthly_scenario_hours": {
+      "steady": 700,
+      "cold-cache": 1,
+      "burst": 19
+    },
+    "budget_eur": 50
+  },
+  "generators": 4
+}
