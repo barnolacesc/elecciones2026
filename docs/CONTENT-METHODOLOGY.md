@@ -411,3 +411,42 @@ A policy comparison (`ComparisonRelationship`) depends directly on the integrity
 1. The public site publishes an authoritative, chronological errata log at `/correcciones/` and summarized on the methodology page.
 2. Each errata entry discloses the affected party, topic, date, prior text, corrected text, and explanation.
 3. Factual corrections are acknowledged transparently without concealing editorial revisions.
+
+---
+
+## 8. Mobile Public Presentation and Accessibility (Package E2.4)
+
+To ensure that the methodology, source audit, and correction policies are immediately accessible to citizens on smartphones, the public presentation conforms to the following operational standards:
+
+### 8.1 Unified Concise Presentation and Structure
+1. The public methodology destination (`/metodo/`) provides a concise, mobile-first unified view combining:
+   - Fundamental civic neutrality principles and Four-Eyes review workflow.
+   - Objective candidacy inclusion criteria (Criteria A and B, plus territorial scope definitions).
+   - Real-time candidacy source coverage and document lifecycle states.
+   - Visible update timestamps.
+   - Transparent correction policies, invalidation protocols, and recent errata summaries.
+   - Explicit non-interactive discrepancy reporting notice.
+   - Privacy and data protection notices.
+2. The view is designed for single-column mobile flow, completely avoiding horizontal scrolling on baseline viewports (360, 390, and 430 CSS px).
+
+### 8.2 Mobile Source Coverage Cards (`SourceCoverageCard`)
+1. On mobile viewports, tabular presentations that require horizontal overflow are superseded by stacked `SourceCoverageCard` components (`.coverage-card`).
+2. Each card clearly discloses:
+   - Short and official name of the political formation.
+   - Status badge matching the 6 lifecycle states (`missing`, `announced`, `partial`, `published-unverified`, `official`, `replaced`).
+   - Registered document version.
+   - Retrieval/consultation date.
+   - SHA-256 cryptographic hash (or explicit "—" marker when pending publication).
+   - Intellectual property rights review status (`link_and_short_quote`, etc.).
+   - Outbound link to the primary official source, with a touch target meeting or exceeding the 44 CSS px minimum.
+3. Historical pilot rehearsal documents (e.g. 2023) are segregated under an explicit election isolation warning and linked to the technical audit register at `/fuentes/`.
+
+### 8.3 Machine-Readable and Visible Update Timestamps
+1. Every methodology and source page prominently displays a visible update date stamp formatted in clear Spanish.
+2. The timestamp is enclosed within a semantic `<time class="update-date" datetime="YYYY-MM-DD">` element to ensure accessibility by assistive technologies and search crawlers.
+
+### 8.4 Prohibition of Deceptive Reporting Forms
+1. In the MVP release, discrepancy reporting is strictly non-interactive.
+2. The methodology page explicitly states: "La función en línea para avisar de errores estará disponible más adelante. Mientras tanto, las solicitudes editoriales se gestionan de forma centralizada según el registro de correcciones auditable. Para remitir una observación o comunicar una errata, contacte con: editorial@elecciones2026.es."
+3. The page must contain zero `<form>`, `<input>`, `<textarea>`, or interactive submit buttons.
+
