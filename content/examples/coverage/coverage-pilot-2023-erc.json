@@ -1,0 +1,17 @@
+{
+  "id": "cov-2023-erc",
+  "election_id": "es-gen-2023",
+  "candidacy_id": "erc",
+  "programme_id": "prog-erc-2023-official",
+  "status": "official",
+  "banner_text_es": "Programa oficial verificado (Ensayo Generales 2023)",
+  "banner_text_en": "Official verified programme (Generales 2023 Rehearsal)",
+  "has_verified_programme": true,
+  "topics_covered": [
+    "housing"
+  ],
+  "topics_absent": [],
+  "total_statements": 1,
+  "last_audit_date": "2026-10-11",
+  "notes": "Programa completo oficial verificado para el ensayo piloto de 2023."
+}

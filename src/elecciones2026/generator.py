@@ -192,6 +192,11 @@ def load_and_validate_site_data(
                 territorial_scope=src.scope,
             )
 
+    # For 2023 pilot rehearsal, restrict parties strictly to candidacies with 2023 sources
+    if election_id == "es-gen-2023":
+        pilot_party_ids = {s.party_id for s in register.sources if s.election_id == "es-gen-2023"}
+        parties = {pid: p for pid, p in parties.items() if pid in pilot_party_ids}
+
     # 4. Load translations
     i18n_file = content_dir / "i18n" / "es.json"
     i18n = load_translations(i18n_file)
@@ -534,6 +539,26 @@ def render_base(
     canonical_url = f"{ctx.canonical_base}{canonical_path}"
     base_template_file = ctx.templates_dir / "base.html"
 
+    if ctx.election_id == "es-gen-2023":
+        brand_link = f"""<a class="brand" href="{root_path}" aria-label="Generales 2023 - Ensayo Piloto">
+        <span class="brand-mark" aria-hidden="true">◧</span>
+        <span class="brand-text">Generales<span class="brand-year">2023</span></span>
+        <span class="pilot-badge" style="background: var(--color-warning-subtle, #fef3c7); color: var(--color-warning, #92400e); font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; margin-left: 8px;">Piloto Privado</span>
+      </a>"""
+        preview_banner_text = "ENSAYO PILOTO PRIVADO · Generales 2023 · Prohibido publicar como 2026 (No satisface G2)"
+        footer_org = "Generales 2023 · Ensayo piloto privado y confidencial"
+        footer_values = "Aislamiento estricto de elecciones · No satisface G2 para 2026"
+        if "Generales 2023" not in title:
+            title = f"{title} · Generales 2023"
+    else:
+        brand_link = f"""<a class="brand" href="{root_path}" aria-label="Elecciones 2026 - Inicio">
+        <span class="brand-mark" aria-hidden="true">◧</span>
+        <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
+      </a>"""
+        preview_banner_text = f"{escape(ctx.i18n['preview_banner']['badge'])} · {escape(ctx.i18n['preview_banner']['text'])}"
+        footer_org = escape(ctx.i18n["footer"]["org"])
+        footer_values = escape(ctx.i18n["footer"]["values"])
+
     if base_template_file.exists():
         template = base_template_file.read_text(encoding="utf-8")
     else:
@@ -555,10 +580,7 @@ def render_base(
   </aside>
   <header class="topbar" role="banner">
     <div class="topbar-inner">
-      <a class="brand" href="{{ root_path }}" aria-label="Elecciones 2026 - Inicio">
-        <span class="brand-mark" aria-hidden="true">◧</span>
-        <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
-      </a>
+      {{ brand_link }}
       <nav class="nav-links" aria-label="Navegación principal">
         <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>
         <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>
@@ -587,16 +609,17 @@ def render_base(
         "{{ description }}": escape(description),
         "{{ canonical_url }}": escape(canonical_url),
         "{{ root_path }}": root_path,
+        "{{ brand_link }}": brand_link,
         "{{ skip_to_content }}": escape(ctx.i18n["nav"]["skip_to_content"]),
-        "{{ preview_banner_text }}": f"{escape(ctx.i18n['preview_banner']['badge'])} · {escape(ctx.i18n['preview_banner']['text'])}",
+        "{{ preview_banner_text }}": preview_banner_text,
         "{{ nav_comparator }}": escape(ctx.i18n["nav"]["comparator"]),
         "{{ nav_topics }}": escape(ctx.i18n["nav"]["topics"]),
         "{{ nav_parties }}": escape(ctx.i18n["nav"]["parties"]),
         "{{ nav_methodology }}": escape(ctx.i18n["nav"]["methodology"]),
         "{{ nav_sources }}": escape(ctx.i18n["nav"]["sources"]),
         "{{ nav_corrections }}": escape(ctx.i18n["nav"]["corrections"]),
-        "{{ footer_org }}": escape(ctx.i18n["footer"]["org"]),
-        "{{ footer_values }}": escape(ctx.i18n["footer"]["values"]),
+        "{{ footer_org }}": footer_org,
+        "{{ footer_values }}": footer_values,
         "{{ content }}": content,
     }
 
@@ -612,18 +635,46 @@ def render_base(
 
 def render_home_page(ctx: SiteContext) -> str:
     """Render index.html with accessible comparator and static fallback."""
-    # Find sample active comparison (prefer housing rental regulation agreement)
-    active_rel = (
-        ctx.relationships.get("rel-housing-rental-regulation-party-a-party-b")
-        or next((r for r in ctx.relationships.values() if r.status == "active"), None)
-    )
+    # Find sample active comparison
+    if ctx.election_id == "es-gen-2023":
+        active_rel = (
+            ctx.relationships.get("rel-pilot-2023-housing-pp-erc-divergence")
+            or next((r for r in ctx.relationships.values() if r.status == "active"), None)
+        )
+        party_a_id = active_rel.party_ids[0] if active_rel else "pp"
+        party_b_id = active_rel.party_ids[1] if active_rel and len(active_rel.party_ids) > 1 else "erc"
+        hero_eyebrow = "ENSAYO PILOTO PRIVADO · GENERALES 2023 (23 JUL 2023)"
+        hero_title_part1 = "Los programas de 2023,"
+        hero_title_part2 = "ensayo de comparación."
+        hero_intro = "Comparación privada de ensayo entre dos programas oficiales de las elecciones generales de 2023 (PP y ERC). No satisface la puerta G2 para 2026 ni presenta contenido de 2023 como 2026."
+        mock_notice = """<aside class="notice" aria-label="Aviso del ensayo piloto">
+      <strong>Aviso de ensayo privado (Generales 2023):</strong> Esta vista corresponde exclusivamente al ensayo técnico de comparación con dos programas oficiales de las elecciones generales de 2023 (PP y ERC). Queda estrictamente prohibido presentar o publicar este contenido como información de 2026. Este ensayo no satisface la puerta de publicación G2 para 2026.
+    </aside>"""
+        selector_eyebrow = "01 / COMPARAR · GENERALES 2023"
+        page_title = "Generales 2023 · Comparador de programas (Ensayo piloto)"
+        page_description = "Ensayo privado de comparación de programas oficiales para las Elecciones Generales 2023 (PP y ERC)."
+    else:
+        active_rel = (
+            ctx.relationships.get("rel-housing-rental-regulation-party-a-party-b")
+            or next((r for r in ctx.relationships.values() if r.status == "active"), None)
+        )
+        party_a_id = active_rel.party_ids[0] if active_rel else "partido-ejemplo-a"
+        party_b_id = active_rel.party_ids[1] if active_rel and len(active_rel.party_ids) > 1 else "partido-ejemplo-b"
+        hero_eyebrow = escape(ctx.i18n['hero']['eyebrow'])
+        hero_title_part1 = escape(ctx.i18n['hero']['title_part1'])
+        hero_title_part2 = escape(ctx.i18n['hero']['title_part2'])
+        hero_intro = escape(ctx.i18n['hero']['intro'])
+        mock_notice = f"""<aside class="notice" aria-label="Aviso de la maqueta">
+      <strong>{escape(ctx.i18n['mock_notice']['title'])}</strong> {escape(ctx.i18n['mock_notice']['text'])}
+    </aside>"""
+        selector_eyebrow = escape(ctx.i18n['selector']['eyebrow'])
+        page_title = f"{ctx.i18n['meta']['site_name']} · Comparador de programas electorales"
+        page_description = ctx.i18n["meta"]["site_description"]
+
     topic_options = []
     for t in ctx.taxonomy.topics:
         selected = ' selected' if (active_rel and t.id == active_rel.topic_id) or t.id == "housing" else ""
         topic_options.append(f'<option value="{escape(t.id)}"{selected}>{escape(t.name_es)}</option>')
-
-    party_a_id = active_rel.party_ids[0] if active_rel else "partido-ejemplo-a"
-    party_b_id = active_rel.party_ids[1] if active_rel and len(active_rel.party_ids) > 1 else "partido-ejemplo-b"
 
     party_a_options = []
     party_b_options = []
@@ -667,6 +718,20 @@ def render_home_page(ctx: SiteContext) -> str:
         items = "".join(f"<li>{escape(d)}</li>" for d in active_rel.differences)
         differences_html = f'<ul class="analysis-differences">{items}</ul>'
 
+    rel_type = active_rel.relationship_type if active_rel else "agreement"
+    if rel_type == "agreement":
+        rel_callout_class = "rel-callout-agreement"
+        rel_icon = "✓"
+    elif rel_type == "divergence":
+        rel_callout_class = "rel-callout-divergence"
+        rel_icon = "≠"
+    elif rel_type == "qualification":
+        rel_callout_class = "rel-callout-qualification"
+        rel_icon = "~"
+    else:
+        rel_callout_class = "rel-callout-not-found"
+        rel_icon = "—"
+
     measure_1_html = f"""<article class="measure-group" aria-labelledby="measure-1-title">
             <div class="measure-head">
               <p id="measure-topic-label" class="measure-topic-label">TEMA: VIVIENDA</p>
@@ -679,8 +744,8 @@ def render_home_page(ctx: SiteContext) -> str:
               {party_b_card}
             </div>
 
-            <aside id="analysis-callout" class="analysis-callout rel-callout-agreement" aria-label="Lectura comparada">
-              <span class="analysis-icon" aria-hidden="true">✓</span>
+            <aside id="analysis-callout" class="analysis-callout {rel_callout_class}" aria-label="Lectura comparada">
+              <span class="analysis-icon" aria-hidden="true">{rel_icon}</span>
               <div>
                 <h4 id="analysis-title">{escape(analysis_heading)}</h4>
                 <p id="analysis-text">{escape(analysis_text)}</p>
@@ -711,10 +776,15 @@ def render_home_page(ctx: SiteContext) -> str:
             </aside>
           </article>"""
 
+    if ctx.election_id == "es-gen-2023":
+        measures_content = f"          {measure_1_html}"
+    else:
+        measures_content = f"          {measure_1_html}\n          {measure_2_html}"
+
     content = f"""    <section class="hero" aria-labelledby="hero-title">
-      <p class="hero-eyebrow">{escape(ctx.i18n['hero']['eyebrow'])}</p>
-      <h1 id="hero-title" class="hero-title">{escape(ctx.i18n['hero']['title_part1'])}<br><span class="hero-em">{escape(ctx.i18n['hero']['title_part2'])}</span></h1>
-      <p class="hero-intro">{escape(ctx.i18n['hero']['intro'])}</p>
+      <p class="hero-eyebrow">{hero_eyebrow}</p>
+      <h1 id="hero-title" class="hero-title">{hero_title_part1}<br><span class="hero-em">{hero_title_part2}</span></h1>
+      <p class="hero-intro">{hero_intro}</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#comparador">
           <span>{escape(ctx.i18n['hero']['cta'])}</span>
@@ -723,13 +793,11 @@ def render_home_page(ctx: SiteContext) -> str:
       </div>
     </section>
 
-    <aside class="notice" aria-label="Aviso de la maqueta">
-      <strong>{escape(ctx.i18n['mock_notice']['title'])}</strong> {escape(ctx.i18n['mock_notice']['text'])}
-    </aside>
+    {mock_notice}
 
     <section id="comparador" class="compare-section" aria-labelledby="compare-title">
       <div class="section-head">
-        <p class="hero-eyebrow">{escape(ctx.i18n['selector']['eyebrow'])}</p>
+        <p class="hero-eyebrow">{selector_eyebrow}</p>
         <h2 id="compare-title">{escape(ctx.i18n['selector']['heading'])}</h2>
         <p>{escape(ctx.i18n['selector']['description'])}</p>
       </div>
@@ -765,8 +833,7 @@ def render_home_page(ctx: SiteContext) -> str:
       <section class="measure-comparison" aria-labelledby="compare-results-heading">
         <h3 id="compare-results-heading" class="sr-only">Comparación de propuestas agrupadas por medida</h3>
         <div id="measures-container" class="measures-container">
-          {measure_1_html}
-          {measure_2_html}
+{measures_content}
         </div>
 
         <div class="share-section">
@@ -795,8 +862,8 @@ def render_home_page(ctx: SiteContext) -> str:
 
     return render_base(
         ctx=ctx,
-        title=f"{ctx.i18n['meta']['site_name']} · Comparador de programas electorales",
-        description=ctx.i18n["meta"]["site_description"],
+        title=page_title,
+        description=page_description,
         canonical_path="/",
         content=content,
         root_path="./",
@@ -826,8 +893,12 @@ def render_topic_index(ctx: SiteContext) -> str:
         </div>
       </article>""")
 
+    hero_eyebrow = "ENSAYO PILOTO PRIVADO · TAXONOMÍA GENERALES 2023" if ctx.election_id == "es-gen-2023" else "TAXONOMÍA ELECTORAL 2026"
+    page_title = "Temas electorales · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Temas electorales · Elecciones 2026"
+    page_description = "Explora las propuestas electorales para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else "Explora las propuestas electorales para las Elecciones Generales 2026 agrupadas en 8 temas clave."
+
     content = f"""    <section class="hero" aria-labelledby="topics-title">
-      <p class="hero-eyebrow">TAXONOMÍA ELECTORAL 2026</p>
+      <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="topics-title" class="hero-title">Temas electorales</h1>
       <p class="hero-intro">Explora las 8 áreas clave definidas en la metodología neutral del proyecto. Cada área desglosa propuestas concretas con trazabilidad documental directa.</p>
     </section>
@@ -838,8 +909,8 @@ def render_topic_index(ctx: SiteContext) -> str:
 
     return render_base(
         ctx=ctx,
-        title="Temas electorales · Elecciones 2026",
-        description="Explora las propuestas electorales para las Elecciones Generales 2026 agrupadas en 8 temas clave.",
+        title=page_title,
+        description=page_description,
         canonical_path="/temas/",
         content=content,
         root_path="../",
@@ -887,13 +958,16 @@ def render_topic_detail(ctx: SiteContext, topic: Topic) -> str:
           {body}
         </section>""")
 
+    hero_eyebrow = "ENSAYO PILOTO PRIVADO · GENERALES 2023" if ctx.election_id == "es-gen-2023" else "TEMA ELECTORAL · ELECCIONES 2026"
+    page_title = f"{topic.name_es} · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else f"{topic.name_es} · Comparador Elecciones 2026"
+
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a> ·
       <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">Todos los temas</a>
     </nav>
 
     <section class="hero" aria-labelledby="topic-title">
-      <p class="hero-eyebrow">TEMA ELECTORAL · ELECCIONES 2026</p>
+      <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="topic-title" class="hero-title">{escape(topic.name_es)}</h1>
       <p class="hero-intro">{escape(topic.description_es)}</p>
       <div style="font-size: var(--font-size-xs); color: var(--color-text-muted);">
@@ -905,7 +979,7 @@ def render_topic_detail(ctx: SiteContext, topic: Topic) -> str:
 
     return render_base(
         ctx=ctx,
-        title=f"{topic.name_es} · Comparador Elecciones 2026",
+        title=page_title,
         description=topic.description_es,
         canonical_path=f"/temas/{topic.id}/",
         content=content,
@@ -939,8 +1013,12 @@ def render_party_index(ctx: SiteContext) -> str:
         </div>
       </article>""")
 
+    hero_eyebrow = "ENSAYO PILOTO PRIVADO · CANDIDATURAS GENERALES 2023" if ctx.election_id == "es-gen-2023" else "CANDIDATURAS Y COBERTURA"
+    page_title = "Candidaturas y partidos · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Candidaturas y partidos · Elecciones 2026"
+    page_description = "Consulta las candidaturas y el estado de sus programas para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else "Consulta las candidaturas electorales y el estado de sus programas para las Elecciones Generales 2026."
+
     content = f"""    <section class="hero" aria-labelledby="parties-title">
-      <p class="hero-eyebrow">CANDIDATURAS Y COBERTURA</p>
+      <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="parties-title" class="hero-title">Candidaturas seguidas</h1>
       <p class="hero-intro">Registro oficial de partidos y coaliciones incluidos en el comparador bajo criterios públicos y auditables. Consulte el estado de publicación y las propuestas revisadas de cada formación.</p>
     </section>
@@ -951,8 +1029,8 @@ def render_party_index(ctx: SiteContext) -> str:
 
     return render_base(
         ctx=ctx,
-        title="Candidaturas y partidos · Elecciones 2026",
-        description="Consulta las candidaturas electorales y el estado de sus programas para las Elecciones Generales 2026.",
+        title=page_title,
+        description=page_description,
         canonical_path="/partidos/",
         content=content,
         root_path="../",
@@ -993,13 +1071,17 @@ def render_party_detail(ctx: SiteContext, party: PartyInfo) -> str:
               {render_party_card(ctx, s, party.id, "A")}
             </div>""")
 
+    hero_eyebrow = "ENSAYO PILOTO PRIVADO · CANDIDATURA GENERALES 2023" if ctx.election_id == "es-gen-2023" else "CANDIDATURA · ELECCIONES 2026"
+    page_title = f"{party.display_name} · Programa y propuestas Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else f"{party.display_name} · Programa y propuestas Elecciones 2026"
+    page_description = f"Consulta el programa electoral y propuestas revisadas de {party.display_name} para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else f"Consulta el programa electoral y propuestas revisadas de {party.display_name} para las Elecciones 2026."
+
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a> ·
       <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">Todas las candidaturas</a>
     </nav>
 
     <section class="hero" aria-labelledby="party-title">
-      <p class="hero-eyebrow">CANDIDATURA · ELECCIONES 2026</p>
+      <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="party-title" class="hero-title">{escape(party.display_name)}</h1>
       <p class="hero-intro">{escape(party.official_name)} ({escape(party.short_name)})</p>
       <div style="display: flex; gap: var(--space-2); align-items: center; margin-top: var(--space-2);">
@@ -1019,8 +1101,8 @@ def render_party_detail(ctx: SiteContext, party: PartyInfo) -> str:
 
     return render_base(
         ctx=ctx,
-        title=f"{party.display_name} · Programa y propuestas Elecciones 2026",
-        description=f"Consulta el programa electoral y propuestas revisadas de {party.display_name} para las Elecciones 2026.",
+        title=page_title,
+        description=page_description,
         canonical_path=f"/partidos/{party.id}/",
         content=content,
         root_path="../../",
@@ -1052,8 +1134,12 @@ def render_methodology_page(ctx: SiteContext) -> str:
           </ul>
         </div>"""
 
+    hero_eyebrow = "METODOLOGÍA EDITORIAL · GENERALES 2023 (ENSAYO PILOTO)" if ctx.election_id == "es-gen-2023" else "METODOLOGÍA EDITORIAL, FUENTES Y RECTIFICACIONES · ELECCIONES 2026"
+    page_title = "Metodología editorial y privacidad · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Metodología editorial y privacidad · Elecciones 2026"
+    page_description = "Marco metodológico, gobernanza editorial y aviso de privacidad para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Marco metodológico, gobernanza editorial, política de citas y aviso de privacidad de Elecciones 2026."
+
     content = f"""    <section class="hero" aria-labelledby="method-title">
-      <p class="hero-eyebrow">METODOLOGÍA EDITORIAL, FUENTES Y RECTIFICACIONES · ELECCIONES 2026</p>
+      <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="method-title" class="hero-title">Compara con rigor y neutralidad</h1>
       <p class="hero-intro">El proyecto Elecciones 2026 se rige por un marco metodológico estricto de citas exactas, doble revisión humana independiente y ausencia total de recomendaciones de voto.</p>
       <div class="update-stamp" aria-label="Fecha de actualización">
@@ -1138,8 +1224,8 @@ def render_methodology_page(ctx: SiteContext) -> str:
 
     return render_base(
         ctx=ctx,
-        title="Metodología editorial y privacidad · Elecciones 2026",
-        description="Marco metodológico, gobernanza editorial, política de citas y aviso de privacidad de Elecciones 2026.",
+        title=page_title,
+        description=page_description,
         canonical_path="/metodo/",
         content=content,
         root_path="../",
@@ -1183,8 +1269,12 @@ def render_sources_page(ctx: SiteContext) -> str:
     rows_2026_html = "".join(rows_2026)
     rows_2023_html = "".join(rows_2023)
 
+    hero_eyebrow = "REGISTRO DE FUENTES Y AUDITORÍA · GENERALES 2023 (ENSAYO PILOTO)" if ctx.election_id == "es-gen-2023" else "REGISTRO DE FUENTES Y AUDITORÍA"
+    page_title = "Fuentes oficiales y trazabilidad · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Fuentes oficiales y trazabilidad · Elecciones 2026"
+    page_description = "Inventario de fuentes primarias, versiones y hashes SHA-256 para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Inventario de fuentes primarias, versiones y hashes SHA-256 para las Elecciones 2026."
+
     content = f"""    <section class="hero" aria-labelledby="sources-title">
-      <p class="hero-eyebrow">REGISTRO DE FUENTES Y AUDITORÍA</p>
+      <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="sources-title" class="hero-title">Fuentes oficiales y trazabilidad</h1>
       <p class="hero-intro">Inventario público de documentos electorales, fechas de consulta, versiones y sumas de verificación criptográfica (SHA-256). Solo los documentos verificados alimentan afirmaciones públicas.</p>
       <div class="update-stamp" aria-label="Fecha de actualización">
@@ -1256,8 +1346,8 @@ def render_sources_page(ctx: SiteContext) -> str:
 
     return render_base(
         ctx=ctx,
-        title="Fuentes oficiales y trazabilidad · Elecciones 2026",
-        description="Inventario de fuentes primarias, versiones y hashes SHA-256 para las Elecciones 2026.",
+        title=page_title,
+        description=page_description,
         canonical_path="/fuentes/",
         content=content,
         root_path="../",
@@ -1300,8 +1390,12 @@ def render_corrections_page(ctx: SiteContext) -> str:
             </div>
           </article>""")
 
+    hero_eyebrow = "REGISTRO DE CORRECCIONES · GENERALES 2023 (ENSAYO PILOTO)" if ctx.election_id == "es-gen-2023" else "TRANSPARENCIA Y RECTIFICACIÓN"
+    page_title = "Registro de correcciones editoriales · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Registro de correcciones editoriales · Elecciones 2026"
+    page_description = "Historial público y transparente de correcciones y revisiones para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Historial público y transparente de correcciones y revisiones en los datos electorales."
+
     content = f"""    <section class="hero" aria-labelledby="corrections-title">
-      <p class="hero-eyebrow">TRANSPARENCIA Y RECTIFICACIÓN</p>
+      <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="corrections-title" class="hero-title">Registro de correcciones</h1>
       <p class="hero-intro">Historial auditable de correcciones de erratas, reubicaciones temáticas o actualizaciones de fuentes. Cada cambio invalida las relaciones comparativas dependientes hasta su nueva verificación.</p>
       <div class="update-stamp" aria-label="Fecha de actualización">
@@ -1330,8 +1424,8 @@ def render_corrections_page(ctx: SiteContext) -> str:
 
     return render_base(
         ctx=ctx,
-        title="Registro de correcciones editoriales · Elecciones 2026",
-        description="Historial público y transparente de correcciones y revisiones en los datos electorales.",
+        title=page_title,
+        description=page_description,
         canonical_path="/correcciones/",
         content=content,
         root_path="../",
