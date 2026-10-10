@@ -362,6 +362,61 @@
             summary: 'Partido A propone bonificación de tipos de interés hipotecarios, mientras que en el documento revisado de Partido B no consta propuesta específica sobre este instrumento.',
             differences: [
               '«No consta» indica ausencia documental en el texto; nunca se interpretará como oposición política.'
+          }
+        }
+      },
+      {
+        id: 'rel-pilot-2023-housing-pp-erc-divergence',
+        title: 'Medida: Políticas de acceso al alquiler y vivienda juvenil (Generales 2023)',
+        summary: 'Divergencia entre avales públicos para compra y fianza privada (PP) frente a regulación legal de precios de alquiler y movilización de vivienda desocupada (ERC).',
+        electionId: 'es-gen-2023',
+        positions: {
+          'pp': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Programa piloto histórico 2023: Avales del Estado de hasta el 15% del valor de tasación para compra de primera vivienda por menores de 35 años.',
+            quote: 'Crearemos un programa de avales para jóvenes de hasta 35 años que garantice hasta el 15% de la hipoteca.',
+            qualifications: [
+              'Exclusivo para primera vivienda habitual.',
+              'Límite de edad fijado en 35 años cumplidos en el momento de solicitud.'
+            ],
+            source: 'v23J-v1 · Pág. 48 · Sección Capítulo 2: Empleo y Economía familiar',
+            sourceUrl: 'https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf',
+            date: '11/10/2026'
+          },
+          'erc': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Programa piloto histórico 2023: Regulación de precios de alquiler e incentivos y movilización forzosa de viviendas desocupadas.',
+            quote: 'Garantir el dret a l\'habitatge regulant els preus del lloguer i mobilitzant els pisos buits.',
+            qualifications: [
+              'Prioridad de aplicación en zonas tensionadas del mercado residencial.',
+              'Movilización dirigida preferentemente a grandes tenedores de vivienda.'
+            ],
+            source: 'v23J-v1 · Pág. 32 · Sección Capítol: Habitatge digne',
+            sourceUrl: 'https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf',
+            date: '11/10/2026'
+          }
+        },
+        relationships: {
+          'pp:erc': {
+            type: 'divergence',
+            typeLabel: 'Divergencia entre propuestas',
+            icon: '≠',
+            summary: 'Divergencia entre avales públicos para compra y fianza privada (PP) frente a regulación legal de precios de alquiler y movilización de vivienda desocupada (ERC).',
+            differences: [
+              'El PP propone avales bancarios del Estado para facilitar el acceso privado a hipotecas y fianzas sin intervenir precios.',
+              'ERC propone intervención regulatoria sobre los precios de alquiler residencial y penalización de pisos vacíos de grandes tenedores.'
+            ]
+          },
+          'erc:pp': {
+            type: 'divergence',
+            typeLabel: 'Divergencia entre propuestas',
+            icon: '≠',
+            summary: 'Divergencia entre avales públicos para compra y fianza privada (PP) frente a regulación legal de precios de alquiler y movilización de vivienda desocupada (ERC).',
+            differences: [
+              'El PP propone avales bancarios del Estado para facilitar el acceso privado a hipotecas y fianzas sin intervenir precios.',
+              'ERC propone intervención regulatoria sobre los precios de alquiler residencial y penalización de pisos vacíos de grandes tenedores.'
             ]
           }
         }
@@ -1142,15 +1197,38 @@
     const initialTopic = urlParams.get('topic');
     const initialPartyA = urlParams.get('partyA');
     const initialPartyB = urlParams.get('partyB');
+    const isPilot2023 = urlParams.get('election') === 'es-gen-2023' || urlParams.get('election') === '2023';
+
+    if (isPilot2023) {
+      if (PARTIES['pp']) {
+        PARTIES['pp'].status = 'official';
+        PARTIES['pp'].statusLabel = 'Programa oficial (2023)';
+        PARTIES['pp'].electionId = 'es-gen-2023';
+      }
+      if (PARTIES['erc']) {
+        PARTIES['erc'].status = 'official';
+        PARTIES['erc'].statusLabel = 'Programa oficial (2023)';
+        PARTIES['erc'].electionId = 'es-gen-2023';
+      }
+
+      const previewBanner = document.querySelector('.preview-banner');
+      if (previewBanner) {
+        previewBanner.textContent = 'ENSAYO PILOTO PRIVADO · Elecciones Generales 2023 (Ensayo técnico interno, no publicar como 2026)';
+      }
+    }
 
     if (initialTopic && TOPICS[initialTopic]) {
       topicSelect.value = initialTopic;
     }
     if (initialPartyA && PARTIES[initialPartyA]) {
       partyASelect.value = initialPartyA;
+    } else if (isPilot2023 && PARTIES['pp']) {
+      partyASelect.value = 'pp';
     }
     if (initialPartyB && PARTIES[initialPartyB]) {
       partyBSelect.value = initialPartyB;
+    } else if (isPilot2023 && PARTIES['erc']) {
+      partyBSelect.value = 'erc';
     }
 
     function validateSelection() {
@@ -1159,6 +1237,19 @@
 
       if (partyA === partyB) {
         errorEl.textContent = 'Por favor, selecciona dos candidaturas distintas para realizar la comparación.';
+        errorEl.classList.remove('sr-only');
+        partyASelect.setAttribute('aria-invalid', 'true');
+        partyBSelect.setAttribute('aria-invalid', 'true');
+        return false;
+      }
+
+      // Cross-election isolation check (Task 1.4 / Issue #21)
+      const candA = PARTIES[partyA];
+      const candB = PARTIES[partyB];
+      const electionA = candA && candA.electionId ? candA.electionId : 'es-gen-2026';
+      const electionB = candB && candB.electionId ? candB.electionId : 'es-gen-2026';
+      if (electionA !== electionB) {
+        errorEl.textContent = 'Rechazo de combinación entre elecciones (Tarea 1.4): No se permite comparar candidaturas de elecciones distintas (' + electionA + ' vs ' + electionB + ').';
         errorEl.classList.remove('sr-only');
         partyASelect.setAttribute('aria-invalid', 'true');
         partyBSelect.setAttribute('aria-invalid', 'true');
@@ -1183,7 +1274,7 @@
       const partyBKey = partyBSelect.value;
 
       const topicData = TOPICS[topicKey] || TOPICS['housing'];
-      const measures = MEASURES_BY_TOPIC[topicKey] || [
+      let measures = MEASURES_BY_TOPIC[topicKey] || [
         {
           id: topicKey + '-default',
           title: 'Medida: ' + topicData.name,
@@ -1192,6 +1283,20 @@
           relationships: {}
         }
       ];
+
+      // Filter measures by election
+      if (isPilot2023) {
+        const pilotMeasures = measures.filter(function (m) {
+          return m.electionId === 'es-gen-2023';
+        });
+        if (pilotMeasures.length > 0) {
+          measures = pilotMeasures;
+        }
+      } else {
+        measures = measures.filter(function (m) {
+          return !m.electionId || m.electionId === 'es-gen-2026';
+        });
+      }
 
       // Dynamically render all grouped measures into measuresContainer
       if (measuresContainer) {
@@ -1208,6 +1313,9 @@
         newUrl.searchParams.set('topic', topicKey);
         newUrl.searchParams.set('partyA', partyAKey);
         newUrl.searchParams.set('partyB', partyBKey);
+        if (isPilot2023) {
+          newUrl.searchParams.set('election', 'es-gen-2023');
+        }
         window.history.replaceState({}, '', newUrl.toString());
       }
     }

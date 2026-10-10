@@ -53,6 +53,30 @@
       "territorial_scope": "Cataluña",
       "inclusion_criterion": "criterion_a_parliamentary_representation",
       "is_fixture": true
+    },
+    {
+      "id": "pp",
+      "official_name": "Partido Popular",
+      "display_name": "Partido Popular",
+      "short_name": "PP",
+      "ballot_name": "Partido Popular (PP)",
+      "is_coalition": false,
+      "coalition_members": [],
+      "territorial_scope": "national",
+      "inclusion_criterion": "criterion_a_parliamentary_representation",
+      "is_fixture": true
+    },
+    {
+      "id": "erc",
+      "official_name": "Esquerra Republicana de Catalunya",
+      "display_name": "Esquerra Republicana de Catalunya",
+      "short_name": "ERC",
+      "ballot_name": "Esquerra Republicana de Catalunya (ERC)",
+      "is_coalition": false,
+      "coalition_members": [],
+      "territorial_scope": "Cataluña",
+      "inclusion_criterion": "criterion_a_parliamentary_representation",
+      "is_fixture": true
     }
   ]
 }

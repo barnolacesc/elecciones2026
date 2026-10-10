@@ -581,6 +581,9 @@ class EditorialApprovalGate:
         self.parties = parties or []
         self.programmes = programmes or []
         self.party_ids = {p.id for p in self.parties} if self.parties else set()
+        if self.source_register:
+            for s in self.source_register.sources:
+                self.party_ids.add(s.party_id)
         self.programme_map = {p.programme_id: p for p in self.programmes} if self.programmes else {}
 
     def validate_statement(

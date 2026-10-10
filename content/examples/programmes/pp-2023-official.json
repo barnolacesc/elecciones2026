@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2023",
+  "programme_id": "prog-pp-2023-official",
+  "candidacy_id": "pp",
+  "title": "Programa Electoral PP 23J",
+  "status": "official",
+  "version": "23J-v1",
+  "publisher": "Partido Popular",
+  "official_url": "https://www.pp.es/categoria/elecciones-generales/",
+  "publication_date": "2023-07-04",
+  "retrieval_date": "2026-10-09T00:00:00Z",
+  "language": "es",
+  "sha256": "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
+  "rights_status": "verified_quotation_permitted",
+  "coverage_notes": "Programa electoral oficial verificado para el ensayo piloto de 2023.",
+  "supersedes": null,
+  "superseded_by": null,
+  "replacement_reason": null,
+  "is_fixture": true
+}

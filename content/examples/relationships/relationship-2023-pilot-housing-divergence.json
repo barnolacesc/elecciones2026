@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2023",
+  "id": "rel-pilot-2023-housing-pp-erc-divergence",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "measure_label": "Políticas de acceso al alquiler y vivienda juvenil",
+  "party_ids": [
+    "pp",
+    "erc"
+  ],
+  "statement_ids": [
+    "stmt-pilot-pp-housing-2023",
+    "stmt-pilot-erc-housing-2023"
+  ],
+  "relationship_type": "divergence",
+  "summary": "Divergencia entre avales públicos para compra y fianza privada (PP) frente a regulación legal de precios de alquiler y movilización de vivienda desocupada (ERC).",
+  "differences": [
+    "El PP propone avales bancarios del Estado para facilitar el acceso privado a hipotecas y fianzas sin intervenir precios.",
+    "ERC propone intervención regulatoria sobre los precios de alquiler residencial y penalización de pisos vacíos de grandes tenedores."
+  ],
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "rev-pilot-1",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Comparativa 2023 revisada contra fuentes documentales oficiales."
+    },
+    {
+      "reviewer_id": "rev-pilot-2",
+      "review_date": "2026-10-11",
+      "verdict": "approved",
+      "review_notes": "Revisión secundaria de neutralidad y divergencia aprobada."
+    }
+  ],
+  "status": "active",
+  "invalidation_reason": null,
+  "invalidated_by_correction_id": null,
+  "is_fixture": true
+}
