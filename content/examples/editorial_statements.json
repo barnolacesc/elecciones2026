@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "version": "1.0.0",
-  "description": "Representative fixture examples for statement quotes, dual-review records, corrections, and comparison invalidations under policy package E0.2.",
+  "description": "FICTITIOUS TEST DATA: no human signoffs or political claims are approved. Representative fixture examples for statement quotes, dual-review records, corrections, and comparison invalidations under policy package E0.2.",
   "valid_statement_with_short_quote": {
     "id": "stmt-pilot-pp-housing-001",
     "election_id": "es-gen-2023",
@@ -11,7 +11,7 @@
     "summary_es": "Ayuda a la emancipación juvenil mediante un aval estatal de hasta el 15% del valor de tasación para la fianza o compra de primera vivienda.",
     "source_id": "src-2023-pp-v1",
     "source_version": "23J-v1",
-    "status": "published",
+    "status": "draft",
     "quote": {
       "text": "un aval bancario del 15% para facilitar la fianza de los jóvenes en alquiler",
       "source_id": "src-2023-pp-v1",
@@ -24,7 +24,7 @@
       "reviewed_by_2": "editor-neutrality",
       "review_date_1": "2026-10-09",
       "review_date_2": "2026-10-09",
-      "lead_editor_signoff": "cesc"
+      "lead_editor_signoff": null
     }
   },
   "invalid_statement_unsupported_quote_missing_coordinates": {

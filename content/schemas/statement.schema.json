@@ -144,6 +144,14 @@
         },
         "review_notes": {
           "type": "string"
+        },
+        "reviewer_kind": {
+          "type": ["string", "null"],
+          "enum": ["human", "fixture", "automated", null]
+        },
+        "evidence_ref": {
+          "type": ["string", "null"],
+          "description": "Reference to retained human approval evidence."
         }
       },
       "additionalProperties": false

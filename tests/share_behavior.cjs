@@ -85,7 +85,8 @@ test('private pilot keeps election context and never falls back to 2026 measures
   let shared;
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023',
     { share: async data => { shared = data; } }, true, true);
-  assert.match(b.nodes['measures-container'].innerHTML, /Generales 2023/);
+  assert.equal(b.nodes['measures-container'].innerHTML, '');
+  assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /15%|Garantir el dret/);
   await b.click();
   assert.match(shared.title, /2023/);
   assert.match(shared.url, /election=es-gen-2023/);

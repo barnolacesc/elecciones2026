@@ -28,12 +28,12 @@ This is **not** a final candidacy inventory. Do not infer inclusion from the 202
 
 ## 2023 Pilot rehearsal sources (Task 1.2)
 
-To satisfy Task 1.2 and support a private, clearly labelled rehearsal proof of concept without blocking technical development, four lawful 2023 general-election programmes (`election_id: es-gen-2023`) are registered with verified official download URLs, retrieval dates, rights reviews, and verified SHA-256 hashes:
+Four historical 2023 programme records (`election_id: es-gen-2023`) are registered for technical rehearsal. The [2026-10-10 audit](PILOT-2023-AUDIT.md) rechecked PP and ERC PDF hashes but withdrew unsupported human and rights approvals. Task 1.2 remains open. PNV and Sumar retain earlier register entries; this audit does not verify their rights or editorial approvals.
 
 | Formation / Party | Document title | Official URL / Direct PDF link | Retrieval date | Status | Rights review | Verified SHA-256 hash |
 |---|---|---|---|---|---|---|
-| Partido Popular (PP) | *Programa Electoral PP 23J* | [Direct PDF](https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf) via [PP Generales](https://www.pp.es/categoria/elecciones-generales/) | 2026-10-09 | `verified` | `link_and_short_quote` | `c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108` |
-| Esquerra Republicana de Catalunya (ERC) | *Programa Electoral 2023* | [Direct PDF](https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf) via [ERC Transparència](https://www.esquerra.cat/transparencia/programes-electorals/) | 2026-10-09 | `verified` | `link_and_short_quote` | `760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854` |
+| Partido Popular (PP) | *Programa Electoral PP 23J* | [Direct PDF](https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf) via [PP Generales](https://www.pp.es/categoria/elecciones-generales/) | 2026-10-10 | `published-unverified` | `not_reviewed` | `c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108` |
+| Esquerra Republicana de Catalunya (ERC) | *Programa Electoral 2023* | [Direct PDF](https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf) via [ERC Transparència](https://www.esquerra.cat/transparencia/programes-electorals/) | 2026-10-10 | `published-unverified` | `not_reviewed` | `760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854` |
 | EAJ-PNV | *Con voz propia. Programa Electoral 23-J* | [Direct PDF](https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j) via [EAJ-PNV Documentos](https://www.eaj-pnv.eus/es/documentos/20945/con-voz-propia-programa-electoral-23-j) | 2026-10-09 | `verified` | `link_and_short_quote` | `46fec3a017cdc5c4e506fa5e228b97690071d5a03dfd3d8128392aa20f57d132` |
 | Movimiento Sumar | *Un Programa para ti* | [Direct PDF](https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf) via [Sumar 23J Archive](https://movimientosumar.es/programa-electoral-23j/) | 2026-10-09 | `verified` | `link_and_short_quote` | `d5ccdac0d20f1b93a5f703f180d086041bd988835072dd5cb5d1378bf0195820` |
 
@@ -65,7 +65,7 @@ The register enforces strict separation between elections:
      - Maximum **300 characters** per quotation.
      - Mandatory locators: non-empty `page` or `section`.
      - Strict operative policy substance (numerical targets, dates, fiscal percentages, administrative instruments); rhetorical slogans and campaign appeals are excluded.
-   - **Pilot Sources:** The four registered 2023 pilot sources (`PP`, `ERC`, `EAJ-PNV`, `Sumar`) have undergone rights review and are assigned `status: "link_and_short_quote"`, permitting outbound links and short verbatim quotes within the 40-word / 300-character limits with exact page citations.
+   - **Pilot Sources:** PP and ERC quotation rights are `not_reviewed` after issue #42 removed unsupported generic approvals. No pilot claim or quote may be published until rights and two human reviews are documented. Existing PNV/Sumar register entries are outside this audit; their recorded status must not be treated as fresh approval evidence.
    - **Monitored 2026 Sources:** All nine monitored 2026 sources remain in `missing` and `not_reviewed` status. No quotations may be extracted or published until the complete official documents are retrieved, verified against SHA-256 hashes, and approved by editorial reviewers.
 6. **Replacement history and invalidation:**
    - If a party releases a revised programme or errata, register the new version.
