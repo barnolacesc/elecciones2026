@@ -362,6 +362,7 @@
             summary: 'Partido A propone bonificación de tipos de interés hipotecarios, mientras que en el documento revisado de Partido B no consta propuesta específica sobre este instrumento.',
             differences: [
               '«No consta» indica ausencia documental en el texto; nunca se interpretará como oposición política.'
+            ]
           }
         }
       },
@@ -970,12 +971,24 @@
     };
   }
 
+  function fixturePositionKey(partyKey) {
+    // Generated selectors use schema IDs; the local fixtures use shorter keys.
+    const aliases = {
+      'partido-ejemplo-a': 'party-a',
+      'partido-ejemplo-b': 'party-b',
+      'coalicion-ejemplo-c': 'coalicion-c',
+      'partido-ejemplo-d': 'party-d'
+    };
+    return aliases[partyKey] || partyKey;
+  }
+
   function getPositionForParty(measure, partyKey) {
     const partyData = getPartyData(partyKey);
+    const positionKey = fixturePositionKey(partyKey);
 
     // Check direct match in measure.positions
-    if (measure.positions && measure.positions[partyKey]) {
-      const pos = measure.positions[partyKey];
+    if (measure.positions && measure.positions[positionKey]) {
+      const pos = measure.positions[positionKey];
       return {
         name: partyData.name,
         pill: partyData.pill,
@@ -1018,8 +1031,8 @@
 
   function getRelationshipForPair(measure, partyAKey, partyBKey, posA, posB) {
     // 1. Direct relationship key check
-    const key1 = partyAKey + ':' + partyBKey;
-    const key2 = partyBKey + ':' + partyAKey;
+    const key1 = fixturePositionKey(partyAKey) + ':' + fixturePositionKey(partyBKey);
+    const key2 = fixturePositionKey(partyBKey) + ':' + fixturePositionKey(partyAKey);
 
     if (measure.relationships && (measure.relationships[key1] || measure.relationships[key2])) {
       return measure.relationships[key1] || measure.relationships[key2];

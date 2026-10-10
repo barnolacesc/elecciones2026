@@ -108,6 +108,34 @@ jobs:
           sys.exit(1 if found > 0 else 0)
           "
 
+  mobile-accessibility:
+    name: Rendered mobile and keyboard regression checks (E2.5)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install development browser tooling
+        run: |
+          pip install playwright==1.63.0
+          python -m playwright install --with-deps chromium
+
+      - name: Check rendered mobile flow and measure throttled navigation
+        run: |
+          PYTHONPATH=src python -m elecciones2026.mobile_accessibility --output build/mobile-accessibility.json
+
+      - name: Retain browser observations and review limits
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-accessibility-e2-5
+          path: build/mobile-accessibility.json
+
   docker-parity:
     name: Build Docker serving image and verify container parity (Task 4.5)
     runs-on: ubuntu-latest
