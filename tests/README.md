@@ -60,3 +60,22 @@ Stable routes are `/`, `/temas/{topic-id}/`, and
 also carry `election=es-gen-2023`; the legacy `election=2023` input normalizes to
 that value. URLs use the current preview origin rather than the placeholder public
 domain. Open Graph previews and public-domain checks belong to E3.1a.
+## Rendered mobile checks (E2.5)
+
+The browser audit is separate from the standard-library unit suite. Install the
+development-only browser tooling and run it against a temporary generated site:
+
+```sh
+python -m pip install playwright==1.63.0
+python -m playwright install chromium
+PYTHONPATH=src python -m elecciones2026.mobile_accessibility --output build/mobile-accessibility.json
+```
+
+Linux CI uses `python -m playwright install --with-deps chromium`. The report
+contains individual automated outcomes, rendered layout observations, three
+cold navigation samples at 1.6 Mbps download and 150 ms emulated latency, and
+explicit review limits. Timing is observed in the browser; it excludes production
+DNS, TLS, caching and origin latency. No production performance budget or TTI is
+inferred. Browser emulation and accessible names do not replace participant,
+VoiceOver/TalkBack, or physical device testing. Follow the pending review in
+OpenSpec task 3.5 before declaring E2.5 complete.
