@@ -13,10 +13,8 @@ services:
     pids_limit: 64
     mem_limit: 256m
     logging:
-      driver: local
-      options:
-        max-size: "5m"
-        max-file: "2"
+      # The preview image emits request URLs; retain no container request log.
+      driver: none
     healthcheck:
       test: [CMD, wget, -q, -O, /dev/null, "http://127.0.0.1:8080/"]
       interval: 10s

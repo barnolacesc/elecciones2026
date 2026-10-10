@@ -43,7 +43,9 @@ job or credentials are added to PR CI.
    certificate if exclusive zone authentication is required. Default/unknown
    hosts close the connection. Never treat the Cloudflare CIDR allowlist alone as
    exclusive account authentication.
-5. Keep access logs disabled; rotate nginx error logs daily, keep at most 14 days,
+5. Keep host access logs disabled. Production Compose disables retained container
+   logs because the preview image emits request URLs; inspect container health
+   instead. Rotate host nginx error logs daily, keep at most 14 days,
    and restrict access. Set journal retention to <=14 days as well. Cloudflare
    log retention/data processing still requires the privacy owner's account review.
    Enable unattended security updates and certificate expiry alerts (30/14/7 days).
