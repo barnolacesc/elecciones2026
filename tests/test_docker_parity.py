@@ -278,6 +278,28 @@ class TestLiveDockerContainerParity(unittest.TestCase):
                 self.assertIn("max-age=31536000", cache_ctrl)
                 self.assertIn("immutable", cache_ctrl)
 
+    def test_container_preserves_social_metadata_and_serves_preview_png(self) -> None:
+        """E3.1a: verify the shipped home page is not replaced by the prototype."""
+        if not self.docker_ready:
+            self.skipTest("Docker daemon not available in test environment")
+
+        origin = f"http://127.0.0.1:{self.port}"
+        for route in ('/', '/?topic=housing&partyA=pp&partyB=erc',
+                      '/temas/housing/?partyA=pp&partyB=erc&answer=private'):
+            with self.subTest(route=route):
+                with urllib.request.urlopen(origin + route, timeout=5) as resp:
+                    body = resp.read().decode('utf-8')
+                canonical = 'https://elecciones2026.es' + route.split('?')[0]
+                self.assertIn(f'<link rel="canonical" href="{canonical}">', body)
+                self.assertIn(f'<meta property="og:url" content="{canonical}">', body)
+                self.assertIn('<meta property="og:locale" content="es_ES">', body)
+                image = re.search(r'<meta property="og:image" content="https://elecciones2026.es(/assets/social-preview-[0-9a-f]{16}\.png)">', body)
+                self.assertIsNotNone(image)
+                with urllib.request.urlopen(origin + image.group(1), timeout=5) as resp:
+                    self.assertEqual(resp.headers.get('Content-Type'), 'image/png')
+                    self.assertIn('immutable', resp.headers.get('Cache-Control', ''))
+                    self.assertEqual(resp.read(), (ROOT_DIR / 'site/assets/social-preview.png').read_bytes())
+
     def test_container_serves_crawler_policies_with_1h_cache(self) -> None:
         """Verify robots.txt and sitemap.xml are served with 1-hour cache header."""
         if not self.docker_ready:
