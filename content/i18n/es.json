@@ -72,7 +72,9 @@
     "note": "Solo se publicarán relaciones revisadas entre propuestas concretas. «No consta» nunca se interpretará como oposición política."
   },
   "share": {
-    "button_text": "Compartir esta comparación"
+    "button_text": "Compartir esta página",
+    "link_label": "Enlace para compartir",
+    "copy_button": "Copiar enlace"
   },
   "methodology_summary": {
     "eyebrow": "02 / MÉTODO",

@@ -362,6 +362,7 @@
             summary: 'Partido A propone bonificación de tipos de interés hipotecarios, mientras que en el documento revisado de Partido B no consta propuesta específica sobre este instrumento.',
             differences: [
               '«No consta» indica ausencia documental en el texto; nunca se interpretará como oposición política.'
+            ]
           }
         }
       },
@@ -1184,20 +1185,18 @@
     const partyASelect = document.getElementById('party-a-select');
     const partyBSelect = document.getElementById('party-b-select');
     const errorEl = document.getElementById('selection-error');
-    const shareBtn = document.getElementById('share-button');
-    const shareFeedback = document.getElementById('share-feedback');
     const measuresContainer = document.getElementById('measures-container');
 
     if (!form || !topicSelect || !partyASelect || !partyBSelect || !errorEl) {
       return;
     }
 
-    // Parse URL query parameters if present (for deep linking / restoring selection)
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialTopic = urlParams.get('topic');
-    const initialPartyA = urlParams.get('partyA');
-    const initialPartyB = urlParams.get('partyB');
-    const isPilot2023 = urlParams.get('election') === 'es-gen-2023' || urlParams.get('election') === '2023';
+    const route = window.NeutralSharing.readSelection(window.location.href, TOPICS, PARTIES);
+    const initialTopic = route.topic;
+    const initialPartyA = route.partyA;
+    const initialPartyB = route.partyB;
+    const isPilot2023 = route.pilot || document.body.dataset.election === 'es-gen-2023';
+    let comparisonActive = Boolean(initialPartyA && initialPartyB);
 
     if (isPilot2023) {
       if (PARTIES['pp']) {
@@ -1217,15 +1216,15 @@
       }
     }
 
-    if (initialTopic && TOPICS[initialTopic]) {
+    if (initialTopic) {
       topicSelect.value = initialTopic;
     }
-    if (initialPartyA && PARTIES[initialPartyA]) {
+    if (initialPartyA) {
       partyASelect.value = initialPartyA;
     } else if (isPilot2023 && PARTIES['pp']) {
       partyASelect.value = 'pp';
     }
-    if (initialPartyB && PARTIES[initialPartyB]) {
+    if (initialPartyB) {
       partyBSelect.value = initialPartyB;
     } else if (isPilot2023 && PARTIES['erc']) {
       partyBSelect.value = 'erc';
@@ -1235,7 +1234,10 @@
       const partyA = partyASelect.value;
       const partyB = partyBSelect.value;
 
-      if (partyA === partyB) {
+      if (!Object.prototype.hasOwnProperty.call(TOPICS, topicSelect.value) ||
+          !Object.prototype.hasOwnProperty.call(PARTIES, partyA) ||
+          !Object.prototype.hasOwnProperty.call(PARTIES, partyB) || partyA === partyB ||
+          (isPilot2023 && ![partyA, partyB].every(id => id === 'pp' || id === 'erc'))) {
         errorEl.textContent = 'Por favor, selecciona dos candidaturas distintas para realizar la comparación.';
         errorEl.classList.remove('sr-only');
         partyASelect.setAttribute('aria-invalid', 'true');
@@ -1289,9 +1291,7 @@
         const pilotMeasures = measures.filter(function (m) {
           return m.electionId === 'es-gen-2023';
         });
-        if (pilotMeasures.length > 0) {
-          measures = pilotMeasures;
-        }
+        measures = pilotMeasures;
       } else {
         measures = measures.filter(function (m) {
           return !m.electionId || m.electionId === 'es-gen-2026';
@@ -1307,80 +1307,41 @@
         measuresContainer.innerHTML = allMeasuresHtml;
       }
 
-      // Update URL query parameters without reloading
-      if (window.history && window.history.replaceState) {
-        const newUrl = new URL(window.location.href);
-        newUrl.searchParams.set('topic', topicKey);
-        newUrl.searchParams.set('partyA', partyAKey);
-        newUrl.searchParams.set('partyB', partyBKey);
-        if (isPilot2023) {
-          newUrl.searchParams.set('election', 'es-gen-2023');
-        }
-        window.history.replaceState({}, '', newUrl.toString());
+      if (comparisonActive && window.history && window.history.replaceState) {
+        window.history.replaceState({}, '', window.NeutralSharing.stableUrl(window.location.href, currentState()));
       }
+    }
+
+    function currentState() {
+      if (!comparisonActive || !validateSelection()) return { pilot: isPilot2023 };
+      return { topic: topicSelect.value, partyA: partyASelect.value,
+        partyB: partyBSelect.value, pilot: isPilot2023 };
+    }
+    window.NeutralSharing.getState = currentState;
+    function updateComparison() {
+      comparisonActive = true;
+      renderComparison();
+      if (!validateSelection()) {
+        window.history.replaceState({}, '', window.NeutralSharing.stableUrl(window.location.href, { pilot: isPilot2023 }));
+      }
+      const label = document.querySelector('#share-button span:last-child');
+      if (label) label.textContent = validateSelection() ? 'Compartir esta comparación' : 'Compartir esta página';
     }
 
     // Attach form and select listeners
-    topicSelect.addEventListener('change', renderComparison);
-    partyASelect.addEventListener('change', renderComparison);
-    partyBSelect.addEventListener('change', renderComparison);
+    topicSelect.addEventListener('change', updateComparison);
+    partyASelect.addEventListener('change', updateComparison);
+    partyBSelect.addEventListener('change', updateComparison);
 
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();
-      renderComparison();
+      updateComparison();
     });
 
-    // Share button handler (native Web Share or clipboard fallback)
-    if (shareBtn) {
-      shareBtn.addEventListener('click', function () {
-        const currentUrl = window.location.href;
-        const topicName = (TOPICS[topicSelect.value] || {}).name || 'Vivienda';
-        const partyAName = (PARTIES[partyASelect.value] || {}).shortName || 'Partido A';
-        const partyBName = (PARTIES[partyBSelect.value] || {}).shortName || 'Partido B';
-
-        const shareData = {
-          title: 'Elecciones 2026 · Comparador de programas',
-          text: 'Compara las propuestas de ' + partyAName + ' y ' + partyBName + ' sobre ' + topicName + ' con fuentes directas.',
-          url: currentUrl
-        };
-
-        if (navigator.share && typeof navigator.share === 'function') {
-          navigator.share(shareData).catch(function () {
-            // User cancelled or unsupported share target; fall back to clipboard
-            copyToClipboard(currentUrl);
-          });
-        } else {
-          copyToClipboard(currentUrl);
-        }
-      });
-    }
-
-    function copyToClipboard(text) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(showFeedback, function () {
-          fallbackPrompt(text);
-        });
-      } else {
-        fallbackPrompt(text);
-      }
-    }
-
-    function showFeedback() {
-      if (!shareFeedback) return;
-      shareFeedback.textContent = 'Enlace copiado al portapapeles';
-      shareFeedback.classList.remove('sr-only');
-      setTimeout(function () {
-        shareFeedback.classList.add('sr-only');
-        shareFeedback.textContent = '';
-      }, 3000);
-    }
-
-    function fallbackPrompt(text) {
-      window.prompt('Copia este enlace para compartir la comparación:', text);
-    }
-
-    // Run initial rendering
+    // Render defaults without converting home into a comparison URL.
     renderComparison();
+    window.history.replaceState({}, '', window.NeutralSharing.stableUrl(window.location.href, currentState()));
+    if (comparisonActive) document.querySelector('#share-button span:last-child').textContent = 'Compartir esta comparación';
   }
 
   if (document.readyState === 'loading') {
