@@ -573,7 +573,7 @@ def render_base(
   <link rel="canonical" href="{{ canonical_url }}">
   <link rel="stylesheet" href="{{ root_path }}styles.css">
 </head>
-<body>
+<body data-election="{{ election_id }}">
   <a class="skip-link" href="#contenido">{{ skip_to_content }}</a>
   <aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
     {{ preview_banner_text }}
@@ -621,6 +621,7 @@ def render_base(
         "{{ footer_org }}": footer_org,
         "{{ footer_values }}": footer_values,
         "{{ content }}": content,
+        "{{ election_id }}": ctx.election_id,
     }
 
     result = template
@@ -632,6 +633,22 @@ def render_base(
 # ==============================================================================
 # Page Renderers
 # ==============================================================================
+
+def render_share_controls(ctx: SiteContext) -> str:
+    """Render one accessible share control and an explicit copy fallback."""
+    return f"""        <div class="share-section">
+          <button type="button" class="btn-share" id="share-button">
+            <span aria-hidden="true">🔗</span>
+            <span>{escape(ctx.i18n['share']['button_text'])}</span>
+          </button>
+          <div id="share-feedback" class="sr-only" role="status" aria-live="polite"></div>
+          <div id="share-fallback" hidden>
+            <label for="share-link">{escape(ctx.i18n['share']['link_label'])}</label>
+            <input id="share-link" class="control-select" type="url" readonly>
+            <button id="copy-link-button" class="btn-share" type="button">{escape(ctx.i18n['share']['copy_button'])}</button>
+          </div>
+        </div>"""
+
 
 def render_home_page(ctx: SiteContext) -> str:
     """Render index.html with accessible comparator and static fallback."""
@@ -836,15 +853,10 @@ def render_home_page(ctx: SiteContext) -> str:
 {measures_content}
         </div>
 
-        <div class="share-section">
-          <button type="button" class="btn-share" id="share-button" aria-haspopup="false">
-            <span aria-hidden="true">🔗</span>
-            <span>{escape(ctx.i18n['share']['button_text'])}</span>
-          </button>
-          <div id="share-feedback" class="sr-only" role="status" aria-live="polite"></div>
-        </div>
+{render_share_controls(ctx)}
       </section>
     </section>
+    <script src="./sharing.js" defer></script>
     <script src="./app.js" defer></script>
 
     <section class="lower-sections">
@@ -975,6 +987,8 @@ def render_topic_detail(ctx: SiteContext, topic: Topic) -> str:
       </div>
     </section>
 
+    {render_share_controls(ctx)}
+    <script src="../../sharing.js" defer></script>
     {"".join(subtopics_sections)}"""
 
     return render_base(
@@ -1587,6 +1601,8 @@ def build_site(
             shutil.copytree(site_src / "tokens", staging_dir / "tokens", dirs_exist_ok=True)
         if (site_src / "app.js").exists():
             shutil.copy2(site_src / "app.js", staging_dir / "app.js")
+
+        shutil.copy2(site_src / "sharing.js", staging_dir / "sharing.js")
 
         # Atomic swap / copy into output_dir
         output_dir.mkdir(parents=True, exist_ok=True)
