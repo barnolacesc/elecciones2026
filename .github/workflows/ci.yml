@@ -34,6 +34,11 @@ jobs:
           node --check site/sharing.js
           node --test tests/share_behavior.cjs
 
+      - name: Verify load measurement and saturation behavior (E3.4)
+        run: |
+          node --check ops/load/client.cjs
+          node --test tests/load_behavior.cjs
+
       - name: Install test and audit dependencies
         run: |
           python -m pip install --upgrade pip
@@ -158,6 +163,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Set up Node for the local load rehearsal
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Build pinned Docker image via multi-stage builder
         run: |
           docker build -t elecciones2026:ci .
@@ -234,6 +244,16 @@ jobs:
 
       - name: Rehearse immutable origin release and rollback (E3.3)
         run: python3 ops/smoke.py --base-image elecciones2026:ci
+
+      - name: Run isolated steady, cold-cache, and burst reader scenarios (E3.4)
+        run: python3 ops/load/run.py --image elecciones2026:ci --seconds 20 --output build/load
+
+      - name: Retain load measurements and capacity review limits
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: load-rehearsal-e3-4
+          path: build/load/
 
   fork-pr-isolation:
     name: Verify fork PR isolation and deploy credential protection (Task 4.1)

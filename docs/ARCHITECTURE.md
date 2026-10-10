@@ -34,14 +34,14 @@ Edge caching policy:
 - Fingerprinted static assets (`/static/*`, CSS, JS, images): `Cache-Control: public, max-age=31536000, immutable` (edge TTL 365 days).
 - Mutable HTML pages (`/`, `/temas/*`, `/fuentes/`, `/metodo/`): `Cache-Control: public, max-age=300, stale-while-revalidate=86400` (edge TTL 300s).
 
-Approved release service level objectives (see `docs/DECISION-RECORD.md`):
+Proposed release service level objectives (see `docs/DECISION-RECORD.md`):
 - **Availability:** >= 99.5% monthly uptime (~3.6h error budget); >= 99.9% during election week.
 - **Latency (p95):** < 150 ms edge cache hit; < 250 ms origin response; < 500 ms mobile delivery on fast 4G.
 - **Cache-hit ratio:** >= 99.0% static assets; >= 90.0% HTML pages; >= 95.0% aggregate steady-state; >= 85.0% cold-cache phase.
 - **Error budget:** HTTP 5xx < 0.05% steady-state; < 0.50% during peak load tests.
 - **Recovery:** Recovery Time Objective (RTO) < 5 minutes (rollback to previous Docker artifact); Recovery Point Objective (RPO) = 0 (Git-versioned deterministic builds).
 
-The target origin is a Hetzner VM with 2 vCPU and 8 GB RAM. A 10,000-concurrent-visitor scenario models 1,000–2,000 requests/s at the edge, yielding <= 200 requests/s to the origin at >= 90% edge cache offload. The 2-vCPU static server handles 500+ requests/s with < 40% CPU and < 150 MB RAM. Tiered caching and origin connection pooling protect against cold-cache surges.
+The target origin is a Hetzner VM with 2 vCPU and 8 GB RAM. A 10,000-concurrent-visitor scenario models roughly 1,000–2,000 requests/s at the edge. Origin load depends on cache keys, expirations, and resource requests. The <= 200 requests/s origin limit is an acceptance target, not measured capacity. Earlier throughput and CPU estimates have not been verified on Hetzner. Test the configured cache and origin connection reuse before relying on them.
 
 Monthly infrastructure costs are capped at a **€50.00 / month hard ceiling**, with baseline operations expected at ~€9.00–€15.00 / month. Uncapped serverless or metered bandwidth services are forbidden.
 
@@ -63,3 +63,23 @@ Reviewable origin configuration, immutable release switching, monitoring setup,
 and live verification requirements are in [the operations runbook](../ops/README.md).
 No infrastructure was provisioned or public content deployed by this package.
 OpenSpec tasks 4.4 and 4.6 remain open until their live release evidence is reviewed.
+
+## E3.4 load scenarios and evidence
+
+[The load runbook](../ops/load/README.md) defines steady, cold-cache, and burst
+scenarios for 10,000 scheduled readers. Reader activity occurs every 5–10 seconds;
+10% of views also request local resources to model browser cache reloads. Connections
+are bounded separately from readers. Scheduling delays, rejected offered work, and
+request failures remain visible so an overloaded generator cannot establish capacity.
+
+The local rehearsal uses the generated serving image with a two-core origin quota
+and an isolated nginx cache fixture. CI retains numeric HTTP, cache, origin CPU/memory,
+bandwidth, and cost-projection reports. Local results are recorded in
+[`reports/load/`](../reports/load/). They do not verify Cloudflare cache behaviour,
+Spain-region HTTPS latency, a dedicated Hetzner VM, mobile delivery, or actual billing.
+
+ADR-0001 is still marked proposed pending G0 approval. Its 150–300 origin req/s
+cold-cache estimate conflicts with task 4.7's <= 200 req/s limit; the test uses the
+stricter limit until the owners reconcile it. Missing evidence stays unmeasured.
+Keep task 4.7 open until the live environment, service targets, workload, monthly
+traffic assumptions, and any capacity change receive the required approval and tests.
