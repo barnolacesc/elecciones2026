@@ -33,3 +33,5 @@ The public interface and editorial content are in Spanish. Repository documents,
 Original project code and documentation are under [Apache-2.0](LICENSE). See [NOTICE](NOTICE) for provisional C2 Ventures attribution and the boundary for third-party electoral material. Programme documents, extracts, party marks, and other third-party content are not relicensed by this repository. Before public release, the project owners must confirm the exact copyright holder name and rights for every published source or asset.
 
 See [contribution rules](CONTRIBUTING.md) and [agent rules](AGENTS.md). Use a roadmap package in each pull request, short Conventional Commits, and a concise Why/What pull request description.
+
+Private editorial source processing is documented in [the private archive workflow](docs/PRIVATE-SOURCE-ARCHIVE.md). Originals and full extracted text stay outside Git and public artifacts; archive verification does not approve political claims.

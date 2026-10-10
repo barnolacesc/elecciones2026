@@ -132,3 +132,7 @@ Pull requests from forks of public repositories can submit modified workflow def
 | Read-only non-privileged container serving | Tested via Docker run and `tests/test_docker_parity.py` | **PASS** |
 | ADR-0001 cache and security headers | Verified via HTTP curl and integration tests | **PASS** |
 | Fork PR deploy secret isolation | Verified via `.github/workflows/ci.yml` audit and `tests/test_ci_security.py` | **PASS** |
+
+## Private extraction worker (E1.2, issue #43)
+
+The optional internal workflow now invokes Poppler only inside a separate networkless Docker worker, never in the static build or serving paths. `tools/private-pdf/Dockerfile` pins the Python/Alpine base by digest and `poppler-utils=25.12.0-r1`; transitive APK dependencies are resolved at build time. Each extraction records the immutable resulting image ID, platform, and Poppler version. Preserve that image for reproducible reprocessing; rebuilding may produce a new ID. Review upstream advisories and scan a rebuilt worker before adopting it. No claim of a completed independent security review is made. See [private archive controls and limits](PRIVATE-SOURCE-ARCHIVE.md).
