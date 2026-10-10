@@ -1,8 +1,10 @@
 services:
   preview:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "127.0.0.1:8080:8080"
+      - "${PORT:-127.0.0.1:8080}:8080"
     read_only: true
     tmpfs:
       - /tmp
@@ -12,3 +14,9 @@ services:
       - ALL
     pids_limit: 64
     mem_limit: 256m
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 3s
