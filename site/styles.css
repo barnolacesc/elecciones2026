@@ -21,6 +21,7 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
+  overflow-wrap: break-word;
   background-color: var(--color-bg-canvas);
   color: var(--color-text-primary);
   font-family: var(--font-family-sans);
@@ -60,10 +61,11 @@ a {
   color: var(--color-text-primary);
   border: var(--border-width-focus) solid var(--color-bg-primary);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
-  outline: var(--focus-ring);
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  box-shadow: var(--focus-ring);
 }
 
 :focus-visible {
@@ -142,8 +144,9 @@ a {
 
 .nav-links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap: var(--space-1);
+  gap: var(--space-1) var(--space-2);
 }
 
 .nav-link {
@@ -161,6 +164,13 @@ a {
 .nav-link:hover {
   color: var(--color-text-primary);
   text-decoration: underline;
+}
+
+.nav-link:focus-visible,
+.brand:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  border-radius: var(--radius-sm);
 }
 
 /* --------------------------------------------------
@@ -228,6 +238,12 @@ main {
 
 .btn-primary:hover {
   background-color: var(--color-bg-primary-hover);
+}
+
+.btn-primary:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  box-shadow: var(--focus-ring);
 }
 
 /* --------------------------------------------------
@@ -304,8 +320,9 @@ main {
 }
 
 .control-select:focus-visible {
-  outline: var(--focus-ring);
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
   outline-offset: var(--focus-outline-offset);
+  box-shadow: var(--focus-ring);
 }
 
 .control-select[aria-invalid="true"] {
@@ -343,8 +360,9 @@ main {
 }
 
 .btn-compare:focus-visible {
-  outline: var(--focus-ring);
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
   outline-offset: var(--focus-outline-offset);
+  box-shadow: var(--focus-ring);
 }
 
 .selection-error:not(.sr-only) {
@@ -555,6 +573,12 @@ main {
   text-decoration: underline;
 }
 
+.source-citation:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  border-radius: var(--radius-sm);
+}
+
 .source-date {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
@@ -658,6 +682,31 @@ main {
 .btn-share:hover {
   background-color: var(--color-bg-surface-subtle);
   border-color: var(--color-border-strong);
+}
+
+.btn-share:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  box-shadow: var(--focus-ring);
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target-min);
+  text-decoration: underline;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-brand);
+}
+
+.action-link:hover {
+  color: var(--color-bg-primary-hover);
+}
+
+.action-link:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  border-radius: var(--radius-sm);
 }
 
 /* --------------------------------------------------
@@ -825,6 +874,7 @@ footer {
 
   .nav-links {
     gap: var(--space-4);
+    flex-wrap: nowrap;
   }
 
   main {

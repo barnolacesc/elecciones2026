@@ -423,7 +423,7 @@ def render_source_coverage_card(ctx: SiteContext, src: SourceRecord) -> str:
     rights = escape(src.rights_review.status) if src.rights_review else "not_reviewed"
 
     if src.official_url:
-        link_html = f'<a href="{escape(src.official_url)}" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>'
+        link_html = f'<a href="{escape(src.official_url)}" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span> <span class="sr-only">(se abre en una ventana nueva)</span></a>'
     else:
         link_html = '<span class="source-date"><em>Enlace no disponible</em></span>'
 
@@ -573,7 +573,7 @@ def render_base(
   <link rel="canonical" href="{{ canonical_url }}">
   <link rel="stylesheet" href="{{ root_path }}styles.css">
 </head>
-<body>
+<body data-election="{{ election_id }}">
   <a class="skip-link" href="#contenido">{{ skip_to_content }}</a>
   <aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
     {{ preview_banner_text }}
@@ -621,6 +621,7 @@ def render_base(
         "{{ footer_org }}": footer_org,
         "{{ footer_values }}": footer_values,
         "{{ content }}": content,
+        "{{ election_id }}": ctx.election_id,
     }
 
     result = template
@@ -632,6 +633,22 @@ def render_base(
 # ==============================================================================
 # Page Renderers
 # ==============================================================================
+
+def render_share_controls(ctx: SiteContext) -> str:
+    """Render one accessible share control and an explicit copy fallback."""
+    return f"""        <div class="share-section">
+          <button type="button" class="btn-share" id="share-button">
+            <span aria-hidden="true">🔗</span>
+            <span>{escape(ctx.i18n['share']['button_text'])}</span>
+          </button>
+          <div id="share-feedback" class="sr-only" role="status" aria-live="polite"></div>
+          <div id="share-fallback" hidden>
+            <label for="share-link">{escape(ctx.i18n['share']['link_label'])}</label>
+            <input id="share-link" class="control-select" type="url" readonly>
+            <button id="copy-link-button" class="btn-share" type="button">{escape(ctx.i18n['share']['copy_button'])}</button>
+          </div>
+        </div>"""
+
 
 def render_home_page(ctx: SiteContext) -> str:
     """Render index.html with accessible comparator and static fallback."""
@@ -836,15 +853,10 @@ def render_home_page(ctx: SiteContext) -> str:
 {measures_content}
         </div>
 
-        <div class="share-section">
-          <button type="button" class="btn-share" id="share-button" aria-haspopup="false">
-            <span aria-hidden="true">🔗</span>
-            <span>{escape(ctx.i18n['share']['button_text'])}</span>
-          </button>
-          <div id="share-feedback" class="sr-only" role="status" aria-live="polite"></div>
-        </div>
+{render_share_controls(ctx)}
       </section>
     </section>
+    <script src="./sharing.js" defer></script>
     <script src="./app.js" defer></script>
 
     <section class="lower-sections">
@@ -975,6 +987,8 @@ def render_topic_detail(ctx: SiteContext, topic: Topic) -> str:
       </div>
     </section>
 
+    {render_share_controls(ctx)}
+    <script src="../../sharing.js" defer></script>
     {"".join(subtopics_sections)}"""
 
     return render_base(
@@ -1192,7 +1206,7 @@ def render_methodology_page(ctx: SiteContext) -> str:
           {coverage_cards_2026}
         </div>
         <aside class="notice" style="margin-top: var(--space-4);">
-          <strong>Aislamiento de elecciones y pruebas técnicas (Tarea 1.4):</strong> Los programas y ensayos del piloto de 2023 se emplean exclusivamente para la verificación técnica de esquemas. El comparador rechaza automáticamente cualquier comparación cruzada entre elecciones. Puede consultar el inventario técnico completo y sumas SHA-256 en la página de <a href="../fuentes/" style="text-decoration: underline; font-weight: bold;">registro de fuentes</a>.
+          <strong>Aislamiento de elecciones y pruebas técnicas (Tarea 1.4):</strong> Los programas y ensayos del piloto de 2023 se emplean exclusivamente para la verificación técnica de esquemas. El comparador rechaza automáticamente cualquier comparación cruzada entre elecciones. Puede consultar el inventario técnico completo y sumas SHA-256 en la página de <a href="../fuentes/" class="action-link">registro de fuentes</a>.
         </aside>
       </article>
 
@@ -1205,7 +1219,7 @@ def render_methodology_page(ctx: SiteContext) -> str:
           <li><strong>Grave (Sev-2):</strong> Inexactitud sustantiva en el instrumento o localización errónea. Triaje en &lt;= 12 horas y publicación en &lt;= 24 horas.</li>
           <li><strong>Menor (Sev-3):</strong> Errata tipográfica o ajuste menor sin cambio de sentido. Triaje en &lt;= 24 horas y publicación en &lt;= 48 horas.</li>
         </ul>
-        <p class="party-statement">Toda rectificación queda registrada de forma inmutable con fecha, identificador, valores previos y motivo. Consulte el <a href="../correcciones/" style="text-decoration: underline; font-weight: bold;">historial completo de rectificaciones</a>.</p>
+        <p class="party-statement">Toda rectificación queda registrada de forma inmutable con fecha, identificador, valores previos y motivo. Consulte el <a href="../correcciones/" class="action-link">historial completo de rectificaciones</a>.</p>
         {corrections_summary_html}
       </article>
 
@@ -1242,7 +1256,7 @@ def render_sources_page(ctx: SiteContext) -> str:
 
     for src in sorted(ctx.register.sources, key=lambda s: s.id):
         badge = render_status_badge(ctx, src.status)
-        url_link = f'<a href="{escape(src.official_url)}" target="_blank" rel="noopener noreferrer">Enlace oficial ↗</a>' if src.official_url else "<em>No disponible</em>"
+        url_link = f'<a href="{escape(src.official_url)}" target="_blank" rel="noopener noreferrer">Enlace oficial <span aria-hidden="true">↗</span> <span class="sr-only">(se abre en una ventana nueva)</span></a>' if src.official_url else "<em>No disponible</em>"
         hash_code = f"<code>{src.sha256[:12]}...</code>" if src.sha256 else "—"
 
         row = f"""<tr>
@@ -1340,7 +1354,7 @@ def render_sources_page(ctx: SiteContext) -> str:
       <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">3. Observaciones y canales editoriales</h2>
       <article class="party-card">
         <p class="party-statement">Si detecta que una candidatura ha publicado un nuevo documento oficial, o que un enlace o suma de verificación difiere del original proclamado, remita la referencia a: <strong>editorial@elecciones2026.es</strong>. El registro de fuentes no admite formularios interactivos en línea en esta versión inicial (MVP) para preservar la cadena de custodia documental.</p>
-        <p class="party-statement">Consulte el marco de inclusión y gobernanza en la <a href="../metodo/" style="text-decoration: underline; font-weight: bold;">página de metodología</a> o el <a href="../correcciones/" style="text-decoration: underline; font-weight: bold;">registro de correcciones</a>.</p>
+        <p class="party-statement">Consulte el marco de inclusión y gobernanza en la <a href="../metodo/" class="action-link">página de metodología</a> o el <a href="../correcciones/" class="action-link">registro de correcciones</a>.</p>
       </article>
     </section>"""
 
@@ -1587,6 +1601,8 @@ def build_site(
             shutil.copytree(site_src / "tokens", staging_dir / "tokens", dirs_exist_ok=True)
         if (site_src / "app.js").exists():
             shutil.copy2(site_src / "app.js", staging_dir / "app.js")
+
+        shutil.copy2(site_src / "sharing.js", staging_dir / "sharing.js")
 
         # Atomic swap / copy into output_dir
         output_dir.mkdir(parents=True, exist_ok=True)
