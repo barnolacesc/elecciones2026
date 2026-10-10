@@ -11,3 +11,11 @@ dist/
 .coverage
 .DS_Store
 *.profraw
+
+# Original source PDFs and private extraction bundles must never enter Git.
+*.pdf
+original.pdf
+retrieval.json
+review.md
+pages.json
+.private-archive/

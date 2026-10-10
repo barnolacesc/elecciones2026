@@ -1,0 +1,14 @@
+.git
+.venv
+.env
+.env.*
+**/*.pdf
+**/retrieval.json
+**/review.md
+**/pages.json
+**/.private-archive
+build
+dist
+reports
+__pycache__
+**/__pycache__

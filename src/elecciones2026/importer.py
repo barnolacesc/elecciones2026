@@ -332,6 +332,7 @@ class ImportConfig:
     disallow_active_content: bool = True
     offline_only: bool = False
     user_agent: str = "elecciones2026-offline-importer/1.0"
+    allowed_hosts: Optional[frozenset[str]] = None
 
 
 @dataclass(frozen=True)
@@ -488,6 +489,10 @@ def validate_url(url: str, config: Optional[ImportConfig] = None) -> list[str]:
         raise DisallowedHostError(url=url, host="", reason="Empty hostname")
 
     clean_hostname = hostname.strip().lower()
+
+    # Apply an explicit acquisition policy to every redirect destination too.
+    if cfg.allowed_hosts is not None and clean_hostname not in cfg.allowed_hosts:
+        raise DisallowedHostError(url=url, host=hostname, reason="Host is not allowlisted")
 
     if clean_hostname in BLOCKED_HOSTNAMES:
         if not cfg.allow_loopback_for_testing:

@@ -106,3 +106,7 @@ copy, then record the approved public domain, release commit, date, and platform
    private preview identifies the 2023 election and cannot be mistaken for 2026.
 
 Local artifact and container tests do not establish public social-platform rendering.
+
+## E1.2 private archive checks (issue #43)
+
+`test_private_archive.py` covers checksum mismatch, size/type rejection, explicit host and redirect policy, offline acquisition, private storage and symlink boundaries, blank-page mapping, derivative corruption, repeat determinism, and exclusion from public output. CI runs the Docker worker on synthetic documents only; no political PDFs are downloaded or uploaded. For the same integration test locally, follow [the private archive setup](../docs/PRIVATE-SOURCE-ARCHIVE.md) and set `ELECTIONS_TEST_PDF_IMAGE` to the immutable local worker ID.

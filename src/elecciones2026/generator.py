@@ -1544,6 +1544,14 @@ def compute_sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def reject_private_source_artifacts(directory: Path) -> None:
+    """Fail before copying private source bundles into a public artifact."""
+    private_names = {"original.pdf", "retrieval.json", "pages.json", "review.md"}
+    for path in directory.rglob("*"):
+        if path.name in private_names or path.suffix.lower() == ".pdf":
+            raise ValueError(f"Private source artifact cannot enter static output: {path.relative_to(directory)}")
+
+
 def build_site(
     root_dir: Path,
     output_dir: Path,
@@ -1647,6 +1655,11 @@ def build_site(
         preview_target = staging_dir / preview_image_path(root_dir)
         preview_target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(site_src / "assets" / "social-preview.png", preview_target)
+
+        # Do not copy accidentally misplaced private sources or retain them in output.
+        reject_private_source_artifacts(staging_dir)
+        if output_dir.exists():
+            reject_private_source_artifacts(output_dir)
 
         # Atomic swap / copy into output_dir
         output_dir.mkdir(parents=True, exist_ok=True)
