@@ -18,6 +18,7 @@ import shutil
 import sys
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set, Tuple
+from urllib.parse import urlsplit
 
 from elecciones2026.editorial import (
     MAX_QUOTE_CHARS,
@@ -155,6 +156,12 @@ def load_and_validate_site_data(
     """Load and strictly validate all source records before publishing."""
     if content_dir is None:
         content_dir = root_dir / "content"
+
+    base = urlsplit(canonical_base)
+    if (base.scheme not in {"http", "https"} or not base.hostname
+            or base.username is not None or base.password is not None
+            or base.query or base.fragment):
+        raise BuildValidationError("Canonical base must be an absolute HTTP(S) URL without credentials, query, or fragment.")
 
     # Determine build date deterministically
     resolved_date = build_date
@@ -347,6 +354,37 @@ def load_and_validate_site_data(
 # ==============================================================================
 # HTML Rendering Helpers & Component Generators
 # ==============================================================================
+
+def preview_image_path(root_dir: Path) -> str:
+    """Version the local preview asset for immutable serving caches."""
+    image = root_dir / "site" / "assets" / "social-preview.png"
+    return f"assets/social-preview-{compute_sha256(image)[:16]}.png"
+
+
+def render_social_metadata(ctx: SiteContext, title: str, description: str, canonical_url: str) -> str:
+    """Use page context only; never derive a party-pair claim from URL state."""
+    pilot = ctx.election_id == "es-gen-2023"
+    site_name = "Generales 2023 · Ensayo piloto privado" if pilot else ctx.i18n["meta"]["site_name"]
+    notice = "Ensayo piloto privado de 2023." if pilot else "Vista previa · Datos de prueba."
+    image_url = f"{ctx.canonical_base}/{preview_image_path(ctx.root_dir)}"
+    properties = {
+        "og:type": "website",
+        "og:locale": "es_ES",
+        "og:site_name": site_name,
+        "og:title": title,
+        "og:description": f"{notice} {description}",
+        "og:url": canonical_url,
+        "og:image": image_url,
+        "og:image:type": "image/png",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": ctx.i18n["social_preview"]["image_alt"],
+    }
+    return "\n".join(
+        f'  <meta property="{key}" content="{escape(value)}">'
+        for key, value in properties.items()
+    )
+
 
 def render_preview_banner(ctx: SiteContext) -> str:
     """Render preview notice banner."""
@@ -571,6 +609,7 @@ def render_base(
   <meta name="description" content="{{ description }}">
   <title>{{ title }}</title>
   <link rel="canonical" href="{{ canonical_url }}">
+{{ social_metadata }}
   <link rel="stylesheet" href="{{ root_path }}styles.css">
 </head>
 <body data-election="{{ election_id }}">
@@ -608,6 +647,7 @@ def render_base(
         "{{ title }}": escape(title),
         "{{ description }}": escape(description),
         "{{ canonical_url }}": escape(canonical_url),
+        "{{ social_metadata }}": render_social_metadata(ctx, title, description, canonical_url),
         "{{ root_path }}": root_path,
         "{{ brand_link }}": brand_link,
         "{{ skip_to_content }}": escape(ctx.i18n["nav"]["skip_to_content"]),
@@ -1603,6 +1643,10 @@ def build_site(
             shutil.copy2(site_src / "app.js", staging_dir / "app.js")
 
         shutil.copy2(site_src / "sharing.js", staging_dir / "sharing.js")
+
+        preview_target = staging_dir / preview_image_path(root_dir)
+        preview_target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(site_src / "assets" / "social-preview.png", preview_target)
 
         # Atomic swap / copy into output_dir
         output_dir.mkdir(parents=True, exist_ok=True)

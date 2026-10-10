@@ -79,3 +79,30 @@ DNS, TLS, caching and origin latency. No production performance budget or TTI is
 inferred. Browser emulation and accessible names do not replace participant,
 VoiceOver/TalkBack, or physical device testing. Follow the pending review in
 OpenSpec task 3.5 before declaring E2.5 complete.
+
+## E3.1a social preview checks
+
+`test_social_metadata.py` parses generated HTML without JavaScript for both election
+builds. It checks page context, canonical/Open Graph URL agreement, local PNG bytes,
+image dimensions, Spanish image alternatives, escaping, private pilot path prefixes,
+and generic comparison-query previews. `test_docker_parity.py` also fetches home,
+comparison queries, a topic, and its PNG from the actual serving image, to catch
+replacement of the generated home page. CI runs these in the standard test suite.
+
+Before completing task 3.9, obtain human approval for the neutral asset and preview
+copy, then record the approved public domain, release commit, date, and platform:
+
+1. Fetch home and topic HTML without JavaScript over public HTTPS. Verify canonical,
+   `og:url`, titles, descriptions, PNG URL, MIME type, dimensions, and image alternative.
+2. Fetch the preview PNG as an unauthenticated crawler. Verify no authentication,
+   challenge, robots exclusion, or redirect prevents retrieval. Confirm its cache key
+   changes when the image changes.
+3. Inspect a shared home, topic, and comparison link in the target platform's preview
+   inspector and in a real messaging app. Retain screenshots and fetched metadata.
+4. Confirm home-route comparison queries retain generic home context and their clean
+   home canonical. Topic queries retain topic context and a clean topic canonical.
+   Metadata must never imply a particular pair has a reviewed agreement or divergence.
+5. Keep the private 2023 rehearsal off the public release. Verify any authorized
+   private preview identifies the 2023 election and cannot be mistaken for 2026.
+
+Local artifact and container tests do not establish public social-platform rendering.

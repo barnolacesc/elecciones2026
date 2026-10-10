@@ -19,9 +19,7 @@ RUN PYTHONPATH=/app/src python3 -m elecciones2026.generator build \
     --output-dir /app/dist \
     --build-date 2026-10-09
 
-# Ensure client-side interactive flow files are included in release artifact
-RUN if [ -f /app/site/app.js ]; then cp /app/site/app.js /app/dist/app.js; fi && \
-    if [ -f /app/site/index.html ]; then cp /app/site/index.html /app/dist/index.html; fi
+# Preserve generated home metadata; client-side assets are copied by the generator.
 
 # Stage 2: Minimal non-privileged runtime server
 FROM nginxinc/nginx-unprivileged:stable-alpine@sha256:15c994d10d6d78658721c3bcafff14cb281fba2a4bdf9d5ba92c416a472516e3 AS runtime

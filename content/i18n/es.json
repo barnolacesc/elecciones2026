@@ -7,6 +7,9 @@
     "site_tagline": "Comparador neutral de programas para las elecciones generales de 2026 en España",
     "site_description": "Comparador neutral de programas electorales para las elecciones generales de 2026 en España. Citas exactas y trazabilidad a fuentes originales."
   },
+  "social_preview": {
+    "image_alt": "Dos documentos del mismo tamaño junto al texto «Programas electorales» y «Comparar · Consultar fuentes»."
+  },
   "nav": {
     "skip_to_content": "Saltar al contenido principal",
     "home": "Inicio",
