@@ -199,6 +199,32 @@ def validate_html_structure(
         if re.search(pat, text_only):
             errors.append(f"Accidental Catalan text detected in Spanish public copy: '{pat}'.")
 
+    # 17. Grouped comparison view: measure comparison container (Package E2.3)
+    if 'class="measure-comparison"' not in content and 'id="measures-container"' not in content:
+        errors.append("Missing measure comparison container (.measure-comparison or #measures-container).")
+
+    # 18. Both party cards per measure (Package E2.3)
+    if 'party-card-a' not in content or 'party-card-b' not in content:
+        errors.append("Comparison view must contain party cards for both Party A and Party B.")
+
+    # 19. Prohibition of tab switching (Task 3.2: no tab switch required)
+    if 'role="tablist"' in content or 'role="tab"' in content or 'role="tabpanel"' in content:
+        errors.append("Prohibited tab interface detected: comparison must display both parties in single-column flow without tab switching.")
+
+    # 20. Source citation links visible (Package E2.3)
+    if 'class="source-citation"' not in content:
+        errors.append("Comparison view must include visible source citations (.source-citation).")
+
+    # 21. Qualifications / caveats visible (Package E2.3)
+    if 'class="party-caveat"' not in content:
+        errors.append("Comparison view must include visible qualification caveats (.party-caveat).")
+
+    # 22. Explicit missing state (Task 3.3: missing data never rendered as opposition or agreement)
+    if 'status-badge-missing' not in content:
+        errors.append("Comparison view must explicitly represent missing state with .status-badge-missing.")
+    if 'missing-explanation' not in content:
+        errors.append("Comparison view must include explicit explanation that missing data does not imply opposition.")
+
     return errors
 
 
@@ -231,6 +257,10 @@ def validate_css_accessibility(content: str) -> list[str]:
         if bp not in content:
             errors.append(f"CSS missing required viewport reference for {bp}px.")
 
+    # Measure cards layout (Package E2.3)
+    if ".measure-cards" not in content:
+        errors.append("CSS missing .measure-cards layout definition.")
+
     return errors
 
 
@@ -253,6 +283,14 @@ def validate_js_app(content: str) -> list[str]:
     # Check share handler
     if "share" not in content.lower():
         errors.append("app.js missing share handler.")
+
+    # Check measure grouping dataset or rendering logic (Package E2.3)
+    if "MEASURES_BY_TOPIC" not in content and "renderMeasureGroup" not in content:
+        errors.append("app.js missing grouped measure comparison dataset or rendering logic.")
+
+    # Prohibition of tabs in client JS (Task 3.2: no tab switch required)
+    if 'role="tab"' in content or 'role="tablist"' in content or 'tabpanel' in content:
+        errors.append("app.js contains prohibited tab controls: both parties must be displayed without tabs.")
 
     # Check absence of PII / tracking
     for forbidden in ["cookie", "localstorage.user", "analytics", "tracking", "fingerprint"]:
