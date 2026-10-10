@@ -1,0 +1,10 @@
+[Unit]
+Description=Check Elections origin every minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+Unit=elecciones2026-monitor.service
+
+[Install]
+WantedBy=timers.target

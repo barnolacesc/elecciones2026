@@ -1,0 +1,13 @@
+[Unit]
+Description=Check Elections static origin health
+OnFailure=elecciones2026-alert.service
+
+[Service]
+Type=oneshot
+DynamicUser=yes
+ExecStart=/usr/bin/curl --fail --silent --show-error --max-time 10 --output /dev/null http://127.0.0.1:8080/
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+RestrictAddressFamilies=AF_INET AF_INET6

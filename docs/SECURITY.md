@@ -47,3 +47,10 @@ Owners for security and operational controls:
 - **Security and Release Gatekeeper:** Release Engineering Lead.
 - **Privacy Representative:** C2 Ventures Legal / Privacy Contact.
 - Full details, SLO targets, and error budgets are codified in `docs/DECISION-RECORD.md`.
+
+## E3.3 operations preparation
+
+Reviewable origin configuration, immutable release switching, monitoring setup,
+and live verification requirements are in [the operations runbook](../ops/README.md).
+No infrastructure was provisioned or public content deployed by this package.
+OpenSpec tasks 4.4 and 4.6 remain open until their live release evidence is reviewed.
