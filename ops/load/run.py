@@ -86,6 +86,8 @@ def local_run(plan, image, output):
                   'map $http_user_agent $load_request { default 0; "elecciones2026-load-rehearsal/1" 1; }\n') + config
         config = config.replace('    root   /usr/share/nginx/html;',
                                 '    access_log /tmp/load-origin.log load_measure if=$load_request;\n    root   /usr/share/nginx/html;')
+        config = config.replace('    # Compression',
+                                '    location = /__load_origin_ready { access_log off; return 200 "ready\\n"; }\n\n    # Compression')
         origin_config = tmp / 'origin.conf'
         origin_config.write_text(config)
         try:
@@ -105,8 +107,9 @@ def local_run(plan, image, output):
                     containers.append(edge)
                 for _ in range(50):
                     try:
-                        with socket.create_connection(('127.0.0.1', port), timeout=1):
-                            return
+                        with urllib.request.urlopen(base + '/__load_ready', timeout=1) as response:
+                            if response.read() == b'ready\n':
+                                return
                     except OSError:
                         time.sleep(0.1)
                 raise RuntimeError('Local cache fixture did not become ready')
@@ -127,7 +130,7 @@ def local_run(plan, image, output):
             for scenario in plan['scenarios']:
                 if scenario['cold_cache']:
                     command('docker', 'stop', edge)
-                    start_edge()  # New tmpfs and cache zone; TCP readiness does not warm any URL.
+                    start_edge()  # A noncached readiness endpoint leaves workload URLs cold.
                 else:
                     for path in pages + assets:
                         request = urllib.request.Request(base + path, headers={'Accept-Encoding': 'gzip'})

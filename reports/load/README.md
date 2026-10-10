@@ -20,7 +20,10 @@ The one-worker baseline uses the same model but a different seeded schedule.
 The JSON counterparts retain each plan, image ID, revision, metric breakdown,
 per-check results, and explicit limits. The later runs also fingerprint the harness
 sources. The revision identifies the serving artifact's source/base commit; the
-harness was still in the working branch during observation. Hardware timings vary;
+harness was still in the working branch during observation; the final fingerprints
+match the harness snapshot committed in `5fbc02c`. A later CI readiness fix checks
+HTTP proxy/origin readiness without warming workload URLs; it does not change the
+reader model or measurement definitions. Hardware timings vary;
 reports are evidence, not deterministic golden-test fixtures.
 
 Warm-cache steady/burst phases send zero workload requests to the origin, so their

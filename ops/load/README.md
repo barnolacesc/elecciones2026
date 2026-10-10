@@ -20,7 +20,7 @@ bound (sum of worker peaks), not an observed simultaneous connection count.
 - **Steady:** warm the finite URL/resource set; distribute initial reader activity
   over ten seconds, then maintain the same reader population for 60 seconds.
 - **Cold cache:** replace the local cache container and its tmpfs; verify readiness
-  using TCP only, then run the same 60-second reader workload. Include every miss
+  through a noncached readiness endpoint outside the workload URL set, then run the same 60-second reader workload. Include every miss
   from the start of measurement; do not omit the initial cold period.
 - **Burst:** retain a warm cache, bring all 10,000 readers into activity within one
   second, then run for 30 seconds. This intentionally creates a sharper initial
