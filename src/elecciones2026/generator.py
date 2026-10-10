@@ -593,6 +593,61 @@ def render_home_page(ctx: SiteContext) -> str:
         rel_type_label = ctx.i18n["relationship_badges"].get(active_rel.relationship_type, active_rel.relationship_type)
         analysis_heading = f"Lectura comparada: {rel_type_label}"
 
+    # Prepare grouped measures for the default topic (housing)
+    stmt_a_2 = ctx.statements.get("stmt-party-a-housing-002")
+    party_a_card_2 = render_party_card(ctx, stmt_a_2, party_a_id, "A")
+    party_b_card_2 = render_party_card(ctx, None, party_b_id, "B")
+
+    # Differences list for measure 1
+    differences_html = ""
+    if active_rel and active_rel.differences:
+        items = "".join(f"<li>{escape(d)}</li>" for d in active_rel.differences)
+        differences_html = f'<ul class="analysis-differences">{items}</ul>'
+
+    measure_1_html = f"""<article class="measure-group" aria-labelledby="measure-1-title">
+            <div class="measure-head">
+              <p id="measure-topic-label" class="measure-topic-label">TEMA: VIVIENDA</p>
+              <h3 id="measure-1-title" class="measure-title">Medida: {escape(active_rel.measure_label if active_rel else 'Regulación de precios de alquiler en zonas de mercado tensionado')}</h3>
+              <p id="measure-summary" class="measure-summary">Políticas de contención y límites obligatorios a los precios de arrendamiento de vivienda en áreas declaradas de mercado tensionado.</p>
+            </div>
+
+            <div class="measure-cards">
+              {party_a_card}
+              {party_b_card}
+            </div>
+
+            <aside id="analysis-callout" class="analysis-callout rel-callout-agreement" aria-label="Lectura comparada">
+              <span class="analysis-icon" aria-hidden="true">✓</span>
+              <div>
+                <h4 id="analysis-title">{escape(analysis_heading)}</h4>
+                <p id="analysis-text">{escape(analysis_text)}</p>
+                {differences_html}
+              </div>
+            </aside>
+          </article>"""
+
+    measure_2_html = f"""<article class="measure-group" aria-labelledby="measure-2-title">
+            <div class="measure-head">
+              <p class="measure-topic-label">TEMA: VIVIENDA</p>
+              <h3 id="measure-2-title" class="measure-title">Medida: Ayudas públicas directas y avales para acceso a la vivienda para jóvenes</h3>
+              <p class="measure-summary">Instrumentos de apoyo financiero público para facilitar la emancipación y la adquisición o fianza de primera vivienda por jóvenes menores de 35 años.</p>
+            </div>
+
+            <div class="measure-cards">
+              {party_a_card_2}
+              {party_b_card_2}
+            </div>
+
+            <aside class="analysis-callout rel-callout-not-found" aria-label="Lectura comparada">
+              <span class="analysis-icon" aria-hidden="true">—</span>
+              <div>
+                <h4>Sin posición comparable en esta medida</h4>
+                <p>Partido Ejemplo A propone bonificación de tipos de interés hipotecarios, mientras que en el documento revisado de Partido Ejemplo B no consta propuesta específica sobre este instrumento.</p>
+                <p class="missing-explanation">«No consta» indica ausencia documental en el texto; nunca se interpretará como oposición política ni como acuerdo tácito.</p>
+              </div>
+            </aside>
+          </article>"""
+
     content = f"""    <section class="hero" aria-labelledby="hero-title">
       <p class="hero-eyebrow">{escape(ctx.i18n['hero']['eyebrow'])}</p>
       <h1 id="hero-title" class="hero-title">{escape(ctx.i18n['hero']['title_part1'])}<br><span class="hero-em">{escape(ctx.i18n['hero']['title_part2'])}</span></h1>
@@ -616,7 +671,7 @@ def render_home_page(ctx: SiteContext) -> str:
         <p>{escape(ctx.i18n['selector']['description'])}</p>
       </div>
 
-      <form class="controls-form" role="search" aria-label="Filtro de comparación">
+      <form id="selection-form" class="controls-form" role="search" aria-label="Filtro de comparación">
         <div class="control-field">
           <label for="topic-select" class="control-label">{escape(ctx.i18n['selector']['topic_label'])}</label>
           <select id="topic-select" name="topic" class="control-select">
@@ -635,32 +690,32 @@ def render_home_page(ctx: SiteContext) -> str:
             {"".join(party_b_options)}
           </select>
         </div>
+        <div class="control-actions">
+          <button type="submit" id="compare-submit" class="btn-compare">
+            <span>Comparar propuestas</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <div id="selection-error" class="selection-error sr-only" role="alert" aria-live="assertive"></div>
       </form>
 
-      <section class="measure-comparison" aria-labelledby="measure-1-title">
-        <h3 id="measure-1-title" class="sr-only">Medida: {escape(active_rel.measure_label if active_rel else 'Propuesta general')}</h3>
-
-        <div class="measure-cards">
-          {party_a_card}
-          {party_b_card}
+      <section class="measure-comparison" aria-labelledby="compare-results-heading">
+        <h3 id="compare-results-heading" class="sr-only">Comparación de propuestas agrupadas por medida</h3>
+        <div id="measures-container" class="measures-container">
+          {measure_1_html}
+          {measure_2_html}
         </div>
-
-        <aside class="analysis-callout" aria-label="Lectura comparada">
-          <span class="analysis-icon" aria-hidden="true">↔</span>
-          <div>
-            <h3>{escape(analysis_heading)}</h3>
-            <p>{escape(analysis_text)}</p>
-          </div>
-        </aside>
 
         <div class="share-section">
           <button type="button" class="btn-share" id="share-button" aria-haspopup="false">
             <span aria-hidden="true">🔗</span>
             <span>{escape(ctx.i18n['share']['button_text'])}</span>
           </button>
+          <div id="share-feedback" class="sr-only" role="status" aria-live="polite"></div>
         </div>
       </section>
     </section>
+    <script src="./app.js" defer></script>
 
     <section class="lower-sections">
       <div id="metodo">
@@ -1265,12 +1320,14 @@ def build_site(
         write_file_deterministic(staging_dir / "security.txt", security_txt)
         write_file_deterministic(staging_dir / ".well-known" / "security.txt", security_txt)
 
-        # 10. Copy static stylesheets and design tokens
+        # 10. Copy static stylesheets, scripts, and design tokens
         site_src = root_dir / "site"
         if (site_src / "styles.css").exists():
             shutil.copy2(site_src / "styles.css", staging_dir / "styles.css")
         if (site_src / "tokens").exists():
             shutil.copytree(site_src / "tokens", staging_dir / "tokens", dirs_exist_ok=True)
+        if (site_src / "app.js").exists():
+            shutil.copy2(site_src / "app.js", staging_dir / "app.js")
 
         # Atomic swap / copy into output_dir
         output_dir.mkdir(parents=True, exist_ok=True)
