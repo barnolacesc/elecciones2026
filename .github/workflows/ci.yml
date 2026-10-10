@@ -41,8 +41,8 @@ jobs:
 
       - name: Python syntax and compile validation
         run: |
-          python -m compileall -q src tests
-          python -m ruff check --select E9,F63,F7,F82 src tests
+          python -m compileall -q src tests ops
+          python -m ruff check --select E9,F63,F7,F82 src tests ops
 
       - name: Run test suite with pytest
         run: |
@@ -231,6 +231,9 @@ jobs:
         if: always()
         run: |
           docker stop preview_smoke || true
+
+      - name: Rehearse immutable origin release and rollback (E3.3)
+        run: python3 ops/smoke.py --base-image elecciones2026:ci
 
   fork-pr-isolation:
     name: Verify fork PR isolation and deploy credential protection (Task 4.1)

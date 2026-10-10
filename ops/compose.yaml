@@ -1,0 +1,22 @@
+name: elecciones2026-production
+services:
+  site:
+    image: ${RELEASE_IMAGE:?Set an approved image pinned by sha256 digest}
+    ports:
+      - "127.0.0.1:${ELECTIONS_ORIGIN_PORT:-8080}:8080"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,noexec,nosuid
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 256m
+    logging:
+      # The preview image emits request URLs; retain no container request log.
+      driver: none
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, "http://127.0.0.1:8080/"]
+      interval: 10s
+      timeout: 3s
+      retries: 3

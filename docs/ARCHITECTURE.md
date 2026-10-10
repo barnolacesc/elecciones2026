@@ -56,3 +56,10 @@ Before public release, the following gates remain:
 - Final Hetzner datacenter location selection (e.g., Falkenstein or Nuremberg).
 - Container base image digest pinning and automated vulnerability scan verification.
 - Verification of 10,000-concurrent-visitor benchmarks against approved service levels (tasks 4.3, 4.6, 4.7).
+
+## E3.3 operations preparation
+
+Reviewable origin configuration, immutable release switching, monitoring setup,
+and live verification requirements are in [the operations runbook](../ops/README.md).
+No infrastructure was provisioned or public content deployed by this package.
+OpenSpec tasks 4.4 and 4.6 remain open until their live release evidence is reviewed.
