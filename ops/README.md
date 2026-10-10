@@ -97,7 +97,8 @@ sudo python3 ops/release.py --image APPROVED_REPOSITORY@sha256:APPROVED_DIGEST
 sudo python3 ops/release.py --rollback
 ```
 
-The controller serializes switches, pulls before replacing the current container,
+The controller serializes switches, pulls before replacing the current container
+(rollback uses the retained local image and pulls only if it is absent),
 waits for health, checks loopback HTTP, and atomically records current/previous
 images in `/var/lib/elecciones2026/release.json`. Failed switches restore the
 current image; a failed first release removes its container. If recovery also
@@ -157,7 +158,7 @@ python3 ops/smoke.py --base-image elecciones2026:ci
 ```
 
 The rehearsal creates a disposable local registry and A/B/unhealthy fixture images,
-uses production Compose and release switching, checks content restoration, times
+uses production Compose with a unique rehearsal project name and release switching, checks content restoration, times
 rollback, and validates the host nginx TLS configuration with disposable test
 certificates. It requires Linux Docker, openssl, and registry:2 network access; it selects
 a free loopback port so other previews are untouched. Docker Desktop may not

@@ -27,13 +27,13 @@ class ReleaseTests(unittest.TestCase):
 
     def test_success_retains_previous_and_rollback_restores_it(self):
         self.seed()
-        with patch.object(release, "compose") as compose, patch.object(release, "activate") as activate:
+        with patch.object(release, "compose") as compose, patch.object(release, "activate") as activate, patch.object(release.subprocess, "run", return_value=subprocess.CompletedProcess([], 0)):
             release.switch(self.state_dir, B)
             self.assertEqual(json.loads(self.state.read_text()), {"current": B, "previous": A})
             release.switch(self.state_dir, rollback=True)
             self.assertEqual(json.loads(self.state.read_text()), {"current": A, "previous": B})
             self.assertEqual([c.args for c in activate.call_args_list], [(B,), (A,)])
-            self.assertEqual([c.args for c in compose.call_args_list], [(B, "pull", "site"), (A, "pull", "site")])
+            self.assertEqual([c.args for c in compose.call_args_list], [(B, "pull", "site")])
 
     def test_failed_health_restores_current_without_changing_record(self):
         self.seed()

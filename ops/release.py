@@ -56,7 +56,14 @@ def switch(state_dir, image=None, rollback=False):
         if target == current:
             raise ValueError("Target is already current")
         # Pull before touching the running container. Retain the current image locally.
-        compose(target, "pull", "site")
+        if rollback:
+            # Registry availability must not block recovery of a retained image.
+            local = subprocess.run(["docker", "image", "inspect", target],
+                                   capture_output=True, check=False)
+            if local.returncode:
+                compose(target, "pull", "site")
+        else:
+            compose(target, "pull", "site")
         started = time.monotonic()
         try:
             activate(target)

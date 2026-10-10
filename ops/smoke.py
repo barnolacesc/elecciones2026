@@ -30,6 +30,7 @@ def main():
     parser.add_argument("--base-image", default="elecciones2026:ci")
     args = parser.parse_args()
     name = f"elections-ops-registry-{int(time.time())}"
+    os.environ["COMPOSE_PROJECT_NAME"] = name
     images = []
     tags = []
     with socket.socket() as listener:
