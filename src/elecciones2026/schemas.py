@@ -12,6 +12,7 @@ import json
 import re
 import sys
 from dataclasses import dataclass, field
+from datetime import date
 from pathlib import Path
 from typing import Any, Optional
 
@@ -24,6 +25,9 @@ from elecciones2026.methodology import (
 
 ID_PATTERN = re.compile(r"^[a-z0-9-]+$")
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+PLACEHOLDER_REVIEWER_PATTERN = re.compile(
+    r"^(rev-(pilot|editorial)-\d+|reviewer-\d+|rev-\d+|r\d+|editorial-team|placeholder|fixture|test)(-|$)"
+)
 SEMVER_PATTERN = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+$")
 SHA256_PATTERN = re.compile(r"^[a-f0-9]{64}$")
 
@@ -84,13 +88,31 @@ class ReviewRecord:
     review_date: str
     verdict: str
     review_notes: str
+    reviewer_kind: Optional[str] = None
+    evidence_ref: Optional[str] = None
 
-    def validate(self) -> list[str]:
+    def validate(self, *, require_human: bool = False, fixture: bool = False) -> list[str]:
         errors: list[str] = []
         if not self.reviewer_id or not ID_PATTERN.match(self.reviewer_id):
             errors.append(f"Reviewer ID '{self.reviewer_id}' must be a valid lowercase kebab-case slug.")
         if not self.review_date or not DATE_PATTERN.match(self.review_date):
             errors.append(f"Review date '{self.review_date}' must follow YYYY-MM-DD.")
+        else:
+            try:
+                reviewed = date.fromisoformat(self.review_date)
+                if not fixture and reviewed > date.today():
+                    errors.append("Review approval cannot be future-dated.")
+            except ValueError:
+                errors.append("Review date must be a valid calendar date.")
+        if self.reviewer_kind not in (None, "human", "fixture", "automated"):
+            errors.append("Reviewer kind must be human, fixture, or automated.")
+        if self.evidence_ref is not None and not isinstance(self.evidence_ref, str):
+            errors.append("Review evidence_ref must be a string.")
+        if require_human and self.verdict == "approved":
+            if self.reviewer_kind != "human" or not isinstance(self.evidence_ref, str) or not self.evidence_ref.strip():
+                errors.append("Approval requires a human reviewer and a documented evidence_ref.")
+            if PLACEHOLDER_REVIEWER_PATTERN.match(self.reviewer_id):
+                errors.append("Placeholder reviewer IDs cannot approve political claims.")
         if self.verdict not in VALID_VERDICTS:
             errors.append(f"Verdict '{self.verdict}' must be one of {sorted(VALID_VERDICTS)}.")
         if not isinstance(self.review_notes, str):
@@ -131,6 +153,8 @@ class StatementRecord:
                 review_date=r["review_date"],
                 verdict=r["verdict"],
                 review_notes=r.get("review_notes", ""),
+                reviewer_kind=r.get("reviewer_kind"),
+                evidence_ref=r.get("evidence_ref"),
             )
             for r in data.get("reviews", [])
         ]
@@ -202,7 +226,10 @@ class StatementRecord:
 
         # Reviews structural validation
         for r in self.reviews:
-            r_errors = r.validate()
+            r_errors = r.validate(
+                require_human=self.election_id == "es-gen-2023",
+                fixture=self.is_fixture and self.election_id != "es-gen-2023",
+            )
             for re_err in r_errors:
                 errors.append(f"Statement {self.id}: {re_err}")
 
@@ -258,6 +285,8 @@ class StatementRecord:
 
         # Dual review requirement for approved status
         if self.review_status == "approved":
+            if self.election_id == "es-gen-2023" and self.is_fixture:
+                errors.append(f"Statement {self.id}: fixture approvals cannot publish political pilot claims.")
             approved_reviews = [r for r in self.reviews if r.verdict == "approved"]
             reviewer_ids = {r.reviewer_id for r in approved_reviews}
             if len(approved_reviews) < 2 or len(reviewer_ids) < 2:
@@ -268,6 +297,16 @@ class StatementRecord:
                 errors.append(
                     f"Statement {self.id}: approved statement must have last_reviewed_date in YYYY-MM-DD format."
                 )
+            else:
+                try:
+                    last_reviewed = date.fromisoformat(self.last_reviewed_date)
+                    if (not self.is_fixture or self.election_id == "es-gen-2023") and last_reviewed > date.today():
+                        errors.append(f"Statement {self.id}: last_reviewed_date cannot be future-dated.")
+                    approved_dates = [r.review_date for r in approved_reviews]
+                    if approved_dates and self.last_reviewed_date != max(approved_dates):
+                        errors.append(f"Statement {self.id}: last_reviewed_date must match the latest approval.")
+                except ValueError:
+                    errors.append(f"Statement {self.id}: last_reviewed_date must be a valid calendar date.")
 
         return errors
 
@@ -300,6 +339,8 @@ class RelationshipRecord:
                 review_date=r["review_date"],
                 verdict=r["verdict"],
                 review_notes=r.get("review_notes", ""),
+                reviewer_kind=r.get("reviewer_kind"),
+                evidence_ref=r.get("evidence_ref"),
             )
             for r in data.get("reviews", [])
         ]
@@ -399,11 +440,16 @@ class RelationshipRecord:
 
         # Review structural validation
         for r in self.reviews:
-            r_errors = r.validate()
+            r_errors = r.validate(
+                require_human=self.election_id == "es-gen-2023",
+                fixture=self.is_fixture and self.election_id != "es-gen-2023",
+            )
             for re_err in r_errors:
                 errors.append(f"Relationship {self.id}: {re_err}")
 
         if self.review_status == "approved":
+            if self.election_id == "es-gen-2023" and self.is_fixture:
+                errors.append(f"Relationship {self.id}: fixture approvals cannot publish political pilot comparisons.")
             approved_reviews = [r for r in self.reviews if r.verdict == "approved"]
             reviewer_ids = {r.reviewer_id for r in approved_reviews}
             if len(approved_reviews) < 2 or len(reviewer_ids) < 2:

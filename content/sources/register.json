@@ -1,7 +1,7 @@
 {
   "$schema": "./register.schema.json",
   "version": "1.0.0",
-  "last_updated": "2026-10-09T22:15:36+02:00",
+  "last_updated": "2026-10-10",
   "description": "Versioned source register tracking official candidacies and programme publication for the 2026 Spanish general election and pilot rehearsal sources.",
   "elections": [
     {
@@ -255,20 +255,20 @@
       "official_url": "https://www.pp.es/categoria/elecciones-generales/",
       "direct_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
       "filename": "programa_electoral_pp_23j_feijoo_2023.pdf",
-      "publication_date": "2023-07-04",
-      "retrieval_date": "2026-10-09",
+      "publication_date": null,
+      "retrieval_date": "2026-10-10",
       "language": "es",
       "version": "23J-v1",
       "sha256": "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
-      "status": "verified",
+      "status": "published-unverified",
       "rights_review": {
-        "status": "link_and_short_quote",
-        "reviewed_by": "editorial-team",
-        "review_date": "2026-10-09",
-        "terms_notes": "Official campaign programme. Lawful quotation under TRLPI art. 32 with attribution and link to official PDF. No full PDF redistribution."
+        "status": "not_reviewed",
+        "reviewed_by": null,
+        "review_date": null,
+        "terms_notes": "Issue #42 removed an unsupported editorial-team rights approval. Human review of quotation rights remains pending. No PDF redistribution authorized."
       },
       "replacement_history": [],
-      "notes": "Lawful pilot programme 1 for Task 1.2 and rehearsal comparator."
+      "notes": "Official-domain PDF downloaded on 2026-10-10; SHA-256 matches the existing 23J-v1 record. Version is a local identifier, not an asserted publisher revision. Human authenticity, publication-date, rights, and claim review pending. See content/audits/2023-pilot-2026-10-10.json."
     },
     {
       "id": "src-2023-erc-v1",
@@ -280,20 +280,20 @@
       "official_url": "https://www.esquerra.cat/transparencia/programes-electorals/",
       "direct_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
       "filename": "e2023-programa.pdf",
-      "publication_date": "2023-07-05",
-      "retrieval_date": "2026-10-09",
+      "publication_date": null,
+      "retrieval_date": "2026-10-10",
       "language": "ca",
       "version": "23J-v1",
       "sha256": "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854",
-      "status": "verified",
+      "status": "published-unverified",
       "rights_review": {
-        "status": "link_and_short_quote",
-        "reviewed_by": "editorial-team",
-        "review_date": "2026-10-09",
-        "terms_notes": "Official campaign programme. Lawful quotation under TRLPI art. 32 with attribution and link to official PDF. No full PDF redistribution."
+        "status": "not_reviewed",
+        "reviewed_by": null,
+        "review_date": null,
+        "terms_notes": "Issue #42 removed an unsupported editorial-team rights approval. Human review of quotation rights remains pending. No PDF redistribution authorized."
       },
       "replacement_history": [],
-      "notes": "Lawful pilot programme 2 for Task 1.2 and rehearsal comparator."
+      "notes": "Official-domain PDF downloaded on 2026-10-10; SHA-256 matches the existing 23J-v1 record. Version is a local identifier, not an asserted publisher revision. Human authenticity, publication-date, rights, and claim review pending. See content/audits/2023-pilot-2026-10-10.json."
     },
     {
       "id": "src-2023-pnv-v1",

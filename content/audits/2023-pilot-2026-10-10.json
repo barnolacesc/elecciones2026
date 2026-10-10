@@ -1,0 +1,753 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2023",
+  "audit_id": "audit-2023-pilot-2026-10-10",
+  "audit_date": "2026-10-10",
+  "issue": 42,
+  "performed_by": "automated-source-audit",
+  "human_editorial_approval": false,
+  "publication_allowed": false,
+  "prior_records": {
+    "content/examples/statements/statement-2023-pilot-erc-housing.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "stmt-pilot-erc-housing-2023",
+      "party_id": "erc",
+      "programme_id": "prog-erc-2023-official",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "statement_type": "explicit_proposal",
+      "summary": "Programa piloto histórico 2023: Regulación de precios de alquiler e incentivos y movilización forzosa de viviendas desocupadas.",
+      "summary_en": "Historical 2023 pilot programme: Regulation of rental prices and mobilization of vacant residential properties.",
+      "quote": "Garantir el dret a l'habitatge regulant els preus del lloguer i mobilitzant els pisos buits.",
+      "source_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "source_version": "23J-v1",
+      "source_page": "32",
+      "source_section": "Capítol: Habitatge digne",
+      "qualifications": [
+        "Prioridad de aplicación en zonas tensionadas del mercado residencial.",
+        "Movilización dirigida preferentemente a grandes tenedores de vivienda."
+      ],
+      "policy_instrument": "Regulación de precios de alquiler y penalización de vivienda vacía",
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "rev-pilot-1",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Verificado contra documento oficial de ensayo 2023 de ERC."
+        },
+        {
+          "reviewer_id": "rev-pilot-2",
+          "review_date": "2026-10-11",
+          "verdict": "approved",
+          "review_notes": "Segunda revisión independiente de ensayo 2023 completada."
+        }
+      ],
+      "last_reviewed_date": "2026-10-11",
+      "correction_id": null,
+      "is_fixture": true
+    },
+    "content/examples/statements/statement-2023-pilot-proposal.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "stmt-pilot-pp-housing-2023",
+      "party_id": "pp",
+      "programme_id": "prog-pp-2023-official",
+      "topic_id": "housing",
+      "subtopic_id": "mortgage-and-purchasing",
+      "statement_type": "explicit_proposal",
+      "summary": "Programa piloto histórico 2023: Avales del Estado de hasta el 15% del valor de tasación para compra de primera vivienda por menores de 35 años.",
+      "summary_en": "Historical 2023 pilot programme: State guarantees up to 15% of appraised value for first home purchase by persons under 35.",
+      "quote": "Crearemos un programa de avales para jóvenes de hasta 35 años que garantice hasta el 15% de la hipoteca.",
+      "source_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+      "source_version": "23J-v1",
+      "source_page": "48",
+      "source_section": "Capítulo 2: Empleo y Economía familiar",
+      "qualifications": [
+        "Exclusivo para primera vivienda habitual.",
+        "Límite de edad fijado en 35 años cumplidos en el momento de solicitud."
+      ],
+      "policy_instrument": "Línea de avales ICO para préstamos hipotecarios",
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "rev-pilot-1",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Verificado contra documento oficial de ensayo 2023 del Partido Popular."
+        },
+        {
+          "reviewer_id": "rev-pilot-2",
+          "review_date": "2026-10-11",
+          "verdict": "approved",
+          "review_notes": "Segunda revisión independiente de ensayo 2023 completada."
+        }
+      ],
+      "last_reviewed_date": "2026-10-11",
+      "correction_id": null,
+      "is_fixture": true
+    },
+    "content/examples/programmes/erc-2023-official.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "programme_id": "prog-erc-2023-official",
+      "candidacy_id": "erc",
+      "title": "Programa Electoral 2023",
+      "status": "official",
+      "version": "23J-v1",
+      "publisher": "Esquerra Republicana de Catalunya",
+      "official_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "publication_date": "2023-07-05",
+      "retrieval_date": "2026-10-09T00:00:00Z",
+      "language": "ca",
+      "sha256": "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854",
+      "rights_status": "verified_quotation_permitted",
+      "coverage_notes": "Programa electoral oficial verificado para el ensayo piloto de 2023.",
+      "supersedes": null,
+      "superseded_by": null,
+      "replacement_reason": null,
+      "is_fixture": true
+    },
+    "content/examples/programmes/pp-2023-official.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "programme_id": "prog-pp-2023-official",
+      "candidacy_id": "pp",
+      "title": "Programa Electoral PP 23J",
+      "status": "official",
+      "version": "23J-v1",
+      "publisher": "Partido Popular",
+      "official_url": "https://www.pp.es/categoria/elecciones-generales/",
+      "publication_date": "2023-07-04",
+      "retrieval_date": "2026-10-09T00:00:00Z",
+      "language": "es",
+      "sha256": "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
+      "rights_status": "verified_quotation_permitted",
+      "coverage_notes": "Programa electoral oficial verificado para el ensayo piloto de 2023.",
+      "supersedes": null,
+      "superseded_by": null,
+      "replacement_reason": null,
+      "is_fixture": true
+    },
+    "content/examples/relationships/relationship-2023-pilot-housing-divergence.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "rel-pilot-2023-housing-pp-erc-divergence",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "measure_label": "Políticas de acceso al alquiler y vivienda juvenil",
+      "party_ids": [
+        "pp",
+        "erc"
+      ],
+      "statement_ids": [
+        "stmt-pilot-pp-housing-2023",
+        "stmt-pilot-erc-housing-2023"
+      ],
+      "relationship_type": "divergence",
+      "summary": "Divergencia entre avales públicos para compra y fianza privada (PP) frente a regulación legal de precios de alquiler y movilización de vivienda desocupada (ERC).",
+      "differences": [
+        "El PP propone avales bancarios del Estado para facilitar el acceso privado a hipotecas y fianzas sin intervenir precios.",
+        "ERC propone intervención regulatoria sobre los precios de alquiler residencial y penalización de pisos vacíos de grandes tenedores."
+      ],
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "rev-pilot-1",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Comparativa 2023 revisada contra fuentes documentales oficiales."
+        },
+        {
+          "reviewer_id": "rev-pilot-2",
+          "review_date": "2026-10-11",
+          "verdict": "approved",
+          "review_notes": "Revisión secundaria de neutralidad y divergencia aprobada."
+        }
+      ],
+      "status": "active",
+      "invalidation_reason": null,
+      "invalidated_by_correction_id": null,
+      "is_fixture": true
+    },
+    "content/examples/coverage/coverage-pilot-2023-erc.json": {
+      "id": "cov-2023-erc",
+      "election_id": "es-gen-2023",
+      "candidacy_id": "erc",
+      "programme_id": "prog-erc-2023-official",
+      "status": "official",
+      "banner_text_es": "Programa oficial verificado (Ensayo Generales 2023)",
+      "banner_text_en": "Official verified programme (Generales 2023 Rehearsal)",
+      "has_verified_programme": true,
+      "topics_covered": [
+        "housing"
+      ],
+      "topics_absent": [],
+      "total_statements": 1,
+      "last_audit_date": "2026-10-11",
+      "notes": "Programa completo oficial verificado para el ensayo piloto de 2023."
+    },
+    "content/examples/coverage/coverage-pilot-2023-pp.json": {
+      "id": "cov-2023-pp",
+      "election_id": "es-gen-2023",
+      "candidacy_id": "pp",
+      "programme_id": "prog-pp-2023-official",
+      "status": "official",
+      "banner_text_es": "Programa oficial verificado (Ensayo Generales 2023)",
+      "banner_text_en": "Official verified programme (Generales 2023 Rehearsal)",
+      "has_verified_programme": true,
+      "topics_covered": [
+        "housing"
+      ],
+      "topics_absent": [],
+      "total_statements": 1,
+      "last_audit_date": "2026-10-11",
+      "notes": "Programa completo oficial verificado para el ensayo piloto de 2023."
+    },
+    "content/examples/editorial_statements.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "version": "1.0.0",
+      "description": "Representative fixture examples for statement quotes, dual-review records, corrections, and comparison invalidations under policy package E0.2.",
+      "valid_statement_with_short_quote": {
+        "id": "stmt-pilot-pp-housing-001",
+        "election_id": "es-gen-2023",
+        "party_id": "pp",
+        "topic_id": "housing",
+        "subtopic_id": "rental-regulation",
+        "summary_es": "Ayuda a la emancipación juvenil mediante un aval estatal de hasta el 15% del valor de tasación para la fianza o compra de primera vivienda.",
+        "source_id": "src-2023-pp-v1",
+        "source_version": "23J-v1",
+        "status": "published",
+        "quote": {
+          "text": "un aval bancario del 15% para facilitar la fianza de los jóvenes en alquiler",
+          "source_id": "src-2023-pp-v1",
+          "page": "112",
+          "section": "Medida 84"
+        },
+        "review": {
+          "drafter": "researcher-ext-1",
+          "reviewed_by_1": "editor-fact-check",
+          "reviewed_by_2": "editor-neutrality",
+          "review_date_1": "2026-10-09",
+          "review_date_2": "2026-10-09",
+          "lead_editor_signoff": "cesc"
+        }
+      },
+      "invalid_statement_unsupported_quote_missing_coordinates": {
+        "id": "stmt-invalid-no-coords",
+        "election_id": "es-gen-2023",
+        "party_id": "pp",
+        "topic_id": "housing",
+        "subtopic_id": "rental-regulation",
+        "summary_es": "Resumen sin coordenadas de cita.",
+        "source_id": "src-2023-pp-v1",
+        "source_version": "23J-v1",
+        "status": "published",
+        "quote": {
+          "text": "cita textual sin indicación de página ni sección",
+          "source_id": "src-2023-pp-v1",
+          "page": null,
+          "section": null
+        },
+        "review": {
+          "reviewed_by_1": "editor-a",
+          "reviewed_by_2": "editor-b",
+          "review_date_1": "2026-10-09",
+          "review_date_2": "2026-10-09"
+        },
+        "expected_error": "Quotation must specify at least one locator: non-empty page or section."
+      },
+      "invalid_statement_unsupported_quote_exceeds_length": {
+        "id": "stmt-invalid-long-quote",
+        "election_id": "es-gen-2023",
+        "party_id": "pp",
+        "topic_id": "housing",
+        "subtopic_id": "rental-regulation",
+        "summary_es": "Resumen con cita excesiva.",
+        "source_id": "src-2023-pp-v1",
+        "source_version": "23J-v1",
+        "status": "published",
+        "quote": {
+          "text": "Uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciséis diecisiete dieciocho diecinueve veinte veintiuno veintidós veintitrés veinticuatro veinticinco veintiséis veintisiete veintiocho veintinueve treinta treinta_y_uno treinta_y_dos treinta_y_tres treinta_y_cuatro treinta_y_cinco treinta_y_seis treinta_y_siete treinta_y_ocho treinta_y_nueve cuarenta cuarenta_y_uno cuarenta_y_dos",
+          "source_id": "src-2023-pp-v1",
+          "page": "12",
+          "section": "1"
+        },
+        "review": {
+          "reviewed_by_1": "editor-a",
+          "reviewed_by_2": "editor-b",
+          "review_date_1": "2026-10-09",
+          "review_date_2": "2026-10-09"
+        },
+        "expected_error": "Quotation exceeds maximum limit of 40 words"
+      },
+      "invalid_statement_four_eyes_violation": {
+        "id": "stmt-invalid-single-reviewer",
+        "election_id": "es-gen-2023",
+        "party_id": "pp",
+        "topic_id": "housing",
+        "subtopic_id": "rental-regulation",
+        "summary_es": "Resumen revisado por una sola persona en ambos roles.",
+        "source_id": "src-2023-pp-v1",
+        "source_version": "23J-v1",
+        "status": "published",
+        "quote": {
+          "text": "cita válida pero sin doble revisión independiente",
+          "source_id": "src-2023-pp-v1",
+          "page": "10",
+          "section": "2"
+        },
+        "review": {
+          "reviewed_by_1": "editor-single",
+          "reviewed_by_2": "editor-single",
+          "review_date_1": "2026-10-09",
+          "review_date_2": "2026-10-09"
+        },
+        "expected_error": "Four-eyes principle violation"
+      },
+      "valid_correction_record": {
+        "id": "corr-2026-001",
+        "statement_id": "stmt-pilot-pp-housing-001",
+        "election_id": "es-gen-2023",
+        "date": "2026-10-09",
+        "correction_type": "factual_error",
+        "severity": "major",
+        "prior_value": "aval estatal de hasta el 20%",
+        "new_value": "aval estatal de hasta el 15%",
+        "reason": "Corrección de errata en el porcentaje del aval bancario recogido en la medida 84 de la pág. 112.",
+        "reviewed_by": "editor-fact-check",
+        "approved_by": "cesc"
+      },
+      "valid_comparison_relationship": {
+        "id": "rel-housing-rent-001",
+        "election_id": "es-gen-2023",
+        "topic_id": "housing",
+        "party_ids": [
+          "pp",
+          "erc"
+        ],
+        "statement_ids": [
+          "stmt-pilot-pp-housing-001",
+          "stmt-pilot-erc-housing-001"
+        ],
+        "relationship_type": "divergence",
+        "description_es": "El PP propone avales para la compra y fianza juvenil mientras que ERC defiende la regulación de precios de alquiler y movilización forzosa de pisos vacíos.",
+        "status": "reviewed"
+      }
+    }
+  },
+  "prior_sources": [
+    {
+      "id": "src-2023-pp-v1",
+      "election_id": "es-gen-2023",
+      "party_id": "pp",
+      "candidature_name": "Partido Popular",
+      "publisher": "Partido Popular",
+      "scope": "general",
+      "official_url": "https://www.pp.es/categoria/elecciones-generales/",
+      "direct_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+      "filename": "programa_electoral_pp_23j_feijoo_2023.pdf",
+      "publication_date": "2023-07-04",
+      "retrieval_date": "2026-10-09",
+      "language": "es",
+      "version": "23J-v1",
+      "sha256": "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
+      "status": "verified",
+      "rights_review": {
+        "status": "link_and_short_quote",
+        "reviewed_by": "editorial-team",
+        "review_date": "2026-10-09",
+        "terms_notes": "Official campaign programme. Lawful quotation under TRLPI art. 32 with attribution and link to official PDF. No full PDF redistribution."
+      },
+      "replacement_history": [],
+      "notes": "Lawful pilot programme 1 for Task 1.2 and rehearsal comparator."
+    },
+    {
+      "id": "src-2023-erc-v1",
+      "election_id": "es-gen-2023",
+      "party_id": "erc",
+      "candidature_name": "Esquerra Republicana de Catalunya",
+      "publisher": "Esquerra Republicana de Catalunya",
+      "scope": "general",
+      "official_url": "https://www.esquerra.cat/transparencia/programes-electorals/",
+      "direct_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "filename": "e2023-programa.pdf",
+      "publication_date": "2023-07-05",
+      "retrieval_date": "2026-10-09",
+      "language": "ca",
+      "version": "23J-v1",
+      "sha256": "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854",
+      "status": "verified",
+      "rights_review": {
+        "status": "link_and_short_quote",
+        "reviewed_by": "editorial-team",
+        "review_date": "2026-10-09",
+        "terms_notes": "Official campaign programme. Lawful quotation under TRLPI art. 32 with attribution and link to official PDF. No full PDF redistribution."
+      },
+      "replacement_history": [],
+      "notes": "Lawful pilot programme 2 for Task 1.2 and rehearsal comparator."
+    }
+  ],
+  "source_checks": [
+    {
+      "source_id": "src-2023-pp-v1",
+      "url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+      "final_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+      "retrieved_at": "2026-10-10T13:34:22.107107+00:00",
+      "bytes": 8214497,
+      "content_type": "application/pdf",
+      "is_pdf": true,
+      "sha256": "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
+      "matches_registered_hash": true,
+      "discovery_check": {
+        "url": "https://www.pp.es/categoria/elecciones-generales/",
+        "checked_at": "2026-10-10T13:45:46.148432+00:00",
+        "http_status": 200,
+        "final_url": "https://www.pp.es/categoria/elecciones-generales/",
+        "content_type": "text/html; charset=UTF-8"
+      }
+    },
+    {
+      "source_id": "src-2023-erc-v1",
+      "url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "final_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "retrieved_at": "2026-10-10T13:34:22.163979+00:00",
+      "bytes": 1228157,
+      "content_type": "application/pdf",
+      "is_pdf": true,
+      "sha256": "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854",
+      "matches_registered_hash": true,
+      "discovery_check": {
+        "url": "https://www.esquerra.cat/transparencia/programes-electorals/",
+        "checked_at": "2026-10-10T13:45:46.148748+00:00",
+        "error": "HTTP Error 403: Forbidden"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "record_id": "stmt-pilot-pp-housing-2023",
+      "findings": [
+        "Recorded quotation not found verbatim in normalized full-document text.",
+        "PDF page 48 is healthcare; measure 91 is on PDF page 34, printed page 32.",
+        "Measure describes mortgage credit up to 95% of the property price, not a guarantee of 15% of appraised value.",
+        "First-home, ICO and age-at-application qualifications are not stated in measure 91."
+      ],
+      "decision": "Corrected draft; no human approvals."
+    },
+    {
+      "record_id": "stmt-pilot-erc-housing-2023",
+      "findings": [
+        "Recorded quotation not found verbatim in normalized full-document text.",
+        "PDF page 32 concerns secularism; housing appears on PDF pages 113-115.",
+        "Replacement draft is limited to the first bullet of housing section c), PDF page 114, printed page 113.",
+        "Prior combined rental/vacancy summary and large-holder/tension-zone qualifications require separate source-linked units."
+      ],
+      "decision": "Corrected draft; no human approvals."
+    },
+    {
+      "record_id": "rel-pilot-2023-housing-pp-erc-divergence",
+      "findings": [
+        "Different instruments were presented as one measure.",
+        "Private deposit guarantees and non-intervention claims are unsupported by the cited PP measure.",
+        "Placeholder reviewers and a future secondary approval do not establish human review."
+      ],
+      "decision": "Invalidated; no substantive comparison is published."
+    }
+  ],
+  "corrected_records": {
+    "content/examples/statements/statement-2023-pilot-erc-housing.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "stmt-pilot-erc-housing-2023",
+      "party_id": "erc",
+      "programme_id": "prog-erc-2023-official",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "statement_type": "explicit_proposal",
+      "summary": "Borrador sin revisión humana: permitir que las comunidades autónomas con competencias en vivienda y derecho civil, foral o especial regulen íntegramente los contratos de arrendamiento urbano, incluidos los precios.",
+      "summary_en": "Unreviewed draft: enable autonomous communities with housing and civil, foral or special law powers to regulate urban leases, including prices.",
+      "quote": "incloent la regulació dels preus de lloguer, la durada dels contractes i les seves pròrrogues",
+      "source_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "source_version": "23J-v1",
+      "source_page": "114",
+      "source_section": "HABITATGE, c) Mentrestant, en defensa de Catalunya al Congrés i Senat, primera viñeta; página impresa 113 (página PDF 114)",
+      "qualifications": [
+        "Propuesta limitada a las comunidades autónomas con competencias en vivienda y derecho civil, foral o especial.",
+        "La propuesta se sitúa en el marco del artículo 150.1 de la Constitución española."
+      ],
+      "policy_instrument": "Habilitación competencial para regular contratos de arrendamiento urbano",
+      "review_status": "draft",
+      "reviews": [],
+      "last_reviewed_date": null,
+      "correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/statements/statement-2023-pilot-proposal.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "stmt-pilot-pp-housing-2023",
+      "party_id": "pp",
+      "programme_id": "prog-pp-2023-official",
+      "topic_id": "housing",
+      "subtopic_id": "mortgage-and-purchasing",
+      "statement_type": "explicit_proposal",
+      "summary": "Borrador sin revisión humana: programa de avales para jóvenes de hasta 35 años destinado a facilitar créditos hipotecarios de hasta el 95% del precio de la vivienda.",
+      "summary_en": "Unreviewed draft: guarantees for young people up to age 35 to facilitate mortgage credit up to 95% of the property price.",
+      "quote": "de hasta 35 años, a fin de garantizar la concesión de créditos hipotecarios por valor de hasta un 95%",
+      "source_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+      "source_version": "23J-v1",
+      "source_page": "34",
+      "source_section": "Medida 91; página impresa 32 (página PDF 34)",
+      "qualifications": [
+        "El 95% se refiere al importe del crédito respecto al precio de la vivienda, no al porcentaje del aval.",
+        "La medida 91 no precisa primera vivienda, valor de tasación, uso de ICO ni edad al solicitar."
+      ],
+      "policy_instrument": "Programa de avales para facilitar créditos hipotecarios",
+      "review_status": "draft",
+      "reviews": [],
+      "last_reviewed_date": null,
+      "correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/programmes/erc-2023-official.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "programme_id": "prog-erc-2023-official",
+      "candidacy_id": "erc",
+      "title": "Programa Electoral 2023",
+      "status": "published-unverified",
+      "version": "23J-v1",
+      "publisher": "Esquerra Republicana de Catalunya",
+      "official_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "publication_date": null,
+      "retrieval_date": "2026-10-10T13:34:22Z",
+      "language": "ca",
+      "sha256": "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854",
+      "rights_status": "pending",
+      "coverage_notes": "Documento de 2023 descargado y hash comprobado. Revisión humana de autenticidad, fecha de publicación y derechos pendiente; sin posiciones aprobadas.",
+      "supersedes": null,
+      "superseded_by": null,
+      "replacement_reason": null,
+      "is_fixture": false
+    },
+    "content/examples/programmes/pp-2023-official.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "programme_id": "prog-pp-2023-official",
+      "candidacy_id": "pp",
+      "title": "Programa Electoral PP 23J",
+      "status": "published-unverified",
+      "version": "23J-v1",
+      "publisher": "Partido Popular",
+      "official_url": "https://www.pp.es/categoria/elecciones-generales/",
+      "publication_date": null,
+      "retrieval_date": "2026-10-10T13:34:22Z",
+      "language": "es",
+      "sha256": "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
+      "rights_status": "pending",
+      "coverage_notes": "Documento de 2023 descargado y hash comprobado. Revisión humana de autenticidad, fecha de publicación y derechos pendiente; sin posiciones aprobadas.",
+      "supersedes": null,
+      "superseded_by": null,
+      "replacement_reason": null,
+      "is_fixture": false
+    },
+    "content/examples/relationships/relationship-2023-pilot-housing-divergence.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "rel-pilot-2023-housing-pp-erc-divergence",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "measure_label": "Políticas de acceso al alquiler y vivienda juvenil",
+      "party_ids": [
+        "pp",
+        "erc"
+      ],
+      "statement_ids": [
+        "stmt-pilot-pp-housing-2023",
+        "stmt-pilot-erc-housing-2023"
+      ],
+      "relationship_type": "divergence",
+      "summary": "Divergencia entre avales públicos para compra y fianza privada (PP) frente a regulación legal de precios de alquiler y movilización de vivienda desocupada (ERC).",
+      "differences": [
+        "El PP propone avales bancarios del Estado para facilitar el acceso privado a hipotecas y fianzas sin intervenir precios.",
+        "ERC propone intervención regulatoria sobre los precios de alquiler residencial y penalización de pisos vacíos de grandes tenedores."
+      ],
+      "review_status": "invalidated",
+      "reviews": [],
+      "status": "invalidated",
+      "invalidation_reason": "Issue #42: unsupported fixture approvals removed; source quotations and locators corrected. The comparison combines different policy instruments and needs a new human audit.",
+      "invalidated_by_correction_id": null,
+      "is_fixture": true
+    },
+    "content/examples/coverage/coverage-pilot-2023-erc.json": {
+      "id": "cov-2023-erc",
+      "election_id": "es-gen-2023",
+      "candidacy_id": "erc",
+      "programme_id": "prog-erc-2023-official",
+      "status": "published-unverified",
+      "banner_text_es": "Generales 2023 (piloto): revisión humana y de derechos pendiente",
+      "banner_text_en": "2023 general election pilot: human and rights review pending",
+      "has_verified_programme": false,
+      "topics_covered": [],
+      "topics_absent": [],
+      "total_statements": 0,
+      "last_audit_date": "2026-10-10",
+      "notes": "No hay posiciones publicables; ausencia de revisión no implica ausencia de propuestas."
+    },
+    "content/examples/coverage/coverage-pilot-2023-pp.json": {
+      "id": "cov-2023-pp",
+      "election_id": "es-gen-2023",
+      "candidacy_id": "pp",
+      "programme_id": "prog-pp-2023-official",
+      "status": "published-unverified",
+      "banner_text_es": "Generales 2023 (piloto): revisión humana y de derechos pendiente",
+      "banner_text_en": "2023 general election pilot: human and rights review pending",
+      "has_verified_programme": false,
+      "topics_covered": [],
+      "topics_absent": [],
+      "total_statements": 0,
+      "last_audit_date": "2026-10-10",
+      "notes": "No hay posiciones publicables; ausencia de revisión no implica ausencia de propuestas."
+    },
+    "content/examples/editorial_statements.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "version": "1.0.0",
+      "description": "FICTITIOUS TEST DATA: no human signoffs or political claims are approved. Representative fixture examples for statement quotes, dual-review records, corrections, and comparison invalidations under policy package E0.2.",
+      "valid_statement_with_short_quote": {
+        "id": "stmt-pilot-pp-housing-001",
+        "election_id": "es-gen-2023",
+        "party_id": "pp",
+        "topic_id": "housing",
+        "subtopic_id": "rental-regulation",
+        "summary_es": "Ayuda a la emancipación juvenil mediante un aval estatal de hasta el 15% del valor de tasación para la fianza o compra de primera vivienda.",
+        "source_id": "src-2023-pp-v1",
+        "source_version": "23J-v1",
+        "status": "draft",
+        "quote": {
+          "text": "un aval bancario del 15% para facilitar la fianza de los jóvenes en alquiler",
+          "source_id": "src-2023-pp-v1",
+          "page": "112",
+          "section": "Medida 84"
+        },
+        "review": {
+          "drafter": "researcher-ext-1",
+          "reviewed_by_1": "editor-fact-check",
+          "reviewed_by_2": "editor-neutrality",
+          "review_date_1": "2026-10-09",
+          "review_date_2": "2026-10-09",
+          "lead_editor_signoff": null
+        }
+      },
+      "invalid_statement_unsupported_quote_missing_coordinates": {
+        "id": "stmt-invalid-no-coords",
+        "election_id": "es-gen-2023",
+        "party_id": "pp",
+        "topic_id": "housing",
+        "subtopic_id": "rental-regulation",
+        "summary_es": "Resumen sin coordenadas de cita.",
+        "source_id": "src-2023-pp-v1",
+        "source_version": "23J-v1",
+        "status": "published",
+        "quote": {
+          "text": "cita textual sin indicación de página ni sección",
+          "source_id": "src-2023-pp-v1",
+          "page": null,
+          "section": null
+        },
+        "review": {
+          "reviewed_by_1": "editor-a",
+          "reviewed_by_2": "editor-b",
+          "review_date_1": "2026-10-09",
+          "review_date_2": "2026-10-09"
+        },
+        "expected_error": "Quotation must specify at least one locator: non-empty page or section."
+      },
+      "invalid_statement_unsupported_quote_exceeds_length": {
+        "id": "stmt-invalid-long-quote",
+        "election_id": "es-gen-2023",
+        "party_id": "pp",
+        "topic_id": "housing",
+        "subtopic_id": "rental-regulation",
+        "summary_es": "Resumen con cita excesiva.",
+        "source_id": "src-2023-pp-v1",
+        "source_version": "23J-v1",
+        "status": "published",
+        "quote": {
+          "text": "Uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciséis diecisiete dieciocho diecinueve veinte veintiuno veintidós veintitrés veinticuatro veinticinco veintiséis veintisiete veintiocho veintinueve treinta treinta_y_uno treinta_y_dos treinta_y_tres treinta_y_cuatro treinta_y_cinco treinta_y_seis treinta_y_siete treinta_y_ocho treinta_y_nueve cuarenta cuarenta_y_uno cuarenta_y_dos",
+          "source_id": "src-2023-pp-v1",
+          "page": "12",
+          "section": "1"
+        },
+        "review": {
+          "reviewed_by_1": "editor-a",
+          "reviewed_by_2": "editor-b",
+          "review_date_1": "2026-10-09",
+          "review_date_2": "2026-10-09"
+        },
+        "expected_error": "Quotation exceeds maximum limit of 40 words"
+      },
+      "invalid_statement_four_eyes_violation": {
+        "id": "stmt-invalid-single-reviewer",
+        "election_id": "es-gen-2023",
+        "party_id": "pp",
+        "topic_id": "housing",
+        "subtopic_id": "rental-regulation",
+        "summary_es": "Resumen revisado por una sola persona en ambos roles.",
+        "source_id": "src-2023-pp-v1",
+        "source_version": "23J-v1",
+        "status": "published",
+        "quote": {
+          "text": "cita válida pero sin doble revisión independiente",
+          "source_id": "src-2023-pp-v1",
+          "page": "10",
+          "section": "2"
+        },
+        "review": {
+          "reviewed_by_1": "editor-single",
+          "reviewed_by_2": "editor-single",
+          "review_date_1": "2026-10-09",
+          "review_date_2": "2026-10-09"
+        },
+        "expected_error": "Four-eyes principle violation"
+      },
+      "valid_correction_record": {
+        "id": "corr-2026-001",
+        "statement_id": "stmt-pilot-pp-housing-001",
+        "election_id": "es-gen-2023",
+        "date": "2026-10-09",
+        "correction_type": "factual_error",
+        "severity": "major",
+        "prior_value": "aval estatal de hasta el 20%",
+        "new_value": "aval estatal de hasta el 15%",
+        "reason": "Corrección de errata en el porcentaje del aval bancario recogido en la medida 84 de la pág. 112.",
+        "reviewed_by": "editor-fact-check",
+        "approved_by": "cesc"
+      },
+      "valid_comparison_relationship": {
+        "id": "rel-housing-rent-001",
+        "election_id": "es-gen-2023",
+        "topic_id": "housing",
+        "party_ids": [
+          "pp",
+          "erc"
+        ],
+        "statement_ids": [
+          "stmt-pilot-pp-housing-001",
+          "stmt-pilot-erc-housing-001"
+        ],
+        "relationship_type": "divergence",
+        "description_es": "El PP propone avales para la compra y fianza juvenil mientras que ERC defiende la regulación de precios de alquiler y movilización forzosa de pisos vacíos.",
+        "status": "reviewed"
+      }
+    }
+  },
+  "limits": [
+    "Automated retrieval/text/render checks are not human editorial or legal review.",
+    "No evidence of two distinct human approvals was supplied.",
+    "Publication dates could not be established from the inspected source pages; previous dates removed.",
+    "Not an approved CorrectionRecord; substantive correction publication remains gated.",
+    "Issue #43 owns a reusable private archive/extraction workflow. This audit retains originals and extracted text outside Git."
+  ]
+}

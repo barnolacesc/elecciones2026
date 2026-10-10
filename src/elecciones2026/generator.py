@@ -38,6 +38,7 @@ from elecciones2026.schemas import (
     RelationshipRecord,
     ReviewRecord,
     StatementRecord,
+    PLACEHOLDER_REVIEWER_PATTERN,
     load_correction,
     load_relationship,
     load_statement,
@@ -249,6 +250,43 @@ def load_and_validate_site_data(
             # Skip statements belonging to other elections for this build
             continue
 
+        if election_id == "es-gen-2023":
+            # Repository drafts are audit material, outside the publish set.
+            # Explicit caller-supplied drafts still fail strict publication checks.
+            if stmt.review_status != "approved" and custom_statements is None:
+                continue
+            validation_errors.extend(stmt.validate(target_election_id=election_id))
+            if stmt.review_status != "approved":
+                validation_errors.append(f"Statement '{stmt.id}' has unreviewed status '{stmt.review_status}'.")
+            if stmt.is_fixture:
+                validation_errors.append(f"Statement '{stmt.id}': political pilot claims cannot be fixtures.")
+            sources = [s for s in register.sources if s.election_id == election_id and s.party_id == stmt.party_id
+                       and s.version == stmt.source_version and stmt.source_url in (s.direct_url, s.official_url)]
+            if len(sources) != 1:
+                validation_errors.append(f"Statement '{stmt.id}': source URL/version must resolve to one election-scoped source.")
+            else:
+                src = sources[0]
+                if src.status != "verified" or src.rights_review.status not in PERMITTED_QUOTE_RIGHTS:
+                    validation_errors.append(f"Statement '{stmt.id}': source verification and quotation rights are not approved.")
+                rights = src.rights_review
+                validation_errors.extend(ReviewRecord(
+                    rights.reviewed_by or "", rights.review_date or "", "approved", rights.terms_notes,
+                ).validate())
+                if PLACEHOLDER_REVIEWER_PATTERN.match(rights.reviewed_by or ""):
+                    validation_errors.append(f"Statement '{stmt.id}': placeholder source rights reviewer cannot authorize quotation.")
+                programme_path = content_dir / "examples" / "programmes"
+                programmes = [json.loads(p.read_text()) for p in sorted(programme_path.glob("*.json"))]
+                matches = [p for p in programmes if p.get("programme_id") == stmt.programme_id]
+                if len(matches) != 1 or any(matches[0].get(k) != value for k, value in (
+                    ("election_id", election_id), ("candidacy_id", stmt.party_id),
+                    ("version", src.version), ("sha256", src.sha256),
+                    ("status", "official"), ("rights_status", "verified_quotation_permitted"),
+                    ("is_fixture", False),
+                )):
+                    validation_errors.append(f"Statement '{stmt.id}': programme provenance/hash/rights do not match its source.")
+                elif not matches[0].get("publication_date") or not src.publication_date:
+                    validation_errors.append(f"Statement '{stmt.id}': approved source and programme require publication dates.")
+
         if strict_approved:
             # Rejection of unreviewed or draft statements
             if stmt.review_status != "approved":
@@ -309,6 +347,13 @@ def load_and_validate_site_data(
         if rel.status == "invalidated":
             # Exclude invalidated comparisons from active presentation
             continue
+
+        if election_id == "es-gen-2023":
+            if rel.review_status != "approved" and custom_relationships is None:
+                continue
+            validation_errors.extend(rel.validate(target_election_id=election_id, statements_by_id=filtered_statements, for_build=True))
+            if rel.is_fixture:
+                validation_errors.append(f"Relationship '{rel.id}': political pilot comparisons cannot be fixtures.")
 
         if strict_approved:
             if rel.review_status != "approved":
@@ -583,7 +628,7 @@ def render_base(
         <span class="brand-text">Generales<span class="brand-year">2023</span></span>
         <span class="pilot-badge" style="background: var(--color-warning-subtle, #fef3c7); color: var(--color-warning, #92400e); font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; margin-left: 8px;">Piloto Privado</span>
       </a>"""
-        preview_banner_text = "ENSAYO PILOTO PRIVADO · Generales 2023 · Prohibido publicar como 2026 (No satisface G2)"
+        preview_banner_text = "ENSAYO PILOTO PRIVADO · Generales 2023 (piloto) · Revisión humana y de derechos pendiente · No satisface G2"
         footer_org = "Generales 2023 · Ensayo piloto privado y confidencial"
         footer_values = "Aislamiento estricto de elecciones · No satisface G2 para 2026"
         if "Generales 2023" not in title:
@@ -703,13 +748,13 @@ def render_home_page(ctx: SiteContext) -> str:
         hero_eyebrow = "ENSAYO PILOTO PRIVADO · GENERALES 2023 (23 JUL 2023)"
         hero_title_part1 = "Los programas de 2023,"
         hero_title_part2 = "ensayo de comparación."
-        hero_intro = "Comparación privada de ensayo entre dos programas oficiales de las elecciones generales de 2023 (PP y ERC). No satisface la puerta G2 para 2026 ni presenta contenido de 2023 como 2026."
+        hero_intro = "Generales 2023 (piloto): documentos de PP y ERC con revisión humana y de derechos pendiente. Sin posiciones aprobadas para comparar. No satisface la puerta G2 para 2026."
         mock_notice = """<aside class="notice" aria-label="Aviso del ensayo piloto">
-      <strong>Aviso de ensayo privado (Generales 2023):</strong> Esta vista corresponde exclusivamente al ensayo técnico de comparación con dos programas oficiales de las elecciones generales de 2023 (PP y ERC). Queda estrictamente prohibido presentar o publicar este contenido como información de 2026. Este ensayo no satisface la puerta de publicación G2 para 2026.
+      <strong>Aviso de ensayo privado (Generales 2023):</strong> Esta vista corresponde al ensayo técnico con documentos de PP y ERC. Las posiciones y sus derechos de cita requieren revisión humana antes de mostrarse. Este ensayo no satisface la puerta de publicación G2 para 2026 ni presenta información de 2026.
     </aside>"""
         selector_eyebrow = "01 / COMPARAR · GENERALES 2023"
         page_title = "Generales 2023 · Comparador de programas (Ensayo piloto)"
-        page_description = "Ensayo privado de comparación de programas oficiales para las Elecciones Generales 2023 (PP y ERC)."
+        page_description = "Generales 2023 (piloto) · Ensayo privado. Revisión humana y de derechos pendiente; sin posiciones aprobadas."
     else:
         active_rel = (
             ctx.relationships.get("rel-housing-rental-regulation-party-a-party-b")

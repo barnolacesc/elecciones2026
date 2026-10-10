@@ -600,6 +600,8 @@ class EditorialApprovalGate:
             return errors
 
         stmt_election_id = getattr(stmt, "election_id", "")
+        if isinstance(stmt, SchemaStatementRecord):
+            errors.extend(stmt.validate(target_election_id=target_election_id or self.target_election_id))
         expected_election = target_election_id or self.target_election_id
         if not stmt_election_id:
             errors.append(f"Statement '{stmt_id}' missing election_id.")
@@ -634,7 +636,7 @@ class EditorialApprovalGate:
                 )
             for r in reviews_list:
                 if hasattr(r, "validate"):
-                    for e in r.validate():
+                    for e in r.validate(fixture=getattr(stmt, "is_fixture", False) and stmt_election_id != "es-gen-2023"):
                         errors.append(f"Statement '{stmt_id}': {e}")
 
             # Segregation of duties: drafter cannot serve as secondary reviewer
@@ -804,6 +806,12 @@ class EditorialApprovalGate:
             return errors
 
         election_id = getattr(rel, "election_id", "")
+        if isinstance(rel, SchemaRelationshipRecord) and election_id == "es-gen-2023":
+            errors.extend(rel.validate(
+                target_election_id=target_election_id or self.target_election_id,
+                statements_by_id=statements_by_id,
+                for_build=not allow_invalidated,
+            ))
         expected_election = target_election_id or self.target_election_id
         if not election_id:
             errors.append(f"Relationship '{rel_id}' missing election_id.")

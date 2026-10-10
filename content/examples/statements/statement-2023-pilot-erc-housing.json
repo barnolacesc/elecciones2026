@@ -7,34 +7,21 @@
   "topic_id": "housing",
   "subtopic_id": "rental-regulation",
   "statement_type": "explicit_proposal",
-  "summary": "Programa piloto histórico 2023: Regulación de precios de alquiler e incentivos y movilización forzosa de viviendas desocupadas.",
-  "summary_en": "Historical 2023 pilot programme: Regulation of rental prices and mobilization of vacant residential properties.",
-  "quote": "Garantir el dret a l'habitatge regulant els preus del lloguer i mobilitzant els pisos buits.",
+  "summary": "Borrador sin revisión humana: permitir que las comunidades autónomas con competencias en vivienda y derecho civil, foral o especial regulen íntegramente los contratos de arrendamiento urbano, incluidos los precios.",
+  "summary_en": "Unreviewed draft: enable autonomous communities with housing and civil, foral or special law powers to regulate urban leases, including prices.",
+  "quote": "incloent la regulació dels preus de lloguer, la durada dels contractes i les seves pròrrogues",
   "source_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
   "source_version": "23J-v1",
-  "source_page": "32",
-  "source_section": "Capítol: Habitatge digne",
+  "source_page": "114",
+  "source_section": "HABITATGE, c) Mentrestant, en defensa de Catalunya al Congrés i Senat, primera viñeta; página impresa 113 (página PDF 114)",
   "qualifications": [
-    "Prioridad de aplicación en zonas tensionadas del mercado residencial.",
-    "Movilización dirigida preferentemente a grandes tenedores de vivienda."
+    "Propuesta limitada a las comunidades autónomas con competencias en vivienda y derecho civil, foral o especial.",
+    "La propuesta se sitúa en el marco del artículo 150.1 de la Constitución española."
   ],
-  "policy_instrument": "Regulación de precios de alquiler y penalización de vivienda vacía",
-  "review_status": "approved",
-  "reviews": [
-    {
-      "reviewer_id": "rev-pilot-1",
-      "review_date": "2026-10-10",
-      "verdict": "approved",
-      "review_notes": "Verificado contra documento oficial de ensayo 2023 de ERC."
-    },
-    {
-      "reviewer_id": "rev-pilot-2",
-      "review_date": "2026-10-11",
-      "verdict": "approved",
-      "review_notes": "Segunda revisión independiente de ensayo 2023 completada."
-    }
-  ],
-  "last_reviewed_date": "2026-10-11",
+  "policy_instrument": "Habilitación competencial para regular contratos de arrendamiento urbano",
+  "review_status": "draft",
+  "reviews": [],
+  "last_reviewed_date": null,
   "correction_id": null,
-  "is_fixture": true
+  "is_fixture": false
 }
