@@ -392,6 +392,69 @@ def render_source_citation(ctx: SiteContext, stmt: StatementRecord) -> str:
               </a>"""
 
 
+def format_date_spanish(date_str: str) -> str:
+    """Format an ISO date string (YYYY-MM-DD) into natural Spanish (e.g. 9 de octubre de 2026)."""
+    months = [
+        "enero", "febrero", "marzo", "abril", "mayo", "junio",
+        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+    ]
+    try:
+        parts = date_str.strip().split("-")
+        if len(parts) == 3:
+            year, month_idx, day = int(parts[0]), int(parts[1]), int(parts[2])
+            if 1 <= month_idx <= 12:
+                return f"{day} de {months[month_idx - 1]} de {year}"
+    except (ValueError, IndexError):
+        pass
+    return date_str
+
+
+def render_source_coverage_card(ctx: SiteContext, src: SourceRecord) -> str:
+    """Render a mobile-first single-column card for a source record (Package E2.4)."""
+    badge = render_status_badge(ctx, src.status)
+    retrieval_date = escape(src.retrieval_date) if src.retrieval_date else "Pendiente"
+    version = escape(src.version) if src.version else "—"
+    hash_code = f"<code>{src.sha256[:12]}...</code>" if src.sha256 else "—"
+    rights = escape(src.rights_review.status) if src.rights_review else "not_reviewed"
+
+    if src.official_url:
+        link_html = f'<a href="{escape(src.official_url)}" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>'
+    else:
+        link_html = '<span class="source-date"><em>Enlace no disponible</em></span>'
+
+    return f"""<article class="coverage-card">
+      <div class="coverage-card-header">
+        <h3 class="coverage-party-name">{escape(src.publisher)}</h3>
+        {badge}
+      </div>
+      <div class="coverage-card-body">
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Denominación:</span>
+          <span class="coverage-meta-value">{escape(src.candidature_name)}</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Versión:</span>
+          <span class="coverage-meta-value">{version}</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Fecha consulta:</span>
+          <time class="coverage-meta-value" datetime="{retrieval_date}">{retrieval_date}</time>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">SHA-256:</span>
+          <span class="coverage-meta-value">{hash_code}</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-value">{rights}</span>
+        </div>
+      </div>
+      <div class="coverage-card-footer">
+        {link_html}
+      </div>
+    </article>"""
+
+
 def render_party_card(
     ctx: SiteContext,
     stmt: Optional[StatementRecord],
@@ -965,11 +1028,38 @@ def render_party_detail(ctx: SiteContext, party: PartyInfo) -> str:
 
 
 def render_methodology_page(ctx: SiteContext) -> str:
-    """Render metodo/index.html with full editorial methodology and privacy notice."""
+    """Render metodo/index.html with full editorial methodology, source coverage, update timestamp, and correction policy (Package E2.4)."""
+    formatted_date = format_date_spanish(ctx.build_date)
+
+    sources_2026 = [s for s in sorted(ctx.register.sources, key=lambda s: s.id) if s.election_id == "es-gen-2026"]
+    coverage_cards_2026 = "\n".join(render_source_coverage_card(ctx, s) for s in sources_2026)
+
+    sorted_corrections = sorted(ctx.corrections, key=lambda c: (c.correction_date, c.id), reverse=True)
+    correction_items = []
+    for c in sorted_corrections[:3]:
+        correction_items.append(
+            f"""<li style="margin-bottom: var(--space-2); line-height: 1.5;">
+              <strong>{escape(c.correction_date)} · {escape(c.id)} ({escape(c.correction_type)}):</strong>
+              {escape(c.reason)}
+            </li>"""
+        )
+    corrections_summary_html = ""
+    if correction_items:
+        corrections_summary_html = f"""<div style="margin-top: var(--space-3); padding: var(--space-3); background: var(--color-bg-surface-subtle); border-radius: var(--radius-md);">
+          <h3 style="font-size: var(--font-size-sm); margin-top: 0; margin-bottom: var(--space-2); color: var(--color-text-primary);">Últimas rectificaciones registradas:</h3>
+          <ul style="margin: 0; padding-left: var(--space-4); font-size: var(--font-size-xs); color: var(--color-text-secondary);">
+            {"".join(correction_items)}
+          </ul>
+        </div>"""
+
     content = f"""    <section class="hero" aria-labelledby="method-title">
-      <p class="hero-eyebrow">METODOLOGÍA EDITORIAL · ELECCIONES 2026</p>
+      <p class="hero-eyebrow">METODOLOGÍA EDITORIAL, FUENTES Y RECTIFICACIONES · ELECCIONES 2026</p>
       <h1 id="method-title" class="hero-title">Compara con rigor y neutralidad</h1>
       <p class="hero-intro">El proyecto Elecciones 2026 se rige por un marco metodológico estricto de citas exactas, doble revisión humana independiente y ausencia total de recomendaciones de voto.</p>
+      <div class="update-stamp" aria-label="Fecha de actualización">
+        <span class="update-stamp-label">Última actualización:</span>
+        <time class="update-date" datetime="{escape(ctx.build_date)}">{formatted_date}</time>
+      </div>
     </section>
 
     <section style="display: grid; gap: var(--space-6); max-width: var(--content-max-width);">
@@ -979,8 +1069,14 @@ def render_methodology_page(ctx: SiteContext) -> str:
       </article>
 
       <article class="party-card">
-        <h2>2. Criterios de inclusión de candidaturas</h2>
-        <p class="party-statement">Se registran candidaturas que cumplan criterios objetivos y transparentes: representación parlamentaria en las Cortes Generales o el Parlamento Europeo en la legislatura saliente, o presentación de listas en circunscripciones que cubran al menos el 50% del censo electoral.</p>
+        <h2>2. Criterios objetivos de inclusión de candidaturas</h2>
+        <p class="party-statement">El proyecto aplica umbrales objetivos y predecibles para seleccionar las candidaturas objeto de seguimiento, evitando inclusiones o exclusiones arbitrarias:</p>
+        <ul style="color: var(--color-text-secondary); line-height: 1.6;">
+          <li><strong>Criterio A (Representación parlamentaria previa):</strong> Fuerzas políticas que obtuvieron al menos un escaño en las Cortes Generales (Congreso de los Diputados o el Senado) en las elecciones generales anteriores (julio de 2023), o en las elecciones al Parlamento Europeo de junio de 2024.</li>
+          <li><strong>Criterio B (Proclamación nacional de candidaturas):</strong> Fuerzas políticas cuyas listas sean proclamadas oficialmente por la Junta Electoral Central (JEC) en circunscripciones que sumen al menos el 50% del censo electoral estatal.</li>
+          <li><strong>Candidaturas de ámbito territorial o autonómico:</strong> Las formaciones políticas que cumplen el Criterio A pero concurren exclusivamente en determinadas comunidades autónomas (como ERC, EAJ-PNV, EH Bildu, Junts, BNG, CC) se incluyen reflejando con claridad su ámbito territorial de votación.</li>
+          <li><strong>Ordenación neutral:</strong> Las candidaturas se muestran en orden alfabético estricto según su denominación oficial o pública. Nunca se ordenan por intención de voto, escaños previos ni afinidad editorial.</li>
+        </ul>
       </article>
 
       <article class="party-card">
@@ -995,7 +1091,7 @@ def render_methodology_page(ctx: SiteContext) -> str:
 
       <article class="party-card">
         <h2>4. Límites legales de citas textuales</h2>
-        <p class="party-statement">En aplicación del artículo 32 del Texto Refundido de la Ley de Propiedad Intelectual (TRLPI), las citas directas tienen un límite máximo estricto de <strong>40 palabras</strong> y <strong>300 caracteres</strong>, van entrecomilladas e identifican siempre autor, documento oficial y número de página o sección.</p>
+        <p class="party-statement">En aplicación del artículo 32 del Texto Refundido de la Ley de Propiedad Intelectual (TRLPI), las citas directas tienen un límite máximo estricto de <strong>40 palabras</strong> y <strong>300 caracteres</strong>, van entrecomilladas e identifican siempre autor, documento oficial y número de página o sección. No se publica ninguna cita sin fuente verificada y derechos revisados.</p>
       </article>
 
       <article class="party-card">
@@ -1003,18 +1099,37 @@ def render_methodology_page(ctx: SiteContext) -> str:
         <p class="party-statement">Cuando un programa revisado no contiene una propuesta sobre una medida concreta, se cataloga como <code>not_found</code> y se muestra con el aviso explícito «No consta en el programa». <strong>Nunca se interpreta la ausencia de mención como rechazo u oposición política.</strong></p>
       </article>
 
-      <article class="party-card">
-        <h2>6. Invalidadación automática ante correcciones</h2>
+      <article class="party-card" id="cobertura">
+        <h2>6. Cobertura y estado de los programas (Elecciones 2026)</h2>
+        <p class="party-statement">Cada candidatura incluida dispone de un estado público dentro del ciclo de vida documental (<code>missing</code>, <code>announced</code>, <code>partial</code>, <code>published-unverified</code>, <code>official</code>, <code>replaced</code>). Las candidaturas sin programa definitivo se identifican con la etiqueta explícita «Programa no disponible» y no generan posiciones deducidas:</p>
+        <div class="coverage-cards" style="margin-top: var(--space-4);">
+          {coverage_cards_2026}
+        </div>
+        <aside class="notice" style="margin-top: var(--space-4);">
+          <strong>Aislamiento de elecciones y pruebas técnicas (Tarea 1.4):</strong> Los programas y ensayos del piloto de 2023 se emplean exclusivamente para la verificación técnica de esquemas. El comparador rechaza automáticamente cualquier comparación cruzada entre elecciones. Puede consultar el inventario técnico completo y sumas SHA-256 en la página de <a href="../fuentes/" style="text-decoration: underline; font-weight: bold;">registro de fuentes</a>.
+        </aside>
+      </article>
+
+      <article class="party-card" id="rectificaciones">
+        <h2>7. Política y registro de rectificaciones</h2>
         <p class="party-statement">Cualquier actualización o rectificación sobre una afirmación fuente invalida automáticamente las relaciones comparativas derivadas, que quedan retiradas del comparador público hasta que dos revisores las auditen de nuevo.</p>
+        <p class="party-statement">El procedimiento de corrección clasifica las incidencias según su severidad con plazos de triaje estrictos:</p>
+        <ul style="color: var(--color-text-secondary); line-height: 1.6;">
+          <li><strong>Crítica (Sev-1):</strong> Inversión factual o error de atribución grave. Triaje inmediato en &lt;= 4 horas y publicación en &lt;= 12 horas.</li>
+          <li><strong>Grave (Sev-2):</strong> Inexactitud sustantiva en el instrumento o localización errónea. Triaje en &lt;= 12 horas y publicación en &lt;= 24 horas.</li>
+          <li><strong>Menor (Sev-3):</strong> Errata tipográfica o ajuste menor sin cambio de sentido. Triaje en &lt;= 24 horas y publicación en &lt;= 48 horas.</li>
+        </ul>
+        <p class="party-statement">Toda rectificación queda registrada de forma inmutable con fecha, identificador, valores previos y motivo. Consulte el <a href="../correcciones/" style="text-decoration: underline; font-weight: bold;">historial completo de rectificaciones</a>.</p>
+        {corrections_summary_html}
       </article>
 
       <article class="party-card" id="avisos">
-        <h2>7. Avisos de errores y rectificaciones</h2>
-        <p class="party-statement">La función en línea para avisar de errores estará disponible más adelante. Mientras tanto, las solicitudes editoriales se gestionan de forma centralizada según el registro de correcciones auditable.</p>
+        <h2>8. Avisos de errores y rectificaciones</h2>
+        <p class="party-statement">La función en línea para avisar de errores estará disponible más adelante. Mientras tanto, las solicitudes editoriales se gestionan de forma centralizada según el registro de correcciones auditable. Para remitir una observación o comunicar una errata, contacte con: <strong>editorial@elecciones2026.es</strong>.</p>
       </article>
 
       <article class="party-card" id="privacidad">
-        <h2>8. Aviso de privacidad y protección de datos</h2>
+        <h2>9. Aviso de privacidad y protección de datos</h2>
         <p class="party-statement"><strong>Responsable del tratamiento:</strong> C2 Ventures<br>
         <strong>Contacto:</strong> privacidad@elecciones2026.es</p>
         <p class="party-statement">Este sitio web no utiliza cookies de seguimiento, no recopila datos personales, no solicita registros de usuario y no procesa respuestas de voto. Las comparaciones que realice se ejecutan exclusivamente en la memoria local de su navegador.</p>
@@ -1032,9 +1147,12 @@ def render_methodology_page(ctx: SiteContext) -> str:
 
 
 def render_sources_page(ctx: SiteContext) -> str:
-    """Render fuentes/index.html with source register and 2026/2023 isolation."""
+    """Render fuentes/index.html with source register, mobile cards, and 2026/2023 isolation (Package E2.4)."""
+    formatted_date = format_date_spanish(ctx.build_date)
     rows_2026 = []
     rows_2023 = []
+    cards_2026 = []
+    cards_2023 = []
 
     for src in sorted(ctx.register.sources, key=lambda s: s.id):
         badge = render_status_badge(ctx, src.status)
@@ -1051,20 +1169,36 @@ def render_sources_page(ctx: SiteContext) -> str:
           <td style="padding: var(--space-3); border-bottom: 1px solid var(--color-border-subtle);">{url_link}</td>
         </tr>"""
 
+        card = render_source_coverage_card(ctx, src)
+
         if src.election_id == "es-gen-2026":
             rows_2026.append(row)
+            cards_2026.append(card)
         else:
             rows_2023.append(row)
+            cards_2023.append(card)
+
+    cards_2026_html = "\n".join(cards_2026)
+    cards_2023_html = "\n".join(cards_2023)
+    rows_2026_html = "".join(rows_2026)
+    rows_2023_html = "".join(rows_2023)
 
     content = f"""    <section class="hero" aria-labelledby="sources-title">
       <p class="hero-eyebrow">REGISTRO DE FUENTES Y AUDITORÍA</p>
       <h1 id="sources-title" class="hero-title">Fuentes oficiales y trazabilidad</h1>
       <p class="hero-intro">Inventario público de documentos electorales, fechas de consulta, versiones y sumas de verificación criptográfica (SHA-256). Solo los documentos verificados alimentan afirmaciones públicas.</p>
+      <div class="update-stamp" aria-label="Fecha de actualización">
+        <span class="update-stamp-label">Última actualización:</span>
+        <time class="update-date" datetime="{escape(ctx.build_date)}">{formatted_date}</time>
+      </div>
     </section>
 
     <section style="margin-bottom: var(--space-8);">
       <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">1. Fuentes monitorizadas · Elecciones Generales 2026</h2>
-      <div style="overflow-x: auto; background: var(--color-bg-surface); border-radius: var(--radius-lg); border: 1px solid var(--color-border-subtle);">
+      <div class="coverage-cards" style="margin-bottom: var(--space-4);">
+        {cards_2026_html}
+      </div>
+      <div class="coverage-table-container">
         <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: var(--font-size-sm);">
           <thead>
             <tr style="background: var(--color-bg-surface-subtle); border-bottom: 2px solid var(--color-border-subtle);">
@@ -1078,7 +1212,7 @@ def render_sources_page(ctx: SiteContext) -> str:
             </tr>
           </thead>
           <tbody>
-            {"".join(rows_2026)}
+            {rows_2026_html}
           </tbody>
         </table>
       </div>
@@ -1089,7 +1223,10 @@ def render_sources_page(ctx: SiteContext) -> str:
       <aside class="notice" style="margin-bottom: var(--space-4);">
         <strong>Aislamiento de elecciones (Tarea 1.4):</strong> Los documentos de 2023 se emplean exclusivamente para ensayos técnicos y validación de esquemas. El comparador rechaza automáticamente cualquier intento de comparar un programa de 2023 con uno de 2026.
       </aside>
-      <div style="overflow-x: auto; background: var(--color-bg-surface); border-radius: var(--radius-lg); border: 1px solid var(--color-border-subtle);">
+      <div class="coverage-cards" style="margin-bottom: var(--space-4);">
+        {cards_2023_html}
+      </div>
+      <div class="coverage-table-container">
         <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: var(--font-size-sm);">
           <thead>
             <tr style="background: var(--color-bg-surface-subtle); border-bottom: 2px solid var(--color-border-subtle);">
@@ -1103,10 +1240,18 @@ def render_sources_page(ctx: SiteContext) -> str:
             </tr>
           </thead>
           <tbody>
-            {"".join(rows_2023)}
+            {rows_2023_html}
           </tbody>
         </table>
       </div>
+    </section>
+
+    <section style="margin-bottom: var(--space-8);">
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">3. Observaciones y canales editoriales</h2>
+      <article class="party-card">
+        <p class="party-statement">Si detecta que una candidatura ha publicado un nuevo documento oficial, o que un enlace o suma de verificación difiere del original proclamado, remita la referencia a: <strong>editorial@elecciones2026.es</strong>. El registro de fuentes no admite formularios interactivos en línea en esta versión inicial (MVP) para preservar la cadena de custodia documental.</p>
+        <p class="party-statement">Consulte el marco de inclusión y gobernanza en la <a href="../metodo/" style="text-decoration: underline; font-weight: bold;">página de metodología</a> o el <a href="../correcciones/" style="text-decoration: underline; font-weight: bold;">registro de correcciones</a>.</p>
+      </article>
     </section>"""
 
     return render_base(
@@ -1120,7 +1265,8 @@ def render_sources_page(ctx: SiteContext) -> str:
 
 
 def render_corrections_page(ctx: SiteContext) -> str:
-    """Render correcciones/index.html with public correction history."""
+    """Render correcciones/index.html with public correction history (Package E2.4)."""
+    formatted_date = format_date_spanish(ctx.build_date)
     cards = []
     sorted_corrections = sorted(ctx.corrections, key=lambda c: (c.correction_date, c.id), reverse=True)
 
@@ -1158,9 +1304,27 @@ def render_corrections_page(ctx: SiteContext) -> str:
       <p class="hero-eyebrow">TRANSPARENCIA Y RECTIFICACIÓN</p>
       <h1 id="corrections-title" class="hero-title">Registro de correcciones</h1>
       <p class="hero-intro">Historial auditable de correcciones de erratas, reubicaciones temáticas o actualizaciones de fuentes. Cada cambio invalida las relaciones comparativas dependientes hasta su nueva verificación.</p>
+      <div class="update-stamp" aria-label="Fecha de actualización">
+        <span class="update-stamp-label">Última actualización:</span>
+        <time class="update-date" datetime="{escape(ctx.build_date)}">{formatted_date}</time>
+      </div>
+    </section>
+
+    <section style="margin-bottom: var(--space-6);">
+      <article class="party-card">
+        <h2 style="font-size: var(--font-size-lg); margin-top: 0;">Compromisos y plazos de rectificación</h2>
+        <p class="party-statement">Cualquier actualización o rectificación sobre una afirmación fuente invalida automáticamente las relaciones comparativas derivadas, que quedan retiradas del comparador público hasta que dos revisores las auditen de nuevo (principio de cuatro ojos y segregación estricta de funciones).</p>
+        <ul style="color: var(--color-text-secondary); line-height: 1.6; font-size: var(--font-size-sm);">
+          <li><strong>Crítica (Sev-1):</strong> Inversión factual o error de atribución grave. Triaje inmediato en &lt;= 4 horas y publicación en &lt;= 12 horas.</li>
+          <li><strong>Grave (Sev-2):</strong> Inexactitud sustantiva en el instrumento o localización errónea. Triaje en &lt;= 12 horas y publicación en &lt;= 24 horas.</li>
+          <li><strong>Menor (Sev-3):</strong> Errata tipográfica o ajuste menor sin cambio de sentido. Triaje en &lt;= 24 horas y publicación en &lt;= 48 horas.</li>
+        </ul>
+        <p class="party-statement"><strong>Canal estático de comunicación:</strong> No se ofrecen formularios interactivos de reporte en esta versión inicial (MVP). Cualquier comunicación o aviso de errata se gestiona por correo electrónico en: <strong>editorial@elecciones2026.es</strong>. Consulte los detalles normativos en la <a href="../metodo/#rectificaciones" style="text-decoration: underline; font-weight: bold;">metodología de rectificaciones</a>.</p>
+      </article>
     </section>
 
     <section style="margin-bottom: var(--space-10);">
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">Historial de rectificaciones auditadas</h2>
       {"".join(cards)}
     </section>"""
 
@@ -1172,6 +1336,7 @@ def render_corrections_page(ctx: SiteContext) -> str:
         content=content,
         root_path="../",
     )
+
 
 
 def render_sitemap(ctx: SiteContext, routes: list[tuple[str, str, str]]) -> str:

@@ -35,9 +35,13 @@
 
   <main id="contenido">
     <section class="hero" aria-labelledby="method-title">
-      <p class="hero-eyebrow">METODOLOGÍA EDITORIAL · ELECCIONES 2026</p>
+      <p class="hero-eyebrow">METODOLOGÍA EDITORIAL, FUENTES Y RECTIFICACIONES · ELECCIONES 2026</p>
       <h1 id="method-title" class="hero-title">Compara con rigor y neutralidad</h1>
       <p class="hero-intro">El proyecto Elecciones 2026 se rige por un marco metodológico estricto de citas exactas, doble revisión humana independiente y ausencia total de recomendaciones de voto.</p>
+      <div class="update-stamp" aria-label="Fecha de actualización">
+        <span class="update-stamp-label">Última actualización:</span>
+        <time class="update-date" datetime="2026-10-09">9 de octubre de 2026</time>
+      </div>
     </section>
 
     <section style="display: grid; gap: var(--space-6); max-width: var(--content-max-width);">
@@ -47,8 +51,14 @@
       </article>
 
       <article class="party-card">
-        <h2>2. Criterios de inclusión de candidaturas</h2>
-        <p class="party-statement">Se registran candidaturas que cumplan criterios objetivos y transparentes: representación parlamentaria en las Cortes Generales o el Parlamento Europeo en la legislatura saliente, o presentación de listas en circunscripciones que cubran al menos el 50% del censo electoral.</p>
+        <h2>2. Criterios objetivos de inclusión de candidaturas</h2>
+        <p class="party-statement">El proyecto aplica umbrales objetivos y predecibles para seleccionar las candidaturas objeto de seguimiento, evitando inclusiones o exclusiones arbitrarias:</p>
+        <ul style="color: var(--color-text-secondary); line-height: 1.6;">
+          <li><strong>Criterio A (Representación parlamentaria previa):</strong> Fuerzas políticas que obtuvieron al menos un escaño en las Cortes Generales (Congreso de los Diputados o el Senado) en las elecciones generales anteriores (julio de 2023), o en las elecciones al Parlamento Europeo de junio de 2024.</li>
+          <li><strong>Criterio B (Proclamación nacional de candidaturas):</strong> Fuerzas políticas cuyas listas sean proclamadas oficialmente por la Junta Electoral Central (JEC) en circunscripciones que sumen al menos el 50% del censo electoral estatal.</li>
+          <li><strong>Candidaturas de ámbito territorial o autonómico:</strong> Las formaciones políticas que cumplen el Criterio A pero concurren exclusivamente en determinadas comunidades autónomas (como ERC, EAJ-PNV, EH Bildu, Junts, BNG, CC) se incluyen reflejando con claridad su ámbito territorial de votación.</li>
+          <li><strong>Ordenación neutral:</strong> Las candidaturas se muestran en orden alfabético estricto según su denominación oficial o pública. Nunca se ordenan por intención de voto, escaños previos ni afinidad editorial.</li>
+        </ul>
       </article>
 
       <article class="party-card">
@@ -63,7 +73,7 @@
 
       <article class="party-card">
         <h2>4. Límites legales de citas textuales</h2>
-        <p class="party-statement">En aplicación del artículo 32 del Texto Refundido de la Ley de Propiedad Intelectual (TRLPI), las citas directas tienen un límite máximo estricto de <strong>40 palabras</strong> y <strong>300 caracteres</strong>, van entrecomilladas e identifican siempre autor, documento oficial y número de página o sección.</p>
+        <p class="party-statement">En aplicación del artículo 32 del Texto Refundido de la Ley de Propiedad Intelectual (TRLPI), las citas directas tienen un límite máximo estricto de <strong>40 palabras</strong> y <strong>300 caracteres</strong>, van entrecomilladas e identifican siempre autor, documento oficial y número de página o sección. No se publica ninguna cita sin fuente verificada y derechos revisados.</p>
       </article>
 
       <article class="party-card">
@@ -71,18 +81,326 @@
         <p class="party-statement">Cuando un programa revisado no contiene una propuesta sobre una medida concreta, se cataloga como <code>not_found</code> y se muestra con el aviso explícito «No consta en el programa». <strong>Nunca se interpreta la ausencia de mención como rechazo u oposición política.</strong></p>
       </article>
 
-      <article class="party-card">
-        <h2>6. Invalidadación automática ante correcciones</h2>
+      <article class="party-card" id="cobertura">
+        <h2>6. Cobertura y estado de los programas (Elecciones 2026)</h2>
+        <p class="party-statement">Cada candidatura incluida dispone de un estado público dentro del ciclo de vida documental (<code>missing</code>, <code>announced</code>, <code>partial</code>, <code>published-unverified</code>, <code>official</code>, <code>replaced</code>). Las candidaturas sin programa definitivo se identifican con la etiqueta explícita «Programa no disponible» y no generan posiciones deducidas:</p>
+        <div class="coverage-cards" style="margin-top: var(--space-4);">
+          <article class="coverage-card">
+      <div class="coverage-card-header">
+        <h3 class="coverage-party-name">BNG</h3>
+        <span class="status-badge status-badge-missing">Programa no disponible</span>
+      </div>
+      <div class="coverage-card-body">
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Denominación:</span>
+          <span class="coverage-meta-value">Bloque Nacionalista Galego</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Versión:</span>
+          <span class="coverage-meta-value">0.0</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Fecha consulta:</span>
+          <time class="coverage-meta-value" datetime="2026-10-09">2026-10-09</time>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">SHA-256:</span>
+          <span class="coverage-meta-value">—</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-value">not_reviewed</span>
+        </div>
+      </div>
+      <div class="coverage-card-footer">
+        <a href="https://www.bng.gal/" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+<article class="coverage-card">
+      <div class="coverage-card-header">
+        <h3 class="coverage-party-name">EH Bildu</h3>
+        <span class="status-badge status-badge-missing">Programa no disponible</span>
+      </div>
+      <div class="coverage-card-body">
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Denominación:</span>
+          <span class="coverage-meta-value">Euskal Herria Bildu</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Versión:</span>
+          <span class="coverage-meta-value">0.0</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Fecha consulta:</span>
+          <time class="coverage-meta-value" datetime="2026-10-09">2026-10-09</time>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">SHA-256:</span>
+          <span class="coverage-meta-value">—</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-value">not_reviewed</span>
+        </div>
+      </div>
+      <div class="coverage-card-footer">
+        <a href="https://ehbildu.eus/" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+<article class="coverage-card">
+      <div class="coverage-card-header">
+        <h3 class="coverage-party-name">Esquerra Republicana de Catalunya</h3>
+        <span class="status-badge status-badge-missing">Programa no disponible</span>
+      </div>
+      <div class="coverage-card-body">
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Denominación:</span>
+          <span class="coverage-meta-value">Esquerra Republicana de Catalunya</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Versión:</span>
+          <span class="coverage-meta-value">0.0</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Fecha consulta:</span>
+          <time class="coverage-meta-value" datetime="2026-10-09">2026-10-09</time>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">SHA-256:</span>
+          <span class="coverage-meta-value">—</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-value">not_reviewed</span>
+        </div>
+      </div>
+      <div class="coverage-card-footer">
+        <a href="https://www.esquerra.cat/transparencia/programes-electorals/" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+<article class="coverage-card">
+      <div class="coverage-card-header">
+        <h3 class="coverage-party-name">Junts per Catalunya</h3>
+        <span class="status-badge status-badge-missing">Programa no disponible</span>
+      </div>
+      <div class="coverage-card-body">
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Denominación:</span>
+          <span class="coverage-meta-value">Junts per Catalunya</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Versión:</span>
+          <span class="coverage-meta-value">0.0</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Fecha consulta:</span>
+          <time class="coverage-meta-value" datetime="2026-10-09">2026-10-09</time>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">SHA-256:</span>
+          <span class="coverage-meta-value">—</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-value">not_reviewed</span>
+        </div>
+      </div>
+      <div class="coverage-card-footer">
+        <a href="https://junts.cat/" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+<article class="coverage-card">
+      <div class="coverage-card-header">
+        <h3 class="coverage-party-name">EAJ-PNV</h3>
+        <span class="status-badge status-badge-missing">Programa no disponible</span>
+      </div>
+      <div class="coverage-card-body">
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Denominación:</span>
+          <span class="coverage-meta-value">Euzko Alderdi Jeltzalea - Partido Nacionalista Vasco</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Versión:</span>
+          <span class="coverage-meta-value">0.0</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Fecha consulta:</span>
+          <time class="coverage-meta-value" datetime="2026-10-09">2026-10-09</time>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">SHA-256:</span>
+          <span class="coverage-meta-value">—</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-value">not_reviewed</span>
+        </div>
+      </div>
+      <div class="coverage-card-footer">
+        <a href="https://www.eaj-pnv.eus/es/documentos/20945/con-voz-propia-programa-electoral-23-j" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+<article class="coverage-card">
+      <div class="coverage-card-header">
+        <h3 class="coverage-party-name">Partido Popular</h3>
+        <span class="status-badge status-badge-missing">Programa no disponible</span>
+      </div>
+      <div class="coverage-card-body">
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Denominación:</span>
+          <span class="coverage-meta-value">Partido Popular</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Versión:</span>
+          <span class="coverage-meta-value">0.0</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Fecha consulta:</span>
+          <time class="coverage-meta-value" datetime="2026-10-09">2026-10-09</time>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">SHA-256:</span>
+          <span class="coverage-meta-value">—</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-value">not_reviewed</span>
+        </div>
+      </div>
+      <div class="coverage-card-footer">
+        <a href="https://www.pp.es/categoria/elecciones-generales/" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+<article class="coverage-card">
+      <div class="coverage-card-header">
+        <h3 class="coverage-party-name">PSOE</h3>
+        <span class="status-badge status-badge-missing">Programa no disponible</span>
+      </div>
+      <div class="coverage-card-body">
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Denominación:</span>
+          <span class="coverage-meta-value">Partido Socialista Obrero Español</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Versión:</span>
+          <span class="coverage-meta-value">0.0</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Fecha consulta:</span>
+          <time class="coverage-meta-value" datetime="2026-10-09">2026-10-09</time>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">SHA-256:</span>
+          <span class="coverage-meta-value">—</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-value">not_reviewed</span>
+        </div>
+      </div>
+      <div class="coverage-card-footer">
+        <a href="https://www.psoe.es/transparencia/informacion-politica-organizativa/programa/" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+<article class="coverage-card">
+      <div class="coverage-card-header">
+        <h3 class="coverage-party-name">Movimiento Sumar</h3>
+        <span class="status-badge status-badge-missing">Programa no disponible</span>
+      </div>
+      <div class="coverage-card-body">
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Denominación:</span>
+          <span class="coverage-meta-value">Movimiento Sumar</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Versión:</span>
+          <span class="coverage-meta-value">0.0</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Fecha consulta:</span>
+          <time class="coverage-meta-value" datetime="2026-10-09">2026-10-09</time>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">SHA-256:</span>
+          <span class="coverage-meta-value">—</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-value">not_reviewed</span>
+        </div>
+      </div>
+      <div class="coverage-card-footer">
+        <a href="https://movimientosumar.es/programa-electoral-23j/" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+<article class="coverage-card">
+      <div class="coverage-card-header">
+        <h3 class="coverage-party-name">VOX</h3>
+        <span class="status-badge status-badge-missing">Programa no disponible</span>
+      </div>
+      <div class="coverage-card-body">
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Denominación:</span>
+          <span class="coverage-meta-value">VOX</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Versión:</span>
+          <span class="coverage-meta-value">0.0</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Fecha consulta:</span>
+          <time class="coverage-meta-value" datetime="2026-10-09">2026-10-09</time>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">SHA-256:</span>
+          <span class="coverage-meta-value">—</span>
+        </div>
+        <div class="coverage-meta-row">
+          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-value">not_reviewed</span>
+        </div>
+      </div>
+      <div class="coverage-card-footer">
+        <a href="https://www.voxespana.es/programa/programa-electoral-Vox" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+        </div>
+        <aside class="notice" style="margin-top: var(--space-4);">
+          <strong>Aislamiento de elecciones y pruebas técnicas (Tarea 1.4):</strong> Los programas y ensayos del piloto de 2023 se emplean exclusivamente para la verificación técnica de esquemas. El comparador rechaza automáticamente cualquier comparación cruzada entre elecciones. Puede consultar el inventario técnico completo y sumas SHA-256 en la página de <a href="../fuentes/" style="text-decoration: underline; font-weight: bold;">registro de fuentes</a>.
+        </aside>
+      </article>
+
+      <article class="party-card" id="rectificaciones">
+        <h2>7. Política y registro de rectificaciones</h2>
         <p class="party-statement">Cualquier actualización o rectificación sobre una afirmación fuente invalida automáticamente las relaciones comparativas derivadas, que quedan retiradas del comparador público hasta que dos revisores las auditen de nuevo.</p>
+        <p class="party-statement">El procedimiento de corrección clasifica las incidencias según su severidad con plazos de triaje estrictos:</p>
+        <ul style="color: var(--color-text-secondary); line-height: 1.6;">
+          <li><strong>Crítica (Sev-1):</strong> Inversión factual o error de atribución grave. Triaje inmediato en &lt;= 4 horas y publicación en &lt;= 12 horas.</li>
+          <li><strong>Grave (Sev-2):</strong> Inexactitud sustantiva en el instrumento o localización errónea. Triaje en &lt;= 12 horas y publicación en &lt;= 24 horas.</li>
+          <li><strong>Menor (Sev-3):</strong> Errata tipográfica o ajuste menor sin cambio de sentido. Triaje en &lt;= 24 horas y publicación en &lt;= 48 horas.</li>
+        </ul>
+        <p class="party-statement">Toda rectificación queda registrada de forma inmutable con fecha, identificador, valores previos y motivo. Consulte el <a href="../correcciones/" style="text-decoration: underline; font-weight: bold;">historial completo de rectificaciones</a>.</p>
+        <div style="margin-top: var(--space-3); padding: var(--space-3); background: var(--color-bg-surface-subtle); border-radius: var(--radius-md);">
+          <h3 style="font-size: var(--font-size-sm); margin-top: 0; margin-bottom: var(--space-2); color: var(--color-text-primary);">Últimas rectificaciones registradas:</h3>
+          <ul style="margin: 0; padding-left: var(--space-4); font-size: var(--font-size-xs); color: var(--color-text-secondary);">
+            <li style="margin-bottom: var(--space-2); line-height: 1.5;">
+              <strong>2026-10-18 · cor-2026-002 (citation_update):</strong>
+              Subsanación de errata en coordenada de página: la propuesta sobre reducción de jornada laboral a 37,5 horas figura en la página 12 del documento PDF de resumen, no en la página 11.
+            </li><li style="margin-bottom: var(--space-2); line-height: 1.5;">
+              <strong>2026-10-18 · cor-2026-001 (topic_reclassification):</strong>
+              Corrección tras revisión editorial: la medida establece un tope al alquiler en zonas tensionadas con incentivos fiscales accesorios. Aplicando la regla de instrumento operativo primario de la metodología (sección 5), el instrumento principal es la contención de rentas de vivienda, no una reforma tributaria general.
+            </li>
+          </ul>
+        </div>
       </article>
 
       <article class="party-card" id="avisos">
-        <h2>7. Avisos de errores y rectificaciones</h2>
-        <p class="party-statement">La función en línea para avisar de errores estará disponible más adelante. Mientras tanto, las solicitudes editoriales se gestionan de forma centralizada según el registro de correcciones auditable.</p>
+        <h2>8. Avisos de errores y rectificaciones</h2>
+        <p class="party-statement">La función en línea para avisar de errores estará disponible más adelante. Mientras tanto, las solicitudes editoriales se gestionan de forma centralizada según el registro de correcciones auditable. Para remitir una observación o comunicar una errata, contacte con: <strong>editorial@elecciones2026.es</strong>.</p>
       </article>
 
       <article class="party-card" id="privacidad">
-        <h2>8. Aviso de privacidad y protección de datos</h2>
+        <h2>9. Aviso de privacidad y protección de datos</h2>
         <p class="party-statement"><strong>Responsable del tratamiento:</strong> C2 Ventures<br>
         <strong>Contacto:</strong> privacidad@elecciones2026.es</p>
         <p class="party-statement">Este sitio web no utiliza cookies de seguimiento, no recopila datos personales, no solicita registros de usuario y no procesa respuestas de voto. Las comparaciones que realice se ejecutan exclusivamente en la memoria local de su navegador.</p>

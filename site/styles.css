@@ -683,6 +683,116 @@ main {
 }
 
 /* --------------------------------------------------
+   Update Stamp and Metadata Badges (Package E2.4)
+   -------------------------------------------------- */
+
+.update-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-bg-surface-subtle);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  flex-wrap: wrap;
+}
+
+.update-stamp-label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.update-date {
+  font-family: var(--font-family-mono);
+  color: var(--color-text-brand);
+  font-weight: var(--font-weight-medium);
+}
+
+/* --------------------------------------------------
+   Source Coverage Cards & Mobile Views (Package E2.4)
+   -------------------------------------------------- */
+
+.coverage-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.coverage-card {
+  background-color: var(--color-bg-surface);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+}
+
+.coverage-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.coverage-party-name {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.coverage-card-body {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+}
+
+.coverage-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+  border-bottom: 1px dashed var(--color-border-subtle);
+}
+
+.coverage-meta-row:last-child {
+  border-bottom: none;
+}
+
+.coverage-meta-label {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  flex-shrink: 0;
+}
+
+.coverage-meta-value {
+  color: var(--color-text-primary);
+  text-align: right;
+  word-break: break-all;
+}
+
+.coverage-card-footer {
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: var(--border-width-default) solid var(--color-border-subtle);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.coverage-table-container {
+  display: none;
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  overflow-x: auto;
+}
+
+/* --------------------------------------------------
    Footer
    -------------------------------------------------- */
 
@@ -757,5 +867,9 @@ footer {
 
   .btn-share {
     width: auto;
+  }
+
+  .coverage-table-container {
+    display: block;
   }
 }

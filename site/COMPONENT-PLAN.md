@@ -319,14 +319,20 @@ graph TD
 
 ---
 
-### Component 11: MethodologyNotice (`.method-notice`)
+### Component 11: MethodologyNotice (`.method-notice`) and SourceCoverageCard (`.coverage-card`)
 
-- **Purpose:** Summarizes methodology and explicitly states error reporting availability.
+- **Purpose:** Summarizes methodology, presents candidacy source coverage on mobile, and explicitly states error reporting availability without interactive forms (Package E2.4).
+- **SourceCoverageCard (`.coverage-card`):**
+  - Mobile-first single-column stacked card replacing multi-column tables on 360, 390, and 430 CSS px viewports.
+  - Displays party publisher, legal denomination, lifecycle status badge, document version, retrieval date, cryptographic SHA-256 hash, rights review status, and outbound link.
+  - Interactive source links satisfy `--touch-target-min: 44px`.
+- **Update Timestamp (`.update-stamp`):**
+  - Semantic `<time class="update-date" datetime="...">` presenting audit/freshness date.
 - **Prohibition:** **NO FAKE REPORT FORM**. Static text only:
   ```html
   <aside class="method-notice" aria-labelledby="method-notice-heading">
     <h3 id="method-notice-heading">Avisos y correcciones</h3>
-    <p>Revisamos los programas mediante un criterio estricto de citas exactas. La función para avisar de errores estará disponible más adelante.</p>
+    <p>Revisamos los programas mediante un criterio estricto de citas exactas. La función para avisar de errores estará disponible más adelante. Contacto: editorial@elecciones2026.es</p>
   </aside>
   ```
 
