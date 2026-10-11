@@ -1421,6 +1421,10 @@
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();
       updateComparison();
+      if (validateSelection() && measuresContainer && typeof measuresContainer.scrollIntoView === 'function') {
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        measuresContainer.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+      }
     });
 
     // Render defaults without converting home into a comparison URL.
