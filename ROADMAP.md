@@ -78,6 +78,10 @@ A reader may later submit a short discrepancy report for a statement or source. 
 
 Investigate whether the site can show the documented status of selected, measurable commitments from earlier programmes. This is **not** a score of party honesty, a "lies" percentage, or an MVP feature. A public percentage would require a defensible denominator, a stable observation date, consistent inclusion rules, and comparable evidence for every party. Otherwise, show individual commitments with evidence and an explicit "cannot determine" state, or reject the feature. Do not infer fulfilment from a single economic indicator or attribute a coalition outcome to one party without context. See [`commitment-follow-through`](openspec/changes/commitment-follow-through/proposal.md).
 
+### Optional post-MVP track — Official budget context
+
+Start with the approved 2023 PGE official policy-by-section table. Show the size and share of spending policies and their administrative sections; do not label every section a ministry or invent programme-level amounts. Start with a mobile ranked-bar list and an accessible table; a treemap is optional. Label the year, scope, denominator, units, and source. Keep the 2023 approved budget, the 2026 extended budget, and IGAE execution figures distinct. This is public-finance context, not a measure of any party's performance. See [source research](docs/BUDGET-SOURCE-RESEARCH.md) and [`budget-context`](openspec/changes/budget-context/proposal.md).
+
 ## 4. Architecture and operations
 
 Use Python 3.14 for an offline validator and static build. Use Docker for local preview and production. A small non-privileged container serves only static output; it does not process PDFs or store visitor data. Use FastAPI only after a separate need and OpenSpec change.
@@ -104,6 +108,7 @@ Publish useful Spanish landing, topic, party, method, source, and correction pag
 | M7 | CIS observatory with comparable official study data |
 | M8 | Reviewed Catalan localization; English only after a demand decision |
 | M9 (exploratory) | Go/no-go decision on evidence-based prior commitment follow-through; no score is presumed |
+| M10 (optional) | Reviewed official budget breakdown with a defensible denominator and accessible mobile view |
 
 Package dependencies and acceptance evidence are in [the delivery roadmap](openspec/ROADMAP.md).
 
