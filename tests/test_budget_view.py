@@ -104,6 +104,27 @@ class BudgetViewTests(unittest.TestCase):
         self.assertNotIn('budget.css', home)
         self.assertFalse((result.output_dir / 'presupuestos').exists())
 
+    def test_stylesheet_corrections_cannot_reuse_an_immutable_url(self):
+        site_dir = self.fixture.root / 'styles'
+        site_dir.mkdir()
+        stylesheet = site_dir / 'budget.css'
+        stylesheet.write_text('.budget-chart-key { display: grid; }')
+        original = budget_view.stylesheet_path(site_dir)
+        output = self.fixture.root / 'assets'
+        budget_view.copy_stylesheet(site_dir, output)
+        self.assertEqual((output / original).read_bytes(), stylesheet.read_bytes())
+        stylesheet.write_text('.budget-chart-key { display: block; }')
+        corrected = budget_view.stylesheet_path(site_dir)
+        self.assertNotEqual(original, corrected)
+        budget_view.copy_stylesheet(site_dir, output)
+        self.assertTrue((output / original).exists())
+        self.assertEqual((output / corrected).read_bytes(), stylesheet.read_bytes())
+        result = self.build_fixture(self.fixture.root / 'styled-build')
+        path = budget_view.stylesheet_path(ROOT / 'site')
+        self.assertTrue((result.output_dir / path).is_file())
+        for page in ('index.html', 'presupuestos/2023/index.html'):
+            self.assertIn(path, (result.output_dir / page).read_text())
+
     def test_private_preview_rejects_repository_and_existing_output(self):
         with self.assertRaises(BudgetError):
             budget_view.preview_bundle(self.bundle, ROOT / 'build/budget-preview')
@@ -113,7 +134,10 @@ class BudgetViewTests(unittest.TestCase):
         self.assertIn('noindex,nofollow', page.read_text())
         self.assertNotIn('Comparar propuestas sobre este tema', page.read_text())
         self.assertFalse(list(output.rglob('values.json')))
-        self.assertTrue((output / 'budget.css').is_file())
+        self.assertTrue((output / budget_view.stylesheet_path(ROOT / 'site')).is_file())
+        charts = list(output.glob('static/budget-charts/*/grafico.svg'))
+        self.assertEqual(len(charts), 1)
+        self.assertIn(charts[0].relative_to(output).as_posix(), page.read_text())
         with self.assertRaises(BudgetError):
             budget_view.preview_bundle(self.bundle, output)
 

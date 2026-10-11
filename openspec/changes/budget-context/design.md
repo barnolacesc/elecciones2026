@@ -161,3 +161,38 @@ These are evidence gates with defined fallback behavior, not permission to inven
 - Programme join feasibility: E10.4 go/no-go; no-go preserves the first view.
 - Execution comparability: E10.5 go/no-go and a separate change for any go.
 - Offline redistribution viability and measured size/cost: independent evaluation; no-go preserves online delivery.
+
+
+## E10.3 overview revision — 2026-10-12
+
+The user requested a simple, shareable graph, with the existing view retained as expanded knowledge. Lead with a deterministic squarified area chart of all 27 official spending-policy margins. Use unrounded policy values for geometry and a Spanish euros-per-100 explanation for proportions. Do not redistribute these margins into the eight overlapping taxonomy topics. The complete policy key remains readable, and full financial notes, section details, and equivalent tables move into a native disclosure.
+
+Generate a source-bearing standalone SVG behind the same reviewed-bundle gate. Use its SHA-256 in the public asset URL. PNG rasterization and optional native file sharing happen in the browser only after a click, with no chart library, image service, prefetch, or data archive. Use the serving CSP's existing data-image allowance; do not broaden CSP for blob images. Enforce 128 KiB SVG and 1080-by-8192 maximum image dimensions, escape every label, and keep cancellation separate from download fallback. Private preview SVGs retain a prominent draft notice in the image itself. This image action is distinct from the deferred full offline-distribution evaluation.
+
+The SVG includes every official policy, complete labels in its key, 2023 approved status, scope and exclusions, denominator, rounding context, source URL/table/version, build and review date/state, and bundle identity. Spanish copy and G10 publication reviews remain pending; user interface approval does not replace them.
+
+## E10.3 layout correction — 2026-10-12
+
+Use content-hashed budget stylesheet paths in both public builds and private previews. The serving configuration caches CSS as immutable for one year; an unchanged filename can therefore retain obsolete chart styles after an HTML update. Changed stylesheet bytes must receive a different URL without relaxing cache or CSP headers.
+
+Keep the chart within 520 CSS pixels. At 960 pixels and above, place the policy key beside the chart; below that breakpoint, stack it underneath. Give names and amounts separate aligned columns, clear row spacing, and complete wrapping. In chart tiles and shared images, show a complete official label only when it fits; otherwise use its policy code. Keep complete names in the key and SVG titles. Do not abbreviate or invent policy names, group policies, or change their amounts.
+
+## E10.3 actual-amount overview — 2026-10-12
+
+This user-requested revision supersedes the earlier euros-per-100 framing, tile-code fallback, and side-by-side key layout. Prioritise the area chart at full available width, capped at 960 CSS pixels, with the complete key underneath. Retain every official policy and the squarified geometry calculated from unrounded values. A policy with 40 percent of the total occupies 40 percent of the plot; do not scale the largest policy to fill the chart.
+
+Show real million-euro amounts and percentages of the consolidated denominator in both the page and shared image. Explain M€ in Spanish. Fit complete names, percentages, and amounts inside tiles where possible; omit text that cannot fit rather than substituting source codes. The complete key always shows all names and both figures, including small policies. Keep codes in expanded source/accounting detail only. Positive values below display precision remain explicitly positive. Preserve the unchanged reviewed-bundle gate, source-bearing exports, and content-hashed stylesheet delivery.
+
+## E10.3 adaptive tile type — 2026-10-12
+
+Use a type-size ceiling derived from each tile's area relative to the largest tile. Keep the largest tile at the base size when its content fits. Search downward in bounded half-unit steps to fit complete names, percentages, and real amounts before omitting content. Preserve words and complete names; amount and M€ may wrap onto separate lines. Minimum sizes are eight SVG units on the page and 55 percent of the export's base size (12.1 units). These are chart-coordinate sizes; the complete key remains the readable alternative on narrow screens.
+
+Prefer complete name/share/amount, then complete name/share, then share/amount, then share alone. Hide text when even the minimum cannot fit. Keep original tile geometry and unrounded allocation scale, source titles, full key, draft watermark, export bounds, and content-hashed image URLs. Apply the same fitting function to page and shared SVG/PNG output.
+
+## E10.3 policy colours and magnitude comparison — 2026-10-12
+
+Assign a stable muted colour to each of the 27 official policy codes, independent of order, amounts, taxonomy mapping, and party selections. Use the same colour in the area chart, complete key swatch, comparison bars, and exported image. The palette identifies policies without political attribution or evaluative meaning; all white tile text meets 4.5:1 contrast. Retain complete names and figures so colour is supplementary.
+
+The user requested a visual comparison of health plus education against pensions. Read only official policy margins 31, 32, and 21; sum the first two with decimal precision 50. Render pensions, health, education, and the explicitly named sum as four bars on a common linear scale. The combined bar stacks health and education segments in their respective colours. Percentages use pensions as the clearly named denominator, separate from the main area chart's consolidated-total denominator. Scale bars to the larger of pensions and the sum to accommodate ratios above 100 percent without clipping or artificially enlarging small amounts.
+
+Keep the comparison below the main chart and sharing controls, before the complete key. Include it in the shared SVG/PNG. Explain immediately that these health/education PGE allocations exclude some autonomous-community and local-government expenditure and are not total Spanish public health/education spending. Include official source links and exact row/column locators. Do not create party-performance claims, add overlapping taxonomy totals, or impute missing rows; omit the comparison when one row is unavailable or the pension denominator is zero. Public source/editorial/G10 acceptance remains pending.

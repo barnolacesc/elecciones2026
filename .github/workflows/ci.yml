@@ -153,6 +153,7 @@ jobs:
       - name: Verify budget views with synthetic data only (E10.3)
         run: |
           node --check site/budget-context.js
+          node --check site/budget-chart.js
           PYTHONPATH=src ELECTIONS_TEST_BUDGET_BROWSER=1 python -m unittest discover -s tests -p test_budget_view_browser.py -v
 
       - name: Retain budget viewport and network observations

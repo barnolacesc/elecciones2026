@@ -55,3 +55,54 @@ The feature SHALL expose `/presupuestos/2023/` as static Spanish HTML with a can
 #### Scenario: Crawler access
 - **WHEN** a crawler requests the budget route without executing JavaScript
 - **THEN** it receives reviewed figures, scope, source references, and historical metadata.
+
+
+### Requirement: Plain-language shareable overview
+The page SHALL prioritise an area chart of all official policies, scaled by unrounded shares of the consolidated total. Overview figures SHALL show percentage and actual amount in million euros, without source codes or euros-per-100 framing. A readable key SHALL show all names and both figures. It SHALL NOT partition overlapping topics. Full source notes and tables SHALL remain available in a native disclosure.
+
+#### Scenario: Understand the distribution
+- **WHEN** a visitor opens the budget page
+- **THEN** the chart appears before its policy key and expanded detail, every official policy is included, and colour or scripts are not required to read names, percentages, and actual amounts.
+
+#### Scenario: Understand the scale
+- **WHEN** a policy represents 40 percent of the unrounded consolidated total
+- **THEN** it occupies 40 percent of the chart area at every viewport size, without normalising the largest policy to the full plot.
+
+### Requirement: Area-adaptive chart labels
+Chart and exported-image labels SHALL use larger type in larger areas and reduce type within bounded minimum sizes to fit complete names, percentages, and actual amounts. They SHALL preserve allocation geometry, never introduce source codes or truncated names, and retain every complete name and both figures in the readable key when a tile cannot fit them.
+
+#### Scenario: Fit a smaller policy
+- **WHEN** a policy tile cannot fit its complete name and figures at its initial type size
+- **THEN** the renderer reduces type before omitting content, without changing the tile area or clipping text.
+
+### Requirement: Source-bearing image sharing
+An explicitly shared image SHALL retain year, approved-budget status, scope/exclusions, exact denominator, rounding context, source/table/version, update/review state, and bundle identity. It SHALL distinguish approved allocations from executed spending and proposal costs. Private preview images SHALL retain a visible draft notice. Native image sharing SHALL have a PNG download fallback and a standalone SVG alternative.
+
+#### Scenario: Share an image
+- **WHEN** a visitor shares or saves the chart
+- **THEN** the image retains measurement and source context, native sharing is used where supported, and cancellation does not trigger an unwanted download.
+
+### Requirement: Consistent policy colours
+Each official policy SHALL have a stable distinct colour in the area chart, complete key, and shared image. Colours SHALL identify policies rather than parties, rankings, or value judgements. White tile text SHALL have contrast of at least 4.5:1. Names and figures SHALL remain readable without colour.
+
+#### Scenario: Policy order changes
+- **WHEN** policy amounts or order change
+- **THEN** each policy retains its colour and the plot area still follows its unrounded allocation.
+
+### Requirement: Traceable magnitude comparison
+The view and shared image SHALL compare the official health and education margins, individually and summed, against pensions. Bars SHALL use one common scale with explicit pension-relative percentages, exact unrounded arithmetic, adjacent coverage notes, and source locators. They SHALL NOT imply total Spanish health/education expenditure or party performance. Missing rows or a zero pension denominator SHALL omit the comparison without imputation.
+
+#### Scenario: Compare with pensions
+- **WHEN** the three official margins are available and the pension amount is positive
+- **THEN** the summed bar equals the two individual bars combined, labels name pensions as the denominator, and the note explains the regional/local coverage limitation.
+
+#### Scenario: Combined amount exceeds pensions
+- **WHEN** health plus education exceed the pension amount
+- **THEN** a common scale accommodates the full sum without clipping, while percentage labels remain relative to pensions.
+
+### Requirement: Bounded user-initiated image delivery
+Image preparation SHALL occur only after a user action with bounded local assets and the existing publication gate. It SHALL work within the existing serving CSP and SHALL NOT require a chart library, image service, prefetch, service worker, or full-data archive. Preparation/sharing errors SHALL leave the chart and expanded detail usable.
+
+#### Scenario: Image unavailable
+- **WHEN** image preparation or sharing fails
+- **THEN** an honest failure message appears and the chart, SVG alternative, and full detail remain usable.
