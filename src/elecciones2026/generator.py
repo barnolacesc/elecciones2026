@@ -588,7 +588,26 @@ def render_party_card(
 
     quote_html = ""
     if stmt.quote:
-        quote_html = f'<blockquote class="party-quote"><p>«{escape(stmt.quote)}»</p></blockquote>'
+        caveats_json = escape(json.dumps(stmt.qualifications or []))
+        quote_html = f"""<div class="party-quote-wrapper">
+                <span class="party-quote-label">Extracto literal del programa:</span>
+                <blockquote class="party-quote"><p>«{escape(stmt.quote)}»</p></blockquote>
+                <button type="button" class="btn-open-manifesto"
+                  data-party-name="{escape(party_name)}"
+                  data-party-pill="{escape(party_letter)}"
+                  data-party-pill-class="{escape(pill_class)}"
+                  data-status-label="Programa oficial"
+                  data-source="{escape(stmt.source_version or 'Programa oficial')}"
+                  data-section="{escape(stmt.source_section or '')}"
+                  data-instrument="{escape(stmt.policy_instrument or '')}"
+                  data-quote="{escape(stmt.quote)}"
+                  data-caveats="{caveats_json}"
+                  data-source-url="{escape(stmt.source_url or '')}"
+                  aria-haspopup="dialog">
+                  <span aria-hidden="true">📖</span>
+                  <span>Leer extracto</span>
+                </button>
+              </div>"""
 
     return f"""<article class="{card_class}" aria-labelledby="party-{party_letter.lower()}-name">
             <div class="party-card-header">
@@ -839,6 +858,16 @@ def render_home_page(ctx: SiteContext) -> str:
               <p id="measure-topic-label" class="measure-topic-label">TEMA: VIVIENDA</p>
               <h3 id="measure-1-title" class="measure-title">Medida: {escape(active_rel.measure_label if active_rel else 'Regulación de precios de alquiler en zonas de mercado tensionado')}</h3>
               <p id="measure-summary" class="measure-summary">Políticas de contención y límites obligatorios a los precios de arrendamiento de vivienda en áreas declaradas de mercado tensionado.</p>
+              <div class="measure-context" role="region" aria-label="Alcance y claves de la iniciativa">
+                <p class="measure-context-desc">Esta medida evalúa las políticas de contención del alquiler residencial frente al incremento de precios en áreas urbanas, analizando los modelos de índice de precios de referencia y el régimen sancionador a grandes tenedores.</p>
+                <div class="measure-axes">
+                  <span class="measure-axes-label">Claves de contraste en esta medida:</span>
+                  <ul class="measure-axes-list">
+                    <li>Modelo de contención: índice estatal homogéneo vinculante frente a índices de ajuste autonómico.</li>
+                    <li>Régimen de excepciones: moratorias temporales por rehabilitación integral frente a aplicación general sin exenciones.</li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
             <div class="measure-cards">
@@ -861,6 +890,16 @@ def render_home_page(ctx: SiteContext) -> str:
               <p class="measure-topic-label">TEMA: VIVIENDA</p>
               <h3 id="measure-2-title" class="measure-title">Medida: Ayudas públicas directas y avales para acceso a la vivienda para jóvenes</h3>
               <p class="measure-summary">Instrumentos de apoyo financiero público para facilitar la emancipación y la adquisición o fianza de primera vivienda por jóvenes menores de 35 años.</p>
+              <div class="measure-context" role="region" aria-label="Alcance y claves de la iniciativa">
+                <p class="measure-context-desc">Esta medida analiza las fórmulas de intervención pública para facilitar el acceso de jóvenes a la vivienda habitual, contrastando subvenciones directas a intereses frente a coberturas crediticias de fianza o entrada.</p>
+                <div class="measure-axes">
+                  <span class="measure-axes-label">Claves de contraste en esta medida:</span>
+                  <ul class="measure-axes-list">
+                    <li>Instrumento financiero: bonificación de tipos de interés hipotecario frente a líneas directas de aval de entrada.</li>
+                    <li>Criterios de elegibilidad: límites de renta basados en múltiplos del IPREM (3,5x frente a 4x).</li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
             <div class="measure-cards">
@@ -955,7 +994,26 @@ def render_home_page(ctx: SiteContext) -> str:
         <h2>{escape(ctx.i18n['coverage_summary']['heading'])}</h2>
         <p>{escape(ctx.i18n['coverage_summary']['text'])}</p>
       </div>
-    </section>"""
+    </section>
+
+    <dialog id="manifesto-dialog" class="manifesto-dialog" aria-labelledby="dialog-party-name">
+      <div class="dialog-content">
+        <header class="dialog-header">
+          <div class="dialog-header-meta">
+            <span id="dialog-party-pill" class="party-pill party-pill-a" aria-hidden="true">A</span>
+            <div>
+              <span class="dialog-eyebrow">Visor de extracto del programa</span>
+              <h3 id="dialog-party-name" class="dialog-party-name">Candidatura</h3>
+            </div>
+          </div>
+          <button type="button" class="dialog-close-btn" id="dialog-close-btn" aria-label="Cerrar visor">✕</button>
+        </header>
+        <div class="dialog-body" id="dialog-body"></div>
+        <footer class="dialog-footer" id="dialog-footer">
+          <button type="button" class="btn-close-dialog" id="dialog-dismiss-btn">Cerrar visor</button>
+        </footer>
+      </div>
+    </dialog>"""
 
     return render_base(
         ctx=ctx,
