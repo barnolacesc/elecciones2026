@@ -57,6 +57,15 @@ jobs:
         run: |
           PYTHONPATH="src" python -m unittest discover -s tests -v
 
+      - name: Rehearse restricted SSH and sudo on Ubuntu 22.04 (E3.3)
+        run: |
+          sh -n ops/elecciones-release
+          sh -n ops/elecciones-ssh
+          docker run --rm --platform linux/amd64 --cap-drop ALL --cap-add CHOWN --cap-add FOWNER --cap-add DAC_OVERRIDE --cap-add SETUID --cap-add SETGID --cap-add SYS_CHROOT --cap-add AUDIT_WRITE \
+            -v "$PWD:/work:ro" \
+            ubuntu@sha256:5ec03bb3441e8b0bf3b4f9cd4629a1ae763010dc3035bb8da3ae6cf026486401 \
+            sh -c 'apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends python3 sudo openssh-server openssh-client && python3 /work/tests/restricted_access_smoke.py'
+
       - name: Verify private PDF extraction with synthetic pages only (E1.2)
         run: |
           docker build --tag elecciones-private-pdf:ci tools/private-pdf

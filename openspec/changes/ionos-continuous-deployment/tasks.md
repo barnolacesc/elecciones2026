@@ -1,6 +1,6 @@
 # Tasks: E3.3 IONOS continuous deployment
 
-Status: planning complete; implementation and live activation not started. These tasks extend E3.3 and do not complete the existing MVP tasks 4.4/4.6 or the E3.4 capacity gate.
+Status: planning complete; restricted-access implementation in progress; live activation not started. These tasks extend E3.3 and do not complete the existing MVP tasks 4.4/4.6 or the E3.4 capacity gate.
 
 ## 1. Confirm host and release prerequisites
 
@@ -19,7 +19,7 @@ Status: planning complete; implementation and live activation not started. These
 
 ## 3. Prepare restricted host operations
 
-- [ ] 3.1 Implement the root-owned forced-command deployment wrapper with fixed Compose/state configuration, approved image-repository allowlist, digest validation and narrow sudo; test rejection of shell syntax, extra arguments, alternate repositories, environment overrides, and unauthorized commands.
+- [x] 3.1 Implement the root-owned forced-command deployment wrapper with fixed Compose/state configuration, approved image-repository allowlist, digest validation and narrow sudo; test rejection of shell syntax, extra arguments, alternate repositories, environment overrides, and unauthorized commands.
 - [ ] 3.2 Document and provision the restricted SSH account, VPS public key, GitHub `production` secret `VPS_SSH_KEY`, environment secrets `VPS_HOST=195.20.230.75`, `VPS_USER`, and `VPS_KNOWN_HOSTS`, with a new election-site key pair, independently verified known_hosts, and root-only private-registry authentication; verify key rotation, host-key mismatch rejection, and disabled forwarding/PTY without exposing credentials. Verify secrets are passed through environment variables, connection inputs are validated, and temporary key files are removed on success and failure.
 - [ ] 3.3 Adapt the existing loopback Compose/proxy setup to preflight results, preserving non-root/read-only execution and bounded resources; verify Compose configuration, TLS/proxy syntax, container health, free ports and lack of public container listeners.
 - [ ] 3.4 Document owner-controlled finance retirement, Cloudflare TLS/origin restrictions, cache handling and authenticated private staging; verify private pilot content is unavailable on the public domain and requires authentication in staging.
@@ -42,10 +42,16 @@ Status: planning complete; implementation and live activation not started. These
 
 The finance deployment and test workflows at main revision `5c705d7f2be8cce74bc5b2434c078341d1b690c2` were reviewed read-only; secret values and live host settings were not inspected. The design records retained conventions and concrete security improvements.
 
-Proposal, design, behavioral spec and task list were prepared from the existing workflow, Docker runtime, release controller and roadmap. Owner inputs specify Ubuntu, 1 vCPU, 1 GB RAM, Cloudflare, the new domain, and retirement of finance hosting. No server connection, credential creation, runtime change, live load test or deployment was performed.
+Proposal, design, behavioral spec and task list were prepared from the existing workflow, Docker runtime, release controller and roadmap. Owner inputs specify Ubuntu, 1 vCPU, 1 GB RAM, Cloudflare, the new domain, and retirement of finance hosting. The agent has not connected to the VPS, created deployment credentials, run live load tests or deployed the site. Owner-provided terminal output confirms finance shutdown, VPS reboot and Docker-group removal; backup and firewall evidence remain pending.
 
-Planning checks: `openspec validate ionos-continuous-deployment --strict` passed; `openspec status --change ionos-continuous-deployment` reports all four planning artifacts complete. CLI was run through the existing cached OpenSpec executable because it is not on PATH. Staged `git diff --check` passed. Runtime tests were not run for this documentation-only change; all implementation tasks remain unchecked.
+Original planning-only checks: `openspec validate ionos-continuous-deployment --strict` passed; `openspec status --change ionos-continuous-deployment` reports all four planning artifacts complete. CLI was run through the existing cached OpenSpec executable because it is not on PATH. Staged `git diff --check` passed. No runtime tests were run during the original documentation-only planning phase. See the implementation evidence below for subsequent checks and task completion.
 
 ## Workflow follow-up
 
 - Archive only after implementation, independent review and applicable release evidence are complete. This plan does not authorize merge, publication or infrastructure destruction.
+
+## Restricted-access implementation evidence
+
+Task 3.1 complete: root-owned request validator and isolated launchers, fixed Compose/state paths, GHCR repository/digest allowlist, narrow NOSETENV sudo policy, and account-wide SSH restriction with root-managed authorized keys. Eight boundary tests cover invalid requests, inherited settings, ownership/write permissions, symlinks, state references, and shell argument preservation. Existing seven release/recovery tests pass. Full Python unittest suite: 312 tests pass, 2 skips. Focused Ruff E9/F63/F7/F82 checks, compile validation, shell syntax, strict OpenSpec validation and diff whitespace checks pass.
+
+Disposable Ubuntu 22.04 AMD64 rehearsal passes using real OpenSSH and sudo: restricted SSH check succeeds; arbitrary requests, other image repositories, edits to installation/state/key files and an old home authorized key are rejected. CI now repeats that off-host rehearsal on a digest-pinned Ubuntu test image. This does not test live Docker activation, VPS provisioning, production firewall or GitHub release approval. Task 3.2 remains unchecked until the owner installs the new public key/policy, provisions secrets and registry pull access, and verifies live access. The private repository's production environment currently reports no protection rules or deployment branch policy; automatic delivery stays inactive.

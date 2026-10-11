@@ -30,7 +30,7 @@ Keep GHCR private while it contains rehearsal material. Give the host a separate
 
 ### 3. Restrict SSH to the deployment operation
 
-Create a dedicated `elecciones-deploy` identity and key pair. The public key goes in the VPS account's `authorized_keys`; the private key goes in the protected GitHub environment. This key authenticates to IONOS, while a GitHub repository deploy key authenticates to GitHub. They serve different endpoints.
+Reuse the existing `deployer` identity with a new election-site key pair. The owner removed its Docker-group membership; replace its obsolete finance sudo rule with only the root-owned release wrapper. The public key goes in root-owned `/etc/ssh/authorized_keys/deployer`, selected by the account-specific SSH configuration; the private key goes in the protected GitHub environment. This key authenticates to IONOS, while a GitHub repository deploy key authenticates to GitHub. They serve different endpoints.
 
 Use a forced command with no PTY, agent forwarding, port forwarding, or arbitrary shell execution. A root-owned wrapper accepts only an allowlisted GHCR repository plus a full sha256 digest, or a protected rollback action. Reject malformed input, extra arguments, and shell syntax; never evaluate `SSH_ORIGINAL_COMMAND`. The SSH user cannot edit the controller, Compose file, wrapper, state, or registry credentials. Grant narrowly defined sudo access to that wrapper only; do not add the user to the Docker group, whose access is effectively root. Restrict environment inheritance, including Compose port/project settings. Root-owned configuration fixes the site paths and selected port.
 
@@ -81,7 +81,7 @@ The finance workflows establish an operational reference, not evidence that the 
 | `VPS_SSH_KEY` | Dedicated deployment private key; matching public key is installed on the VPS | GitHub `production` environment secret only |
 | `VPS_KNOWN_HOSTS` | Independently verified host-key entry, including nonstandard port if used | GitHub `production` environment secret |
 | `VPS_HOST` | `195.20.230.75` (bare IP, without `http://`) | GitHub `production` environment secret; matches finance workflow naming |
-| `VPS_USER` | Dedicated `elecciones-deploy` username | GitHub `production` environment secret; matches finance workflow naming |
+| `VPS_USER` | Reused `deployer` username with restricted release permissions | GitHub `production` environment secret; matches finance workflow naming |
 | `VPS_SSH_PORT` | Verified SSH port | GitHub `production` environment variable |
 | Runner path | Isolated runner and fixed SSH egress allowlist, or approved authenticated private path | CI/network owner configuration |
 | Registry publishing | Actions package permissions | Workflow-scoped `GITHUB_TOKEN`; no extra publishing PAT |
@@ -90,9 +90,9 @@ The finance workflows establish an operational reference, not evidence that the 
 | Repository administration | Authority to configure environment reviewers, branch checks, secrets, and package access | GitHub owner/admin setup |
 | Release approval | G0/G2/G3/G4 evidence, reviewed public corpus, accessibility/security/load evidence | Restricted release record and production approval |
 
-Configure `VPS_HOST=195.20.230.75`, `VPS_USER=elecciones-deploy`, `VPS_SSH_KEY`, and `VPS_KNOWN_HOSTS` under repository **Settings → Environments → production → Environment secrets**. Reference them through the `secrets` context, for example `${{ secrets.VPS_HOST }}` and `${{ secrets.VPS_SSH_KEY }}`. Configure `VPS_SSH_PORT` under **Environment variables** and reference `${{ vars.VPS_SSH_PORT }}`. The public IP and username do not require secrecy, but storing them as secrets matches the owner's finance workflow and masks routine output.
+Configure `VPS_HOST=195.20.230.75`, `VPS_USER=deployer`, `VPS_SSH_KEY`, and `VPS_KNOWN_HOSTS` under repository **Settings → Environments → production → Environment secrets**. Reference them through the `secrets` context, for example `${{ secrets.VPS_HOST }}` and `${{ secrets.VPS_SSH_KEY }}`. Configure `VPS_SSH_PORT` under **Environment variables** and reference `${{ vars.VPS_SSH_PORT }}`. The public IP and username do not require secrecy, but storing them as secrets matches the owner's finance workflow and masks routine output.
 
-Install only the matching public deployment key in the VPS account's restricted `authorized_keys`. Use a new election-site key pair; do not reuse the finance private key or password. Matching secret names do not share values across repositories: provision each value explicitly in this repository's protected environment. The verified server host-key entry is separate from the deployment key pair. These are planned settings; this PR has not provisioned GitHub secrets or variables.
+Install only the matching public deployment key in root-owned `/etc/ssh/authorized_keys/deployer`; account-wide ForceCommand and forwarding/TTY restrictions prevent old home keys or mutable home configuration from bypassing this access policy. Use a new election-site key pair; do not reuse the finance private key or password. Matching secret names do not share values across repositories: provision each value explicitly in this repository's protected environment. The verified server host-key entry is separate from the deployment key pair. These are planned settings; this PR has not provisioned GitHub secrets or variables.
 
 Pass secrets to shell steps through step-level environment variables, not expression substitution inside shell source. Write key and host-trust files into a private temporary directory with `umask 077`, `printf`, and mode 600; disable tracing and clean up through a trap and an always-run fallback. Quote host/user/port values, validate their formats, use noninteractive SSH with `StrictHostKeyChecking=yes`, explicit `UserKnownHostsFile`, `IdentitiesOnly=yes`, and connection timeouts. Never print keys or return raw SSH output that could expose credentials.
 
@@ -134,3 +134,7 @@ No private keys, passwords, tokens, finance backups, or visitor data belong in a
 - [Reviewed finance VPS workflow](https://github.com/barnolacesc/personal-finances/blob/5c705d7f2be8cce74bc5b2434c078341d1b690c2/.github/workflows/deploy-test.yml)
 - [Reviewed finance Raspberry Pi workflow](https://github.com/barnolacesc/personal-finances/blob/5c705d7f2be8cce74bc5b2434c078341d1b690c2/.github/workflows/deploy.yml)
 - [Reviewed finance test workflow](https://github.com/barnolacesc/personal-finances/blob/5c705d7f2be8cce74bc5b2434c078341d1b690c2/.github/workflows/test.yml)
+
+## Implementation progress
+
+The restricted release wrapper, shell launchers, sudo policy, account-specific SSH policy and [installation runbook](../../../ops/RESTRICTED-DEPLOYMENT.md) implement task 3.1. Requests use fixed root-owned paths, a clean environment and the election GHCR repository allowlist. A `check` request verifies access without deployment. The runbook records the owner-provided Ubuntu preflight and uses the existing `deployer` account. Production environment approval rules, live provisioning and runner connectivity remain pending; no production delivery is activated.
