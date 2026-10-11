@@ -68,6 +68,13 @@ The page SHALL prioritise an area chart of all official policies, scaled by unro
 - **WHEN** a policy represents 40 percent of the unrounded consolidated total
 - **THEN** it occupies 40 percent of the chart area at every viewport size, without normalising the largest policy to the full plot.
 
+### Requirement: Area-adaptive chart labels
+Chart and exported-image labels SHALL use larger type in larger areas and reduce type within bounded minimum sizes to fit complete names, percentages, and actual amounts. They SHALL preserve allocation geometry, never introduce source codes or truncated names, and retain every complete name and both figures in the readable key when a tile cannot fit them.
+
+#### Scenario: Fit a smaller policy
+- **WHEN** a policy tile cannot fit its complete name and figures at its initial type size
+- **THEN** the renderer reduces type before omitting content, without changing the tile area or clipping text.
+
 ### Requirement: Source-bearing image sharing
 An explicitly shared image SHALL retain year, approved-budget status, scope/exclusions, exact denominator, rounding context, source/table/version, update/review state, and bundle identity. It SHALL distinguish approved allocations from executed spending and proposal costs. Private preview images SHALL retain a visible draft notice. Native image sharing SHALL have a PNG download fallback and a standalone SVG alternative.
 

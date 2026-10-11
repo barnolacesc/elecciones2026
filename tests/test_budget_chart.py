@@ -98,6 +98,29 @@ class BudgetChartTests(unittest.TestCase):
         self.assertEqual(budget_chart.percentage('0.01', '100000'), '< 0,01 %')
         self.assertEqual(budget_chart.amount_label('0.01'), '< 0,01 M€')
 
+    def test_font_shrinks_to_keep_complete_names_and_figures(self):
+        lines, size = budget_chart.fit_tile_label('Servicios de carácter general', '5,34 %',
+                                                 '25.969,49 M€', 80, 90, 13, 8)
+        self.assertLess(size, 13)
+        self.assertGreaterEqual(size, 8)
+        self.assertEqual(' '.join(lines).split(' 5,34 %')[0], 'Servicios de carácter general')
+        self.assertIn('25.969,49 M€', ' '.join(lines))
+        self.assertEqual(budget_chart.fit_tile_label('Small', '0,01 %', '0,01 M€', 8, 8, 13, 8)[0], [])
+
+    def test_smaller_areas_receive_smaller_type_without_changing_geometry(self):
+        rows = [{'code': '11', 'label_es': 'LARGE', 'amount_thousand_eur': '60000'},
+                {'code': '12', 'label_es': 'SMALL', 'amount_thousand_eur': '30000'},
+                {'code': '13', 'label_es': 'TINY', 'amount_thousand_eur': '10000'}]
+        plot = ET.fromstring('<svg>' + budget_chart.draw_tiles(rows, '100000', 360, 280) + '</svg>')
+        sizes = [float(group.find('text').attrib['font-size']) for group in plot.findall('g')]
+        self.assertGreater(sizes[0], sizes[1])
+        self.assertGreater(sizes[1], sizes[2])
+        self.assertGreaterEqual(min(sizes), 8)
+        for group, (_, x, y, width, height) in zip(plot.findall('g'), budget_chart.layout(rows, 360, 280)):
+            rect = group.find('rect')
+            for key, expected in zip(('x', 'y', 'width', 'height'), (x, y, width, height)):
+                self.assertAlmostEqual(float(rect.attrib[key]), expected, places=3)
+
 
 if __name__ == '__main__':
     unittest.main()

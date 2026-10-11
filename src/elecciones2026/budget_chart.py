@@ -63,24 +63,45 @@ def amount_label(value):
     return display_amount(value) + ' M€'
 
 
+def fit_tile_label(label, proportion, amount, width, height, ceiling, minimum):
+    """Prefer complete information; shrink within bounds before removing lines."""
+    sizes = [ceiling]
+    while sizes[-1] - .5 > minimum:
+        sizes.append(sizes[-1] - .5)
+    if sizes[-1] > minimum:
+        sizes.append(minimum)
+    padding = min(6, min(width, height) * .08)
+    for mode in ('complete', 'name-share', 'figures', 'share'):
+        for size in sizes:
+            capacity = max(0, int((width - 2 * padding) / (size * .65)))
+            count = max(0, int((height - 2 * padding) / (size * 1.3)))
+            if not capacity or not count:
+                continue
+            name = wrap(label, width=capacity, break_long_words=False, break_on_hyphens=False)
+            money = [amount] if len(amount) <= capacity else amount.rsplit(' ', 1)
+            lines = {'complete': name + [proportion] + money,
+                     'name-share': name + [proportion],
+                     'figures': [proportion] + money,
+                     'share': [proportion]}[mode]
+            if len(lines) <= count and all(len(line) <= capacity for line in lines):
+                return lines, size
+    return [], minimum
+
+
 def draw_tiles(rows, denominator, width, height, font_size=13):
     result = []
-    for row, x, y, w, h in layout(rows, width, height):
+    rectangles = layout(rows, width, height)
+    largest_area = max((w * h for _, _, _, w, h in rectangles), default=1)
+    minimum = max(8, font_size * .55)
+    for row, x, y, w, h in rectangles:
         proportion = percentage(row['amount_thousand_eur'], denominator)
         amount = amount_label(row['amount_thousand_eur'])
         title = f"{row['label_es'].capitalize()}: {proportion} del total · {amount}"
         result.append(f'<g><title>{escape(title)}</title><rect x="{x:.3f}" y="{y:.3f}" width="{w:.3f}" height="{h:.3f}" fill="#24495d" stroke="#fff" stroke-width="2"/>')
-        capacity = max(0, int((w-12) / (font_size * .65)))
-        count = max(0, int((h-12) / (font_size * 1.3)))
-        if len(proportion) <= capacity and count:
-            lines = [proportion]
-            if len(amount) <= capacity and count >= 2:
-                lines.append(amount)
-            wrapped = wrap(row['label_es'].capitalize(), width=max(1, capacity), break_long_words=False, break_on_hyphens=False)
-            if len(wrapped) + len(lines) <= count and all(len(line) <= capacity for line in wrapped):
-                lines = wrapped + lines
-            for index, line in enumerate(lines):
-                result.append(f'<text x="{x + w/2:.3f}" y="{y + h/2 + (index - (len(lines)-1)/2)*font_size*1.3:.3f}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="{font_size}" font-weight="600">{escape(line)}</text>')
+        ceiling = max(minimum, font_size * (w * h / largest_area) ** .2)
+        lines, size = fit_tile_label(row['label_es'].capitalize(), proportion, amount, w, h, ceiling, minimum)
+        for index, line in enumerate(lines):
+            result.append(f'<text x="{x + w/2:.3f}" y="{y + h/2 + (index - (len(lines)-1)/2)*size*1.3:.3f}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="{size:.3f}" font-weight="600">{escape(line)}</text>')
         result.append('</g>')
     return ''.join(result)
 
