@@ -4,7 +4,7 @@ Status: planning complete; implementation and live activation not started. These
 
 ## 1. Confirm host and release prerequisites
 
-- [ ] 1.1 Record read-only Ubuntu VPS preflight: host/SSH port, version, architecture, disk, listeners, proxy, firewall and memory headroom; verify the inventory through a trusted operator connection and console recovery.
+- [ ] 1.1 Record read-only Ubuntu VPS preflight for owner-supplied `195.20.230.75`: SSH port, version, architecture, disk, listeners, proxy, firewall and memory headroom; verify the inventory through a trusted operator connection and console recovery.
 - [ ] 1.2 Record owner-confirmed finance-service retirement and backup/restore evidence for retained data; verify the selected loopback port is free before activation without deleting finance data.
 - [ ] 1.3 Select the isolated fixed-egress runner or approved authenticated private connection path; verify SSH reachability from that path and denial from an unapproved source.
 - [ ] 1.4 Verify repository-plan support for required production reviewers, main-only deployment and protected secrets; record the configured gate and demonstrate that missing approval blocks release.
@@ -20,7 +20,7 @@ Status: planning complete; implementation and live activation not started. These
 ## 3. Prepare restricted host operations
 
 - [ ] 3.1 Implement the root-owned forced-command deployment wrapper with fixed Compose/state configuration, approved image-repository allowlist, digest validation and narrow sudo; test rejection of shell syntax, extra arguments, alternate repositories, environment overrides, and unauthorized commands.
-- [ ] 3.2 Document and provision the restricted SSH account, dedicated key, independently verified known_hosts, and root-only private-registry authentication; verify key rotation, host-key mismatch rejection, and disabled forwarding/PTY without exposing credentials.
+- [ ] 3.2 Document and provision the restricted SSH account, VPS public key, GitHub `production` secret `IONOS_SSH_PRIVATE_KEY`, environment variable `IONOS_HOST=195.20.230.75`, independently verified known_hosts, and root-only private-registry authentication; verify key rotation, host-key mismatch rejection, and disabled forwarding/PTY without exposing credentials.
 - [ ] 3.3 Adapt the existing loopback Compose/proxy setup to preflight results, preserving non-root/read-only execution and bounded resources; verify Compose configuration, TLS/proxy syntax, container health, free ports and lack of public container listeners.
 - [ ] 3.4 Document owner-controlled finance retirement, Cloudflare TLS/origin restrictions, cache handling and authenticated private staging; verify private pilot content is unavailable on the public domain and requires authentication in staging.
 

@@ -4,7 +4,7 @@
 
 See [proposal.md](proposal.md) for motivation and package E3.3 scope. Existing CI validates content, browser behavior, deterministic builds, Docker parity, and local release/load rehearsals. Its production job only prints gate messages and does not depend on the mobile-accessibility job. `ops/release.py` already switches digest-pinned images, checks health, serializes operations, and restores the prior image on failure. `ops/compose.yaml` binds to loopback and limits the serving container to 256 MB.
 
-Owner-confirmed target: Ubuntu IONOS VPS, 1 vCPU, 1 GB RAM, finance service to be retired, Cloudflare routing, domain `eleccionesespaña2026.es`. ASCII DNS form: `xn--eleccionesespaa2026-83b.es`. Ubuntu version, CPU architecture, disk capacity, current proxy, and actual DNS configuration still need a read-only preflight. The repo assumes Hetzner, a 2-vCPU/8-GB benchmark, and `elecciones2026.es`; the Docker build uses Python 3.12 despite the Python 3.14 roadmap. Record the runtime mismatch without combining a Python migration into this package.
+Owner-confirmed target: Ubuntu IONOS VPS at `195.20.230.75`, 1 vCPU, 1 GB RAM, finance service to be retired, Cloudflare routing, domain `eleccionesespaña2026.es`. ASCII DNS form: `xn--eleccionesespaa2026-83b.es`. Ubuntu version, CPU architecture, disk capacity, current proxy, and actual DNS configuration still need a read-only preflight. The repo assumes Hetzner, a 2-vCPU/8-GB benchmark, and `elecciones2026.es`; the Docker build uses Python 3.12 despite the Python 3.14 roadmap. Record the runtime mismatch without combining a Python migration into this package.
 
 ## Goals / Non-Goals
 
@@ -60,15 +60,18 @@ Retain prior images and a restricted release-state backup; test registry-unavail
 | Host preflight | Current proxy/listeners, firewall, retirement confirmation, verified finance backup | Owner-reviewed operations record |
 | Domain | `eleccionesespaña2026.es` / `xn--eleccionesespaa2026-83b.es`, zone and DNS control | Build/proxy configuration; approved Cloudflare zone |
 | Deploy identity | Dedicated username and public key | VPS restricted SSH account |
-| `IONOS_SSH_PRIVATE_KEY` | Dedicated deployment private key | Protected GitHub environment secret only |
+| `IONOS_SSH_PRIVATE_KEY` | Dedicated deployment private key; matching public key is installed on the VPS | GitHub `production` environment secret only |
 | `IONOS_SSH_KNOWN_HOSTS` | Independently verified host-key entry, including nonstandard port if used | Protected environment configuration |
-| `IONOS_HOST`, `IONOS_SSH_PORT`, `IONOS_SSH_USER` | Verified connection values | Protected environment variables |
+| `IONOS_HOST` | `195.20.230.75` (bare IP, without `http://`) | GitHub `production` environment variable |
+| `IONOS_SSH_PORT`, `IONOS_SSH_USER` | Verified SSH port and dedicated deployment username | GitHub `production` environment variables |
 | Runner path | Isolated runner and fixed SSH egress allowlist, or approved authenticated private path | CI/network owner configuration |
 | Registry publishing | Actions package permissions | Workflow-scoped `GITHUB_TOKEN`; no extra publishing PAT |
 | Registry pull | Account and expiring `read:packages` credential for private GHCR image | Root-only VPS registry credentials, not repository or chat |
 | Cloudflare | Zone ID; token with only needed cache-purge rights for this zone | Environment variable and protected secret (`CLOUDFLARE_ZONE_ID`, `CLOUDFLARE_PURGE_TOKEN`) |
 | Repository administration | Authority to configure environment reviewers, branch checks, secrets, and package access | GitHub owner/admin setup |
 | Release approval | G0/G2/G3/G4 evidence, reviewed public corpus, accessibility/security/load evidence | Restricted release record and production approval |
+
+Configure the host under repository **Settings → Environments → production → Environment variables** as `IONOS_HOST=195.20.230.75`. Reference it as `${{ vars.IONOS_HOST }}` in the deployment job. A secret can also hold the host if the owner wants it masked, but a public IP does not require secrecy. Store the deployer private key under **Environment secrets** as `IONOS_SSH_PRIVATE_KEY` and reference it as `${{ secrets.IONOS_SSH_PRIVATE_KEY }}`. Install only its matching public key in the VPS deployer account’s restricted `authorized_keys`. The verified host-key entry is separate from this key pair. These are planned settings; no GitHub variable or secret has been provisioned by this planning PR.
 
 No private keys, passwords, tokens, finance backups, or visitor data belong in a commit or chat. No IONOS API token is needed for SSH-based image delivery; one would require a separate infrastructure automation decision.
 
@@ -91,7 +94,7 @@ No private keys, passwords, tokens, finance backups, or visitor data belong in a
 
 ## Open Questions
 
-- What are the VPS address, SSH port, Ubuntu version, architecture, disk capacity, and current proxy/listeners? These determine provisioning values, not the release contract.
+- What are the SSH port, Ubuntu version, architecture, disk capacity, and current proxy/listeners for `195.20.230.75`? These determine provisioning values, not the release contract.
 - Which isolated runner provides the approved connection path, and who administers the repository and Cloudflare zone? Delivery stays disabled until these prerequisites are satisfied.
 - Which notification route and external probe should receive release/availability failures?
 
@@ -101,3 +104,6 @@ No private keys, passwords, tokens, finance backups, or visitor data belong in a
 - [GitHub: Container registry authentication and permissions](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 - [GitHub: Deploy keys authenticate access to a repository](https://docs.github.com/en/enterprise-cloud%40latest/authentication/connecting-to-github-with-ssh/managing-deploy-keys)
 - [GitHub: Deployment environments and required reviewers](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments)
+
+- [GitHub: Configuration variables and the vars context](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables)
+- [GitHub: Environment secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets)
