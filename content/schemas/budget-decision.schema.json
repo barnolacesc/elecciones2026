@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/budget-decision.schema.json",
+  "title": "BudgetDecision",
+  "$ref": "budget-records.schema.json#/$defs/Decision",
+  "type": "object",
+  "properties": {
+    "id": {},
+    "package_id": {},
+    "decision": {},
+    "source_refs": {},
+    "compatibility_matrix": {},
+    "evidence_refs": {},
+    "review_refs": {},
+    "decided_at": {}
+  },
+  "required": [
+    "id",
+    "package_id",
+    "decision",
+    "source_refs",
+    "compatibility_matrix",
+    "evidence_refs",
+    "review_refs",
+    "decided_at"
+  ],
+  "additionalProperties": false
+}

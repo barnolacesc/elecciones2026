@@ -1665,12 +1665,20 @@ def build_site(
     strict_approved: bool = True,
     custom_statements: Optional[list[StatementRecord]] = None,
     custom_relationships: Optional[list[RelationshipRecord]] = None,
+    budget_bundle: Optional[Path] = None,
 ) -> SiteBuildResult:
     """Generate the complete static site deterministically into output_dir.
 
     Uses an atomic staging directory to ensure that any validation failure
     aborts without creating a partially published site.
     """
+    if budget_bundle is not None:
+        from elecciones2026.budget import BudgetError, load_bundle
+        try:
+            load_bundle(budget_bundle, (content_dir or root_dir / "content") / "taxonomy.json")
+        except (BudgetError, ValueError, KeyError, OSError) as error:
+            raise BuildValidationError(f"Budget validation failed: {error}") from error
+
     ctx = load_and_validate_site_data(
         root_dir=root_dir,
         content_dir=content_dir,
@@ -1758,6 +1766,13 @@ def build_site(
         preview_target = staging_dir / preview_image_path(root_dir)
         preview_target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(site_src / "assets" / "social-preview.png", preview_target)
+
+        if budget_bundle is not None:
+            from elecciones2026.budget import copy_reviewed_bundle
+            try:
+                copy_reviewed_bundle(budget_bundle, staging_dir, ctx.content_dir / "taxonomy.json")
+            except (BudgetError, ValueError, KeyError, OSError) as error:
+                raise BuildValidationError(f"Budget staging failed: {error}") from error
 
         # Do not copy accidentally misplaced private sources or retain them in output.
         reject_private_source_artifacts(staging_dir)
@@ -1862,6 +1877,7 @@ def main(args: Optional[list[str]] = None) -> int:
     build_p.add_argument("--election-id", type=str, default=DEFAULT_ELECTION_ID, help="Target election ID.")
     build_p.add_argument("--canonical-base", type=str, default=DEFAULT_CANONICAL_BASE, help="Canonical base URL.")
     build_p.add_argument("--strict", action="store_true", default=True, help="Enforce strict approved status.")
+    build_p.add_argument("--budget-bundle", type=Path, help="Optional immutable budget bundle; requires human review.")
 
     # Command: check-determinism
     det_p = subparsers.add_parser("check-determinism", help="Verify build determinism across repeated runs.")
@@ -1887,6 +1903,7 @@ def main(args: Optional[list[str]] = None) -> int:
                 canonical_base=parsed.canonical_base,
                 build_date=parsed.build_date,
                 strict_approved=parsed.strict,
+                budget_bundle=parsed.budget_bundle,
             )
             print(f"Build completed successfully in {res.output_dir}:")
             print(f"  - Topics: {res.topics_count}")

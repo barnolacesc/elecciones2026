@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/budget-cell.schema.json",
+  "title": "BudgetCell",
+  "$ref": "budget-records.schema.json#/$defs/Cell",
+  "type": "object",
+  "properties": {
+    "id": {},
+    "source_ref": {},
+    "source_version": {},
+    "accounting_basis": {},
+    "policy_code": {},
+    "section_code": {},
+    "amount_thousand_eur": {},
+    "value_state": {},
+    "source_locator": {}
+  },
+  "required": [
+    "id",
+    "source_ref",
+    "source_version",
+    "accounting_basis",
+    "policy_code",
+    "section_code",
+    "amount_thousand_eur",
+    "value_state",
+    "source_locator"
+  ],
+  "additionalProperties": false
+}

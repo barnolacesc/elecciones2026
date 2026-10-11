@@ -2,34 +2,56 @@
 
 ## Purpose
 
-Explain official budget allocations with an accessible, mobile-first static page.
+Explain reviewed historical official allocations in Spanish through accessible static pages and shared context beside comparative measures.
 
 ## ADDED Requirements
 
-### Requirement: Amount and share
-Each displayed policy or section SHALL show its amount in million euros and its share of one explicitly named denominator. The calculation SHALL use unrounded source values and SHALL disclose the display rounding rule.
+### Requirement: Spanish historical measurement labels
+The view SHALL show year, approved status, scope, chapters, consolidation, units, exact denominator, rounding, source/version, and review/update date. Public labels and explanatory notes SHALL use reviewed Spanish. It SHALL explain that this PGE sector does not include all autonomous-community and local-government expenditure.
 
-#### Scenario: Percentage check
-- **WHEN** a reviewer recalculates a displayed share from source values
-- **THEN** it agrees within the declared display rounding tolerance.
+#### Scenario: Health or education context
+- **WHEN** a reader opens either topic
+- **THEN** the scope note is adjacent to the figures and states that these allocations are not total Spanish public expenditure on that function.
 
-### Requirement: Mobile and accessible view
-At 360, 390, and 430 CSS px, the page SHALL show a ranked bar list with readable labels, amounts, percentages, and source links without horizontal scrolling. It SHALL include an equivalent table. A treemap MAY supplement this view but SHALL NOT be the sole representation.
+### Requirement: Traceable amount and share
+Each numeric policy or section row SHALL show million euros and share of the named consolidated denominator, with an official source locator and dataset version. Section shares SHALL use that same denominator; a share within a policy requires a separately named denominator and label. Chart and table SHALL use the same reviewed values.
 
-#### Scenario: Chart unavailable
-- **WHEN** chart styling or script execution is unavailable
-- **THEN** the amount, percentage, label, and source remain readable in HTML.
+#### Scenario: Row verification
+- **WHEN** a reviewer recomputes a displayed share from the pinned unrounded values
+- **THEN** it matches within the stated display precision and resolves to the cited official row or cells.
 
-### Requirement: Neutral context
-The page SHALL use neutral colours and SHALL NOT imply that a budget amount measures a party's honesty, performance, or responsibility. It SHALL explain that central-government PGE figures do not capture all expenditure by autonomous communities and local administrations.
+### Requirement: Accessible mobile breakdown
+At 360, 390, and 430 CSS px, ranked policy bars, section details, and an equivalent table SHALL remain readable without horizontal scrolling or zoom. Controls SHALL support keyboard operation and 44 CSS px touch targets. Text SHALL convey amounts without colour or scripts. A supplementary treemap SHALL NOT replace the list or table.
 
-#### Scenario: Health and education rows
-- **WHEN** a reader sees a small central PGE allocation for health or education
-- **THEN** the page warns that this is not the total public spending in Spain on that function.
+#### Scenario: Styling or scripting unavailable
+- **WHEN** CSS bars or JavaScript do not render
+- **THEN** labels, figures, denominator, scope, and source links remain readable in semantic HTML.
 
-### Requirement: Budget and execution separation
-Approved or extended budget credits and IGAE execution figures SHALL appear in separately labelled datasets and views. A 2023 approved amount SHALL NOT be compared directly with a 2026 executed amount as if their scopes and accounting bases matched.
+#### Scenario: Keyboard reader
+- **WHEN** a reader opens section details using the keyboard
+- **THEN** the control has visible focus and an announced expanded state, and the table has row and column headers.
 
-#### Scenario: Execution source not reviewed
-- **WHEN** only the 2023 budget dataset is reviewed
-- **THEN** no execution number or progress ratio is shown.
+### Requirement: Shared context beside measures
+A topic or two-party comparison SHALL show one shared budget-context region beside or immediately after its comparative measures. It SHALL show only reviewed topic mappings and distinguish broad policy context from the cost of a measure. Changing party selection SHALL NOT change the official figures, ordering, or emphasis for the same topic and dataset.
+
+#### Scenario: Party selection changes
+- **WHEN** a reader selects a different pair of parties for the same topic
+- **THEN** the same budget context remains visible and is not duplicated as a party-specific allocation.
+
+#### Scenario: Budget mapping absent
+- **WHEN** the selected topic has no publishable mapping
+- **THEN** a Spanish gap note appears, the comparison remains usable, and no zero or estimated budget appears.
+
+### Requirement: Neutral public interpretation
+The view SHALL use neutral colours and SHALL NOT score party performance, responsibility, honesty, or policy feasibility. It SHALL NOT imply that historical allocations finance a proposed measure. Any party claim already approved for the comparison SHALL remain in its separate source-linked political statement region.
+
+#### Scenario: Proposed increase
+- **WHEN** a party statement proposes more spending or contains a cost claim
+- **THEN** the historical context stays separate and no funding gap, affordability ratio, or execution percentage is inferred.
+
+### Requirement: Stable crawlable historical route
+The feature SHALL expose `/presupuestos/2023/` as static Spanish HTML with a canonical URL, accurate year/status metadata, source links, and a topic navigation path. Shared titles SHALL retain 2023 and historical approved-budget status without visitor identifiers or tracking tokens.
+
+#### Scenario: Crawler access
+- **WHEN** a crawler requests the budget route without executing JavaScript
+- **THEN** it receives reviewed figures, scope, source references, and historical metadata.

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/budget-correction.schema.json",
+  "title": "BudgetCorrection",
+  "$ref": "budget-records.schema.json#/$defs/Correction",
+  "type": "object",
+  "properties": {
+    "id": {},
+    "date": {},
+    "reason": {},
+    "prior_bundle": {},
+    "replacement_bundle": {},
+    "affected_record_ids": {},
+    "invalidated_review_refs": {},
+    "review_refs": {}
+  },
+  "required": [
+    "id",
+    "date",
+    "reason",
+    "prior_bundle",
+    "replacement_bundle",
+    "affected_record_ids",
+    "invalidated_review_refs",
+    "review_refs"
+  ],
+  "additionalProperties": false
+}

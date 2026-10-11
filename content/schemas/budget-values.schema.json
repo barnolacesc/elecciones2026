@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/budget-values.schema.json",
+  "title": "BudgetValues",
+  "$ref": "budget-records.schema.json#/$defs/Values",
+  "type": "object",
+  "properties": {
+    "schema_version": {},
+    "source_ref": {},
+    "source_version": {},
+    "budget_year": {},
+    "accounting_basis": {},
+    "cells": {},
+    "margins": {}
+  },
+  "required": [
+    "schema_version",
+    "source_ref",
+    "source_version",
+    "budget_year",
+    "accounting_basis",
+    "cells",
+    "margins"
+  ],
+  "additionalProperties": false
+}

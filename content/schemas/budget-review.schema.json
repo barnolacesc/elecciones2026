@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/budget-review.schema.json",
+  "title": "BudgetReview",
+  "$ref": "budget-records.schema.json#/$defs/Review",
+  "type": "object",
+  "properties": {
+    "id": {},
+    "subject_id": {},
+    "subject_sha256": {},
+    "subject_version": {},
+    "role": {},
+    "human_reviewer_id": {},
+    "decision": {},
+    "reviewed_at": {},
+    "evidence_ref": {}
+  },
+  "required": [
+    "id",
+    "subject_id",
+    "subject_sha256",
+    "subject_version",
+    "role",
+    "human_reviewer_id",
+    "decision",
+    "reviewed_at",
+    "evidence_ref"
+  ],
+  "additionalProperties": false
+}

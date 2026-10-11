@@ -1,0 +1,313 @@
+{
+  "budget_year": 2023,
+  "record_version": "1.0.0",
+  "review_state": "draft",
+  "sections": [
+    {
+      "code": "01",
+      "is_ministry": false,
+      "locator": "Sección 01. CASA DE SU MAJESTAD EL REY",
+      "name_es": "CASA DE SU MAJESTAD EL REY",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_101_1.htm"
+    },
+    {
+      "code": "02",
+      "is_ministry": false,
+      "locator": "Sección 02. CORTES GENERALES",
+      "name_es": "CORTES GENERALES",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_102_1.htm"
+    },
+    {
+      "code": "03",
+      "is_ministry": false,
+      "locator": "Sección 03. TRIBUNAL DE CUENTAS",
+      "name_es": "TRIBUNAL DE CUENTAS",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_103_1.htm"
+    },
+    {
+      "code": "04",
+      "is_ministry": false,
+      "locator": "Sección 04. TRIBUNAL CONSTITUCIONAL",
+      "name_es": "TRIBUNAL CONSTITUCIONAL",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_104_1.htm"
+    },
+    {
+      "code": "05",
+      "is_ministry": false,
+      "locator": "Sección 05. CONSEJO DE ESTADO",
+      "name_es": "CONSEJO DE ESTADO",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_105_1.htm"
+    },
+    {
+      "code": "06",
+      "is_ministry": false,
+      "locator": "Sección 06. DEUDA PÚBLICA",
+      "name_es": "DEUDA PÚBLICA",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_106_1.htm"
+    },
+    {
+      "code": "07",
+      "is_ministry": false,
+      "locator": "Sección 07. CLASES PASIVAS",
+      "name_es": "CLASES PASIVAS",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_107_1.htm"
+    },
+    {
+      "code": "08",
+      "is_ministry": false,
+      "locator": "Sección 08. CONSEJO GENERAL DEL PODER JUDICIAL",
+      "name_es": "CONSEJO GENERAL DEL PODER JUDICIAL",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_108_1.htm"
+    },
+    {
+      "code": "09",
+      "is_ministry": false,
+      "locator": "Sección 09. APORTACIONES AL MUTUALISMO ADMINISTRATIVO",
+      "name_es": "APORTACIONES AL MUTUALISMO ADMINISTRATIVO",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_109_1.htm"
+    },
+    {
+      "code": "10",
+      "is_ministry": false,
+      "locator": "Sección 10. CONTRATACIÓN CENTRALIZADA",
+      "name_es": "CONTRATACIÓN CENTRALIZADA",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_110_1.htm"
+    },
+    {
+      "code": "12",
+      "is_ministry": true,
+      "locator": "Sección 12. MINISTERIO DE ASUNTOS EXTERIORES, UNIÓN EUROPEA Y COOPERACIÓN",
+      "name_es": "MINISTERIO DE ASUNTOS EXTERIORES, UNIÓN EUROPEA Y COOPERACIÓN",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_112_1.htm"
+    },
+    {
+      "code": "13",
+      "is_ministry": true,
+      "locator": "Sección 13. MINISTERIO DE JUSTICIA",
+      "name_es": "MINISTERIO DE JUSTICIA",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_113_1.htm"
+    },
+    {
+      "code": "14",
+      "is_ministry": true,
+      "locator": "Sección 14. MINISTERIO DE DEFENSA",
+      "name_es": "MINISTERIO DE DEFENSA",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_114_1.htm"
+    },
+    {
+      "code": "15",
+      "is_ministry": true,
+      "locator": "Sección 15. MINISTERIO DE HACIENDA Y FUNCIÓN PÚBLICA",
+      "name_es": "MINISTERIO DE HACIENDA Y FUNCIÓN PÚBLICA",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_115_1.htm"
+    },
+    {
+      "code": "16",
+      "is_ministry": true,
+      "locator": "Sección 16. MINISTERIO DEL INTERIOR",
+      "name_es": "MINISTERIO DEL INTERIOR",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_116_1.htm"
+    },
+    {
+      "code": "17",
+      "is_ministry": true,
+      "locator": "Sección 17. MINISTERIO DE TRANSPORTES, MOVILIDAD Y AGENDA URBANA",
+      "name_es": "MINISTERIO DE TRANSPORTES, MOVILIDAD Y AGENDA URBANA",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_117_1.htm"
+    },
+    {
+      "code": "18",
+      "is_ministry": true,
+      "locator": "Sección 18. MINISTERIO DE EDUCACIÓN Y FORMACIÓN PROFESIONAL",
+      "name_es": "MINISTERIO DE EDUCACIÓN Y FORMACIÓN PROFESIONAL",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_118_1.htm"
+    },
+    {
+      "code": "19",
+      "is_ministry": true,
+      "locator": "Sección 19. MINISTERIO DE TRABAJO Y ECONOMÍA SOCIAL",
+      "name_es": "MINISTERIO DE TRABAJO Y ECONOMÍA SOCIAL",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_119_1.htm"
+    },
+    {
+      "code": "20",
+      "is_ministry": true,
+      "locator": "Sección 20. MINISTERIO DE INDUSTRIA, COMERCIO Y TURISMO",
+      "name_es": "MINISTERIO DE INDUSTRIA, COMERCIO Y TURISMO",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_120_1.htm"
+    },
+    {
+      "code": "21",
+      "is_ministry": true,
+      "locator": "Sección 21. MINISTERIO DE AGRICULTURA, PESCA Y ALIMENTACIÓN",
+      "name_es": "MINISTERIO DE AGRICULTURA, PESCA Y ALIMENTACIÓN",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_121_1.htm"
+    },
+    {
+      "code": "22",
+      "is_ministry": true,
+      "locator": "Sección 22. MINISTERIO DE POLÍTICA TERRITORIAL",
+      "name_es": "MINISTERIO DE POLÍTICA TERRITORIAL",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_122_1.htm"
+    },
+    {
+      "code": "23",
+      "is_ministry": true,
+      "locator": "Sección 23. MINISTERIO PARA LA TRANSICIÓN ECOLÓGICA Y EL RETO DEMOGRÁFICO",
+      "name_es": "MINISTERIO PARA LA TRANSICIÓN ECOLÓGICA Y EL RETO DEMOGRÁFICO",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_123_1.htm"
+    },
+    {
+      "code": "24",
+      "is_ministry": true,
+      "locator": "Sección 24. MINISTERIO DE CULTURA Y DEPORTE",
+      "name_es": "MINISTERIO DE CULTURA Y DEPORTE",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_124_1.htm"
+    },
+    {
+      "code": "25",
+      "is_ministry": true,
+      "locator": "Sección 25. MINISTERIO DE LA PRESIDENCIA, RELACIONES CON LAS CORTES Y MEMORIA DEMOCRÁTICA",
+      "name_es": "MINISTERIO DE LA PRESIDENCIA, RELACIONES CON LAS CORTES Y MEMORIA DEMOCRÁTICA",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_125_1.htm"
+    },
+    {
+      "code": "26",
+      "is_ministry": true,
+      "locator": "Sección 26. MINISTERIO DE SANIDAD",
+      "name_es": "MINISTERIO DE SANIDAD",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_126_1.htm"
+    },
+    {
+      "code": "27",
+      "is_ministry": true,
+      "locator": "Sección 27. MINISTERIO DE ASUNTOS ECONÓMICOS Y TRANSFORMACIÓN DIGITAL",
+      "name_es": "MINISTERIO DE ASUNTOS ECONÓMICOS Y TRANSFORMACIÓN DIGITAL",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_127_1.htm"
+    },
+    {
+      "code": "28",
+      "is_ministry": true,
+      "locator": "Sección 28. MINISTERIO DE CIENCIA E INNOVACIÓN",
+      "name_es": "MINISTERIO DE CIENCIA E INNOVACIÓN",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_128_1.htm"
+    },
+    {
+      "code": "29",
+      "is_ministry": true,
+      "locator": "Sección 29. MINISTERIO DE DERECHOS SOCIALES Y AGENDA 2030",
+      "name_es": "MINISTERIO DE DERECHOS SOCIALES Y AGENDA 2030",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_129_1.htm"
+    },
+    {
+      "code": "30",
+      "is_ministry": true,
+      "locator": "Sección 30. MINISTERIO DE IGUALDAD",
+      "name_es": "MINISTERIO DE IGUALDAD",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_130_1.htm"
+    },
+    {
+      "code": "31",
+      "is_ministry": true,
+      "locator": "Sección 31. MINISTERIO DE CONSUMO",
+      "name_es": "MINISTERIO DE CONSUMO",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_131_1.htm"
+    },
+    {
+      "code": "32",
+      "is_ministry": true,
+      "locator": "Sección 32. MINISTERIO DE INCLUSIÓN, SEGURIDAD SOCIAL Y MIGRACIONES",
+      "name_es": "MINISTERIO DE INCLUSIÓN, SEGURIDAD SOCIAL Y MIGRACIONES",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_132_1.htm"
+    },
+    {
+      "code": "33",
+      "is_ministry": true,
+      "locator": "Sección 33. MINISTERIO DE UNIVERSIDADES",
+      "name_es": "MINISTERIO DE UNIVERSIDADES",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_133_1.htm"
+    },
+    {
+      "code": "34",
+      "is_ministry": false,
+      "locator": "Sección 34. RELACIONES FINANCIERAS CON LA UNIÓN EUROPEA",
+      "name_es": "RELACIONES FINANCIERAS CON LA UNIÓN EUROPEA",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_134_1.htm"
+    },
+    {
+      "code": "35",
+      "is_ministry": false,
+      "locator": "Sección 35. FONDO DE CONTINGENCIA",
+      "name_es": "FONDO DE CONTINGENCIA",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_135_1.htm"
+    },
+    {
+      "code": "36",
+      "is_ministry": false,
+      "locator": "Sección 36. FONDOS DE COMPENSACIÓN INTERTERRITORIAL",
+      "name_es": "FONDOS DE COMPENSACIÓN INTERTERRITORIAL",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_136_1.htm"
+    },
+    {
+      "code": "37",
+      "is_ministry": false,
+      "locator": "Sección 37. OTRAS RELACIONES FINANCIERAS CON ENTES TERRITORIALES",
+      "name_es": "OTRAS RELACIONES FINANCIERAS CON ENTES TERRITORIALES",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_137_1.htm"
+    },
+    {
+      "code": "38",
+      "is_ministry": false,
+      "locator": "Sección 38. SISTEMAS DE FINANCIACIÓN DE ENTES TERRITORIALES",
+      "name_es": "SISTEMAS DE FINANCIACIÓN DE ENTES TERRITORIALES",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_31_138_1.htm"
+    },
+    {
+      "code": "60",
+      "is_ministry": false,
+      "locator": "Sección 60. SEGURIDAD SOCIAL",
+      "name_es": "SEGURIDAD SOCIAL",
+      "review_state": "draft",
+      "source_url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Ley/MaestroDocumentos/PGE-ROM/N_23_E_R_2_105_1_2_160_1.htm"
+    }
+  ],
+  "source_ref": "pge-2023-section-dictionary-index",
+  "source_sha256": "5ac6724b64aaca8416d932064f54050bddf46a371889620d40ea12e74add560b"
+}
