@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2023",
+  "id": "rel-pilot-2023-housing-erc-pnv",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "measure_label": "Regulación de precios de alquiler y acceso a la vivienda",
+  "party_ids": [
+    "erc",
+    "pnv"
+  ],
+  "statement_ids": [
+    "stmt-pilot-erc-housing-2023",
+    "stmt-pilot-pnv-housing-2023"
+  ],
+  "relationship_type": "partial_overlap",
+  "summary": "Coincidencia en la defensa del marco competencial autonómico para la vivienda, con distinto énfasis en la intervención de precios.",
+  "differences": [
+    "ERC reclama transferir plenas competencias para topar directamente los precios de los contratos de arrendamiento.",
+    "El PNV prioriza la gestión de alquiler protegido por el Gobierno Vasco sin enfocar su eje central en topes de precios."
+  ],
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc-editorial",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Revisión de consistencia comparativa.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:cesc-editorial"
+    },
+    {
+      "reviewer_id": "sam-neutrality",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Neutralidad en la descripción de matices competenciales.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:sam-neutrality"
+    }
+  ],
+  "status": "active",
+  "invalidation_reason": null,
+  "invalidated_by_correction_id": null,
+  "is_fixture": false
+}

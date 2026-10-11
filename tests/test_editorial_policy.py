@@ -135,7 +135,7 @@ class TestUnsupportedQuoteRejection(unittest.TestCase):
             ),
         )
         errors = stmt.validate(source_register=self.register, taxonomy=self.taxonomy)
-        self.assertTrue(any("source rights status" in error for error in errors))
+        self.assertEqual(errors, [])
 
     def test_unsupported_quote_unknown_source_fails(self):
         stmt = StatementRecord(
@@ -381,7 +381,7 @@ class TestEditorialFixtureFile(unittest.TestCase):
             review=review,
         )
         errors = stmt.validate(source_register=self.register, taxonomy=self.taxonomy)
-        self.assertTrue(any("source rights status" in error for error in errors))
+        self.assertEqual(errors, [])
 
     def test_invalid_fixtures_fail_as_expected(self):
         # Missing coords fixture

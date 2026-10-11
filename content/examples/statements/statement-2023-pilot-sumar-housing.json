@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2023",
+  "id": "stmt-pilot-sumar-housing-2023",
+  "party_id": "sumar",
+  "programme_id": "prog-sumar-2023-official",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "statement_type": "explicit_proposal",
+  "summary": "Modificación de la Ley de Vivienda para establecer regulación efectiva de precios del alquiler e inclusión de alquiler social obligatorio para grandes tenedores.",
+  "summary_en": "Amendment of Housing Law to enforce rental price regulation and mandatory social rent for large holders.",
+  "quote": "Modificaremos la Ley 12/2023 de Vivienda para incluir: el alquiler social obligatorio para grandes tenedores, regulación efectiva de precios del alquiler y desarrollo de los índices de precios de referencia.",
+  "source_url": "https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf",
+  "source_version": "23J-v1",
+  "source_page": "77",
+  "source_section": "Medida 14; página PDF 77",
+  "qualifications": [
+    "Aplica a zonas declaradas de mercado tensionado.",
+    "Complementado con la meta de constituir dos millones de viviendas sociales y asequibles en 10 años."
+  ],
+  "policy_instrument": "Regulación obligatoria de precios de alquiler e índices de referencia",
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc-editorial",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Factual verification against official 2023 PDF.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:cesc-editorial"
+    },
+    {
+      "reviewer_id": "sam-neutrality",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Neutrality and quotation bounds verification.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:sam-neutrality"
+    }
+  ],
+  "last_reviewed_date": "2026-10-10",
+  "correction_id": null,
+  "is_fixture": false
+}

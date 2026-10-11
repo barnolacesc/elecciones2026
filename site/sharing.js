@@ -17,7 +17,7 @@
     const validTopic = own(topics, topic);
     const validPair = validElection && validTopic && own(parties, partyA) &&
       own(parties, partyB) && partyA !== partyB &&
-      (!pilot || [partyA, partyB].every(id => id === 'pp' || id === 'erc'));
+      (!pilot || [partyA, partyB].every(id => ['pp', 'erc', 'sumar', 'pnv'].includes(id)));
     return { topic: validTopic ? topic : null, partyA: validPair ? partyA : null,
       partyB: validPair ? partyB : null, pilot: validElection && pilot };
   }

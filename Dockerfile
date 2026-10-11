@@ -12,12 +12,15 @@ COPY src/ /app/src/
 COPY content/ /app/content/
 COPY site/ /app/site/
 
+ARG ELECTION_ID=es-gen-2026
+
 # Compile deterministic Spanish static site into /app/dist
 RUN PYTHONPATH=/app/src python3 -m elecciones2026.generator build \
     --root-dir /app \
     --content-dir /app/content \
     --output-dir /app/dist \
-    --build-date 2026-10-09
+    --election-id ${ELECTION_ID} \
+    --build-date 2026-10-10
 
 # Preserve generated home metadata; client-side assets are copied by the generator.
 
