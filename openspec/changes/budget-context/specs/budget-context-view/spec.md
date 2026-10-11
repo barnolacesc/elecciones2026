@@ -82,6 +82,24 @@ An explicitly shared image SHALL retain year, approved-budget status, scope/excl
 - **WHEN** a visitor shares or saves the chart
 - **THEN** the image retains measurement and source context, native sharing is used where supported, and cancellation does not trigger an unwanted download.
 
+### Requirement: Consistent policy colours
+Each official policy SHALL have a stable distinct colour in the area chart, complete key, and shared image. Colours SHALL identify policies rather than parties, rankings, or value judgements. White tile text SHALL have contrast of at least 4.5:1. Names and figures SHALL remain readable without colour.
+
+#### Scenario: Policy order changes
+- **WHEN** policy amounts or order change
+- **THEN** each policy retains its colour and the plot area still follows its unrounded allocation.
+
+### Requirement: Traceable magnitude comparison
+The view and shared image SHALL compare the official health and education margins, individually and summed, against pensions. Bars SHALL use one common scale with explicit pension-relative percentages, exact unrounded arithmetic, adjacent coverage notes, and source locators. They SHALL NOT imply total Spanish health/education expenditure or party performance. Missing rows or a zero pension denominator SHALL omit the comparison without imputation.
+
+#### Scenario: Compare with pensions
+- **WHEN** the three official margins are available and the pension amount is positive
+- **THEN** the summed bar equals the two individual bars combined, labels name pensions as the denominator, and the note explains the regional/local coverage limitation.
+
+#### Scenario: Combined amount exceeds pensions
+- **WHEN** health plus education exceed the pension amount
+- **THEN** a common scale accommodates the full sum without clipping, while percentage labels remain relative to pensions.
+
 ### Requirement: Bounded user-initiated image delivery
 Image preparation SHALL occur only after a user action with bounded local assets and the existing publication gate. It SHALL work within the existing serving CSP and SHALL NOT require a chart library, image service, prefetch, service worker, or full-data archive. Preparation/sharing errors SHALL leave the chart and expanded detail usable.
 

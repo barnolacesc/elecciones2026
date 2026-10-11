@@ -21,6 +21,50 @@ class QuietHandler(SimpleHTTPRequestHandler):
 
 @unittest.skipUnless(os.environ.get('ELECTIONS_TEST_BUDGET_BROWSER') == '1', 'Opt-in Playwright budget checks')
 class BudgetBrowserTests(unittest.TestCase):
+    def test_color_comparison_scale_without_script(self):
+        from playwright.sync_api import sync_playwright
+        from elecciones2026 import budget_chart
+        import shutil
+        fixture = fixtures.BudgetViewTests()
+        fixture.setUp()
+        output = fixture.fixture.root / 'comparison'
+        output.mkdir()
+        template = budget_chart.policies(fixture.payload)[0]
+        fixture.payload['values.json']['margins'] = [dict(template, code=code, label_es=label, amount_thousand_eur=amount)
+            for code, label, amount in [('21', 'PENSIONES', '40000.00'), ('31', 'SANIDAD', '2000.01'), ('32', 'EDUCACIÓN', '1000.02')]]
+        fixture.payload['measurement.json']['denominator_amount_thousand_eur'] = '43000.03'
+        content = budget_chart.overview(fixture.payload, './fixture.svg')
+        (output / 'index.html').write_text('<!doctype html><html lang="es"><meta charset="utf-8">'
+            '<meta name="viewport" content="width=device-width, initial-scale=1"><title>Private synthetic fixture</title>'
+            '<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="budget.css">'
+            f'<main class="budget-page">{content}</main></html>')
+        for name in ('styles.css', 'budget.css'):
+            shutil.copy2(fixtures.ROOT / 'site' / name, output / name)
+        shutil.copytree(fixtures.ROOT / 'site/tokens', output / 'tokens')
+        server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietHandler, directory=str(output)))
+        thread = Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            with sync_playwright() as playwright:
+                browser = playwright.chromium.launch()
+                for width in (360, 390, 430):
+                    page = browser.new_page(viewport={'width': width, 'height': 844}, java_script_enabled=False)
+                    page.goto(f'http://127.0.0.1:{server.server_port}/')
+                    self.assertIn('7,50 %', page.locator('.budget-comparison').inner_text())
+                    self.assertIn('No representan todo el gasto público', page.locator('.budget-comparison').inner_text())
+                    self.assertFalse(page.evaluate('document.documentElement.scrollWidth > innerWidth'))
+                    widths = page.locator('.budget-comparison-track').evaluate_all('(tracks) => tracks.map(t => Array.from(t.children).reduce((sum,n)=>sum+n.getBoundingClientRect().width,0))')
+                    self.assertAlmostEqual(widths[-1] / widths[0], .07500075, delta=.001)
+                    self.assertEqual(page.locator('.budget-chart-swatch').count(), 3)
+                    self.assertEqual(page.locator('.budget-map rect').first.get_attribute('fill'), budget_chart.policy_color('21'))
+                    page.close()
+                browser.close()
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=5)
+            fixture.tearDown()
+
     def test_image_download_native_share_cancel_and_failure(self):
         from playwright.sync_api import sync_playwright, expect
         fixture = fixtures.BudgetViewTests()

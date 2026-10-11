@@ -1,9 +1,26 @@
 """Deterministic overview and share image from official policy margins (E10.3)."""
-from decimal import Decimal
+from decimal import Decimal, localcontext
 from html import escape
 from textwrap import wrap
 
 from elecciones2026.budget import BudgetError, display_amount, share
+
+# Stable policy colours identify allocations, never parties or value judgements.
+POLICY_CODES = ('11', '12', '13', '14', '21', '22', '23', '24', '25', '26', '28', '29',
+                '31', '32', '33', '41', '42', '43', '44', '45', '46', '49', '91', '92', '93', '94', '95')
+POLICY_PALETTE = ('#36576d', '#35655d', '#685471', '#79613c', '#65516a', '#48633f',
+                  '#406778', '#735343', '#385c56', '#565a78', '#70595e', '#52663d',
+                  '#30685f', '#485c85', '#79544d', '#63673c', '#3d6670', '#6e516e',
+                  '#685d3e', '#3f607b', '#596b48', '#795943', '#575875', '#42706b',
+                  '#725c76', '#756338', '#4d6272')
+POLICY_COLORS = dict(zip(POLICY_CODES, POLICY_PALETTE))
+COMPARISON_SCOPE = ('Sanidad y educación: solo las asignaciones recogidas en estos PGE 2023. '
+                    'No representan todo el gasto público sanitario y educativo; '
+                    'no incluyen todo el gasto autonómico y local.')
+
+
+def policy_color(code):
+    return POLICY_COLORS.get(code, '#24495d')
 
 
 def policies(payload):
@@ -63,6 +80,87 @@ def amount_label(value):
     return display_amount(value) + ' M€'
 
 
+def pension_comparison(rows):
+    """Explicit sum of two disjoint official margins, relative to pensions."""
+    by_code = {row['code']: row for row in rows}
+    if not all(code in by_code for code in ('21', '31', '32')):
+        return None
+    reference = Decimal(by_code['21']['amount_thousand_eur'])
+    if reference <= 0:
+        return None
+    health = Decimal(by_code['31']['amount_thousand_eur'])
+    education = Decimal(by_code['32']['amount_thousand_eur'])
+    with localcontext() as context:
+        context.prec = 50
+        combined = health + education
+    scale = max(reference, combined)
+    entries = [('Pensiones', str(reference), [('21', reference)]),
+               ('Sanidad', str(health), [('31', health)]),
+               ('Educación', str(education), [('32', education)]),
+               ('Sanidad + educación', str(combined), [('31', health), ('32', education)])]
+    return {'reference': str(reference), 'combined': str(combined), 'scale': scale,
+            'ratio': percentage(str(combined), str(reference)), 'entries': entries,
+            'locators': [by_code[code]['source_locator'] for code in ('21', '31', '32')]}
+
+
+def comparison_html(rows, payload):
+    comparison = pension_comparison(rows)
+    if comparison is None:
+        return ''
+    bars = []
+    for label, amount, segments in comparison['entries']:
+        fill = ''.join(f'<span style="width:{float(value / comparison["scale"] * 100):.8f}%;background:{policy_color(code)}"></span>'
+                       for code, value in segments)
+        bars.append(f'<li><div class="budget-comparison-label"><span>{label}</span>'
+                    f'<span><strong>{escape(percentage(amount, comparison["reference"]))}</strong>'
+                    f' · {escape(amount_label(amount))}</span></div>'
+                    f'<div class="budget-comparison-track" aria-hidden="true">{fill}</div></li>')
+    source = next(item['url'] for item in payload['source.json']['companion_sources'] if item['id'] == 'pge-2023-matrix-html')
+    lines = ', '.join(f'fila {locator["csv_line"]}, columna {locator["column"]}' for locator in comparison['locators'])
+    return ('<section class="budget-comparison" aria-labelledby="budget-comparison-title">'
+            '<h3 id="budget-comparison-title">Para comparar magnitudes</h3>'
+            f'<p>Sanidad + educación equivalen al <strong>{escape(comparison["ratio"])}</strong>'
+            ' de la asignación de pensiones en estos PGE.</p>'
+            '<p class="budget-comparison-scale">Barras a la misma escala. Porcentajes respecto a pensiones, no al presupuesto total.</p>'
+            f'<ul class="budget-comparison-bars">{"".join(bars)}</ul>'
+            f'<p class="budget-comparison-scope">{COMPARISON_SCOPE}</p>'
+            f'<p class="budget-locator"><a href="{escape(source, quote=True)}">Fuente oficial: pensiones, sanidad y educación</a>'
+            f' · CSV: {escape(lines)}. Suma de las dos partidas, sin estimaciones.</p></section>')
+
+
+def comparison_svg(rows, y):
+    comparison = pension_comparison(rows)
+    if comparison is None:
+        return '', y
+    content = [f'<text x="40" y="{y}" font-size="30" font-weight="700" fill="#14253a">Para comparar magnitudes</text>']
+    y += 36
+    summary = f'Sanidad + educación equivalen al {comparison["ratio"]} de la asignación de pensiones en estos PGE.'
+    for line in wrap(summary, width=85):
+        content.append(f'<text x="40" y="{y}" font-size="20" fill="#14253a">{escape(line)}</text>')
+        y += 26
+    content.append(f'<text x="40" y="{y}" font-size="17" fill="#526675">Misma escala. Porcentajes respecto a pensiones, no al presupuesto total.</text>')
+    y += 38
+    for label, amount, segments in comparison['entries']:
+        figures = f'{percentage(amount, comparison["reference"])} · {amount_label(amount)}'
+        content.append(f'<text x="40" y="{y}" font-size="20" fill="#14253a">{label}</text>'
+                       f'<text x="1040" y="{y}" text-anchor="end" font-size="18" fill="#14253a">{escape(figures)}</text>'
+                       f'<rect x="40" y="{y+12}" width="1000" height="18" fill="#e5e9ec"/>')
+        x = 40.0
+        for code, value in segments:
+            width = float(value / comparison['scale'] * 1000)
+            content.append(f'<rect x="{x:.8f}" y="{y+12}" width="{width:.8f}" height="18" fill="{policy_color(code)}"/>')
+            x += width
+        y += 64
+    for line in wrap(COMPARISON_SCOPE, width=103):
+        content.append(f'<text x="40" y="{y}" font-size="17" fill="#526675">{escape(line)}</text>')
+        y += 24
+    locators = ', '.join(f'fila {item["csv_line"]}, columna {item["column"]}' for item in comparison['locators'])
+    for line in wrap('Fuente: políticas de pensiones, sanidad y educación. CSV: ' + locators + '.', width=125):
+        content.append(f'<text x="40" y="{y}" font-size="13" fill="#526675">{escape(line)}</text>')
+        y += 20
+    return ''.join(content), y + 45
+
+
 def fit_tile_label(label, proportion, amount, width, height, ceiling, minimum):
     """Prefer complete information; shrink within bounds before removing lines."""
     sizes = [ceiling]
@@ -97,7 +195,7 @@ def draw_tiles(rows, denominator, width, height, font_size=13):
         proportion = percentage(row['amount_thousand_eur'], denominator)
         amount = amount_label(row['amount_thousand_eur'])
         title = f"{row['label_es'].capitalize()}: {proportion} del total · {amount}"
-        result.append(f'<g><title>{escape(title)}</title><rect x="{x:.3f}" y="{y:.3f}" width="{w:.3f}" height="{h:.3f}" fill="#24495d" stroke="#fff" stroke-width="2"/>')
+        result.append(f'<g><title>{escape(title)}</title><rect x="{x:.3f}" y="{y:.3f}" width="{w:.3f}" height="{h:.3f}" fill="{policy_color(row["code"])}" stroke="#fff" stroke-width="2"/>')
         ceiling = max(minimum, font_size * (w * h / largest_area) ** .2)
         lines, size = fit_tile_label(row['label_es'].capitalize(), proportion, amount, w, h, ceiling, minimum)
         for index, line in enumerate(lines):
@@ -112,7 +210,7 @@ def overview(payload, chart_url, preview=False):
     plot = draw_tiles(rows, denominator, 360, 280)
     def row_html(row):
         value = percentage(row['amount_thousand_eur'], denominator)
-        return (f'<li><span>{escape(row["label_es"].capitalize())}</span>'
+        return (f'<li><span class="budget-chart-name"><span class="budget-chart-swatch" style="background:{policy_color(row["code"])}" aria-hidden="true"></span>{escape(row["label_es"].capitalize())}</span>'
                 f'<span class="budget-chart-values"><strong>{escape(value)}</strong>'
                 f'<span>{escape(amount_label(row["amount_thousand_eur"]))}</span></span></li>')
     key = ''.join(row_html(row) for row in rows)
@@ -132,6 +230,7 @@ def overview(payload, chart_url, preview=False):
             '<button type="button" class="btn-share" id="budget-chart-save" hidden>Guardar imagen (PNG)</button>'
             f'<a class="budget-chart-svg" href="{escape(chart_url, quote=True)}" download="pge-2023.svg">Descargar gráfico (SVG)</a></div>'
             '<p id="budget-chart-feedback" role="status" aria-live="polite"></p>'
+            f'{comparison_html(rows, payload)}'
             f'<div class="budget-legend"><ol class="budget-chart-key">{key}</ol></div></section>')
 
 
@@ -149,6 +248,8 @@ def share_svg(payload, manifest, bundle_id, preview=False):
                '<text x="40" y="204" font-size="22" fill="#526675">Área a escala: 40 % del presupuesto = 40 % del gráfico.</text>'
                f'<g transform="translate(40,235)">{draw_tiles(rows, denominator, 1000, 620, 22)}</g>']
     y = 912
+    comparison, y = comparison_svg(rows, y)
+    content.append(comparison)
     split = (len(rows) + 1) // 2
     left, right = rows[:split], rows[split:]
     for index in range(split):
@@ -160,8 +261,9 @@ def share_svg(payload, manifest, bundle_id, preview=False):
             x = 40 + column * 510
             lines = wrap(row['label_es'].capitalize(), width=30, break_long_words=True, break_on_hyphens=False)
             max_lines = max(max_lines, len(lines))
+            content.append(f'<rect x="{x}" y="{y-13}" width="14" height="14" fill="{policy_color(row["code"])}"/>')
             for offset, line in enumerate(lines):
-                content.append(f'<text x="{x}" y="{y+offset*22}" font-size="18" fill="#14253a">{escape(line)}</text>')
+                content.append(f'<text x="{x+22}" y="{y+offset*22}" font-size="18" fill="#14253a">{escape(line)}</text>')
             value = percentage(row['amount_thousand_eur'], denominator)
             content.append(f'<text x="{x+480}" y="{y}" text-anchor="end" font-size="18" font-weight="700" fill="#14253a">{escape(value)}</text>')
             amount = amount_label(row['amount_thousand_eur'])

@@ -59,6 +59,16 @@
 .budget-legend { min-width: 0; }
 .budget-chart-key li { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 16px; align-items: baseline; padding: 14px 0; line-height: 1.5; border-bottom: 1px solid var(--color-border-default); }
 .budget-chart-key strong { white-space: nowrap; }
+.budget-chart-name { min-width: 0; }
+.budget-chart-swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 8px; }
+.budget-comparison { max-width: 960px; background: var(--color-bg-surface-subtle); padding: var(--space-4); border-radius: var(--radius-lg); margin-block: var(--space-6); }
+.budget-comparison h3 { margin: 0; font-size: var(--font-size-xl); }
+.budget-comparison-scale, .budget-comparison-scope { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+.budget-comparison-bars { list-style: none; margin: var(--space-4) 0; padding: 0; }
+.budget-comparison-bars li { margin-block: var(--space-4); }
+.budget-comparison-label { display: flex; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; line-height: 1.5; margin-bottom: var(--space-2); }
+.budget-comparison-track { display: flex; height: 18px; background: var(--color-border-default); }
+.budget-comparison-track > span { display: block; height: 100%; flex-shrink: 0; }
 .budget-chart-values { display: grid; gap: 4px; text-align: right; white-space: nowrap; }
 .budget-chart-values > span { color: var(--color-text-secondary); font-size: var(--font-size-sm); }
 .budget-chart-units { color: var(--color-text-secondary); font-size: var(--font-size-sm); }

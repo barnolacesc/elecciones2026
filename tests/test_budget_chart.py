@@ -121,6 +121,60 @@ class BudgetChartTests(unittest.TestCase):
             for key, expected in zip(('x', 'y', 'width', 'height'), (x, y, width, height)):
                 self.assertAlmostEqual(float(rect.attrib[key]), expected, places=3)
 
+    def test_policy_colors_are_stable_distinct_and_contrast_with_white(self):
+        self.assertEqual(len(set(budget_chart.POLICY_PALETTE)), len(budget_chart.POLICY_CODES))
+        for color in budget_chart.POLICY_PALETTE:
+            rgb = [int(color[i:i+2], 16)/255 for i in (1, 3, 5)]
+            linear = [value/12.92 if value <= .04045 else ((value+.055)/1.055)**2.4 for value in rgb]
+            luminance = .2126*linear[0] + .7152*linear[1] + .0722*linear[2]
+            self.assertGreaterEqual(1.05 / (luminance + .05), 4.5)
+        rows = budget_chart.policies(self.fixture.payload)
+        def colors(order):
+            plot = ET.fromstring('<svg>' + budget_chart.draw_tiles(order, '0.03', 360, 280) + '</svg>')
+            return {group.find('title').text: group.find('rect').attrib['fill'] for group in plot.findall('g')}
+        self.assertEqual(colors(rows), colors(list(reversed(rows))))
+
+    def comparison_rows(self):
+        template = budget_chart.policies(self.fixture.payload)[0]
+        return [dict(template, code=code, label_es=label, amount_thousand_eur=amount)
+                for code, label, amount in [('21', 'PENSIONES', '40000.00'),
+                                            ('31', 'SANIDAD', '2000.01'),
+                                            ('32', 'EDUCACIÓN', '1000.02')]]
+
+    def test_comparison_uses_unrounded_disjoint_margins_and_named_denominator(self):
+        rows = self.comparison_rows()
+        result = budget_chart.pension_comparison(rows)
+        self.assertEqual(result['combined'], '3000.03')
+        self.assertEqual(result['ratio'], '7,50 %')
+        html = budget_chart.comparison_html(rows, self.fixture.payload)
+        self.assertIn('respecto a pensiones, no al presupuesto total', html)
+        self.assertIn('No representan todo el gasto público', html)
+        self.assertIn('Fuente oficial', html)
+        self.assertIn('CSV:', html)
+        image, end = budget_chart.comparison_svg(rows, 0)
+        self.assertGreater(end, 0)
+        root = ET.fromstring('<svg>' + image + '</svg>')
+        colored = [node for node in root.iter('rect') if node.attrib['fill'] != '#e5e9ec']
+        self.assertAlmostEqual(float(colored[0].attrib['width']), 1000)
+        self.assertAlmostEqual(sum(float(node.attrib['width']) for node in colored[-2:]), 75.00075)
+        self.assertIn(result['ratio'], image)
+        self.assertIn('No representan todo el gasto público', ' '.join(node.text for node in root.iter('text')))
+
+    def test_comparison_missing_rows_zero_reference_and_larger_sum(self):
+        rows = self.comparison_rows()
+        self.assertIsNone(budget_chart.pension_comparison(rows[:2]))
+        rows[0]['amount_thousand_eur'] = '0'
+        self.assertIsNone(budget_chart.pension_comparison(rows))
+        self.assertEqual(budget_chart.comparison_html(rows, self.fixture.payload), '')
+        rows[0]['amount_thousand_eur'] = '1000'
+        comparison = budget_chart.pension_comparison(rows)
+        self.assertEqual(comparison['ratio'], '300,00 %')
+        self.assertEqual(comparison['scale'], Decimal('3000.03'))
+        image, _ = budget_chart.comparison_svg(rows, 0)
+        root = ET.fromstring('<svg>' + image + '</svg>')
+        for rect in root.iter('rect'):
+            self.assertLessEqual(float(rect.attrib['x']) + float(rect.attrib['width']), 1040.00001)
+
 
 if __name__ == '__main__':
     unittest.main()
