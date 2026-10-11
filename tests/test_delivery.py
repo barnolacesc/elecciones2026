@@ -111,6 +111,22 @@ class DeliveryTests(unittest.TestCase):
                 delivery.edge_probe(ENV['STAGING_BASIC_AUTH'])
         self.assertIsNone(delivery.NoRedirect().redirect_request(None, None, 302, '', {}, 'https://elsewhere.invalid'))
 
+    def test_edge_preflight_identifies_client_and_blocks_forbidden_responses(self):
+        with patch.object(delivery.urllib.request, 'build_opener') as opener:
+            def edge(request, **kwargs):
+                self.assertEqual(request.get_header('User-agent'), 'elecciones2026-deployment/1')
+                self.assertIsNone(request.get_header('Authorization'))
+                raise urllib.error.HTTPError(request.full_url, 401, '', {}, None)
+            opener.return_value.open.side_effect = edge
+            delivery.edge_probe(None)
+            opener.return_value.open.side_effect = urllib.error.HTTPError(
+                'https://example.invalid', 403, '', {}, None)
+            with patch.dict(delivery.os.environ, ENV, clear=True), \
+                    patch.object(delivery.subprocess, 'run') as run:
+                with self.assertRaises(delivery.DeliveryError):
+                    delivery.deliver(IMAGE, RECORD['home_sha256'])
+                run.assert_not_called()
+
     def test_approved_domain_in_generated_metadata_and_crawler_routes(self):
         base = 'https://xn--eleccionesespaa2026-83b.es'
         with tempfile.TemporaryDirectory() as directory:

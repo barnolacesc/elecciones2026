@@ -67,7 +67,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 
 def edge_probe(credential: str | None, expected_hash: str | None = None) -> None:
-    headers = {}
+    headers = {"User-Agent": "elecciones2026-deployment/1"}
     if credential:
         encoded = base64.b64encode(credential.encode()).decode()
         headers["Authorization"] = f"Basic {encoded}"

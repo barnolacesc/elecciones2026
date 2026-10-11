@@ -132,3 +132,19 @@ separate reads and confirmed atomic reads accept stacked cards while rejecting
 side-by-side cards. The complete rendered mobile audit passed 60/60 locally;
 focused Ruff and diff whitespace checks passed. Hosted confirmation remains pending
 on the next PR head. No product layout or deployment policy changed.
+
+## First live delivery preflight — 2026-10-11
+
+E3.3: owner confirmed the exact private candidate pulls on the VPS and the local
+deployer check passes. Owner authorized DEPLOYMENT_READY=true and manual staging
+dispatch for CI run 38154601720, attempt 2. Delivery run 38164607568 accepted the
+approval and candidate download, then failed without any SSH output. The external
+Python preflight was reproduced locally: default Python user agent received 403,
+while curl and the explicit elecciones2026-deployment/1 client received the expected
+401. The edge probe now identifies its client explicitly; authentication, redirect,
+content/header checks and fail-closed behavior remain required. The live SSH path
+and application activation remain unverified until a successful retry.
+
+Follow-up verification: all 10 delivery boundary tests, focused Ruff, strict
+OpenSpec validation and diff whitespace checks pass. The updated live
+unauthenticated edge probe returns the required 401 without any SSH or mutation.
