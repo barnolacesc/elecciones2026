@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/budget-sections.schema.json",
+  "title": "BudgetSections",
+  "type": "object",
+  "properties": {
+    "schema_version": {},
+    "budget_year": {},
+    "source_ref": {},
+    "source_sha256": {},
+    "review_state": {},
+    "review_refs": {},
+    "sections": {}
+  },
+  "required": [
+    "schema_version",
+    "budget_year",
+    "source_ref",
+    "source_sha256",
+    "review_state",
+    "review_refs",
+    "sections"
+  ],
+  "$ref": "budget-records.schema.json#/$defs/Sections",
+  "additionalProperties": false
+}

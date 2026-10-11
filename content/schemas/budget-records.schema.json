@@ -1,0 +1,1086 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/budget-records.schema.json",
+  "title": "Budget record definitions",
+  "$defs": {
+    "Locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "csv_line",
+        "column"
+      ],
+      "properties": {
+        "csv_line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "column": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "File": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "Source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "id",
+        "source_version",
+        "budget_year",
+        "accounting_basis",
+        "table_id",
+        "url",
+        "sha256",
+        "byte_count",
+        "encoding",
+        "source_unit",
+        "institutional_scope",
+        "chapters",
+        "consolidation",
+        "retrieved_at",
+        "publication_date",
+        "rights_status",
+        "review_state",
+        "review_refs",
+        "companion_sources",
+        "is_fixture"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "budget_year": {
+          "const": 2023
+        },
+        "accounting_basis": {
+          "const": "approved_credits"
+        },
+        "table_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "encoding": {
+          "const": "windows-1252"
+        },
+        "source_unit": {
+          "const": "thousand_eur"
+        },
+        "institutional_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "chapters": {
+          "const": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "consolidation": {
+          "const": "consolidated"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publication_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rights_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_state": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "rejected",
+            "invalidated"
+          ]
+        },
+        "review_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "companion_sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "url",
+              "sha256",
+              "byte_count"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "byte_count": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "is_fixture": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "id",
+        "version",
+        "source_ref",
+        "source_sha256",
+        "budget_year",
+        "accounting_basis",
+        "denominator_id",
+        "denominator_amount_thousand_eur",
+        "denominator_locator",
+        "source_unit",
+        "blank_convention",
+        "display_unit",
+        "source_to_display_divisor",
+        "display_precision",
+        "rounding_mode",
+        "scope_note_es",
+        "scope_limit_es",
+        "historical_note_es",
+        "rounding_note_es",
+        "review_state",
+        "review_refs",
+        "reconciliation_tolerances"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "budget_year": {
+          "const": 2023
+        },
+        "accounting_basis": {
+          "const": "approved_credits"
+        },
+        "denominator_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "denominator_amount_thousand_eur": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        "denominator_locator": {
+          "$ref": "#/$defs/Locator"
+        },
+        "source_unit": {
+          "const": "thousand_eur"
+        },
+        "blank_convention": {
+          "const": "unavailable_pending_human_review"
+        },
+        "display_unit": {
+          "const": "million_eur"
+        },
+        "source_to_display_divisor": {
+          "const": "1000"
+        },
+        "display_precision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "amount_decimal_places",
+            "share_percentage_decimal_places"
+          ],
+          "properties": {
+            "amount_decimal_places": {
+              "const": 2
+            },
+            "share_percentage_decimal_places": {
+              "const": 2
+            }
+          }
+        },
+        "rounding_mode": {
+          "const": "ROUND_HALF_UP"
+        },
+        "scope_note_es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_limit_es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "historical_note_es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rounding_note_es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_state": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "rejected",
+            "invalidated"
+          ]
+        },
+        "review_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reconciliation_tolerances": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "policy_margin_thousand_eur",
+            "section_margin_thousand_eur",
+            "grand_total_thousand_eur"
+          ],
+          "properties": {
+            "policy_margin_thousand_eur": {
+              "const": "0.00"
+            },
+            "section_margin_thousand_eur": {
+              "const": "0.00"
+            },
+            "grand_total_thousand_eur": {
+              "const": "0.00"
+            }
+          }
+        }
+      }
+    },
+    "Cell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source_ref",
+        "source_version",
+        "accounting_basis",
+        "policy_code",
+        "section_code",
+        "amount_thousand_eur",
+        "value_state",
+        "source_locator"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "accounting_basis": {
+          "const": "approved_credits"
+        },
+        "policy_code": {
+          "type": "string",
+          "pattern": "^[0-9]{2}$"
+        },
+        "section_code": {
+          "type": "string",
+          "pattern": "^[0-9]{2}$"
+        },
+        "amount_thousand_eur": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        "value_state": {
+          "type": "string",
+          "enum": [
+            "official",
+            "unavailable"
+          ]
+        },
+        "source_locator": {
+          "$ref": "#/$defs/Locator"
+        }
+      }
+    },
+    "Margin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "code",
+        "label_es",
+        "amount_thousand_eur",
+        "source_locator"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "policy",
+            "section",
+            "grand_total"
+          ]
+        },
+        "code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "label_es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "amount_thousand_eur": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        },
+        "source_locator": {
+          "$ref": "#/$defs/Locator"
+        }
+      }
+    },
+    "Values": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "source_ref",
+        "source_version",
+        "budget_year",
+        "accounting_basis",
+        "cells",
+        "margins"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "budget_year": {
+          "const": 2023
+        },
+        "accounting_basis": {
+          "const": "approved_credits"
+        },
+        "cells": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Cell"
+          }
+        },
+        "margins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Margin"
+          }
+        }
+      }
+    },
+    "RowReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_ref",
+        "source_version",
+        "policy_code",
+        "relationship",
+        "source_locator"
+      ],
+      "properties": {
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "policy_code": {
+          "type": "string",
+          "pattern": "^[0-9]{2}$"
+        },
+        "relationship": {
+          "type": "string",
+          "enum": [
+            "direct_context",
+            "broad_related_context"
+          ]
+        },
+        "source_locator": {
+          "$ref": "#/$defs/Locator"
+        }
+      }
+    },
+    "Topic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "topic_id",
+        "label_es",
+        "coverage_state",
+        "coverage_note_es",
+        "rationale",
+        "aggregation_mode",
+        "topic_amount",
+        "row_refs",
+        "review_state",
+        "review_refs"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "topic_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label_es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coverage_state": {
+          "type": "string",
+          "enum": [
+            "mapped",
+            "partial",
+            "not_available",
+            "not_comparable"
+          ]
+        },
+        "coverage_note_es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aggregation_mode": {
+          "type": "string",
+          "enum": [
+            "none",
+            "exact_sum"
+          ]
+        },
+        "topic_amount": {
+          "const": null
+        },
+        "row_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RowReference"
+          }
+        },
+        "review_state": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "rejected",
+            "invalidated"
+          ]
+        },
+        "review_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "Mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "mapping_version",
+        "dataset_version",
+        "taxonomy_version",
+        "taxonomy_sha256",
+        "mappings",
+        "unmapped_policy_codes",
+        "overlapping_policy_references",
+        "aggregate_topic_total",
+        "aggregation_note",
+        "review_state"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "mapping_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "dataset_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "taxonomy_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "taxonomy_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Topic"
+          }
+        },
+        "unmapped_policy_codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9]{2}$"
+          }
+        },
+        "overlapping_policy_references": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "aggregate_topic_total": {
+          "const": null
+        },
+        "aggregation_note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_state": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "rejected",
+            "invalidated"
+          ]
+        }
+      }
+    },
+    "Review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "subject_id",
+        "subject_sha256",
+        "subject_version",
+        "role",
+        "human_reviewer_id",
+        "decision",
+        "reviewed_at",
+        "evidence_ref"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "subject_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "financial",
+            "rights",
+            "editorial"
+          ]
+        },
+        "human_reviewer_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "approved",
+            "rejected",
+            "invalidated"
+          ]
+        },
+        "reviewed_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "Correction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "date",
+        "reason",
+        "prior_bundle",
+        "replacement_bundle",
+        "affected_record_ids",
+        "invalidated_review_refs",
+        "review_refs"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prior_bundle": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "replacement_bundle": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "affected_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "invalidated_review_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "review_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "Decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "package_id",
+        "decision",
+        "source_refs",
+        "compatibility_matrix",
+        "evidence_refs",
+        "review_refs",
+        "decided_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "go",
+            "no_go",
+            "pending"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "compatibility_matrix": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "dimension",
+              "compatible",
+              "evidence_ref"
+            ],
+            "properties": {
+              "dimension": {
+                "type": "string",
+                "minLength": 1
+              },
+              "compatible": {
+                "type": "boolean"
+              },
+              "evidence_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "review_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "decided_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "dataset_version",
+        "budget_year",
+        "accounting_basis",
+        "source_sha256",
+        "taxonomy_sha256",
+        "mapping_version",
+        "transform_version",
+        "build_date",
+        "publication_state",
+        "files",
+        "review_refs",
+        "supersedes",
+        "correction_refs",
+        "is_fixture"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "dataset_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "budget_year": {
+          "const": 2023
+        },
+        "accounting_basis": {
+          "const": "approved_credits"
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "taxonomy_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "mapping_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "transform_version": {
+          "const": "1.0.0"
+        },
+        "build_date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publication_state": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "reviewed"
+          ]
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/File"
+          }
+        },
+        "review_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "correction_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "is_fixture": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Sections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "budget_year",
+        "source_ref",
+        "source_sha256",
+        "review_state",
+        "review_refs",
+        "sections"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "budget_year": {
+          "const": 2023
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "review_state": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "rejected",
+            "invalidated"
+          ]
+        },
+        "review_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "name_es",
+              "source_url",
+              "locator",
+              "is_ministry",
+              "review_state"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "pattern": "^[0-9]{2}$"
+              },
+              "name_es": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_url": {
+                "type": "string",
+                "minLength": 1
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1
+              },
+              "is_ministry": {
+                "type": "boolean"
+              },
+              "review_state": {
+                "type": "string",
+                "enum": [
+                  "draft",
+                  "approved",
+                  "rejected",
+                  "invalidated"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {},
+  "required": [],
+  "additionalProperties": false
+}

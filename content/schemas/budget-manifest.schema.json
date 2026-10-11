@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/budget-manifest.schema.json",
+  "title": "BudgetManifest",
+  "$ref": "budget-records.schema.json#/$defs/Manifest",
+  "type": "object",
+  "properties": {
+    "schema_version": {},
+    "dataset_version": {},
+    "budget_year": {},
+    "accounting_basis": {},
+    "source_sha256": {},
+    "taxonomy_sha256": {},
+    "mapping_version": {},
+    "transform_version": {},
+    "build_date": {},
+    "publication_state": {},
+    "files": {},
+    "review_refs": {},
+    "supersedes": {},
+    "correction_refs": {},
+    "is_fixture": {}
+  },
+  "required": [
+    "schema_version",
+    "dataset_version",
+    "budget_year",
+    "accounting_basis",
+    "source_sha256",
+    "taxonomy_sha256",
+    "mapping_version",
+    "transform_version",
+    "build_date",
+    "publication_state",
+    "files",
+    "review_refs",
+    "supersedes",
+    "correction_refs",
+    "is_fixture"
+  ],
+  "additionalProperties": false
+}

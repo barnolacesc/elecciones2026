@@ -1,0 +1,23 @@
+{
+  "accounting_basis": "approved_credits",
+  "audit_version": "1.0.0",
+  "blank_cell_count": 916,
+  "blank_convention": "unavailable_pending_human_review",
+  "blank_note": "Sums of present cells match margins. This does not establish that individual blanks mean zero.",
+  "budget_year": 2023,
+  "denominator_amount_thousand_eur": "485985812.22",
+  "explicit_numeric_cell_count": 110,
+  "explicit_zero_cell_count": 0,
+  "html_csv_matrix_equal": true,
+  "maximum_reconciliation_delta_thousand_eur": "0.00",
+  "policy_count": 27,
+  "policy_margin_sum_thousand_eur": "485985812.22",
+  "publication_approved": false,
+  "section_count": 38,
+  "section_margin_sum_thousand_eur": "485985812.22",
+  "source_sha256": {
+    "csv": "c796efe9208fa9badc1894d0e0334024c75fbb5e00b8de4b30cb25145e695e7a",
+    "html": "799ee5285f05b345b4b20bad8a0e934ab3249a2eaf13cc6872ebeb57daf2bb8e"
+  },
+  "unit": "thousand_eur"
+}

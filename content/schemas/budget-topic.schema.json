@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/budget-topic.schema.json",
+  "title": "BudgetTopic",
+  "$ref": "budget-records.schema.json#/$defs/Topic",
+  "type": "object",
+  "properties": {
+    "id": {},
+    "topic_id": {},
+    "label_es": {},
+    "coverage_state": {},
+    "coverage_note_es": {},
+    "rationale": {},
+    "aggregation_mode": {},
+    "topic_amount": {},
+    "row_refs": {},
+    "review_state": {},
+    "review_refs": {}
+  },
+  "required": [
+    "id",
+    "topic_id",
+    "label_es",
+    "coverage_state",
+    "coverage_note_es",
+    "rationale",
+    "aggregation_mode",
+    "topic_amount",
+    "row_refs",
+    "review_state",
+    "review_refs"
+  ],
+  "additionalProperties": false
+}
