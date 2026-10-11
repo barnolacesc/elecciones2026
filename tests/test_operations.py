@@ -44,6 +44,33 @@ class ReleaseTests(unittest.TestCase):
             self.assertEqual([c.args for c in activate.call_args_list], [(B,), (A,)])
         self.assertEqual(self.state.read_bytes(), old)
 
+    def test_same_image_retry_checks_health_without_registry_or_state_changes(self):
+        self.seed()
+        old = self.state.read_bytes()
+        with patch.object(release, "compose") as compose, patch.object(release, "activate") as activate:
+            self.assertGreaterEqual(release.switch(self.state_dir, A), 0)
+            activate.assert_called_once_with(A)
+            compose.assert_not_called()
+        self.assertEqual(self.state.read_bytes(), old)
+
+    def test_unhealthy_same_image_retry_fails_without_losing_rollback(self):
+        self.seed()
+        old = self.state.read_bytes()
+        with patch.object(release, "compose") as compose, \
+                patch.object(release, "activate", side_effect=RuntimeError("unhealthy")):
+            with self.assertRaises(RuntimeError):
+                release.switch(self.state_dir, A)
+            compose.assert_not_called()
+        self.assertEqual(self.state.read_bytes(), old)
+
+    def test_same_image_rollback_is_rejected_without_activation(self):
+        self.state.write_text(json.dumps({"current": A, "previous": A}))
+        with patch.object(release, "compose") as compose, patch.object(release, "activate") as activate:
+            with self.assertRaises(ValueError):
+                release.switch(self.state_dir, rollback=True)
+            compose.assert_not_called()
+            activate.assert_not_called()
+
     def test_failed_pull_does_not_touch_running_release(self):
         self.seed()
         with patch.object(release, "compose", side_effect=subprocess.CalledProcessError(1, "docker")), patch.object(release, "activate") as activate:

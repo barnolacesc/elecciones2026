@@ -109,6 +109,11 @@ current image; a failed first release removes its container. If recovery also
 fails, it exits unsuccessfully; use console recovery. A switch can interrupt
 requests briefly; this is not a zero-downtime deployment.
 
+Repeating a deployment of the current digest verifies container and loopback health
+without pulling or changing the current/previous release record. An unhealthy retry
+still fails. Install the reviewed controller update as root before relying on this
+behavior; routine image delivery does not replace host tooling.
+
 After EVERY switch or rollback, verify the edge and purge mutable page/asset URLs
 (including query variants), or use a reviewed zone purge when enumeration is
 incomplete. Purge requires the operator's scoped token outside Git. Browser
