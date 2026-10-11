@@ -150,6 +150,18 @@ jobs:
         run: |
           PYTHONPATH=src python -m elecciones2026.mobile_accessibility --output build/mobile-accessibility.json
 
+      - name: Verify budget views with synthetic data only (E10.3)
+        run: |
+          node --check site/budget-context.js
+          PYTHONPATH=src ELECTIONS_TEST_BUDGET_BROWSER=1 python -m unittest discover -s tests -p test_budget_view_browser.py -v
+
+      - name: Retain budget viewport and network observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: budget-view-e10-3
+          path: build/budget-view-e10-3.json
+
       - name: Retain browser observations and review limits
         if: always()
         uses: actions/upload-artifact@v4

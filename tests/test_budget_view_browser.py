@@ -1,0 +1,128 @@
+"""E10.3 opt-in rendered checks with synthetic figures and mocked review gates."""
+from functools import partial
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+import json
+import os
+from time import monotonic
+from threading import Thread
+import unittest
+
+import test_budget_view as fixtures
+
+
+class QuietHandler(SimpleHTTPRequestHandler):
+    def log_message(self, *_args):
+        pass
+
+
+@unittest.skipUnless(os.environ.get('ELECTIONS_TEST_BUDGET_BROWSER') == '1', 'Opt-in Playwright budget checks')
+class BudgetBrowserTests(unittest.TestCase):
+    def test_mobile_context_network_and_keyboard(self):
+        from playwright.sync_api import sync_playwright
+        fixture = fixtures.BudgetViewTests()
+        fixture.setUp()
+        # Stress wrapping independently of the official labels and approval state.
+        for margin in fixture.payload['values.json']['margins']:
+            if margin['kind'] == 'policy':
+                margin['label_es'] += ' · ' + 'Descripción administrativa extensa ' * 8 + 'X' * 120
+        output = fixture.fixture.root / 'candidate'
+        fixture.build_fixture(output)
+        from elecciones2026.generator import build_site
+        baseline = fixture.fixture.root / 'baseline'
+        build_site(fixtures.ROOT, baseline)
+        server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietHandler, directory=str(fixture.fixture.root)))
+        thread = Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        base = f'http://127.0.0.1:{server.server_port}'
+        report = {'fixture_only': True, 'observations': [], 'network': [], 'human_review': 'pending'}
+        try:
+            with sync_playwright() as playwright:
+                browser = playwright.chromium.launch()
+                for width in (360, 390, 430):
+                    page = browser.new_page(viewport={'width': width, 'height': 844})
+                    page.set_default_timeout(10000)
+                    requests = []
+                    page.on('request', lambda request: requests.append(request.url))
+                    page.goto(base + '/candidate/presupuestos/2023/')
+                    page.locator('summary').first.focus()
+                    page.keyboard.press('Enter')
+                    self.assertTrue(page.locator('details').first.evaluate('(node) => node.open'))
+                    for summary in page.locator('summary').all():
+                        self.assertGreaterEqual(summary.bounding_box()['height'], 44)
+                    for details in page.locator('details').all():
+                        details.evaluate('(node) => node.open = true')
+                    overflow = page.evaluate('document.documentElement.scrollWidth > innerWidth')
+                    self.assertFalse(overflow)
+                    self.assertEqual(page.locator('table[role="table"]').count(), 2)
+                    self.assertEqual(page.get_by_role('columnheader').count(), 8)
+                    self.assertEqual(page.get_by_role('rowheader').count(), 4)
+                    page.add_style_tag(content='meter { display: none; }')
+                    self.assertIn('millones de euros', page.locator('.budget-figure').first.inner_text())
+                    report['observations'].append({'width': width, 'overflow': overflow, 'summary_min_height': 44,
+                                                   'tables': 2, 'keyboard_disclosure': True})
+                    page.goto(base + '/candidate/?topic=housing&partyA=partido-ejemplo-a&partyB=partido-ejemplo-b')
+                    original = page.locator('#budget-context').inner_text()
+                    before = len([url for url in requests if 'budget-topics/' in url])
+                    page.select_option('#party-a-select', 'partido-ejemplo-b')
+                    self.assertTrue(page.locator('#budget-context').evaluate('(node) => node.hidden'))
+                    page.select_option('#party-b-select', 'partido-ejemplo-a')
+                    self.assertEqual(page.locator('#budget-context').inner_text(), original)
+                    self.assertEqual(len([url for url in requests if 'budget-topics/' in url]), before)
+                    page.select_option('#topic-select', 'education')
+                    page.wait_for_function("document.getElementById('budget-context').dataset.topic === 'education'")
+                    self.assertEqual(len([url for url in requests if 'budget-topics/' in url]), before + 1)
+                    self.assertEqual(page.locator('#budget-context').count(), 1)
+                    self.assertFalse(any('/static/budget/' in url or 'values.json' in url or '.zip' in url for url in requests))
+                    page.route('**/health-social-services.json', lambda route: route.fulfill(status=503, body='unavailable'))
+                    page.select_option('#topic-select', 'health-social-services')
+                    page.wait_for_function("document.getElementById('budget-context').textContent.includes('no está disponible')")
+                    self.assertGreater(page.locator('#measures-container').inner_text().__len__(), 0)
+                    self.assertNotIn('Descripción administrativa extensa', page.locator('#budget-context').inner_text())
+                    page.close()
+                # Static no-script readability includes cells, unavailable states, and denominator.
+                context = browser.new_context(java_script_enabled=False, viewport={'width': 390, 'height': 844})
+                page = context.new_page()
+                page.goto(base + '/candidate/presupuestos/2023/')
+                self.assertIn('sin redondear', page.locator('.budget-notes').inner_text())
+                self.assertGreater(page.locator('.budget-policy').count(), 0)
+                context.close()
+                # Compare fresh initial navigations without a bulk data request.
+                for name in ('baseline', 'candidate'):
+                    routes = {'home': '/', 'topic': '/temas/education/',
+                              'comparison': '/?topic=education&partyA=partido-ejemplo-a&partyB=partido-ejemplo-b'}
+                    for view, route in routes.items():
+                        context = browser.new_context(viewport={'width': 390, 'height': 844})
+                        page = context.new_page()
+                        session = context.new_cdp_session(page)
+                        session.send('Network.emulateNetworkConditions', {'offline': False, 'latency': 150,
+                                     'downloadThroughput': 200000, 'uploadThroughput': 93750})
+                        responses = []
+                        page.on('response', lambda response: responses.append(response))
+                        started = monotonic()
+                        page.goto(base + '/' + name + route, wait_until='networkidle')
+                        elapsed = round((monotonic() - started) * 1000)
+                        records = [{'path': response.url.split(base)[-1], 'bytes': len(response.body())} for response in responses]
+                        self.assertFalse(any('/static/budget/' in item['path'] for item in records))
+                        projections = [item for item in records if '/budget-topics/' in item['path']]
+                        self.assertEqual(len(projections), 1 if name == 'candidate' and view == 'comparison' else 0)
+                        if projections:
+                            self.assertTrue(projections[0]['path'].endswith('/education.json'))
+                            self.assertLessEqual(projections[0]['bytes'], 16384)
+                        report['network'].append({'build': name, 'view': view, 'requests': len(records),
+                                                  'response_bytes': sum(item['bytes'] for item in records),
+                                                  'single_navigation_ms': elapsed, 'latency_ms': 150,
+                                                  'download_bytes_per_second': 200000, 'resources': records})
+                        context.close()
+                browser.close()
+            target = fixtures.ROOT / 'build/budget-view-e10-3.json'
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(json.dumps(report, indent=2) + '\n')
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=5)
+            fixture.tearDown()
+
+
+if __name__ == '__main__':
+    unittest.main()
