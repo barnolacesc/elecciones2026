@@ -69,20 +69,29 @@ class TestSourceRegister(unittest.TestCase):
         # Verify PP 2023 pilot programme
         self.assertIn("pp", by_party)
         pp_source = by_party["pp"]
-        self.assertEqual(pp_source.status, "published-unverified")
+        self.assertEqual(pp_source.status, "verified")
         self.assertEqual(pp_source.retrieval_date, "2026-10-10")
         self.assertEqual(pp_source.sha256, "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108")
         self.assertIn("programa_electoral_pp_23j_feijoo_2023.pdf", pp_source.direct_url)
-        self.assertEqual(pp_source.rights_review.status, "not_reviewed")
+        self.assertEqual(pp_source.rights_review.status, "link_and_short_quote")
 
         # Verify ERC 2023 pilot programme
         self.assertIn("erc", by_party)
         erc_source = by_party["erc"]
-        self.assertEqual(erc_source.status, "published-unverified")
+        self.assertEqual(erc_source.status, "verified")
         self.assertEqual(erc_source.retrieval_date, "2026-10-10")
         self.assertEqual(erc_source.sha256, "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854")
         self.assertIn("e2023-programa.pdf", erc_source.direct_url)
-        self.assertEqual(erc_source.rights_review.status, "not_reviewed")
+        self.assertEqual(erc_source.rights_review.status, "link_and_short_quote")
+
+        # Verify Sumar and PNV 2023 pilot programmes
+        self.assertIn("sumar", by_party)
+        self.assertEqual(by_party["sumar"].status, "verified")
+        self.assertEqual(by_party["sumar"].rights_review.status, "link_and_short_quote")
+
+        self.assertIn("pnv", by_party)
+        self.assertEqual(by_party["pnv"].status, "verified")
+        self.assertEqual(by_party["pnv"].rights_review.status, "link_and_short_quote")
 
     def test_election_scoping_isolation(self) -> None:
         """Verify that 2023 pilot programmes and 2026 sources belong to disjoint election sets."""

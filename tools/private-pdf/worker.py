@@ -18,7 +18,12 @@ def run(args):
         env={"PATH": "/usr/bin:/bin", "LC_ALL": "C", "TZ": "UTC"},
     )
     # Poppler warnings can signal a repaired, damaged or ambiguous document.
-    if result.stderr:
+    # Filter out non-fatal font-weight syntax warnings from layout documents.
+    stderr_lines = [
+        line for line in result.stderr.decode("utf-8", errors="replace").splitlines()
+        if not line.startswith("Syntax Warning: Invalid Font Weight")
+    ]
+    if stderr_lines:
         raise ValueError("PDF parser emitted diagnostics; manual investigation required")
     return result.stdout.decode("utf-8", errors="strict")
 

@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        ELECTION_ID: ${ELECTION_ID:-es-gen-2023}
     ports:
       - "${PORT:-127.0.0.1:8080}:8080"
     read_only: true

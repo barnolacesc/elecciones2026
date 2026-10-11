@@ -73,25 +73,44 @@ class TestPilotEditorialAudit(unittest.TestCase):
         self.assertIn("human reviewer", " ".join(rel.validate(for_build=False)))
 
     def test_repository_drafts_are_outside_publish_set_even_without_strict_flag(self):
-        for strict in (True, False):
-            ctx = load_and_validate_site_data(ROOT, election_id="es-gen-2023", strict_approved=strict)
-            self.assertEqual(ctx.statements, {})
-            self.assertEqual(ctx.relationships, {})
+        with tempfile.TemporaryDirectory() as tmp:
+            content = Path(tmp) / "content"
+            shutil.copytree(CONTENT, content)
+            draft_path = content / "examples/statements/draft-sample.json"
+            draft_data = json.loads(STATEMENT.read_text(encoding="utf-8"))
+            draft_data["id"] = "stmt-draft-test"
+            draft_data["review_status"] = "draft"
+            draft_data["reviews"] = []
+            draft_path.write_text(json.dumps(draft_data), encoding="utf-8")
+            for strict in (True, False):
+                ctx = load_and_validate_site_data(ROOT, content_dir=content, election_id="es-gen-2023", strict_approved=strict)
+                self.assertNotIn("stmt-draft-test", ctx.statements)
 
     def test_explicit_draft_publish_set_fails_before_output(self):
+        draft_stmt = replace(self.approved_statement(), id="stmt-draft-test", review_status="draft", reviews=[])
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "site"
             with self.assertRaises(BuildValidationError):
                 build_site(ROOT, output, election_id="es-gen-2023",
-                           custom_statements=[load_statement(STATEMENT)], custom_relationships=[])
+                           custom_statements=[draft_stmt], custom_relationships=[])
             self.assertFalse(output.exists())
 
     def test_reviews_alone_do_not_override_pending_source_rights(self):
-        for strict in (True, False):
-            with self.assertRaisesRegex(BuildValidationError, "rights are not approved"):
-                load_and_validate_site_data(ROOT, election_id="es-gen-2023", strict_approved=strict,
-                                            custom_statements=[self.approved_statement()],
-                                            custom_relationships=[])
+        with tempfile.TemporaryDirectory() as tmp:
+            content = Path(tmp) / "content"
+            shutil.copytree(CONTENT, content)
+            register_path = content / "sources/register.json"
+            register = json.loads(register_path.read_text())
+            for src in register["sources"]:
+                if src["id"] == "src-2023-pp-v1":
+                    src["rights_review"]["status"] = "not_reviewed"
+            register_path.write_text(json.dumps(register))
+            for strict in (True, False):
+                with self.assertRaisesRegex(BuildValidationError, "rights are not approved"):
+                    load_and_validate_site_data(ROOT, content_dir=content, election_id="es-gen-2023",
+                                                strict_approved=strict,
+                                                custom_statements=[self.approved_statement()],
+                                                custom_relationships=[])
 
     def test_approved_synthetic_corpus_requires_matching_programme_hash(self):
         with tempfile.TemporaryDirectory() as tmp:

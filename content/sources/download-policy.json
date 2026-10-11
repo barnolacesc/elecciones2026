@@ -1,5 +1,10 @@
 {
   "version": "1.0.0",
-  "allowed_hosts": ["www.pp.es", "static.esquerra.cat"],
-  "notes": "Private acquisition for the PP and ERC 2023 rehearsal. Review additions and redirect hosts explicitly; this policy grants no distribution or editorial approval."
+  "allowed_hosts": [
+    "www.pp.es",
+    "static.esquerra.cat",
+    "movimientosumar.es",
+    "www.eaj-pnv.eus"
+  ],
+  "notes": "Private acquisition for 2023 rehearsal sources (PP, ERC, Sumar, PNV). Review additions and redirect hosts explicitly; this policy grants no distribution or editorial approval."
 }

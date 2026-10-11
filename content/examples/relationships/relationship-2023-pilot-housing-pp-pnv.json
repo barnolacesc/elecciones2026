@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2023",
+  "id": "rel-pilot-2023-housing-pp-pnv",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "measure_label": "Regulación de precios de alquiler y acceso a la vivienda",
+  "party_ids": [
+    "pnv",
+    "pp"
+  ],
+  "statement_ids": [
+    "stmt-pilot-pnv-housing-2023",
+    "stmt-pilot-pp-housing-2023"
+  ],
+  "relationship_type": "partial_overlap",
+  "summary": "Matiz en el instrumento prioritario: el PP enfatiza avales hipotecarios para la compraventa juvenil, mientras el PNV centra su modelo en el parque público de alquiler protegido.",
+  "differences": [
+    "El PP propone garantizar créditos hipotecarios de hasta el 95% para facilitar la propiedad a jóvenes menores de 35 años.",
+    "El PNV prioriza el parque público de alquiler y su desarrollo adaptado al marco autonómico foral."
+  ],
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc-editorial",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Revisión de consistencia comparativa.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:cesc-editorial"
+    },
+    {
+      "reviewer_id": "sam-neutrality",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Neutralidad en la descripción de matices de modelo.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:sam-neutrality"
+    }
+  ],
+  "status": "active",
+  "invalidation_reason": null,
+  "invalidated_by_correction_id": null,
+  "is_fixture": false
+}

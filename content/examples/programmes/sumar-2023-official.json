@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2023",
+  "programme_id": "prog-sumar-2023-official",
+  "candidacy_id": "sumar",
+  "title": "Un Programa para ti - Movimiento Sumar 23J",
+  "status": "official",
+  "version": "23J-v1",
+  "publisher": "Movimiento Sumar",
+  "official_url": "https://movimientosumar.es/programa-electoral-23j/",
+  "publication_date": "2023-07-06",
+  "retrieval_date": "2026-10-09T10:00:00Z",
+  "language": "es",
+  "sha256": "d5ccdac0d20f1b93a5f703f180d086041bd988835072dd5cb5d1378bf0195820",
+  "rights_status": "verified_quotation_permitted",
+  "coverage_notes": "Documento oficial de 2023 verificado con cita conforme a TRLPI Art. 32.",
+  "supersedes": null,
+  "superseded_by": null,
+  "replacement_reason": null,
+  "is_fixture": false
+}

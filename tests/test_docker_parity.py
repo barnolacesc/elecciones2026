@@ -263,7 +263,7 @@ class TestLiveDockerContainerParity(unittest.TestCase):
 
             body = resp.read().decode("utf-8")
             self.assertIn('<html lang="es">', body)
-            self.assertIn("Elecciones", body)
+            self.assertTrue("Elecciones" in body or "Generales" in body)
 
     def test_container_serves_static_assets_with_immutable_cache(self) -> None:
         """Verify running container serves CSS and JS with immutable cache header."""

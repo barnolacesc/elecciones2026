@@ -7,9 +7,11 @@ function browser(href = 'https://preview.test/', navigator = {}, secure = true, 
   const nodes = {};
   for (const id of ['share-button', 'share-feedback', 'share-fallback', 'share-link',
     'copy-link-button', 'selection-form', 'topic-select', 'party-a-select',
-    'party-b-select', 'selection-error', 'measures-container', 'label', 'banner']) {
+    'party-b-select', 'selection-error', 'measures-container', 'manifesto-dialog', 'label', 'banner']) {
     nodes[id] = { value: '', textContent: '', innerHTML: '', hidden: true, handlers: {},
       classList: { add() {}, remove() {} }, setAttribute() {}, removeAttribute() {},
+      showModal() { this.opened = true; }, close() { this.opened = false; },
+      querySelector() { return null; },
       addEventListener(event, handler) { this.handlers[event] = handler; },
       focus() { this.focused = true; }, select() { this.selected = true; } };
   }
@@ -85,14 +87,30 @@ test('private pilot keeps election context and never falls back to 2026 measures
   let shared;
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023',
     { share: async data => { shared = data; } }, true, true);
-  assert.equal(b.nodes['measures-container'].innerHTML, '');
+  assert.match(b.nodes['measures-container'].innerHTML, /Regulación de precios de alquiler y acceso a la vivienda \(2023\)/);
   assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /15%|Garantir el dret/);
   await b.click();
   assert.match(shared.title, /2023/);
   assert.match(shared.url, /election=es-gen-2023/);
+
+  // Check 2023 pilot measures render across topics
+  b.nodes['topic-select'].value = 'economy-work-tax';
+  b.nodes['topic-select'].handlers.change();
+  assert.match(b.nodes['measures-container'].innerHTML, /Regulación de la jornada laboral máxima y tiempo de trabajo \(2023\)/);
+
   b.nodes['topic-select'].value = 'education';
   b.nodes['topic-select'].handlers.change();
-  assert.equal(b.nodes['measures-container'].innerHTML, '');
+  assert.match(b.nodes['measures-container'].innerHTML, /Gratuidad y universalización de la educación infantil de 0 a 3 años \(2023\)/);
+
+  b.nodes['topic-select'].value = 'health-social-services';
+  b.nodes['topic-select'].handlers.change();
+  assert.match(b.nodes['measures-container'].innerHTML, /Refuerzo de la Atención Primaria y Salud Mental en el SNS \(2023\)/);
+
+  // An unpopulated 2023 topic (e.g. immigration) should honestly report no measures registered yet
+  b.nodes['topic-select'].value = 'immigration';
+  b.nodes['topic-select'].handlers.change();
+  assert.match(b.nodes['measures-container'].innerHTML, /No hay medidas registradas todavía/);
+  assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /15%|Garantir el dret/);
 });
 
 test('native share success, cancellation and rejection expose honest status and copy fallback', async () => {
@@ -131,4 +149,14 @@ test('unsupported or insecure native share uses clipboard; denied clipboard sele
       assert.doesNotMatch(b.nodes['share-feedback'].textContent, /copiado/);
     } else assert.equal(copied, 'https://preview.test/');
   }
+});
+
+test('in-app manifesto excerpt viewer button and initiative context are rendered', () => {
+  const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023', {}, true, true);
+  const html = b.nodes['measures-container'].innerHTML;
+  assert.match(html, /class="btn-open-manifesto"/);
+  assert.match(html, /Leer extracto/);
+  assert.match(html, /class="measure-context"/);
+  assert.match(html, /class="measure-axes"/);
+  assert.match(html, /data-party-name="Partido Popular/);
 });

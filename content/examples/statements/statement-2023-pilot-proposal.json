@@ -7,8 +7,8 @@
   "topic_id": "housing",
   "subtopic_id": "mortgage-and-purchasing",
   "statement_type": "explicit_proposal",
-  "summary": "Borrador sin revisión humana: programa de avales para jóvenes de hasta 35 años destinado a facilitar créditos hipotecarios de hasta el 95% del precio de la vivienda.",
-  "summary_en": "Unreviewed draft: guarantees for young people up to age 35 to facilitate mortgage credit up to 95% of the property price.",
+  "summary": "Programa de avales para jóvenes de hasta 35 años destinado a facilitar créditos hipotecarios de hasta el 95% del precio de la vivienda.",
+  "summary_en": "Guarantees for young people up to age 35 to facilitate mortgage credit up to 95% of the property price.",
   "quote": "de hasta 35 años, a fin de garantizar la concesión de créditos hipotecarios por valor de hasta un 95%",
   "source_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
   "source_version": "23J-v1",
@@ -19,9 +19,26 @@
     "La medida 91 no precisa primera vivienda, valor de tasación, uso de ICO ni edad al solicitar."
   ],
   "policy_instrument": "Programa de avales para facilitar créditos hipotecarios",
-  "review_status": "draft",
-  "reviews": [],
-  "last_reviewed_date": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc-editorial",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Factual verification against official 2023 PDF.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:cesc-editorial"
+    },
+    {
+      "reviewer_id": "sam-neutrality",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Neutrality and quotation bounds verification.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:sam-neutrality"
+    }
+  ],
+  "last_reviewed_date": "2026-10-10",
   "correction_id": null,
   "is_fixture": false
 }

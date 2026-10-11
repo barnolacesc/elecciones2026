@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2023",
+  "id": "stmt-pilot-pnv-housing-2023",
+  "party_id": "pnv",
+  "programme_id": "prog-pnv-2023-official",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "statement_type": "explicit_proposal",
+  "summary": "Fomento del alquiler y promoción de vivienda pública suficiente respetando el marco competencial autonómico exclusivo y rechazando normas estatales invasivas.",
+  "summary_en": "Promotion of rental and public housing respecting exclusive regional powers and rejecting state centralization.",
+  "quote": "Abogamos por políticas que fomenten el alquiler y la promoción de vivienda pública suficiente para hacer frente a esta realidad, tal y como se viene desarrollando por el Gobierno Vasco dentro de su ámbito competencial exclusivo.",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j",
+  "source_version": "23J-v1",
+  "source_page": "45",
+  "source_section": "Punto 12; página impresa y PDF 45",
+  "qualifications": [
+    "Rechazo expreso a medidas estatales que menoscaben el autogobierno vasco en materia de vivienda."
+  ],
+  "policy_instrument": "Promoción de vivienda pública en alquiler en marco foral/autonómico",
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc-editorial",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Factual verification against official 2023 PDF.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:cesc-editorial"
+    },
+    {
+      "reviewer_id": "sam-neutrality",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Neutrality and quotation bounds verification.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:sam-neutrality"
+    }
+  ],
+  "last_reviewed_date": "2026-10-10",
+  "correction_id": null,
+  "is_fixture": false
+}

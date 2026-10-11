@@ -109,3 +109,13 @@ task 4.5 stays open until its live rehearsal and alert evidence exist.
 Documentation validation: local file links resolve; 28 shell examples pass bash -n
 without execution; strict OpenSpec validation and git diff --check pass. No server
 configuration or DNS was changed by this documentation update.
+
+## Main-branch conflict resolution — 2026-10-11
+
+E3.3: integrated main revision 4306ac9. The Dockerfile conflict retains main's
+election selector and 2026-10-10 build date together with the approved canonical
+base. Other main changes merged without manual edits. Validation: 324 unittest
+tests ran successfully (2 skips), 12 Node tests passed, AMD64 Docker build and
+generator determinism passed; actionlint, focused Ruff, strict OpenSpec validation
+and staged whitespace checks passed. Hosted CI must run on the updated PR head.
+No application activation or merge into main was performed.
