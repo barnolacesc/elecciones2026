@@ -179,12 +179,18 @@ def preview_bundle(bundle, output):
     manifest, payload = load_bundle(bundle, require_publication=False)
     taxonomy = json.loads((ROOT / 'content/taxonomy.json').read_text())
     labels = {topic['id']: topic['name_es'] for topic in taxonomy['topics']}
-    content = render_budget_content(payload, manifest, Path(bundle).name, labels, preview=True)
+    from elecciones2026.budget_chart import share_svg
+    chart_svg = share_svg(payload, manifest, Path(bundle).name, preview=True)
+    chart_id = hashlib.sha256(chart_svg.encode('utf-8')).hexdigest()
+    chart_path = f'static/budget-charts/{chart_id}/grafico.svg'
+    content = render_budget_content(payload, manifest, Path(bundle).name, labels, preview=True,
+                                    chart_url='../../' + chart_path)
     output.mkdir(parents=True, mode=0o700)
     target = output / 'presupuestos/2023'
     target.mkdir(parents=True)
-    from elecciones2026.budget_chart import share_svg
-    (target / 'grafico.svg').write_text(share_svg(payload, manifest, Path(bundle).name, preview=True))
+    chart_target = output / chart_path
+    chart_target.parent.mkdir(parents=True, exist_ok=True)
+    chart_target.write_text(chart_svg)
     html = ('<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
             '<meta name="robots" content="noindex,nofollow"><title>Borrador privado · PGE 2023</title>'
             f'<link rel="stylesheet" href="../../styles.css"><link rel="stylesheet" href="../../{stylesheet_path(ROOT / "site")}"></head><body><a class="skip-link" href="#contenido">Saltar al contenido principal</a>'

@@ -135,6 +135,9 @@ class BudgetViewTests(unittest.TestCase):
         self.assertNotIn('Comparar propuestas sobre este tema', page.read_text())
         self.assertFalse(list(output.rglob('values.json')))
         self.assertTrue((output / budget_view.stylesheet_path(ROOT / 'site')).is_file())
+        charts = list(output.glob('static/budget-charts/*/grafico.svg'))
+        self.assertEqual(len(charts), 1)
+        self.assertIn(charts[0].relative_to(output).as_posix(), page.read_text())
         with self.assertRaises(BudgetError):
             budget_view.preview_bundle(self.bundle, output)
 
