@@ -148,3 +148,21 @@ and application activation remain unverified until a successful retry.
 Follow-up verification: all 10 delivery boundary tests, focused Ruff, strict
 OpenSpec validation and diff whitespace checks pass. The updated live
 unauthenticated edge probe returns the required 401 without any SSH or mutation.
+
+## Repeated staging delivery — 2026-10-11
+
+E3.3: delivery run 38166342922 passed SSH and activated a healthy origin, but its
+external verification failed. Owner probes then confirmed authenticated HTTP 200,
+required security/no-store headers and the exact candidate home hash. After the
+owner updated STAGING_BASIC_AUTH, retry 38167428810 passed SSH but the controller
+rejected the already-current image before testing the updated credential. Same-image
+deployment retries now check container and loopback health without registry access
+or release-state changes, preserving the previous rollback image; failed health
+and redundant rollback still fail. Root-owned host tooling requires an operator
+update after review. Hosted credential verification remains pending.
+
+Local verification: 10 origin controller tests and 10 delivery boundary tests pass,
+including healthy/unhealthy repeated-image requests, retained-state preservation
+and redundant rollback rejection. Focused Ruff, strict OpenSpec validation and
+whitespace checks pass. The Docker rehearsal now repeats image A after rollback
+and verifies its content and unchanged state; hosted execution remains pending.

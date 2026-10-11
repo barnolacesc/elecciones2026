@@ -54,7 +54,13 @@ def switch(state_dir, image=None, rollback=False):
             validate_image(current)
         target = validate_image(state.get("previous") if rollback else image)
         if target == current:
-            raise ValueError("Target is already current")
+            if rollback:
+                raise ValueError("Rollback target is already current")
+            # A retry after an edge failure must still verify origin health without
+            # replacing the retained rollback image or requiring registry access.
+            started = time.monotonic()
+            activate(target)
+            return time.monotonic() - started
         # Pull before touching the running container. Retain the current image locally.
         if rollback:
             # Registry availability must not block recovery of a retained image.

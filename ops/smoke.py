@@ -75,6 +75,9 @@ def main():
             assert read_marker() == "release-a"
             assert seconds < 300, "Rollback exceeded RTO target"
             before = (state_dir / "release.json").read_bytes()
+            release.switch(state_dir, images[0][1])
+            assert read_marker() == "release-a"
+            assert (state_dir / "release.json").read_bytes() == before
             try:
                 release.switch(state_dir, images[2][1])
             except subprocess.CalledProcessError:
@@ -94,7 +97,7 @@ def main():
                 run("docker", "run", "--rm", "--user", "0", "--entrypoint", "nginx",
                     "-v", f"{root}:/etc/elecciones2026/tls:ro",
                     "-v", f"{conf}:/etc/nginx/conf.d/default.conf:ro", args.base_image, "-t")
-            print(f"PASS: A -> B -> A rollback in {seconds:.1f}s; unhealthy image restored A; TLS proxy syntax valid")
+            print(f"PASS: A -> B -> A rollback in {seconds:.1f}s; repeated A preserved state; unhealthy image restored A; TLS proxy syntax valid")
         finally:
             if images:
                 release.compose(images[0][1], "down")
