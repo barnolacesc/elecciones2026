@@ -8,7 +8,7 @@
   <title>Elecciones 2026 · Comparador de programas</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
+<body class="theme-swiss" data-swiss-accent="monochrome">
   <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
 
   <aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
@@ -18,7 +18,7 @@
   <header class="topbar" role="banner">
     <div class="topbar-inner">
       <a class="brand" href="./" aria-label="Elecciones 2026 - Inicio">
-        <span class="brand-mark" aria-hidden="true">◧</span>
+        <span class="brand-mark" aria-hidden="true">■</span>
         <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
@@ -28,6 +28,38 @@
       </nav>
     </div>
   </header>
+
+  <!-- Live Citizen Accent Customizer Toolbar: 100% Neutral by Default, Citizen Choice -->
+  <aside class="accent-customizer-bar" aria-label="Personalizador de acento y neutralidad">
+    <div class="accent-customizer-inner">
+      <div class="accent-customizer-label">
+        <span aria-hidden="true">⚖️</span>
+        <span><strong>Acento de la interfaz:</strong> Elige tu tono (por defecto: <em>Monocromo Radical</em>, sin sesgo de partido)</span>
+      </div>
+      <div class="accent-customizer-options" role="radiogroup" aria-label="Paleta de contraste">
+        <button type="button" class="accent-chip active" data-accent="monochrome" role="radio" aria-checked="true" title="Monocromo Radical: Negro puro obsidiana (#0A0D12). Cero asociación partidista, máxima sobriedad tipo BOE.">
+          <span class="chip-dot" style="background: #0a0d12;"></span>
+          <span>🔘 Monocromo (BOE / Neutro)</span>
+        </button>
+        <button type="button" class="accent-chip" data-accent="graphite" role="radio" aria-checked="false" title="Pizarra Grafito (#334155): Tono piedra/mineral neutro y aséptico.">
+          <span class="chip-dot" style="background: #334155;"></span>
+          <span>🪙 Grafito Pizarra</span>
+        </button>
+        <button type="button" class="accent-chip" data-accent="amber" role="radio" aria-checked="false" title="Ámbar Documental (#92400E): Archivo histórico, pergamino encuadernado.">
+          <span class="chip-dot" style="background: #92400e;"></span>
+          <span>📜 Ámbar Archivo</span>
+        </button>
+        <button type="button" class="accent-chip" data-accent="sage" role="radio" aria-checked="false" title="Salvia Mineral (#065F46): Tono mineral apagado.">
+          <span class="chip-dot" style="background: #065f46;"></span>
+          <span>🌿 Salvia Mineral</span>
+        </button>
+        <button type="button" class="accent-chip" data-accent="cobalt" role="radio" aria-checked="false" title="Cobalto Cívico (#004BD6): Azul cívico clásico (opcional si el usuario lo prefiere).">
+          <span class="chip-dot" style="background: #004bd6;"></span>
+          <span>🏛️ Cobalto Cívico</span>
+        </button>
+      </div>
+    </div>
+  </aside>
 
   <main id="contenido">
     <section class="hero" aria-labelledby="hero-title">
@@ -391,6 +423,7 @@
     <div class="footer-inner">
       <span>Elecciones 2026 · Proyecto cívico independiente</span>
       <span>Neutralidad · Fuentes directas · Transparencia</span>
+      <span><a href="./previews.html" style="text-decoration: underline;">Explorar maquetas de diseño visual (Google Stitch)</a></span>
     </div>
   </footer>
   <script src="./sharing.js" defer></script>

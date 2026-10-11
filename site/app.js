@@ -2587,6 +2587,61 @@
       });
     }
 
+    // Apply theme from URL parameter if specified (?style=editorial, swiss, mediterranean)
+    try {
+      if (window && window.location && window.location.search) {
+        const sp = new URLSearchParams(window.location.search);
+        const style = sp.get('style');
+        if (document.body && document.body.classList) {
+          if (style === 'stitch') document.body.classList.add('theme-stitch');
+          else if (style === 'datajournalism') document.body.classList.add('theme-datajournalism');
+          else if (style === 'nordic') document.body.classList.add('theme-nordic');
+          else if (style === 'editorial') document.body.classList.add('theme-editorial');
+          else if (style === 'swiss') document.body.classList.add('theme-swiss');
+          else if (style === 'mediterranean') document.body.classList.add('theme-mediterranean');
+        }
+      }
+    } catch (_) {}
+
+    // Setup Citizen Accent Customizer Toolbar (100% impartial default + user customization)
+    try {
+      const chips = document.querySelectorAll('.accent-chip');
+      function setAccent(accent) {
+        if (document.documentElement) document.documentElement.setAttribute('data-swiss-accent', accent);
+        if (document.body) document.body.setAttribute('data-swiss-accent', accent);
+
+        chips.forEach(function (chip) {
+          const isMatch = chip.getAttribute('data-accent') === accent;
+          chip.classList.toggle('active', isMatch);
+          chip.setAttribute('aria-checked', isMatch ? 'true' : 'false');
+        });
+
+        try {
+          if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('elecciones2026_swiss_accent', accent);
+          }
+        } catch (_) {}
+      }
+
+      if (chips.length > 0) {
+        chips.forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            const accent = chip.getAttribute('data-accent');
+            if (accent) setAccent(accent);
+          });
+        });
+      }
+
+      const sp = (window && window.location && window.location.search) ? new URLSearchParams(window.location.search) : null;
+      let initialAccent = sp ? sp.get('accent') : null;
+      if (!initialAccent) {
+        try {
+          initialAccent = (typeof localStorage !== 'undefined') ? localStorage.getItem('elecciones2026_swiss_accent') : null;
+        } catch (_) {}
+      }
+      setAccent(initialAccent || 'monochrome');
+    } catch (_) {}
+
     // Render defaults without converting home into a comparison URL.
     renderComparison();
     window.history.replaceState({}, '', window.NeutralSharing.stableUrl(window.location.href, currentState()));

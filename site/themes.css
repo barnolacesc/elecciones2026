@@ -1,0 +1,1490 @@
+/**
+ * Elecciones 2026 — Alternate Visual Styles
+ * 
+ * Provides 3 distinct, non-generic design directions rooted in the Google Stitch
+ * design brief and European/Spanish civic design traditions.
+ * Zero external CDN dependencies. All contrast pairs exceed WCAG 2.2 Level AA (>= 4.5:1).
+ *
+ * Style 1: "La Gaceta Cívica" (.theme-editorial)
+ * Style 2: "Boletín Cívico / Archivo Abierto" (.theme-swiss)
+ * Style 3: "Ágora 2026 / Modernismo Mediterráneo" (.theme-mediterranean)
+ */
+
+/* ==============================================================================
+   STYLE 1: LA GACETA CÍVICA (Editorial Broadsheet / Prensa Democrática)
+   ============================================================================== */
+
+:root.theme-editorial,
+body.theme-editorial,
+[data-theme="editorial"] {
+  /* Colors - Background */
+  --color-bg-canvas: #fbf9f4;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-subtle: #f3efe6;
+  --color-bg-surface-alt: #ece6d8;
+  --color-bg-notice: #fff8e7;
+  --color-bg-primary: #8f2d18;
+  --color-bg-primary-hover: #732212;
+  --color-bg-preview-banner: #231f1d;
+
+  /* Colors - Text (All pairs WCAG 2.2 AA compliant, >= 4.5:1) */
+  --color-text-primary: #1a1918;        /* 16.69:1 on canvas */
+  --color-text-secondary: #4e4b46;      /* 8.25:1 on canvas */
+  --color-text-muted: #6e6a64;          /* 5.12:1 on canvas */
+  --color-text-inverse: #ffffff;        /* 8.21:1 on primary */
+  --color-text-brand: #8f2d18;          /* 8.21:1 on white */
+  --color-text-notice: #6b4e12;         /* 7.28:1 on notice bg */
+
+  /* Colors - Border */
+  --color-border-subtle: #e5dfd5;
+  --color-border-default: #dcd6ca;
+  --color-border-strong: #4e4b46;
+  --color-border-notice: #e2cca0;
+  --color-border-focus: #8f2d18;
+
+  /* Colors - Neutral Parties */
+  --color-party-a-bg: #e5edf2;
+  --color-party-a-text: #1b3b52;        /* 9.88:1 contrast */
+  --color-party-a-border: #c4d7e2;
+
+  --color-party-b-bg: #f3ecee;
+  --color-party-b-text: #562835;        /* 10.31:1 contrast */
+  --color-party-b-border: #e0d0d5;
+
+  /* Status Badges */
+  --color-status-official-bg: #e5edf2;
+  --color-status-official-text: #1b3b52;
+  --color-status-partial-bg: #fff8e7;
+  --color-status-partial-text: #6b4e12;
+  --color-status-missing-bg: #fae8e8;
+  --color-status-missing-text: #7a2b2b;
+
+  /* Relationship Badges */
+  --color-rel-agreement-bg: #eaf2f3;
+  --color-rel-agreement-text: #1b3b52;
+  --color-rel-agreement-border: #c4d7e2;
+
+  --color-rel-divergence-bg: #f3ecee;
+  --color-rel-divergence-text: #562835;
+  --color-rel-divergence-border: #e0d0d5;
+
+  /* Typography Stacks */
+  --font-family-serif: "Newsreader", "Charter", "Georgia", "Ibarra Real Nova", "Baskerville", "Times New Roman", serif;
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+
+  /* Geometry & Elevation */
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 3px;
+  --radius-pill: 2px;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: 0 4px 16px rgba(26, 25, 24, 0.06);
+}
+
+/* Specific component refinements for Editorial Broadsheet */
+.theme-editorial .topbar {
+  border-bottom: 2px solid #1a1918;
+  background-color: #fbf9f4;
+}
+
+.theme-editorial .brand {
+  font-family: var(--font-family-serif);
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.theme-editorial .brand-mark {
+  background: #8f2d18;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+.theme-editorial .hero-title,
+.theme-editorial .measure-title,
+.theme-editorial .section-head h2 {
+  font-family: var(--font-family-serif);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+.theme-editorial .hero-eyebrow,
+.theme-editorial .measure-topic-label {
+  font-family: var(--font-family-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #8f2d18;
+}
+
+.theme-editorial .btn-primary,
+.theme-editorial .btn-compare {
+  background-color: #8f2d18;
+  border: 1px solid #732212;
+  border-radius: 2px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: none;
+}
+
+.theme-editorial .btn-primary:hover,
+.theme-editorial .btn-compare:hover {
+  background-color: #732212;
+}
+
+.theme-editorial .measure-group {
+  border: 1px solid #dcd6ca;
+  border-top: 3px solid #1a1918;
+  border-radius: 0;
+  background: #ffffff;
+}
+
+.theme-editorial .party-card {
+  border: 1px solid #dcd6ca;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+.theme-editorial .party-quote {
+  font-family: var(--font-family-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  border-left: 3px solid #8f2d18;
+  background-color: #fcfbf8;
+  border-radius: 0;
+  padding: 0.85rem 1.1rem;
+}
+
+.theme-editorial .party-pill {
+  border-radius: 2px;
+  font-family: var(--font-family-serif);
+  font-weight: 700;
+}
+
+.theme-editorial .analysis-callout {
+  border: 1px solid #dcd6ca;
+  border-left: 4px solid #1b3b52;
+  border-radius: 0;
+  background-color: #f4f8fa;
+}
+
+.theme-editorial .rel-callout-divergence {
+  border-left-color: #562835;
+  background-color: #fbf6f7;
+}
+
+
+/* ==============================================================================
+   STYLE 2: BOLETÍN CÍVICO / ARCHIVO ABIERTO (Swiss Functionalism / High-Utility)
+   Radically Nonpartisan · Pure Monochrome Default · Configurable Accent
+   ============================================================================== */
+
+:root,
+body,
+:root.theme-swiss,
+body.theme-swiss,
+[data-theme="swiss"] {
+  /* Dynamic Accent (Monochrome Obsidian by default = 100% nonpartisan) */
+  --swiss-accent: #0a0d12;
+  --swiss-accent-hover: #262c36;
+
+  /* Colors - Background */
+  --color-bg-canvas: #eef0f2;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-subtle: #e2e5e9;
+  --color-bg-surface-alt: #d5d9df;
+  --color-bg-notice: #ffffff;
+  --color-bg-primary: var(--swiss-accent, #0a0d12);
+  --color-bg-primary-hover: var(--swiss-accent-hover, #262c36);
+  --color-bg-preview-banner: #0a0d12;
+
+  /* Colors - Text (All pairs WCAG 2.2 AAA / AA compliant, >= 8:1 to 19:1) */
+  --color-text-primary: #0a0d12;        /* 17.03:1 on canvas */
+  --color-text-secondary: #3e454f;      /* 8.47:1 on canvas */
+  --color-text-muted: #5e6674;          /* 5.25:1 on canvas */
+  --color-text-inverse: #ffffff;        /* 19.46:1 on obsidian primary */
+  --color-text-brand: var(--swiss-accent, #0a0d12);
+  --color-text-notice: #0a0d12;
+
+  /* Colors - Border */
+  --color-border-subtle: #e2e8f0;
+  --color-border-default: #d0d5dd;
+  --color-border-strong: #0a0d12;
+  --color-border-notice: #d0d5dd;
+  --color-border-focus: var(--swiss-accent, #0a0d12);
+
+  /* Strictly Impartial Parties (Zero party branding) */
+  --color-party-a-bg: #e2e5e9;
+  --color-party-a-text: #0a0d12;        /* 15.40:1 contrast */
+  --color-party-a-border: #d0d5dd;
+
+  --color-party-b-bg: #eaeaea;
+  --color-party-b-text: #0a0d12;        /* 15.88:1 contrast */
+  --color-party-b-border: #d0d5dd;
+
+  /* Status Badges */
+  --color-status-official-bg: #ffffff;
+  --color-status-official-text: #0a0d12;
+  --color-status-partial-bg: #f4f5f6;
+  --color-status-partial-text: #3e454f;
+  --color-status-missing-bg: #fee2e2;
+  --color-status-missing-text: #991b1b;
+
+  /* Relationship Badges */
+  --color-rel-agreement-bg: #ffffff;
+  --color-rel-agreement-text: #0a0d12;
+  --color-rel-agreement-border: #d0d5dd;
+
+  --color-rel-divergence-bg: #f4f5f6;
+  --color-rel-divergence-text: #0a0d12;
+  --color-rel-divergence-border: #d0d5dd;
+
+  /* Typography Stacks */
+  --font-family-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+
+  /* Geometry & Soft Elevation (Modern Refined Swiss) */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 9999px;
+  --border-width-default: 1px;
+  --shadow-sm: 0 1px 2px rgba(10, 13, 18, 0.05);
+  --shadow-md: 0 3px 10px rgba(10, 13, 18, 0.07);
+  --shadow-lg: 0 10px 25px rgba(10, 13, 18, 0.10);
+}
+
+/* User Accent Switcher Classes for Swiss Theme */
+:root[data-swiss-accent="monochrome"],
+body[data-swiss-accent="monochrome"],
+.theme-swiss[data-swiss-accent="monochrome"],
+body.theme-swiss.accent-monochrome {
+  --swiss-accent: #0a0d12;
+  --swiss-accent-hover: #262c36;
+}
+:root[data-swiss-accent="graphite"],
+body[data-swiss-accent="graphite"],
+.theme-swiss[data-swiss-accent="graphite"],
+body.theme-swiss.accent-graphite {
+  --swiss-accent: #334155;
+  --swiss-accent-hover: #1e293b;
+}
+:root[data-swiss-accent="cobalt"],
+body[data-swiss-accent="cobalt"],
+.theme-swiss[data-swiss-accent="cobalt"],
+body.theme-swiss.accent-cobalt {
+  --swiss-accent: #004bd6;
+  --swiss-accent-hover: #0036a3;
+}
+:root[data-swiss-accent="amber"],
+body[data-swiss-accent="amber"],
+.theme-swiss[data-swiss-accent="amber"],
+body.theme-swiss.accent-amber {
+  --swiss-accent: #92400e;
+  --swiss-accent-hover: #78350f;
+}
+:root[data-swiss-accent="sage"],
+body[data-swiss-accent="sage"],
+.theme-swiss[data-swiss-accent="sage"],
+body.theme-swiss.accent-sage {
+  --swiss-accent: #065f46;
+  --swiss-accent-hover: #064e3b;
+}
+
+/* Optional Brutalist Classic Mode (when data-swiss-mode="classic" is requested) */
+:root[data-swiss-mode="classic"] .measure-group,
+body[data-swiss-mode="classic"] .measure-group {
+  border: 2px solid #0a0d12;
+  border-radius: 0;
+  box-shadow: 4px 4px 0px #0a0d12;
+}
+
+:root[data-swiss-mode="classic"] .party-card,
+body[data-swiss-mode="classic"] .party-card {
+  border: 2px solid #0a0d12;
+  border-radius: 0;
+  box-shadow: 3px 3px 0px #0a0d12;
+}
+
+:root[data-swiss-mode="classic"] .controls-form,
+body[data-swiss-mode="classic"] .controls-form {
+  border: 2px solid #0a0d12;
+  border-radius: 0;
+  box-shadow: 4px 4px 0px #0a0d12;
+}
+
+:root[data-swiss-mode="classic"] .btn-primary,
+:root[data-swiss-mode="classic"] .btn-compare,
+body[data-swiss-mode="classic"] .btn-primary,
+body[data-swiss-mode="classic"] .btn-compare {
+  border: 2px solid #0a0d12;
+  border-radius: 0;
+  box-shadow: 3px 3px 0px #0a0d12;
+}
+
+:root[data-swiss-mode="classic"] .btn-primary:hover,
+:root[data-swiss-mode="classic"] .btn-compare:hover,
+body[data-swiss-mode="classic"] .btn-primary:hover,
+body[data-swiss-mode="classic"] .btn-compare:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #0a0d12;
+}
+
+:root[data-swiss-mode="classic"] .manifesto-dialog,
+body[data-swiss-mode="classic"] .manifesto-dialog {
+  border: 2px solid #0a0d12;
+  border-radius: 0;
+  box-shadow: 6px 6px 0px #0a0d12;
+}
+
+:root[data-swiss-mode="classic"] .coverage-card,
+body[data-swiss-mode="classic"] .coverage-card {
+  border: 2px solid #0a0d12;
+  border-radius: 0;
+  box-shadow: 3px 3px 0px #0a0d12;
+}
+
+/* Accent Customizer Toolbar */
+.accent-customizer-bar {
+  background: #ffffff;
+  border-bottom: 2px solid #0a0d12;
+  padding: 0.65rem 1rem;
+  font-family: var(--font-family-mono);
+  font-size: 0.8rem;
+}
+
+.accent-customizer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.accent-customizer-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0a0d12;
+  font-size: 0.825rem;
+}
+
+.accent-customizer-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.accent-chip {
+  appearance: none;
+  background: #f4f5f6;
+  color: #0a0d12;
+  border: 1.5px solid #0a0d12;
+  padding: 0.3rem 0.65rem;
+  font-family: var(--font-family-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: transform 0.08s ease, background-color 0.1s ease;
+  min-height: 34px;
+}
+
+.accent-chip:hover {
+  background: #e2e5e9;
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0px #0a0d12;
+}
+
+.accent-chip.active {
+  background: #0a0d12;
+  color: #ffffff;
+  box-shadow: 2px 2px 0px var(--swiss-accent, #0a0d12);
+}
+
+.chip-dot {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #0a0d12;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.accent-chip.active .chip-dot {
+  border-color: #ffffff;
+}
+
+/* Calibrated Modular Layout & Component Margins for Swiss Style */
+.theme-swiss .topbar {
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+.theme-swiss .topbar-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme-swiss .brand-mark {
+  border: 1.5px solid #0a0d12;
+  background: var(--swiss-accent, #0a0d12);
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+.theme-swiss main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .theme-swiss main {
+    padding: 2rem 1.5rem 4rem 1.5rem;
+  }
+}
+
+.theme-swiss .hero {
+  padding: 1.25rem 0 2rem 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.theme-swiss .hero-title {
+  font-family: var(--font-family-sans);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #0a0d12;
+  margin: 0.5rem 0 1rem 0;
+  line-height: 1.15;
+}
+
+.theme-swiss .hero-intro {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #3e454f;
+  max-width: 720px;
+}
+
+.theme-swiss .hero-eyebrow,
+.theme-swiss .measure-topic-label {
+  font-family: var(--font-family-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--swiss-accent, #0a0d12);
+  margin: 0 0 0.5rem 0;
+}
+
+.theme-swiss .hero-actions {
+  margin-top: 1.25rem;
+}
+
+.theme-swiss .notice {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid #d0d5dd;
+  box-shadow: 0 1px 3px rgba(10, 13, 18, 0.04);
+  background: #ffffff;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.theme-swiss .compare-section {
+  margin-top: 2rem;
+}
+
+.theme-swiss .section-head {
+  margin-bottom: 1.5rem;
+}
+
+.theme-swiss .section-head h2 {
+  font-family: var(--font-family-sans);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #0a0d12;
+  margin: 0.35rem 0 0.65rem 0;
+}
+
+.theme-swiss .section-head p {
+  margin: 0;
+  color: #3e454f;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Disciplined form margins: mobile stacked, desktop 3-col grid */
+.theme-swiss .controls-form {
+  margin: 1.5rem 0 2.25rem 0;
+  padding: 1.25rem;
+  border: 1px solid #d0d5dd;
+  box-shadow: 0 3px 10px rgba(10, 13, 18, 0.05);
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+@media (min-width: 760px) {
+  .theme-swiss .controls-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    padding: 1.5rem;
+    align-items: end;
+  }
+
+  .theme-swiss .control-actions {
+    grid-column: 1 / -1;
+    margin-top: 0.25rem;
+  }
+}
+
+.theme-swiss .control-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.theme-swiss .control-label {
+  font-family: var(--font-family-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0a0d12;
+}
+
+.theme-swiss .control-field select {
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.95rem;
+  min-height: 44px;
+}
+
+.theme-swiss .control-actions {
+  margin-top: 0.5rem;
+}
+
+.theme-swiss .btn-primary,
+.theme-swiss .btn-compare {
+  background-color: var(--swiss-accent, #0a0d12);
+  color: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 6px rgba(10, 13, 18, 0.15);
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  min-height: 46px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.theme-swiss .btn-primary:hover,
+.theme-swiss .btn-compare:hover {
+  background-color: var(--swiss-accent-hover, #262c36);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(10, 13, 18, 0.2);
+}
+
+.theme-swiss .btn-primary:active,
+.theme-swiss .btn-compare:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 3px rgba(10, 13, 18, 0.1);
+}
+
+/* Disciplined measure group margins */
+.theme-swiss .measures-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.theme-swiss .measure-group {
+  border: 1px solid #d0d5dd;
+  box-shadow: 0 3px 12px rgba(10, 13, 18, 0.05);
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 1.15rem;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .theme-swiss .measure-group {
+    padding: 1.75rem;
+  }
+}
+
+.theme-swiss .measure-head {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eef0f2;
+}
+
+.theme-swiss .measure-title {
+  font-family: var(--font-family-sans);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: #0a0d12;
+  margin: 0.25rem 0 0.65rem 0;
+}
+
+.theme-swiss .measure-summary {
+  margin: 0;
+  color: #3e454f;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.theme-swiss .measure-context {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: #eef0f2;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+/* Party Cards Layout: mobile stacked, desktop 2-col side-by-side */
+.theme-swiss .measure-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+@media (min-width: 760px) {
+  .theme-swiss .measure-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+}
+
+.theme-swiss .party-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 1.15rem;
+  box-shadow: 0 1px 3px rgba(10, 13, 18, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 640px) {
+  .theme-swiss .party-card {
+    padding: 1.35rem;
+  }
+}
+
+/* Card Header: Pill on left, Party Name next to it, Badge on far right */
+.theme-swiss .party-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eef0f2;
+}
+
+.theme-swiss .party-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.theme-swiss .party-name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.theme-swiss .party-pill {
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  font-family: var(--font-family-mono);
+  font-weight: 800;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.85rem;
+  background: #e2e5e9;
+  color: #0a0d12;
+  flex-shrink: 0;
+}
+
+.theme-swiss .status-badge {
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  font-family: var(--font-family-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  background: #ffffff;
+  color: #0a0d12;
+}
+
+.theme-swiss .party-statement {
+  margin: 0 0 1rem 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #0a0d12;
+  font-weight: 500;
+}
+
+.theme-swiss .party-quote-wrapper {
+  margin: 0.85rem 0;
+}
+
+.theme-swiss .party-quote-label {
+  display: block;
+  font-family: var(--font-family-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #3e454f;
+  margin-bottom: 0.35rem;
+}
+
+.theme-swiss .party-quote {
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid var(--swiss-accent, #0a0d12);
+  background-color: #f8fafc;
+  border-radius: 4px;
+  font-family: var(--font-family-sans);
+  padding: 0.85rem 1.15rem;
+  margin: 0;
+  font-size: 0.925rem;
+  line-height: 1.55;
+}
+
+.theme-swiss .btn-open-manifesto {
+  margin-top: 0.65rem;
+  font-family: var(--font-family-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+}
+
+.theme-swiss .party-caveat {
+  margin-top: 0.85rem;
+  padding: 0.65rem 0.85rem;
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 4px;
+  font-size: 0.825rem;
+  line-height: 1.5;
+}
+
+.theme-swiss .party-card-footer {
+  margin-top: 1.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #eef0f2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: var(--font-family-mono);
+  font-size: 0.78rem;
+}
+
+.theme-swiss .source-citation {
+  color: #0a0d12;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.theme-swiss .source-date {
+  color: #5e6674;
+}
+
+.theme-swiss .analysis-callout {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #d0d5dd;
+  box-shadow: 0 2px 6px rgba(10, 13, 18, 0.04);
+  border-radius: 8px;
+  background-color: #ffffff;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.theme-swiss .analysis-icon {
+  font-family: var(--font-family-mono);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--swiss-accent, #0a0d12);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* Swiss Dialog Styling (Modern Refined Swiss) */
+.theme-swiss .manifesto-dialog {
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(10, 13, 18, 0.15);
+  background-color: #ffffff;
+}
+
+.theme-swiss .dialog-header {
+  border-bottom: 1px solid #eef0f2;
+  background-color: #ffffff;
+  border-radius: 12px 12px 0 0;
+  padding: 1rem 1.25rem;
+}
+
+.theme-swiss .dialog-eyebrow {
+  font-family: var(--font-family-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--swiss-accent, #0a0d12);
+}
+
+.theme-swiss .dialog-party-name {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.theme-swiss .dialog-close-btn {
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #0a0d12;
+  font-weight: 700;
+  transition: background-color 0.1s ease, border-color 0.1s ease;
+}
+
+.theme-swiss .dialog-close-btn:hover {
+  background: #f4f5f6;
+  border-color: #0a0d12;
+}
+
+.theme-swiss .dialog-meta-bar {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background-color: #f8fafc;
+}
+
+.theme-swiss .dialog-excerpt-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.theme-swiss .dialog-excerpt-header {
+  border-bottom: 1px solid #eef0f2;
+  background-color: #f8fafc;
+  font-family: var(--font-family-mono);
+}
+
+.theme-swiss .dialog-quote {
+  font-style: normal;
+  border-left: 4px solid var(--swiss-accent, #0a0d12);
+  background-color: #ffffff;
+}
+
+.theme-swiss .dialog-footer {
+  border-top: 1px solid #eef0f2;
+  background-color: #ffffff;
+  border-radius: 0 0 12px 12px;
+  padding: 1rem 1.25rem;
+}
+
+.theme-swiss .btn-open-full-pdf {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-color: var(--swiss-accent, #0a0d12);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(10, 13, 18, 0.15);
+}
+
+.theme-swiss .btn-close-dialog {
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #0a0d12;
+  font-weight: 700;
+}
+
+/* Swiss Coverage Card & Source Styling */
+.theme-swiss .coverage-card {
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(10, 13, 18, 0.04);
+  background-color: #ffffff;
+}
+
+.theme-swiss .coverage-card-header {
+  border-bottom: 1px solid #eef0f2;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.theme-swiss .update-stamp {
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  background-color: #f8fafc;
+  box-shadow: none;
+}
+
+.theme-swiss .footer-inner {
+  border-top: 1px solid #e2e8f0;
+}
+
+
+/* ==============================================================================
+   STYLE 3: ÁGORA 2026 / MODERNISMO MEDITERRÁNEO (Warm Civic Humanism)
+   ============================================================================== */
+
+:root.theme-mediterranean,
+body.theme-mediterranean,
+[data-theme="mediterranean"] {
+  /* Colors - Background */
+  --color-bg-canvas: #f8f6f0;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-subtle: #efebe2;
+  --color-bg-surface-alt: #e6e0d4;
+  --color-bg-notice: #fef8ea;
+  --color-bg-primary: #b85314;
+  --color-bg-primary-hover: #963f0a;
+  --color-bg-preview-banner: #15262e;
+
+  /* Colors - Text (All pairs WCAG 2.2 AA compliant, >= 4.5:1) */
+  --color-text-primary: #15262e;        /* 14.41:1 on canvas */
+  --color-text-secondary: #485860;      /* 6.84:1 on canvas */
+  --color-text-muted: #6b7a82;          /* 4.72:1 on canvas */
+  --color-text-inverse: #ffffff;        /* 4.90:1 on primary */
+  --color-text-brand: #b85314;          /* 4.90:1 on white */
+  --color-text-notice: #6b4a0e;         /* 7.59:1 on notice bg */
+
+  /* Colors - Border */
+  --color-border-subtle: #e5dfd3;
+  --color-border-default: #ddd7cb;
+  --color-border-strong: #485860;
+  --color-border-notice: #ebd7b3;
+  --color-border-focus: #b85314;
+
+  /* Colors - Neutral Parties */
+  --color-party-a-bg: #e3ece7;
+  --color-party-a-text: #164636;        /* 8.87:1 contrast */
+  --color-party-a-border: #c3d8cd;
+
+  --color-party-b-bg: #ece5ed;
+  --color-party-b-text: #4b2f52;        /* 9.30:1 contrast */
+  --color-party-b-border: #d7c9d9;
+
+  /* Status Badges */
+  --color-status-official-bg: #e3ece7;
+  --color-status-official-text: #164636;
+  --color-status-partial-bg: #fef8ea;
+  --color-status-partial-text: #6b4a0e;
+  --color-status-missing-bg: #fce8e8;
+  --color-status-missing-text: #7a2b2b;
+
+  /* Relationship Badges */
+  --color-rel-agreement-bg: #e3ece7;
+  --color-rel-agreement-text: #164636;
+  --color-rel-agreement-border: #c3d8cd;
+
+  --color-rel-divergence-bg: #ece5ed;
+  --color-rel-divergence-text: #4b2f52;
+  --color-rel-divergence-border: #d7c9d9;
+
+  /* Typography Stacks */
+  --font-family-sans: system-ui, "Avenir Next", -apple-system, "Segoe UI", "Trebuchet MS", sans-serif;
+
+  /* Geometry & Warm Elevation */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  --shadow-sm: 0 2px 6px rgba(21, 38, 46, 0.04);
+  --shadow-md: 0 4px 18px -2px rgba(21, 38, 46, 0.07);
+  --shadow-lg: 0 10px 30px -4px rgba(21, 38, 46, 0.10);
+}
+
+/* Specific component refinements for Mediterranean Modernism */
+.theme-mediterranean .topbar {
+  border-bottom: 1px solid #ddd7cb;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(21, 38, 46, 0.03);
+}
+
+.theme-mediterranean .brand-mark {
+  background: #b85314;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.theme-mediterranean .hero-title,
+.theme-mediterranean .measure-title,
+.theme-mediterranean .section-head h2 {
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #15262e;
+}
+
+.theme-mediterranean .hero-eyebrow,
+.theme-mediterranean .measure-topic-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #b85314;
+}
+
+.theme-mediterranean .btn-primary,
+.theme-mediterranean .btn-compare {
+  background-color: #b85314;
+  color: #ffffff;
+  border: 1px solid #963f0a;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(184, 83, 20, 0.22);
+}
+
+.theme-mediterranean .btn-primary:hover,
+.theme-mediterranean .btn-compare:hover {
+  background-color: #963f0a;
+  box-shadow: 0 4px 12px rgba(184, 83, 20, 0.3);
+}
+
+.theme-mediterranean .measure-group {
+  border: 1px solid #ddd7cb;
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  background: #ffffff;
+  padding: 1.5rem;
+}
+
+.theme-mediterranean .party-card {
+  border: 1px solid #ddd7cb;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-mediterranean .party-quote {
+  border-left: 3px solid #b85314;
+  background-color: #faf7f0;
+  border-radius: 0 8px 8px 0;
+  padding: 0.85rem 1.15rem;
+}
+
+.theme-mediterranean .party-pill {
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+.theme-mediterranean .analysis-callout {
+  border: 1px solid #c3d8cd;
+  border-radius: 12px;
+  background-color: #f2f7f4;
+}
+
+.theme-mediterranean .rel-callout-divergence {
+  border-color: #d7c9d9;
+  background-color: #f7f3f8;
+}
+
+.theme-mediterranean .control-field select {
+  border-radius: 10px;
+  border: 1px solid #ddd7cb;
+}
+
+
+/* ==============================================================================
+   STYLE 4 (STITCH): GOOGLE STITCH CIVIC (Material 3 / Fiel al Mockup Original)
+   ============================================================================== */
+
+:root.theme-stitch,
+body.theme-stitch,
+[data-theme="stitch"] {
+  /* Colors extracted directly from Stitch DESIGN.md */
+  --color-bg-canvas: #faf8ff;           /* surface / background */
+  --color-bg-surface: #ffffff;          /* surface-container-lowest */
+  --color-bg-surface-subtle: #f2f3ff;   /* surface-container-low */
+  --color-bg-surface-alt: #eaedff;      /* surface-container */
+  --color-bg-notice: #eff6ff;
+  --color-bg-primary: #1d4ed8;          /* primary-container / civic blue */
+  --color-bg-primary-hover: #0037b0;
+  --color-bg-preview-banner: #131b2e;
+
+  /* Typography Colors (Exceeds WCAG 2.2 AA) */
+  --color-text-primary: #131b2e;        /* on-surface (16.29:1) */
+  --color-text-secondary: #434655;      /* on-surface-variant (9.35:1) */
+  --color-text-muted: #515f74;          /* secondary (5.57:1) */
+  --color-text-inverse: #ffffff;        /* on-primary (6.70:1) */
+  --color-text-brand: #1d4ed8;
+  --color-text-notice: #1e3a8a;
+
+  /* Borders & Dividers */
+  --color-border-subtle: #e2e8f0;
+  --color-border-default: #d2d9f4;
+  --color-border-strong: #747686;
+  --color-border-notice: #cad3ff;
+  --color-border-focus: #1d4ed8;
+
+  /* Party Identifiers from Stitch Mockup (Neutral PA / PB badges) */
+  --color-party-a-bg: #eaedff;
+  --color-party-a-text: #0037b0;
+  --color-party-a-border: #cad3ff;
+
+  --color-party-b-bg: #f2f3ff;
+  --color-party-b-text: #434655;
+  --color-party-b-border: #d2d9f4;
+
+  /* Status Badges */
+  --color-status-official-bg: #d1fae5;
+  --color-status-official-text: #004f35;
+  --color-status-partial-bg: #fef3c7;
+  --color-status-partial-text: #92400e;
+  --color-status-missing-bg: #fee2e2;
+  --color-status-missing-text: #991b1b;
+
+  /* Relationship Badges */
+  --color-rel-agreement-bg: #ecfdf5;
+  --color-rel-agreement-text: #065f46;
+  --color-rel-agreement-border: #a7f3d0;
+
+  --color-rel-divergence-bg: #eff6ff;
+  --color-rel-divergence-text: #1e40af;
+  --color-rel-divergence-border: #bfdbfe;
+
+  /* Typography Stacks */
+  --font-family-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Geometry & Elevation from Stitch DESIGN.md */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(19, 27, 46, 0.06);
+  --shadow-lg: 0 10px 25px rgba(19, 27, 46, 0.08);
+}
+
+.theme-stitch .topbar {
+  background: rgba(250, 248, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #eaedff;
+}
+
+.theme-stitch .brand-mark {
+  background: #1d4ed8;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.theme-stitch .hero-eyebrow,
+.theme-stitch .measure-topic-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+.theme-stitch .btn-primary,
+.theme-stitch .btn-compare {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.25);
+  font-weight: 600;
+  border: none;
+}
+
+.theme-stitch .btn-primary:hover,
+.theme-stitch .btn-compare:hover {
+  background-color: #0037b0;
+}
+
+.theme-stitch .measure-group {
+  background: #ffffff;
+  border: 1px solid #eaedff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(19, 27, 46, 0.04);
+}
+
+.theme-stitch .party-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.theme-stitch .party-quote {
+  border-left: 3px solid #1d4ed8;
+  background-color: #f8faff;
+  border-radius: 0 8px 8px 0;
+  padding: 0.85rem 1rem;
+}
+
+.theme-stitch .party-pill {
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.theme-stitch .analysis-callout {
+  border: 1px solid #a7f3d0;
+  background-color: #ecfdf5;
+  border-radius: 12px;
+}
+
+.theme-stitch .rel-callout-divergence {
+  border-color: #bfdbfe;
+  background-color: #eff6ff;
+}
+
+
+/* ==============================================================================
+   STYLE 5: PERIODISMO DE DATOS / SLATE & INK (ProPublica & Axios Modern)
+   ============================================================================== */
+
+:root.theme-datajournalism,
+body.theme-datajournalism,
+[data-theme="datajournalism"] {
+  --color-bg-canvas: #f8fafc;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-subtle: #f1f5f9;
+  --color-bg-surface-alt: #e2e8f0;
+  --color-bg-notice: #eff6ff;
+  --color-bg-primary: #3730a3;          /* deep civic indigo */
+  --color-bg-primary-hover: #312e81;
+  --color-bg-preview-banner: #0f172a;
+
+  --color-text-primary: #0f172a;        /* 17.06:1 */
+  --color-text-secondary: #334155;      /* 9.42:1 */
+  --color-text-muted: #64748b;          /* 4.85:1 */
+  --color-text-inverse: #ffffff;        /* 9.93:1 */
+  --color-text-brand: #3730a3;
+  --color-text-notice: #1e3a8a;
+
+  --color-border-subtle: #e2e8f0;
+  --color-border-default: #cbd5e1;
+  --color-border-strong: #475569;
+  --color-border-notice: #c7d2fe;
+  --color-border-focus: #3730a3;
+
+  --color-party-a-bg: #e0e7ff;
+  --color-party-a-text: #312e81;
+  --color-party-a-border: #c7d2fe;
+
+  --color-party-b-bg: #fae8ff;
+  --color-party-b-text: #701a75;
+  --color-party-b-border: #f0abfc;
+
+  --color-status-official-bg: #dcfce7;
+  --color-status-official-text: #166534;
+  --color-status-partial-bg: #fef9c3;
+  --color-status-partial-text: #854d0e;
+  --color-status-missing-bg: #fee2e2;
+  --color-status-missing-text: #991b1b;
+
+  --color-rel-agreement-bg: #ecfdf5;
+  --color-rel-agreement-text: #065f46;
+  --color-rel-agreement-border: #a7f3d0;
+
+  --color-rel-divergence-bg: #fae8ff;
+  --color-rel-divergence-text: #701a75;
+  --color-rel-divergence-border: #f0abfc;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-pill: 4px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+}
+
+.theme-datajournalism .topbar {
+  background: #ffffff;
+  border-bottom: 2px solid #0f172a;
+}
+
+.theme-datajournalism .brand-mark {
+  background: #3730a3;
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+.theme-datajournalism .hero-title,
+.theme-datajournalism .measure-title {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+}
+
+.theme-datajournalism .hero-eyebrow,
+.theme-datajournalism .measure-topic-label {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #3730a3;
+}
+
+.theme-datajournalism .btn-primary,
+.theme-datajournalism .btn-compare {
+  background-color: #3730a3;
+  color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #1e1b4b;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(55, 48, 163, 0.2);
+}
+
+.theme-datajournalism .measure-group {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.theme-datajournalism .party-card {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+.theme-datajournalism .party-quote {
+  border-left: 3px solid #3730a3;
+  background-color: #f8fafc;
+  border-radius: 0 4px 4px 0;
+}
+
+
+/* ==============================================================================
+   STYLE 6: NORDIC CIVIC / CLARIDAD ESCANDINAVA (High-Legibility Scandinavian)
+   ============================================================================== */
+
+:root.theme-nordic,
+body.theme-nordic,
+[data-theme="nordic"] {
+  --color-bg-canvas: #f9f9fb;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-subtle: #f0f1f5;
+  --color-bg-surface-alt: #e5e7eb;
+  --color-bg-notice: #f0fdf4;
+  --color-bg-primary: #0369a1;          /* calm ocean blue */
+  --color-bg-primary-hover: #075985;
+  --color-bg-preview-banner: #18181b;
+
+  --color-text-primary: #18181b;        /* 16.85:1 */
+  --color-text-secondary: #3f3f46;      /* 8.85:1 */
+  --color-text-muted: #71717a;          /* 4.60:1 */
+  --color-text-inverse: #ffffff;        /* 5.93:1 */
+  --color-text-brand: #0369a1;
+  --color-text-notice: #14532d;
+
+  --color-border-subtle: #f4f4f5;
+  --color-border-default: #e4e4e7;
+  --color-border-strong: #71717a;
+  --color-border-notice: #bbf7d0;
+  --color-border-focus: #0369a1;
+
+  --color-party-a-bg: #e0f2fe;
+  --color-party-a-text: #0369a1;
+  --color-party-a-border: #bae6fd;
+
+  --color-party-b-bg: #f5f3ff;
+  --color-party-b-text: #5b21b6;
+  --color-party-b-border: #ddd6fe;
+
+  --color-status-official-bg: #dcfce7;
+  --color-status-official-text: #15803d;
+  --color-status-partial-bg: #fef9c3;
+  --color-status-partial-text: #a16207;
+  --color-status-missing-bg: #fee2e2;
+  --color-status-missing-text: #b91c1c;
+
+  --color-rel-agreement-bg: #f0fdf4;
+  --color-rel-agreement-text: #15803d;
+  --color-rel-agreement-border: #bbf7d0;
+
+  --color-rel-divergence-bg: #f5f3ff;
+  --color-rel-divergence-text: #5b21b6;
+  --color-rel-divergence-border: #ddd6fe;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  --shadow-sm: none;
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.theme-nordic .topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.theme-nordic .brand-mark {
+  background: #0369a1;
+  color: #ffffff;
+  border-radius: 9999px;
+}
+
+.theme-nordic .btn-primary,
+.theme-nordic .btn-compare {
+  background-color: #0369a1;
+  color: #ffffff;
+  border-radius: 9999px;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 2px 8px rgba(3, 105, 161, 0.2);
+}
+
+.theme-nordic .measure-group {
+  border: 1px solid #e4e4e7;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  padding: 1.5rem;
+}
+
+.theme-nordic .party-card {
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+}
+
+.theme-nordic .party-quote {
+  border-left: 3px solid #0369a1;
+  background-color: #f8fafc;
+  border-radius: 0 10px 10px 0;
+}

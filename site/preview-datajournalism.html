@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Elecciones 2026 · Periodismo de Datos (Axios & ProPublica)</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./themes.css">
+  <style>
+    .preview-switcher-bar {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      border-bottom: 2px solid #3730a3;
+    }
+    .preview-switcher-links {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .preview-switcher-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .preview-switcher-link:hover {
+      background: #3730a3;
+      color: #ffffff;
+    }
+    .preview-switcher-link.current {
+      background: #3730a3;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="theme-datajournalism">
+
+  <nav class="preview-switcher-bar" aria-label="Navegación de vistas previas">
+    <div><strong>ESTILO:</strong> Periodismo de Datos / Slate & Ink (ProPublica & Axios)</div>
+    <div class="preview-switcher-links">
+      <a class="preview-switcher-link" href="preview-stitch.html">★ Stitch Original</a>
+      <a class="preview-switcher-link current" href="preview-datajournalism.html">Datos & Axios</a>
+      <a class="preview-switcher-link" href="preview-nordic.html">Nórdico Cívico</a>
+      <a class="preview-switcher-link" href="preview-editorial.html">Gaceta Cívica</a>
+      <a class="preview-switcher-link" href="previews.html" style="border: 1px solid #3730a3;">📱 Laboratorio</a>
+    </div>
+  </nav>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
+    VISTA PREVIA · PERIODISMO DE DATOS CÍVICO · AUDITORÍA PROGRAMÁTICA 2026
+  </aside>
+
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <a class="brand" href="./" aria-label="Elecciones 2026 - Inicio">
+        <span class="brand-mark" aria-hidden="true">◧</span>
+        <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a class="nav-link" href="#comparador">Comparador</a>
+        <a class="nav-link" href="#fuentes">Fuentes</a>
+        <a class="nav-link" href="#metodo">Metodología</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="hero-eyebrow">ELECCIONES GENERALES · 29 NOV 2026</p>
+      <h1 id="hero-title" class="hero-title">Los programas,<br><span class="hero-em">puestos en claro.</span></h1>
+      <p class="hero-intro">Compara propuestas políticas sobre los temas que te importan. Cada posición enlaza directamente a su programa original y página exacta. Sin recomendaciones de voto.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#comparador">
+          <span>Abrir comparador</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <aside class="notice" aria-label="Aviso de la maqueta">
+      <strong>Aviso de rigor documental:</strong> Datos extraídos y contrastados exclusivamente contra programas electorales registrados ante la Junta Electoral Central.
+    </aside>
+
+    <section id="comparador" class="compare-section" aria-labelledby="compare-title">
+      <div class="section-head">
+        <p class="hero-eyebrow">01 / COMPARADOR DE MEDIDAS</p>
+        <h2 id="compare-title">Una cuestión, distintas propuestas.</h2>
+        <p>Selecciona un tema y dos candidaturas para revisar coincidencias, matices y divergencias agrupadas por medida.</p>
+      </div>
+
+      <form id="selection-form" class="controls-form" role="search" aria-label="Filtro de comparación">
+        <div class="control-field">
+          <label for="topic-select" class="control-label">Tema de comparación</label>
+          <div class="select-wrapper">
+            <select id="topic-select" name="topic" class="control-select">
+              <option value="housing" selected>Vivienda y alquiler</option>
+              <option value="education">Educación y universidad</option>
+              <option value="health-social-services">Sanidad y servicios sociales</option>
+              <option value="economy-work-tax">Economía, trabajo y fiscalidad</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-field">
+          <label for="party-a-select" class="control-label">Primer partido</label>
+          <div class="select-wrapper">
+            <select id="party-a-select" name="partyA" class="control-select">
+              <option value="party-a" selected>Partido A (ficticio)</option>
+              <option value="party-b">Partido B (ficticio)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-field">
+          <label for="party-b-select" class="control-label">Segundo partido</label>
+          <div class="select-wrapper">
+            <select id="party-b-select" name="partyB" class="control-select">
+              <option value="party-a">Partido A (ficticio)</option>
+              <option value="party-b" selected>Partido B (ficticio)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-actions">
+          <button type="button" class="btn-compare">
+            <span>Comparar propuestas</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="measures-container">
+        <!-- Measure 1 -->
+        <article class="measure-group" aria-labelledby="measure-1-title">
+          <div class="measure-head">
+            <p class="measure-topic-label">VIVIENDA · MEDIDA 01</p>
+            <h3 id="measure-1-title" class="measure-title">Regulación de precios de alquiler en zonas de mercado tensionado</h3>
+            <p class="measure-summary">Políticas de contención y límites obligatorios a los precios de arrendamiento de vivienda en áreas declaradas de mercado tensionado.</p>
+          </div>
+
+          <div class="measure-cards">
+            <!-- Party A Card -->
+            <article class="party-card party-card-a" aria-labelledby="party-a-name">
+              <div class="party-card-header">
+                <span class="party-pill party-pill-a" aria-hidden="true">PA</span>
+                <div class="party-card-meta">
+                  <h4 id="party-a-name" class="party-name">Partido A</h4>
+                  <span class="status-badge status-badge-official">Programa oficial</span>
+                </div>
+              </div>
+              <div class="party-card-body">
+                <p class="party-statement">Limitar los precios de alquiler en zonas tensionadas mediante un índice estatal de referencia y sanciones a grandes tenedores infractores.</p>
+                <div class="party-quote-wrapper">
+                  <span class="party-quote-label">Extracto literal verificado:</span>
+                  <blockquote class="party-quote">
+                    <p>«Estableceremos un límite de precios vinculante en zonas de mercado residencial tensionado basado en el índice de precios de referencia.»</p>
+                  </blockquote>
+                </div>
+                <div class="party-caveat" role="note" aria-label="Matiz registrado">
+                  <strong>Condición:</strong> Aplica exclusivamente en municipios declarados como zona de mercado tensionado.
+                </div>
+              </div>
+              <div class="party-card-footer">
+                <a class="source-citation" href="https://partido-ejemplo-a.es/programa-2026.pdf#page=34" target="_blank" rel="noopener noreferrer">
+                  <span aria-hidden="true">↗</span> <span>Fuente: <em>Programa oficial v1.0 · pág. 34</em></span>
+                </a>
+                <time class="source-date" datetime="2026-10-16">Rev. 16/10/2026</time>
+              </div>
+            </article>
+
+            <!-- Party B Card -->
+            <article class="party-card party-card-b" aria-labelledby="party-b-name">
+              <div class="party-card-header">
+                <span class="party-pill party-pill-b" aria-hidden="true">PB</span>
+                <div class="party-card-meta">
+                  <h4 id="party-b-name" class="party-name">Partido B</h4>
+                  <span class="status-badge status-badge-partial">Documento parcial</span>
+                </div>
+              </div>
+              <div class="party-card-body">
+                <p class="party-statement">Intervenir los precios del alquiler en áreas tensionadas mediante índices autonómicos y movilización de viviendas desocupadas.</p>
+                <div class="party-quote-wrapper">
+                  <span class="party-quote-label">Extracto literal verificado:</span>
+                  <blockquote class="party-quote">
+                    <p>«Toparemos los precios abusivos del alquiler en las zonas residenciales declaradas tensionadas.»</p>
+                  </blockquote>
+                </div>
+                <div class="party-caveat" role="note" aria-label="Matiz registrado">
+                  <strong>Condición:</strong> Prevé competencia transferida a las comunidades autónomas para ajustar los índices a la baja.
+                </div>
+              </div>
+              <div class="party-card-footer">
+                <a class="source-citation" href="https://partido-ejemplo-b.es/manifiesto-2026-resumen.pdf#page=8" target="_blank" rel="noopener noreferrer">
+                  <span aria-hidden="true">↗</span> <span>Fuente: <em>Manifiesto parcial v0.9 · pág. 8</em></span>
+                </a>
+                <time class="source-date" datetime="2026-10-16">Rev. 16/10/2026</time>
+              </div>
+            </article>
+          </div>
+
+          <!-- Analysis Callout -->
+          <aside class="analysis-callout rel-callout-agreement" aria-label="Lectura comparada">
+            <span class="analysis-icon" aria-hidden="true">✓</span>
+            <div>
+              <h4 style="margin: 0 0 0.4rem 0; font-size: 1rem;">Coincidencia en la medida</h4>
+              <p style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">Ambas formaciones políticas proponen topar precios en zonas tensionadas, con divergencias técnicas sobre el marco competencial.</p>
+            </div>
+          </aside>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
+        <p>Servicio cívico de consulta y comparación neutral de programas electorales oficiales.</p>
+      </div>
+      <div class="footer-meta">
+        <p>Estilo: Periodismo de Datos / Slate & Ink · WCAG 2.2 Nivel AA · Trazabilidad rigurosa a fuentes.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
