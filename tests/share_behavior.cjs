@@ -92,7 +92,22 @@ test('private pilot keeps election context and never falls back to 2026 measures
   await b.click();
   assert.match(shared.title, /2023/);
   assert.match(shared.url, /election=es-gen-2023/);
+
+  // Check 2023 pilot measures render across topics
+  b.nodes['topic-select'].value = 'economy-work-tax';
+  b.nodes['topic-select'].handlers.change();
+  assert.match(b.nodes['measures-container'].innerHTML, /Regulación de la jornada laboral máxima y tiempo de trabajo \(2023\)/);
+
   b.nodes['topic-select'].value = 'education';
+  b.nodes['topic-select'].handlers.change();
+  assert.match(b.nodes['measures-container'].innerHTML, /Gratuidad y universalización de la educación infantil de 0 a 3 años \(2023\)/);
+
+  b.nodes['topic-select'].value = 'health-social-services';
+  b.nodes['topic-select'].handlers.change();
+  assert.match(b.nodes['measures-container'].innerHTML, /Refuerzo de la Atención Primaria y Salud Mental en el SNS \(2023\)/);
+
+  // An unpopulated 2023 topic (e.g. immigration) should honestly report no measures registered yet
+  b.nodes['topic-select'].value = 'immigration';
   b.nodes['topic-select'].handlers.change();
   assert.match(b.nodes['measures-container'].innerHTML, /No hay medidas registradas todavía/);
   assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /15%|Garantir el dret/);
