@@ -244,12 +244,20 @@
         electionId: 'es-gen-2023',
         title: 'Medida: Regulación de precios de alquiler y acceso a la vivienda (2023)',
         summary: 'Propuestas de los programas electorales de las elecciones generales del 23 de julio de 2023 en materia de precios del alquiler, avales públicos y competencias autonómicas.',
+        context: 'Esta iniciativa contrasta los modelos de política residencial ante el alza de precios: intervención directa del mercado del alquiler frente a estímulos y avales financieros para la compraventa, así como la delimitación competencial entre el Estado central y las comunidades autónomas con competencias forales o estatutarias.',
+        keyAxes: [
+          'Precios del alquiler: regulación vinculante (topes e índices obligatorios) frente a incentivos a la oferta y libre mercado.',
+          'Acceso juvenil: avales públicos de hasta el 95% para compraventa frente a fomento de parque público de alquiler protegido.',
+          'Régimen competencial: ley estatal homogénea frente a respeto exclusivo a competencias autonómicas y forales.'
+        ],
         positions: {
           'pp': {
             status: 'official',
             statusLabel: 'Programa oficial (2023)',
             statement: 'Programa de avales para jóvenes de hasta 35 años destinado a facilitar créditos hipotecarios de hasta el 95% del precio de la vivienda y derogación de la Ley de Vivienda.',
             quote: 'LLEVAREMOS A CABO UN PROGRAMA DE AVALES DESTINADO A JÓVENES de hasta 35 años, a fin de garantizar la concesión de créditos hipotecarios por valor de hasta un 95% de la totalidad del precio de la vivienda.',
+            policyInstrument: 'Programa de avales para préstamos hipotecarios de compraventa',
+            section: 'Medida 91 · Página 34 (impresa 32)',
             qualifications: [
               'El 95% se refiere al importe del crédito respecto al precio de la vivienda, no al porcentaje del aval.',
               'Derogación de la Ley de Vivienda estatal de 2023.'
@@ -263,6 +271,8 @@
             statusLabel: 'Programa oficial (2023)',
             statement: 'Permitir que las comunidades autónomas con competencias en vivienda y derecho civil regulen íntegramente los contratos de arrendamiento urbano, incluidos los precios.',
             quote: 'Fer possible que les comunitats autònomes que tinguin competències en matèria d’habitatge i dret civil, foral o especial, puguin regular íntegrament els contractes d’arrendaments urbans, incloent la regulació dels preus de lloguer',
+            policyInstrument: 'Habilitación competencial plena para regular precios de arrendamiento urbano',
+            section: 'Habitatge, Sec. c · Página 114 (impresa 113)',
             qualifications: [
               'Propuesta limitada a comunidades autónomas con competencias en vivienda y derecho civil foral o especial.',
               'En el marco del art. 150.1 de la Constitución.'
@@ -276,6 +286,8 @@
             statusLabel: 'Programa oficial (2023)',
             statement: 'Modificación de la Ley de Vivienda para establecer regulación efectiva de precios del alquiler e inclusión de alquiler social obligatorio para grandes tenedores.',
             quote: 'Modificaremos la Ley 12/2023 de Vivienda para incluir: el alquiler social obligatorio para grandes tenedores, regulación efectiva de precios del alquiler y desarrollo de los índices de precios de referencia.',
+            policyInstrument: 'Regulación obligatoria de precios del alquiler y alquiler social a grandes tenedores',
+            section: 'Medida 14 · Página 77',
             qualifications: [
               'Aplicación obligatoria en zonas declaradas de mercado tensionado.',
               'Objetivo de constituir 2 millones de viviendas sociales y asequibles en diez años.'
@@ -289,6 +301,8 @@
             statusLabel: 'Programa oficial (2023)',
             statement: 'Fomento del alquiler y promoción de vivienda pública suficiente respetando el marco competencial autonómico exclusivo y rechazando normas estatales invasivas.',
             quote: 'Abogamos por políticas que fomenten el alquiler y la promoción de vivienda pública suficiente para hacer frente a esta realidad, tal y como se viene desarrollando por el Gobierno Vasco dentro de su ámbito competencial exclusivo.',
+            policyInstrument: 'Promoción de parque público de alquiler protegido bajo marco foral exclusivo',
+            section: 'Punto 12 · Página 45',
             qualifications: [
               'Rechazo a leyes estatales que erosionen el autogobierno vasco en materia de vivienda.'
             ],
@@ -364,12 +378,19 @@
         id: 'housing-rental-regulation',
         title: 'Medida: Regulación de precios de alquiler en zonas de mercado tensionado',
         summary: 'Políticas de contención y límites obligatorios a los precios de arrendamiento de vivienda en áreas declaradas de mercado tensionado.',
+        context: 'Esta medida evalúa las políticas de contención del alquiler residencial frente al incremento de precios en áreas urbanas, analizando los modelos de índice de precios de referencia y el régimen sancionador a grandes tenedores.',
+        keyAxes: [
+          'Modelo de contención: índice estatal homogéneo vinculante frente a índices de ajuste autonómico.',
+          'Régimen de excepciones: moratorias temporales por rehabilitación integral frente a aplicación general sin exenciones.'
+        ],
         positions: {
           'party-a': {
             status: 'official',
             statusLabel: 'Programa oficial',
             statement: 'Limitar los precios de alquiler en zonas tensionadas mediante un índice estatal de referencia y sanciones a grandes tenedores infractores.',
             quote: 'Estableceremos un límite de precios vinculante en zonas de mercado residencial tensionado basado en el índice de precios de referencia.',
+            policyInstrument: 'Índice estatal vinculante de precios de referencia',
+            section: 'Página 34',
             qualifications: [
               'Aplica exclusivamente en municipios declarados como zona de mercado tensionado.',
               'Exención temporal de dos años para viviendas objeto de rehabilitación energética integral.'
@@ -383,6 +404,8 @@
             statusLabel: 'Documento parcial',
             statement: 'Intervenir los precios del alquiler en áreas tensionadas mediante índices autonómicos y movilización de viviendas desocupadas.',
             quote: 'Toparemos los precios abusivos del alquiler en las zonas residenciales declaradas tensionadas.',
+            policyInstrument: 'Índices autonómicos de precios y movilización de vivienda desocupada',
+            section: 'Página 8',
             qualifications: [
               'Prevé competencia transferida a las comunidades autónomas para ajustar los índices a la baja.'
             ],
@@ -427,12 +450,19 @@
         id: 'housing-youth-subsidy',
         title: 'Medida: Ayudas públicas directas y avales para acceso a la vivienda para jóvenes',
         summary: 'Instrumentos de apoyo financiero público para facilitar la emancipación y la adquisición o fianza de primera vivienda por jóvenes menores de 35 años.',
+        context: 'Esta medida analiza las fórmulas de intervención pública para facilitar el acceso de jóvenes a la vivienda habitual, contrastando subvenciones directas a intereses frente a coberturas crediticias de fianza o entrada.',
+        keyAxes: [
+          'Instrumento financiero: bonificación de tipos de interés hipotecario frente a líneas directas de aval de entrada.',
+          'Criterios de elegibilidad: límites de renta basados en múltiplos del IPREM (3,5x frente a 4x).'
+        ],
         positions: {
           'party-a': {
             status: 'official',
             statusLabel: 'Programa oficial',
             statement: 'Bonificación pública de tipos de interés hipotecarios para adquisición de primera vivienda por jóvenes menores de 35 años con renta inferior a 3,5 veces el IPREM.',
             quote: 'Bonificaremos hasta dos puntos el tipo de interés de las hipotecas para jóvenes menores de 35 años que compren su primera vivienda.',
+            policyInstrument: 'Bonificación de tipos de interés hipotecario para menores de 35 años',
+            section: 'Página 38',
             qualifications: [
               'Límite de renta individual o de unidad de convivencia fijado en 3,5 veces el IPREM.',
               'Aplica exclusivamente para hipotecas sobre vivienda habitual.'
@@ -446,6 +476,8 @@
             statusLabel: 'Programa oficial',
             statement: 'Línea de avales públicos directos del Estado de hasta el 20% del valor de tasación para la fianza o entrada hipotecaria de menores de 35 años con renta hasta 4 veces el IPREM.',
             quote: 'Habilitaremos un aval público del 20% para la compra de primera vivienda por personas jóvenes con ingresos de hasta cuatro veces el IPREM.',
+            policyInstrument: 'Línea de avales públicos del 20% del valor de tasación',
+            section: 'Página 52',
             qualifications: [
               'Límite de ingresos de 4 veces el IPREM.',
               'Compatible con ayudas autonómicas de emancipación juvenil.'
@@ -1063,6 +1095,8 @@
         statusLabel: pos.statusLabel || partyData.statusLabel,
         statement: pos.statement,
         quote: pos.quote || null,
+        policyInstrument: pos.policyInstrument || null,
+        section: pos.section || null,
         qualifications: pos.qualifications || [],
         explanation: pos.explanation || null,
         source: pos.source || 'Registro oficial de fuentes',
@@ -1083,6 +1117,8 @@
         ? 'El programa oficial para las elecciones generales de 2026 aún no ha sido publicado por la candidatura.'
         : 'El programa revisado no incluye una propuesta explícita sobre esta medida concreta.',
       quote: null,
+      policyInstrument: null,
+      section: null,
       qualifications: [],
       explanation: isMissingProg
         ? 'La ausencia de un programa publicado no debe interpretarse como oposición ni como apoyo a esta medida concreta.'
@@ -1164,7 +1200,26 @@
     let bodyHtml = '<p class="party-statement' + (isMissing ? ' party-statement-missing' : '') + '">' + escapeHtml(pos.statement) + '</p>';
 
     if (pos.quote) {
-      bodyHtml += '<blockquote class="party-quote"><p>«' + escapeHtml(pos.quote) + '»</p></blockquote>';
+      const caveatsJson = escapeHtml(JSON.stringify(pos.qualifications || []));
+      bodyHtml += '<div class="party-quote-wrapper">' +
+        '<span class="party-quote-label">Extracto literal del programa:</span>' +
+        '<blockquote class="party-quote"><p>«' + escapeHtml(pos.quote) + '»</p></blockquote>' +
+        '<button type="button" class="btn-open-manifesto" ' +
+        'data-party-name="' + escapeHtml(pos.name) + '" ' +
+        'data-party-pill="' + escapeHtml(pos.pill) + '" ' +
+        'data-party-pill-class="' + escapeHtml(pos.pillClass) + '" ' +
+        'data-status-label="' + escapeHtml(pos.statusLabel) + '" ' +
+        'data-source="' + escapeHtml(pos.source) + '" ' +
+        'data-section="' + escapeHtml(pos.section || '') + '" ' +
+        'data-instrument="' + escapeHtml(pos.policyInstrument || '') + '" ' +
+        'data-quote="' + escapeHtml(pos.quote) + '" ' +
+        'data-caveats="' + caveatsJson + '" ' +
+        'data-source-url="' + escapeHtml(pos.sourceUrl || '') + '" ' +
+        'aria-haspopup="dialog">' +
+        '<span aria-hidden="true">📖</span> ' +
+        '<span>Leer extracto en la app</span>' +
+        '</button>' +
+        '</div>';
     }
 
     if (pos.qualifications && pos.qualifications.length > 0) {
@@ -1236,11 +1291,30 @@
       differencesHtml += '</ul>';
     }
 
+    let contextHtml = '';
+    if (measure.context || (measure.keyAxes && measure.keyAxes.length > 0)) {
+      contextHtml = '<div class="measure-context" role="region" aria-label="Alcance y claves de la iniciativa">';
+      if (measure.context) {
+        contextHtml += '<p class="measure-context-desc">' + escapeHtml(measure.context) + '</p>';
+      }
+      if (measure.keyAxes && measure.keyAxes.length > 0) {
+        contextHtml += '<div class="measure-axes">' +
+          '<span class="measure-axes-label">Claves de contraste en esta medida:</span>' +
+          '<ul class="measure-axes-list">';
+        for (let a = 0; a < measure.keyAxes.length; a++) {
+          contextHtml += '<li>' + escapeHtml(measure.keyAxes[a]) + '</li>';
+        }
+        contextHtml += '</ul></div>';
+      }
+      contextHtml += '</div>';
+    }
+
     return '<article class="measure-group" aria-labelledby="' + titleId + '">' +
       '<div class="measure-head">' +
       '<p class="measure-topic-label">TEMA: ' + escapeHtml(topicName.toUpperCase()) + '</p>' +
       '<h3 id="' + titleId + '" class="measure-title">' + escapeHtml(measure.title) + '</h3>' +
       '<p class="measure-summary">' + escapeHtml(measure.summary) + '</p>' +
+      contextHtml +
       '</div>' +
       '<div class="measure-cards">' +
       renderPartyCardHtml(posA, 'A', measureIdx) +
@@ -1426,6 +1500,146 @@
         measuresContainer.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
       }
     });
+
+    let lastFocusedTrigger = null;
+
+    function openManifestoModal(data) {
+      let dialog = document.getElementById('manifesto-dialog');
+      if (!dialog && typeof document.createElement === 'function' && document.body && typeof document.body.appendChild === 'function') {
+        dialog = document.createElement('dialog');
+        dialog.id = 'manifesto-dialog';
+        dialog.className = 'manifesto-dialog';
+        dialog.setAttribute('aria-labelledby', 'dialog-party-name');
+        document.body.appendChild(dialog);
+      }
+      if (!dialog) return;
+
+      let caveats = [];
+      try {
+        caveats = JSON.parse(data.caveats || '[]');
+      } catch (e) {
+        caveats = [];
+      }
+
+      let caveatsHtml = '';
+      if (caveats.length > 0) {
+        caveatsHtml = '<div class="dialog-caveats-box">' +
+          '<h4 class="dialog-caveats-title">Condiciones y matices registrados en el programa:</h4>' +
+          '<ul class="dialog-caveats-list">';
+        for (let i = 0; i < caveats.length; i++) {
+          caveatsHtml += '<li>' + escapeHtml(caveats[i]) + '</li>';
+        }
+        caveatsHtml += '</ul></div>';
+      }
+
+      let instrumentHtml = '';
+      if (data.instrument) {
+        instrumentHtml = '<div class="dialog-meta-item">' +
+          '<span class="meta-label">Instrumento propuesto</span>' +
+          '<span class="meta-value">' + escapeHtml(data.instrument) + '</span>' +
+          '</div>';
+      }
+
+      const locatorText = data.section ? data.section : data.source;
+
+      let externalPdfBtn = '';
+      if (data.sourceUrl) {
+        externalPdfBtn = '<a href="' + escapeHtml(data.sourceUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-open-full-pdf">' +
+          '<span aria-hidden="true">↗</span> ' +
+          '<span>Abrir programa completo original en la web oficial (PDF)</span>' +
+          '<span class="sr-only">(se abre en una ventana nueva)</span>' +
+          '</a>';
+      }
+
+      dialog.innerHTML = '<div class="dialog-content">' +
+        '<header class="dialog-header">' +
+        '<div class="dialog-header-meta">' +
+        '<span class="party-pill ' + escapeHtml(data.partyPillClass || 'party-pill-a') + '" aria-hidden="true">' + escapeHtml(data.partyPill || 'A') + '</span>' +
+        '<div>' +
+        '<span class="dialog-eyebrow">Visor de extracto del programa</span>' +
+        '<h3 id="dialog-party-name" class="dialog-party-name">' + escapeHtml(data.partyName) + '</h3>' +
+        '</div>' +
+        '</div>' +
+        '<button type="button" class="dialog-close-btn" id="dialog-close-btn" aria-label="Cerrar visor">✕</button>' +
+        '</header>' +
+        '<div class="dialog-body">' +
+        '<div class="dialog-meta-bar">' +
+        '<div class="dialog-meta-item">' +
+        '<span class="meta-label">Documento oficial</span>' +
+        '<span class="meta-value">' + escapeHtml(data.source) + '</span>' +
+        '</div>' +
+        instrumentHtml +
+        '</div>' +
+        '<div class="dialog-excerpt-card">' +
+        '<div class="dialog-excerpt-header">' +
+        '<span class="excerpt-badge">Cita textual verificada</span>' +
+        '<span class="excerpt-locator">' + escapeHtml(locatorText) + '</span>' +
+        '</div>' +
+        '<blockquote class="dialog-quote">' +
+        '<p>«' + escapeHtml(data.quote) + '»</p>' +
+        '</blockquote>' +
+        '</div>' +
+        caveatsHtml +
+        '<div class="dialog-legal-callout" role="note">' +
+        '<span class="legal-icon" aria-hidden="true">ℹ</span>' +
+        '<p><strong>Derecho de cita (art. 32.1 TRLPI):</strong> Fragmento reproducido literalmente para investigación y contraste cívico. La titularidad y explotación del programa corresponden a la formación política.</p>' +
+        '</div>' +
+        '</div>' +
+        '<footer class="dialog-footer">' +
+        externalPdfBtn +
+        '<button type="button" class="btn-close-dialog" id="dialog-dismiss-btn">Cerrar visor</button>' +
+        '</footer>' +
+        '</div>';
+
+      function closeDialog() {
+        if (typeof dialog.close === 'function') {
+          dialog.close();
+        } else {
+          dialog.removeAttribute('open');
+        }
+        if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+          lastFocusedTrigger.focus();
+        }
+      }
+
+      const closeBtn = dialog.querySelector('#dialog-close-btn');
+      const dismissBtn = dialog.querySelector('#dialog-dismiss-btn');
+      if (closeBtn) closeBtn.addEventListener('click', closeDialog);
+      if (dismissBtn) dismissBtn.addEventListener('click', closeDialog);
+
+      dialog.addEventListener('click', function (evt) {
+        if (evt.target === dialog) {
+          closeDialog();
+        }
+      });
+
+      if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute('open', '');
+      }
+    }
+
+    if (measuresContainer) {
+      measuresContainer.addEventListener('click', function (evt) {
+        const btn = evt.target && evt.target.closest ? evt.target.closest('.btn-open-manifesto') : null;
+        if (btn) {
+          lastFocusedTrigger = btn;
+          openManifestoModal({
+            partyName: btn.getAttribute('data-party-name'),
+            partyPill: btn.getAttribute('data-party-pill'),
+            partyPillClass: btn.getAttribute('data-party-pill-class'),
+            statusLabel: btn.getAttribute('data-status-label'),
+            source: btn.getAttribute('data-source'),
+            section: btn.getAttribute('data-section'),
+            instrument: btn.getAttribute('data-instrument'),
+            quote: btn.getAttribute('data-quote'),
+            caveats: btn.getAttribute('data-caveats'),
+            sourceUrl: btn.getAttribute('data-source-url')
+          });
+        }
+      });
+    }
 
     // Render defaults without converting home into a comparison URL.
     renderComparison();

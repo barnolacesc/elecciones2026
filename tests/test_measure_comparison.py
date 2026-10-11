@@ -187,6 +187,37 @@ class TestMeasureComparison(unittest.TestCase):
         self.assertIn('rel-callout-agreement', rendered)
         self.assertIn('rel-callout-not-found', rendered)
 
+    def test_measure_initiative_context_and_axes_rendered(self) -> None:
+        """Verify enriched measure context and comparison axes are present in HTML and JS (E2.3)."""
+        self.assertIn('class="measure-context"', self.html)
+        self.assertIn('class="measure-context-desc"', self.html)
+        self.assertIn('class="measure-axes"', self.html)
+        self.assertIn('class="measure-axes-list"', self.html)
+
+        self.assertIn('measure-context', self.js)
+        self.assertIn('measure-axes', self.js)
+
+    def test_in_app_manifesto_excerpt_viewer_components(self) -> None:
+        """Verify in-app manifesto excerpt viewer dialog, buttons, and legal attribution (E2.3 / TRLPI Art. 32)."""
+        # Dialog presence in DOM
+        self.assertIn('id="manifesto-dialog"', self.html)
+        self.assertIn('class="manifesto-dialog"', self.html)
+
+        # In-app viewer button on cards with quotes
+        self.assertIn('class="btn-open-manifesto"', self.html)
+        self.assertIn('aria-haspopup="dialog"', self.html)
+        self.assertIn('Leer extracto en la app', self.html)
+
+        # JS functions for modal
+        self.assertIn('openManifestoModal', self.js)
+        self.assertIn('btn-open-manifesto', self.js)
+        self.assertIn('art. 32.1 TRLPI', self.js)
+
+        # CSS styling and touch targets
+        self.assertIn('.manifesto-dialog', self.css)
+        self.assertIn('.btn-open-manifesto', self.css)
+        self.assertIn('.btn-open-full-pdf', self.css)
+
 
 if __name__ == "__main__":
     unittest.main()
