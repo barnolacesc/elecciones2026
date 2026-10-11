@@ -1496,8 +1496,7 @@
       evt.preventDefault();
       updateComparison();
       if (validateSelection() && measuresContainer && typeof measuresContainer.scrollIntoView === 'function') {
-        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        measuresContainer.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+        measuresContainer.scrollIntoView({ behavior: 'auto', block: 'start' });
       }
     });
 
