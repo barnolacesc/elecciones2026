@@ -1377,8 +1377,17 @@
       // Dynamically render all grouped measures into measuresContainer
       if (measuresContainer) {
         let allMeasuresHtml = '';
-        for (let i = 0; i < measures.length; i++) {
-          allMeasuresHtml += renderMeasureGroupHtml(measures[i], topicData.name, partyAKey, partyBKey, i + 1);
+        if (measures.length === 0) {
+          allMeasuresHtml = '<div class="empty-measures" role="status" aria-live="polite">' +
+            '<p class="empty-measures-icon" aria-hidden="true">—</p>' +
+            '<h4 class="empty-measures-title">No hay medidas registradas todavía</h4>' +
+            '<p class="empty-measures-desc">No constan propuestas revisadas en el tema <strong>' + escapeHtml(topicData.name) + '</strong> para las candidaturas seleccionadas.</p>' +
+            '<p class="empty-measures-note">«No consta» indica ausencia documental en el material analizado; nunca se interpretará como oposición política ni como acuerdo tácito.</p>' +
+            '</div>';
+        } else {
+          for (let i = 0; i < measures.length; i++) {
+            allMeasuresHtml += renderMeasureGroupHtml(measures[i], topicData.name, partyAKey, partyBKey, i + 1);
+          }
         }
         measuresContainer.innerHTML = allMeasuresHtml;
       }

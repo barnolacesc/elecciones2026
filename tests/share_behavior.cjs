@@ -92,7 +92,8 @@ test('private pilot keeps election context and never falls back to 2026 measures
   assert.match(shared.url, /election=es-gen-2023/);
   b.nodes['topic-select'].value = 'education';
   b.nodes['topic-select'].handlers.change();
-  assert.equal(b.nodes['measures-container'].innerHTML, '');
+  assert.match(b.nodes['measures-container'].innerHTML, /No hay medidas registradas todavía/);
+  assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /15%|Garantir el dret/);
 });
 
 test('native share success, cancellation and rejection expose honest status and copy fallback', async () => {
