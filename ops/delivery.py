@@ -77,6 +77,7 @@ def edge_probe(credential: str | None, expected_hash: str | None = None) -> None
             if credential is None:
                 raise DeliveryError("Staging is reachable without authentication")
             body = response.read(2_000_001)
+            actual_hash = hashlib.sha256(body).hexdigest()
             checks = {
                 "HTTP status": response.status == 200,
                 "response size": len(body) <= 2_000_000,
@@ -84,10 +85,23 @@ def edge_probe(credential: str | None, expected_hash: str | None = None) -> None
                 "CSP": bool(response.headers.get("Content-Security-Policy")),
                 "nosniff": response.headers.get("X-Content-Type-Options") == "nosniff",
                 "frame protection": response.headers.get("X-Frame-Options") == "DENY",
-                "content hash": not expected_hash or hashlib.sha256(body).hexdigest() == expected_hash,
+                "content hash": not expected_hash or actual_hash == expected_hash,
             }
             failures = [name for name, passed in checks.items() if not passed]
             if failures:
+                encoding = response.headers.get("Content-Encoding", "identity").lower()
+                # Allowlisted metadata only: never echo arbitrary header values,
+                # page contents, request credentials or an unchecked reference.
+                details = {
+                    "response_bytes": len(body), "response_sha256": actual_hash,
+                    "expected_sha256": expected_hash if expected_hash and re.fullmatch(r"[a-f0-9]{64}", expected_hash) else None,
+                    "content_encoding": encoding if encoding in {"identity", "gzip", "br", "deflate", "zstd"} else "other",
+                    "email_obfuscation": b"email-decode.min.js" in body,
+                    "rocket_loader": b"rocket-loader.min.js" in body,
+                    "analytics_beacon": b"static.cloudflareinsights.com/beacon.min.js" in body,
+                    "challenge_script": b"/cdn-cgi/challenge-platform/" in body,
+                }
+                print("Staging response metadata: " + json.dumps(details), flush=True)
                 raise DeliveryError("External staging verification failed: " + ", ".join(failures))
     except urllib.error.HTTPError as exc:
         if credential is None and exc.code == 401:

@@ -203,3 +203,27 @@ class DeliveryTests(unittest.TestCase):
             self.assertIn('Delivery blocked: External staging response failed: HTTP 401', output.getvalue())
             for name in ('STAGING_BASIC_AUTH', 'VPS_SSH_KEY', 'VPS_KNOWN_HOSTS'):
                 self.assertNotIn(ENV[name], output.getvalue())
+
+    def test_mismatch_metadata_identifies_response_without_exposing_raw_values(self):
+        import hashlib
+        import json
+        body = b'private response containing ' + ENV['STAGING_BASIC_AUTH'].encode()
+        output = io.StringIO()
+        with patch.object(delivery.urllib.request, 'build_opener') as opener, redirect_stdout(output):
+            response = opener.return_value.open.return_value.__enter__.return_value
+            response.status = 200
+            response.headers = {'Cache-Control': 'private, no-store',
+                                'Content-Security-Policy': "default-src 'self'",
+                                'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY',
+                                'Content-Encoding': ENV['VPS_SSH_KEY']}
+            response.read.return_value = body
+            with self.assertRaisesRegex(delivery.DeliveryError, 'content hash'):
+                delivery.edge_probe(ENV['STAGING_BASIC_AUTH'], 'a' * 64)
+        details = json.loads(output.getvalue().split('Staging response metadata: ', 1)[1])
+        self.assertEqual(details['response_bytes'], len(body))
+        self.assertEqual(details['response_sha256'], hashlib.sha256(body).hexdigest())
+        self.assertEqual(details['expected_sha256'], 'a' * 64)
+        self.assertEqual(details['content_encoding'], 'other')
+        self.assertNotIn(body.decode(), output.getvalue())
+        self.assertNotIn(ENV['STAGING_BASIC_AUTH'], output.getvalue())
+        self.assertNotIn(ENV['VPS_SSH_KEY'], output.getvalue())

@@ -177,3 +177,18 @@ the verification phase, controlled failed-check labels and HTTP status codes, wh
 keeping response bodies, credentials and raw transport errors out of logs. Eleven
 delivery boundary tests pass, including a credential/response redaction regression;
 focused Ruff and whitespace checks pass. Hosted verification remains pending.
+
+## Runner-specific response mismatch — 2026-10-12
+
+E3.3: run 38179346924 passed origin health, authentication and security headers,
+but failed only the external content hash. Owner curl probes with the deployment
+user agent and the exact Python HTTP client both returned the expected hash,
+24966 bytes and identity encoding, with no email-obfuscation or Rocket Loader
+markers. The cause on the hosted runner remains unverified. Failed checks now
+report actual/expected hashes, byte count, allowlisted encoding and known edge
+script markers without body contents or arbitrary header values. Exact content
+validation remains fail-closed; no credential change is indicated by this evidence.
+
+Verification: 12 delivery boundary tests pass, including response metadata and
+redaction checks; focused Ruff, strict OpenSpec validation and whitespace checks
+pass. Hosted response metadata is pending the reviewed workflow update.
