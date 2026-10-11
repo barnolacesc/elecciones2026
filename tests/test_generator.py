@@ -194,7 +194,7 @@ class TestStaticSiteGenerator(unittest.TestCase):
             self.assertIn('<html lang="es">', content, f"Missing <html lang=\"es\"> in {rel_file}")
 
             # 2. Canonical link present and accurate
-            self.assertIn('<link rel="canonical" href="https://elecciones2026.es/', content, f"Missing canonical in {rel_file}")
+            self.assertIn('<link rel="canonical" href="https://xn--eleccionesespaa2026-83b.es/', content, f"Missing canonical in {rel_file}")
 
             # 3. Viewport tag
             self.assertIn('<meta name="viewport" content="width=device-width, initial-scale=1">', content)
@@ -287,17 +287,17 @@ class TestStaticSiteGenerator(unittest.TestCase):
         self.assertGreater(len(urls), 20)
 
         # Must include core endpoints
-        self.assertIn("https://elecciones2026.es/", urls)
-        self.assertIn("https://elecciones2026.es/temas/", urls)
-        self.assertIn("https://elecciones2026.es/partidos/", urls)
-        self.assertIn("https://elecciones2026.es/metodo/", urls)
-        self.assertIn("https://elecciones2026.es/fuentes/", urls)
-        self.assertIn("https://elecciones2026.es/correcciones/", urls)
+        self.assertIn("https://xn--eleccionesespaa2026-83b.es/", urls)
+        self.assertIn("https://xn--eleccionesespaa2026-83b.es/temas/", urls)
+        self.assertIn("https://xn--eleccionesespaa2026-83b.es/partidos/", urls)
+        self.assertIn("https://xn--eleccionesespaa2026-83b.es/metodo/", urls)
+        self.assertIn("https://xn--eleccionesespaa2026-83b.es/fuentes/", urls)
+        self.assertIn("https://xn--eleccionesespaa2026-83b.es/correcciones/", urls)
 
         # Must include all 8 core topics
         for tid in ["housing", "education", "health-social-services", "economy-work-tax",
                     "immigration", "foreign-policy-eu", "climate-energy", "institutions-rights"]:
-            self.assertIn(f"https://elecciones2026.es/temas/{tid}/", urls)
+            self.assertIn(f"https://xn--eleccionesespaa2026-83b.es/temas/{tid}/", urls)
 
         # Verify lastmod is formatted as YYYY-MM-DD
         for lastmod in root.findall("sm:url/sm:lastmod", namespace):
@@ -318,7 +318,7 @@ class TestStaticSiteGenerator(unittest.TestCase):
         self.assertIn("User-agent: *", content)
         self.assertIn("Allow: /", content)
         self.assertIn("Disallow: /preview/", content)
-        self.assertIn("Sitemap: https://elecciones2026.es/sitemap.xml", content)
+        self.assertIn("Sitemap: https://xn--eleccionesespaa2026-83b.es/sitemap.xml", content)
 
     def test_safe_html_escaping_prevents_xss(self) -> None:
         """Verify hostile strings containing HTML/script tags are rendered as inert text."""

@@ -1,0 +1,19 @@
+#!/bin/sh
+# Operator-only provisioning. Run as root from the VPS console.
+set -eu
+if [ "$(id -u)" != 0 ] || [ "$#" != 1 ]; then
+    echo 'Usage (root): sh ops/registry-login GITHUB_USERNAME' >&2
+    exit 1
+fi
+case "$1" in
+    ''|*[!A-Za-z0-9-]*) echo 'Invalid registry username' >&2; exit 1 ;;
+esac
+umask 077
+install -d -o root -g root -m 700 /root/.docker
+# Enter the expiring classic read:packages token at Docker's prompt.
+# Do not put the token in arguments, chat, Git, or shell history.
+DOCKER_CONFIG=/root/.docker /usr/bin/docker login ghcr.io --username "$1"
+if [ -f /root/.docker/config.json ]; then
+    chown root:root /root/.docker/config.json
+    chmod 600 /root/.docker/config.json
+fi

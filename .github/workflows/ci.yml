@@ -184,7 +184,7 @@ jobs:
 
       - name: Build pinned Docker image via multi-stage builder
         run: |
-          docker build -t elecciones2026:ci .
+          docker build --platform linux/amd64 --label org.opencontainers.image.source=https://github.com/c2ventures/elecciones2026 --label org.opencontainers.image.revision="$GITHUB_SHA" -t elecciones2026:ci .
 
       - name: Run preview container with read-only filesystem and dropped capabilities
         run: |
@@ -269,6 +269,49 @@ jobs:
           name: load-rehearsal-e3-4
           path: build/load/
 
+      - name: Scan the exact serving image; block high and critical findings
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
+        with:
+          version: v0.75.0
+          image-ref: elecciones2026:ci
+          format: json
+          output: build/scan.json
+          severity: HIGH,CRITICAL
+          exit-code: '1'
+          ignore-unfixed: false
+          scanners: vuln
+
+      - name: Save the tested candidate and provenance
+        if: github.repository == 'c2ventures/elecciones2026' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          mkdir -p build/candidate
+          docker save elecciones2026:ci --output build/candidate/image.tar
+          cp build/scan.json build/candidate/scan.json
+          python3 - <<'PYTHON'
+          import json, os, subprocess
+          from pathlib import Path
+          record = {
+              'schema': 1,
+              'revision': os.environ['GITHUB_SHA'],
+              'run_id': os.environ['GITHUB_RUN_ID'],
+              'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'platform': 'linux/amd64',
+              'classification': 'private-staging',
+              'canonical_base': 'https://xn--eleccionesespaa2026-83b.es',
+              'home_sha256': subprocess.check_output(['docker', 'run', '--rm', '--read-only', '--cap-drop', 'ALL', '--entrypoint', 'sha256sum', 'elecciones2026:ci', '/usr/share/nginx/html/index.html'], text=True).split()[0],
+              'image_id': subprocess.check_output(['docker', 'image', 'inspect', '--format', '{{.Id}}', 'elecciones2026:ci'], text=True).strip(),
+          }
+          Path('build/candidate/release.json').write_text(json.dumps(record, indent=2) + '\n')
+          PYTHON
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: github.repository == 'c2ventures/elecciones2026' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          name: tested-serving-image
+          path: build/candidate/
+          if-no-files-found: error
+          retention-days: 3
+
   fork-pr-isolation:
     name: Verify fork PR isolation and deploy credential protection (Task 4.1)
     runs-on: ubuntu-latest
@@ -284,15 +327,69 @@ jobs:
             echo "Push event on ${{ github.ref }}"
           fi
 
-  # Deployment / Release Gate: Strictly gated to push on main, never on pull_request (Tasks 4.1, 4.4)
-  deploy-gate:
-    name: Production Release Gate (Human Gate G4)
+  publish-candidate:
+    name: Publish tested private release candidate (E3.3)
     runs-on: ubuntu-latest
-    needs: [validate, docker-parity, fork-pr-isolation]
+    needs: [validate, mobile-accessibility, docker-parity, fork-pr-isolation]
     if: github.repository == 'c2ventures/elecciones2026' && github.event_name == 'push' && github.ref == 'refs/heads/main'
-    environment: production
+    permissions:
+      contents: read
+      packages: write
+      actions: read
     steps:
-      - name: Protected release execution gate
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: tested-serving-image
+          path: candidate
+      - name: Publish the tested image without rebuilding
+        env:
+          REGISTRY_TOKEN: ${{ github.token }}
+          REGISTRY_USER: ${{ github.actor }}
+        shell: bash
         run: |
-          echo "Release gate passed for production repository on main branch."
-          echo "Deploy credentials accessible strictly within protected environment on main push."
+          set -euo pipefail
+          umask 077
+          export DOCKER_CONFIG="$RUNNER_TEMP/registry-auth"
+          trap 'docker logout ghcr.io >/dev/null 2>&1 || true; rm -rf "$DOCKER_CONFIG"' EXIT
+          mkdir -p "$DOCKER_CONFIG"
+          python3 - <<'PYTHON'
+          import json, os, urllib.request, urllib.error
+          request = urllib.request.Request('https://api.github.com/orgs/c2ventures/packages/container/elecciones2026', headers={'Authorization': 'Bearer ' + os.environ['REGISTRY_TOKEN'], 'Accept': 'application/vnd.github+json'})
+          try:
+              with urllib.request.urlopen(request, timeout=20) as response:
+                  assert json.load(response)['visibility'] == 'private', 'Registry package must remain private'
+          except urllib.error.HTTPError as exc:
+              if exc.code != 404:
+                  raise
+          PYTHON
+          docker load --input candidate/image.tar
+          python3 - <<'PYTHON'
+          import json, os, subprocess
+          from pathlib import Path
+          record = json.loads(Path('candidate/release.json').read_text())
+          assert record['revision'] == os.environ['GITHUB_SHA']
+          assert record['run_id'] == os.environ['GITHUB_RUN_ID']
+          assert record['image_id'] == subprocess.check_output(['docker', 'image', 'inspect', '--format', '{{.Id}}', 'elecciones2026:ci'], text=True).strip()
+          PYTHON
+          printf '%s' "$REGISTRY_TOKEN" | docker login ghcr.io --username "$REGISTRY_USER" --password-stdin >/dev/null
+          tag="ghcr.io/c2ventures/elecciones2026:ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          docker tag elecciones2026:ci "$tag"
+          docker push "$tag"
+          export CANDIDATE_TAG="$tag"
+          python3 - <<'PYTHON'
+          import json, os, subprocess
+          from pathlib import Path
+          image = json.loads(subprocess.check_output(['docker', 'image', 'inspect', os.environ['CANDIDATE_TAG']], text=True))[0]
+          record = json.loads(Path('candidate/release.json').read_text())
+          assert image['Id'] == record['image_id']
+          record['image'] = next(ref for ref in image['RepoDigests'] if ref.startswith('ghcr.io/c2ventures/elecciones2026@sha256:'))
+          Path('candidate/release.json').write_text(json.dumps(record, indent=2) + '\n')
+          PYTHON
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: release-candidate
+          path: |
+            candidate/release.json
+            candidate/scan.json
+          if-no-files-found: error
+          retention-days: 30

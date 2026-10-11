@@ -1,0 +1,87 @@
+name: Deliver approved staging candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      ci_run_id:
+        description: Successful main CI run ID containing the reviewed candidate
+        required: true
+        type: string
+      approval_record:
+        description: Reference to owner approval and reviewed CI evidence
+        required: true
+        type: string
+      approve:
+        description: I approve this exact candidate for authenticated private staging
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: elecciones2026-origin-delivery
+  cancel-in-progress: false
+
+jobs:
+  authorize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enforce manual owner approval and activation prerequisites
+        env:
+          APPROVED: ${{ inputs.approve }}
+          APPROVAL_RECORD: ${{ inputs.approval_record }}
+          READY: ${{ vars.DEPLOYMENT_READY }}
+          RUNNER_LABELS: ${{ vars.DEPLOY_RUNNER_LABELS }}
+        run: |
+          python3 - <<'PYTHON'
+          import json, os
+          assert os.environ['GITHUB_REPOSITORY'] == 'c2ventures/elecciones2026'
+          assert os.environ['GITHUB_REF'] == 'refs/heads/main'
+          assert os.environ['GITHUB_ACTOR'] == 'barnolacesc'
+          assert os.environ['GITHUB_TRIGGERING_ACTOR'] == 'barnolacesc'
+          assert os.environ['APPROVED'] == 'true'
+          assert os.environ['APPROVAL_RECORD'].strip()
+          assert os.environ['READY'] == 'true', 'Complete registry, network, DNS, TLS and staging setup first'
+          labels = json.loads(os.environ['RUNNER_LABELS'])
+          assert isinstance(labels, list) and labels and all(isinstance(item, str) and item for item in labels)
+          PYTHON
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Verify selected trusted CI run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CI_RUN_ID: ${{ inputs.ci_run_id }}
+        run: python3 ops/delivery.py "$CI_RUN_ID"
+
+  deliver:
+    needs: authorize
+    # Configure only an approved isolated runner or approved connection path.
+    runs-on: ${{ fromJSON(vars.DEPLOY_RUNNER_LABELS || '["ubuntu-latest"]') }}
+    environment: production
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: release-candidate
+          path: candidate
+          github-token: ${{ github.token }}
+          repository: c2ventures/elecciones2026
+          run-id: ${{ inputs.ci_run_id }}
+      - name: Deliver digest through restricted SSH and verify HTTPS
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CI_RUN_ID: ${{ inputs.ci_run_id }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_PORT: ${{ vars.VPS_SSH_PORT }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+          STAGING_BASIC_AUTH: ${{ secrets.STAGING_BASIC_AUTH }}
+        run: python3 ops/delivery.py "$CI_RUN_ID" --candidate candidate/release.json

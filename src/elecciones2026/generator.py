@@ -49,7 +49,7 @@ from elecciones2026.source_register import (
     load_register,
 )
 
-DEFAULT_CANONICAL_BASE = "https://elecciones2026.es"
+DEFAULT_CANONICAL_BASE = "https://xn--eleccionesespaa2026-83b.es"
 DEFAULT_BUILD_DATE = "2026-10-09"
 DEFAULT_ELECTION_ID = "es-gen-2026"
 

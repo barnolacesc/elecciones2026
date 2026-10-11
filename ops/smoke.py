@@ -88,11 +88,12 @@ def main():
                 "-keyout", str(root / "origin.key"), "-out", str(root / "origin.pem"),
                 "-days", "1", "-subj", "/CN=election.example.invalid")
             shutil.copy(root / "origin.pem", root / "origin-pull-ca.pem")
-            conf = root / "origin.conf"
-            conf.write_text(Path(__file__).with_name("origin.conf").read_text())
-            run("docker", "run", "--rm", "--user", "0", "--entrypoint", "nginx",
-                "-v", f"{root}:/etc/elecciones2026/tls:ro",
-                "-v", f"{conf}:/etc/nginx/conf.d/default.conf:ro", args.base_image, "-t")
+            for template in ("origin.conf", "staging-origin.conf"):
+                conf = root / template
+                conf.write_text(Path(__file__).with_name(template).read_text())
+                run("docker", "run", "--rm", "--user", "0", "--entrypoint", "nginx",
+                    "-v", f"{root}:/etc/elecciones2026/tls:ro",
+                    "-v", f"{conf}:/etc/nginx/conf.d/default.conf:ro", args.base_image, "-t")
             print(f"PASS: A -> B -> A rollback in {seconds:.1f}s; unhealthy image restored A; TLS proxy syntax valid")
         finally:
             if images:

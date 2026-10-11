@@ -289,11 +289,11 @@ class TestLiveDockerContainerParity(unittest.TestCase):
             with self.subTest(route=route):
                 with urllib.request.urlopen(origin + route, timeout=5) as resp:
                     body = resp.read().decode('utf-8')
-                canonical = 'https://elecciones2026.es' + route.split('?')[0]
+                canonical = 'https://xn--eleccionesespaa2026-83b.es' + route.split('?')[0]
                 self.assertIn(f'<link rel="canonical" href="{canonical}">', body)
                 self.assertIn(f'<meta property="og:url" content="{canonical}">', body)
                 self.assertIn('<meta property="og:locale" content="es_ES">', body)
-                image = re.search(r'<meta property="og:image" content="https://elecciones2026.es(/assets/social-preview-[0-9a-f]{16}\.png)">', body)
+                image = re.search(r'<meta property="og:image" content="https://xn--eleccionesespaa2026-83b.es(/assets/social-preview-[0-9a-f]{16}\.png)">', body)
                 self.assertIsNotNone(image)
                 with urllib.request.urlopen(origin + image.group(1), timeout=5) as resp:
                     self.assertEqual(resp.headers.get('Content-Type'), 'image/png')

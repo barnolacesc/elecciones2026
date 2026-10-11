@@ -108,8 +108,8 @@ class TestSocialMetadata(unittest.TestCase):
         from elecciones2026.generator import render_home_page, render_topic_detail
         home = HeadMetadata(render_home_page(ctx)).properties
         topic = HeadMetadata(render_topic_detail(ctx, ctx.taxonomy.topics[0])).properties
-        self.assertEqual(home['og:url'], 'https://elecciones2026.es/')
-        self.assertEqual(topic['og:url'], 'https://elecciones2026.es/temas/housing/')
+        self.assertEqual(home['og:url'], 'https://xn--eleccionesespaa2026-83b.es/')
+        self.assertEqual(topic['og:url'], 'https://xn--eleccionesespaa2026-83b.es/temas/housing/')
         for props in (home, topic):
             for text in props.values():
                 self.assertNotIn('partyA=', text)

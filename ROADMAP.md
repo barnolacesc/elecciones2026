@@ -86,7 +86,7 @@ Start with the approved 2023 PGE official policy-by-section table. Show the size
 
 Use Python 3.14 for an offline validator and static build. Use Docker for local preview and production. A small non-privileged container serves only static output; it does not process PDFs or store visitor data. Use FastAPI only after a separate need and OpenSpec change.
 
-Plan for a Hetzner VM of about 2 vCPU and 8 GB RAM, with Cloudflare Free as DNS and proxy. Cache versioned static assets at the edge. Give HTML a short or revalidated lifetime so corrections propagate. Verify the current Cloudflare plan limits before choosing WAF and rate rules. Protect the origin from direct access where feasible; restrict ports, enable TLS, use minimal privileges, apply updates, monitor availability, and keep a rollback artifact. Do not challenge every reader with a CAPTCHA. Use targeted mitigations if evidence shows abuse, and check accessibility and false positives.
+The owner selected an existing IONOS Ubuntu VPS with 1 vCPU and 1 GB RAM, with Cloudflare Free as DNS and proxy. The domain `eleccionesespaña2026.es` is registered at DonDominio; Cloudflare delegation is pending. The earlier 2-vCPU/8-GB planning baseline does not establish capacity on this smaller host. Cache versioned static assets at the edge. Give HTML a short or revalidated lifetime so corrections propagate. Verify the current Cloudflare plan limits before choosing WAF and rate rules. Protect the origin from direct access where feasible; restrict ports, enable TLS, use minimal privileges, apply updates, monitor availability, and keep a rollback artifact. Do not challenge every reader with a CAPTCHA. Use targeted mitigations if evidence shows abuse, and check accessibility and false positives.
 
 Define a measurable load test before release: 10,000 concurrent *visitors* is a target scenario, not a promise that 10,000 requests per second can reach a 2-vCPU origin. Record cache-hit ratio, origin request rate, p95 latency, error rate, memory, and cost under normal and burst loads. Test origin-failure behavior and plan a capacity step-up if results fail. See [architecture](docs/ARCHITECTURE.md) and [security](docs/SECURITY.md).
 
@@ -102,7 +102,7 @@ Publish useful Spanish landing, topic, party, method, source, and correction pag
 | M1 — OpenSpec MVP | Proposal, specs, design, and tasks approved |
 | M2 — Pilot data | Two real programmes with reviewed, source-linked statements |
 | M3 — Product pilot | Mobile comparator, tests, security review, and load results |
-| M4 — Public release | Domain, Cloudflare/Hetzner setup, rollback, monitoring, source coverage |
+| M4 — Public release | Domain, Cloudflare/IONOS setup, rollback, monitoring, source coverage |
 | M5 | Programme alignment quiz with local scoring, source links, and fairness/privacy review |
 | M6 | Manual seat and coalition simulator with verified rules |
 | M7 | CIS observatory with comparable official study data |

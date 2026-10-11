@@ -121,7 +121,7 @@ class TestDecisionRecord(unittest.TestCase):
             self.architecture_text,
             "ARCHITECTURE.md must reference DECISION-RECORD.md",
         )
-        self.assertIn("elecciones2026.es", self.architecture_text)
+        self.assertIn("xn--eleccionesespaa2026-83b.es", self.architecture_text)
         self.assertIn("€50.00", self.architecture_text)
         self.assertIn("150 ms", self.architecture_text)
         self.assertIn("250 ms", self.architecture_text)

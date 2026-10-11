@@ -7,7 +7,7 @@ Status: planning complete; restricted-access implementation in progress; live ac
 - [ ] 1.1 Record read-only Ubuntu VPS preflight for owner-supplied `195.20.230.75`: SSH port, version, architecture, disk, listeners, proxy, firewall and memory headroom; verify the inventory through a trusted operator connection and console recovery.
 - [ ] 1.2 Record owner-confirmed finance-service retirement and backup/restore evidence for retained data; verify the selected loopback port is free before activation without deleting finance data.
 - [ ] 1.3 Select the isolated fixed-egress runner or approved authenticated private connection path; verify SSH reachability from that path and denial from an unapproved source.
-- [ ] 1.4 Verify repository-plan support for required production reviewers, main-only deployment and protected secrets; record the configured gate and demonstrate that missing approval blocks release.
+- [ ] 1.4 Record unavailable required reviewers on the private repository plan, the owner-selected manual dispatch gate, main-only environment rules and protected secrets; demonstrate that missing operator approval blocks release.
 - [ ] 1.5 Reconcile IONOS, 1-vCPU/1-GB and domain references in both roadmaps, ADR-0001, architecture/security/operations documentation and OpenSpec context; review consistency and retain original release targets until explicitly revised by owners.
 
 ## 2. Publish an immutable release candidate
@@ -15,12 +15,12 @@ Status: planning complete; restricted-access implementation in progress; live ac
 - [ ] 2.1 Extend the existing CI dependency graph so trusted-main image publication requires validation, mobile accessibility, Docker parity and credential isolation; add workflow contract checks for failed jobs, wrong refs/repos, and fork events.
 - [ ] 2.2 Build once for the inspected CPU architecture, run serving/release checks against that image, scan it, and push it to private GHCR using job-scoped package permissions; verify the tested, scanned and published artifact share one digest and retain scan/revision/build evidence.
 - [ ] 2.3 Pin new actions by reviewed full SHA, set non-canceling deployment concurrency and least-privilege permissions, and document package access; verify PR jobs cannot publish images or access deployment secrets.
-- [ ] 2.4 Configure the approved IDNA canonical domain in generation, metadata and proxy inputs; add checks covering HTTPS canonical URLs, sitemap, social previews and absence of the obsolete canonical domain.
+- [x] 2.4 Configure the approved IDNA canonical domain in generation, metadata and proxy inputs; add checks covering HTTPS canonical URLs, sitemap, social previews and absence of the obsolete canonical domain.
 
 ## 3. Prepare restricted host operations
 
 - [x] 3.1 Implement the root-owned forced-command deployment wrapper with fixed Compose/state configuration, approved image-repository allowlist, digest validation and narrow sudo; test rejection of shell syntax, extra arguments, alternate repositories, environment overrides, and unauthorized commands.
-- [ ] 3.2 Document and provision the restricted SSH account, VPS public key, GitHub `production` secret `VPS_SSH_KEY`, environment secrets `VPS_HOST=195.20.230.75`, `VPS_USER`, and `VPS_KNOWN_HOSTS`, with a new election-site key pair, independently verified known_hosts, and root-only private-registry authentication; verify key rotation, host-key mismatch rejection, and disabled forwarding/PTY without exposing credentials. Verify secrets are passed through environment variables, connection inputs are validated, and temporary key files are removed on success and failure.
+- [ ] 3.2 Document and provision the restricted SSH account, VPS public key, GitHub `production` secret `VPS_SSH_KEY`, environment secrets `VPS_HOST=195.20.230.75`, `VPS_USER`, and `VPS_KNOWN_HOSTS`, with the owner-approved existing deployment key and a documented rotation path, independently verified known_hosts, and root-only private-registry authentication; verify key rotation, host-key mismatch rejection, and disabled forwarding/PTY without exposing credentials. Verify secrets are passed through environment variables, connection inputs are validated, and temporary key files are removed on success and failure.
 - [ ] 3.3 Adapt the existing loopback Compose/proxy setup to preflight results, preserving non-root/read-only execution and bounded resources; verify Compose configuration, TLS/proxy syntax, container health, free ports and lack of public container listeners.
 - [ ] 3.4 Document owner-controlled finance retirement, Cloudflare TLS/origin restrictions, cache handling and authenticated private staging; verify private pilot content is unavailable on the public domain and requires authentication in staging.
 
@@ -54,4 +54,21 @@ Original planning-only checks: `openspec validate ionos-continuous-deployment --
 
 Task 3.1 complete: root-owned request validator and isolated launchers, fixed Compose/state paths, GHCR repository/digest allowlist, narrow NOSETENV sudo policy, and account-wide SSH restriction with root-managed authorized keys. Eight boundary tests cover invalid requests, inherited settings, ownership/write permissions, symlinks, state references, and shell argument preservation. Existing seven release/recovery tests pass. Full Python unittest suite: 312 tests pass, 2 skips. Focused Ruff E9/F63/F7/F82 checks, compile validation, shell syntax, strict OpenSpec validation and diff whitespace checks pass.
 
-Disposable Ubuntu 22.04 AMD64 rehearsal passes using real OpenSSH and sudo: restricted SSH check succeeds; arbitrary requests, other image repositories, edits to installation/state/key files and an old home authorized key are rejected. CI now repeats that off-host rehearsal on a digest-pinned Ubuntu test image. This does not test live Docker activation, VPS provisioning, production firewall or GitHub release approval. Task 3.2 remains unchecked until the owner installs the new public key/policy, provisions secrets and registry pull access, and verifies live access. The private repository's production environment currently reports no protection rules or deployment branch policy; automatic delivery stays inactive.
+Disposable Ubuntu 22.04 AMD64 rehearsal passes using real OpenSSH and sudo: restricted SSH check succeeds; arbitrary requests, other image repositories, edits to installation/state/key files and an old home authorized key are rejected. CI now repeats that off-host rehearsal on a digest-pinned Ubuntu test image. This does not test live Docker activation, VPS provisioning, production firewall or GitHub release approval. Task 3.2 remains unchecked until the owner installs the new public key/policy, provisions secrets and registry pull access, and verifies live access. The initial environment lacked protection rules. A later read-only API check confirmed the owner-configured main-only branch policy; required reviewers remain unavailable and application activation remains manual.
+
+## Delivery preparation evidence — 2026-10-11
+
+Owner confirmed the domain was bought at DonDominio; Cloudflare delegation is
+pending. Registry helper, trusted-main private image publication, manual staging
+delivery and both staging/public nginx templates are prepared. The owner selected
+manual dispatch because required reviewers are unavailable on the repository plan.
+The existing deploy key was retained by explicit owner decision. Live restricted
+SSH check passed and arbitrary `id` was denied; no application was activated.
+Main-only production environment branch policy was verified through GitHub API.
+
+Local validation: 321 unittest tests passed (2 skips), focused Ruff and actionlint
+passed; AMD64 Docker build passed; both domain TLS proxy templates passed nginx -t with disposable test certificates. Trivy 0.75.0 scan of the saved serving image
+found no HIGH/CRITICAL vulnerabilities. Docker Desktop direct scan failed on a
+missing snapshot; scanning the saved exact image succeeded. DNS, certificates,
+registry login, approved runner/firewall path, live delivery and public gates
+remain unverified. Tasks stay open where their full live evidence is absent.

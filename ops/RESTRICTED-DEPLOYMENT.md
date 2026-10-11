@@ -157,9 +157,10 @@ disabling host-key verification or restoring the Docker group.
 Provision root-only GHCR pull authentication, an approved isolated runner path,
 production approval rules and branch restrictions, authenticated staging, domain
 and TLS configuration, external monitoring and publication evidence before any
-live delivery. The private repository's `production` environment reported no
-protection rules or branch policy in the read-only API check on 2026-10-11.
-CI configuration must not activate automatic production delivery in that state.
+live delivery. A later read-only API check confirmed the owner configured
+main-only environment branch rules. Required reviewers are unavailable on this
+private repository plan; the owner chose manual dispatch with explicit operator
+approval. Automatic application activation remains disabled.
 
 The account's ability to request a release does not establish that a digest is
 editorially approved. Use the protected pipeline and retained approval evidence;
@@ -168,3 +169,11 @@ rolling back to an incorrect version.
 
 See [OpenSSH forced commands](https://man.openbsd.org/sshd.8) and
 [Ubuntu sudo policy](https://manpages.ubuntu.com/manpages/jammy/man5/sudoers.5.html).
+
+## Delivery follow-up
+
+The owner installed the restriction and retained the existing 1Password deploy key
+by explicit choice. Live `check` succeeded and arbitrary `id` was denied. Next use
+[IONOS delivery setup](IONOS-DELIVERY.md) for root-only private registry login,
+DonDominio-to-Cloudflare delegation, TLS, authenticated staging and the manual
+workflow. Public delivery remains behind G2/G4 and live evidence.
