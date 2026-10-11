@@ -18,6 +18,7 @@
 | G7 | CIS observatory | Official studies, method comparison rules, accessible trends, and source audit | `cis-data-observatory` |
 | G8 | Localization | Reviewed Catalan; English only if demand and review capacity exist | `reviewed-localization` |
 | G9 (exploratory) | Prior commitment follow-through | Evidence feasibility, attribution rules, and publication go/no-go reviewed | `commitment-follow-through` |
+| G10 (optional) | Official budget context | Official table, denominator and coverage audit, accessible mobile view, and publication review | `budget-context` |
 
 Source feedback reporting is an optional post-MVP workstream. It has no fixed gate or release date. It must not delay G5 (quiz) or G6 (seat simulator).
 
@@ -152,6 +153,18 @@ Vote-to-seat prediction is a separate future change, not part of E5.
 | E9.2 | Map each sampled commitment to official programme text, official acts or statistics where relevant, and counter-evidence; record source dates and coalition/competence context. | Evidence dossier distinguishes an act, an outcome, a partial result, and unavailable evidence. | E9.1 |
 | E9.3 | Test inter-reviewer agreement, corrections, sampling bias, and denominator stability. Decide whether any aggregate is defensible. | Published go/no-go decision. If evidence is weak, reject percentages or the feature. | E9.2 |
 | E9.4 | Only after approval, complete specs/design/tasks and prototype a mobile evidence view. | Every status has a source trail, a review date, uncertainty, and a correction path; no "lies" label. | E9.3, human approval |
+
+## Optional epic E10 — Official budget context
+
+**Outcome:** explain official spending-policy amounts and shares without attributing them to parties. **Gate:** G10. **OpenSpec:** `budget-context` (proposal draft only). This does not block the MVP or E4–E9. See [source research](../docs/BUDGET-SOURCE-RESEARCH.md).
+
+| Package | Agent-ready assignment | Deliverable and acceptance | Depends on |
+|---|---|---|---|
+| E10.1 | Register the approved 2023 PGE table and define year, institutional scope, chapters, consolidation, units, denominator, rights, and review owner. | Reviewed source and measurement contract; no 2023 value is presented as a verified 2026 value. | None |
+| E10.2 | Complete specs/design/tasks and build a versioned, offline import with total and share checks. | Reproducible snapshot, source checksum, rounding rules, and failure tests. | E10.1 |
+| E10.3 | Build a Spanish mobile ranked-bar view with policy and section details and an equivalent accessible table. | 360/390/430-px checks; amounts and shares link to the source and show the exact denominator. | E10.2, E2.1 |
+| E10.4 | Check official programme-level tables and an auditable join for initiative detail. | Publish only validated programme amounts; otherwise keep section and policy views without invented drill-down. | E10.1 |
+| E10.5 | Decide whether to add a separate execution view using IGAE data. | Go/no-go based on compatible coverage, dates, and accounting basis; no mixed budget/execution chart. | E10.1 |
 
 ## Delegation contract for each package
 
