@@ -52,28 +52,33 @@ def layout(rows, width, height):
     return rectangles
 
 
-def proportional_amount(value, denominator):
+def percentage(value, denominator):
     result = share(value, denominator)
     if Decimal(value) > 0 and Decimal(result) == 0:
-        return '< 0,01'
-    return result.replace('.', ',')
+        return '< 0,01 %'
+    return result.replace('.', ',') + ' %'
 
 
-def draw_tiles(rows, denominator, width, height, font_size=11):
+def amount_label(value):
+    return display_amount(value) + ' M€'
+
+
+def draw_tiles(rows, denominator, width, height, font_size=13):
     result = []
     for row, x, y, w, h in layout(rows, width, height):
-        title = f"{row['code']} · {row['label_es']}: {proportional_amount(row['amount_thousand_eur'], denominator)} € de cada 100 €"
+        proportion = percentage(row['amount_thousand_eur'], denominator)
+        amount = amount_label(row['amount_thousand_eur'])
+        title = f"{row['label_es'].capitalize()}: {proportion} del total · {amount}"
         result.append(f'<g><title>{escape(title)}</title><rect x="{x:.3f}" y="{y:.3f}" width="{w:.3f}" height="{h:.3f}" fill="#24495d" stroke="#fff" stroke-width="2"/>')
-        if w >= font_size * 2.5 and h >= font_size * 1.8:
-            lines = [row['code']]
-            if w >= font_size * 5 and h >= font_size * 3.5:
-                label = row['label_es'].capitalize()
-                capacity = max(1, int((w-16) / (font_size * .65)))
-                wrapped = wrap(label, width=capacity, break_long_words=False, break_on_hyphens=False)
-                count = max(1, int((h-16) / (font_size * 1.3)) - 1)
-                if len(wrapped) <= count and all(len(line) <= capacity for line in wrapped):
-                    lines = wrapped
-                lines.append(proportional_amount(row['amount_thousand_eur'], denominator) + ' €')
+        capacity = max(0, int((w-12) / (font_size * .65)))
+        count = max(0, int((h-12) / (font_size * 1.3)))
+        if len(proportion) <= capacity and count:
+            lines = [proportion]
+            if len(amount) <= capacity and count >= 2:
+                lines.append(amount)
+            wrapped = wrap(row['label_es'].capitalize(), width=max(1, capacity), break_long_words=False, break_on_hyphens=False)
+            if len(wrapped) + len(lines) <= count and all(len(line) <= capacity for line in wrapped):
+                lines = wrapped + lines
             for index, line in enumerate(lines):
                 result.append(f'<text x="{x + w/2:.3f}" y="{y + h/2 + (index - (len(lines)-1)/2)*font_size*1.3:.3f}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="{font_size}" font-weight="600">{escape(line)}</text>')
         result.append('</g>')
@@ -85,42 +90,44 @@ def overview(payload, chart_url, preview=False):
     denominator = payload['measurement.json']['denominator_amount_thousand_eur']
     plot = draw_tiles(rows, denominator, 360, 280)
     def row_html(row):
-        value = proportional_amount(row['amount_thousand_eur'], denominator)
-        return (f'<li><span class="budget-chart-code">{escape(row["code"])}</span>'
-                f'<span>{escape(row["label_es"].capitalize())}</span><strong>{escape(value)} €</strong></li>')
-    first = ''.join(row_html(row) for row in rows[:6])
-    rest = ''.join(row_html(row) for row in rows[6:])
-    extra = f'<details class="budget-chart-more"><summary>Ver las {len(rows)} políticas</summary><ol class="budget-chart-key" start="7">{rest}</ol></details>' if len(rows) > 6 else ''
+        value = percentage(row['amount_thousand_eur'], denominator)
+        return (f'<li><span>{escape(row["label_es"].capitalize())}</span>'
+                f'<span class="budget-chart-values"><strong>{escape(value)}</strong>'
+                f'<span>{escape(amount_label(row["amount_thousand_eur"]))}</span></span></li>')
+    key = ''.join(row_html(row) for row in rows)
     return ('<section class="budget-overview" aria-labelledby="budget-overview-title">'
             '<h2 id="budget-overview-title">¿Cómo se reparte el presupuesto?</h2>'
-            '<p class="budget-chart-lede">De cada <strong>100 € aprobados</strong>, esta es la parte de cada política.</p>'
+            '<p class="budget-chart-lede">La superficie de cada partida representa su porcentaje del total.</p>'
+            '<p class="budget-chart-units">Porcentaje del total e importe real. M€ = millones de euros.</p>'
             '<div class="budget-overview-body"><figure class="budget-map"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 280" role="img" aria-labelledby="budget-map-title budget-map-desc" style="font-family:Arial,sans-serif">'
             f'<title id="budget-map-title">Reparto proporcional del presupuesto aprobado de 2023</title>'
-            f'<desc id="budget-map-desc">{len(rows)} políticas oficiales. El área de cada rectángulo representa su importe sin redondear. Los códigos corresponden a la lista siguiente.</desc>{plot}</svg>'
-            '<figcaption>Más superficie = más presupuesto. Los códigos identifican las políticas de la lista.</figcaption></figure>'
-            f'<div class="budget-legend"><ol class="budget-chart-key">{first}</ol>{extra}</div></div>'
+            f'<desc id="budget-map-desc">{len(rows)} políticas oficiales. El área de cada rectángulo es proporcional a su porcentaje del total, calculado sin redondear. Todos los nombres, porcentajes e importes están en la lista siguiente.</desc>{plot}</svg>'
+            '<figcaption>El área está a escala: una partida del 40 % ocupa el 40 % del gráfico. Las partidas pequeñas se pueden consultar debajo.</figcaption></figure>'
+            '</div>'
             '<p class="budget-chart-scope">PGE 2023 · Capítulos 1–8 · Estado y Seguridad Social. Presupuesto aprobado, no gasto ejecutado. '
-            'No incluye todo el gasto autonómico y local. Importes proporcionales redondeados; no son costes de propuestas.</p>'
+            'No incluye todo el gasto autonómico y local. Importes y porcentajes redondeados a dos decimales; no son costes de propuestas.</p>'
             f'<div class="budget-chart-actions" data-chart-url="{escape(chart_url, quote=True)}">'
             '<button type="button" class="btn-primary" id="budget-chart-share" hidden>Compartir gráfico</button>'
             '<button type="button" class="btn-share" id="budget-chart-save" hidden>Guardar imagen (PNG)</button>'
             f'<a class="budget-chart-svg" href="{escape(chart_url, quote=True)}" download="pge-2023.svg">Descargar gráfico (SVG)</a></div>'
-            '<p id="budget-chart-feedback" role="status" aria-live="polite"></p></section>')
+            '<p id="budget-chart-feedback" role="status" aria-live="polite"></p>'
+            f'<div class="budget-legend"><ol class="budget-chart-key">{key}</ol></div></section>')
 
 
 def share_svg(payload, manifest, bundle_id, preview=False):
     """Standalone source-bearing image; private exports keep their draft notice."""
     rows = policies(payload)
     denominator = payload['measurement.json']['denominator_amount_thousand_eur']
-    title = 'De cada 100 € aprobados'
+    title = '¿Cómo se reparte el presupuesto?'
     content = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2000" viewBox="0 0 1080 2000" role="img" aria-labelledby="title desc" style="font-family:Arial,sans-serif">'
                f'<title id="title">{title} · PGE 2023</title><desc id="desc">Reparto de las {len(rows)} políticas oficiales del presupuesto aprobado consolidado, capítulos 1–8. No son datos de ejecución.</desc>'
                '<rect width="1080" height="2000" fill="#f8f9f7"/>'
                f'<text x="40" y="62" font-size="24" fill="#526675">{"BORRADOR PRIVADO · PGE 2023 · NO PUBLICAR" if preview else "PRESUPUESTOS GENERALES DEL ESTADO · 2023"}</text>'
                f'<text x="40" y="125" font-size="48" font-weight="700" fill="#14253a">{title}</text>'
-               '<text x="40" y="169" font-size="22" fill="#526675">El tamaño de cada área muestra su parte del presupuesto.</text>'
-               f'<g transform="translate(40,200)">{draw_tiles(rows, denominator, 1000, 430, 24)}</g>']
-    y = 688
+               f'<text x="40" y="169" font-size="22" fill="#526675">Total: {escape(display_amount(denominator))} millones de euros · M€ = millones de euros</text>'
+               '<text x="40" y="204" font-size="22" fill="#526675">Área a escala: 40 % del presupuesto = 40 % del gráfico.</text>'
+               f'<g transform="translate(40,235)">{draw_tiles(rows, denominator, 1000, 620, 22)}</g>']
+    y = 912
     split = (len(rows) + 1) // 2
     left, right = rows[:split], rows[split:]
     for index in range(split):
@@ -130,21 +137,22 @@ def share_svg(payload, manifest, bundle_id, preview=False):
                 continue
             row = group[index]
             x = 40 + column * 510
-            lines = wrap(row['label_es'].capitalize(), width=34, break_long_words=True, break_on_hyphens=False)
+            lines = wrap(row['label_es'].capitalize(), width=30, break_long_words=True, break_on_hyphens=False)
             max_lines = max(max_lines, len(lines))
-            content.append(f'<text x="{x}" y="{y}" font-size="17" fill="#526675">{escape(row["code"])}</text>')
             for offset, line in enumerate(lines):
-                content.append(f'<text x="{x+35}" y="{y+offset*22}" font-size="18" fill="#14253a">{escape(line)}</text>')
-            value = proportional_amount(row['amount_thousand_eur'], denominator)
-            content.append(f'<text x="{x+480}" y="{y}" text-anchor="end" font-size="18" font-weight="700" fill="#14253a">{escape(value)} €</text>')
-        y += max(52, max_lines * 22 + 18)
-    y = max(y + 25, 1700)
+                content.append(f'<text x="{x}" y="{y+offset*22}" font-size="18" fill="#14253a">{escape(line)}</text>')
+            value = percentage(row['amount_thousand_eur'], denominator)
+            content.append(f'<text x="{x+480}" y="{y}" text-anchor="end" font-size="18" font-weight="700" fill="#14253a">{escape(value)}</text>')
+            amount = amount_label(row['amount_thousand_eur'])
+            content.append(f'<text x="{x+480}" y="{y+24}" text-anchor="end" font-size="16" fill="#526675">{escape(amount)}</text>')
+        y += max(64, max_lines * 22 + 18)
+    y += 35
     source = next(item['url'] for item in payload['source.json']['companion_sources'] if item['id'] == 'pge-2023-matrix-html')
     reviewed = sorted(review['reviewed_at'] for review in payload['reviews.json'] if review['decision'] == 'approved')
     notes = ['Presupuesto aprobado, no gasto ejecutado. Datos históricos de 2023.',
              'Estado y Seguridad Social · Consolidado, capítulos 1–8. No es todo el gasto público en España.',
              f'Total: {display_amount(denominator)} millones de euros ({denominator.replace(".", ",")} miles sin redondear).',
-             'Cada importe es una proporción redondeada de 100 €. No indica el coste de propuestas políticas.',
+             'Importes y porcentajes redondeados a dos decimales. No son costes de propuestas políticas.',
              f'Fuente: SEPG · Tabla {payload["source.json"]["table_id"]} · Versión {manifest["dataset_version"]}',
              f'Actualización: {manifest["build_date"]} · Revisión: {reviewed[-1][:10] if reviewed else "pendiente"}',
              source, f'Conjunto: {bundle_id}']

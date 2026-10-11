@@ -7,7 +7,7 @@ Readers need sourced historical spending context alongside programme comparisons
 ## What Changes
 
 - Define an audited 2023 approved-PGE source and measurement contract, with exact provenance, consolidation, units, denominator, and explicit missing-data rules.
-- Define a reviewed mapping to all eight core taxonomy topics and a Spanish mobile budget view, with a simple shareable proportional overview, shared macro context beside comparative measures, and expanded ranked bars, section details, and an equivalent table.
+- Define a reviewed mapping to all eight core taxonomy topics and a Spanish mobile budget view, with a shareable overview scaled to the consolidated total, real amounts and percentages, shared macro context beside comparative measures, and expanded ranked bars, section details, and an equivalent table.
 - Define versioned offline data bundles, reproducibility and correction checks, programme-detail and execution go/no-go decisions, and an optional offline-distribution evaluation that protects primary-site performance.
 
 ## Capabilities

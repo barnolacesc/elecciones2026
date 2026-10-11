@@ -44,7 +44,7 @@ class BudgetChartTests(unittest.TestCase):
             self.assertIn(expected, image)
         self.assertIn('https://www.sepg.pap.hacienda.gob.es/', image)
         for row in budget_chart.policies(self.fixture.payload):
-            self.assertIn(row['label_es'], image)
+            self.assertIn(row['label_es'].capitalize(), image)
         self.assertNotIn('BORRADOR PRIVADO', image)
         self.assertIn('BORRADOR PRIVADO', budget_chart.share_svg(*args, preview=True))
 
@@ -54,7 +54,10 @@ class BudgetChartTests(unittest.TestCase):
         changed['mapping.json']['mappings'] = []
         self.assertEqual(original, budget_chart.overview(changed, './chart.svg'))
         for row in budget_chart.policies(changed):
-            self.assertIn(row['code'], original)
+            self.assertIn(row['label_es'].capitalize(), original)
+        self.assertNotIn('budget-chart-code', original)
+        self.assertNotIn('100 €', original)
+        self.assertIn('M€', original)
         self.assertIn('presupuesto', original)
         self.assertIn('no gasto ejecutado', original)
         self.assertIn('Compartir gráfico', original)
@@ -69,15 +72,31 @@ class BudgetChartTests(unittest.TestCase):
         with self.assertRaises(BudgetError):
             budget_chart.share_svg(payload, self.fixture.manifest, self.fixture.bundle.name)
 
-    def test_tile_labels_use_complete_names_or_codes_without_fragments(self):
+    def test_tile_labels_use_percentages_and_real_amounts_without_codes(self):
         rows = [{'code': '94', 'label_es': 'TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS',
                  'amount_thousand_eur': '100'}]
         small = ET.fromstring('<svg>' + budget_chart.draw_tiles(rows, '100', 80, 60) + '</svg>')
         labels = [node.text for node in small.iter('text')]
-        self.assertEqual(labels, ['94', '100,00 €'])
+        self.assertEqual(labels, ['100,00 %', '0,10 M€'])
         large = ET.fromstring('<svg>' + budget_chart.draw_tiles(rows, '100', 360, 280) + '</svg>')
         labels = [node.text for node in large.iter('text')]
-        self.assertEqual(' '.join(labels[:-1]), rows[0]['label_es'].capitalize())
+        self.assertEqual(' '.join(labels[:-2]), rows[0]['label_es'].capitalize())
+        self.assertEqual(labels[-2:], ['100,00 %', '0,10 M€'])
+
+    def test_forty_percent_policy_occupies_forty_percent_of_total_area(self):
+        rows = [{'code': '21', 'label_es': 'PENSIONES', 'amount_thousand_eur': '40000'},
+                {'code': '94', 'label_es': 'TRANSFERENCIAS', 'amount_thousand_eur': '35000'},
+                {'code': '95', 'label_es': 'DEUDA PÚBLICA', 'amount_thousand_eur': '25000'}]
+        for width, height in ((360, 280), (1000, 620)):
+            rectangles = budget_chart.layout(rows, width, height)
+            self.assertAlmostEqual(rectangles[0][3] * rectangles[0][4] / (width * height), .4)
+            self.assertAlmostEqual(sum(w*h for _, _, _, w, h in rectangles), width*height)
+            plot = ET.fromstring('<svg>' + budget_chart.draw_tiles(rows, '100000', width, height) + '</svg>')
+            first_text = [node.text for node in plot.find('g').iter('text')]
+            self.assertIn('40,00 %', first_text)
+            self.assertIn('40,00 M€', first_text)
+        self.assertEqual(budget_chart.percentage('0.01', '100000'), '< 0,01 %')
+        self.assertEqual(budget_chart.amount_label('0.01'), '< 0,01 M€')
 
 
 if __name__ == '__main__':

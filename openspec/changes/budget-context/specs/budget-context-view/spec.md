@@ -58,11 +58,15 @@ The feature SHALL expose `/presupuestos/2023/` as static Spanish HTML with a can
 
 
 ### Requirement: Plain-language shareable overview
-The page SHALL lead with a proportional chart and readable key of all official policy margins, expressed as euros per 100 euros of approved budget using unrounded values. It SHALL NOT convert overlapping taxonomy topics into an additive breakdown. Full source notes, section figures, and equivalent tables SHALL remain available through a native disclosure.
+The page SHALL prioritise an area chart of all official policies, scaled by unrounded shares of the consolidated total. Overview figures SHALL show percentage and actual amount in million euros, without source codes or euros-per-100 framing. A readable key SHALL show all names and both figures. It SHALL NOT partition overlapping topics. Full source notes and tables SHALL remain available in a native disclosure.
 
 #### Scenario: Understand the distribution
 - **WHEN** a visitor opens the budget page
-- **THEN** the chart and policy key appear before expanded detail, every official policy is included, and colour or scripts are not required to read values.
+- **THEN** the chart appears before its policy key and expanded detail, every official policy is included, and colour or scripts are not required to read names, percentages, and actual amounts.
+
+#### Scenario: Understand the scale
+- **WHEN** a policy represents 40 percent of the unrounded consolidated total
+- **THEN** it occupies 40 percent of the chart area at every viewport size, without normalising the largest policy to the full plot.
 
 ### Requirement: Source-bearing image sharing
 An explicitly shared image SHALL retain year, approved-budget status, scope/exclusions, exact denominator, rounding context, source/table/version, update/review state, and bundle identity. It SHALL distinguish approved allocations from executed spending and proposal costs. Private preview images SHALL retain a visible draft notice. Native image sharing SHALL have a PNG download fallback and a standalone SVG alternative.

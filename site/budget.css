@@ -52,24 +52,23 @@
 .budget-chart-lede { font-size: var(--font-size-lg); }
 .budget-overview-body { margin-top: var(--space-4); }
 .budget-map { margin: 0 0 var(--space-4); min-width: 0; }
-.budget-map svg { width: 100%; max-width: 520px; height: auto; display: block; }
+.budget-map svg { width: 100%; max-width: 960px; height: auto; display: block; }
 .budget-map figcaption { margin-top: var(--space-2); line-height: 1.5; }
 .budget-map figcaption, .budget-chart-scope { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
 .budget-chart-key { list-style: none; padding: 0; margin: 0; }
 .budget-legend { min-width: 0; }
-.budget-chart-key li { display: grid; grid-template-columns: 26px minmax(0,1fr) auto; gap: 12px; align-items: baseline; padding: 12px 0; line-height: 1.5; border-bottom: 1px solid var(--color-border-default); }
+.budget-chart-key li { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 16px; align-items: baseline; padding: 14px 0; line-height: 1.5; border-bottom: 1px solid var(--color-border-default); }
 .budget-chart-key strong { white-space: nowrap; }
-.budget-chart-code { color: var(--color-text-secondary); font-size: var(--font-size-sm); text-align: center; }
+.budget-chart-values { display: grid; gap: 4px; text-align: right; white-space: nowrap; }
+.budget-chart-values > span { color: var(--color-text-secondary); font-size: var(--font-size-sm); }
+.budget-chart-units { color: var(--color-text-secondary); font-size: var(--font-size-sm); }
+.budget-legend { max-width: 960px; }
 .budget-chart-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
 .budget-chart-actions .btn-primary, .budget-chart-actions .btn-share { min-height: 44px; }
 .budget-chart-actions [hidden] { display: none; }
 .budget-chart-draft { color: var(--color-text-notice); font-weight: 700; }
 .budget-expanded { border-top: 1px solid var(--color-border-default); margin-top: var(--space-6); }
 .budget-expanded > summary { font-size: var(--font-size-lg); }
-@media (min-width: 960px) {
-  .budget-overview-body { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--space-6); align-items: start; }
-  .budget-chart-key li:first-child { padding-top: 0; }
-}
 .budget-page > h1 { font-size: var(--font-size-xl); line-height: 1.3; margin-block: var(--space-3); }
 .budget-page > .hero-eyebrow { margin-bottom: var(--space-2); }
 .budget-page .budget-total { font-size: var(--font-size-lg); margin-block: var(--space-3); }
