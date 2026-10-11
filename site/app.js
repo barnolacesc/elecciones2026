@@ -524,6 +524,141 @@
 
     'economy-work-tax': [
       {
+        id: 'economy-pilot-2023-measure',
+        electionId: 'es-gen-2023',
+        title: 'Medida: Regulación de la jornada laboral máxima y tiempo de trabajo (2023)',
+        summary: 'Propuestas de los programas electorales de las elecciones generales del 23 de julio de 2023 sobre la duración máxima legal de la jornada laboral, reducciones horarias y el marco de la negociación colectiva.',
+        context: 'Esta iniciativa aborda el debate sobre la reducción del tiempo de trabajo semanal sin merma salarial frente a la flexibilidad horaria adaptada a la productividad empresarial, contrastando una regulación legal vinculante frente al marco de convenios y diálogo social territorial.',
+        keyAxes: [
+          'Duración legal: reducción por ley a 37,5 h (con proceso hacia las 32 h o cuatro días) frente a mantenimiento de la jornada máxima legal con flexibilidad pactada.',
+          'Compensación salarial: reducción de jornada garantizando el 100% de la retribución salarial sin merma económica.',
+          'Marco competencial: regulación uniforme en el Estatuto de los Trabajadores frente a traspaso de la competencia laboral o primacía de convenios autonómicos.'
+        ],
+        positions: {
+          'sumar': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Fijar por ley en 2024 una jornada laboral máxima de 37,5 horas semanales sin reducción de salario, y abrir diálogo social para avanzar hacia las 32 horas.',
+            quote: 'En 2024 se establecerá por ley una jornada laboral máxima de 37,5 horas y se abrirá un proceso de diálogo social para seguir reduciendo la jornada hasta alcanzar las 32 horas semanales.',
+            policyInstrument: 'Modificación del Estatuto de los Trabajadores para fijar jornada máxima en 37,5 h',
+            section: 'Punto 4 · Página 24',
+            qualifications: [
+              'Sin reducción de salario.',
+              'Apertura de proceso de diálogo social para reducción progresiva hasta 32 horas.'
+            ],
+            source: 'Un Programa para ti · Punto 4, pág. 24',
+            sourceUrl: 'https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf#page=24',
+            date: '06/07/2023'
+          },
+          'pp': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Rechazo a la reducción legal obligatoria de jornada; fomento de la flexibilidad horaria en convenios y actualización del SMI mediante diálogo social.',
+            quote: 'ACTUALIZAREMOS EL SALARIO MÍNIMO INTERPROFESIONAL EN EL MARCO DEL DIÁLOGO SOCIAL. Involucraremos a sindicatos, empresarios y expertos en la toma de decisiones sobre el SMI.',
+            policyInstrument: 'Flexibilidad pactada en negociación colectiva y actualización del SMI en diálogo social',
+            section: 'Medida 22 · Página 19 (impresa 17)',
+            qualifications: [
+              'No propone reducción obligatoria de la jornada máxima legal en el texto del programa.',
+              'Prioriza medidas de fomento de productividad y flexibilidad horaria pactada.'
+            ],
+            source: 'Programa Electoral PP 23J · Medida 22, pág. 19 (impresa 17)',
+            sourceUrl: 'https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf#page=19',
+            date: '06/07/2023'
+          },
+          'erc': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Implementar la jornada laboral de cuatro días sin pérdida salarial y exigir el traspaso íntegro de la legislación laboral a la Generalitat.',
+            quote: 'protegeixi les classes treballadores davant els abusos del mercat, que recuperi instruments com els salaris de tramitació o l’autorització administrativa dels ERO, en reforci d’altres com la indemnització per acomiadament i implementi mesures com la jornada laboral de quatre dies.',
+            policyInstrument: 'Jornada laboral de 4 días y traspaso de la competencia laboral',
+            section: 'Defensa de la classe treballadora · Página 53 (impresa 52)',
+            qualifications: [
+              'Reivindica marco catalán de relaciones laborales y traspaso de competencias.'
+            ],
+            source: 'Programa Electoral 2023 · pág. 53 (impresa 52)',
+            sourceUrl: 'https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf#page=53',
+            date: '07/07/2023'
+          },
+          'pnv': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Respetar el marco vasco de relaciones laborales y acuerdos en diálogo social para adaptar los tiempos de trabajo sin imposiciones estatales.',
+            quote: 'Entendemos necesario abordar el debate sobre el empleo del futuro, que deberá seguir estando residenciado en el diálogo social y, por ello, en un modelo de relaciones laborales sustentado en el equilibrio de poder entre trabajadores y trabajadoras y empresarios',
+            policyInstrument: 'Defensa del marco vasco de relaciones laborales y negociación colectiva propia',
+            section: 'El empleo, nuevos retos · Página 29 (impresa 29)',
+            qualifications: [
+              'Supeditado a acuerdos en mesas de diálogo social.',
+              'Rechaza cualquier recentralización de la negociación colectiva autonómica.'
+            ],
+            source: 'Con voz propia · Punto 8, pág. 29',
+            sourceUrl: 'https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j#page=29',
+            date: '07/07/2023'
+          }
+        },
+        relationships: {
+          'pp:sumar': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Discrepancia entre reducción legal obligatoria a 37,5 horas (Sumar) frente a flexibilidad horaria pactada en convenios sin reducciones legales uniformes (PP).',
+            differences: [
+              'Sumar propone fijar por ley una jornada máxima de 37,5 horas en 2024 sin merma salarial.',
+              'El PP defiende la flexibilidad y adaptación acordada en negociación colectiva sin topes legales reducidos.'
+            ]
+          },
+          'pp:erc': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Discrepancia entre jornada laboral de cuatro días (ERC) frente al modelo de flexibilidad pactada y diálogo social para el SMI (PP).',
+            differences: [
+              'ERC propone implantar la jornada de cuatro días y traspasar la legislación laboral a la Generalitat.',
+              'El PP centra sus medidas en productividad y actualización pactada del SMI sin alterar la jornada legal.'
+            ]
+          },
+          'pp:pnv': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en remitir las condiciones laborales a la negociación colectiva y el diálogo social, con énfasis del PNV en el marco vasco propio.',
+            differences: [
+              'El PP prioriza la productividad empresarial y la unidad de mercado laboral estatal.',
+              'El PNV demanda blindar el marco vasco de relaciones laborales y el diálogo social autónomo.'
+            ]
+          },
+          'erc:sumar': {
+            type: 'agreement',
+            typeLabel: 'Coincidencia en la medida',
+            icon: '✓',
+            summary: 'Coincidencia en reducir el tiempo de trabajo sin merma salarial hacia las 32 horas o cuatro días, con matiz competencial.',
+            differences: [
+              'Sumar promueve una reforma legal estatal uniforme en el Estatuto de los Trabajadores.',
+              'ERC reivindica que la competencia sobre relaciones laborales sea traspasada a las instituciones catalanas.'
+            ]
+          },
+          'erc:pnv': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en la defensa del marco autonómico de relaciones laborales, con mayor énfasis de ERC en fijar la jornada de 4 días.',
+            differences: [
+              'ERC defiende como objetivo programático explícito la jornada de cuatro días.',
+              'El PNV supedita las adaptaciones a los acuerdos entre patronal y sindicatos en el diálogo social vasco.'
+            ]
+          },
+          'pnv:sumar': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en mejorar las condiciones laborales, con discrepancia en el carácter vinculante de una ley estatal frente a los convenios autonómicos.',
+            differences: [
+              'Sumar aboga por una ley estatal de 37,5 horas de obligado cumplimiento en todo el territorio.',
+              'El PNV defiende la autonomía de los convenios y la prevalencia de los marcos vascos de negociación.'
+            ]
+          }
+        }
+      },
+      {
         id: 'economy-smi',
         title: 'Medida: Evolución y fijación del Salario Mínimo Interprofesional (SMI)',
         summary: 'Criterios legales para la fijación del SMI y su adecuación al coste de la vida y al salario medio.',
@@ -608,6 +743,139 @@
 
     'education': [
       {
+        id: 'education-pilot-2023-measure',
+        electionId: 'es-gen-2023',
+        title: 'Medida: Gratuidad y universalización de la educación infantil de 0 a 3 años (2023)',
+        summary: 'Propuestas de los programas electorales del 23J de 2023 relativas a la gratuidad y universalización del primer ciclo de educación infantil (0 a 3 años) y su modelo de financiación.',
+        context: 'Esta iniciativa contrasta las propuestas para garantizar el acceso universal y gratuito a la educación infantil de 0 a 3 años: fórmulas de cofinanciación estatal y autonómica con inclusión del sector concertado y privado frente a la creación prioritaria o exclusiva de plazas públicas y la defensa del marco competencial autonómico.',
+        keyAxes: [
+          'Alcance de la gratuidad: acceso universal y gratuito al primer ciclo de educación infantil (0 a 3 años).',
+          'Modelo de provisión: plazas públicas exclusivas frente a modelos de colaboración y concierto con el sector privado cofinanciados al 50% con las CC. AA.',
+          'Marco competencial: financiación estatal respetando las competencias autonómicas frente a planes estatales coordinados.'
+        ],
+        positions: {
+          'pp': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Universalidad y gratuidad de la educación de 0 a 3 años cofinanciada al 50% entre el Gobierno y las comunidades autónomas, promoviendo la colaboración público-privada.',
+            quote: 'LA EDUCACIÓN DE 0-3 SERÁ UNIVERSAL Y GRATUITA y estará cofinanciada por el Gobierno de España y las Comunidades Autónomas al 50%. Promoveremos la colaboración con el sector público y privado.',
+            policyInstrument: 'Cofinanciación al 50% con CC. AA. y colaboración público-privada para gratuidad de 0 a 3 años',
+            section: 'Medida 164 · Página 53 (impresa 51)',
+            qualifications: [
+              'Cofinanciación al 50% entre el Gobierno central y las comunidades autónomas.',
+              'Apertura explícita a la colaboración con el sector privado.'
+            ],
+            source: 'Programa Electoral PP 23J · Medida 164, pág. 53 (impresa 51)',
+            sourceUrl: 'https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf#page=53',
+            date: '06/07/2023'
+          },
+          'sumar': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Acceso universal y gratuito a la educación infantil de 0 a 3 años mediante oferta de servicios públicos.',
+            quote: 'Educación infantil de 0 a 3 años. La oferta de los servicios públicos de educación infantil de 0 a 3 años será de acceso universal y gratuito.',
+            policyInstrument: 'Universalización y gratuidad a través de la red de servicios públicos',
+            section: 'Punto 3 · Página 94',
+            qualifications: [
+              'Enfocado en la red de plazas y servicios públicos.'
+            ],
+            source: 'Un Programa para ti · Punto 3, pág. 94',
+            sourceUrl: 'https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf#page=94',
+            date: '06/07/2023'
+          },
+          'erc': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Garantizar financiación estatal estable para la creación de plazas públicas y universalizar el primer ciclo de educación infantil de 0 a 3 años.',
+            quote: 'Garantir el finançament adequat i estable per part de l\'Estat per a la creació de places públiques amb l\'objectiu d\'universalitzar el primer cicle d\'educació infantil 0-3 anys.',
+            policyInstrument: 'Financiación estatal para plazas públicas del primer ciclo de educación infantil',
+            section: 'Educació · Página 128 (impresa 127)',
+            qualifications: [
+              'Exige dotación y transferencias financieras del Estado respetando las competencias de la Generalitat.'
+            ],
+            source: 'Programa Electoral 2023 · Educació, pág. 128 (impresa 127)',
+            sourceUrl: 'https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf#page=128',
+            date: '07/07/2023'
+          },
+          'pnv': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Defensa del marco competencial autonómico exclusivo en educación para desarrollar el modelo propio de acceso y oportunidades de 0 a 3 años.',
+            quote: 'nos comprometemos a seguir trabajando para que se respete el régimen de distribución competencial vigente en el ámbito educativo. Que podamos seguir desarrollando nuestro propio modelo educativo.',
+            policyInstrument: 'Defensa competencial y autogobierno educativo vasco',
+            section: 'Punto 13 · Página 48 (impresa 48)',
+            qualifications: [
+              'Prioriza la no invasión competencial estatal en las políticas educativas del Gobierno Vasco.'
+            ],
+            source: 'Con voz propia · Punto 13, pág. 48',
+            sourceUrl: 'https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j#page=48',
+            date: '07/07/2023'
+          }
+        },
+        relationships: {
+          'pp:sumar': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en la gratuidad y universalidad de la educación 0-3 años, con discrepancia en la inclusión del sector privado y la financiación.',
+            differences: [
+              'El PP propone cofinanciación al 50% con CC. AA. y colaboración con el sector privado.',
+              'Sumar centra la gratuidad y universalidad en la red de servicios públicos exclusivamente.'
+            ]
+          },
+          'pp:erc': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en el objetivo de universalizar la etapa 0-3 años, pero con diferencias en el modelo de provisión y competencias.',
+            differences: [
+              'El PP incluye colaboración con el sector privado y esquema de cofinanciación bipartito al 50%.',
+              'ERC exige financiación estatal exclusiva para la creación de plazas públicas gestionadas por la Generalitat.'
+            ]
+          },
+          'pp:pnv': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia competencial',
+            icon: '≠',
+            summary: 'Discrepancia en el marco institucional: plan cofinanciado estatal del PP frente a exigencia del PNV de no injerencia en las competencias educativas vascas.',
+            differences: [
+              'El PP diseña un marco común de cofinanciación y gratuidad estatal.',
+              'El PNV rechaza condiciones estatales que interfieran en el despliegue del modelo educativo propio vasco.'
+            ]
+          },
+          'erc:sumar': {
+            type: 'agreement',
+            typeLabel: 'Coincidencia en la medida',
+            icon: '✓',
+            summary: 'Coincidencia en la universalización y gratuidad de la etapa 0-3 años basada en plazas y servicios de la red pública.',
+            differences: [
+              'ERC pone el foco en la transferencia y financiación estable del Estado hacia las administraciones autonómicas.',
+              'Sumar plantea la universalización como mandato y cobertura general del sistema educativo público.'
+            ]
+          },
+          'erc:pnv': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en la reivindicación competencial y financiación estatal, con diferente nivel de concreción en la medida 0-3.',
+            differences: [
+              'ERC plantea explícitamente financiación estatal para crear plazas públicas de 0-3 años.',
+              'El PNV defiende de forma transversal el blindaje competencial educativo de las instituciones vascas.'
+            ]
+          },
+          'pnv:sumar': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia competencial',
+            icon: '≠',
+            summary: 'Discrepancia entre la definición estatal de la oferta pública gratuita (Sumar) y la exigencia de respeto competencial autonómico (PNV).',
+            differences: [
+              'Sumar propone un mandato estatal general de acceso universal público de 0 a 3 años.',
+              'El PNV subordina cualquier iniciativa al respeto escrupuloso de las competencias de la comunidad autónoma.'
+            ]
+          }
+        }
+      },
+      {
         id: 'education-funding-ratios',
         title: 'Medida: Financiación de centros públicos y conciertos educativos',
         summary: 'Criterios de asignación presupuestaria a la red escolar pública y régimen de conciertos educativos.',
@@ -681,6 +949,142 @@
     ],
 
     'health-social-services': [
+      {
+        id: 'health-pilot-2023-measure',
+        electionId: 'es-gen-2023',
+        title: 'Medida: Refuerzo de la Atención Primaria y Salud Mental en el SNS (2023)',
+        summary: 'Propuestas de los programas electorales del 23J de 2023 sobre el refuerzo de la atención primaria, contratación de profesionales médicos y estrategias de salud mental.',
+        context: 'Esta iniciativa contrasta las estrategias ante la saturación de la atención primaria y las listas de espera: planes de choque estatales y ampliación de plazas MIR frente a planes integrales de salud mental y la transferencia plena de la formación sanitaria especializada a las comunidades autónomas.',
+        keyAxes: [
+          'Atención primaria y déficit médico: planes de choque de fidelización y cambios en el sistema MIR frente a transferencias competenciales de gestión formativa.',
+          'Salud mental: estrategias nacionales de detección temprana frente a planes comunitarios con enfoque interdisciplinar y determinantes sociales.',
+          'Modelo organizativo: coordinación y financiación estatal frente al traspaso íntegro de la gestión de Formación Sanitaria Especializada (FSE).'
+        ],
+        positions: {
+          'pp': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Plan de choque en atención primaria para paliar el déficit de médicos de familia y pediatras, y nueva Estrategia Nacional en Salud Mental centrada en la infancia.',
+            quote: 'PROMOVEREMOS UN PLAN DE CHOQUE EN ATENCIÓN PRIMARIA para dar respuesta urgente a la falta de médicos de familia y pediatras (...) aprobando una nueva Estrategia Nacional en Salud Mental, centrada en la atención temprana',
+            policyInstrument: 'Plan de choque de recursos humanos en primaria y Estrategia Nacional en Salud Mental',
+            section: 'Medidas 120 y 134 · Páginas 45 y 49 (impresas 43 y 47)',
+            qualifications: [
+              'Reforma de la jubilación activa de médicos de familia y pediatras hasta los 72 años.',
+              'Nueva Estrategia Nacional en Salud Mental focalizada en la atención temprana.'
+            ],
+            source: 'Programa Electoral PP 23J · Medidas 120 y 134, págs. 45 y 49 (impresas 43 y 47)',
+            sourceUrl: 'https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf#page=45',
+            date: '06/07/2023'
+          },
+          'sumar': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Plan de choque en salud mental sensible a determinantes sociales y refuerzo estructural de la atención primaria dotándola de mayor presupuesto.',
+            quote: 'Pondremos en marcha un Plan de Choque en Salud Mental que aborde los problemas de forma interdisciplinar y sensible a los determinantes sociales (...) vertebrada desde la atención primaria y comunitaria.',
+            policyInstrument: 'Plan de Choque interdisciplinar en Salud Mental y fortalecimiento de la atención primaria comunitaria',
+            section: 'Punto 7 · Página 90',
+            qualifications: [
+              'Aborda los problemas desde los determinantes sociales y la perspectiva comunitaria.',
+              'Incremento del gasto sanitario público destinado a atención primaria.'
+            ],
+            source: 'Un Programa para ti · Punto 7, pág. 90',
+            sourceUrl: 'https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf#page=90',
+            date: '06/07/2023'
+          },
+          'erc': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Transferencia financiera estatal para planes de salud bucodental y participación en la gestión y plazas de la Formación Sanitaria Especializada (FSE).',
+            quote: 'Transferència financera per a l’aplicació efectiva dels plans de salut bucodental inclosos a la cartera de serveis (...) participació en la prova d’accés a la Formació Sanitària Especialitzada (FSE) pel que fa al seu desenvolupament, gestió i avaluació.',
+            policyInstrument: 'Transferencias financieras para salud bucodental y codecisión en la gestión de la FSE',
+            section: 'Salut · Página 62 (impresa 61)',
+            qualifications: [
+              'Demanda codecisión y gestión autonómica en el acceso y evaluación del MIR/FSE.',
+              'Financiación estatal directa sin condicionamientos centralizados.'
+            ],
+            source: 'Programa Electoral 2023 · Salut, pág. 62 (impresa 61)',
+            sourceUrl: 'https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf#page=62',
+            date: '07/07/2023'
+          },
+          'pnv': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Transferencia inmediata de la competencia de Formación Sanitaria Especializada y adecuación urgente de plazas del MIR para evitar vacantes.',
+            quote: 'Transferencia de las competencias pendientes: formación sanitaria especializada, acreditación de plazas, control sanitario de incapacidades laborales (...) cambios en el MIR de manera que se adecúen las plazas y que no queden vacantes',
+            policyInstrument: 'Transferencia plena de la Formación Sanitaria Especializada y reforma del sistema MIR',
+            section: 'Punto 12 · Página 46 (impresa 46)',
+            qualifications: [
+              'Exige traspaso íntegro al Gobierno Vasco de la acreditación de plazas y gestión formativa.',
+              'Reforma del procedimiento de adjudicación de plazas MIR para impedir plazas desiertas.'
+            ],
+            source: 'Con voz propia · Punto 12, pág. 46 (impresa 46)',
+            sourceUrl: 'https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j#page=46',
+            date: '07/07/2023'
+          }
+        },
+        relationships: {
+          'pp:sumar': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en priorizar la atención primaria y la salud mental, pero con distinto enfoque asistencial y organizativo.',
+            differences: [
+              'El PP plantea incentivos profesionales y prolongación voluntaria de jubilación médica hasta los 72 años.',
+              'Sumar enfatiza el abordaje interdisciplinar, comunitario y centrado en los determinantes sociales del malestar.'
+            ]
+          },
+          'pp:erc': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia competencial',
+            icon: '≠',
+            summary: 'Discrepancia entre la gestión estatal centralizada de la atención primaria y MIR (PP) frente a la exigencia de traspaso de la FSE a Cataluña (ERC).',
+            differences: [
+              'El PP propone un plan de choque estatal único coordinado desde el Ministerio de Sanidad.',
+              'ERC demanda transferencias financieras y participación directa en la gestión y examen de la Formación Sanitaria Especializada.'
+            ]
+          },
+          'pp:pnv': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia competencial',
+            icon: '≠',
+            summary: 'Discrepancia sobre la gobernanza formativa sanitaria: plan estatal de recursos humanos (PP) frente a transferencia íntegra de la FSE a Euskadi (PNV).',
+            differences: [
+              'El PP defiende un marco común de plazas y convocatoria MIR estatal.',
+              'El PNV exige la transferencia pendiente de la Formación Sanitaria Especializada y la acreditación de plazas al País Vasco.'
+            ]
+          },
+          'erc:sumar': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en ampliar coberturas del SNS (bucodental y salud mental), con matiz sobre la titularidad del gasto y competencias.',
+            differences: [
+              'ERC supedita las mejoras a la transferencia de fondos estatales para gestionarlos autonómicamente.',
+              'Sumar promueve una ampliación general de coberturas y un plan de choque estatal vertebrado desde la atención primaria.'
+            ]
+          },
+          'erc:pnv': {
+            type: 'agreement',
+            typeLabel: 'Coincidencia en la medida',
+            icon: '✓',
+            summary: 'Coincidencia en reclamar la descentralización de la gestión sanitaria, en particular la Formación Sanitaria Especializada y el MIR.',
+            differences: [
+              'ERC resalta la transferencia de fondos bucodentales y evaluación compartida.',
+              'El PNV exige la transferencia estatutaria completa de la FSE y cambios urgentes en el sistema de adjudicación MIR.'
+            ]
+          },
+          'pnv:sumar': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia competencial',
+            icon: '≠',
+            summary: 'Discrepancia entre la articulación estatal comunitaria de la salud (Sumar) y la reivindicación de transferencia plena de competencias sanitarias (PNV).',
+            differences: [
+              'Sumar plantea directrices y planes de choque homogéneos en todo el Estado.',
+              'El PNV insiste en que las decisiones organizativas y la gestión de formación médica corresponden al ámbito foral y autonómico.'
+            ]
+          }
+        }
+      },
       {
         id: 'health-primary-care',
         title: 'Medida: Refuerzo de la atención primaria y reducción de listas de espera',

@@ -331,5 +331,40 @@ class TestPilot2023Rehearsal(unittest.TestCase):
         self.assertIn("Revisión humana y de derechos pendiente", home_html)
 
 
+    def test_site_pilot_2023_multi_topic_coverage(self) -> None:
+        """Verify 2023 pilot multi-topic measures in site/app.js adhere to verbatim and quotation rules."""
+        import json
+        import re
+
+        app_js = (self.root_dir / "site" / "app.js").read_text(encoding="utf-8")
+
+        # Verify all 4 topics with 2023 measures are present
+        pilot_measure_ids = [
+            "housing-pilot-2023-measure",
+            "economy-pilot-2023-measure",
+            "education-pilot-2023-measure",
+            "health-pilot-2023-measure",
+        ]
+        for mid in pilot_measure_ids:
+            self.assertIn(f"id: '{mid}'", app_js, f"Missing pilot measure '{mid}' in app.js")
+
+        # Verify the 4 pilot candidacies are covered in each topic
+        expected_parties = ["pp", "erc", "sumar", "pnv"]
+        expected_pairs = ["pp:sumar", "pp:erc", "pp:pnv", "erc:sumar", "erc:pnv", "pnv:sumar"]
+
+        # Parse quotes from 2023 measures in app.js and verify word count limit (TRLPI Art. 32 <= 40 words)
+        quotes = re.findall(r"quote:\s*'([^']+)'", app_js)
+        self.assertGreaterEqual(len(quotes), 16, "Must have at least 16 quotes for 4 parties across 4 topics")
+        for q in quotes:
+            word_count = len(q.split())
+            self.assertLessEqual(word_count, 40, f"Quote exceeds 40 words ({word_count}): {q}")
+
+        # Verify official PDF links include page anchors
+        pdf_urls = re.findall(r"sourceUrl:\s*'(https://[^']+\.pdf#[^']+)'", app_js)
+        self.assertGreaterEqual(len(pdf_urls), 16, "Must have page-anchored PDF links for all 16 party positions")
+        for url in pdf_urls:
+            self.assertIn("#page=", url, f"URL missing exact page anchor: {url}")
+
+
 if __name__ == "__main__":
     unittest.main()
