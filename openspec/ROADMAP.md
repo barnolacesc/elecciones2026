@@ -163,7 +163,8 @@ Vote-to-seat prediction is a separate future change, not part of E5.
 | E10.1 | Register the approved 2023 PGE table and define year, institutional scope, chapters, consolidation, units, denominator, rights, and review owner. | Reviewed source and measurement contract; no 2023 value is presented as a verified 2026 value. | None |
 | E10.2 | Complete specs/design/tasks and build a versioned, offline import with total and share checks. | Reproducible snapshot, source checksum, rounding rules, and failure tests. | E10.1 |
 | E10.3 | Build a Spanish mobile ranked-bar view with policy and section details and an equivalent accessible table. | 360/390/430-px checks; amounts and shares link to the source and show the exact denominator. | E10.2, E2.1 |
-| E10.4 | Decide whether to add a separate execution view using IGAE data. | Go/no-go based on compatible coverage, dates, and accounting basis; no mixed budget/execution chart. | E10.1 |
+| E10.4 | Check official programme-level tables and an auditable join for initiative detail. | Publish only validated programme amounts; otherwise keep section and policy views without invented drill-down. | E10.1 |
+| E10.5 | Decide whether to add a separate execution view using IGAE data. | Go/no-go based on compatible coverage, dates, and accounting basis; no mixed budget/execution chart. | E10.1 |
 
 ## Delegation contract for each package
 

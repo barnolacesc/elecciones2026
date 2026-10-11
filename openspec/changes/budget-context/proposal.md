@@ -7,7 +7,7 @@ Readers may want to understand the size and share of official spending policies.
 ## What Changes
 
 - Import the official 2023 approved-budget, chapters 1–8 consolidated policy-by-section table offline and generate a static, Spanish-language budget page.
-- Show policy totals and the official section breakdown. A section is not always a ministry. Add programme-level detail only from a separately verified official table.
+- Show policy totals and the official section breakdown. A section is not always a ministry. Add programme or initiative detail only from a separately verified official table and audited join.
 - Show amounts, shares, year, coverage, unit, source, and update date.
 - Use a mobile-first ranked bar list and an equivalent table. Treat a treemap as an optional secondary view.
 - Keep approved or extended budget figures separate from execution figures. Do not publish 2023 amounts as current 2026 amounts.
