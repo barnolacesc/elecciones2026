@@ -134,14 +134,13 @@ class DeliveryTests(unittest.TestCase):
         environment = dict(os.environ, GITHUB_REPOSITORY=delivery.REPOSITORY,
                            GITHUB_REF='refs/heads/main', GITHUB_ACTOR='barnolacesc',
                            GITHUB_TRIGGERING_ACTOR='barnolacesc', APPROVED='true',
-                           APPROVAL_RECORD='restricted-owner-review', READY='true',
-                           RUNNER_LABELS='["approved-isolated-runner"]')
+                           APPROVAL_RECORD='restricted-owner-review', READY='true')
         import sys
         result = subprocess.run([sys.executable, '-c', code], env=environment, capture_output=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         for changes in [{'APPROVED': 'false'}, {'READY': ''}, {'APPROVAL_RECORD': ''},
                         {'GITHUB_REF': 'refs/heads/feature'}, {'GITHUB_ACTOR': 'someone-else'},
-                        {'GITHUB_TRIGGERING_ACTOR': 'someone-else'}, {'RUNNER_LABELS': ''},
+                        {'GITHUB_TRIGGERING_ACTOR': 'someone-else'},
                         {'GITHUB_REPOSITORY': 'fork/site'}]:
             with self.subTest(changes=changes):
                 result = subprocess.run([sys.executable, '-c', code],

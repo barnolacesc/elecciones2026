@@ -20,7 +20,8 @@ job or credentials are added to PR CI.
 ## Origin firewall and TLS
 
 1. Apply the reviewed IONOS firewall BEFORE starting public listeners. Allow inbound
-   TCP 22 only from approved operator IPv4/IPv6 CIDRs; TCP 443 only from the current
+   TCP 22 through the owner-approved key-only, rate-limited public SSH policy,
+   with an IP-specific operator allow rule; TCP 443 only from the current
    official Cloudflare IPv4 AND IPv6 ranges. Do not open 80 or 8080. Preserve
    outbound DNS, HTTPS, time sync, registry, and update access. Retrieve and review
    the ranges from https://www.cloudflare.com/ips-v4 and

@@ -36,7 +36,16 @@ Use a forced command with no PTY, agent forwarding, port forwarding, or arbitrar
 
 Store a `known_hosts` entry verified through the IONOS console or an existing trusted operator connection. `ssh-keyscan` output from the same unverified network path is not sufficient trust. Use strict host-key checking and disable secret shell tracing.
 
-Runner connectivity is an activation prerequisite: use an isolated runner with fixed egress that the firewall can allowlist for SSH. Do not install it on the production VPS. Standard GitHub-hosted runners have changing addresses; do not solve that by opening SSH globally. If fixed egress is unavailable, owner review must select an authenticated private network path before enabling delivery. Preserve console recovery and operator SSH access.
+The owner explicitly selected standard GitHub-hosted runners and public SSH rather
+than a self-hosted runner or VPN. Permit public SSH with key-only authentication,
+strict verified host keys, UFW per-source connection rate limiting and OpenSSH
+unauthenticated connection limits. Retain the restricted deployer forced command,
+root-owned authorized keys and minimal sudo. The owner verified operator key access
+before disabling passwords and widening the firewall. Rate limits reduce connection
+bursts; they do not eliminate distributed abuse or OpenSSH vulnerability exposure.
+Keep OpenSSH patched, preserve console recovery and verify hosted-runner access
+before application activation. HTTPS remains restricted to Cloudflare ranges;
+visitors connect to Cloudflare rather than directly to the origin.
 
 ### 4. Prepare the dedicated small host conservatively
 
@@ -83,7 +92,7 @@ The finance workflows establish an operational reference, not evidence that the 
 | `VPS_HOST` | `195.20.230.75` (bare IP, without `http://`) | GitHub `production` environment secret; matches finance workflow naming |
 | `VPS_USER` | Reused `deployer` username with restricted release permissions | GitHub `production` environment secret; matches finance workflow naming |
 | `VPS_SSH_PORT` | Verified SSH port | GitHub `production` environment variable |
-| Runner path | Isolated runner and fixed SSH egress allowlist, or approved authenticated private path | CI/network owner configuration |
+| Runner path | GitHub-hosted runner to owner-approved public key-only SSH with connection limiting | CI/network owner configuration |
 | Registry publishing | Actions package permissions | Workflow-scoped `GITHUB_TOKEN`; no extra publishing PAT |
 | Registry pull | Account and expiring `read:packages` credential for private GHCR image | Root-only VPS registry credentials, not repository or chat |
 | Cloudflare | Zone ID; token with only needed cache-purge rights for this zone | Environment variable and protected secret (`CLOUDFLARE_ZONE_ID`, `CLOUDFLARE_PURGE_TOKEN`) |
@@ -118,7 +127,7 @@ No private keys, passwords, tokens, finance backups, or visitor data belong in a
 ## Open Questions
 
 - What are the SSH port, Ubuntu version, architecture, disk capacity, and current proxy/listeners for `195.20.230.75`? These determine provisioning values, not the release contract.
-- Which isolated runner provides the approved connection path, and who administers the repository and Cloudflare zone? Delivery stays disabled until these prerequisites are satisfied.
+- Has the GitHub-hosted runner verified restricted key-only SSH access from outside the operator IP? Delivery stays disabled until these prerequisites are satisfied.
 - Which notification route and external probe should receive release/availability failures?
 
 ## References

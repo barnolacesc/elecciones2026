@@ -93,8 +93,8 @@ G4-approved artifact; do not enable both copies of their default server.
 Test with `nginx -t` before reload. Nginx's worker needs read access to the password
 file; only root must have write access.
 
-Apply the reviewed IONOS firewall before enabling the proxy: SSH from approved
-operators and the approved delivery connection path; 443 only from official
+Apply the reviewed IONOS firewall before enabling the proxy: key-only SSH with UFW `limit 22/tcp` for hosted runners plus the approved
+operator IP allow rule; 443 only from official
 Cloudflare IPv4 and IPv6 ranges; no public 80 or 8080. Preserve console recovery.
 Global AOP authenticates Cloudflare's network, not an exclusive Cloudflare account.
 Staging's origin password is an additional independent content boundary.
@@ -106,12 +106,17 @@ Keep existing production secrets: `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`,
 Add production secret `STAGING_BASIC_AUTH` with the value
 `STAGING_USERNAME:STAGING_PASSWORD`, matching the origin password file.
 
-Repository variable `DEPLOY_RUNNER_LABELS` is a JSON array of runner labels for
-the approved connection path. Do not select a persistent runner that executes
-untrusted PRs or run a build runner on the small VPS. A hosted runner needs an
-explicitly approved way to reach SSH; do not widen the firewall silently.
+All workflow jobs use standard GitHub-hosted `ubuntu-latest` runners. The owner
+selected public SSH with key-only authentication, strict verified host keys, the
+restricted deployment account and UFW connection rate limiting. No self-hosted
+runner or VPN is required. Keep builds and tests off the small VPS. This choice
+exposes the SSH service to Internet connection attempts; patch OpenSSH and keep
+unauthenticated connection limits. Rate limiting reduces bursts, not distributed
+attacks or vulnerabilities. The IP-specific operator allow rule intentionally
+bypasses the general rate limit for the approved operator address.
+
 Set repository variable `DEPLOYMENT_READY=true` only after registry pull, TLS,
-DNS, authenticated staging, firewall and runner connectivity are verified.
+DNS, authenticated staging, firewall and hosted-runner connectivity are verified.
 Until then dispatch fails in authorization without exposing production secrets.
 
 The private repository's plan does not provide required environment reviewers.
@@ -155,3 +160,21 @@ References: [Cloudflare full DNS setup](https://developers.cloudflare.com/dns/zo
 [GHCR authentication](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry),
 [Origin CA](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/),
 [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/).
+
+## Owner-provided live setup evidence — 2026-10-11
+
+Cloudflare delegation is active. The owner installed matching Origin CA certificate
+and key (expiry 2028-10-10), covering apex and wildcard, and the global Origin Pull
+CA (expiry 2029-11-01). Global AOP and Full (strict) were enabled; preview DNS is
+proxied. Nginx syntax passed and the host listens on 443 only for HTTPS, with no
+port 80 or application listener yet. External unauthenticated preview returned
+401 with no-store/noindex; authenticated request returned the expected 502 while
+the application is absent. Exact served application content remains unverified.
+
+The owner confirmed root key-only login, installed `ssh-key-only.conf` settings
+as `/etc/ssh/sshd_config.d/00-elecciones-key-only.conf`, validated sshd, reloaded it
+and successfully opened a new key-authenticated operator session. UFW is active:
+default deny incoming; operator-specific SSH allow; public IPv4/IPv6 SSH limit;
+443 allowed only from the reviewed Cloudflare ranges; old port 5001 rule removed.
+The owner reported GHCR login succeeded and the staging secret was provisioned.
+A successful login does not yet prove access to the published private image.

@@ -6,7 +6,7 @@ Status: planning complete; restricted-access implementation in progress; live ac
 
 - [ ] 1.1 Record read-only Ubuntu VPS preflight for owner-supplied `195.20.230.75`: SSH port, version, architecture, disk, listeners, proxy, firewall and memory headroom; verify the inventory through a trusted operator connection and console recovery.
 - [ ] 1.2 Record owner-confirmed finance-service retirement and backup/restore evidence for retained data; verify the selected loopback port is free before activation without deleting finance data.
-- [ ] 1.3 Select the isolated fixed-egress runner or approved authenticated private connection path; verify SSH reachability from that path and denial from an unapproved source.
+- [ ] 1.3 Record the owner-selected GitHub-hosted runner and public key-only SSH path with connection rate limiting; verify hosted-runner reachability, denial of unauthorized keys and passwords, and preserved deployer restrictions.
 - [ ] 1.4 Record unavailable required reviewers on the private repository plan, the owner-selected manual dispatch gate, main-only environment rules and protected secrets; demonstrate that missing operator approval blocks release.
 - [ ] 1.5 Reconcile IONOS, 1-vCPU/1-GB and domain references in both roadmaps, ADR-0001, architecture/security/operations documentation and OpenSpec context; review consistency and retain original release targets until explicitly revised by owners.
 
@@ -72,3 +72,20 @@ found no HIGH/CRITICAL vulnerabilities. Docker Desktop direct scan failed on a
 missing snapshot; scanning the saved exact image succeeded. DNS, certificates,
 registry login, approved runner/firewall path, live delivery and public gates
 remain unverified. Tasks stay open where their full live evidence is absent.
+
+## Hosted-runner network decision and owner evidence — 2026-10-11
+
+The owner rejected self-hosted Actions and chose public SSH with keys only and
+rate limiting. Both delivery jobs now use ubuntu-latest directly; the runner-label
+variable and its authorization prerequisite are removed. Owner terminal output
+confirms effective publickey-only SSH, password/interactive disabled, root key-only,
+MaxAuthTries 3 and MaxStartups 10:30:30; SSH reload and a new operator login passed.
+UFW is active with public SSH LIMIT for IPv4/IPv6, an operator IP-specific ALLOW,
+Cloudflare-only HTTPS and the obsolete port 5001 rule removed. Nginx listens on 443
+with no port 80. External preview rejects unauthenticated access (401, no-store,
+noindex); authenticated access yields 502 because no application is running yet.
+Hosted-runner access, a private-image pull and end-to-end activation remain open.
+
+Local follow-up validation: nine delivery boundary tests, actionlint, focused Ruff,
+strict OpenSpec validation and diff whitespace checks passed. No live deployment
+or hosted-runner connectivity test was performed during this change.

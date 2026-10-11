@@ -34,10 +34,9 @@ jobs:
           APPROVED: ${{ inputs.approve }}
           APPROVAL_RECORD: ${{ inputs.approval_record }}
           READY: ${{ vars.DEPLOYMENT_READY }}
-          RUNNER_LABELS: ${{ vars.DEPLOY_RUNNER_LABELS }}
         run: |
           python3 - <<'PYTHON'
-          import json, os
+          import os
           assert os.environ['GITHUB_REPOSITORY'] == 'c2ventures/elecciones2026'
           assert os.environ['GITHUB_REF'] == 'refs/heads/main'
           assert os.environ['GITHUB_ACTOR'] == 'barnolacesc'
@@ -45,8 +44,6 @@ jobs:
           assert os.environ['APPROVED'] == 'true'
           assert os.environ['APPROVAL_RECORD'].strip()
           assert os.environ['READY'] == 'true', 'Complete registry, network, DNS, TLS and staging setup first'
-          labels = json.loads(os.environ['RUNNER_LABELS'])
-          assert isinstance(labels, list) and labels and all(isinstance(item, str) and item for item in labels)
           PYTHON
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -59,8 +56,8 @@ jobs:
 
   deliver:
     needs: authorize
-    # Configure only an approved isolated runner or approved connection path.
-    runs-on: ${{ fromJSON(vars.DEPLOY_RUNNER_LABELS || '["ubuntu-latest"]') }}
+    # Owner-approved public SSH: key-only authentication and restricted release commands.
+    runs-on: ubuntu-latest
     environment: production
     timeout-minutes: 10
     steps:

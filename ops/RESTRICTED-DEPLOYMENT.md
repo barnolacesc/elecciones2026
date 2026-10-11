@@ -154,7 +154,7 @@ disabling host-key verification or restoring the Docker group.
 
 ## Remaining activation gates
 
-Provision root-only GHCR pull authentication, an approved isolated runner path,
+Provision root-only GHCR pull authentication, verified GitHub-hosted runner access through key-only public SSH,
 production approval rules and branch restrictions, authenticated staging, domain
 and TLS configuration, external monitoring and publication evidence before any
 live delivery. A later read-only API check confirmed the owner configured
