@@ -1784,12 +1784,18 @@ def build_site(
         if ctx.budget_payload is not None:
             from elecciones2026.budget import canonical
             from elecciones2026.budget_view import render_budget_content, topic_projection
+            from elecciones2026.budget_chart import share_svg
             labels = {topic.id: topic.name_es for topic in ctx.taxonomy.topics}
-            budget_content = render_budget_content(ctx.budget_payload, ctx.budget_manifest, ctx.budget_bundle_id, labels)
+            chart_svg = share_svg(ctx.budget_payload, ctx.budget_manifest, ctx.budget_bundle_id)
+            chart_id = hashlib.sha256(chart_svg.encode('utf-8')).hexdigest()
+            chart_path = f"static/budget-charts/{chart_id}/grafico.svg"
+            write_file_deterministic(staging_dir / chart_path, chart_svg)
+            budget_content = render_budget_content(ctx.budget_payload, ctx.budget_manifest, ctx.budget_bundle_id, labels,
+                                                   chart_url='../../' + chart_path)
             budget_html = render_base(ctx, "PGE 2023: presupuesto aprobado · Contexto histórico",
                                      "Presupuesto aprobado consolidado de 2023, capítulos 1–8. Contexto histórico con fuentes oficiales.",
                                      "/presupuestos/2023/", budget_content + render_share_controls(ctx)
-                                     + '<script src="../../sharing.js" defer></script>', "../../")
+                                     + '<script src="../../sharing.js" defer></script><script src="../../budget-chart.js" defer></script>', "../../")
             write_file_deterministic(staging_dir / "presupuestos/2023/index.html", budget_html)
             routes.append((f"{ctx.canonical_base}/presupuestos/2023/", ctx.build_date, "yearly"))
             for topic in ctx.taxonomy.topics:
@@ -1799,6 +1805,7 @@ def build_site(
                 target.write_bytes(canonical(projection))
             shutil.copy2(root_dir / "site/budget-context.js", staging_dir / "budget-context.js")
             shutil.copy2(root_dir / "site/budget.css", staging_dir / "budget.css")
+            shutil.copy2(root_dir / "site/budget-chart.js", staging_dir / "budget-chart.js")
 
         # 9. Sitemap & crawler files
         sitemap_xml = render_sitemap(ctx, routes)

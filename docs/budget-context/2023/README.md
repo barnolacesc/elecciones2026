@@ -137,3 +137,12 @@ PYTHONPATH=src ELECTIONS_TEST_BUDGET_BROWSER=1 python3 -m unittest discover -s t
 ```
 
 The browser command needs Playwright 1.63.0 and Chromium. It writes `build/budget-view-e10-3.json`, which CI retains. Human financial/rights/editorial/accessibility reviews, agreed performance targets, whole-artifact rollback/withdrawal, and G10 release acceptance remain open. Do not interpret synthetic browser checks or private previews as those approvals.
+
+
+## E10.3 simple chart and explicit image sharing
+
+The budget page now opens with a proportional area chart and euros-per-100 policy key. All official policy margins are included; the eight overlapping taxonomy topics are not used as an additive partition. The prior accounting view is under “Ver detalle completo y fuentes”. The key gives complete official labels in sentence case; abbreviated chart labels retain complete labels in SVG titles and in the key.
+
+“Compartir gráfico” uses native PNG-file sharing where available and downloads PNG otherwise. “Guardar imagen (PNG)” explicitly downloads it. A standalone SVG alternative works without JavaScript. The image retains historical/approved status, source/table/version, scope exclusions, exact denominator, rounding, build/review state, and bundle identity. Private exported images include the draft notice in the image itself. Cancelling native sharing does not initiate a download.
+
+The SVG is deterministic and has a content-hashed public URL. Rasterization happens only after a click, with the existing CSP, a 128-KiB SVG limit, and 1080-by-8192 maximum dimensions. No rasterization service or new Python dependency is added. PNG bytes can differ across browser/font implementations; the underlying SVG and numeric values remain pinned. This explicit image export does not implement the deferred offline data archive, and publication still requires the source and G10 review gates.

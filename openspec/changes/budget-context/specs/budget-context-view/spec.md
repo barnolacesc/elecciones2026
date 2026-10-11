@@ -55,3 +55,25 @@ The feature SHALL expose `/presupuestos/2023/` as static Spanish HTML with a can
 #### Scenario: Crawler access
 - **WHEN** a crawler requests the budget route without executing JavaScript
 - **THEN** it receives reviewed figures, scope, source references, and historical metadata.
+
+
+### Requirement: Plain-language shareable overview
+The page SHALL lead with a proportional chart and readable key of all official policy margins, expressed as euros per 100 euros of approved budget using unrounded values. It SHALL NOT convert overlapping taxonomy topics into an additive breakdown. Full source notes, section figures, and equivalent tables SHALL remain available through a native disclosure.
+
+#### Scenario: Understand the distribution
+- **WHEN** a visitor opens the budget page
+- **THEN** the chart and policy key appear before expanded detail, every official policy is included, and colour or scripts are not required to read values.
+
+### Requirement: Source-bearing image sharing
+An explicitly shared image SHALL retain year, approved-budget status, scope/exclusions, exact denominator, rounding context, source/table/version, update/review state, and bundle identity. It SHALL distinguish approved allocations from executed spending and proposal costs. Private preview images SHALL retain a visible draft notice. Native image sharing SHALL have a PNG download fallback and a standalone SVG alternative.
+
+#### Scenario: Share an image
+- **WHEN** a visitor shares or saves the chart
+- **THEN** the image retains measurement and source context, native sharing is used where supported, and cancellation does not trigger an unwanted download.
+
+### Requirement: Bounded user-initiated image delivery
+Image preparation SHALL occur only after a user action with bounded local assets and the existing publication gate. It SHALL work within the existing serving CSP and SHALL NOT require a chart library, image service, prefetch, service worker, or full-data archive. Preparation/sharing errors SHALL leave the chart and expanded detail usable.
+
+#### Scenario: Image unavailable
+- **WHEN** image preparation or sharing fails
+- **THEN** an honest failure message appears and the chart, SVG alternative, and full detail remain usable.

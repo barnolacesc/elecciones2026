@@ -161,3 +161,12 @@ These are evidence gates with defined fallback behavior, not permission to inven
 - Programme join feasibility: E10.4 go/no-go; no-go preserves the first view.
 - Execution comparability: E10.5 go/no-go and a separate change for any go.
 - Offline redistribution viability and measured size/cost: independent evaluation; no-go preserves online delivery.
+
+
+## E10.3 overview revision — 2026-10-12
+
+The user requested a simple, shareable graph, with the existing view retained as expanded knowledge. Lead with a deterministic squarified area chart of all 27 official spending-policy margins. Use unrounded policy values for geometry and a Spanish euros-per-100 explanation for proportions. Do not redistribute these margins into the eight overlapping taxonomy topics. The complete policy key remains readable, and full financial notes, section details, and equivalent tables move into a native disclosure.
+
+Generate a source-bearing standalone SVG behind the same reviewed-bundle gate. Use its SHA-256 in the public asset URL. PNG rasterization and optional native file sharing happen in the browser only after a click, with no chart library, image service, prefetch, or data archive. Use the serving CSP's existing data-image allowance; do not broaden CSP for blob images. Enforce 128 KiB SVG and 1080-by-8192 maximum image dimensions, escape every label, and keep cancellation separate from download fallback. Private preview SVGs retain a prominent draft notice in the image itself. This image action is distinct from the deferred full offline-distribution evaluation.
+
+The SVG includes every official policy, complete labels in its key, 2023 approved status, scope and exclusions, denominator, rounding context, source URL/table/version, build and review date/state, and bundle identity. Spanish copy and G10 publication reviews remain pending; user interface approval does not replace them.

@@ -36,6 +36,8 @@ Dependencies: E10.2 accepted and E2.1 issue #6 or merged equivalent accepted. E1
 - [ ] 3.5 Compare baseline and candidate home/topic/comparison network traces and mobile delivery; verify zero bulk bundle/archive requests, no prefetch/service worker, and bounded selected-topic context. Record bytes, request counts, and results against agreed performance targets.
 - [ ] 3.6 Verify deterministic full static builds, escaped output, source-link resolution, and static Docker smoke checks; rehearse rollback of HTML plus matching bundle, including withdrawal of an unsafe version, and record financial/editorial/G10 sign-off before any later release operation.
 
+- [x] 3.7 Add a plain-language overview of every official policy before expanded detail and explicit image sharing; verify unrounded proportional areas, complete policy labels, source-bearing SVG/PNG, private draft notices, native-share cancellation/fallback/error behavior, CSP compatibility, bounded assets, and no background chart/full-bundle downloads.
+
 ## 4. E10.4 — Programme source audit and claim boundaries (#51)
 
 Dependencies: E10.1 accepted. Audit may run in parallel with E10.2 and the execution decision.
@@ -117,3 +119,17 @@ Roadmap package: **E10.3**. Branch: `feat/spanish-budget-context`, based on the 
 - Default and synthetic budget-enabled full builds are deterministic. Schema validation: 63 checks passed. Ruff `--select E9,F63,F7,F82`: passed. Existing Node share tests: 8 passed. OpenSpec strict validation and `git diff --check`: passed.
 - Docker default build succeeded; private local preview returned HTTP 200 on loopback port 43829 with runtime UID 101, read-only root filesystem, dropped capabilities, and no-new-privileges. No external deployment or publication occurred.
 - Acceptance limits: actual reviewed-bundle publication, Spanish editorial review, human accessibility review, agreed performance targets/live capacity, and atomic rollback/withdrawal plus G10 sign-off remain pending. E10.4/E10.5 and offline-distribution evaluation were not implemented. Do not archive the overall change.
+
+
+## E10.3 shareable overview evidence — 2026-10-12
+
+The user requested a simple graph before the expanded accounting view. Branch: `feat/share-budget-chart`, based on UI draft PR #63. Task 3.7 adds this authorised technical work; source, editorial, accessibility, and G10 acceptance remain open in their existing tasks.
+
+- Added a deterministic squarified chart from all official policy margins and a complete readable policy key. Geometry uses unrounded values; Spanish proportions use euros per 100 euros of approved budget. The eight overlapping taxonomy topics are not added into a partition. Full section/table/measurement detail remains in a native disclosure.
+- Added an explicit native PNG-sharing action, PNG download fallback/save action, and standalone SVG alternative. Exported images retain full policy labels, historical/approved status, scope exclusions, exact denominator, rounding, source URL/table/version, build/review state, and bundle identity. Private exported images retain a prominent draft notice. Source publication gates are unchanged.
+- Added content-hashed SVG assets; rasterization runs only after a user action with no new Python dependency or remote image service. Enforced 128-KiB SVG and 1080-by-8192 image bounds. Rasterization uses the current CSP's data-image permission; CSP was not weakened.
+- `PYTHONPATH=src python3 -m unittest discover -s tests -v`: 349 tests ran successfully, 4 skipped. Four new chart tests cover proportional geometry, complete policy coverage independent of mapping, deterministic/source-bearing/inert SVG, zero-area behavior, hostile labels, and bounds. Budget-enabled fixture builds still produce identical complete file hashes.
+- Opt-in Playwright suite: 2 tests passed. Checks include 360/390/430 px, native disclosures, semantic tables, no-script detail access, source-bearing PNG download, mocked native file sharing, unsupported-share PNG fallback, cancellation without download, fetch failure, and unchanged comparison-context behavior. Tests use synthetic figures and explicitly mocked publication gates. The test server now enforces the serving CSP; chart assets are not requested until an image action and are not requested during primary-site navigation.
+- Private pinned-source Docker preview rendered all 27 policies. Actual PNG download succeeded under the unmodified Nginx CSP; expanded detail starts closed and the 390-px view has no horizontal overflow. SVG/PNG and screenshots remain outside Git. Runtime preview remains loopback-only, UID 101, read-only, and with dropped capabilities.
+- Schemas: 63 checks passed. Ruff critical syntax checks, Node chart syntax, 8 existing Node share tests, strict OpenSpec validation, and `git diff --check` passed. CI retains browser observations and now checks the image-sharing script.
+- Limits: browser PNG bytes depend on platform fonts/rasterization; deterministic identity applies to SVG and source values. Native sharing is mocked in automated tests and needs a real-device review. Financial/rights/Spanish editorial review, human accessibility, live performance acceptance, and G10 publication remain pending. No archive distribution, source acceptance, merge, deployment, or public release occurred.

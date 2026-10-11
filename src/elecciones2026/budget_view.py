@@ -98,7 +98,8 @@ def render_context(projection, budget_url):
             + f'<p>Versión de datos: {escape(projection["version"])}. <a href="{escape(budget_url, quote=True)}">Ver el presupuesto completo de 2023</a></p>')
 
 
-def render_budget_content(payload, manifest, bundle_id, topic_labels, root_path='../../', preview=False):
+def render_budget_content(payload, manifest, bundle_id, topic_labels, root_path='../../', preview=False, chart_url='./grafico.svg'):
+    from elecciones2026.budget_chart import overview
     denominator = payload['measurement.json']['denominator_amount_thousand_eur']
     policies = sorted((row for row in payload['values.json']['margins'] if row['kind'] == 'policy'),
                       key=lambda row: (-Decimal(row['amount_thousand_eur']), row['code']))
@@ -144,6 +145,8 @@ def render_budget_content(payload, manifest, bundle_id, topic_labels, root_path=
             '<p class="hero-eyebrow">CONTEXTO HISTÓRICO · PRESUPUESTOS GENERALES DEL ESTADO</p>'
             '<h1 id="budget-title">PGE 2023: presupuesto aprobado</h1>'
             f'<p class="budget-total">{escape(display_amount(denominator))} <span>millones de euros · total consolidado</span></p>'
+            f'{overview(payload, chart_url, preview)}'
+            '<details class="budget-expanded"><summary>Ver detalle completo y fuentes</summary>'
             f'{measurement_notes(payload, manifest)}'
             '<h2>Políticas de gasto, de mayor a menor importe</h2>'
             f'<ol class="budget-ranked">{"".join(ranked)}</ol>'
@@ -152,7 +155,7 @@ def render_budget_content(payload, manifest, bundle_id, topic_labels, root_path=
             '<details><summary>Consultar totales por sección administrativa</summary>'
             f'{table("Secciones administrativas · PGE 2023, capítulos 1–8", section_rows)}</details>'
             f'<h2>Contexto por tema</h2><div class="budget-topics">{"".join(context)}</div>'
-            f'<p class="budget-locator">Identificador del conjunto: {escape(bundle_id)}.</p></section>')
+            f'<p class="budget-locator">Identificador del conjunto: {escape(bundle_id)}.</p></details></section>')
 
 
 def preview_bundle(bundle, output):
@@ -167,13 +170,16 @@ def preview_bundle(bundle, output):
     output.mkdir(parents=True, mode=0o700)
     target = output / 'presupuestos/2023'
     target.mkdir(parents=True)
+    from elecciones2026.budget_chart import share_svg
+    (target / 'grafico.svg').write_text(share_svg(payload, manifest, Path(bundle).name, preview=True))
     html = ('<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
             '<meta name="robots" content="noindex,nofollow"><title>Borrador privado · PGE 2023</title>'
             '<link rel="stylesheet" href="../../styles.css"><link rel="stylesheet" href="../../budget.css"></head><body><a class="skip-link" href="#contenido">Saltar al contenido principal</a>'
-            f'<main id="contenido">{content}</main></body></html>')
+            f'<main id="contenido">{content}</main><script src="../../budget-chart.js" defer></script></body></html>')
     (target / 'index.html').write_text(html)
     shutil.copy2(ROOT / 'site/styles.css', output / 'styles.css')
     shutil.copy2(ROOT / 'site/budget.css', output / 'budget.css')
+    shutil.copy2(ROOT / 'site/budget-chart.js', output / 'budget-chart.js')
     shutil.copytree(ROOT / 'site/tokens', output / 'tokens')
     for file in output.rglob('*'):
         file.chmod(0o700 if file.is_dir() else 0o600)
