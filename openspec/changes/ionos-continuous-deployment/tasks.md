@@ -20,7 +20,7 @@ Status: planning complete; implementation and live activation not started. These
 ## 3. Prepare restricted host operations
 
 - [ ] 3.1 Implement the root-owned forced-command deployment wrapper with fixed Compose/state configuration, approved image-repository allowlist, digest validation and narrow sudo; test rejection of shell syntax, extra arguments, alternate repositories, environment overrides, and unauthorized commands.
-- [ ] 3.2 Document and provision the restricted SSH account, VPS public key, GitHub `production` secret `IONOS_SSH_PRIVATE_KEY`, environment variable `IONOS_HOST=195.20.230.75`, independently verified known_hosts, and root-only private-registry authentication; verify key rotation, host-key mismatch rejection, and disabled forwarding/PTY without exposing credentials.
+- [ ] 3.2 Document and provision the restricted SSH account, VPS public key, GitHub `production` secret `VPS_SSH_KEY`, environment secrets `VPS_HOST=195.20.230.75`, `VPS_USER`, and `VPS_KNOWN_HOSTS`, with a new election-site key pair, independently verified known_hosts, and root-only private-registry authentication; verify key rotation, host-key mismatch rejection, and disabled forwarding/PTY without exposing credentials. Verify secrets are passed through environment variables, connection inputs are validated, and temporary key files are removed on success and failure.
 - [ ] 3.3 Adapt the existing loopback Compose/proxy setup to preflight results, preserving non-root/read-only execution and bounded resources; verify Compose configuration, TLS/proxy syntax, container health, free ports and lack of public container listeners.
 - [ ] 3.4 Document owner-controlled finance retirement, Cloudflare TLS/origin restrictions, cache handling and authenticated private staging; verify private pilot content is unavailable on the public domain and requires authentication in staging.
 
@@ -39,6 +39,8 @@ Status: planning complete; implementation and live activation not started. These
 - [ ] 5.3 Rehearse origin plus edge rollback and fresh-host restore, confirm recovery meets the approved target, and record the public G4 decision; leave MVP tasks 4.4/4.6 and load task 4.7 open until their own evidence is complete.
 
 ## Planning verification
+
+The finance deployment and test workflows at main revision `5c705d7f2be8cce74bc5b2434c078341d1b690c2` were reviewed read-only; secret values and live host settings were not inspected. The design records retained conventions and concrete security improvements.
 
 Proposal, design, behavioral spec and task list were prepared from the existing workflow, Docker runtime, release controller and roadmap. Owner inputs specify Ubuntu, 1 vCPU, 1 GB RAM, Cloudflare, the new domain, and retirement of finance hosting. No server connection, credential creation, runtime change, live load test or deployment was performed.
 

@@ -52,18 +52,37 @@ Invoke the existing controller only through the restricted wrapper. Origin healt
 
 Retain prior images and a restricted release-state backup; test registry-unavailable rollback, first-release failure, and a fresh-host restore. Measure end-to-end recovery including edge/cache checks against the existing <5-minute target. Install an independent external probe and approved alert route; avoid visitor URL/IP logging. The existing local load report and the CI burst saturation do not establish capacity on this 1-GB host. Repeat approved scenarios using off-host generators; revise capacity or approved targets based on measured results.
 
+## Personal-finances deployment review
+
+Reviewed `barnolacesc/personal-finances` main revision `5c705d7f2be8cce74bc5b2434c078341d1b690c2` through the GitHub API. Only repository workflow files were read; secret values, server configuration and authorized keys were not inspected.
+
+| Observed finance behavior | Election-site decision |
+|---|---|
+| VPS workflow uses `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`, SSH, and retried loopback HTTP checks | Preserve secret naming and SSH/HTTP checks; use a new restricted election deployer key |
+| VPS workflow has `if: false` while the server is repurposed | Preserve the disabled finance workflow; owner confirms retirement before site activation |
+| VPS workflow records live `ssh-keyscan` output as trust | Require an independently verified `VPS_KNOWN_HOSTS`; reject mismatches |
+| Key/host secrets appear directly in shell source expressions | Pass secrets through environment variables, validate connection values, quote arguments, and securely remove temporary key files |
+| VPS workflow fetches a moving branch and installs dependencies on the server | Test and scan a single CI-built image; deploy its immutable digest without a server Git checkout or build |
+| Deployment is a standalone push workflow with no visible test dependency, environment approval, explicit token permissions, or concurrency | Make release depend on all required checks, protected approval, read-only deployment permissions, and serialized switches |
+| HTTP checks run after restart without a retained-artifact recovery step | Keep origin and external probes; add automatic failed-origin recovery and protected rollback |
+| Raspberry Pi production workflow uses password SSH and `StrictHostKeyChecking=no` | Use dedicated key authentication and strict verified server identity; do not copy password SSH |
+| Finance PR tests run on a persistent self-hosted runner and reuse a virtual environment | Keep untrusted PR tests off the privileged delivery runner; any delivery runner must be isolated from PR execution and the VPS |
+
+The finance workflows establish an operational reference, not evidence that the current VPS firewall, SSH permissions or GitHub protection rules are secure. Review these during preflight. No changes are made to the finance repository in this package.
+
 ## Owner setup checklist
 
 | Item | Needed value or access | Where it belongs |
 |---|---|---|
-| VPS details | Host/IP, SSH port, Ubuntu version, architecture, disk space, console access | Restricted operations inventory; non-secret workflow variables for host/port |
+| VPS details | Host/IP, SSH port, Ubuntu version, architecture, disk space, console access | Restricted operations inventory; environment secrets for host/user and variable for port |
 | Host preflight | Current proxy/listeners, firewall, retirement confirmation, verified finance backup | Owner-reviewed operations record |
 | Domain | `eleccionesespaña2026.es` / `xn--eleccionesespaa2026-83b.es`, zone and DNS control | Build/proxy configuration; approved Cloudflare zone |
 | Deploy identity | Dedicated username and public key | VPS restricted SSH account |
-| `IONOS_SSH_PRIVATE_KEY` | Dedicated deployment private key; matching public key is installed on the VPS | GitHub `production` environment secret only |
-| `IONOS_SSH_KNOWN_HOSTS` | Independently verified host-key entry, including nonstandard port if used | Protected environment configuration |
-| `IONOS_HOST` | `195.20.230.75` (bare IP, without `http://`) | GitHub `production` environment variable |
-| `IONOS_SSH_PORT`, `IONOS_SSH_USER` | Verified SSH port and dedicated deployment username | GitHub `production` environment variables |
+| `VPS_SSH_KEY` | Dedicated deployment private key; matching public key is installed on the VPS | GitHub `production` environment secret only |
+| `VPS_KNOWN_HOSTS` | Independently verified host-key entry, including nonstandard port if used | GitHub `production` environment secret |
+| `VPS_HOST` | `195.20.230.75` (bare IP, without `http://`) | GitHub `production` environment secret; matches finance workflow naming |
+| `VPS_USER` | Dedicated `elecciones-deploy` username | GitHub `production` environment secret; matches finance workflow naming |
+| `VPS_SSH_PORT` | Verified SSH port | GitHub `production` environment variable |
 | Runner path | Isolated runner and fixed SSH egress allowlist, or approved authenticated private path | CI/network owner configuration |
 | Registry publishing | Actions package permissions | Workflow-scoped `GITHUB_TOKEN`; no extra publishing PAT |
 | Registry pull | Account and expiring `read:packages` credential for private GHCR image | Root-only VPS registry credentials, not repository or chat |
@@ -71,7 +90,11 @@ Retain prior images and a restricted release-state backup; test registry-unavail
 | Repository administration | Authority to configure environment reviewers, branch checks, secrets, and package access | GitHub owner/admin setup |
 | Release approval | G0/G2/G3/G4 evidence, reviewed public corpus, accessibility/security/load evidence | Restricted release record and production approval |
 
-Configure the host under repository **Settings → Environments → production → Environment variables** as `IONOS_HOST=195.20.230.75`. Reference it as `${{ vars.IONOS_HOST }}` in the deployment job. A secret can also hold the host if the owner wants it masked, but a public IP does not require secrecy. Store the deployer private key under **Environment secrets** as `IONOS_SSH_PRIVATE_KEY` and reference it as `${{ secrets.IONOS_SSH_PRIVATE_KEY }}`. Install only its matching public key in the VPS deployer account’s restricted `authorized_keys`. The verified host-key entry is separate from this key pair. These are planned settings; no GitHub variable or secret has been provisioned by this planning PR.
+Configure `VPS_HOST=195.20.230.75`, `VPS_USER=elecciones-deploy`, `VPS_SSH_KEY`, and `VPS_KNOWN_HOSTS` under repository **Settings → Environments → production → Environment secrets**. Reference them through the `secrets` context, for example `${{ secrets.VPS_HOST }}` and `${{ secrets.VPS_SSH_KEY }}`. Configure `VPS_SSH_PORT` under **Environment variables** and reference `${{ vars.VPS_SSH_PORT }}`. The public IP and username do not require secrecy, but storing them as secrets matches the owner's finance workflow and masks routine output.
+
+Install only the matching public deployment key in the VPS account's restricted `authorized_keys`. Use a new election-site key pair; do not reuse the finance private key or password. Matching secret names do not share values across repositories: provision each value explicitly in this repository's protected environment. The verified server host-key entry is separate from the deployment key pair. These are planned settings; this PR has not provisioned GitHub secrets or variables.
+
+Pass secrets to shell steps through step-level environment variables, not expression substitution inside shell source. Write key and host-trust files into a private temporary directory with `umask 077`, `printf`, and mode 600; disable tracing and clean up through a trap and an always-run fallback. Quote host/user/port values, validate their formats, use noninteractive SSH with `StrictHostKeyChecking=yes`, explicit `UserKnownHostsFile`, `IdentitiesOnly=yes`, and connection timeouts. Never print keys or return raw SSH output that could expose credentials.
 
 No private keys, passwords, tokens, finance backups, or visitor data belong in a commit or chat. No IONOS API token is needed for SSH-based image delivery; one would require a separate infrastructure automation decision.
 
@@ -107,3 +130,7 @@ No private keys, passwords, tokens, finance backups, or visitor data belong in a
 
 - [GitHub: Configuration variables and the vars context](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables)
 - [GitHub: Environment secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets)
+
+- [Reviewed finance VPS workflow](https://github.com/barnolacesc/personal-finances/blob/5c705d7f2be8cce74bc5b2434c078341d1b690c2/.github/workflows/deploy-test.yml)
+- [Reviewed finance Raspberry Pi workflow](https://github.com/barnolacesc/personal-finances/blob/5c705d7f2be8cce74bc5b2434c078341d1b690c2/.github/workflows/deploy.yml)
+- [Reviewed finance test workflow](https://github.com/barnolacesc/personal-finances/blob/5c705d7f2be8cce74bc5b2434c078341d1b690c2/.github/workflows/test.yml)

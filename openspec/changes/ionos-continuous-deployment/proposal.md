@@ -8,7 +8,7 @@ CI already validates the site and rehearses releases, but its production gate do
 
 - Extend package E3.3 with a reviewed GitHub Actions delivery path: test, scan, publish a private immutable Docker image, obtain production approval, and deploy the exact tested digest over restricted SSH.
 - Adapt origin operations for the smaller IONOS host and Cloudflare domain `eleccionesespaña2026.es`, with an owner-controlled finance-service retirement and measured resource limits.
-- Define credentials, runner connectivity, release evidence, health checks, rollback, and owner setup. Keep private pilot content behind authenticated staging until public-release gates pass.
+- Match the finance VPS workflow’s secret names and SSH delivery pattern, while requiring verified host keys, isolated access, CI-tested immutable images, release approval, and rollback. Define credentials, runner connectivity, release evidence, health checks, and owner setup. Keep private pilot content behind authenticated staging until public-release gates pass.
 
 ## Capabilities
 
