@@ -89,3 +89,8 @@ Hosted-runner access, a private-image pull and end-to-end activation remain open
 Local follow-up validation: nine delivery boundary tests, actionlint, focused Ruff,
 strict OpenSpec validation and diff whitespace checks passed. No live deployment
 or hosted-runner connectivity test was performed during this change.
+
+The owner confirmed effective deployer publickey-only authentication, forced
+command, disabled forwarding/TTY/user RC after the global SSH change. Application
+activation remains pending. CI now explicitly includes ready_for_review so the
+owner can trigger review checks on the draft head without granting deploy access.

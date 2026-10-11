@@ -5,6 +5,7 @@ on:
     branches: ["main", "dy/**"]
   pull_request:
     branches: ["main"]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 # Least-privilege default permissions across all jobs (Task 4.1)
 permissions:
