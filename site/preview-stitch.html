@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Elecciones 2026 · Google Stitch Civic (Fiel al Mockup Original)</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./themes.css">
+  <style>
+    /* Specific Stitch Mockup layout faithful replication */
+    .stitch-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--color-bg-surface);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .stitch-brand-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      background: #eaedff;
+      color: #1d4ed8;
+      border-radius: 9999px;
+    }
+
+    /* Sticky quick-selector pill bar from Stitch */
+    .stitch-sticky-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250, 248, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid #eaedff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .stitch-pill-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .stitch-topic-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #e2e7ff;
+      color: #131b2e;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.825rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .stitch-vs-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: #f2f3ff;
+      color: #434655;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .stitch-audit-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.725rem;
+      color: #515f74;
+    }
+
+    .stitch-audit-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 9999px;
+      background: #004f35;
+      margin-right: 0.3rem;
+    }
+
+    /* "Síntesis documental contrastada" Card from Stitch */
+    .stitch-summary-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.25rem;
+      border: 1px solid #eaedff;
+      box-shadow: 0 2px 8px rgba(19, 27, 46, 0.04);
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stitch-summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stitch-summary-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #131b2e;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .stitch-coincidences-box {
+      background: #f2f3ff;
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      border-left: 3px solid #004f35;
+    }
+
+    .stitch-coincidences-head {
+      color: #004f35;
+      font-size: 0.825rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .stitch-differences-box {
+      background: #f2f3ff;
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      border-left: 3px solid #1d4ed8;
+    }
+
+    .stitch-differences-head {
+      color: #1d4ed8;
+      font-size: 0.825rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Numbered circle badge for measure */
+    .stitch-measure-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 9999px;
+      background: #dce1ff;
+      color: #0037b0;
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .stitch-measure-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .preview-switcher-bar {
+      background: #131b2e;
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    .preview-switcher-links {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .preview-switcher-link {
+      color: #cad3ff;
+      text-decoration: none;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+    }
+
+    .preview-switcher-link:hover {
+      background: #1d4ed8;
+      color: #ffffff;
+    }
+
+    .preview-switcher-link.current {
+      background: #1d4ed8;
+      color: #ffffff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="theme-stitch">
+
+  <!-- Switcher Bar -->
+  <nav class="preview-switcher-bar" aria-label="Navegación de vistas previas">
+    <div><strong>VISTA PREVIA FIEL:</strong> Google Stitch Civic (Material 3)</div>
+    <div class="preview-switcher-links">
+      <a class="preview-switcher-link current" href="preview-stitch.html">★ Stitch Original</a>
+      <a class="preview-switcher-link" href="preview-editorial.html">1. Gaceta Cívica</a>
+      <a class="preview-switcher-link" href="preview-swiss.html">2. Boletín Cívico</a>
+      <a class="preview-switcher-link" href="preview-mediterranean.html">3. Ágora 2026</a>
+      <a class="preview-switcher-link" href="previews.html" style="border: 1px solid #1d4ed8;">📱 Laboratorio Completo</a>
+    </div>
+  </nav>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- Topbar Header -->
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <a class="brand" href="./" aria-label="Elecciones 2026 - Inicio">
+        <span class="brand-mark" aria-hidden="true">◧</span>
+        <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
+      </a>
+      <span class="stitch-brand-tag">CIVIC MONITOR · NEUTRAL</span>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a class="nav-link" href="#comparador">Comparar</a>
+        <a class="nav-link" href="#fuentes">Fuentes</a>
+        <a class="nav-link" href="#metodo">Metodología</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sticky Context Bar (Directly from Stitch Mockup) -->
+  <section class="stitch-sticky-bar" aria-label="Barra contextual de comparación">
+    <div class="stitch-pill-row">
+      <button class="stitch-topic-chip" type="button" aria-label="Tema seleccionado: Vivienda">
+        <span aria-hidden="true">🏢</span>
+        <span>Vivienda y alquiler</span>
+        <span aria-hidden="true">⌵</span>
+      </button>
+      <div class="stitch-vs-chip">
+        <span style="background: #ffffff; padding: 0.15rem 0.4rem; border-radius: 4px; color: #1d4ed8;">PA</span>
+        <span>VS</span>
+        <span style="background: #ffffff; padding: 0.15rem 0.4rem; border-radius: 4px; color: #434655;">PB</span>
+      </div>
+    </div>
+    <div class="stitch-audit-info">
+      <div>
+        <span class="stitch-audit-dot"></span>
+        <span>28 medidas contrastadas · Auditado hace 2d</span>
+      </div>
+      <span style="color: #1d4ed8; font-weight: 600;">Vista apilada</span>
+    </div>
+  </section>
+
+  <main id="contenido" style="padding-top: 1rem;">
+
+    <div class="container" style="max-width: 760px; margin: 0 auto; padding: 0 1rem;">
+
+      <!-- Síntesis Documental Contrastada (Directly from Stitch Mockup) -->
+      <section class="stitch-summary-card" aria-labelledby="sintesis-title">
+        <div class="stitch-summary-header">
+          <h2 id="sintesis-title" class="stitch-summary-title">
+            <span aria-hidden="true">📄</span>
+            <span>Síntesis documental contrastada</span>
+          </h2>
+          <span style="font-size: 0.72rem; background: #e2e7ff; color: #1d4ed8; padding: 0.2rem 0.5rem; border-radius: 9999px; font-weight: 600;">Transcripción</span>
+        </div>
+
+        <!-- Coincidencias -->
+        <div class="stitch-coincidences-box">
+          <div class="stitch-coincidences-head">
+            <span aria-hidden="true">✓</span>
+            <span>Puntos de coincidencia documental (2)</span>
+          </div>
+          <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.875rem; color: #434655; line-height: 1.5;">
+            <li>Bonificación fiscal a arrendadores que mantengan rentas estables en áreas tensionadas.</li>
+            <li>Compromiso expreso para agilizar concesiones de licencias administrativas de obra pública.</li>
+          </ul>
+        </div>
+
+        <!-- Diferencias Clave -->
+        <div class="stitch-differences-box">
+          <div class="stitch-differences-head">
+            <span aria-hidden="true">⑂</span>
+            <span>Diferencias clave documentadas (3)</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #434655; line-height: 1.5; display: flex; flex-direction: column; gap: 0.5rem;">
+            <div>
+              <strong style="color: #131b2e;">Mecanismo de precios:</strong><br>
+              <strong>Partido A:</strong> Fija límites obligatorios indexados a baremos públicos (<span style="color: #1d4ed8;">Pág. 42</span>).<br>
+              <strong>Partido B:</strong> Exime topes y plantea deducción del 100% en IRPF a contratos para menores de 35 años (<span style="color: #1d4ed8;">Pág. 19</span>).
+            </div>
+            <div>
+              <strong style="color: #131b2e;">Ampliación de vivienda pública:</strong><br>
+              <strong>Partido A:</strong> Adquisición pública preferente mediante tanteo y retracto (<span style="color: #1d4ed8;">Pág. 44</span>).<br>
+              <strong>Partido B:</strong> Régimen de concesión y cesión de suelo municipal a promotores (<span style="color: #1d4ed8;">Pág. 21</span>).
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size: 0.72rem; color: #515f74; line-height: 1.4;">
+          ⓘ Resumen generado bajo transcripción neutral de los programas oficiales inscritos. No valora impacto fiscal ni viabilidad legislativa.
+        </div>
+      </section>
+
+      <!-- Medida 1 Apilada -->
+      <article class="measure-group" style="margin-bottom: 2rem;">
+        <div class="stitch-measure-header">
+          <span class="stitch-measure-num">1</span>
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: #131b2e;">Regulación del precio de los alquileres</h3>
+          <span style="font-size: 0.7rem; background: #eaedff; color: #1d4ed8; padding: 0.2rem 0.5rem; border-radius: 4px; margin-left: auto;">Precios</span>
+        </div>
+
+        <p class="measure-summary" style="margin-bottom: 1.25rem;">Políticas de contención y límites obligatorios a los precios de arrendamiento de vivienda en áreas declaradas de mercado tensionado.</p>
+
+        <div class="measure-cards" style="display: flex; flex-direction: column; gap: 1rem;">
+          <!-- Party A Card -->
+          <article class="party-card party-card-a">
+            <div class="party-card-header">
+              <span class="party-pill party-pill-a" aria-hidden="true">PA</span>
+              <div class="party-card-meta">
+                <h4 class="party-name">Partido A</h4>
+                <span class="status-badge" style="background: #e2e7ff; color: #0037b0;">Regulación con topes vinculantes</span>
+              </div>
+            </div>
+            <div class="party-card-body">
+              <div class="party-quote-wrapper">
+                <span class="party-quote-label" style="font-size: 0.75rem; color: #515f74; font-weight: 600;">❝ CITA TEXTUAL VERIFICADA</span>
+                <blockquote class="party-quote">
+                  <p>«Se establecerá un régimen de contención de rentas en áreas de mercado tensionado mediante índice de precios vinculante.»</p>
+                </blockquote>
+              </div>
+              <div class="party-caveat" role="note" style="margin-top: 0.75rem; font-size: 0.85rem; color: #515f74;">
+                <strong>Matiz registrado:</strong> Aplica en municipios declarados zona de mercado tensionado. Exención temporal por rehabilitación integral.
+              </div>
+            </div>
+            <div class="party-card-footer">
+              <a class="source-citation" href="https://partido-ejemplo-a.es/programa-2026.pdf#page=42" target="_blank" rel="noopener noreferrer">
+                <span>Prog. Oficial Definitivo 2026 · Pág. 42</span>
+                <span style="color: #1d4ed8; font-weight: 600;">PDF pág. 42 ↗</span>
+              </a>
+              <time class="source-date" datetime="2026-10-16">Rev. 16/10/2026</time>
+            </div>
+          </article>
+
+          <!-- Party B Card -->
+          <article class="party-card party-card-b">
+            <div class="party-card-header">
+              <span class="party-pill party-pill-b" aria-hidden="true">PB</span>
+              <div class="party-card-meta">
+                <h4 class="party-name">Partido B</h4>
+                <span class="status-badge" style="background: #f2f3ff; color: #434655;">Rechazo explícito a límites</span>
+              </div>
+            </div>
+            <div class="party-card-body">
+              <div class="party-quote-wrapper">
+                <span class="party-quote-label" style="font-size: 0.75rem; color: #515f74; font-weight: 600;">❝ CITA TEXTUAL VERIFICADA</span>
+                <blockquote class="party-quote" style="border-left-color: #515f74;">
+                  <p>«Derogación de cualquier mecanismo de intervención o limitación artificial de rentas de alquiler.»</p>
+                </blockquote>
+              </div>
+              <div class="party-caveat" role="note" style="margin-top: 0.75rem; font-size: 0.85rem; color: #515f74;">
+                <strong>Matiz registrado:</strong> Plantea incentivos fiscales alternativos en IRPF y desgravaciones a propietarios.
+              </div>
+            </div>
+            <div class="party-card-footer">
+              <a class="source-citation" href="https://partido-ejemplo-b.es/manifiesto-2026.pdf#page=19" target="_blank" rel="noopener noreferrer">
+                <span>Prog. Marco 2026 · Pág. 19, §2.4</span>
+                <span style="color: #1d4ed8; font-weight: 600;">PDF pág. 19 ↗</span>
+              </a>
+              <time class="source-date" datetime="2026-10-16">Rev. 16/10/2026</time>
+            </div>
+          </article>
+        </div>
+      </article>
+
+      <!-- Action buttons from Stitch mockup -->
+      <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem; margin-bottom: 3rem;">
+        <button class="btn-compare" type="button" style="flex: 1; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;">
+          <span aria-hidden="true">⇄</span>
+          <span>Cambiar partidos</span>
+        </button>
+        <button class="btn-compare" type="button" style="flex: 1; min-height: 44px; background: #ffffff; color: #1d4ed8; border: 1px solid #1d4ed8; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;">
+          <span aria-hidden="true">☷</span>
+          <span>Cambiar tema</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
+        <p>Servicio cívico de consulta y comparación neutral de programas electorales oficiales.</p>
+      </div>
+      <div class="footer-meta">
+        <p>Google Stitch Civic · Conforme a WCAG 2.2 Nivel AA · Zero CDN externas · Sin cookies ni perfilado.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

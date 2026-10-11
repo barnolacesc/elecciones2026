@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Elecciones 2026 · Explorador de Estilos y Vistas Previas</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./themes.css">
+  <style>
+    /* Styling for the Style Explorer Laboratory */
+    .lab-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      background: #111827;
+      color: #f9fafb;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #374151;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.875rem;
+    }
+
+    .lab-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .lab-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lab-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      background: #0284c7;
+      color: #ffffff;
+      border-radius: 4px;
+    }
+
+    .lab-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lab-btn-group {
+      display: inline-flex;
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .lab-btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: #9ca3af;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.15s ease, color 0.15s ease;
+      min-height: 38px;
+    }
+
+    .lab-btn:hover {
+      background: #374151;
+      color: #ffffff;
+    }
+
+    .lab-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .lab-meta-bar {
+      background: #1f2937;
+      color: #d1d5db;
+      padding: 0.65rem 1rem;
+      font-size: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid #374151;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+    }
+
+    .lab-stage-container {
+      background: #2b3544;
+      min-height: calc(100vh - 100px);
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-x: auto;
+    }
+
+    /* Device frame for phone preview */
+    .device-shell {
+      background: #ffffff;
+      transition: width 0.25s ease, max-width 0.25s ease;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4), 0 0 0 10px #1a202c, 0 0 0 12px #4a5568;
+      border-radius: 36px;
+      overflow: hidden;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .device-shell.desktop-view {
+      width: 100% !important;
+      max-width: 1100px !important;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .device-shell.phone-view {
+      border-top-width: 18px;
+    }
+
+    .device-camera {
+      width: 110px;
+      height: 18px;
+      background: #1a202c;
+      margin: 0 auto;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      display: block;
+    }
+
+    .device-shell.desktop-view .device-camera {
+      display: none;
+    }
+
+    .device-content {
+      background: var(--color-bg-canvas);
+      color: var(--color-text-primary);
+      min-height: 600px;
+      overflow-y: auto;
+    }
+
+    /* Side-by-side mode container */
+    .side-by-side-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 390px);
+      gap: 2rem;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 1rem 0;
+    }
+
+    .side-by-side-column {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .side-by-side-header {
+      background: #111827;
+      color: #ffffff;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .side-by-side-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      background: #374151;
+    }
+
+    /* Style inspector card above preview */
+    .style-info-card {
+      max-width: 900px;
+      margin: 0 auto 1.5rem auto;
+      background: #1e293b;
+      color: #f1f5f9;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      border-left: 4px solid #38bdf8;
+      font-family: -apple-system, system-ui, sans-serif;
+    }
+
+    .style-info-card h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .style-info-card p {
+      margin: 0 0 0.75rem 0;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .style-traits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      background: #0f172a;
+      padding: 0.75rem;
+      border-radius: 6px;
+    }
+
+    .trait-label {
+      color: #94a3b8;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+    }
+
+    .trait-val {
+      color: #f8fafc;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body class="theme-stitch">
+
+  <!-- Style Explorer Top Toolbar -->
+  <header class="lab-toolbar" role="region" aria-label="Controles del laboratorio de estilos">
+    <div class="lab-title-group">
+      <div class="lab-title">
+        <span aria-hidden="true">🎨</span>
+        <span>Elecciones 2026</span>
+        <span class="lab-badge">Estudio de Diseño</span>
+      </div>
+      <a href="./" style="color: #93c5fd; text-decoration: none; font-size: 0.8rem;">← Volver al comparador</a>
+    </div>
+
+    <div class="lab-controls">
+      <!-- Theme Selection Buttons -->
+      <div class="lab-btn-group" role="radiogroup" aria-label="Seleccionar dirección de diseño">
+        <button type="button" class="lab-btn active" data-style="stitch" aria-checked="true" role="radio">
+          <span>★</span> <span>Google Stitch (Fiel)</span>
+        </button>
+        <button type="button" class="lab-btn" data-style="datajournalism" aria-checked="false" role="radio">
+          <span>📊</span> <span>Periodismo Datos</span>
+        </button>
+        <button type="button" class="lab-btn" data-style="nordic" aria-checked="false" role="radio">
+          <span>❄️</span> <span>Claridad Nórdica</span>
+        </button>
+        <button type="button" class="lab-btn" data-style="editorial" aria-checked="false" role="radio">
+          <span>📰</span> <span>Gaceta Cívica</span>
+        </button>
+        <button type="button" class="lab-btn" data-style="swiss" aria-checked="false" role="radio">
+          <span>📐</span> <span>Boletín Suizo</span>
+        </button>
+        <button type="button" class="lab-btn" data-style="mediterranean" aria-checked="false" role="radio">
+          <span>🏛️</span> <span>Ágora 2026</span>
+        </button>
+        <button type="button" class="lab-btn" data-mode="triple" aria-checked="false" role="radio" title="Ver 3 estilos en paralelo en 390px">
+          <span>📱📱📱</span> <span>Triple</span>
+        </button>
+      </div>
+
+      <!-- Viewport Simulation Buttons -->
+      <div class="lab-btn-group" id="viewport-group" role="radiogroup" aria-label="Simular resolución de pantalla">
+        <button type="button" class="lab-btn" data-width="360" role="radio" title="Móvil compacto (360px)">360 px</button>
+        <button type="button" class="lab-btn active" data-width="390" role="radio" title="Móvil referencia Google Stitch (390px)">390 px</button>
+        <button type="button" class="lab-btn" data-width="430" role="radio" title="Móvil grande (430px)">430 px</button>
+        <button type="button" class="lab-btn" data-width="100%" role="radio" title="Pantalla completa escritorio">Escritorio</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Technical Information Bar -->
+  <div class="lab-meta-bar" id="lab-meta-bar">
+    <span id="meta-style-name">ESTILO: Google Stitch Civic (Fiel al Mockup Original)</span>
+    <span id="meta-viewport-info">RESOLUCIÓN: 390 CSS px (Referencia Stitch)</span>
+    <span>WCAG 2.2 NIVEL AA: 100% CUMPLIDO (4.5:1 - 17.6:1)</span>
+  </div>
+
+  <div class="lab-stage-container" id="stage-container">
+    <div id="single-view-wrapper" style="width: 100%;">
+
+      <!-- Style Description Card -->
+      <section class="style-info-card" id="style-info-card">
+        <h2 id="card-style-title">★ Google Stitch Civic (Material 3 / Fiel al Mockup Original)</h2>
+        <p id="card-style-desc">
+          Reconstrucción fidedigna del concepto oficial de Google Stitch. Utiliza la paleta de Material 3 con fondo lavanda suave (#FAF8FF), azul cívico institucional (#1D4ED8), insignias circulares numeradas, chips de contexto fijos y tarjeta de síntesis documental con verificaciones en verde salvia (#004F35).
+        </p>
+        <div class="style-traits">
+          <div>
+            <span class="trait-label">Tipografía Titulares</span>
+            <span class="trait-val" id="trait-headings">Inter / Modern Sans de precisión métrica</span>
+          </div>
+          <div>
+            <span class="trait-label">Paleta y Materiales</span>
+            <span class="trait-val" id="trait-palette">Lienzo lavanda (#FAF8FF), superficie blanca (#FFFFFF), azul cívico (#1D4ED8), verde evidencia (#004F35)</span>
+          </div>
+          <div>
+            <span class="trait-label">Geometría y Bordes</span>
+            <span class="trait-val" id="trait-geometry">Radios suaves de 10px a 16px, micro-píldoras de estado y tarjetas apiladas con cita destacada</span>
+          </div>
+          <div>
+            <span class="trait-label">Razón Anti-Genérica</span>
+            <span class="trait-val" id="trait-why">Reproduce con exactitud la propuesta visual interactiva de Google Stitch sin dependencias de CDN.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Simulated Device Shell -->
+      <div class="device-shell phone-view" id="device-shell" style="width: 390px; max-width: 390px;">
+        <span class="device-camera" aria-hidden="true"></span>
+        <div class="device-content" id="device-content">
+
+          <!-- Skip Link -->
+          <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+          <!-- Preview Banner -->
+          <aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
+            VISTA PREVIA · DATOS DE PRUEBA · NO PUBLICAR COMO INFORMACIÓN DEFINITIVA
+          </aside>
+
+          <!-- Topbar Header -->
+          <header class="topbar" role="banner">
+            <div class="topbar-inner">
+              <a class="brand" href="./" aria-label="Elecciones 2026 - Inicio">
+                <span class="brand-mark" aria-hidden="true">◧</span>
+                <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
+              </a>
+              <nav class="nav-links" aria-label="Navegación principal">
+                <a class="nav-link" href="#comparador">Comparador</a>
+                <a class="nav-link" href="#metodo">Metodología</a>
+                <a class="nav-link" href="#fuentes">Fuentes</a>
+              </nav>
+            </div>
+          </header>
+
+          <main id="contenido">
+            <!-- Hero Section -->
+            <section class="hero" aria-labelledby="hero-title">
+              <p class="hero-eyebrow">ELECCIONES GENERALES · 29 NOV 2026</p>
+              <h1 id="hero-title" class="hero-title">Los programas,<br><span class="hero-em">puestos en claro.</span></h1>
+              <p class="hero-intro">Compara propuestas políticas sobre los temas que te importan. Cada posición enlaza directamente a su programa original y página exacta. Sin recomendaciones de voto.</p>
+              <div class="hero-actions">
+                <a class="btn-primary" href="#comparador">
+                  <span>Explorar comparador</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </section>
+
+            <!-- Technical Notice -->
+            <aside class="notice" aria-label="Aviso de la maqueta">
+              <strong>Aviso de maqueta técnica:</strong> «Partido A» y «Partido B» son ejemplos de prueba. No existen programas oficiales incorporados en esta versión previa.
+            </aside>
+
+            <!-- Comparator Section -->
+            <section id="comparador" class="compare-section" aria-labelledby="compare-title">
+              <div class="section-head">
+                <p class="hero-eyebrow">01 / COMPARAR</p>
+                <h2 id="compare-title">Una cuestión, distintas propuestas.</h2>
+                <p>Selecciona un tema y dos candidaturas para revisar coincidencias, matices y divergencias agrupadas por medida.</p>
+              </div>
+
+              <!-- Selection Controls Form -->
+              <form id="selection-form" class="controls-form" role="search" aria-label="Filtro de comparación">
+                <div class="control-field">
+                  <label for="topic-select" class="control-label">Tema de comparación</label>
+                  <div class="select-wrapper">
+                    <select id="topic-select" name="topic" class="control-select">
+                      <option value="housing" selected>Vivienda</option>
+                      <option value="education">Educación</option>
+                      <option value="health-social-services">Sanidad y servicios sociales</option>
+                      <option value="economy-work-tax">Economía, trabajo y fiscalidad</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="control-field">
+                  <label for="party-a-select" class="control-label">Primer partido</label>
+                  <div class="select-wrapper">
+                    <select id="party-a-select" name="partyA" class="control-select">
+                      <option value="party-a" selected>Partido A (ficticio)</option>
+                      <option value="party-b">Partido B (ficticio)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="control-field">
+                  <label for="party-b-select" class="control-label">Segundo partido</label>
+                  <div class="select-wrapper">
+                    <select id="party-b-select" name="partyB" class="control-select">
+                      <option value="party-a">Partido A (ficticio)</option>
+                      <option value="party-b" selected>Partido B (ficticio)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="control-actions">
+                  <button type="button" class="btn-compare">
+                    <span>Comparar propuestas</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Measure Comparison Section -->
+              <div class="measures-container">
+                <!-- Measure 1 -->
+                <article class="measure-group" aria-labelledby="measure-1-title">
+                  <div class="measure-head">
+                    <p class="measure-topic-label">TEMA: VIVIENDA</p>
+                    <h3 id="measure-1-title" class="measure-title">Medida: Regulación de precios de alquiler en zonas de mercado tensionado</h3>
+                    <p class="measure-summary">Políticas de contención y límites obligatorios a los precios de arrendamiento de vivienda en áreas declaradas de mercado tensionado.</p>
+                  </div>
+
+                  <div class="measure-cards">
+                    <!-- Party A Card -->
+                    <article class="party-card party-card-a" aria-labelledby="party-a-name">
+                      <div class="party-card-header">
+                        <span class="party-pill party-pill-a" aria-hidden="true">A</span>
+                        <div class="party-card-meta">
+                          <h4 id="party-a-name" class="party-name">Partido A</h4>
+                          <span class="status-badge status-badge-official">Programa oficial</span>
+                        </div>
+                      </div>
+                      <div class="party-card-body">
+                        <p class="party-statement">Limitar los precios de alquiler en zonas tensionadas mediante un índice estatal de referencia y sanciones a grandes tenedores infractores.</p>
+                        <div class="party-quote-wrapper">
+                          <span class="party-quote-label">Extracto literal del programa:</span>
+                          <blockquote class="party-quote">
+                            <p>«Estableceremos un límite de precios vinculante en zonas de mercado residencial tensionado basado en el índice de precios de referencia.»</p>
+                          </blockquote>
+                          <button type="button" class="btn-open-manifesto" onclick="alert('Modal de extracto verificado: Programa oficial v1.0, página 34.')">
+                            <span aria-hidden="true">📖</span>
+                            <span>Leer extracto íntegro</span>
+                          </button>
+                        </div>
+                        <div class="party-caveat" role="note" aria-label="Matiz registrado">
+                          <strong>Matiz o condición:</strong> Aplica exclusivamente en municipios declarados como zona de mercado tensionado.
+                        </div>
+                      </div>
+                      <div class="party-card-footer">
+                        <a class="source-citation" href="https://partido-ejemplo-a.es/programa-2026.pdf#page=34" target="_blank" rel="noopener noreferrer">
+                          <span aria-hidden="true">↗</span> <span>Fuente: <em>Programa oficial v1.0 · pág. 34</em></span>
+                        </a>
+                        <time class="source-date" datetime="2026-10-16">Rev. 16/10/2026</time>
+                      </div>
+                    </article>
+
+                    <!-- Party B Card -->
+                    <article class="party-card party-card-b" aria-labelledby="party-b-name">
+                      <div class="party-card-header">
+                        <span class="party-pill party-pill-b" aria-hidden="true">B</span>
+                        <div class="party-card-meta">
+                          <h4 id="party-b-name" class="party-name">Partido B</h4>
+                          <span class="status-badge status-badge-partial">Documento parcial</span>
+                        </div>
+                      </div>
+                      <div class="party-card-body">
+                        <p class="party-statement">Intervenir los precios del alquiler en áreas tensionadas mediante índices autonómicos y movilización de viviendas desocupadas.</p>
+                        <div class="party-quote-wrapper">
+                          <span class="party-quote-label">Extracto literal del programa:</span>
+                          <blockquote class="party-quote">
+                            <p>«Toparemos los precios abusivos del alquiler en las zonas residenciales declaradas tensionadas.»</p>
+                          </blockquote>
+                          <button type="button" class="btn-open-manifesto" onclick="alert('Modal de extracto verificado: Manifiesto parcial v0.9, página 8.')">
+                            <span aria-hidden="true">📖</span>
+                            <span>Leer extracto íntegro</span>
+                          </button>
+                        </div>
+                        <div class="party-caveat" role="note" aria-label="Matiz registrado">
+                          <strong>Matiz o condición:</strong> Prevé competencia transferida a las comunidades autónomas para ajustar índices.
+                        </div>
+                      </div>
+                      <div class="party-card-footer">
+                        <a class="source-citation" href="https://partido-ejemplo-b.es/manifiesto-2026-resumen.pdf#page=8" target="_blank" rel="noopener noreferrer">
+                          <span aria-hidden="true">↗</span> <span>Fuente: <em>Manifiesto parcial v0.9 · pág. 8</em></span>
+                        </a>
+                        <time class="source-date" datetime="2026-10-16">Rev. 16/10/2026</time>
+                      </div>
+                    </article>
+                  </div>
+
+                  <!-- Analysis Callout -->
+                  <aside class="analysis-callout rel-callout-agreement" aria-label="Lectura comparada">
+                    <span class="analysis-icon" aria-hidden="true">✓</span>
+                    <div>
+                      <h4 style="margin: 0 0 0.4rem 0; font-size: 1rem;">Coincidencia en la medida</h4>
+                      <p style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">Ambas formaciones políticas coinciden en topar precios en zonas tensionadas, aunque discrepan en si la escala rectora debe ser estatal o autonómica.</p>
+                      <ul class="analysis-differences" style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem;">
+                        <li>Partido A condiciona la medida a un índice estatal único.</li>
+                        <li>Partido B prevé que las CC. AA. puedan fijar índices más restrictivos.</li>
+                      </ul>
+                    </div>
+                  </aside>
+                </article>
+              </div>
+            </section>
+          </main>
+
+          <!-- Footer -->
+          <footer class="site-footer" role="contentinfo">
+            <div class="footer-inner">
+              <div class="footer-brand">
+                <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
+                <p>Servicio cívico de consulta y comparación neutral de programas para las Elecciones Generales del 29 de noviembre de 2026.</p>
+              </div>
+              <div class="footer-meta">
+                <p>Desarrollado conforme a los estándares de auditoría editorial y WCAG 2.2 Nivel AA. Cero recopilación de datos de los lectores.</p>
+              </div>
+            </div>
+          </footer>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Side-by-Side Mode Container (Hidden initially) -->
+    <div id="triple-view-wrapper" style="display: none;">
+      <div class="side-by-side-grid">
+
+        <!-- Column 1: Editorial -->
+        <div class="side-by-side-column theme-editorial">
+          <div class="side-by-side-header">
+            <span>1. La Gaceta Cívica</span>
+            <span class="side-by-side-tag">Editorial</span>
+          </div>
+          <div class="device-shell phone-view" style="width: 390px; max-width: 390px;">
+            <span class="device-camera" aria-hidden="true"></span>
+            <div class="device-content" id="col-editorial-content"></div>
+          </div>
+        </div>
+
+        <!-- Column 2: Swiss -->
+        <div class="side-by-side-column theme-swiss">
+          <div class="side-by-side-header">
+            <span>2. Boletín Cívico</span>
+            <span class="side-by-side-tag">Swiss Brutalism</span>
+          </div>
+          <div class="device-shell phone-view" style="width: 390px; max-width: 390px;">
+            <span class="device-camera" aria-hidden="true"></span>
+            <div class="device-content" id="col-swiss-content"></div>
+          </div>
+        </div>
+
+        <!-- Column 3: Mediterranean -->
+        <div class="side-by-side-column theme-mediterranean">
+          <div class="side-by-side-header">
+            <span>3. Ágora 2026</span>
+            <span class="side-by-side-tag">Modernismo</span>
+          </div>
+          <div class="device-shell phone-view" style="width: 390px; max-width: 390px;">
+            <span class="device-camera" aria-hidden="true"></span>
+            <div class="device-content" id="col-mediterranean-content"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      const styleData = {
+        stitch: {
+          name: 'Google Stitch Civic (Fiel al Mockup Original)',
+          themeClass: 'theme-stitch',
+          title: '★ Google Stitch Civic (Material 3 / Fiel al Mockup Original)',
+          desc: 'Reconstrucción fidedigna del concepto oficial de Google Stitch. Utiliza la paleta de Material 3 con fondo lavanda suave (#FAF8FF), azul cívico institucional (#1D4ED8), insignias circulares numeradas, chips de contexto fijos y tarjeta de síntesis documental con verificaciones en verde salvia (#004F35).',
+          headings: 'Inter / Modern Sans de precisión métrica',
+          palette: 'Lienzo lavanda (#FAF8FF), superficie blanca (#FFFFFF), azul cívico (#1D4ED8), verde evidencia (#004F35)',
+          geometry: 'Radios suaves de 10px a 16px, micro-píldoras de estado y tarjetas apiladas con cita destacada',
+          why: 'Reproduce con exactitud la propuesta visual interactiva de Google Stitch sin dependencias de CDN.'
+        },
+        datajournalism: {
+          name: 'Periodismo de Datos / Slate & Ink (Axios & ProPublica)',
+          themeClass: 'theme-datajournalism',
+          title: '📊 Periodismo de Datos / Slate & Ink (Axios & ProPublica)',
+          desc: 'Inspirado en medios contemporáneos de periodismo de investigación y análisis cuantitativo (ProPublica, Axios, FiveThirtyEight). Alto contraste, tipografía sans compacta, filetes nítidos de pizarra (#CBD5E1) y máxima densidad informativa.',
+          headings: 'Grotesque compacta y decidida (peso 800, tracking ajustado)',
+          palette: 'Pizarra clara (#F8FAFC), tinta noche (#0F172A), índigo cívico (#3730A3)',
+          geometry: 'Bordes nítidos de 1px, esquinas de 6px a 8px, etiquetas de código monoespaciadas',
+          why: 'Prioriza el consumo analítico rápido y la comparación directa sin ornamentos.'
+        },
+        nordic: {
+          name: 'Claridad Nórdica / Minimalismo Escandinavo',
+          themeClass: 'theme-nordic',
+          title: '❄️ Claridad Nórdica / Minimalismo Cívico Escandinavo',
+          desc: 'Inspirado en los portales públicos de Dinamarca y Suecia (Skatteverket, Gov.uk light). Fondo tiza puro (#F9F9FB), máxima amplitud visual, divisores sutiles y azul marino oceánico (#0369A1).',
+          headings: 'Sans geométrica serena y equilibrada',
+          palette: 'Tiza ultra-limpia (#F9F9FB), carbón suave (#18181B), azul océano (#0369A1)',
+          geometry: 'Esquinas muy suaves (12px a 20px), píldoras completas, elevación limpia casi imperceptible',
+          why: 'Ofrece una experiencia de lectura relajada y neutra sin fatiga visual.'
+        },
+        editorial: {
+          name: 'La Gaceta Cívica (Editorial Broadsheet)',
+          themeClass: 'theme-editorial',
+          title: '📰 Estilo: «La Gaceta Cívica» (Prensa Democrática / Editorial Broadsheet)',
+          desc: 'Inspirado en la gran tradición de la prensa europea de referencia (El País, Le Monde, The Guardian, ProPublica) y el rigor del Boletín Oficial del Estado. Transforma el comparador en una gaceta ciudadana seria, creíble y reposada, eliminando cualquier aspecto de plantilla genérica o SaaS artificial.',
+          headings: 'Serif literaria con autoridad (Georgia / Newsreader / Ibarra)',
+          palette: 'Papel marfil cálido (#FBF9F4), tinta carbón (#1A1918), sello bermellón (#8F2D18)',
+          geometry: 'Filetes finos de 1px (#DCD6CA), remates rectos, citas en itálica con comillas latinas « »',
+          why: 'Sustituye la monotonía gris por la dignidad intelectual de un observatorio constitucional.'
+        },
+        swiss: {
+          name: 'Boletín Cívico / Archivo Abierto (Swiss Functionalism · 100% Imparcial)',
+          themeClass: 'theme-swiss',
+          title: '📐 Estilo: «Boletín Cívico / Archivo Abierto» (Brutalismo Funcional Suizo)',
+          desc: 'Inspirado en el diseño tipográfico suizo de alta utilidad (Müller-Brockmann) y los estándares de transparencia del BOE y Gov.uk. Por defecto utiliza una paleta Monocromo Radical (#0A0D12 / Blanco / Hormigón) para garantizar una neutralidad política absoluta (evitando cualquier identificación de color con partidos como el azul del PP), con un selector de acento personalizable por el lector.',
+          headings: 'Grotesque pesada ultra-legible (SF Pro / Helvetica / Arial Black)',
+          palette: 'Negro obsidiana (#0A0D12), blanco puro (#FFFFFF), gris hormigón (#EEF0F2) + Acento elegible (Monocromo, Grafito, Ámbar, Salvia, Cobalto)',
+          geometry: 'Bordes sólidos de 2px (#0A0D12), esquinas vivas (0px), sombras físicas duras (4px), márgenes modulares calibrados',
+          why: 'Elimina cualquier sesgo partidista mediante neutralidad documental BOE y da el control visual al ciudadano.'
+        },
+        mediterranean: {
+          name: 'Ágora 2026 (Modernismo Mediterráneo)',
+          themeClass: 'theme-mediterranean',
+          title: '🏛️ Estilo: «Ágora 2026» (Humanismo Cívico Mediterráneo)',
+          desc: 'Inspirado en el diseño institucional y cultural de la España contemporánea (Fundación Juan March, CCCB, IVAM; escuela de Alberto Corazón y Cruz Novillo). Aporta calidez terrosa, proporciones acogedoras y serenidad democrática.',
+          headings: 'Humanist sans de proporciones armónicas (Avenir / Trebuchet / Segoe)',
+          palette: 'Piedra caliza (#F8F6F0), pizarra marina (#15262E), azafrán terroso (#B85314)',
+          geometry: 'Radios suaves y orgánicos (12px - 16px), sombras cálidas difuminadas',
+          why: 'Sustituye la frialdad corporativa por una estética cívica luminosa, cercana y humana.'
+        }
+      };
+
+      let currentStyle = 'stitch';
+      let currentWidth = '390';
+      let isTripleMode = false;
+
+      const deviceShell = document.getElementById('device-shell');
+      const singleWrapper = document.getElementById('single-view-wrapper');
+      const tripleWrapper = document.getElementById('triple-view-wrapper');
+      const viewportGroup = document.getElementById('viewport-group');
+      const metaStyleName = document.getElementById('meta-style-name');
+      const metaViewportInfo = document.getElementById('meta-viewport-info');
+
+      function applyStyle(styleKey) {
+        currentStyle = styleKey;
+        const d = styleData[styleKey];
+
+        document.body.className = d.themeClass;
+        metaStyleName.textContent = 'ESTILO: ' + d.name;
+
+        document.getElementById('card-style-title').textContent = d.title;
+        document.getElementById('card-style-desc').textContent = d.desc;
+        document.getElementById('trait-headings').textContent = d.headings;
+        document.getElementById('trait-palette').textContent = d.palette;
+        document.getElementById('trait-geometry').textContent = d.geometry;
+        document.getElementById('trait-why').textContent = d.why;
+      }
+
+      function setViewportWidth(width) {
+        currentWidth = width;
+        if (width === '100%') {
+          deviceShell.classList.add('desktop-view');
+          deviceShell.classList.remove('phone-view');
+          deviceShell.style.width = '100%';
+          deviceShell.style.maxWidth = '1100px';
+          metaViewportInfo.textContent = 'RESOLUCIÓN: Vista Escritorio Completa (1100 CSS px)';
+        } else {
+          deviceShell.classList.remove('desktop-view');
+          deviceShell.classList.add('phone-view');
+          deviceShell.style.width = width + 'px';
+          deviceShell.style.maxWidth = width + 'px';
+          metaViewportInfo.textContent = 'RESOLUCIÓN: ' + width + ' CSS px (' + (width === '390' ? 'Referencia Google Stitch' : 'Móvil') + ')';
+        }
+      }
+
+      // Handle style switch buttons
+      document.querySelectorAll('[data-style]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('[data-style], [data-mode]').forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-checked', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-checked', 'true');
+
+          isTripleMode = false;
+          singleWrapper.style.display = 'block';
+          tripleWrapper.style.display = 'none';
+          viewportGroup.style.display = 'inline-flex';
+
+          applyStyle(btn.getAttribute('data-style'));
+        });
+      });
+
+      // Handle triple comparison mode button
+      const tripleBtn = document.querySelector('[data-mode="triple"]');
+      if (tripleBtn) {
+        tripleBtn.addEventListener('click', function() {
+          document.querySelectorAll('[data-style], [data-mode]').forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-checked', 'false');
+          });
+          tripleBtn.classList.add('active');
+          tripleBtn.setAttribute('aria-checked', 'true');
+
+          isTripleMode = true;
+          singleWrapper.style.display = 'none';
+          tripleWrapper.style.display = 'block';
+          viewportGroup.style.display = 'none';
+
+          metaStyleName.textContent = 'MODO: Comparativa Simultánea (390px cada una)';
+          metaViewportInfo.textContent = 'RESOLUCIÓN: 3 columnas de 390 CSS px';
+
+          // Clone content into columns
+          const sourceContent = document.getElementById('device-content').innerHTML;
+          document.getElementById('col-editorial-content').innerHTML = sourceContent;
+          document.getElementById('col-swiss-content').innerHTML = sourceContent;
+          document.getElementById('col-mediterranean-content').innerHTML = sourceContent;
+        });
+      }
+
+      // Handle viewport width buttons
+      document.querySelectorAll('[data-width]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('[data-width]').forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-checked', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-checked', 'true');
+          setViewportWidth(btn.getAttribute('data-width'));
+        });
+      });
+
+      // Check query param e.g. ?style=swiss
+      const urlParams = new URLSearchParams(window.location.search);
+      const reqStyle = urlParams.get('style');
+      if (reqStyle && styleData[reqStyle]) {
+        const targetBtn = document.querySelector('[data-style="' + reqStyle + '"]');
+        if (targetBtn) targetBtn.click();
+      }
+    })();
+  </script>
+</body>
+</html>

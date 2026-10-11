@@ -643,7 +643,7 @@ def render_base(
 
     if ctx.election_id == "es-gen-2023":
         brand_link = f"""<a class="brand" href="{root_path}" aria-label="Generales 2023 - Ensayo Piloto">
-        <span class="brand-mark" aria-hidden="true">◧</span>
+        <span class="brand-mark" aria-hidden="true">■</span>
         <span class="brand-text">Generales<span class="brand-year">2023</span></span>
         <span class="pilot-badge" style="background: var(--color-warning-subtle, #fef3c7); color: var(--color-warning, #92400e); font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; margin-left: 8px;">Piloto Privado</span>
       </a>"""
@@ -654,7 +654,7 @@ def render_base(
             title = f"{title} · Generales 2023"
     else:
         brand_link = f"""<a class="brand" href="{root_path}" aria-label="Elecciones 2026 - Inicio">
-        <span class="brand-mark" aria-hidden="true">◧</span>
+        <span class="brand-mark" aria-hidden="true">■</span>
         <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
       </a>"""
         preview_banner_text = f"{escape(ctx.i18n['preview_banner']['badge'])} · {escape(ctx.i18n['preview_banner']['text'])}"
@@ -676,7 +676,7 @@ def render_base(
 {{ social_metadata }}
   <link rel="stylesheet" href="{{ root_path }}styles.css">
 </head>
-<body data-election="{{ election_id }}">
+<body class="theme-swiss" data-election="{{ election_id }}" data-swiss-accent="monochrome">
   <a class="skip-link" href="#contenido">{{ skip_to_content }}</a>
   <aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
     {{ preview_banner_text }}
@@ -1748,6 +1748,8 @@ def build_site(
         site_src = root_dir / "site"
         if (site_src / "styles.css").exists():
             shutil.copy2(site_src / "styles.css", staging_dir / "styles.css")
+        if (site_src / "themes.css").exists():
+            shutil.copy2(site_src / "themes.css", staging_dir / "themes.css")
         if (site_src / "tokens").exists():
             shutil.copytree(site_src / "tokens", staging_dir / "tokens", dirs_exist_ok=True)
         if (site_src / "app.js").exists():
