@@ -93,7 +93,7 @@ test('private pilot keeps election context and never falls back to 2026 measures
   assert.match(shared.title, /2023/);
   assert.match(shared.url, /election=es-gen-2023/);
 
-  // Check 2023 pilot measures render across topics
+  // Check 2023 pilot measures render across all 8 topics
   b.nodes['topic-select'].value = 'economy-work-tax';
   b.nodes['topic-select'].handlers.change();
   assert.match(b.nodes['measures-container'].innerHTML, /Regulación de la jornada laboral máxima y tiempo de trabajo \(2023\)/);
@@ -106,11 +106,50 @@ test('private pilot keeps election context and never falls back to 2026 measures
   b.nodes['topic-select'].handlers.change();
   assert.match(b.nodes['measures-container'].innerHTML, /Refuerzo de la Atención Primaria y Salud Mental en el SNS \(2023\)/);
 
-  // An unpopulated 2023 topic (e.g. immigration) should honestly report no measures registered yet
+  b.nodes['topic-select'].value = 'climate-energy';
+  b.nodes['topic-select'].handlers.change();
+  assert.match(b.nodes['measures-container'].innerHTML, /Despliegue de energías renovables y modelo de transición energética \(2023\)/);
+
+  b.nodes['topic-select'].value = 'institutions-rights';
+  b.nodes['topic-select'].handlers.change();
+  assert.match(b.nodes['measures-container'].innerHTML, /Reforma del sistema de elección del CGPJ y gobernanza judicial \(2023\)/);
+
   b.nodes['topic-select'].value = 'immigration';
   b.nodes['topic-select'].handlers.change();
-  assert.match(b.nodes['measures-container'].innerHTML, /No hay medidas registradas todavía/);
+  assert.match(b.nodes['measures-container'].innerHTML, /Gestión de flujos migratorios, vías de regularización y acogida \(2023\)/);
+
+  b.nodes['topic-select'].value = 'foreign-policy-eu';
+  b.nodes['topic-select'].handlers.change();
+  assert.match(b.nodes['measures-container'].innerHTML, /Autonomía estratégica europea, compromisos de defensa y política exterior \(2023\)/);
   assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /15%|Garantir el dret/);
+});
+
+test('empty-measures fallback is rendered when a topic has no registered measures', () => {
+  const code = fs.readFileSync('site/app.js', 'utf8').replace("'immigration': [", "'immigration': [], '_old_immigration': [");
+  const nodes = {};
+  for (const id of ['share-button', 'share-feedback', 'share-fallback', 'share-link',
+    'copy-link-button', 'selection-form', 'topic-select', 'party-a-select',
+    'party-b-select', 'selection-error', 'measures-container', 'manifesto-dialog', 'label', 'banner']) {
+    nodes[id] = { value: '', textContent: '', innerHTML: '', hidden: true, handlers: {},
+      classList: { add() {}, remove() {} }, setAttribute() {}, removeAttribute() {},
+      showModal() { this.opened = true; }, close() { this.opened = false; },
+      querySelector() { return null; },
+      addEventListener(event, handler) { this.handlers[event] = handler; },
+      focus() { this.focused = true; }, select() { this.selected = true; } };
+  }
+  nodes['topic-select'].value = 'immigration';
+  nodes['party-a-select'].value = 'pp';
+  nodes['party-b-select'].value = 'erc';
+  const location = { href: 'https://preview.test/?topic=immigration&partyA=pp&partyB=erc&election=2023' };
+  const document = { readyState: 'complete', body: { dataset: {} },
+    getElementById: id => nodes[id],
+    querySelector: selector => selector === '.preview-banner' ? nodes.banner : nodes.label };
+  const window = { location, isSecureContext: true,
+    history: { replaceState(_, __, value) { location.href = value; } } };
+  const context = vm.createContext({ window, document, navigator: {}, URL, URLSearchParams });
+  vm.runInContext(fs.readFileSync('site/sharing.js', 'utf8'), context);
+  vm.runInContext(code, context);
+  assert.match(nodes['measures-container'].innerHTML, /No hay medidas registradas todavía/);
 });
 
 test('native share success, cancellation and rejection expose honest status and copy fallback', async () => {

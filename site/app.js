@@ -1161,6 +1161,142 @@
 
     'immigration': [
       {
+        id: 'immigration-pilot-2023-measure',
+        electionId: 'es-gen-2023',
+        title: 'Medida: Gestión de flujos migratorios, vías de regularización y acogida (2023)',
+        summary: 'Propuestas de los programas electorales del 23J de 2023 sobre control de fronteras, regularización de personas migrantes, cierre de CIEs y distribución competencial de la acogida.',
+        context: 'Esta iniciativa contrasta las políticas migratorias: refuerzo de inspección fronteriza y coordinación policial con FRONTEX frente a regularización permanente de derechos, cierre de los CIEs y traspaso de competencias de acogida a las comunidades autónomas.',
+        keyAxes: [
+          'Control fronterizo y seguridad: incremento de medios y refuerzo de FRONTEX frente a fin de devoluciones en caliente y vías legales seguras de entrada.',
+          'Régimen de regularización: control estricto de entradas irregulares frente a reforma de la ley de extranjería y regularización permanente de derechos.',
+          'Gobernanza de la acogida: gestión estatal y convenios bilaterales en origen frente a transferencia plena de políticas migratorias a las CC. AA.'
+        ],
+        positions: {
+          'pp': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Refuerzo de la inspección fronteriza con medios policiales y tecnológicos, participación en FRONTEX y cooperación migratoria con países de origen.',
+            quote: 'POTENCIAREMOS LA INSPECCIÓN FRONTERIZA, incrementando el número y formación del personal, impulsando la implantación del nuevo Sistema Europeo de Registro de Entradas y Salidas (...) y participación en las actividades de FRONTEX.',
+            policyInstrument: 'Inspección de fronteras, coordinación con FRONTEX y acuerdos de retorno en origen',
+            section: 'Medida 276 · Página 81 (impresa 79)',
+            qualifications: [
+              'Refuerzo de la Autoridad Nacional de Coordinación para la inmigración irregular.',
+              'Equipos conjuntos de investigación con países africanos de origen y tránsito.'
+            ],
+            source: 'Programa Electoral PP 23J · Medida 276, pág. 81 (impresa 79)',
+            sourceUrl: 'https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf#page=81',
+            date: '06/07/2023'
+          },
+          'sumar': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Reforma de la ley de extranjería para regularización permanente de derechos, cierre de los CIEs y eliminación de barreras en sanidad pública.',
+            quote: 'Reforma de la Ley Orgánica sobre Derechos y Libertades de los Extranjeros en España y su Integración Social (LOEX) que prime los criterios de reconocimiento de derechos y que introduzca un procedimiento de regularización permanente.',
+            policyInstrument: 'Procedimiento de regularización permanente y cierre de los CIEs',
+            section: 'Puntos 4 y 10 · Páginas 104 y 105',
+            qualifications: [
+              'Cierre inmediato de todos los Centros de Internamiento de Extranjeros (CIE).',
+              'Acceso universal efectivo a la cobertura del Sistema Nacional de Salud.'
+            ],
+            source: 'Un Programa para ti · Puntos 4 y 10, págs. 104 y 105',
+            sourceUrl: 'https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf#page=104',
+            date: '06/07/2023'
+          },
+          'erc': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Establecer vías legales y seguras de entrada, fin inmediato de las devoluciones en caliente y cierre de centros de detención.',
+            quote: 'Establir vies legals i segures d\'entrada a l’Estat espanyol, per a garantir l’accés a la lliure circulació i al dret d’asil a les persones desplaçades forçosament, davant les vulneracions en l’accés a l’asil',
+            policyInstrument: 'Vías legales y seguras de entrada y fin de devoluciones en caliente',
+            section: 'Drets de Ciutadania · Página 38 (impresa 37)',
+            qualifications: [
+              'Derogación de la disposición sobre rechazos en frontera en Ceuta y Melilla.',
+              'Incremento de visados humanitarios y de reagrupación familiar.'
+            ],
+            source: 'Programa Electoral 2023 · Drets, pág. 38 (impresa 37)',
+            sourceUrl: 'https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf#page=38',
+            date: '07/07/2023'
+          },
+          'pnv': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Transferencia a Euskadi de las competencias en políticas migratorias y aplicación de alternativas a la privación de libertad en los CIE.',
+            quote: 'Transferencia a la CAV de las políticas migratorias y defensa del modelo vasco de acogida (...) velaremos por la aplicación de alternativas a la privación de libertad en los Centros de Internamiento de Extranjeros (CIE)',
+            policyInstrument: 'Transferencia estatutaria de políticas migratorias y acogida vasca',
+            section: 'Derechos Humanos y Convivencia · Página 11 (impresa 11)',
+            qualifications: [
+              'Defensa del modelo vasco de acogida e integración comunitaria.',
+              'Reforma urgente del reglamento de los CIE para garantizar derechos humanos.'
+            ],
+            source: 'Con voz propia · Punto 5, pág. 11 (impresa 11)',
+            sourceUrl: 'https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j#page=11',
+            date: '07/07/2023'
+          }
+        },
+        relationships: {
+          'pp:sumar': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Discrepancia entre control e inspección fronteriza con FRONTEX (PP) frente a regularización permanente de derechos y cierre de CIEs (Sumar).',
+            differences: [
+              'El PP prioriza la seguridad fronteriza, acuerdos de retorno en origen y aumento policial.',
+              'Sumar propone regularización permanente en la LOEX, cierre de todos los CIEs y sanidad universal sin barreras.'
+            ]
+          },
+          'pp:erc': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Discrepancia entre refuerzo policial de fronteras (PP) y fin de devoluciones en caliente con vías legales seguras (ERC).',
+            differences: [
+              'El PP defiende la participación en FRONTEX y el nuevo sistema europeo de control de entradas.',
+              'ERC exige derogar los rechazos en frontera en Ceuta y Melilla y garantizar el asilo efectivo.'
+            ]
+          },
+          'pp:pnv': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia competencial',
+            icon: '≠',
+            summary: 'Discrepancia entre la gestión estatal centralizada de fronteras (PP) y la transferencia estatutaria de políticas migratorias a Euskadi (PNV).',
+            differences: [
+              'El PP aboga por una Autoridad Nacional única para coordinar la política migratoria.',
+              'El PNV reclama la transferencia del modelo de acogida y alternativas a la privación en los CIE.'
+            ]
+          },
+          'erc:sumar': {
+            type: 'agreement',
+            typeLabel: 'Coincidencia en la medida',
+            icon: '✓',
+            summary: 'Coincidencia en garantizar los derechos humanos de las personas migrantes, vías legales y alternativas al internamiento.',
+            differences: [
+              'Sumar enfatiza la reforma legislativa de la LOEX para regularización permanente.',
+              'ERC prioriza el fin de las devoluciones en caliente y los visados humanitarios de asilo.'
+            ]
+          },
+          'erc:pnv': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en la descentralización de la acogida y la defensa de los derechos de las personas migrantes frente a los CIE.',
+            differences: [
+              'ERC se enfoca en el cese de expulsiones colectivas y garantías en frontera sur.',
+              'El PNV demanda la transferencia estatutaria completa del sistema de acogida e integración a Euskadi.'
+            ]
+          },
+          'pnv:sumar': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en el enfoque garantista y alternativo a los CIE, con diferente acento competencial autonómico.',
+            differences: [
+              'Sumar promueve una reforma general de la LOEX y cierre estatal de todos los centros de internamiento.',
+              'El PNV prioriza la gestión y gobernanza de la acogida desde las instituciones vascas.'
+            ]
+          }
+        }
+      },
+      {
         id: 'immigration-regularization',
         title: 'Medida: Canales de regularización y autorizaciones de residencia',
         summary: 'Gestión de flujos migratorios, procedimientos de asilo y cooperación en origen.',
@@ -1234,6 +1370,142 @@
     ],
 
     'foreign-policy-eu': [
+      {
+        id: 'foreign-pilot-2023-measure',
+        electionId: 'es-gen-2023',
+        title: 'Medida: Autonomía estratégica europea, compromisos de defensa y política exterior (2023)',
+        summary: 'Propuestas de los programas electorales del 23J de 2023 sobre el gasto en defensa, alianzas de seguridad atlántica, diplomacia y autonomía estratégica de la Unión Europea.',
+        context: 'Esta iniciativa contrasta las visiones en política exterior y seguridad: alineamiento con la OTAN y refuerzo de capacidades industriales de defensa frente a diplomacia de desescalada, control de venta de armas y subordinación de la geopolítica a los derechos humanos.',
+        keyAxes: [
+          'Alianzas militares y defensa: desarrollo de base tecnológica de defensa complementaria a la OTAN frente a desnuclearización y auditoría del gasto militar.',
+          'Autonomía europea: fortalecimiento del pilar de seguridad comunitario frente a una autonomía civil y no militarizada.',
+          'Prioridades exteriores: diplomacia basada en intereses estratégicos y alianzas estatales frente a primacía absoluta de los derechos humanos y derecho internacional.'
+        ],
+        positions: {
+          'pp': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Impulsar una autonomía estratégica europea abierta complementaria con la OTAN y fortalecer la base tecnológica e industrial de la defensa.',
+            quote: 'IMPULSAREMOS UNA AUTONOMÍA ESTRATÉGICA ABIERTA que desarrolle una Europa de la seguridad y la defensa, así como una base industrial y tecnológica europea, complementaria de la Alianza Atlántica.',
+            policyInstrument: 'Autonomía estratégica europea ligada a la OTAN y base industrial de defensa',
+            section: 'Medida 314 · Página 99 (impresa 97)',
+            qualifications: [
+              'Complementariedad obligada con la Alianza Atlántica.',
+              'Estrategia industrial para sectores aeroespacial y de defensa.'
+            ],
+            source: 'Programa Electoral PP 23J · Medida 314, pág. 99 (impresa 97)',
+            sourceUrl: 'https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf#page=99',
+            date: '06/07/2023'
+          },
+          'sumar': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Revisión y auditoría del gasto en armamento, prohibición de venta de armas a violadores de derechos humanos y diplomacia de paz.',
+            quote: 'Promoveremos la revisión y auditoría de los Programas Especiales de Armamento y otros gastos asociados a planes de defensa con el fin de dotarlos de mayor transparencia.',
+            policyInstrument: 'Auditoría del gasto militar y autonomía estratégica civil no militarizada',
+            section: 'Punto 3 · Página 139',
+            qualifications: [
+              'Prohibición de exportaciones armamentísticas a países con vulneraciones de derechos.',
+              'Firma y ratificación del Tratado sobre la Prohibición de las Armas Nucleares.'
+            ],
+            source: 'Un Programa para ti · Punto 3, pág. 139',
+            sourceUrl: 'https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf#page=139',
+            date: '06/07/2023'
+          },
+          'erc': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Rechazo al incremento del gasto militar de la OTAN, apuesta por el desarme global y reorientación de recursos a gasto social.',
+            quote: 'que a escala global aposti per la cooperació, el desarmament i la desnuclearització davant dels conflictes internacionals (...) reducció de la despesa militar i reconversió de la indústria armamentista.',
+            policyInstrument: 'Reducción del gasto militar y reconversión de la industria armamentística',
+            section: 'Pau i Seguretat · Página 29 (impresa 28)',
+            qualifications: [
+              'Crítica al objetivo de gasto en defensa del 2% del PIB.',
+              'Exigencia de no participación en misiones armadas fuera del amparo de la ONU.'
+            ],
+            source: 'Programa Electoral 2023 · Pau, pág. 29 (impresa 28)',
+            sourceUrl: 'https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf#page=29',
+            date: '07/07/2023'
+          },
+          'pnv': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Política exterior guiada por los derechos humanos y la cooperación internacional, sin supeditar los principios a intereses geopolíticos.',
+            quote: 'Una política exterior comprometida con los Derechos Humanos que no los deje en la cuneta en aras a otros supuestos intereses. Los intereses de la geopolítica no pueden hacer que el discurso humanista (...) quede en entredicho',
+            policyInstrument: 'Diplomacia humanista y blindaje presupuestario de la cooperación internacional',
+            section: 'Acción Exterior · Página 11 (impresa 11)',
+            qualifications: [
+              'Compromiso presupuestario suficiente con las partidas de cooperación al desarrollo.',
+              'Alineamiento con los tratados de Derecho Internacional Humanitario.'
+            ],
+            source: 'Con voz propia · Punto 6, pág. 11 (impresa 11)',
+            sourceUrl: 'https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j#page=11',
+            date: '07/07/2023'
+          }
+        },
+        relationships: {
+          'pp:sumar': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Discrepancia entre una autonomía estratégica complementaria de la OTAN (PP) frente a una auditoría del gasto militar y diplomacia civil (Sumar).',
+            differences: [
+              'El PP defiende la alianza atlántica y una base industrial tecnológica de defensa fuerte.',
+              'Sumar exige auditoría del gasto en armamento, prohibir venta de armas y un multilateralismo pacífico.'
+            ]
+          },
+          'pp:erc': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Discrepancia entre el alineamiento con la OTAN (PP) y la oposición frontal al gasto militar y desarme internacional (ERC).',
+            differences: [
+              'El PP apoya los compromisos atlánticos y la industria aeroespacial y de defensa.',
+              'ERC rechaza el objetivo de gasto del 2% del PIB y pide reconvertir la industria armamentista hacia gasto social.'
+            ]
+          },
+          'pp:pnv': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en el europeísmo y la inserción internacional de España, con mayor énfasis del PNV en la primacía de derechos humanos sobre la geopolítica.',
+            differences: [
+              'El PP sitúa la defensa de los intereses nacionales y la OTAN como eje exterior prioritario.',
+              'El PNV exige que los intereses geoestratégicos no releguen los compromisos de cooperación y derechos humanos.'
+            ]
+          },
+          'erc:sumar': {
+            type: 'agreement',
+            typeLabel: 'Coincidencia en la medida',
+            icon: '✓',
+            summary: 'Coincidencia en el desarme, la crítica al aumento del gasto militar y la prohibición de armas nucleares.',
+            differences: [
+              'Sumar detalla la auditoría de programas especiales de armamento y diplomacia climática.',
+              'ERC centra su propuesta en la reducción presupuestaria del gasto militar y la soberanía de los pueblos.'
+            ]
+          },
+          'erc:pnv': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en la defensa del derecho internacional humanitario y la ayuda al desarrollo frente a la lógica de bloques.',
+            differences: [
+              'ERC rechaza de forma explícita las metas de gasto militar impuestas por la OTAN.',
+              'El PNV prioriza el fortalecimiento de la cooperación internacional y los consensos democráticos occidentales.'
+            ]
+          },
+          'pnv:sumar': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en vincular la acción exterior a los derechos humanos y la cooperación solidaria, con matices sobre las alianzas tradicionales.',
+            differences: [
+              'Sumar aboga por una reformulación profunda del multilateralismo global y revisión del gasto de defensa.',
+              'El PNV defiende los principios humanistas y la cooperación al desarrollo dentro del marco europeo.'
+            ]
+          }
+        }
+      },
       {
         id: 'foreign-defense-spending',
         title: 'Medida: Compromisos presupuestarios de gasto en defensa y OTAN',
@@ -1309,6 +1581,142 @@
 
     'climate-energy': [
       {
+        id: 'climate-pilot-2023-measure',
+        electionId: 'es-gen-2023',
+        title: 'Medida: Despliegue de energías renovables y modelo de transición energética (2023)',
+        summary: 'Propuestas de los programas electorales del 23J de 2023 sobre el ritmo de despliegue de energías renovables, simplificación administrativa y el calendario de fuentes de generación energética.',
+        context: 'Esta iniciativa contrasta las estrategias ante la transición ecológica: agilización burocrática y prolongación de la vida útil de las centrales nucleares frente a la moratoria nuclear con cierre ordenado y el fomento de comunidades energéticas locales de proximidad.',
+        keyAxes: [
+          'Calendario de generación: extensión de la vida útil de las centrales nucleares frente a cumplimiento estricto del calendario de cierre del parque nuclear.',
+          'Despliegue renovable: agilización burocrática con tasa por hito a promotores frente a prioridad en autoconsumo social y comunidades locales de proximidad.',
+          'Modelo de red: planificación centralizada y capacidad de evacuación frente a generación distribuida de km0 y soberanía energética territorial.'
+        ],
+        positions: {
+          'pp': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Desbloquear la tramitación de energías renovables con una tasa por hito y proponer la extensión de la vida útil de las centrales nucleares.',
+            quote: 'DESBLOQUEAREMOS EL PROCESO DE CONCESIÓN DE PERMISOS Y APROBACIÓN EN LA INSTALACIÓN DE RENOVABLES. Para ello, introduciremos una “tasa por hito” que, con cargo al promotor del proyecto, financie el incremento de los medios necesarios',
+            policyInstrument: 'Tasa por hito para agilización de renovables y prórroga del parque nuclear',
+            section: 'Medidas 112 y 114 · Página 38 (impresa 36)',
+            qualifications: [
+              'Requiere informe favorable del Consejo de Seguridad Nuclear.',
+              'En el marco de la normativa comunitaria europea.'
+            ],
+            source: 'Programa Electoral PP 23J · Medidas 112 y 114, pág. 38 (impresa 36)',
+            sourceUrl: 'https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf#page=38',
+            date: '06/07/2023'
+          },
+          'sumar': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Acelerar la transición ecológica hacia un modelo 100% renovable con autoconsumo y comunidades locales, manteniendo el calendario de cierre nuclear.',
+            quote: 'Uno de nuestros objetivos debe ser garantizar una transición energética justa hacia un modelo basado en las energías renovables, a la vez que se asegura la preservación del paisaje y del modelo tradicional de producción en el medio rural.',
+            policyInstrument: 'Plan nacional de transición justa, comunidades energéticas y moratoria nuclear',
+            section: 'Punto 3 (pág. 11) y Punto 9 (pág. 48)',
+            qualifications: [
+              'Moratoria a cualquier intento de prolongación de centrales nucleares.',
+              'Garantizar la preservación paisajística y del entorno rural.'
+            ],
+            source: 'Un Programa para ti · Punto 3, pág. 11 y Punto 9, pág. 48',
+            sourceUrl: 'https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf#page=11',
+            date: '06/07/2023'
+          },
+          'erc': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Transición ecológica hacia un modelo energético descentralizado, de proximidad y 100% renovable con soberanía energética para Cataluña.',
+            quote: 'La transició energètica només pot avançar si transformem un model energètic centralitzat i vertical en un model descentralitzat i distribuït, que prioritzi la generació de km0 i faciliti al consumidor exercir els seus drets',
+            policyInstrument: 'Modelo distribuido de generación renovable km0 y soberanía energética',
+            section: 'Sostenibilitat · Página 101 (impresa 100)',
+            qualifications: [
+              'Rechaza monopolios centralizados en el despliegue de renovables.',
+              'Prioriza la soberanía energética y de decisión de las instituciones catalanas.'
+            ],
+            source: 'Programa Electoral 2023 · Sec. b, pág. 101 (impresa 100)',
+            sourceUrl: 'https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf#page=101',
+            date: '07/07/2023'
+          },
+          'pnv': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Acelerar el despliegue de energías renovables agilizando tramitaciones dentro de un marco regulatorio estable para la competitividad industrial.',
+            quote: 'necesitamos un nuevo modelo energético basado en un mix de energías y nuevas tecnologías que permitan una transición sostenible (...) Una aceleración de la implantación de energías renovables, agilizando los procesos de tramitación.',
+            policyInstrument: 'Aceleración de renovables y marco regulatorio de certidumbre inversora',
+            section: 'Energía e Industria · Página 20 (impresa 20)',
+            qualifications: [
+              'Garantizar el equilibrio entre descarbonización y competitividad de los costes industriales.',
+              'Respeto al régimen de autogobierno en ordenación industrial y medioambiental.'
+            ],
+            source: 'Con voz propia · Punto 7, pág. 20 (impresa 20)',
+            sourceUrl: 'https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j#page=20',
+            date: '07/07/2023'
+          }
+        },
+        relationships: {
+          'pp:sumar': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Discrepancia entre la prórroga de las centrales nucleares y tasa por hito (PP) frente a moratoria nuclear y comunidades energéticas de proximidad (Sumar).',
+            differences: [
+              'El PP propone extender la vida útil de las centrales nucleares y acelerar permisos con tasa a promotores.',
+              'Sumar defiende el cumplimiento del calendario de cierre nuclear sin prórrogas y la transición justa.'
+            ]
+          },
+          'pp:erc': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Discrepancia entre la prolongación nuclear y red centralizada (PP) frente a modelo 100% renovable descentralizado y de proximidad (ERC).',
+            differences: [
+              'El PP apuesta por un mix que preserve la energía nuclear como respaldo y agilización administrativa estatal.',
+              'ERC aboga por un modelo descentralizado de km0 y soberanía energética catalana libre de monopolios.'
+            ]
+          },
+          'pp:pnv': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en la necesidad de agilizar trámites de renovables y asegurar certidumbre inversora para la industria.',
+            differences: [
+              'El PP incluye la propuesta explícita de extender la vida útil de las centrales nucleares.',
+              'El PNV enfoca sus medidas en el mix sostenible adaptado a la competitividad de costes de la industria vasca.'
+            ]
+          },
+          'erc:sumar': {
+            type: 'agreement',
+            typeLabel: 'Coincidencia en la medida',
+            icon: '✓',
+            summary: 'Coincidencia en avanzar hacia un modelo 100% renovable, autoconsumo ciudadano y rechazo a prolongar la energía nuclear.',
+            differences: [
+              'Sumar plantea un plan nacional de transición justa con mecanismos de subastas y almacenamiento.',
+              'ERC recalca la soberanía energética de Cataluña y el modelo distribuido frente a oligopolios estatales.'
+            ]
+          },
+          'erc:pnv': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en la defensa del autogobierno territorial en energía y aceleración de renovables.',
+            differences: [
+              'ERC prioriza el modelo de generación distribuida de km0 y transición 100% renovable.',
+              'El PNV enfatiza la estabilidad de precios para empresas electrointensivas e industria manufacturera.'
+            ]
+          },
+          'pnv:sumar': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en acelerar la implantación renovable, con distinta ponderación entre costes industriales y preservación rural.',
+            differences: [
+              'Sumar recalca la protección del paisaje rural y la moratoria sin excepciones al calendario nuclear.',
+              'El PNV pone el acento en la competitividad de precios y contratos PPA para el tejido industrial.'
+            ]
+          }
+        }
+      },
+      {
         id: 'climate-decarbonization',
         title: 'Medida: Calendario de descarbonización y cierre de generación fósil/nuclear',
         summary: 'Transición energética, despliegue de mix renovable y calendario de clausura de centrales.',
@@ -1382,6 +1790,141 @@
     ],
 
     'institutions-rights': [
+      {
+        id: 'institutions-pilot-2023-measure',
+        electionId: 'es-gen-2023',
+        title: 'Medida: Reforma del sistema de elección del CGPJ y gobernanza judicial (2023)',
+        summary: 'Propuestas de los programas electorales del 23J de 2023 sobre la renovación del Consejo General del Poder Judicial (CGPJ), el sistema de elección de los vocales judiciales y la estructura institucional de la justicia.',
+        context: 'Esta iniciativa contrasta las alternativas para desbloquear y reformar el órgano de gobierno de los jueces: elección corporativa directa de los doce vocales judiciales por la carrera frente a la primacía del mandato parlamentario y la creación de consejos autonómicos de justicia.',
+        keyAxes: [
+          'Sistema de elección: elección directa de vocales judiciales por jueces y magistrados frente a elección por el Parlamento para asegurar el pluralismo democrático.',
+          'Mecanismos antibloqueo: cese automático al expirar el mandato frente a derogación de reformas que limitan funciones con mandato caducado.',
+          'Descentralización judicial: mantenimiento de cúpula estatal única frente a transferencias y creación de consejos autonómicos de justicia.'
+        ],
+        positions: {
+          'pp': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Reforma de la LOPJ para que los 12 vocales judiciales del CGPJ sean elegidos directamente por jueces y magistrados, derogando límites a sus funciones.',
+            quote: 'mediante la reforma de su ley Orgánica, incluyendo la modificación del sistema de elección de los miembros del Consejo de manera que sean los jueces y magistrados los que elijan a los 12 vocales de procedencia judicial.',
+            policyInstrument: 'Reforma de la LOPJ para elección corporativa de los vocales judiciales',
+            section: 'Medida 237 · Página 75 (impresa 73)',
+            qualifications: [
+              'Exclusivo para los 12 vocales de extracción judicial.',
+              'Derogación de la limitación legal de nombramientos del CGPJ en funciones.'
+            ],
+            source: 'Programa Electoral PP 23J · Medida 237, pág. 75 (impresa 73)',
+            sourceUrl: 'https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf#page=75',
+            date: '06/07/2023'
+          },
+          'sumar': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Reformular la elección del CGPJ reforzando la representación parlamentaria democrática, mayorías antibloqueo y cese automático tras expirar el mandato.',
+            quote: 'Para eso es preciso reformular su sistema de elección y reforzar su naturaleza democrática y, por tanto, el protagonismo del Parlamento, así como la obtención de mayorías, de modo que se evite el bloqueo que en la actualidad sufre',
+            policyInstrument: 'Reforma del sistema parlamentario de elección y cese automático por caducidad',
+            section: 'Punto 20 · Página 129',
+            qualifications: [
+              'Mantenimiento de la legitimidad de origen parlamentario para todos los vocales.',
+              'Cese automático inmediato de vocales y presidencia una vez expirado el mandato legal.'
+            ],
+            source: 'Un Programa para ti · Punto 20, pág. 129',
+            sourceUrl: 'https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf#page=129',
+            date: '06/07/2023'
+          },
+          'erc': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Denuncia del control partidista de la cúpula judicial española y exigencia de democratización y control ciudadano sobre el poder judicial.',
+            quote: 'els principals partits polítics espanyols es neguen a modificar un sistema d’elecció dels membres del govern del poder judicial, que són escollits de manera partidista. Tot plegat afavoreix la ingerència dels partits en les decisions judicials',
+            policyInstrument: 'Democratización radical y mecanismos de control ciudadano de la justicia',
+            section: 'Justícia · Página 18 (impresa 17)',
+            qualifications: [
+              'Crítica al modelo bipartidista de reparto de cuotas en el CGPJ.',
+              'Defensa de la soberanía judicial de la futura República Catalana.'
+            ],
+            source: 'Programa Electoral 2023 · Justícia, pág. 18 (impresa 17)',
+            sourceUrl: 'https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf#page=18',
+            date: '07/07/2023'
+          },
+          'pnv': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Atribuir el gobierno del Poder Judicial en Euskadi a un Consejo Vasco de Justicia y dotar de plenas funciones a la Ertzaintza como policía judicial.',
+            quote: 'Asimismo, el gobierno del Poder Judicial en el ámbito de Euskadi correspondería al Consejo Vasco de Justicia, al tiempo que la Ertzaintza sería, en todos los casos, la Policía judicial en el ámbito vasco.',
+            policyInstrument: 'Creación del Consejo Vasco de Justicia y traspaso de gobernanza judicial',
+            section: 'Autogobierno y Justicia · Página 9 (impresa 9)',
+            qualifications: [
+              'Supeditado al reconocimiento foral y estatutario de autogobierno en justicia.'
+            ],
+            source: 'Con voz propia · Punto 2, pág. 9 (impresa 9)',
+            sourceUrl: 'https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j#page=9',
+            date: '07/07/2023'
+          }
+        },
+        relationships: {
+          'pp:sumar': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Discrepancia entre la elección directa de los 12 vocales judiciales por la carrera judicial (PP) frente al protagonismo democrático del Parlamento (Sumar).',
+            differences: [
+              'El PP propone reformar la LOPJ para que jueces y magistrados elijan a sus 12 vocales directamente.',
+              'Sumar defiende mantener la legitimidad parlamentaria de todos los vocales e introducir el cese automático por caducidad.'
+            ]
+          },
+          'pp:erc': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Discrepancia entre la reforma corporativa del CGPJ estatal (PP) frente a la denuncia del sesgo judicial y defensa de la soberanía catalana (ERC).',
+            differences: [
+              'El PP busca aislar al órgano de gobierno judicial mediante la elección interna de jueces.',
+              'ERC califica la cúpula judicial de ilegítima y partidista y reclama control ciudadano y justicia propia.'
+            ]
+          },
+          'pp:pnv': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia competencial',
+            icon: '≠',
+            summary: 'Discrepancia entre un modelo judicial estatal único (PP) frente a la creación de un Consejo Vasco de Justicia (PNV).',
+            differences: [
+              'El PP defiende la unidad del poder judicial y de su órgano de gobierno central.',
+              'El PNV reclama descentralizar la gobernanza de la justicia a las instituciones vascas.'
+            ]
+          },
+          'erc:sumar': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en criticar el bloqueo conservador y el uso partidista del CGPJ, con diferente propuesta de salida.',
+            differences: [
+              'Sumar propone reformular las mayorías parlamentarias antibloqueo y reforzar la paridad.',
+              'ERC sostiene que el modelo del 78 no es reformable y propugna la ruptura y control ciudadano de la justicia.'
+            ]
+          },
+          'erc:pnv': {
+            type: 'agreement',
+            typeLabel: 'Coincidencia en la medida',
+            icon: '✓',
+            summary: 'Coincidencia en rechazar el modelo judicial centralizado y reivindicar el autogobierno en materia de justicia.',
+            differences: [
+              'ERC enfatiza los derechos lingüísticos y el fin de la cúpula judicial politizada.',
+              'El PNV plantea formalmente la instauración estatutaria del Consejo Vasco de Justicia y policía judicial foral.'
+            ]
+          },
+          'pnv:sumar': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia competencial',
+            icon: '≠',
+            summary: 'Discrepancia entre la reforma parlamentaria del órgano central (Sumar) frente a la descentralización al Consejo Vasco de Justicia (PNV).',
+            differences: [
+              'Sumar busca desbloquear y legitimar el CGPJ como órgano de alcance estatal común.',
+              'El PNV sitúa la solución en transferir las competencias de gobierno judicial a Euskadi.'
+            ]
+          }
+        }
+      },
       {
         id: 'institutions-cgpj',
         title: 'Medida: Sistema de elección y renovación del Consejo General del Poder Judicial',
