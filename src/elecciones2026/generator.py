@@ -736,7 +736,8 @@ def render_base(
     for placeholder, val in replacements.items():
         result = result.replace(placeholder, val)
     if ctx.budget_payload is not None:
-        result = result.replace('</head>', f'<link rel="stylesheet" href="{root_path}budget.css">\n</head>')
+        from elecciones2026.budget_view import stylesheet_path
+        result = result.replace('</head>', f'<link rel="stylesheet" href="{root_path}{stylesheet_path(ctx.root_dir / "site")}">\n</head>')
     return result
 
 
@@ -1804,7 +1805,8 @@ def build_site(
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(canonical(projection))
             shutil.copy2(root_dir / "site/budget-context.js", staging_dir / "budget-context.js")
-            shutil.copy2(root_dir / "site/budget.css", staging_dir / "budget.css")
+            from elecciones2026.budget_view import copy_stylesheet
+            copy_stylesheet(root_dir / "site", staging_dir)
             shutil.copy2(root_dir / "site/budget-chart.js", staging_dir / "budget-chart.js")
 
         # 9. Sitemap & crawler files

@@ -69,6 +69,16 @@ class BudgetChartTests(unittest.TestCase):
         with self.assertRaises(BudgetError):
             budget_chart.share_svg(payload, self.fixture.manifest, self.fixture.bundle.name)
 
+    def test_tile_labels_use_complete_names_or_codes_without_fragments(self):
+        rows = [{'code': '94', 'label_es': 'TRANSFERENCIAS A OTRAS ADMINISTRACIONES PÚBLICAS',
+                 'amount_thousand_eur': '100'}]
+        small = ET.fromstring('<svg>' + budget_chart.draw_tiles(rows, '100', 80, 60) + '</svg>')
+        labels = [node.text for node in small.iter('text')]
+        self.assertEqual(labels, ['94', '100,00 €'])
+        large = ET.fromstring('<svg>' + budget_chart.draw_tiles(rows, '100', 360, 280) + '</svg>')
+        labels = [node.text for node in large.iter('text')]
+        self.assertEqual(' '.join(labels[:-1]), rows[0]['label_es'].capitalize())
+
 
 if __name__ == '__main__':
     unittest.main()

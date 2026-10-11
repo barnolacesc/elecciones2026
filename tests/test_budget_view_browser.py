@@ -108,6 +108,8 @@ class BudgetBrowserTests(unittest.TestCase):
                     requests = []
                     page.on('request', lambda request: requests.append(request.url))
                     page.goto(base + '/candidate/presupuestos/2023/')
+                    self.assertEqual(page.locator('.budget-chart-key li').first.evaluate('(node) => getComputedStyle(node).display'), 'grid')
+                    self.assertLessEqual(page.locator('.budget-map svg').bounding_box()['width'], width)
                     page.locator('summary').first.focus()
                     page.keyboard.press('Enter')
                     self.assertTrue(page.locator('details').first.evaluate('(node) => node.open'))

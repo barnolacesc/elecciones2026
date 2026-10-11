@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from decimal import Decimal
 from html import escape
@@ -11,6 +12,18 @@ import shutil
 from elecciones2026.budget import ROOT, BudgetError, canonical, display_amount, load_bundle, share
 
 MAX_PROJECTION_BYTES = 16 * 1024
+
+
+def stylesheet_path(site_dir):
+    """Changed styles must receive a new URL under immutable asset caching."""
+    identity = hashlib.sha256((site_dir / 'budget.css').read_bytes()).hexdigest()
+    return f'static/budget-ui/{identity}/budget.css'
+
+
+def copy_stylesheet(site_dir, output):
+    target = output / stylesheet_path(site_dir)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(site_dir / 'budget.css', target)
 
 
 def percentage(value, denominator):
@@ -174,11 +187,11 @@ def preview_bundle(bundle, output):
     (target / 'grafico.svg').write_text(share_svg(payload, manifest, Path(bundle).name, preview=True))
     html = ('<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
             '<meta name="robots" content="noindex,nofollow"><title>Borrador privado · PGE 2023</title>'
-            '<link rel="stylesheet" href="../../styles.css"><link rel="stylesheet" href="../../budget.css"></head><body><a class="skip-link" href="#contenido">Saltar al contenido principal</a>'
+            f'<link rel="stylesheet" href="../../styles.css"><link rel="stylesheet" href="../../{stylesheet_path(ROOT / "site")}"></head><body><a class="skip-link" href="#contenido">Saltar al contenido principal</a>'
             f'<main id="contenido">{content}</main><script src="../../budget-chart.js" defer></script></body></html>')
     (target / 'index.html').write_text(html)
     shutil.copy2(ROOT / 'site/styles.css', output / 'styles.css')
-    shutil.copy2(ROOT / 'site/budget.css', output / 'budget.css')
+    copy_stylesheet(ROOT / 'site', output)
     shutil.copy2(ROOT / 'site/budget-chart.js', output / 'budget-chart.js')
     shutil.copytree(ROOT / 'site/tokens', output / 'tokens')
     for file in output.rglob('*'):

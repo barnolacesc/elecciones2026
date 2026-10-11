@@ -59,7 +59,7 @@ def proportional_amount(value, denominator):
     return result.replace('.', ',')
 
 
-def draw_tiles(rows, denominator, width, height, font_size=12):
+def draw_tiles(rows, denominator, width, height, font_size=11):
     result = []
     for row, x, y, w, h in layout(rows, width, height):
         title = f"{row['code']} · {row['label_es']}: {proportional_amount(row['amount_thousand_eur'], denominator)} € de cada 100 €"
@@ -68,13 +68,11 @@ def draw_tiles(rows, denominator, width, height, font_size=12):
             lines = [row['code']]
             if w >= font_size * 5 and h >= font_size * 3.5:
                 label = row['label_es'].capitalize()
-                capacity = max(10, int((w-8) / (font_size * .58)))
-                wrapped = wrap(label, width=capacity, break_long_words=False)
-                count = max(1, int(h / (font_size * 1.3)) - 2)
-                if all(len(line) <= capacity for line in wrapped):
-                    lines = wrapped[:count]
-                    if len(wrapped) > count:
-                        lines[-1] = lines[-1].rstrip(' .') + '…'
+                capacity = max(1, int((w-16) / (font_size * .65)))
+                wrapped = wrap(label, width=capacity, break_long_words=False, break_on_hyphens=False)
+                count = max(1, int((h-16) / (font_size * 1.3)) - 1)
+                if len(wrapped) <= count and all(len(line) <= capacity for line in wrapped):
+                    lines = wrapped
                 lines.append(proportional_amount(row['amount_thousand_eur'], denominator) + ' €')
             for index, line in enumerate(lines):
                 result.append(f'<text x="{x + w/2:.3f}" y="{y + h/2 + (index - (len(lines)-1)/2)*font_size*1.3:.3f}" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="{font_size}" font-weight="600">{escape(line)}</text>')
@@ -96,11 +94,11 @@ def overview(payload, chart_url, preview=False):
     return ('<section class="budget-overview" aria-labelledby="budget-overview-title">'
             '<h2 id="budget-overview-title">¿Cómo se reparte el presupuesto?</h2>'
             '<p class="budget-chart-lede">De cada <strong>100 € aprobados</strong>, esta es la parte de cada política.</p>'
-            '<figure class="budget-map"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 280" role="img" aria-labelledby="budget-map-title budget-map-desc" style="font-family:Arial,sans-serif">'
+            '<div class="budget-overview-body"><figure class="budget-map"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 280" role="img" aria-labelledby="budget-map-title budget-map-desc" style="font-family:Arial,sans-serif">'
             f'<title id="budget-map-title">Reparto proporcional del presupuesto aprobado de 2023</title>'
             f'<desc id="budget-map-desc">{len(rows)} políticas oficiales. El área de cada rectángulo representa su importe sin redondear. Los códigos corresponden a la lista siguiente.</desc>{plot}</svg>'
             '<figcaption>Más superficie = más presupuesto. Los códigos identifican las políticas de la lista.</figcaption></figure>'
-            f'<ol class="budget-chart-key">{first}</ol>{extra}'
+            f'<div class="budget-legend"><ol class="budget-chart-key">{first}</ol>{extra}</div></div>'
             '<p class="budget-chart-scope">PGE 2023 · Capítulos 1–8 · Estado y Seguridad Social. Presupuesto aprobado, no gasto ejecutado. '
             'No incluye todo el gasto autonómico y local. Importes proporcionales redondeados; no son costes de propuestas.</p>'
             f'<div class="budget-chart-actions" data-chart-url="{escape(chart_url, quote=True)}">'

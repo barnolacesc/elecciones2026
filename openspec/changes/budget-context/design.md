@@ -170,3 +170,9 @@ The user requested a simple, shareable graph, with the existing view retained as
 Generate a source-bearing standalone SVG behind the same reviewed-bundle gate. Use its SHA-256 in the public asset URL. PNG rasterization and optional native file sharing happen in the browser only after a click, with no chart library, image service, prefetch, or data archive. Use the serving CSP's existing data-image allowance; do not broaden CSP for blob images. Enforce 128 KiB SVG and 1080-by-8192 maximum image dimensions, escape every label, and keep cancellation separate from download fallback. Private preview SVGs retain a prominent draft notice in the image itself. This image action is distinct from the deferred full offline-distribution evaluation.
 
 The SVG includes every official policy, complete labels in its key, 2023 approved status, scope and exclusions, denominator, rounding context, source URL/table/version, build and review date/state, and bundle identity. Spanish copy and G10 publication reviews remain pending; user interface approval does not replace them.
+
+## E10.3 layout correction — 2026-10-12
+
+Use content-hashed budget stylesheet paths in both public builds and private previews. The serving configuration caches CSS as immutable for one year; an unchanged filename can therefore retain obsolete chart styles after an HTML update. Changed stylesheet bytes must receive a different URL without relaxing cache or CSP headers.
+
+Keep the chart within 520 CSS pixels. At 960 pixels and above, place the policy key beside the chart; below that breakpoint, stack it underneath. Give names and amounts separate aligned columns, clear row spacing, and complete wrapping. In chart tiles and shared images, show a complete official label only when it fits; otherwise use its policy code. Keep complete names in the key and SVG titles. Do not abbreviate or invent policy names, group policies, or change their amounts.
