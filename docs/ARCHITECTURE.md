@@ -9,7 +9,7 @@ Official source files and URLs → isolated offline extraction → draft records
                                                         ↓
                                        Spanish HTML, CSS, JS, and JSON
                                                         ↓
-                         Cloudflare edge → static Docker service on Hetzner
+                         Cloudflare edge → static Docker service on IONOS
 ```
 
 ## Trust boundaries
@@ -28,7 +28,7 @@ Build phone layouts first at 360–430 CSS px. Stack party cards, keep source li
 
 ## Edge, domain, and service levels
 
-The target primary canonical domain is `elecciones2026.es` (currently a placeholder target pending domain acquisition), with `elecciones2026.org` and `programaselectorales.es` as defensive domains planned to return permanent 301 redirects to the HTTPS apex once acquired. Staging targets `preview.elecciones2026.es` behind authentication with indexing blocked (`noindex`). Cloudflare will manage DNS with DNSSEC and proxy traffic to the Hetzner origin upon domain activation.
+The owner registered `eleccionesespaña2026.es` at DonDominio. Its ASCII canonical base is `https://xn--eleccionesespaa2026-83b.es`; authenticated staging uses `preview.xn--eleccionesespaa2026-83b.es`. Cloudflare nameserver delegation, DNSSEC and proxy activation remain pending. Defensive domains remain proposals, not acquired domains. See [IONOS delivery setup](../ops/IONOS-DELIVERY.md).
 
 Edge caching policy:
 - Fingerprinted static assets (`/static/*`, CSS, JS, images): `Cache-Control: public, max-age=31536000, immutable` (edge TTL 365 days).
@@ -41,7 +41,7 @@ Proposed release service level objectives (see `docs/DECISION-RECORD.md`):
 - **Error budget:** HTTP 5xx < 0.05% steady-state; < 0.50% during peak load tests.
 - **Recovery:** Recovery Time Objective (RTO) < 5 minutes (rollback to previous Docker artifact); Recovery Point Objective (RPO) = 0 (Git-versioned deterministic builds).
 
-The target origin is a Hetzner VM with 2 vCPU and 8 GB RAM. A 10,000-concurrent-visitor scenario models roughly 1,000–2,000 requests/s at the edge. Origin load depends on cache keys, expirations, and resource requests. The <= 200 requests/s origin limit is an acceptance target, not measured capacity. Earlier throughput and CPU estimates have not been verified on Hetzner. Test the configured cache and origin connection reuse before relying on them.
+The target origin is the existing Ubuntu IONOS VPS with 1 vCPU and 1 GB RAM. The earlier 2-vCPU/8-GB baseline is historical; its estimates cannot establish capacity on this host. A 10,000-concurrent-visitor scenario models roughly 1,000–2,000 requests/s at the edge. Origin load depends on cache keys, expirations, and resource requests. The <= 200 requests/s origin limit is an acceptance target, not measured capacity. Earlier throughput and CPU estimates have not been verified on IONOS. Test the configured cache and origin connection reuse before relying on them.
 
 Monthly infrastructure costs are capped at a **€50.00 / month hard ceiling**, with baseline operations expected at ~€9.00–€15.00 / month. Uncapped serverless or metered bandwidth services are forbidden.
 
@@ -53,7 +53,7 @@ Package `E0.3` confirmed the language architecture, domain strategy, privacy not
 
 Before public release, the following gates remain:
 - Formal human approval of Milestone G0 by Cesc and the project partner.
-- Final Hetzner datacenter location selection (e.g., Falkenstein or Nuremberg).
+- Verified IONOS firewall, private staging, registry pull, DNS and TLS setup.
 - Container base image digest pinning and automated vulnerability scan verification.
 - Verification of 10,000-concurrent-visitor benchmarks against approved service levels (tasks 4.3, 4.6, 4.7).
 
@@ -76,7 +76,7 @@ The local rehearsal uses the generated serving image with a two-core origin quot
 and an isolated nginx cache fixture. CI retains numeric HTTP, cache, origin CPU/memory,
 bandwidth, and cost-projection reports. Local results are recorded in
 [`reports/load/`](../reports/load/). They do not verify Cloudflare cache behaviour,
-Spain-region HTTPS latency, a dedicated Hetzner VM, mobile delivery, or actual billing.
+Spain-region HTTPS latency, the actual IONOS VPS, mobile delivery, or actual billing.
 
 ADR-0001 is still marked proposed pending G0 approval. Its 150–300 origin req/s
 cold-cache estimate conflicts with task 4.7's <= 200 req/s limit; the test uses the

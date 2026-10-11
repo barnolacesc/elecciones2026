@@ -4,6 +4,7 @@
 # Stage 1: Deterministic static site builder
 FROM python:3.12-alpine@sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4 AS builder
 
+ARG CANONICAL_BASE=https://xn--eleccionesespaa2026-83b.es
 WORKDIR /app
 
 # Copy application sources, content records, schemas, and assets
@@ -19,8 +20,9 @@ RUN PYTHONPATH=/app/src python3 -m elecciones2026.generator build \
     --root-dir /app \
     --content-dir /app/content \
     --output-dir /app/dist \
-    --election-id ${ELECTION_ID} \
-    --build-date 2026-10-10
+    --election-id "$ELECTION_ID" \
+    --build-date 2026-10-10 \
+    --canonical-base "$CANONICAL_BASE"
 
 # Preserve generated home metadata; client-side assets are copied by the generator.
 
@@ -29,7 +31,7 @@ FROM nginxinc/nginx-unprivileged:stable-alpine@sha256:15c994d10d6d78658721c3bcaf
 
 # Upgrade security-sensitive packages to address known upstream advisories
 USER root
-RUN apk --no-cache upgrade tiff zlib || true
+RUN apk --no-cache upgrade tiff zlib
 USER 101
 
 # Copy custom Nginx configuration implementing ADR-0001 headers and cache rules

@@ -12,7 +12,7 @@
 | G1 | MVP specification | Reviewed OpenSpec proposal, specs, design, tasks, and mobile flow | `mvp-programme-comparison` |
 | G2 | Two-programme pilot | Two lawful source documents; reviewed claims, source links, coverage states, and corrections | `mvp-programme-comparison` |
 | G3 | MVP preview | Local Docker run; static build; mobile, accessibility, security, and editorial tests | `mvp-programme-comparison` |
-| G4 | Public MVP | Cloudflare/Hetzner, measured load, monitoring, rollback, source coverage, and launch approval | `mvp-programme-comparison` |
+| G4 | Public MVP | Cloudflare/IONOS, measured load, monitoring, rollback, source coverage, and launch approval | `mvp-programme-comparison` |
 | G5 | Quiz | Reviewed question set, local scoring, bias/privacy checks, and user tests | `programme-alignment-quiz` |
 | G6 | Seat simulator | Verified parliamentary rules, seat arithmetic, accessible chart/table, and scenario tests | `seat-coalition-simulator` |
 | G7 | CIS observatory | Official studies, method comparison rules, accessible trends, and source audit | `cis-data-observatory` |
@@ -80,7 +80,7 @@ G5 follows G4 because the quiz needs a reviewed programme corpus. G6 and G7 can 
 | E3.1 | Build deterministic Python 3.14 generation and crawlable Spanish HTML. | Same approved input gives same output; source-linked pages work without JavaScript; sitemap/canonical data are accurate. | E1.1, E2.1 |
 | E3.1a | Build neutral Open Graph previews and canonical metadata for shareable pages. | Public link previews show the correct topic/site context and approved local image; no invented claim appears. | E3.1, E2.6 |
 | E3.2 | Build local/production Docker path and least-privilege CI. | Same static artifact in both; pinned/scanned base for release; no deploy secret in fork PR. | E3.1 |
-| E3.3 | Configure Hetzner origin, Cloudflare DNS/proxy/cache, TLS, monitoring, and rollback. | Proven origin protection where feasible; safe headers; tested rollback and restore. | E3.2, E0.3 |
+| E3.3 | Configure the owner-selected IONOS origin, Cloudflare DNS/proxy/cache, TLS, monitoring, and rollback. | Proven origin protection where feasible; safe headers; tested rollback and restore. | E3.2, E0.3 |
 | E3.4 | Define and run burst, cold-cache, and 10,000-concurrent-visitor scenarios. | Record p95, error rate, cache-hit ratio, origin load, bandwidth/cost; meet approved targets or change capacity. | E3.3, E0.3 |
 | E3.5 | Complete editorial, security, accessibility, and controlled-language release reviews. | Signed release record; no claim of strict ASD-STE100 compliance without a qualified review. | E1–E3 |
 

@@ -1,28 +1,30 @@
 # E3.3 origin and edge operations
 
-Status: reviewable configuration and local rehearsal. No server, domain, DNS,
-firewall, or public release has been changed. OpenSpec tasks 4.4 and 4.6 remain
-open until the live evidence below exists. Domain names in ADR-0001 are pending
-acquisition. Replace `election.example.invalid` with the acquired, approved apex.
+Status: the owner has configured IONOS SSH/UFW, Cloudflare delegation, origin TLS
+and authenticated preview nginx. The application has not been activated. Start
+with the [server setup and migration runbook](SERVER-MIGRATION.md) for the current
+verification record and repeatable Hetzner migration steps. Use
+[IONOS delivery setup](IONOS-DELIVERY.md) for workflow and registry details.
+OpenSpec tasks 4.4 and 4.6 remain open until their full live evidence exists.
 
 ## Release prerequisites
 
-Cesc and the project partner must record G0 approval, select the Hetzner location,
-and acquire the domain. G2/G3/G4 must approve content, accessibility/security,
+Cesc and the project partner must record G0 approval, confirm the IONOS setup and Cloudflare delegation. G2/G3/G4 must approve content, accessibility/security,
 image scan, and public launch. The repository's 2023 pilot is private rehearsal
 content; it is not approved public 2026 content. Keep it behind authenticated
 staging. Never apply the public cache rule to staging.
 
-Use a patched 2-vCPU/8-GB Linux VM with Docker Compose v2, Python 3, curl, and
-host nginx. Use key-only SSH, disable password/root SSH after verifying a second
-operator session, and retain Hetzner console recovery. Docker access is equivalent
+Use the owner-selected patched 1-vCPU/1-GB Ubuntu IONOS VM with Docker Compose v2, Python 3, curl, and
+host nginx. Use key-only SSH, disable password authentication after verifying a second
+operator session, and retain IONOS console recovery. Docker access is equivalent
 to root; only the infrastructure owner runs release commands. No remote deploy
 job or credentials are added to PR CI.
 
 ## Origin firewall and TLS
 
-1. Attach a Hetzner Cloud Firewall BEFORE starting public listeners. Allow inbound
-   TCP 22 only from approved operator IPv4/IPv6 CIDRs; TCP 443 only from the current
+1. Apply the reviewed IONOS firewall BEFORE starting public listeners. Allow inbound
+   TCP 22 through the owner-approved key-only, rate-limited public SSH policy,
+   with an IP-specific operator allow rule; TCP 443 only from the current
    official Cloudflare IPv4 AND IPv6 ranges. Do not open 80 or 8080. Preserve
    outbound DNS, HTTPS, time sync, registry, and update access. Retrieve and review
    the ranges from https://www.cloudflare.com/ips-v4 and
@@ -30,7 +32,7 @@ job or credentials are added to PR CI.
    effective rules and both address-family probes. Keep console access while
    changing SSH/firewall rules. Do not rely on UFW to filter Docker published ports.
 2. The production Compose file binds port 8080 to `127.0.0.1` only. Install
-   `origin.conf` in host nginx's HTTP context, replace the reserved hostname, and
+   `origin.conf` in host nginx's HTTP context, verify the approved ASCII hostname, and
    remove default host sites/listeners. Host nginx listens on 443 for IPv4/IPv6.
 3. Create an origin server certificate for the approved hostname (Cloudflare
    Origin CA or a public CA). Store cert/key at `/etc/elecciones2026/tls/origin.pem`

@@ -1,0 +1,4 @@
+#!/bin/sh
+# Clear Python, Docker and Compose overrides before privileged Python starts.
+exec /usr/bin/env -i HOME=/root PATH=/usr/bin:/bin LC_ALL=C \
+    /usr/bin/python3 -I /opt/elecciones2026/restricted_release.py "$@"

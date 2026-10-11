@@ -1,0 +1,3 @@
+# The wrapper validates every argument; no direct Docker/systemctl permission.
+Defaults:deployer env_reset
+deployer ALL=(root) NOPASSWD: NOSETENV: /usr/local/sbin/elecciones-release

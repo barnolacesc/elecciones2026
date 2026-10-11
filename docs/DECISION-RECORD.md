@@ -8,6 +8,18 @@
 - **Related OpenSpec Tasks:** 4.3, 4.6, 4.7
 - **Dependencies:** None
 
+## E3.3 owner update — 2026-10-11
+
+The owner selected the existing IONOS Ubuntu VPS (1 vCPU, 1 GB RAM) and registered
+`eleccionesespaña2026.es` at DonDominio. Use
+`https://xn--eleccionesespaa2026-83b.es` as canonical base and
+`preview.xn--eleccionesespaa2026-83b.es` for authenticated staging. Cloudflare
+delegation and TLS activation remain pending. These choices supersede the
+provider/domain assumptions below. The older Hetzner sizing, throughput and
+price/traffic estimates remain historical proposals, not evidence for IONOS.
+Existing service targets, cost ceiling and G0/G4 gates are unchanged. Contact
+mailboxes remain provisional and need separate owner verification.
+
 ---
 
 ## 1. Context and Problem Statement
