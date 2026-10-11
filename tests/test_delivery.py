@@ -1,5 +1,7 @@
 """Exercise release evidence, credential isolation, and external publication boundaries."""
 import copy
+from contextlib import redirect_stdout
+import io
 import importlib.util
 from pathlib import Path
 import subprocess
@@ -181,3 +183,23 @@ class DeliveryTests(unittest.TestCase):
                 response.headers = {key: value for key, value in headers.items() if key != field}
                 with self.subTest(field=field), self.assertRaises(delivery.DeliveryError):
                     delivery.edge_probe(ENV['STAGING_BASIC_AUTH'], digest)
+
+    def test_http_failure_diagnostics_do_not_echo_credentials_or_response_details(self):
+        import json
+        with tempfile.TemporaryDirectory() as directory:
+            record = Path(directory) / 'release.json'
+            record.write_text(json.dumps(RECORD))
+            output = io.StringIO()
+            with patch.object(delivery, 'read_run', return_value=RUN), \
+                    patch.object(delivery, 'deliver', side_effect=lambda *args: delivery.edge_probe(ENV['STAGING_BASIC_AUTH'])), \
+                    patch.object(delivery.urllib.request, 'build_opener') as opener, \
+                    patch('sys.argv', ['delivery', '123', '--candidate', str(record)]), \
+                    redirect_stdout(output):
+                opener.return_value.open.side_effect = urllib.error.HTTPError(
+                    'https://example.invalid/' + ENV['STAGING_BASIC_AUTH'], 401,
+                    ENV['VPS_SSH_KEY'], {'Secret': ENV['VPS_KNOWN_HOSTS']},
+                    io.BytesIO(ENV['STAGING_BASIC_AUTH'].encode()))
+                self.assertEqual(delivery.main(), 1)
+            self.assertIn('Delivery blocked: External staging response failed: HTTP 401', output.getvalue())
+            for name in ('STAGING_BASIC_AUTH', 'VPS_SSH_KEY', 'VPS_KNOWN_HOSTS'):
+                self.assertNotIn(ENV[name], output.getvalue())
