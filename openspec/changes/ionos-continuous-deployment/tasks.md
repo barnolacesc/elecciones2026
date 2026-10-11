@@ -1,6 +1,6 @@
 # Tasks: E3.3 IONOS continuous deployment
 
-Status: planning complete; restricted-access implementation in progress; live activation not started. These tasks extend E3.3 and do not complete the existing MVP tasks 4.4/4.6 or the E3.4 capacity gate.
+Status: planning complete; restricted private staging activation and hosted external verification passed. Public release, live rollback/restore, monitoring and capacity evidence remain open. These tasks extend E3.3 and do not complete the existing MVP tasks 4.4/4.6 or the E3.4 capacity gate.
 
 ## 1. Confirm host and release prerequisites
 
@@ -192,3 +192,21 @@ validation remains fail-closed; no credential change is indicated by this eviden
 Verification: 12 delivery boundary tests pass, including response metadata and
 redaction checks; focused Ruff, strict OpenSpec validation and whitespace checks
 pass. Hosted response metadata is pending the reviewed workflow update.
+
+## Verified private staging delivery — 2026-10-12
+
+E3.3: run 38181492298 identified the hosted mismatch: 25333 identity-encoded bytes,
+an analytics beacon and a different hash, compared with the owner's 24966-byte
+matching response. Owner deployed a Configuration Rule matching only the preview
+hostname with Disable RUM enabled. Delivery run 38182379207 then passed both jobs:
+approval/trusted CI validation, restricted SSH, healthy repeated origin release,
+unauthenticated rejection before/after activation and authenticated exact home hash
+plus required security/no-store headers. It used CI run 38154601720 attempt 2 and
+image digest 3e1a312b46d94d3b56ec11135241651c3ae30e88c4c3e77dac7efb4d642f2905.
+The migration guide records the Cloudflare rule, current setup and immutable
+evidence references. Full live rollback/restore, external monitoring, capacity,
+remaining origin probes and public content/release gates stay open; no public
+launch or complete E3.3 acceptance is claimed.
+
+Documentation checks: local file links and 21 shell examples validate without
+executing host commands; strict OpenSpec validation and whitespace checks pass.

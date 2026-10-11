@@ -1,7 +1,8 @@
 # E3.3 origin and edge operations
 
 Status: the owner has configured IONOS SSH/UFW, Cloudflare delegation, origin TLS
-and authenticated preview nginx. The application has not been activated. Start
+and authenticated preview nginx. Private staging delivery and external exact-content
+verification passed in run 38182379207. Start
 with the [server setup and migration runbook](SERVER-MIGRATION.md) for the current
 verification record and repeatable Hetzner migration steps. Use
 [IONOS delivery setup](IONOS-DELIVERY.md) for workflow and registry details.

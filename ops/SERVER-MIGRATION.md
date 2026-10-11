@@ -3,7 +3,7 @@
 Use this guide to reproduce the election site's setup on a replacement Ubuntu
 server, including a future Hetzner host. This documents configuration and operator
 steps; it is not an automated provisioning script or permission to migrate now.
-The current setup record is dated **2026-10-11**. Package: **E3.3**.
+The current setup record is dated **2026-10-12**. Package: **E3.3**.
 
 Replace uppercase placeholders such as `NEW_VPS_IP`, `OPERATOR_PUBLIC_IP` and
 `REVIEWED_CLOUDFLARE_CIDR` before running commands. Host commands assume an
@@ -16,7 +16,7 @@ operator root shell; SSH and external probes explicitly marked Mac run locally.
 | Host | IONOS, `195.20.230.75`, Ubuntu 22.04.5, AMD64, 1 vCPU, 856 MiB visible RAM | Owner terminal output; no swap; new-host capacity must be measured |
 | Previous services | Finance service stopped/disabled; containers removed; Docker group removed from deployer | Unrelated PostgreSQL volume retained; finance backup/restore not verified |
 | Updates | Host rebooted; latest owner login reports zero immediately applicable updates | ESM notices remain; no OS release upgrade performed |
-| Registry | Root login to private GHCR with account `barnolacesc` | Login succeeded; actual candidate pull not yet verified |
+| Registry | Root login to private GHCR with account `barnolacesc` | Owner confirmed exact private candidate pull after refreshing login |
 | Registrar / DNS | Domain bought at DonDominio; nameservers delegated to Cloudflare | Owner confirmed active delegation; DNSSEC not verified |
 | Domain | `eleccionesespaña2026.es` / `xn--eleccionesespaa2026-83b.es` | Canonical base uses the ASCII HTTPS form |
 | Preview DNS | Proxied A record `preview` → `195.20.230.75` | External requests reach Cloudflare and the authenticated origin |
@@ -24,14 +24,24 @@ operator root shell; SSH and external probes explicitly marked Mac run locally.
 | Origin client authentication | Global Cloudflare Authenticated Origin Pulls (AOP), nginx client-certificate verification | AOP CA parsed; expires 2029-11-01; global AOP is not exclusive to this account |
 | Cloudflare TLS mode | Full (strict), reported configured by owner | External HTTPS succeeds; dashboard/API mode not independently exported |
 | Preview access | HTTP Basic username `preview`; bcrypt password file | No password value in this guide; unauthenticated GET returned 401, no-store/noindex |
-| Nginx | TLS listener on IPv4/IPv6 443; default port-80 site disabled | Syntax passed; authenticated request returned 502 while application is absent |
+| Nginx | TLS listener on IPv4/IPv6 443; default port-80 site disabled | Authenticated preview returns 200 with required security/no-store headers |
 | SSH | Key-only root/operator access; restricted deployer forced command | New operator login and effective deployer settings verified |
 | Firewall | Active UFW, deny incoming, allow outgoing, deny routed; IPv6 enabled | Public SSH LIMIT, operator-specific SSH ALLOW, Cloudflare-only 443; old 5001 rule removed |
-| GitHub | Hosted runners; production SSH secrets and staging secret reported added | Main-only environment rules verified; latest PR CI and hosted-runner SSH still pending |
-| Application | Not activated yet | No listener on 8080; no live image/release/rollback evidence yet |
+| GitHub | Hosted runners, main-only production environment, DEPLOYMENT_READY=true | Delivery run 38182379207 passed approval, restricted SSH and external verification |
+| Preview analytics | Configuration Rule matches preview hostname; Disable RUM enabled | Owner deployed rule; hosted page hash now matches the approved image |
+| Application | Approved private candidate activated and healthy | Exact home hash verified from hosted runner; live rollback/restore and capacity remain unverified |
 
 Always update this table after a real verification. A login, nginx syntax check or
 401 response does not establish a healthy application or measured capacity.
+
+Successful private staging evidence: [delivery run 38182379207](https://github.com/c2ventures/elecciones2026/actions/runs/38182379207),
+using successful main CI run `38154601720`, attempt `2`:
+
+- Image: `ghcr.io/c2ventures/elecciones2026@sha256:3e1a312b46d94d3b56ec11135241651c3ae30e88c4c3e77dac7efb4d642f2905`.
+- Home SHA-256: `f4d6642a24ae9c1c5cb9afc994004ddf5dbe58ced40e7cfd865af07524e9d010`.
+- Origin health, pre/post unauthenticated rejection, authenticated HTTP 200,
+  security headers, no-store and exact content passed. This is private staging
+  evidence; public G4, monitoring, live rollback/restore and capacity remain open.
 
 ## Configuration and secret inventory
 
@@ -132,6 +142,12 @@ Validate root ownership, sudo syntax and the forced-command policy. Test the
 non-mutating `check` request; arbitrary `id` must fail. Retain any old sudo policy
 as a restricted backup before replacement. A host tooling update is a reviewed
 operator action, not a normal image delivery.
+
+Install the reviewed controller that supports repeated-image health checks (the
+owner installed this update from PR 61). An older controller rejects an already
+current digest before external verification. The updated controller verifies health
+without pulling or overwriting the previous release record; failed health still
+fails delivery. Include this behavior when restoring host tooling on Hetzner.
 
 ## 4. Make SSH key-only before opening it to hosted runners
 
@@ -323,6 +339,27 @@ requires Basic authentication and validates AOP. Do not simultaneously enable th
 public and staging templates' default-server blocks.
 
 ## 8. Registry and GitHub delivery settings
+
+Before external content verification, create a Configuration Rule in the election
+zone: Rules → Configuration Rules → Create rule. Name it `Disable preview analytics`;
+match **Hostname equals** `preview.xn--eleccionesespaa2026-83b.es`, or use:
+
+```text
+(http.host eq "preview.xn--eleccionesespaa2026-83b.es")
+```
+
+Add **Disable Real User Monitoring (RUM)** and enable that setting, then deploy
+the rule. This preview-specific rule takes precedence over Web Analytics rules.
+Do not change unrelated analytics sites. The owner deployed it after hosted run
+38181492298 showed an injected analytics beacon: 25333 bytes instead of 24966,
+with a different hash. Mac curl and Python probes returned the original bytes.
+After the rule, hosted run 38182379207 verified the exact image content. An
+EU-only exclusion is insufficient for consistent delivery from other regions.
+See [Cloudflare Disable RUM](https://developers.cloudflare.com/rules/configuration-rules/settings/#disable-real-user-monitoring-rum).
+
+Keep this zone rule when moving the origin to Hetzner. Reproduce it if moving to a
+different Cloudflare zone. Do not weaken or normalize the page hash check to allow
+injected scripts; approve any future analytics separately.
 
 Create/restore an expiring classic PAT with only read:packages from an account
 that can read the private package. Fine-grained tokens do not support this registry
