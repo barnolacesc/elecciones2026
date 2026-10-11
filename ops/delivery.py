@@ -77,19 +77,24 @@ def edge_probe(credential: str | None, expected_hash: str | None = None) -> None
             if credential is None:
                 raise DeliveryError("Staging is reachable without authentication")
             body = response.read(2_000_001)
-            if (response.status != 200 or len(body) > 2_000_000
-                    or "no-store" not in response.headers.get("Cache-Control", "")
-                    or not response.headers.get("Content-Security-Policy")
-                    or response.headers.get("X-Content-Type-Options") != "nosniff"
-                    or response.headers.get("X-Frame-Options") != "DENY"
-                    or (expected_hash and hashlib.sha256(body).hexdigest() != expected_hash)):
-                raise DeliveryError("External staging content or headers failed verification")
+            checks = {
+                "HTTP status": response.status == 200,
+                "response size": len(body) <= 2_000_000,
+                "no-store": "no-store" in response.headers.get("Cache-Control", ""),
+                "CSP": bool(response.headers.get("Content-Security-Policy")),
+                "nosniff": response.headers.get("X-Content-Type-Options") == "nosniff",
+                "frame protection": response.headers.get("X-Frame-Options") == "DENY",
+                "content hash": not expected_hash or hashlib.sha256(body).hexdigest() == expected_hash,
+            }
+            failures = [name for name, passed in checks.items() if not passed]
+            if failures:
+                raise DeliveryError("External staging verification failed: " + ", ".join(failures))
     except urllib.error.HTTPError as exc:
         if credential is None and exc.code == 401:
             exc.close()
             return
         exc.close()
-        raise DeliveryError("External staging authentication or response failed") from None
+        raise DeliveryError(f"External staging response failed: HTTP {exc.code}") from None
 
 
 def deliver(image: str, home_hash: str) -> None:
@@ -103,6 +108,7 @@ def deliver(image: str, home_hash: str) -> None:
     if not key.strip() or not trust.strip() or ":" not in auth:
         raise DeliveryError("Missing SSH or staging credentials")
     # Reject an accidentally public staging route before changing the origin.
+    print("Checking unauthenticated staging access before deployment.", flush=True)
     edge_probe(None)
     with tempfile.TemporaryDirectory(prefix="elections-ssh-") as directory:
         key_path, trust_path = Path(directory) / "key", Path(directory) / "known_hosts"
@@ -119,7 +125,9 @@ def deliver(image: str, home_hash: str) -> None:
         subprocess.run([*command, f"deploy {image}"], check=True, timeout=300,
                        stdin=subprocess.DEVNULL)
     # Report a failure without automatically rolling back a possible factual correction.
+    print("Checking unauthenticated staging access after deployment.", flush=True)
     edge_probe(None)
+    print("Checking authenticated staging content and headers.", flush=True)
     edge_probe(auth, home_hash)
 
 
@@ -140,7 +148,12 @@ def main() -> int:
                     output.write(f"Authenticated staging verified.\n\nRevision: `{record['revision']}`\n\nImage: `{image}`\n")
         else:
             print("Trusted CI run verified; no deployment performed.")
-    except (DeliveryError, KeyError, ValueError, OSError, subprocess.SubprocessError):
+    except DeliveryError as error:
+        # These messages contain only controlled labels/status codes, never raw
+        # HTTP bodies, credentials, connection settings or subprocess errors.
+        print(f"Delivery blocked: {error}")
+        return 1
+    except (KeyError, ValueError, OSError, subprocess.SubprocessError):
         print("Delivery failed. Inspect CI evidence and use the protected operator recovery procedure.")
         return 1
     return 0

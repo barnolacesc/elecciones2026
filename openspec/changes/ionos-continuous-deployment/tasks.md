@@ -166,3 +166,14 @@ including healthy/unhealthy repeated-image requests, retained-state preservation
 and redundant rollback rejection. Focused Ruff, strict OpenSpec validation and
 whitespace checks pass. The Docker rehearsal now repeats image A after rollback
 and verifies its content and unchanged state; hosted execution remains pending.
+
+## External verification diagnostics — 2026-10-11
+
+E3.3: owner confirmed the reviewed retry controller was installed and its restricted
+check passed. Run 38178232215 passed SSH and reported a healthy repeated release,
+then failed external verification. The generic error did not establish whether
+authentication, HTTP response, headers or content hash failed. Delivery now reports
+the verification phase, controlled failed-check labels and HTTP status codes, while
+keeping response bodies, credentials and raw transport errors out of logs. Eleven
+delivery boundary tests pass, including a credential/response redaction regression;
+focused Ruff and whitespace checks pass. Hosted verification remains pending.
