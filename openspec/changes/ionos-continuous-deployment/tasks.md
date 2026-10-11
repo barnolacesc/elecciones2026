@@ -119,3 +119,16 @@ tests ran successfully (2 skips), 12 Node tests passed, AMD64 Docker build and
 generator determinism passed; actionlint, focused Ruff, strict OpenSpec validation
 and staged whitespace checks passed. Hosted CI must run on the updated PR head.
 No application activation or merge into main was performed.
+
+## Rendered CI follow-up — 2026-10-11
+
+E3.3 integration: hosted run 38153746784 passed validation, Docker parity/scan
+and credential isolation, but the mobile job failed the 360px stacked-card check.
+Separate Playwright rectangle reads can observe different scroll positions while
+the page smooth-scrolls. The check now collects both rectangles in one browser
+task and records them as failure details; positive dimensions and stacking remain
+required. A controlled Chromium regression reproduced the false failure between
+separate reads and confirmed atomic reads accept stacked cards while rejecting
+side-by-side cards. The complete rendered mobile audit passed 60/60 locally;
+focused Ruff and diff whitespace checks passed. Hosted confirmation remains pending
+on the next PR head. No product layout or deployment policy changed.

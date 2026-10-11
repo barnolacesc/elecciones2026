@@ -102,8 +102,16 @@ def run_audit(root: Path) -> dict:
                     check(f'{width}: comparison present', groups.count() > 0)
                     for i in range(groups.count()):
                         cards = groups.nth(i).locator('.party-card')
-                        boxes = [cards.nth(j).bounding_box() for j in range(cards.count())]
-                        check(f'{width}: stacked measure {i}', len(boxes) == 2 and boxes[1]['y'] >= boxes[0]['y'] + boxes[0]['height'] - 1)
+                        # Read both rectangles in one browser task: smooth scrolling
+                        # can change viewport coordinates between separate calls.
+                        boxes = cards.evaluate_all("""elements => elements.map(el => {
+                          const r = el.getBoundingClientRect();
+                          return {y: r.y, height: r.height, width: r.width};
+                        })""")
+                        check(f'{width}: stacked measure {i}', len(boxes) == 2
+                              and all(box['width'] > 0 and box['height'] > 0 for box in boxes)
+                              and boxes[1]['y'] >= boxes[0]['y'] + boxes[0]['height'] - 1,
+                              boxes)
                     # Traverse actual keyboard order and inspect computed focus styling.
                     page.locator('#compare-submit').focus()
                     reached = False
