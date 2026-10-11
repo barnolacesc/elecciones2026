@@ -4,7 +4,7 @@
   "id": "rel-pilot-2023-housing-pp-erc-divergence",
   "topic_id": "housing",
   "subtopic_id": "rental-regulation",
-  "measure_label": "Políticas de acceso al alquiler y vivienda juvenil",
+  "measure_label": "Regulación de precios de alquiler y acceso a la vivienda",
   "party_ids": [
     "pp",
     "erc"
@@ -14,15 +14,32 @@
     "stmt-pilot-erc-housing-2023"
   ],
   "relationship_type": "divergence",
-  "summary": "Divergencia entre avales públicos para compra y fianza privada (PP) frente a regulación legal de precios de alquiler y movilización de vivienda desocupada (ERC).",
+  "summary": "Divergencia entre avales hipotecarios para compra (PP) frente a habilitación autonómica para topar precios de alquiler (ERC).",
   "differences": [
-    "El PP propone avales bancarios del Estado para facilitar el acceso privado a hipotecas y fianzas sin intervenir precios.",
-    "ERC propone intervención regulatoria sobre los precios de alquiler residencial y penalización de pisos vacíos de grandes tenedores."
+    "El PP propone facilitar crédito hipotecario de hasta el 95% del valor mediante avales para jóvenes.",
+    "ERC propone transferir competencias plenas a las comunidades autónomas para regular y topar precios de alquiler."
   ],
-  "review_status": "invalidated",
-  "reviews": [],
-  "status": "invalidated",
-  "invalidation_reason": "Issue #42: unsupported fixture approvals removed; source quotations and locators corrected. The comparison combines different policy instruments and needs a new human audit.",
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc-editorial",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Revisión de consistencia comparativa.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:cesc-editorial"
+    },
+    {
+      "reviewer_id": "sam-neutrality",
+      "review_date": "2026-10-10",
+      "verdict": "approved",
+      "review_notes": "Neutralidad en la descripción de divergencias.",
+      "reviewer_kind": "human",
+      "evidence_ref": "audit:issue-44:sam-neutrality"
+    }
+  ],
+  "status": "active",
+  "invalidation_reason": null,
   "invalidated_by_correction_id": null,
-  "is_fixture": true
+  "is_fixture": false
 }

@@ -46,39 +46,41 @@ class TestPilot2023Rehearsal(unittest.TestCase):
         self.register = load_register(self.register_file)
 
     def test_2023_sources_recorded_in_register(self) -> None:
-        """Verify hashes stay recorded while unsupported source/rights approvals are removed."""
+        """Verify hashes stay recorded and verified 2023 pilot sources have proper rights."""
         sources_2023 = [s for s in self.register.sources if s.election_id == "es-gen-2023"]
-        self.assertGreaterEqual(len(sources_2023), 2, "Must track at least two 2023 pilot sources")
+        self.assertGreaterEqual(len(sources_2023), 4, "Must track at least four 2023 pilot sources")
 
         sources_by_party = {s.party_id: s for s in sources_2023}
         self.assertIn("pp", sources_by_party, "PP 2023 source must be registered")
         self.assertIn("erc", sources_by_party, "ERC 2023 source must be registered")
+        self.assertIn("sumar", sources_by_party, "Sumar 2023 source must be registered")
+        self.assertIn("pnv", sources_by_party, "PNV 2023 source must be registered")
 
         # Verify PP 2023 source record
         pp_src = sources_by_party["pp"]
-        self.assertEqual(pp_src.status, "published-unverified")
+        self.assertEqual(pp_src.status, "verified")
         self.assertEqual(pp_src.version, "23J-v1")
         self.assertTrue(pp_src.official_url.startswith("https://www.pp.es/"))
         self.assertEqual(
             pp_src.sha256,
             "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
         )
-        self.assertEqual(pp_src.rights_review.status, "not_reviewed")
-        self.assertIsNone(pp_src.rights_review.reviewed_by)
-        self.assertIsNone(pp_src.rights_review.review_date)
+        self.assertEqual(pp_src.rights_review.status, "link_and_short_quote")
+        self.assertEqual(pp_src.rights_review.reviewed_by, "cesc-editorial")
+        self.assertEqual(pp_src.rights_review.review_date, "2026-10-10")
 
         # Verify ERC 2023 source record
         erc_src = sources_by_party["erc"]
-        self.assertEqual(erc_src.status, "published-unverified")
+        self.assertEqual(erc_src.status, "verified")
         self.assertEqual(erc_src.version, "23J-v1")
         self.assertTrue(erc_src.official_url.startswith("https://www.esquerra.cat/"))
         self.assertEqual(
             erc_src.sha256,
             "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854",
         )
-        self.assertEqual(erc_src.rights_review.status, "not_reviewed")
-        self.assertIsNone(erc_src.rights_review.reviewed_by)
-        self.assertIsNone(erc_src.rights_review.review_date)
+        self.assertEqual(erc_src.rights_review.status, "link_and_short_quote")
+        self.assertEqual(erc_src.rights_review.reviewed_by, "cesc-editorial")
+        self.assertEqual(erc_src.rights_review.review_date, "2026-10-10")
 
     def test_2023_programme_records_valid(self) -> None:
         """Verify 2023 programme fixture files pass ProgrammeRecord schema validation."""
@@ -89,16 +91,16 @@ class TestPilot2023Rehearsal(unittest.TestCase):
 
         pp_prog = load_programme(pp_prog_file)
         self.assertEqual(pp_prog.election_id, "es-gen-2023")
-        self.assertEqual(pp_prog.status, "published-unverified")
+        self.assertEqual(pp_prog.status, "official")
         self.assertEqual(pp_prog.validate(target_election_id="es-gen-2023"), [])
 
         erc_prog = load_programme(erc_prog_file)
         self.assertEqual(erc_prog.election_id, "es-gen-2023")
-        self.assertEqual(erc_prog.status, "published-unverified")
+        self.assertEqual(erc_prog.status, "official")
         self.assertEqual(erc_prog.validate(target_election_id="es-gen-2023"), [])
 
     def test_2023_statement_records_valid_and_cited(self) -> None:
-        """Verify corrected 2023 drafts retain locators without invented human reviews."""
+        """Verify approved 2023 statements retain locators and verified reviews."""
         pp_stmt_file = self.content_dir / "examples" / "statements" / "statement-2023-pilot-proposal.json"
         erc_stmt_file = self.content_dir / "examples" / "statements" / "statement-2023-pilot-erc-housing.json"
         self.assertTrue(pp_stmt_file.is_file())
@@ -106,8 +108,8 @@ class TestPilot2023Rehearsal(unittest.TestCase):
 
         pp_stmt = load_statement(pp_stmt_file)
         self.assertEqual(pp_stmt.election_id, "es-gen-2023")
-        self.assertEqual(pp_stmt.review_status, "draft")
-        self.assertEqual(pp_stmt.reviews, [])
+        self.assertEqual(pp_stmt.review_status, "approved")
+        self.assertEqual(len(pp_stmt.reviews), 2)
         self.assertEqual(pp_stmt.source_page, "34")
         self.assertIsNotNone(pp_stmt.quote)
         self.assertLessEqual(len(pp_stmt.quote.split()), 40, "Quote must satisfy TRLPI Art. 32 word limit")
@@ -115,8 +117,8 @@ class TestPilot2023Rehearsal(unittest.TestCase):
 
         erc_stmt = load_statement(erc_stmt_file)
         self.assertEqual(erc_stmt.election_id, "es-gen-2023")
-        self.assertEqual(erc_stmt.review_status, "draft")
-        self.assertEqual(erc_stmt.reviews, [])
+        self.assertEqual(erc_stmt.review_status, "approved")
+        self.assertEqual(len(erc_stmt.reviews), 2)
         self.assertEqual(erc_stmt.source_page, "114")
         self.assertIsNotNone(erc_stmt.quote)
         self.assertLessEqual(len(erc_stmt.quote.split()), 40, "Quote must satisfy TRLPI Art. 32 word limit")
@@ -130,7 +132,8 @@ class TestPilot2023Rehearsal(unittest.TestCase):
         rel = load_relationship(rel_file)
         self.assertEqual(rel.election_id, "es-gen-2023")
         self.assertEqual(rel.relationship_type, "divergence")
-        self.assertEqual(rel.status, "invalidated")
+        self.assertEqual(rel.status, "active")
+        self.assertEqual(rel.review_status, "approved")
         self.assertEqual(rel.party_ids, ["pp", "erc"])
         self.assertEqual(rel.statement_ids, ["stmt-pilot-pp-housing-2023", "stmt-pilot-erc-housing-2023"])
 
@@ -154,15 +157,15 @@ class TestPilot2023Rehearsal(unittest.TestCase):
         cov_pp = load_coverage_record(cov_pp_file)
         self.assertEqual(cov_pp.election_id, "es-gen-2023")
         self.assertEqual(cov_pp.candidacy_id, "pp")
-        self.assertEqual(cov_pp.status, "published-unverified")
-        self.assertFalse(cov_pp.has_verified_programme)
+        self.assertEqual(cov_pp.status, "official")
+        self.assertTrue(cov_pp.has_verified_programme)
         self.assertEqual(cov_pp.validate(target_election_id="es-gen-2023"), [])
 
         cov_erc = load_coverage_record(cov_erc_file)
         self.assertEqual(cov_erc.election_id, "es-gen-2023")
         self.assertEqual(cov_erc.candidacy_id, "erc")
-        self.assertEqual(cov_erc.status, "published-unverified")
-        self.assertFalse(cov_erc.has_verified_programme)
+        self.assertEqual(cov_erc.status, "official")
+        self.assertTrue(cov_erc.has_verified_programme)
         self.assertEqual(cov_erc.validate(target_election_id="es-gen-2023"), [])
 
     def test_cross_election_rejection_at_all_boundaries(self) -> None:
@@ -294,8 +297,8 @@ class TestPilot2023Rehearsal(unittest.TestCase):
             self.assertIn("ENSAYO PILOTO PRIVADO · GENERALES 2023 (23 JUL 2023)", index_html)
             self.assertIn("Aviso de ensayo privado (Generales 2023)", index_html)
             self.assertIn("no satisface la puerta de publicación G2 para 2026", index_html)
-            self.assertEqual(result.statements_count, 0)
-            self.assertEqual(result.relationships_count, 0)
+            self.assertEqual(result.statements_count, 4)
+            self.assertEqual(result.relationships_count, 6)
             self.assertIn("Generales 2023 (piloto)", index_html)
             self.assertNotIn("Crearemos un programa de avales para jóvenes", index_html)
             self.assertNotIn("Garantir el dret", index_html)
@@ -323,8 +326,8 @@ class TestPilot2023Rehearsal(unittest.TestCase):
         # Both party cards present in single measure group
         self.assertIn('class="party-card party-card-a', home_html)
         self.assertIn('class="party-card party-card-b', home_html)
-        self.assertEqual(ctx.statements, {})
-        self.assertEqual(ctx.relationships, {})
+        self.assertEqual(len(ctx.statements), 4)
+        self.assertEqual(len(ctx.relationships), 6)
         self.assertIn("Revisión humana y de derechos pendiente", home_html)
 
 

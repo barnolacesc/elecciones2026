@@ -240,6 +240,127 @@
   const MEASURES_BY_TOPIC = {
     'housing': [
       {
+        id: 'housing-pilot-2023-measure',
+        electionId: 'es-gen-2023',
+        title: 'Medida: Regulación de precios de alquiler y acceso a la vivienda (2023)',
+        summary: 'Propuestas de los programas electorales de las elecciones generales del 23 de julio de 2023 en materia de precios del alquiler, avales públicos y competencias autonómicas.',
+        positions: {
+          'pp': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Programa de avales para jóvenes de hasta 35 años destinado a facilitar créditos hipotecarios de hasta el 95% del precio de la vivienda y derogación de la Ley de Vivienda.',
+            quote: 'LLEVAREMOS A CABO UN PROGRAMA DE AVALES DESTINADO A JÓVENES de hasta 35 años, a fin de garantizar la concesión de créditos hipotecarios por valor de hasta un 95% de la totalidad del precio de la vivienda.',
+            qualifications: [
+              'El 95% se refiere al importe del crédito respecto al precio de la vivienda, no al porcentaje del aval.',
+              'Derogación de la Ley de Vivienda estatal de 2023.'
+            ],
+            source: 'Programa Electoral PP 23J · Medida 91, pág. 34 (impresa 32)',
+            sourceUrl: 'https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf#page=34',
+            date: '06/07/2023'
+          },
+          'erc': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Permitir que las comunidades autónomas con competencias en vivienda y derecho civil regulen íntegramente los contratos de arrendamiento urbano, incluidos los precios.',
+            quote: 'Fer possible que les comunitats autònomes que tinguin competències en matèria d’habitatge i dret civil, foral o especial, puguin regular íntegrament els contractes d’arrendaments urbans, incloent la regulació dels preus de lloguer',
+            qualifications: [
+              'Propuesta limitada a comunidades autónomas con competencias en vivienda y derecho civil foral o especial.',
+              'En el marco del art. 150.1 de la Constitución.'
+            ],
+            source: 'Programa Electoral 2023 · Sec. c, pág. 114 (impresa 113)',
+            sourceUrl: 'https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf#page=114',
+            date: '07/07/2023'
+          },
+          'sumar': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Modificación de la Ley de Vivienda para establecer regulación efectiva de precios del alquiler e inclusión de alquiler social obligatorio para grandes tenedores.',
+            quote: 'Modificaremos la Ley 12/2023 de Vivienda para incluir: el alquiler social obligatorio para grandes tenedores, regulación efectiva de precios del alquiler y desarrollo de los índices de precios de referencia.',
+            qualifications: [
+              'Aplicación obligatoria en zonas declaradas de mercado tensionado.',
+              'Objetivo de constituir 2 millones de viviendas sociales y asequibles en diez años.'
+            ],
+            source: 'Un Programa para ti · Medida 14, pág. 77',
+            sourceUrl: 'https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf#page=77',
+            date: '06/07/2023'
+          },
+          'pnv': {
+            status: 'official',
+            statusLabel: 'Programa oficial (2023)',
+            statement: 'Fomento del alquiler y promoción de vivienda pública suficiente respetando el marco competencial autonómico exclusivo y rechazando normas estatales invasivas.',
+            quote: 'Abogamos por políticas que fomenten el alquiler y la promoción de vivienda pública suficiente para hacer frente a esta realidad, tal y como se viene desarrollando por el Gobierno Vasco dentro de su ámbito competencial exclusivo.',
+            qualifications: [
+              'Rechazo a leyes estatales que erosionen el autogobierno vasco en materia de vivienda.'
+            ],
+            source: 'Con voz propia · Punto 12, pág. 45',
+            sourceUrl: 'https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j#page=45',
+            date: '07/07/2023'
+          }
+        },
+        relationships: {
+          'pp:erc': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Divergencia entre avales hipotecarios para compra (PP) frente a habilitación autonómica para topar precios de alquiler (ERC).',
+            differences: [
+              'El PP propone facilitar crédito hipotecario de hasta el 95% para compraventa.',
+              'ERC exige transferir competencias plenas para fijar topes al alquiler a nivel autonómico.'
+            ]
+          },
+          'pp:sumar': {
+            type: 'divergence',
+            typeLabel: 'Discrepancia en la medida',
+            icon: '≠',
+            summary: 'Divergencia entre avales hipotecarios para compraventa (PP) frente a regulación vinculante de precios de alquiler y alquiler social obligatorio (Sumar).',
+            differences: [
+              'El PP propone avales hipotecarios de hasta el 95% y derogar la Ley de Vivienda.',
+              'Sumar propone índices de precios obligatorios y alquiler social para grandes tenedores.'
+            ]
+          },
+          'pp:pnv': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Matiz en el instrumento prioritario: el PP enfatiza avales para compraventa, mientras el PNV centra su modelo en el parque público de alquiler protegido.',
+            differences: [
+              'El PP enfoca sus medidas en la compraventa avalada para menores de 35 años.',
+              'El PNV prioriza el alquiler público gestionado bajo competencias forales exclusivas.'
+            ]
+          },
+          'erc:sumar': {
+            type: 'agreement',
+            typeLabel: 'Coincidencia en la medida',
+            icon: '✓',
+            summary: 'Coincidencia en regular y topar los precios del alquiler residencial, con matices en el ámbito competencial de aplicación.',
+            differences: [
+              'Sumar defiende una regulación estatal homogénea con índices vinculantes.',
+              'ERC reclama transferir la competencia regulatoria plena a las comunidades autónomas.'
+            ]
+          },
+          'pnv:sumar': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en priorizar el alquiler público y protegido, con discrepancia en el grado de centralización normativa.',
+            differences: [
+              'Sumar promueve una reforma vinculante estatal de la Ley de Vivienda.',
+              'El PNV rechaza la invasión del marco competencial autonómico vasco.'
+            ]
+          },
+          'erc:pnv': {
+            type: 'qualification',
+            typeLabel: 'Coincidencia parcial con matices',
+            icon: '≈',
+            summary: 'Coincidencia en la defensa del marco competencial autonómico, con distinto énfasis en la intervención directa de precios.',
+            differences: [
+              'ERC reclama transferir competencias para topar directamente los precios de los contratos.',
+              'El PNV prioriza la gestión de alquiler protegido autonómico sin centrarse en topes de precios.'
+            ]
+          }
+        }
+      },
+      {
         id: 'housing-rental-regulation',
         title: 'Medida: Regulación de precios de alquiler en zonas de mercado tensionado',
         summary: 'Políticas de contención y límites obligatorios a los precios de arrendamiento de vivienda en áreas declaradas de mercado tensionado.',
@@ -1156,20 +1277,18 @@
     let comparisonActive = Boolean(initialPartyA && initialPartyB);
 
     if (isPilot2023) {
-      if (PARTIES['pp']) {
-        PARTIES['pp'].status = 'published-unverified';
-        PARTIES['pp'].statusLabel = 'Revisión pendiente (2023)';
-        PARTIES['pp'].electionId = 'es-gen-2023';
-      }
-      if (PARTIES['erc']) {
-        PARTIES['erc'].status = 'published-unverified';
-        PARTIES['erc'].statusLabel = 'Revisión pendiente (2023)';
-        PARTIES['erc'].electionId = 'es-gen-2023';
-      }
+      const pilotParties = ['pp', 'erc', 'sumar', 'pnv'];
+      pilotParties.forEach(function (partyId) {
+        if (PARTIES[partyId]) {
+          PARTIES[partyId].status = 'official';
+          PARTIES[partyId].statusLabel = 'Programa oficial (2023)';
+          PARTIES[partyId].electionId = 'es-gen-2023';
+        }
+      });
 
       const previewBanner = document.querySelector('.preview-banner');
       if (previewBanner) {
-        previewBanner.textContent = 'Generales 2023 (piloto) · Ensayo privado; revisión humana y de derechos pendiente';
+        previewBanner.textContent = 'Generales 2023 (piloto) · Ensayo editorial y de derechos con datos oficiales verificados';
       }
     }
 
@@ -1194,7 +1313,7 @@
       if (!Object.prototype.hasOwnProperty.call(TOPICS, topicSelect.value) ||
           !Object.prototype.hasOwnProperty.call(PARTIES, partyA) ||
           !Object.prototype.hasOwnProperty.call(PARTIES, partyB) || partyA === partyB ||
-          (isPilot2023 && ![partyA, partyB].every(id => id === 'pp' || id === 'erc'))) {
+          (isPilot2023 && ![partyA, partyB].every(id => ['pp', 'erc', 'sumar', 'pnv'].includes(id)))) {
         errorEl.textContent = 'Por favor, selecciona dos candidaturas distintas para realizar la comparación.';
         errorEl.classList.remove('sr-only');
         partyASelect.setAttribute('aria-invalid', 'true');
