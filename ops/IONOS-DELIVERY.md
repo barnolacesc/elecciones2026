@@ -1,7 +1,8 @@
 # E3.3 IONOS delivery setup
 
 Status: the owner has completed registry login, Cloudflare delegation, origin TLS,
-authenticated preview nginx and SSH/UFW setup. Application activation is pending.
+authenticated preview nginx and SSH/UFW setup. Private staging activation and
+hosted external verification passed in delivery run 38182379207.
 The [server migration runbook](SERVER-MIGRATION.md) records the verified setup,
 remaining limits and steps to reproduce it on Hetzner. Delivery stays
 blocked until repository variable `DEPLOYMENT_READY=true` is deliberately set.
@@ -11,6 +12,10 @@ volumes. Retained-data backup, full external firewall probes, monitoring and cap
 open in the OpenSpec task record.
 
 ## 1. DNS delegation: keep DonDominio as registrar
+
+Current verified preview setup also requires the hostname-specific Disable RUM
+Configuration Rule described in [the migration guide](SERVER-MIGRATION.md#8-registry-and-github-delivery-settings).
+It prevents Cloudflare analytics injection from changing the approved page bytes.
 
 The owner bought `eleccionesespaña2026.es` at DonDominio. A registrar transfer is
 not needed. Add the domain to Cloudflare using its normal full DNS setup; use
