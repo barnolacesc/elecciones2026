@@ -328,6 +328,37 @@ class TestLiveDockerContainerParity(unittest.TestCase):
         uid = proc.stdout.strip()
         self.assertEqual(uid, "101", "Serving container must run as unprivileged UID 101")
 
+    def test_origin_does_not_retain_fixture_request_metadata(self) -> None:
+        """E4.4: successful and missing-file requests must not enter Docker logs."""
+        if not self.docker_ready:
+            self.skipTest("Docker daemon not available in test environment")
+        marker = "quiz-origin-privacy-fixture"
+        since = str(int(time.time()))
+        origin = f"http://127.0.0.1:{self.port}"
+        for route in ("/cuestionario/", "/styles.css", f"/{marker}.js"):
+            request = urllib.request.Request(origin + route, headers={"User-Agent": marker})
+            try:
+                with urllib.request.urlopen(request, timeout=5) as response:
+                    self.assertEqual(response.status, 200)
+                    response.read()
+            except urllib.error.HTTPError as error:
+                self.assertEqual(error.code, 404)
+                error.close()
+        time.sleep(0.2)
+        recorded = subprocess.run(
+            ["docker", "logs", "--since", since, self.container_name],
+            capture_output=True, text=True, check=True, env=self.env, timeout=5,
+        )
+        # Do not print raw logs, even when the assertion fails.
+        self.assertFalse(marker in recorded.stdout + recorded.stderr,
+                         "Synthetic visitor request metadata reached the container logs")
+        config = subprocess.run(
+            ["docker", "exec", self.container_name, "nginx", "-T"],
+            capture_output=True, text=True, check=True, env=self.env, timeout=5,
+        )
+        self.assertIn("access_log off;", config.stdout)
+        self.assertIn("error_log /dev/null;", config.stdout)
+
     def test_container_filesystem_is_read_only(self) -> None:
         """Verify write attempts to root filesystem are rejected."""
         if not self.docker_ready:

@@ -1,13 +1,44 @@
 """E3.4 report contracts: missing evidence and overload cannot pass capacity targets."""
 import importlib.util
 import json
+import sys
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('load_report', ROOT / 'ops/load/report.py')
 report = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(report)
+runner_spec = importlib.util.spec_from_file_location('load_runner', ROOT / 'ops/load/run.py')
+runner = importlib.util.module_from_spec(runner_spec)
+with patch.dict(sys.modules, {'report': report}):
+    runner_spec.loader.exec_module(runner)
+
+
+class TestQuizLoadFixtures(unittest.TestCase):
+    def test_complete_local_quiz_assets_are_required_and_deduplicated(self):
+        html = '''<link href="../styles.css"><link href="../styles.css">
+        <link href="https://external.invalid/unrelated.css">
+        <script src="../quiz-data.123.js"></script>
+        <script src="../quiz-engine.123.js"></script>
+        <script src="../quiz-ui.123.js"></script>'''
+        self.assertEqual(runner.quiz_resources(html, 'http://127.0.0.1:1234'),
+                         ['/quiz-data.123.js', '/quiz-engine.123.js', '/quiz-ui.123.js', '/styles.css'])
+        with self.assertRaises(ValueError):
+            runner.quiz_resources('<p>Unavailable</p>', 'http://127.0.0.1:1234')
+        with self.assertRaises(ValueError):
+            runner.quiz_resources(html.replace('styles.css', 'styles.css?answer=fixture'),
+                                  'http://127.0.0.1:1234')
+
+    def test_isolated_origin_overrides_disabled_logs_with_numeric_observations(self):
+        original = (ROOT / 'nginx/default.conf').read_text()
+        fixture = runner.fixture_origin_config(original)
+        self.assertIn('access_log /tmp/load-origin.log load_measure if=$load_request;', fixture)
+        self.assertIn('log_format load_measure "$msec $status $request_time $body_bytes_sent";', fixture)
+        self.assertIn('location = /__load_origin_ready { access_log off;', fixture)
+        self.assertIn('error_log /dev/null;', fixture)
+        self.assertEqual((ROOT / 'nginx/default.conf').read_text(), original)
 
 
 class TestLoadReport(unittest.TestCase):

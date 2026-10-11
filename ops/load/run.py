@@ -1,4 +1,4 @@
-"""Run E3.4 scenarios against isolated local Docker containers; never deploy."""
+"""Run E3.4 or E4.4 scenarios against isolated local Docker containers; never deploy."""
 from __future__ import annotations
 
 import argparse
@@ -13,6 +13,7 @@ import tempfile
 import threading
 import time
 import urllib.request
+from urllib.parse import urljoin, urlparse
 import uuid
 
 from report import evaluate, markdown, origin_metrics, project_cost
@@ -51,7 +52,36 @@ def sample_resources(name, stop, samples, errors):
         stop.wait(0.5)
 
 
-def local_run(plan, image, output):
+def fixture_origin_config(config):
+    """Enable numeric observations only in the isolated fictional load origin."""
+    config = ('log_format load_measure "$msec $status $request_time $body_bytes_sent";\n'
+              'map $http_user_agent $load_request { default 0; "elecciones2026-load-rehearsal/1" 1; }\n') + config
+    numeric_log = 'access_log /tmp/load-origin.log load_measure if=$load_request;'
+    if 'access_log off;' in config:
+        config = config.replace('access_log off;', numeric_log, 1)
+    else:
+        config = config.replace('    root   /usr/share/nginx/html;',
+                                f'    {numeric_log}\n    root   /usr/share/nginx/html;', 1)
+    return config.replace('    # Compression',
+                          '    location = /__load_origin_ready { access_log off; return 200 "ready\\n"; }\n\n    # Compression', 1)
+
+
+def quiz_resources(html, base):
+    """Use the complete generated quiz resource set, with no answer-derived URLs."""
+    require_scripts = ('quiz-data.', 'quiz-engine.', 'quiz-ui.')
+    resources = []
+    for reference in re.findall(r'<(?:script|link)\b[^>]*(?:src|href)="([^"]+)"', html):
+        url = urlparse(urljoin(base + '/cuestionario/', reference))
+        if url.netloc == urlparse(base).netloc and url.path.endswith(('.css', '.js', '.png')):
+            if url.query or url.fragment:
+                raise ValueError('Quiz resource URL must not carry state')
+            resources.append(url.path)
+    if not all(any(name in resource for resource in resources) for name in require_scripts):
+        raise ValueError('Quiz load rehearsal requires an available explicitly enabled bundle')
+    return sorted(set(resources))
+
+
+def local_run(plan, image, output, quiz=False):
     run_id = 'e34-' + uuid.uuid4().hex[:10]
     origin, edge = run_id + '-origin', run_id + '-edge'
     port = free_port()
@@ -59,7 +89,7 @@ def local_run(plan, image, output):
     containers = []
     output.mkdir(parents=True, exist_ok=True)
     info = json.loads(command('docker', 'info', '--format', '{{json .}}'))
-    report = {'schema_version': 1, 'package': 'E3.4', 'environment': 'local-rehearsal',
+    report = {'schema_version': 1, 'package': 'E4.4' if quiz else 'E3.4', 'environment': 'local-rehearsal',
               'date': datetime.now(timezone.utc).isoformat(),
               'git_revision': command('git', '-C', str(ROOT), 'rev-parse', 'HEAD'),
               'image_id': command('docker', 'image', 'inspect', image, '--format', '{{.Id}}'),
@@ -80,14 +110,7 @@ def local_run(plan, image, output):
               ]}
     with tempfile.TemporaryDirectory(prefix='e34-load-') as tmp:
         tmp = Path(tmp)
-        config = (ROOT / 'nginx/default.conf').read_text()
-        # Numeric observations only: no URL, IP, user agent, or political selection.
-        config = ('log_format load_measure "$msec $status $request_time $body_bytes_sent";\n'
-                  'map $http_user_agent $load_request { default 0; "elecciones2026-load-rehearsal/1" 1; }\n') + config
-        config = config.replace('    root   /usr/share/nginx/html;',
-                                '    access_log /tmp/load-origin.log load_measure if=$load_request;\n    root   /usr/share/nginx/html;')
-        config = config.replace('    # Compression',
-                                '    location = /__load_origin_ready { access_log off; return 200 "ready\\n"; }\n\n    # Compression')
+        config = fixture_origin_config((ROOT / 'nginx/default.conf').read_text())
         origin_config = tmp / 'origin.conf'
         origin_config.write_text(config)
         try:
@@ -127,6 +150,12 @@ def local_run(plan, image, output):
             pages += ['/?topic=housing&partyA=partido-ejemplo-a&partyB=partido-ejemplo-b',
                       '/?topic=education&partyA=pp&partyB=erc']
             assets = ['/styles.css', '/app.js', '/sharing.js', '/tokens/tokens.css', preview[1]]
+            if quiz:
+                with urllib.request.urlopen(base + '/cuestionario/', timeout=5) as response:
+                    quiz_html = response.read().decode()
+                pages = ['/cuestionario/']
+                assets = quiz_resources(quiz_html, base)
+            report['workload_paths'] = {'pages': pages, 'assets': assets}
             for scenario in plan['scenarios']:
                 if scenario['cold_cache']:
                     command('docker', 'stop', edge)
@@ -178,6 +207,7 @@ def main():
     parser.add_argument('--plan', type=Path, default=HERE / 'plan.json')
     parser.add_argument('--output', type=Path, default=ROOT / 'build/load')
     parser.add_argument('--seconds', type=int, help='Override each scenario duration for a short CI rehearsal')
+    parser.add_argument('--quiz', action='store_true', help='Rehearse static quiz delivery with its complete generated asset set')
     args = parser.parse_args()
     plan = json.loads(args.plan.read_text())
     if args.seconds is not None:
@@ -185,7 +215,7 @@ def main():
             parser.error('Scenario duration must be between 15 and 600 seconds')
         for scenario in plan['scenarios']:
             scenario['seconds'] = args.seconds
-    local_run(plan, args.image, args.output)
+    local_run(plan, args.image, args.output, quiz=args.quiz)
     print(f'Report: {args.output / "report.md"}; production acceptance remains pending.')
 
 

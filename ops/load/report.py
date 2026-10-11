@@ -94,7 +94,7 @@ def project_cost(scenarios, assumptions):
 
 
 def markdown(report):
-    lines = ['# E3.4 local load rehearsal', '',
+    lines = [f"# {report.get('package', 'E3.4')} local load rehearsal", '',
              f"Date: {report['date']}. Revision: `{report['git_revision']}`.", '',
              'This is a Docker cache-fixture observation. It does not establish Hetzner/Cloudflare capacity.', '',
              '| Scenario | Readers | Offered req/s | Completed req/s | p95 ms (scheduled) | 5xx | Cache HIT | Origin peak req/s | Origin CPU peak % | Origin body MB |',

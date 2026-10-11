@@ -11,6 +11,7 @@ from elecciones2026.budget import BudgetError, load_bundle
 from elecciones2026.generator import build_site
 
 ROOT = Path(__file__).resolve().parents[1]
+TEST_CANONICAL_BASE = 'https://election.example.invalid'
 
 
 class BudgetViewTests(unittest.TestCase):
@@ -29,7 +30,8 @@ class BudgetViewTests(unittest.TestCase):
         # a mocked validation boundary; real gate rejection is tested separately.
         with patch('elecciones2026.budget.load_bundle', return_value=(self.manifest, self.payload)), \
              patch('elecciones2026.budget.copy_reviewed_bundle'):
-            return build_site(ROOT, target, budget_bundle=self.bundle)
+            return build_site(ROOT, target, budget_bundle=self.bundle,
+                              canonical_base=TEST_CANONICAL_BASE)
 
     def test_policy_section_and_table_figures_have_source_locators(self):
         html = budget_view.render_budget_content(self.payload, self.manifest, self.bundle.name, self.labels)
@@ -84,7 +86,7 @@ class BudgetViewTests(unittest.TestCase):
         self.assertIn('budget-context.js', home)
         self.assertNotIn('values.json', home)
         budget_html = (first.output_dir / 'presupuestos/2023/index.html').read_text()
-        self.assertIn('https://elecciones2026.es/presupuestos/2023/', budget_html)
+        self.assertIn(f'{TEST_CANONICAL_BASE}/presupuestos/2023/', budget_html)
         self.assertIn('/presupuestos/2023/', (first.output_dir / 'sitemap.xml').read_text())
         for topic in self.labels:
             page = (first.output_dir / f'temas/{topic}/index.html').read_text()
