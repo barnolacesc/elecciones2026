@@ -94,3 +94,18 @@ The owner confirmed effective deployer publickey-only authentication, forced
 command, disabled forwarding/TTY/user RC after the global SSH change. Application
 activation remains pending. CI now explicitly includes ready_for_review so the
 owner can trigger review checks on the draft head without granting deploy access.
+
+## Repeatable setup documentation — 2026-10-11
+
+E3.3: ops/SERVER-MIGRATION.md consolidates owner-confirmed VPS, retired-service,
+restricted SSH/sudo, UFW, DNS, Origin CA/AOP, authenticated nginx, registry and
+GitHub configuration. It records secret locations without secret values and gives
+replacement-host preparation, Hetzner firewall, identity verification, DNS cutover,
+recovery and retirement steps. Existing operations guides link to this record and
+distinguish initial inventory from later owner checks. Application activation,
+hosted-runner connectivity, monitoring and fresh-host restoration remain unverified;
+task 4.5 stays open until its live rehearsal and alert evidence exist.
+
+Documentation validation: local file links resolve; 28 shell examples pass bash -n
+without execution; strict OpenSpec validation and git diff --check pass. No server
+configuration or DNS was changed by this documentation update.

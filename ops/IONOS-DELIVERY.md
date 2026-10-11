@@ -1,11 +1,13 @@
 # E3.3 IONOS delivery setup
 
-Status: prepared for review. No live registry login, DNS change, TLS installation,
-or application activation has been performed by these files. Delivery stays
+Status: the owner has completed registry login, Cloudflare delegation, origin TLS,
+authenticated preview nginx and SSH/UFW setup. Application activation is pending.
+The [server migration runbook](SERVER-MIGRATION.md) records the verified setup,
+remaining limits and steps to reproduce it on Hetzner. Delivery stays
 blocked until repository variable `DEPLOYMENT_READY=true` is deliberately set.
 The target is Ubuntu 22.04 AMD64, 1 vCPU and 1 GB RAM, at `195.20.230.75`.
 The owner retired the finance service and rebooted the host. Preserve unrelated
-volumes. Retained-data backup, firewall, monitoring and capacity evidence remain
+volumes. Retained-data backup, full external firewall probes, monitoring and capacity evidence remain
 open in the OpenSpec task record.
 
 ## 1. DNS delegation: keep DonDominio as registrar

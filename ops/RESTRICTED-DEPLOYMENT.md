@@ -6,7 +6,10 @@ This setup prepares access only. It does not publish the site, install a public
 proxy, change the firewall, or approve any content. Production CI remains inactive
 until the repository approval gate and runner connectivity are verified.
 
-## Confirmed host inventory
+For the current SSH/UFW, TLS, Cloudflare and nginx verification record, and future
+Hetzner migration, use the [server migration runbook](SERVER-MIGRATION.md).
+
+## Initial host inventory (before proxy and firewall setup)
 
 Owner-provided terminal output on 2026-10-11: Ubuntu 22.04.5 LTS, AMD64, one vCPU,
 856 MiB visible RAM, no swap, about 3.6 GB free disk. After reboot, 418 MiB RAM
@@ -14,9 +17,10 @@ was available, Docker client/engine both reported 29.1.3, Compose reported 5.1.0
 and systemd had no failed units. SSH listens on port 22 for IPv4 and IPv6; DNS
 and containerd listeners are loopback-only. No HTTP/TLS proxy was running.
 The finance test service is disabled; there are no Docker containers. The owner
-removed `deployer` from the Docker group. Removal of its old sudo rule, completion
-of pending package updates, finance backup/restore and firewall review still need
-confirmation. Preserve the unrelated PostgreSQL volume
+removed `deployer` from the Docker group. Subsequent owner output confirmed the
+replacement sudo rule, key-only SSH, package updates, active UFW and TLS nginx;
+these later checks are recorded in the migration runbook. Finance backup/restore
+remains unverified. Preserve the unrelated PostgreSQL volume
 `gestio-residus-backend_pg_data` until its owner approves disposal.
 
 ## Files and request contract

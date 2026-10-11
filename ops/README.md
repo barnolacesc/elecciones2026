@@ -1,8 +1,11 @@
 # E3.3 origin and edge operations
 
-Status: reviewable configuration and local rehearsal. No server, domain, DNS,
-firewall, or public release has been changed. OpenSpec tasks 4.4 and 4.6 remain
-open until the live evidence below exists. The owner bought the domain at DonDominio. Start with [IONOS delivery setup](IONOS-DELIVERY.md); DNS/TLS activation remains pending.
+Status: the owner has configured IONOS SSH/UFW, Cloudflare delegation, origin TLS
+and authenticated preview nginx. The application has not been activated. Start
+with the [server setup and migration runbook](SERVER-MIGRATION.md) for the current
+verification record and repeatable Hetzner migration steps. Use
+[IONOS delivery setup](IONOS-DELIVERY.md) for workflow and registry details.
+OpenSpec tasks 4.4 and 4.6 remain open until their full live evidence exists.
 
 ## Release prerequisites
 
@@ -12,7 +15,7 @@ content; it is not approved public 2026 content. Keep it behind authenticated
 staging. Never apply the public cache rule to staging.
 
 Use the owner-selected patched 1-vCPU/1-GB Ubuntu IONOS VM with Docker Compose v2, Python 3, curl, and
-host nginx. Use key-only SSH, disable password/root SSH after verifying a second
+host nginx. Use key-only SSH, disable password authentication after verifying a second
 operator session, and retain IONOS console recovery. Docker access is equivalent
 to root; only the infrastructure owner runs release commands. No remote deploy
 job or credentials are added to PR CI.
