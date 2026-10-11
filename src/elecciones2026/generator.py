@@ -605,7 +605,7 @@ def render_party_card(
                   data-source-url="{escape(stmt.source_url or '')}"
                   aria-haspopup="dialog">
                   <span aria-hidden="true">📖</span>
-                  <span>Leer extracto en la app</span>
+                  <span>Leer extracto</span>
                 </button>
               </div>"""
 

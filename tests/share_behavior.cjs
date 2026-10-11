@@ -140,7 +140,7 @@ test('in-app manifesto excerpt viewer button and initiative context are rendered
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023', {}, true, true);
   const html = b.nodes['measures-container'].innerHTML;
   assert.match(html, /class="btn-open-manifesto"/);
-  assert.match(html, /Leer extracto en la app/);
+  assert.match(html, /Leer extracto/);
   assert.match(html, /class="measure-context"/);
   assert.match(html, /class="measure-axes"/);
   assert.match(html, /data-party-name="Partido Popular/);

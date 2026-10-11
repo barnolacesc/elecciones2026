@@ -206,7 +206,7 @@ class TestMeasureComparison(unittest.TestCase):
         # In-app viewer button on cards with quotes
         self.assertIn('class="btn-open-manifesto"', self.html)
         self.assertIn('aria-haspopup="dialog"', self.html)
-        self.assertIn('Leer extracto en la app', self.html)
+        self.assertIn('Leer extracto', self.html)
 
         # JS functions for modal
         self.assertIn('openManifestoModal', self.js)

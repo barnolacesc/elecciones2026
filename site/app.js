@@ -1217,7 +1217,7 @@
         'data-source-url="' + escapeHtml(pos.sourceUrl || '') + '" ' +
         'aria-haspopup="dialog">' +
         '<span aria-hidden="true">📖</span> ' +
-        '<span>Leer extracto en la app</span>' +
+        '<span>Leer extracto</span>' +
         '</button>' +
         '</div>';
     }
