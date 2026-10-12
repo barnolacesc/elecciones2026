@@ -16,8 +16,12 @@
 (function () {
   'use strict';
 
+  const PUBLISH_DATA = window.ComparisonData || (document.body.dataset.comparison === 'validated'
+    ? { electionId: document.body.dataset.election, topics: {}, parties: {}, measuresByTopic: {} } : null);
+
+  // Standalone fictional UI fixtures. Generated builds always use PUBLISH_DATA.
   // 8 Core topics defined in taxonomy 1.0.0
-  const TOPICS = {
+  const TOPICS = PUBLISH_DATA ? PUBLISH_DATA.topics : {
     'housing': {
       id: 'housing',
       name: 'Vivienda',
@@ -61,7 +65,7 @@
   };
 
   // Qualified candidacies and test fixtures
-  const PARTIES = {
+  const PARTIES = PUBLISH_DATA ? PUBLISH_DATA.parties : {
     'party-a': {
       id: 'party-a',
       name: 'Partido A',
@@ -237,7 +241,7 @@
   };
 
   // Measures grouped by topic, with positions, caveats, source citations, and pairwise relationships
-  const MEASURES_BY_TOPIC = {
+  const MEASURES_BY_TOPIC = PUBLISH_DATA ? PUBLISH_DATA.measuresByTopic : {
     'housing': [
       {
         id: 'housing-rental-regulation',
@@ -942,7 +946,7 @@
       'coalicion-ejemplo-c': 'coalicion-c',
       'partido-ejemplo-d': 'party-d'
     };
-    return aliases[partyKey] || partyKey;
+    return PUBLISH_DATA ? partyKey : (aliases[partyKey] || partyKey);
   }
 
   function getPositionForParty(measure, partyKey) {
@@ -966,33 +970,19 @@
         explanation: pos.explanation || null,
         source: pos.source || 'Registro oficial de fuentes',
         sourceUrl: pos.sourceUrl || null,
-        date: pos.date || '09/10/2026'
+        date: pos.date || '',
+        dateIso: pos.date || ''
       };
     }
 
-    // Default missing/pending state for parties without explicit position
-    const isMissingProg = partyData.status === 'missing';
+    // A missing publish record says nothing about the source programme's contents.
     return {
-      name: partyData.name,
-      pill: partyData.pill,
-      pillClass: partyData.pillClass,
-      status: 'missing',
-      statusLabel: isMissingProg ? 'Programa no disponible' : 'No consta en el programa',
-      statement: isMissingProg
-        ? 'El programa oficial para las elecciones generales de 2026 aún no ha sido publicado por la candidatura.'
-        : 'El programa revisado no incluye una propuesta explícita sobre esta medida concreta.',
-      quote: null,
-      policyInstrument: null,
-      section: null,
-      qualifications: [],
-      explanation: isMissingProg
-        ? 'La ausencia de un programa publicado no debe interpretarse como oposición ni como apoyo a esta medida concreta.'
-        : 'La ausencia de una medida en el programa no debe interpretarse como oposición ni como apoyo.',
-      source: isMissingProg
-        ? 'Registro oficial de fuentes (seguimiento 2026)'
-        : 'Programa analizado',
-      sourceUrl: null,
-      date: '09/10/2026'
+      name: partyData.name, status: 'missing',
+      statusLabel: 'Revisión de contenido pendiente',
+      statement: 'No consta una posición revisada en esta medida.',
+      quote: null, qualifications: [],
+      explanation: 'La falta de contenido aprobado no debe interpretarse como oposición ni como apoyo.',
+      source: 'Revisión de contenido pendiente', sourceUrl: null, date: '', dateIso: ''
     };
   }
 
@@ -1005,43 +995,11 @@
       return measure.relationships[key1] || measure.relationships[key2];
     }
 
-    // 2. Synthesize relationship based on position statuses
-    const partyAData = getPartyData(partyAKey);
-    const partyBData = getPartyData(partyBKey);
-
-    if (posA.status === 'missing' && posB.status === 'missing') {
-      return {
-        type: 'notFound',
-        typeLabel: 'Sin propuestas publicadas',
-        icon: '—',
-        summary: 'Ninguna de las dos formaciones dispone de una propuesta revisada sobre esta medida concreta en los documentos analizados.',
-        differences: ['«No consta» nunca se interpretará como oposición política ni como acuerdo tácito.']
-      };
-    }
-
-    if (posA.status === 'missing' || posB.status === 'missing') {
-      const activeParty = posA.status !== 'missing' ? partyAData.shortName : partyBData.shortName;
-      const missingParty = posA.status === 'missing' ? partyAData.shortName : partyBData.shortName;
-      return {
-        type: 'notFound',
-        typeLabel: 'Sin posición comparable en esta medida',
-        icon: '—',
-        summary: activeParty + ' dispone de propuesta en esta medida, mientras que en las fuentes oficiales de ' + missingParty + ' no consta posición registrada.',
-        differences: [
-          missingParty + ' no registra mención en su documento analizado; la ausencia no constituye oposición.'
-        ]
-      };
-    }
-
-    // Default neutral comparison when both parties have official/partial positions but no specific relationship fixture
+    // No comparison is inferred from positions, slogans, or missing coverage.
     return {
-      type: 'qualification',
-      typeLabel: 'Propuestas en análisis comparativo',
-      icon: '~',
-      summary: 'Ambas candidaturas formulan propuestas sobre este ámbito temático con matices operativos propios de cada programa.',
-      differences: [
-        'Consulte las citas textuales y las condiciones registradas en las tarjetas superiores.'
-      ]
+      type: 'notFound', typeLabel: 'Comparación pendiente de revisión', icon: '—',
+      summary: 'No consta una relación revisada entre las candidaturas seleccionadas. La falta de contenido aprobado no implica apoyo ni oposición.',
+      differences: []
     };
   }
 
@@ -1111,7 +1069,7 @@
         '</span>';
     }
 
-    footerHtml += '<time class="source-date" datetime="2026-10-16">Rev. ' + escapeHtml(pos.date) + '</time>';
+    if (pos.date) footerHtml += '<time class="source-date" datetime="' + escapeHtml(pos.dateIso || pos.date) + '">Rev. ' + escapeHtml(pos.date) + '</time>';
 
     return '<article class="' + cardClass + '" aria-labelledby="' + headingId + '">' +
       '<div class="party-card-header">' +
@@ -1215,21 +1173,8 @@
     const isPilot2023 = route.pilot || document.body.dataset.election === 'es-gen-2023';
     let comparisonActive = Boolean(initialPartyA && initialPartyB);
 
-    if (isPilot2023) {
-      const pilotParties = ['pp', 'erc', 'sumar', 'pnv'];
-      pilotParties.forEach(function (partyId) {
-        if (PARTIES[partyId]) {
-          PARTIES[partyId].status = 'official';
-          PARTIES[partyId].statusLabel = 'Programa oficial (2023)';
-          PARTIES[partyId].electionId = 'es-gen-2023';
-        }
-      });
-
-      const previewBanner = document.querySelector('.preview-banner');
-      if (previewBanner) {
-        previewBanner.textContent = 'Generales 2023 (piloto) · Ensayo editorial y de derechos con datos oficiales verificados';
-      }
-    }
+    const payloadMatchesElection = !PUBLISH_DATA ||
+      PUBLISH_DATA.electionId === (isPilot2023 ? 'es-gen-2023' : 'es-gen-2026');
 
     if (initialTopic) {
       topicSelect.value = initialTopic;
@@ -1293,27 +1238,13 @@
       const partyBKey = partyBSelect.value;
 
       const topicData = TOPICS[topicKey] || TOPICS['housing'];
-      let measures = MEASURES_BY_TOPIC[topicKey] || [
-        {
-          id: topicKey + '-default',
-          title: 'Medida: ' + topicData.name,
-          summary: topicData.description,
-          positions: {},
-          relationships: {}
-        }
-      ];
-
-      // Filter measures by election
-      if (isPilot2023) {
-        const pilotMeasures = measures.filter(function (m) {
-          return m.electionId === 'es-gen-2023';
-        });
-        measures = pilotMeasures;
-      } else {
-        measures = measures.filter(function (m) {
-          return !m.electionId || m.electionId === 'es-gen-2026';
-        });
-      }
+      let measures = payloadMatchesElection ? (MEASURES_BY_TOPIC[topicKey] || []) : [];
+      measures = measures.filter(function (m) {
+        const election = isPilot2023 ? 'es-gen-2023' : 'es-gen-2026';
+        return (m.electionId || 'es-gen-2026') === election &&
+          (Object.prototype.hasOwnProperty.call(m.positions, fixturePositionKey(partyAKey)) ||
+           Object.prototype.hasOwnProperty.call(m.positions, fixturePositionKey(partyBKey)));
+      });
 
       // Dynamically render all grouped measures into measuresContainer
       if (measuresContainer) {
