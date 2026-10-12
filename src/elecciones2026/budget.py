@@ -9,7 +9,6 @@ import hashlib
 import json
 from pathlib import Path
 import re
-import shutil
 import sys
 import tempfile
 from urllib.parse import urlsplit
@@ -59,12 +58,16 @@ def unique_pairs(pairs):
     return result
 
 
-def load_json(path):
+def parse_json(raw, name):
     try:
-        return json.loads(bounded_read(path), object_pairs_hook=unique_pairs,
+        return json.loads(raw, object_pairs_hook=unique_pairs,
                           parse_constant=lambda value: (_ for _ in ()).throw(BudgetError("Non-finite JSON number")))
     except (UnicodeError, json.JSONDecodeError) as error:
-        raise BudgetError(f"Invalid JSON: {Path(path).name}") from error
+        raise BudgetError(f"Invalid JSON: {name}") from error
+
+
+def load_json(path):
+    return parse_json(bounded_read(path), Path(path).name)
 
 
 def schema_validate(kind, value):
@@ -132,6 +135,18 @@ def share(value, denominator):
         return str((decimal_amount(value) * 100 / total).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
 
 
+def validate_source_url(value):
+    """Accept inert outbound HTTPS references; never fetch source-directed URLs."""
+    try:
+        url = urlsplit(value)
+        if (url.scheme != "https" or not url.hostname or url.username is not None or
+                url.password is not None or url.port not in (None, 443) or
+                any(ord(character) < 33 or character == "\\" for character in value)):
+            raise ValueError("Unsafe URL")
+    except ValueError as error:
+        raise BudgetError("Source URL must be credential-free HTTPS with a host") from error
+
+
 def normalize_source(register, raw):
     matches = [record for record in register["sources"] if record["role"] == "matrix_csv"]
     if len(matches) != 1:
@@ -147,9 +162,7 @@ def normalize_source(register, raw):
                                        for item in register["sources"] if item["role"] != "matrix_csv"])
     schema_validate("Source", selected)
     for item in [selected, *selected["companion_sources"]]:
-        url = urlsplit(item["url"])
-        if url.scheme != "https" or url.username or url.password or url.port not in (None, 443):
-            raise BudgetError("Source URL must be credential-free HTTPS")
+        validate_source_url(item["url"])
     return selected
 
 
@@ -265,8 +278,7 @@ def normalize_sections(sections, source, values):
     for section in result["sections"]:
         if section["is_ministry"] != section["name_es"].startswith("MINISTERIO "):
             raise BudgetError("Section classification differs")
-        if urlsplit(section["source_url"]).scheme != "https":
-            raise BudgetError("Section locator must be HTTPS")
+        validate_source_url(section["source_url"])
     return result
 
 
@@ -312,6 +324,7 @@ def validate_reviews(reviews, payload, corrections, require_publication):
     subjects = {payload[name]["id"]: (name, payload[name]) for name in ("source.json", "measurement.json")}
     subjects["topic-mapping"] = ("mapping.json", payload["mapping.json"])
     subjects["section-dictionary"] = ("sections.json", payload["sections.json"])
+    subjects["normalized-values"] = ("values.json", payload["values.json"])
     approved = {key: set() for key in subjects}
     invalidated = {ref for correction in corrections for ref in correction["invalidated_review_refs"]}
     seen = set()
@@ -338,12 +351,15 @@ def validate_reviews(reviews, payload, corrections, require_publication):
                     raise BudgetError("Placeholder review cannot approve publication")
             approved[review["subject_id"]].add(review["role"])
     if require_publication:
+        # The manifest proves integrity, not human acceptance of derived amounts.
+        if approved["normalized-values"] != {"financial", "rights", "editorial"}:
+            raise BudgetError("Human financial, rights, and editorial review required for normalized-values")
         if payload["source.json"]["is_fixture"]:
             raise BudgetError("Fixture data cannot enter a public build")
         if payload["source.json"]["rights_status"] not in {"public_domain", "link_and_short_quote", "approved_derived_display"}:
             raise BudgetError("Source reuse rights are not approved")
         for key, (name, subject) in subjects.items():
-            if subject["review_state"] != "approved" or approved[key] != {"financial", "rights", "editorial"}:
+            if (name != "values.json" and subject["review_state"] != "approved") or approved[key] != {"financial", "rights", "editorial"}:
                 raise BudgetError(f"Human financial, rights, and editorial review required for {key}")
         if any(topic["review_state"] != "approved" for topic in payload["mapping.json"]["mappings"]):
             raise BudgetError("Topic mapping review is pending")
@@ -352,6 +368,8 @@ def validate_reviews(reviews, payload, corrections, require_publication):
 def validate_payload(payload, taxonomy_path, require_publication=False):
     source, measurement, values = [payload[name] for name in ("source.json", "measurement.json", "values.json")]
     schema_validate("Source", source)
+    for item in [source, *source["companion_sources"]]:
+        validate_source_url(item["url"])
     schema_validate("Measurement", measurement)
     if measurement["source_ref"] != source["id"] or measurement["source_sha256"] != source["sha256"]:
         raise BudgetError("Mixed source/measurement versions")
@@ -432,7 +450,7 @@ def load_bundle(path, taxonomy_path=ROOT / "content/taxonomy.json", require_publ
     if path.is_symlink() or not path.is_dir():
         raise BudgetError("Bundle must be a regular directory")
     manifest_raw = bounded_read(path / "manifest.json")
-    manifest = load_json(path / "manifest.json")
+    manifest = parse_json(manifest_raw, "manifest.json")
     schema_validate("Manifest", manifest)
     if canonical(manifest) != manifest_raw or digest(manifest_raw) != path.name:
         raise BudgetError("Bundle identity mismatch")
@@ -448,7 +466,10 @@ def load_bundle(path, taxonomy_path=ROOT / "content/taxonomy.json", require_publ
         raw = bounded_read(path / entry["path"])
         if len(raw) != entry["bytes"] or digest(raw) != entry["sha256"]:
             raise BudgetError(f"Bundle file hash mismatch: {entry['path']}")
-        payload[entry["path"]] = load_json(path / entry["path"])
+        value = parse_json(raw, entry["path"])
+        if canonical(value) != raw:
+            raise BudgetError("Noncanonical bundle payload")
+        payload[entry["path"]] = value
     source, mapping = payload["source.json"], payload["mapping.json"]
     if (manifest["source_sha256"] != source["sha256"] or manifest["dataset_version"] != source["source_version"] or
         manifest["taxonomy_sha256"] != mapping["taxonomy_sha256"] or manifest["mapping_version"] != mapping["mapping_version"] or
@@ -462,11 +483,22 @@ def load_bundle(path, taxonomy_path=ROOT / "content/taxonomy.json", require_publ
     return manifest, payload
 
 
-def copy_reviewed_bundle(bundle_path, destination, taxonomy_path=ROOT / "content/taxonomy.json"):
-    load_bundle(bundle_path, taxonomy_path, require_publication=True)
+def copy_reviewed_bundle(bundle_path, destination, taxonomy_path=ROOT / "content/taxonomy.json",
+                         expected_manifest=None):
+    manifest, payload = load_bundle(bundle_path, taxonomy_path, require_publication=True)
+    if expected_manifest is not None and manifest != expected_manifest:
+        raise BudgetError("Budget bundle changed after page validation")
+    # Write the validated in-memory snapshot, never reread source files while copying.
+    serialized = {name: canonical(value) for name, value in payload.items()}
+    serialized["manifest.json"] = canonical(manifest)
     destination = Path(destination) / "static/budget" / Path(bundle_path).name
     destination.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copytree(bundle_path, destination)
+    with tempfile.TemporaryDirectory(prefix=".budget-", dir=destination.parent) as temporary:
+        staging = Path(temporary) / "snapshot"
+        staging.mkdir()
+        for name, raw in serialized.items():
+            (staging / name).write_bytes(raw)
+        staging.rename(destination)
     return destination
 
 

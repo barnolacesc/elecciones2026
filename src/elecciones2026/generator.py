@@ -2455,7 +2455,8 @@ def build_site(
         if budget_bundle is not None:
             from elecciones2026.budget import copy_reviewed_bundle
             try:
-                copy_reviewed_bundle(budget_bundle, staging_dir, ctx.content_dir / "taxonomy.json")
+                copy_reviewed_bundle(budget_bundle, staging_dir, ctx.content_dir / "taxonomy.json",
+                                     expected_manifest=ctx.budget_manifest)
             except (BudgetError, ValueError, KeyError, OSError) as error:
                 raise BuildValidationError(f"Budget staging failed: {error}") from error
 
