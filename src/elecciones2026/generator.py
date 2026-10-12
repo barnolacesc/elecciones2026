@@ -429,10 +429,349 @@ def render_social_metadata(ctx: SiteContext, title: str, description: str, canon
         "og:image:height": "630",
         "og:image:alt": ctx.i18n["social_preview"]["image_alt"],
     }
-    return "\n".join(
+    og_meta = "\n".join(
         f'  <meta property="{key}" content="{escape(value)}">'
         for key, value in properties.items()
     )
+    twitter_tags = {
+        "twitter:card": "summary_large_image",
+        "twitter:title": title,
+        "twitter:description": f"{notice} {description}",
+        "twitter:image": image_url,
+        "twitter:image:alt": ctx.i18n["social_preview"]["image_alt"],
+    }
+    tw_meta = "\n".join(
+        f'  <meta name="{key}" content="{escape(value)}">'
+        for key, value in twitter_tags.items()
+    )
+    return f"{og_meta}\n{tw_meta}"
+
+
+def _clean_schema_data(obj: Any) -> Any:
+    """Recursively strip None values from structured data objects."""
+    if isinstance(obj, dict):
+        return {k: _clean_schema_data(v) for k, v in obj.items() if v is not None}
+    if isinstance(obj, list):
+        return [_clean_schema_data(item) for item in obj if item is not None]
+    return obj
+
+
+def safe_json_ld(data: Any) -> str:
+    """Serialize structured data to JSON-LD with strict HTML/XSS character escaping."""
+    cleaned = _clean_schema_data(data)
+    raw = json.dumps(cleaned, ensure_ascii=False, indent=2)
+    escaped = raw.replace("<", r"\u003c").replace(">", r"\u003e").replace("&", r"\u0026")
+    return f"""  <script type="application/ld+json">
+{escaped}
+  </script>"""
+
+
+def build_structured_data(
+    ctx: SiteContext,
+    canonical_path: str,
+    title: str,
+    description: str,
+    topic: Optional[Topic] = None,
+    party: Optional[PartyInfo] = None,
+) -> dict[str, Any]:
+    """Build Schema.org JSON-LD graph tailored to each crawlable page route."""
+    pilot = ctx.election_id == "es-gen-2023"
+    canonical_url = f"{ctx.canonical_base}{canonical_path}"
+    org_name = "Generales 2023 · Ensayo piloto privado" if pilot else ctx.i18n["meta"]["site_name"]
+    org_desc = (
+        "Ensayo técnico piloto de comparación de programas electorales para 2023."
+        if pilot
+        else "Proyecto cívico independiente para la comparación neutral de programas electorales en España con citas exactas."
+    )
+    logo_url = f"{ctx.canonical_base}/{preview_image_path(ctx.root_dir)}"
+
+    org_node = {
+        "@type": "Organization",
+        "@id": f"{ctx.canonical_base}/#organization",
+        "name": org_name,
+        "url": f"{ctx.canonical_base}/",
+        "logo": logo_url,
+        "description": org_desc,
+        "email": "editorial@elecciones2026.es",
+        "publishingPrinciples": f"{ctx.canonical_base}/metodo/",
+    }
+
+    if canonical_path == "/":
+        topics_items = [
+            {
+                "@type": "ListItem",
+                "position": idx + 1,
+                "name": t.name_es,
+                "url": f"{ctx.canonical_base}/temas/{t.id}/",
+                "description": t.description_es,
+            }
+            for idx, t in enumerate(ctx.taxonomy.topics)
+        ]
+        parties_items = [
+            {
+                "@type": "ListItem",
+                "position": idx + 1,
+                "name": p.display_name,
+                "url": f"{ctx.canonical_base}/partidos/{pid}/",
+            }
+            for idx, (pid, p) in enumerate(sorted(ctx.parties.items()))
+        ]
+        website_node = {
+            "@type": "WebSite",
+            "@id": f"{ctx.canonical_base}/#website",
+            "url": f"{ctx.canonical_base}/",
+            "name": org_name,
+            "description": description,
+            "inLanguage": "es-ES",
+            "publisher": {"@id": f"{ctx.canonical_base}/#organization"},
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": f"{ctx.canonical_base}/?topic={{topic}}&partyA={{partyA}}&partyB={{partyB}}",
+                },
+                "query-input": [
+                    "name=topic",
+                    "name=partyA",
+                    "name=partyB",
+                ],
+            },
+        }
+        return {
+            "@context": "https://schema.org",
+            "@graph": [
+                website_node,
+                org_node,
+                {
+                    "@type": "ItemList",
+                    "@id": f"{ctx.canonical_base}/#topics",
+                    "name": "Temas de comparación electoral",
+                    "itemListElement": topics_items,
+                },
+                {
+                    "@type": "ItemList",
+                    "@id": f"{ctx.canonical_base}/#parties",
+                    "name": "Candidaturas electorales analizadas",
+                    "itemListElement": parties_items,
+                },
+            ],
+        }
+
+    breadcrumbs: list[dict[str, Any]] = [
+        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": f"{ctx.canonical_base}/"}
+    ]
+
+    if canonical_path == "/temas/":
+        breadcrumbs.append({"@type": "ListItem", "position": 2, "name": "Temas", "item": canonical_url})
+        topics_items = [
+            {
+                "@type": "ListItem",
+                "position": idx + 1,
+                "name": t.name_es,
+                "url": f"{ctx.canonical_base}/temas/{t.id}/",
+                "description": t.description_es,
+            }
+            for idx, t in enumerate(ctx.taxonomy.topics)
+        ]
+        return {
+            "@context": "https://schema.org",
+            "@graph": [
+                {"@type": "BreadcrumbList", "itemListElement": breadcrumbs},
+                org_node,
+                {
+                    "@type": "CollectionPage",
+                    "@id": f"{canonical_url}#page",
+                    "url": canonical_url,
+                    "name": title,
+                    "description": description,
+                    "inLanguage": "es-ES",
+                    "dateModified": ctx.build_date,
+                    "publisher": {"@id": f"{ctx.canonical_base}/#organization"},
+                    "mainEntity": {
+                        "@type": "ItemList",
+                        "itemListElement": topics_items,
+                    },
+                },
+            ],
+        }
+
+    if canonical_path.startswith("/temas/") and topic:
+        breadcrumbs.append({"@type": "ListItem", "position": 2, "name": "Temas", "item": f"{ctx.canonical_base}/temas/"})
+        breadcrumbs.append({"@type": "ListItem", "position": 3, "name": topic.name_es, "item": canonical_url})
+        return {
+            "@context": "https://schema.org",
+            "@graph": [
+                {"@type": "BreadcrumbList", "itemListElement": breadcrumbs},
+                org_node,
+                {
+                    "@type": "ItemPage",
+                    "@id": f"{canonical_url}#page",
+                    "url": canonical_url,
+                    "name": title,
+                    "description": description,
+                    "inLanguage": "es-ES",
+                    "dateModified": ctx.build_date,
+                    "publisher": {"@id": f"{ctx.canonical_base}/#organization"},
+                    "about": {
+                        "@type": "Thing",
+                        "name": topic.name_es,
+                        "description": topic.description_es,
+                    },
+                },
+            ],
+        }
+
+    if canonical_path == "/partidos/":
+        breadcrumbs.append({"@type": "ListItem", "position": 2, "name": "Candidaturas", "item": canonical_url})
+        parties_items = [
+            {
+                "@type": "ListItem",
+                "position": idx + 1,
+                "name": p.display_name,
+                "url": f"{ctx.canonical_base}/partidos/{pid}/",
+            }
+            for idx, (pid, p) in enumerate(sorted(ctx.parties.items()))
+        ]
+        return {
+            "@context": "https://schema.org",
+            "@graph": [
+                {"@type": "BreadcrumbList", "itemListElement": breadcrumbs},
+                org_node,
+                {
+                    "@type": "CollectionPage",
+                    "@id": f"{canonical_url}#page",
+                    "url": canonical_url,
+                    "name": title,
+                    "description": description,
+                    "inLanguage": "es-ES",
+                    "dateModified": ctx.build_date,
+                    "publisher": {"@id": f"{ctx.canonical_base}/#organization"},
+                    "mainEntity": {
+                        "@type": "ItemList",
+                        "itemListElement": parties_items,
+                    },
+                },
+            ],
+        }
+
+    if canonical_path.startswith("/partidos/") and party:
+        breadcrumbs.append({"@type": "ListItem", "position": 2, "name": "Candidaturas", "item": f"{ctx.canonical_base}/partidos/"})
+        breadcrumbs.append({"@type": "ListItem", "position": 3, "name": party.display_name, "item": canonical_url})
+        party_entity: dict[str, Any] = {
+            "@type": "PoliticalParty",
+            "name": party.display_name,
+            "legalName": party.official_name,
+            "alternateName": party.short_name,
+        }
+        src = next((s for s in ctx.register.sources if s.party_id == party.id and s.election_id == ctx.election_id), None)
+        citations = []
+        if src and src.official_url:
+            citations.append({
+                "@type": "CreativeWork",
+                "name": f"Programa electoral {party.display_name}",
+                "url": src.official_url,
+                "version": src.version,
+                "identifier": src.sha256 if src.sha256 else None,
+            })
+        page_node: dict[str, Any] = {
+            "@type": "ItemPage",
+            "@id": f"{canonical_url}#page",
+            "url": canonical_url,
+            "name": title,
+            "description": description,
+            "inLanguage": "es-ES",
+            "dateModified": ctx.build_date,
+            "publisher": {"@id": f"{ctx.canonical_base}/#organization"},
+            "about": party_entity,
+        }
+        if citations:
+            page_node["citation"] = citations
+        return {
+            "@context": "https://schema.org",
+            "@graph": [
+                {"@type": "BreadcrumbList", "itemListElement": breadcrumbs},
+                org_node,
+                page_node,
+            ],
+        }
+
+    if canonical_path == "/metodo/":
+        breadcrumbs.append({"@type": "ListItem", "position": 2, "name": "Metodología", "item": canonical_url})
+        return {
+            "@context": "https://schema.org",
+            "@graph": [
+                {"@type": "BreadcrumbList", "itemListElement": breadcrumbs},
+                org_node,
+                {
+                    "@type": "AboutPage",
+                    "@id": f"{canonical_url}#page",
+                    "url": canonical_url,
+                    "name": title,
+                    "description": description,
+                    "inLanguage": "es-ES",
+                    "dateModified": ctx.build_date,
+                    "publisher": {"@id": f"{ctx.canonical_base}/#organization"},
+                },
+            ],
+        }
+
+    if canonical_path == "/fuentes/":
+        breadcrumbs.append({"@type": "ListItem", "position": 2, "name": "Fuentes", "item": canonical_url})
+        return {
+            "@context": "https://schema.org",
+            "@graph": [
+                {"@type": "BreadcrumbList", "itemListElement": breadcrumbs},
+                org_node,
+                {
+                    "@type": "Dataset",
+                    "@id": f"{canonical_url}#dataset",
+                    "url": canonical_url,
+                    "name": title,
+                    "description": description,
+                    "inLanguage": "es-ES",
+                    "dateModified": ctx.build_date,
+                    "license": "https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930",
+                    "publisher": {"@id": f"{ctx.canonical_base}/#organization"},
+                },
+            ],
+        }
+
+    if canonical_path == "/correcciones/":
+        breadcrumbs.append({"@type": "ListItem", "position": 2, "name": "Registro de correcciones", "item": canonical_url})
+        return {
+            "@context": "https://schema.org",
+            "@graph": [
+                {"@type": "BreadcrumbList", "itemListElement": breadcrumbs},
+                org_node,
+                {
+                    "@type": "AboutPage",
+                    "@id": f"{canonical_url}#page",
+                    "url": canonical_url,
+                    "name": title,
+                    "description": description,
+                    "inLanguage": "es-ES",
+                    "dateModified": ctx.build_date,
+                    "publisher": {"@id": f"{ctx.canonical_base}/#organization"},
+                },
+            ],
+        }
+
+    return {
+        "@context": "https://schema.org",
+        "@graph": [
+            org_node,
+            {
+                "@type": "WebPage",
+                "@id": f"{canonical_url}#page",
+                "url": canonical_url,
+                "name": title,
+                "description": description,
+                "inLanguage": "es-ES",
+                "dateModified": ctx.build_date,
+                "publisher": {"@id": f"{ctx.canonical_base}/#organization"},
+            },
+        ],
+    }
 
 
 def render_preview_banner(ctx: SiteContext) -> str:
@@ -640,10 +979,20 @@ def render_base(
     canonical_path: str,
     content: str,
     root_path: str = "./",
+    structured_data: Optional[dict[str, Any]] = None,
 ) -> str:
     """Render outer HTML frame with base layout."""
     canonical_url = f"{ctx.canonical_base}{canonical_path}"
     base_template_file = ctx.templates_dir / "base.html"
+
+    if structured_data is None:
+        structured_data = build_structured_data(
+            ctx=ctx,
+            canonical_path=canonical_path,
+            title=title,
+            description=description,
+        )
+    structured_data_html = safe_json_ld(structured_data)
 
     if ctx.election_id == "es-gen-2023":
         brand_link = f"""<a class="brand" href="{root_path}" aria-label="Generales 2023 - Ensayo Piloto">
@@ -675,9 +1024,14 @@ def render_base(
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="description" content="{{ description }}">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <title>{{ title }}</title>
   <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="alternate" hreflang="es" href="{{ canonical_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ canonical_url }}">
+  <link rel="alternate" type="text/markdown" href="{{ root_path }}llms.txt" title="Documentación para LLMs">
 {{ social_metadata }}
+{{ structured_data }}
   <link rel="stylesheet" href="{{ root_path }}styles.css">
 </head>
 <body class="theme-swiss" data-election="{{ election_id }}" data-swiss-accent="monochrome">
@@ -717,6 +1071,7 @@ def render_base(
         "{{ description }}": escape(description),
         "{{ canonical_url }}": escape(canonical_url),
         "{{ social_metadata }}": render_social_metadata(ctx, title, description, canonical_url),
+        "{{ structured_data }}": structured_data_html,
         "{{ root_path }}": root_path,
         "{{ brand_link }}": brand_link,
         "{{ skip_to_content }}": escape(ctx.i18n["nav"]["skip_to_content"]),
@@ -727,6 +1082,7 @@ def render_base(
         "{{ nav_parties }}": escape(ctx.i18n["nav"]["parties"]),
         "{{ nav_methodology }}": escape(ctx.i18n["nav"]["methodology"]),
         "{{ nav_sources }}": escape(ctx.i18n["nav"]["sources"]),
+        "{{ nav_correcciones }}": escape(ctx.i18n["nav"]["corrections"]),
         "{{ nav_corrections }}": escape(ctx.i18n["nav"]["corrections"]),
         "{{ footer_org }}": footer_org,
         "{{ footer_values }}": footer_values,
@@ -1075,7 +1431,11 @@ def render_topic_index(ctx: SiteContext) -> str:
     page_title = "Temas electorales · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Temas electorales · Elecciones 2026"
     page_description = "Explora las propuestas electorales para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else "Explora las propuestas electorales para las Elecciones Generales 2026 agrupadas en 8 temas clave."
 
-    content = f"""    <section class="hero" aria-labelledby="topics-title">
+    content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
+      <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="topics-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="topics-title" class="hero-title">Temas electorales</h1>
       <p class="hero-intro">Explora las 8 áreas clave definidas en la metodología neutral del proyecto. Cada área desglosa propuestas concretas con trazabilidad documental directa.</p>
@@ -1138,6 +1498,8 @@ def render_topic_detail(ctx: SiteContext, topic: Topic) -> str:
 
     hero_eyebrow = "ENSAYO PILOTO PRIVADO · GENERALES 2023" if ctx.election_id == "es-gen-2023" else "TEMA ELECTORAL · ELECCIONES 2026"
     page_title = f"{topic.name_es} · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else f"{topic.name_es} · Comparador Elecciones 2026"
+    budget_ctx = render_budget_context(ctx, topic.id, "../../")
+    budget_ctx_line = f"\n    {budget_ctx}" if budget_ctx else ""
 
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a> ·
@@ -1155,8 +1517,15 @@ def render_topic_detail(ctx: SiteContext, topic: Topic) -> str:
 
     {render_share_controls(ctx)}
     <script src="../../sharing.js" defer></script>
-    {"".join(subtopics_sections)}
-    {render_budget_context(ctx, topic.id, "../../")}"""
+    {"".join(subtopics_sections)}{budget_ctx_line}"""
+
+    topic_schema = build_structured_data(
+        ctx=ctx,
+        canonical_path=f"/temas/{topic.id}/",
+        title=page_title,
+        description=topic.description_es,
+        topic=topic,
+    )
 
     return render_base(
         ctx=ctx,
@@ -1165,6 +1534,7 @@ def render_topic_detail(ctx: SiteContext, topic: Topic) -> str:
         canonical_path=f"/temas/{topic.id}/",
         content=content,
         root_path="../../",
+        structured_data=topic_schema,
     )
 
 
@@ -1198,7 +1568,11 @@ def render_party_index(ctx: SiteContext) -> str:
     page_title = "Candidaturas y partidos · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Candidaturas y partidos · Elecciones 2026"
     page_description = "Consulta las candidaturas y el estado de sus programas para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else "Consulta las candidaturas electorales y el estado de sus programas para las Elecciones Generales 2026."
 
-    content = f"""    <section class="hero" aria-labelledby="parties-title">
+    content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
+      <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="parties-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="parties-title" class="hero-title">Candidaturas seguidas</h1>
       <p class="hero-intro">Registro oficial de partidos y coaliciones incluidos en el comparador bajo criterios públicos y auditables. Consulte el estado de publicación y las propuestas revisadas de cada formación.</p>
@@ -1252,6 +1626,24 @@ def render_party_detail(ctx: SiteContext, party: PartyInfo) -> str:
               {render_party_card(ctx, s, party.id, "A")}
             </div>""")
 
+    # Cross-linking shortcuts to compare this party against other candidacies
+    compare_links = []
+    for other_pid in sorted(ctx.parties.keys()):
+        if other_pid == party.id:
+            continue
+        other_party = ctx.parties[other_pid]
+        compare_links.append(
+            f'<a href="../../?topic=housing&partyA={escape(party.id)}&partyB={escape(other_pid)}" class="action-link" style="margin-right: var(--space-2); margin-bottom: var(--space-2); display: inline-block;">'
+            f'vs {escape(other_party.display_name)}</a>'
+        )
+    compare_section = f"""<section class="party-card" style="margin-bottom: var(--space-8);">
+      <h2 style="font-size: var(--font-size-lg); margin-top: 0;">Comparar {escape(party.display_name)} con otras candidaturas</h2>
+      <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-3);">Acceso directo a la comparación en el comparador interactivo:</p>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+        {"".join(compare_links)}
+      </div>
+    </section>"""
+
     hero_eyebrow = "ENSAYO PILOTO PRIVADO · CANDIDATURA GENERALES 2023" if ctx.election_id == "es-gen-2023" else "CANDIDATURA · ELECCIONES 2026"
     page_title = f"{party.display_name} · Programa y propuestas Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else f"{party.display_name} · Programa y propuestas Elecciones 2026"
     page_description = f"Consulta el programa electoral y propuestas revisadas de {party.display_name} para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else f"Consulta el programa electoral y propuestas revisadas de {party.display_name} para las Elecciones 2026."
@@ -1275,10 +1667,20 @@ def render_party_detail(ctx: SiteContext, party: PartyInfo) -> str:
       {src_info}
     </section>
 
+    {compare_section}
+
     <section style="margin-bottom: var(--space-10);">
       <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-4);">Propuestas y posiciones revisadas</h2>
       {"".join(stmts_sections)}
     </section>"""
+
+    party_schema = build_structured_data(
+        ctx=ctx,
+        canonical_path=f"/partidos/{party.id}/",
+        title=page_title,
+        description=page_description,
+        party=party,
+    )
 
     return render_base(
         ctx=ctx,
@@ -1287,6 +1689,7 @@ def render_party_detail(ctx: SiteContext, party: PartyInfo) -> str:
         canonical_path=f"/partidos/{party.id}/",
         content=content,
         root_path="../../",
+        structured_data=party_schema,
     )
 
 
@@ -1319,7 +1722,11 @@ def render_methodology_page(ctx: SiteContext) -> str:
     page_title = "Metodología editorial y privacidad · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Metodología editorial y privacidad · Elecciones 2026"
     page_description = "Marco metodológico, gobernanza editorial y aviso de privacidad para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Marco metodológico, gobernanza editorial, política de citas y aviso de privacidad de Elecciones 2026."
 
-    content = f"""    <section class="hero" aria-labelledby="method-title">
+    content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
+      <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="method-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="method-title" class="hero-title">Compara con rigor y neutralidad</h1>
       <p class="hero-intro">El proyecto Elecciones 2026 se rige por un marco metodológico estricto de citas exactas, doble revisión humana independiente y ausencia total de recomendaciones de voto.</p>
@@ -1454,7 +1861,11 @@ def render_sources_page(ctx: SiteContext) -> str:
     page_title = "Fuentes oficiales y trazabilidad · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Fuentes oficiales y trazabilidad · Elecciones 2026"
     page_description = "Inventario de fuentes primarias, versiones y hashes SHA-256 para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Inventario de fuentes primarias, versiones y hashes SHA-256 para las Elecciones 2026."
 
-    content = f"""    <section class="hero" aria-labelledby="sources-title">
+    content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
+      <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="sources-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="sources-title" class="hero-title">Fuentes oficiales y trazabilidad</h1>
       <p class="hero-intro">Inventario público de documentos electorales, fechas de consulta, versiones y sumas de verificación criptográfica (SHA-256). Solo los documentos verificados alimentan afirmaciones públicas.</p>
@@ -1575,7 +1986,11 @@ def render_corrections_page(ctx: SiteContext) -> str:
     page_title = "Registro de correcciones editoriales · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Registro de correcciones editoriales · Elecciones 2026"
     page_description = "Historial público y transparente de correcciones y revisiones para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Historial público y transparente de correcciones y revisiones en los datos electorales."
 
-    content = f"""    <section class="hero" aria-labelledby="corrections-title">
+    content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
+      <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="corrections-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="corrections-title" class="hero-title">Registro de correcciones</h1>
       <p class="hero-intro">Historial auditable de correcciones de erratas, reubicaciones temáticas o actualizaciones de fuentes. Cada cambio invalida las relaciones comparativas dependientes hasta su nueva verificación.</p>
@@ -1615,14 +2030,28 @@ def render_corrections_page(ctx: SiteContext) -> str:
 
 
 def render_sitemap(ctx: SiteContext, routes: list[tuple[str, str, str]]) -> str:
-    """Render accurate sitemap.xml with all canonical routes."""
+    """Render accurate sitemap.xml with all canonical routes and priorities."""
     entries = []
     # Sort deterministically by URL
     for loc, lastmod, freq in sorted(routes, key=lambda r: r[0]):
+        norm_loc = loc.rstrip("/")
+        norm_base = ctx.canonical_base.rstrip("/")
+        if norm_loc == norm_base:
+            priority = "1.0"
+        elif "/temas/" in loc:
+            priority = "0.9"
+        elif "/partidos/" in loc:
+            priority = "0.8"
+        elif "/metodo/" in loc or "/fuentes/" in loc:
+            priority = "0.7"
+        else:
+            priority = "0.6"
+
         entries.append(f"""  <url>
     <loc>{escape(loc)}</loc>
     <lastmod>{escape(lastmod)}</lastmod>
     <changefreq>{escape(freq)}</changefreq>
+    <priority>{priority}</priority>
   </url>""")
 
     return f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -1649,6 +2078,162 @@ Expires: 2026-12-31T23:59:59.000Z
 Preferred-Languages: es, en
 Canonical: {ctx.canonical_base}/.well-known/security.txt
 """
+
+
+def render_llms_txt(ctx: SiteContext) -> str:
+    """Render standard /llms.txt specification for AI models and search engines."""
+    pilot = ctx.election_id == "es-gen-2023"
+    title_suffix = " · Generales 2023 (Ensayo piloto)" if pilot else " · Elecciones Generales 2026"
+    election_title = f"# Comparador de Programas Electorales{title_suffix}"
+
+    if pilot:
+        summary_intro = (
+            "> Ensayo técnico y metodológico privado con programas de las Elecciones Generales de 2023 (23J). "
+            "Datos de ensayo con revisión de derechos y humana en curso. Estricto aislamiento respecto a 2026."
+        )
+    else:
+        summary_intro = (
+            "> Comparador neutral e independiente de programas electorales para las Elecciones Generales del 29 de noviembre de 2026 en España (BOE-A-2026-20742). "
+            "Trazabilidad estricta a fuentes oficiales, principio de cuatro ojos, citas verificadas según TRLPI Art. 32 y ausencia total de valoraciones subjetivas o recomendaciones de voto."
+        )
+
+    topic_lines = []
+    for t in ctx.taxonomy.topics:
+        topic_lines.append(f"- [{t.name_es}]({ctx.canonical_base}/temas/{t.id}/): {t.description_es}")
+
+    party_lines = []
+    for pid in sorted(ctx.parties.keys()):
+        p = ctx.parties[pid]
+        party_lines.append(f"- [{p.display_name} ({p.short_name})]({ctx.canonical_base}/partidos/{pid}/): {p.official_name}")
+
+    query_example = (
+        f"{ctx.canonical_base}/?election=es-gen-2023&topic=housing&partyA=pp&partyB=erc"
+        if pilot
+        else f"{ctx.canonical_base}/?topic=housing&partyA=pp&partyB=psoe"
+    )
+
+    content = f"""{election_title}
+{summary_intro}
+
+## Principios y Metodología
+- Neutralidad política estricta: Este proyecto no califica partidos, no emite recomendaciones de voto y no elabora sondeos.
+- Trazabilidad documental: Cada afirmación publicada enlaza al documento original, versión registrada, página o sección y fecha de revisión.
+- Citas literales y derechos de autor: Citas breves con estricto fin de análisis y contraste, conforme al artículo 32 del Texto Refundido de la Ley de Propiedad Intelectual (TRLPI).
+- Transparencia en lagunas: La ausencia de una medida en el programa («no consta») nunca se interpreta como oposición política ni como apoyo tácito.
+- Integridad de datos: Verificación criptográfica mediante sumas SHA-256 de los documentos fuente en formato PDF original.
+- Principio de cuatro ojos: Toda afirmación o relación comparada requiere la verificación de dos revisores independientes antes de su publicación.
+
+## Páginas Principales
+- [Inicio y Comparador]({ctx.canonical_base}/): Comparador interactivo de medidas políticas por tema y candidatura.
+- [Metodología de Verificación]({ctx.canonical_base}/metodo/): Criterios objetivos de inclusión de candidaturas (Criterios A y B), límites de cita y política de rectificación.
+- [Registro de Fuentes Oficiales]({ctx.canonical_base}/fuentes/): Inventario de fuentes registradas, hashes SHA-256 y estados de cobertura.
+- [Registro de Correcciones Editoriales]({ctx.canonical_base}/correcciones/): Historial auditable de correcciones y tiempos de respuesta (SLAs Sev-1, Sev-2, Sev-3).
+- [Índice de Temas]({ctx.canonical_base}/temas/): Los 8 temas troncales de la taxonomía oficial de comparación.
+- [Índice de Candidaturas]({ctx.canonical_base}/partidos/): Candidaturas monitorizadas según criterios objetivos de representación.
+
+## Temas Electorales
+{"".join(f"{line}\n" for line in topic_lines)}
+## Candidaturas Monitorizadas
+{"".join(f"{line}\n" for line in party_lines)}
+## Sintaxis de Consulta para LLMs y Comparativas
+Para contrastar dos candidaturas sobre un tema específico, utiliza el comparador con los parámetros normalizados:
+`{query_example}`
+
+Parámetros admitidos:
+- `topic`: Identificador del tema oficial (ej. `housing`, `education`, `health-social-services`, `economy-work-tax`, `immigration`, `foreign-policy-eu`, `climate-energy`, `institutions-rights`).
+- `partyA`: Identificador de la primera candidatura.
+- `partyB`: Identificador de la segunda candidatura (debe ser distinta de `partyA`).
+
+## Formato Completo para LLMs
+Para acceder a la transcripción textual completa de taxonomías, candidaturas y propuestas verificadas:
+- [Archivo completo para LLMs]({ctx.canonical_base}/llms-full.txt)
+"""
+    return content.strip() + "\n"
+
+
+def render_llms_full_txt(ctx: SiteContext) -> str:
+    """Render comprehensive /llms-full.txt containing full structured dataset for LLM grounding."""
+    pilot = ctx.election_id == "es-gen-2023"
+    title_suffix = " · Generales 2023 (Ensayo piloto)" if pilot else " · Elecciones Generales 2026"
+
+    sections = [
+        f"# Archivo Integral de Datos Electorales{title_suffix}",
+        f"Fecha de compilación: {ctx.build_date} | Elección: {ctx.election_id} | URL canónica: {ctx.canonical_base}/",
+        "",
+        "## 1. Taxonomía Temática y Subtemas",
+    ]
+
+    for t in ctx.taxonomy.topics:
+        sections.append(f"### Tema: {t.name_es} (`{t.id}`)")
+        sections.append(f"{t.description_es}")
+        sections.append("Subtemas:")
+        for sub in t.subtopics:
+            sections.append(f"- `{sub.id}`: {sub.name_es}")
+        sections.append("")
+
+    sections.append("## 2. Candidaturas y Fuentes Oficiales Registradas")
+    for pid in sorted(ctx.parties.keys()):
+        p = ctx.parties[pid]
+        src = next((s for s in ctx.register.sources if s.party_id == pid and s.election_id == ctx.election_id), None)
+        sections.append(f"### Candidatura: {p.display_name} (`{p.id}`)")
+        sections.append(f"- Nombre oficial: {p.official_name}")
+        sections.append(f"- Siglas: {p.short_name}")
+        sections.append(f"- Ámbito territorial: {p.territorial_scope}")
+        sections.append(f"- Criterio de inclusión: {p.inclusion_criterion}")
+        if src:
+            sections.append(f"- Estado del programa: {src.status}")
+            sections.append(f"- URL oficial: {src.official_url or 'No disponible'}")
+            sections.append(f"- Versión: {src.version}")
+            sections.append(f"- Fecha de consulta: {src.retrieval_date}")
+            sections.append(f"- Hash SHA-256: {src.sha256 or 'Pendiente de verificación'}")
+            sections.append(f"- Derechos de cita: {src.rights_review.status}")
+        else:
+            sections.append("- Estado del programa: missing (no disponible)")
+        sections.append("")
+
+    sections.append("## 3. Posiciones y Afirmaciones Electorales Verificadas")
+    active_stmts = sorted(ctx.statements.values(), key=lambda s: (s.topic_id, s.party_id, s.id))
+    if not active_stmts:
+        sections.append("No hay posiciones publicadas o aprobadas en esta versión.")
+    else:
+        for s in active_stmts:
+            sections.append(f"### Afirmación `{s.id}`: {s.party_id} en `{s.topic_id}` / `{s.subtopic_id}`")
+            sections.append(f"- Tipo: {s.statement_type}")
+            sections.append(f"- Resumen neutral: {s.summary}")
+            if s.quote:
+                sections.append(f"- Cita literal: «{s.quote}»")
+            if s.qualifications:
+                for q in s.qualifications:
+                    sections.append(f"- Matiz / condición: {q}")
+            last_rev = getattr(s, "last_reviewed_date", getattr(s, "last_reviewed", None))
+            sections.append(f"- Estado de revisión: {s.review_status} (Última revisión: {last_rev or 'N/A'})")
+            sections.append("")
+
+    sections.append("## 4. Relaciones Comparativas Verificadas entre Candidaturas")
+    active_rels = [r for r in ctx.relationships.values() if r.status == "active"]
+    if not active_rels:
+        sections.append("No hay relaciones comparativas activas en esta versión.")
+    else:
+        for r in sorted(active_rels, key=lambda x: (x.topic_id, x.measure_label)):
+            sections.append(f"### Comparativa `{r.id}`: {r.measure_label} (`{r.topic_id}` / `{r.subtopic_id}`)")
+            sections.append(f"- Partidos comparados: {', '.join(r.party_ids)}")
+            sections.append(f"- Tipo de relación: {r.relationship_type}")
+            sections.append(f"- Resumen comparativo: {r.summary}")
+            if r.differences:
+                sections.append("- Diferencias identificadas:")
+                for diff in r.differences:
+                    sections.append(f"  * {diff}")
+            sections.append(f"- Afirmaciones fuente vinculadas: {', '.join(r.statement_ids)}")
+            sections.append("")
+
+    sections.append("## 5. Criterios de Calidad y Rectificación")
+    sections.append("- Criterio de inclusión A: Representación parlamentaria obtenida en las anteriores Cortes Generales o Parlamento Europeo.")
+    sections.append("- Criterio de inclusión B: Candidaturas proclamadas que alcancen al menos el 50% del censo electoral estatal.")
+    sections.append("- Niveles de rectificación: Sev-1 (crítica, resolución <= 12h), Sev-2 (grave, <= 24h), Sev-3 (menor, <= 48h).")
+    sections.append("- Cualquier rectificación sobre una afirmación fuente invalida automáticamente las relaciones comparativas derivadas.")
+    sections.append("- Contacto editorial: editorial@elecciones2026.es")
+
+    return "\n".join(sections).strip() + "\n"
 
 
 # ==============================================================================
@@ -1874,6 +2459,12 @@ def build_site(
         security_txt = render_security_txt(ctx)
         write_file_deterministic(staging_dir / "security.txt", security_txt)
         write_file_deterministic(staging_dir / ".well-known" / "security.txt", security_txt)
+
+        llms_txt = render_llms_txt(ctx)
+        write_file_deterministic(staging_dir / "llms.txt", llms_txt)
+
+        llms_full_txt = render_llms_full_txt(ctx)
+        write_file_deterministic(staging_dir / "llms-full.txt", llms_full_txt)
 
         # 10. Copy static stylesheets, scripts, and design tokens
         site_src = root_dir / "site"

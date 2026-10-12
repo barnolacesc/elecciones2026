@@ -8,7 +8,7 @@ from unittest.mock import patch
 import test_budget as fixtures
 from elecciones2026 import budget_view
 from elecciones2026.budget import BudgetError, load_bundle
-from elecciones2026.generator import build_site
+from elecciones2026.generator import DEFAULT_CANONICAL_BASE, build_site
 
 ROOT = Path(__file__).resolve().parents[1]
 TEST_CANONICAL_BASE = 'https://election.example.invalid'

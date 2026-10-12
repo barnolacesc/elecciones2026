@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="description" content="{{ description }}">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <title>{{ title }}</title>
   <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="alternate" hreflang="es" href="{{ canonical_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ canonical_url }}">
+  <link rel="alternate" type="text/markdown" href="{{ root_path }}llms.txt" title="Documentación para LLMs">
 {{ social_metadata }}
+{{ structured_data }}
   <link rel="stylesheet" href="{{ root_path }}styles.css">
 </head>
 <body class="theme-swiss" data-election="{{ election_id }}" data-swiss-accent="monochrome">

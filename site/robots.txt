@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /preview/
 
-Sitemap: https://elecciones2026.es/sitemap.xml
+Sitemap: https://xn--eleccionesespaa2026-83b.es/sitemap.xml
