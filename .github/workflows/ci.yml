@@ -250,7 +250,7 @@ jobs:
 
       - name: Build pinned Docker image via multi-stage builder
         run: |
-          docker build --platform linux/amd64 --label org.opencontainers.image.source=https://github.com/c2ventures/elecciones2026 --label org.opencontainers.image.revision="$GITHUB_SHA" -t elecciones2026:ci .
+          docker build --platform linux/amd64 --build-arg ELECTION_ID=es-gen-2023 --build-arg QUIZ_MODE=unavailable --label org.opencontainers.image.source=https://github.com/c2ventures/elecciones2026 --label org.opencontainers.image.revision="$GITHUB_SHA" -t elecciones2026:ci .
 
       - name: Run preview container with read-only filesystem and dropped capabilities
         run: |
@@ -375,6 +375,8 @@ jobs:
               'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
               'platform': 'linux/amd64',
               'classification': 'private-staging',
+              'election_id': 'es-gen-2023',
+              'quiz_mode': 'unavailable',
               'canonical_base': 'https://xn--eleccionesespaa2026-83b.es',
               'home_sha256': subprocess.check_output(['docker', 'run', '--rm', '--read-only', '--cap-drop', 'ALL', '--entrypoint', 'sha256sum', 'elecciones2026:ci', '/usr/share/nginx/html/index.html'], text=True).split()[0],
               'image_id': subprocess.check_output(['docker', 'image', 'inspect', '--format', '{{.Id}}', 'elecciones2026:ci'], text=True).strip(),
