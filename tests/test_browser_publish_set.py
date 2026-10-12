@@ -76,7 +76,7 @@ class BrowserPublishSetTests(unittest.TestCase):
             self.assertIn('data-comparison="validated"', home)
             self.assertIn(comparison_bundle_name(ctx), home)
             self.assertNotIn('class="measure-group"', home)
-            self.assertIn('Revisión de contenido pendiente', home)
+            self.assertIn('Contenido pendiente de publicación', home)
 
     def test_hostile_strings_and_locators_have_browser_static_parity(self):
         hostile = '</script><img src=x onerror="alert(1)">&\u2028'
@@ -86,7 +86,7 @@ class BrowserPublishSetTests(unittest.TestCase):
         static = render_comparison_measures(ctx, payload, 'housing', self.rel.party_ids[0], self.rel.party_ids[1])
         self.assertNotIn('<img', static)
         self.assertIn('&lt;img', static)
-        self.assertIn('Revisión de contenido pendiente', static)
+        self.assertIn('Contenido pendiente de publicación', static)
         script = comparison_bundle_script(ctx)
         self.assertNotIn('</script>', script)
         with tempfile.TemporaryDirectory() as tmp:
@@ -102,7 +102,7 @@ class BrowserPublishSetTests(unittest.TestCase):
         self.assertIn(stmt.source_url + '#page=34', browser['html'])
         self.assertIn(stmt.last_reviewed_date, static)
         self.assertIn(stmt.last_reviewed_date, browser['html'])
-        self.assertIn('Revisión de contenido pendiente', browser['html'])
+        self.assertIn('Contenido pendiente de publicación', browser['html'])
         self.assertNotIn('Coincidencia', browser['html'])
         self.assertIn('election', browser)
         self.assertEqual(browser['election'], ctx.election_id)

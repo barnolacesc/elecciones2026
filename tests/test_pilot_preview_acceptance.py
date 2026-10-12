@@ -126,7 +126,7 @@ class PilotBrowserTests(unittest.TestCase):
                         page.locator('#topic-select').select_option(topic)
                         page.locator('#compare-submit').focus()
                         page.keyboard.press('Enter')
-                        expect(page.locator('#measures-container')).to_contain_text('Revisión de contenido pendiente')
+                        expect(page.locator('#measures-container')).to_contain_text('Contenido pendiente de publicación')
                         self.assertEqual(page.locator('.measure-group').count(), 0)
                         self.assertEqual(page.locator('.btn-view-source').count(), 0)
                         self.assertIn('No implica apoyo ni oposición', page.locator('#measures-container').inner_text())
@@ -169,17 +169,52 @@ class PilotBrowserTests(unittest.TestCase):
                 with self.subTest(route=route):
                     page.goto(self.base + route)
                     self.assertIn('2023', page.title())
-                    self.assertIn('Revisión humana y de derechos pendiente', page.locator('.preview-banner').inner_text())
+                    self.assertIn('Revisión pendiente', page.locator('.preview-banner').inner_text())
+                    self.assertIn('Revisión humana y de derechos pendiente', page.locator('body > footer').inner_text())
                     self.assertGreater(len(page.locator('main').inner_text()), 40)
                     layout = page.evaluate(LAYOUT)
                     self.assertLessEqual(layout['scroll_width'], 390)
                     self.assertFalse(layout['clipped'], layout)
             page.goto(self.base + '/')
-            self.assertIn('Revisión de contenido pendiente', page.locator('#measures-container').inner_text())
+            self.assertIn('Contenido pendiente de publicación', page.locator('#measures-container').inner_text())
             page.goto(self.base + '/fuentes/')
             links = page.locator('a.source-citation').evaluate_all('(nodes) => nodes.map(n => ({href:n.href,rel:n.rel}))')
             self.assertTrue(links)
             self.assertTrue(all(link['href'].startswith('https://') and 'noopener' in link['rel'] for link in links))
+        finally:
+            context.close()
+
+    def test_compact_header_and_native_menu_without_script(self):
+        context = self.browser.new_context(java_script_enabled=False)
+        try:
+            for width in (360, 390, 430):
+                with self.subTest(width=width):
+                    page = context.new_page()
+                    page.set_viewport_size({'width': width, 'height': 780})
+                    page.goto(self.base + '/')
+                    bounds = page.evaluate("""() => ({
+                        header: document.querySelector('.topbar').getBoundingClientRect().bottom,
+                        action: document.querySelector('.hero-actions').getBoundingClientRect().bottom
+                    })""")
+                    self.assertLessEqual(bounds['header'], 150)
+                    self.assertLessEqual(bounds['action'], 580)
+                    menu = page.locator('.site-menu')
+                    self.assertFalse(menu.evaluate('(node) => node.open'))
+                    page.locator('.menu-toggle').focus()
+                    page.keyboard.press('Enter')
+                    self.assertTrue(menu.evaluate('(node) => node.open'))
+                    links = page.locator('.menu-links a')
+                    self.assertEqual(links.count(), 5)
+                    for link in links.all():
+                        self.assertTrue(link.is_visible())
+                        box = link.bounding_box()
+                        self.assertGreaterEqual(box['height'], 44)
+                        self.assertGreaterEqual(box['x'], 0)
+                        self.assertLessEqual(box['x'] + box['width'], width)
+                    links.filter(has_text='Fuentes').click()
+                    self.assertTrue(page.url.endswith('/fuentes/'))
+                    self.assertFalse(page.locator('.site-menu').evaluate('(node) => node.open'))
+                    page.close()
         finally:
             context.close()
 
@@ -190,7 +225,7 @@ class PilotBrowserTests(unittest.TestCase):
         page = context.new_page()
         try:
             page.goto(self.base + '/?topic=education&partyA=partido-ejemplo-a&partyB=partido-ejemplo-b&election=es-gen-2026')
-            expect(page.locator('#measures-container')).to_contain_text('Revisión de contenido pendiente')
+            expect(page.locator('#measures-container')).to_contain_text('Contenido pendiente de publicación')
             self.assertEqual(page.locator('.party-statement, .measure-group').count(), 0)
             self.assertEqual(page.locator('#party-a-select').input_value(), 'pp')
             self.assertEqual(page.locator('#party-b-select').input_value(), 'erc')

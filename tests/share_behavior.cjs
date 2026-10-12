@@ -87,7 +87,7 @@ test('private pilot keeps election context and never falls back to 2026 measures
   let shared;
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023',
     { share: async data => { shared = data; } }, true, true);
-  assert.match(b.nodes['measures-container'].innerHTML, /Revisión de contenido pendiente/);
+  assert.match(b.nodes['measures-container'].innerHTML, /Contenido pendiente de publicación/);
   assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /15%|Garantir el dret/);
   await b.click();
   assert.match(shared.title, /2023/);
@@ -98,7 +98,7 @@ test('private pilot keeps election context and never falls back to 2026 measures
     b.nodes['topic-select'].value = topic;
     b.nodes['topic-select'].handlers.change();
     const html = b.nodes['measures-container'].innerHTML;
-    assert.match(html, /Revisión de contenido pendiente/);
+    assert.match(html, /Contenido pendiente de publicación/);
     assert.match(html, /La falta de contenido aprobado no indica/);
     assert.doesNotMatch(html, /btn-open-manifesto|party-statement|15%|Garantir el dret/);
   }
@@ -129,7 +129,7 @@ test('empty-measures fallback is rendered when a topic has no registered measure
   const context = vm.createContext({ window, document, navigator: {}, URL, URLSearchParams });
   vm.runInContext(fs.readFileSync('site/sharing.js', 'utf8'), context);
   vm.runInContext(code, context);
-  assert.match(nodes['measures-container'].innerHTML, /Revisión de contenido pendiente/);
+  assert.match(nodes['measures-container'].innerHTML, /Contenido pendiente de publicación/);
 });
 
 test('native share success, cancellation and rejection expose honest status and copy fallback', async () => {
@@ -173,6 +173,6 @@ test('unsupported or insecure native share uses clipboard; denied clipboard sele
 test('pending pilot content exposes no quote viewer or comparative assertion', () => {
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023', {}, true, true);
   const html = b.nodes['measures-container'].innerHTML;
-  assert.match(html, /Revisión de contenido pendiente/);
+  assert.match(html, /Contenido pendiente de publicación/);
   assert.doesNotMatch(html, /btn-open-manifesto|Leer extracto|measure-context|measure-axes/);
 });

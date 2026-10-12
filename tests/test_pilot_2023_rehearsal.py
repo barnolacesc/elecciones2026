@@ -304,7 +304,7 @@ class TestPilot2023Rehearsal(unittest.TestCase):
 
             # Inspect home page details
             index_html = (out_dir / "index.html").read_text(encoding="utf-8")
-            self.assertIn("ENSAYO PILOTO PRIVADO · GENERALES 2023 (23 JUL 2023)", index_html)
+            self.assertIn("GENERALES 2023 · 23 JULIO 2023", index_html)
             self.assertIn("Aviso de ensayo privado (Generales 2023)", index_html)
             self.assertIn("no satisface la puerta de publicación G2 para 2026", index_html)
             self.assertEqual(result.statements_count, 0)
@@ -334,7 +334,7 @@ class TestPilot2023Rehearsal(unittest.TestCase):
         self.assertNotIn('role="tabpanel"', home_html)
 
         # Both party cards present in single measure group
-        self.assertIn("Revisión de contenido pendiente", home_html)
+        self.assertIn("Contenido pendiente de publicación", home_html)
         self.assertNotIn('class="party-card party-card-a', home_html)
         self.assertNotIn('class="party-card party-card-b', home_html)
         self.assertEqual(len(ctx.statements), 0)
@@ -350,7 +350,7 @@ class TestPilot2023Rehearsal(unittest.TestCase):
             script = (output / "app.js").read_text()
             self.assertNotIn("electionId: 'es-gen-2023'", script)
             self.assertNotIn("-pilot-2023-measure", script)
-            self.assertIn("Revisión de contenido pendiente", script)
+            self.assertIn("Contenido pendiente de publicación", script)
             self.assertIn("La falta de contenido aprobado no indica", script)
             for statement_path in (self.content_dir / "examples/statements").glob("*2023*.json"):
                 statement = load_statement(statement_path)
