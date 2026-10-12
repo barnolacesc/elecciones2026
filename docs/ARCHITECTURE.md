@@ -28,9 +28,9 @@ Build phone layouts first at 360–430 CSS px. Stack party cards, keep source li
 
 ## Edge, domain, and service levels
 
-The owner registered `eleccionesespaña2026.es` at DonDominio. Its ASCII canonical base is `https://xn--eleccionesespaa2026-83b.es`; authenticated staging uses `preview.xn--eleccionesespaa2026-83b.es`. Cloudflare nameserver delegation, DNSSEC and proxy activation remain pending. Defensive domains remain proposals, not acquired domains. See [IONOS delivery setup](../ops/IONOS-DELIVERY.md).
+The owner registered `eleccionesespaña2026.es` at DonDominio. Its ASCII canonical base is `https://xn--eleccionesespaa2026-83b.es`; authenticated staging uses `preview.xn--eleccionesespaa2026-83b.es`. Cloudflare delegation and proxied preview DNS are active. Origin TLS uses Full (strict) and global Authenticated Origin Pulls (AOP), as reported by the owner. The preview requires HTTP Basic authentication and sends no-store/noindex. Owner-selected manual delivery passed restricted SSH, origin health and exact external home-content verification in [run 38182379207](https://github.com/c2ventures/elecciones2026/actions/runs/38182379207). See the [2026-10-12 setup record](../ops/SERVER-MIGRATION.md). DNSSEC and public routing remain unverified. Defensive domains remain proposals, not acquired domains. See [IONOS delivery setup](../ops/IONOS-DELIVERY.md).
 
-Edge caching policy:
+Public edge caching policy (G4; not the private preview):
 - Fingerprinted static assets (`/static/*`, CSS, JS, images): `Cache-Control: public, max-age=31536000, immutable` (edge TTL 365 days).
 - Mutable HTML pages (`/`, `/temas/*`, `/fuentes/`, `/metodo/`): `Cache-Control: public, max-age=300, stale-while-revalidate=86400` (edge TTL 300s).
 
@@ -41,7 +41,7 @@ Proposed release service level objectives (see `docs/DECISION-RECORD.md`):
 - **Error budget:** HTTP 5xx < 0.05% steady-state; < 0.50% during peak load tests.
 - **Recovery:** Recovery Time Objective (RTO) < 5 minutes (rollback to previous Docker artifact); Recovery Point Objective (RPO) = 0 (Git-versioned deterministic builds).
 
-The target origin is the existing Ubuntu IONOS VPS with 1 vCPU and 1 GB RAM. The earlier 2-vCPU/8-GB baseline is historical; its estimates cannot establish capacity on this host. A 10,000-concurrent-visitor scenario models roughly 1,000–2,000 requests/s at the edge. Origin load depends on cache keys, expirations, and resource requests. The <= 200 requests/s origin limit is an acceptance target, not measured capacity. Earlier throughput and CPU estimates have not been verified on IONOS. Test the configured cache and origin connection reuse before relying on them.
+The active private origin is the existing Ubuntu IONOS VPS with 1 vCPU and 1 GB RAM. The earlier 2-vCPU/8-GB baseline is historical; its estimates cannot establish capacity on this host. Hetzner is a future migration option in the setup runbook, not the active provider. A 10,000-concurrent-visitor scenario models roughly 1,000–2,000 requests/s at the edge. Origin load depends on cache keys, expirations, and resource requests. The <= 200 requests/s origin limit is an acceptance target, not measured capacity. Earlier throughput and CPU estimates have not been verified on IONOS. Test the configured cache and origin connection reuse before relying on them.
 
 Monthly infrastructure costs are capped at a **€50.00 / month hard ceiling**, with baseline operations expected at ~€9.00–€15.00 / month. Uncapped serverless or metered bandwidth services are forbidden.
 
@@ -53,7 +53,8 @@ Package `E0.3` confirmed the language architecture, domain strategy, privacy not
 
 Before public release, the following gates remain:
 - Formal human approval of Milestone G0 by Cesc and the project partner.
-- Verified IONOS firewall, private staging, registry pull, DNS and TLS setup.
+- Complete external origin-protection probes and account checks, including DNSSEC and public routing. Private image pull, preview TLS/authentication and delivery have dated evidence; they do not complete G4.
+- Independent monitoring, alert receipt and live rollback/fresh-host restore evidence.
 - Container base image digest pinning and automated vulnerability scan verification.
 - Verification of 10,000-concurrent-visitor benchmarks against approved service levels (tasks 4.3, 4.6, 4.7).
 
@@ -61,7 +62,7 @@ Before public release, the following gates remain:
 
 Reviewable origin configuration, immutable release switching, monitoring setup,
 and live verification requirements are in [the operations runbook](../ops/README.md).
-No infrastructure was provisioned or public content deployed by this package.
+The initial E3.3 preparation did not provision infrastructure. Later owner setup and private delivery are recorded above. No public launch is recorded.
 OpenSpec tasks 4.4 and 4.6 remain open until their live release evidence is reviewed.
 
 ## E3.4 load scenarios and evidence

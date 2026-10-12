@@ -8,14 +8,22 @@
 - **Related OpenSpec Tasks:** 4.3, 4.6, 4.7
 - **Dependencies:** None
 
-## E3.3 owner update — 2026-10-11
+## E3.3 verified setup update — 2026-10-12
 
 The owner selected the existing IONOS Ubuntu VPS (1 vCPU, 1 GB RAM) and registered
 `eleccionesespaña2026.es` at DonDominio. Use
 `https://xn--eleccionesespaa2026-83b.es` as canonical base and
 `preview.xn--eleccionesespaa2026-83b.es` for authenticated staging. Cloudflare
-delegation and TLS activation remain pending. These choices supersede the
-provider/domain assumptions below. The older Hetzner sizing, throughput and
+delegation and proxied preview DNS are active. The owner configured Origin CA
+TLS, Full (strict), global AOP and HTTP Basic authentication. [Delivery run
+38182379207](https://github.com/c2ventures/elecciones2026/actions/runs/38182379207)
+passed manual authorization, restricted SSH, origin health, unauthenticated
+rejection and exact authenticated home-content verification. The owner selected
+manual dispatch because required environment reviewers are unavailable on the
+private repository plan; it is self-approval, not independent review. See the
+[dated setup record](../ops/SERVER-MIGRATION.md). DNSSEC, public routing, full origin
+probes, monitoring, live rollback/restore and actual-host capacity remain open.
+These facts supersede the provider/domain assumptions below. The older Hetzner sizing, throughput and
 price/traffic estimates remain historical proposals, not evidence for IONOS.
 Existing service targets, cost ceiling and G0/G4 gates are unchanged. Contact
 mailboxes remain provisional and need separate owner verification.
@@ -45,17 +53,17 @@ This decision record establishes these operational and editorial contracts.
 | **Repository Language** | English (Controlled Technical English) | ASD-STE100 principles; all code, PRs, docs, and comments |
 | **Public Interface Language** | Spanish (`es-ES`) | Build generates `<html lang="es">`; external copy in Spanish |
 | **Localization Sequence** | Spanish MVP → Reviewed Catalan (Phase 5 / G8) → English (optional, demand-gated) | No unreviewed machine translation in public output |
-| **Primary Domain** | `elecciones2026.es` (placeholder target; pending acquisition) | Target domain pending registration; DNSSEC to be enabled upon acquisition |
+| **Primary Domain** | `eleccionesespaña2026.es`, registered at DonDominio | ASCII canonical base: `https://xn--eleccionesespaa2026-83b.es`; DNSSEC unverified |
 | **Defensive Domains** | `elecciones2026.org`, `programaselectorales.es` (placeholder targets) | Permanent 301 redirects to canonical domain once acquired |
-| **Preview / Staging Domain** | `preview.elecciones2026.es` (placeholder target) | Target staging domain; local/dev previews use localhost or temporary preview URLs |
+| **Preview / Staging Domain** | `preview.xn--eleccionesespaa2026-83b.es` | Active proxied private preview; Basic authentication, no-store/noindex |
 | **Privacy Architecture** | Zero personal data collection; zero tracking cookies; no cookie banner required | Complies with GDPR Art. 5, 6, 9 and LSSI-CE Art. 22.2 |
 | **Technical Log Retention** | Ephemeral edge/origin logs retained <= 14 days solely for network security and DoS defense | IP anonymization; no behavioral profiling |
-| **Edge Cache-Hit Target** | >= 95% steady-state; >= 85% cold-cache phase; >= 99% for fingerprinted assets | Cloudflare CDN proxy in front of Hetzner origin |
+| **Edge Cache-Hit Target** | >= 95% steady-state; >= 85% cold-cache phase; >= 99% for fingerprinted assets | Cloudflare CDN proxy in front of active IONOS origin; public cache evidence pending |
 | **p95 Latency Target** | < 150 ms edge cache hit; < 250 ms origin response; < 500 ms mobile page delivery | Evaluated on 360–430 CSS px mobile baseline |
 | **Error Rate Budget** | HTTP 5xx < 0.05% steady-state; < 0.5% during 10,000-visitor burst scenario | 99.5% normal monthly availability; 99.9% election week |
-| **Concurrency Scenario** | 10,000 concurrent active readers (~1,000–2,000 req/s edge; <= 200 req/s origin) | Verified on Hetzner 2-vCPU / 8-GB RAM VM |
+| **Concurrency Scenario** | 10,000 concurrent active readers (~1,000–2,000 req/s edge; <= 200 req/s origin) | Acceptance target; not verified on active IONOS 1-vCPU / 1-GB host |
 | **Cost Ceiling** | €50.00 / month hard maximum; ~€9.00–€15.00 / month expected baseline | Alerts at €25.00 (50%) and €40.00 (80%); no uncapped billing |
-| **Operational Owner** | Cesc (`cesc`) / Infrastructure Lead | Responsible for Hetzner, Cloudflare, TLS, DNS, monitoring |
+| **Operational Owner** | Cesc (`cesc`) / Infrastructure Lead | Responsible for IONOS, Cloudflare, TLS, DNS, monitoring |
 | **Editorial Owner** | Cesc and Project Partner | Responsible for inclusion rules, claims, and corrections |
 | **Release Gatekeeper** | Release Engineering Lead | Responsible for CI scans, image digests, and rollback |
 
@@ -88,28 +96,31 @@ This decision record establishes these operational and editorial contracts.
 ## 4. Decision 2: Domain, Branding, and DNS Architecture
 
 ### 4.1 Domain Selection
-- **Status:** **Placeholder Target**. The domain names below are the agreed architectural targets, but **have not yet been purchased**. All tooling, static site generator configs, metadata generators, and local test setups MUST treat these domains as placeholders and must not assume live domain ownership, working DNS resolution, or active email routing until domain registration is executed under human Gate G0.
-- **Primary Canonical Domain:** `elecciones2026.es` (placeholder target pending purchase).
-- **Defensive / Secondary Domains:** `elecciones2026.org` and `programaselectorales.es`. These domains prevent phishing and brand confusion once acquired.
-- **Staging / Preview Domain:** `preview.elecciones2026.es` (placeholder target; staging runs locally or on internal preview URLs in interim).
+- **Registered Primary Domain:** `eleccionesespaña2026.es`, bought at DonDominio. Cloudflare delegation is active.
+- **Primary Canonical Base:** `https://xn--eleccionesespaa2026-83b.es`. Public routing remains gated by G4.
+- **Defensive / Secondary Domains:** `elecciones2026.org` and `programaselectorales.es` remain proposals. Acquisition and redirects are not verified.
+- **Staging / Preview Domain:** `preview.xn--eleccionesespaa2026-83b.es` is active with origin Basic authentication and no-store/noindex.
+- **Historical placeholders:** `elecciones2026.es` and `preview.elecciones2026.es` were the original primary and preview targets. They are superseded by the registered domain; retained contact addresses still need separate mailbox verification.
 
 ### 4.2 Canonical Routing and Redirects
-- Canonical base URL: `https://elecciones2026.es/`.
+The redirects below are public-release requirements; they are not verified active.
+
+- Canonical base URL: `https://xn--eleccionesespaa2026-83b.es/`.
 - All alternate endpoints MUST return an immediate HTTP 301 permanent redirect to the canonical HTTPS apex URL:
-  - `http://elecciones2026.es/*` → `https://elecciones2026.es/*`
-  - `http://www.elecciones2026.es/*` → `https://elecciones2026.es/*`
-  - `https://www.elecciones2026.es/*` → `https://elecciones2026.es/*`
-  - All defensive domain requests → `https://elecciones2026.es/*`
+  - `http://xn--eleccionesespaa2026-83b.es/*` → `https://xn--eleccionesespaa2026-83b.es/*`
+  - `http://www.xn--eleccionesespaa2026-83b.es/*` → `https://xn--eleccionesespaa2026-83b.es/*`
+  - `https://www.xn--eleccionesespaa2026-83b.es/*` → `https://xn--eleccionesespaa2026-83b.es/*`
+  - All defensive domain requests → `https://xn--eleccionesespaa2026-83b.es/*`
 - HTTP Strict Transport Security (HSTS) MUST be enabled once DNS and TLS stabilization is verified: `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`.
 
 ### 4.3 Staging and Preview Environment Protection
-- `preview.elecciones2026.es` MUST require authentication (via Cloudflare Access or HTTP Basic Auth) to prevent public disclosure of unreviewed draft data.
+- `preview.xn--eleccionesespaa2026-83b.es` MUST require authentication (via Cloudflare Access or HTTP Basic Auth) to prevent public disclosure of unreviewed draft data.
 - The preview environment MUST emit HTTP header `X-Robots-Tag: noindex, nofollow, noarchive` and a restrictive `robots.txt` disallowing all crawling.
 
 ### 4.4 DNS and Proxy Configuration
 - DNS management and edge caching MUST be handled via Cloudflare.
-- DNSSEC MUST be enabled at the domain registrar and configured within Cloudflare.
-- The origin IP address on Hetzner MUST remain masked behind the Cloudflare proxy. Direct access to port 80/443 on the Hetzner origin from non-Cloudflare IP ranges SHOULD be blocked via firewall rules.
+- DNSSEC MUST be enabled at the domain registrar and configured within Cloudflare. Verification remains open.
+- The origin IP address on IONOS MUST remain masked behind the Cloudflare proxy. Direct access to port 80/443 on the IONOS origin from non-Cloudflare IP ranges SHOULD be blocked via firewall rules.
 
 ---
 
@@ -127,7 +138,7 @@ This decision record establishes these operational and editorial contracts.
 5. **No Third-Party CDNs or External Fonts:** All assets, stylesheets, scripts, and fonts MUST be self-hosted within the static artifact. No requests are made to Google Fonts, external Tailwind CDNs, or third-party telemetry endpoints.
 
 ### 5.3 Technical Access Logs
-- Cloudflare edge and Hetzner origin process standard HTTP connection metadata (client IP, request method, URI path, HTTP status, User-Agent, and timestamp) strictly under Article 6.1(f) GDPR (legitimate interest for network security, abuse defense, and availability monitoring).
+- Cloudflare edge and IONOS origin process standard HTTP connection metadata (client IP, request method, URI path, HTTP status, User-Agent, and timestamp) strictly under Article 6.1(f) GDPR (legitimate interest for network security, abuse defense, and availability monitoring).
 - Server logs MUST be rotated and permanently deleted within a maximum retention window of 14 days.
 - Client IP addresses in diagnostic logs SHOULD be truncated or anonymized. Technical logs MUST NOT be linked to user identity or behavioral profiles.
 
@@ -180,7 +191,7 @@ To satisfy the acceptance criteria for roadmap package `E0.3` and provide verifi
 | **Aggregate Edge Hit Ratio** | **>= 95.0%** | **>= 85.0%** (cold-cache recovery phase) | Total edge requests cached vs origin requests | Hit ratio < 85.0% steady-state |
 | **HTTP 5xx Error Rate** | **< 0.05%** | **< 0.50%** | HTTP status codes 500, 502, 503, 504 over total requests | 5xx rate > 0.1% over 5 min |
 | **HTTP 4xx Error Rate** | **< 0.50%** (excl. crawlers) | **< 1.00%** | Total 4xx responses over total valid page requests | 4xx rate > 2.0% |
-| **Origin CPU Utilization** | **< 30%** average | **< 70%** burst peak | Hetzner VM host / Docker stats | CPU > 80% over 5 min |
+| **Origin CPU Utilization** | **< 30%** average | **< 70%** burst peak | Active IONOS host / Docker stats | CPU > 80% over 5 min |
 | **Origin Memory Usage** | **< 150 MB** | **< 300 MB** | Static serving container memory consumption | RAM > 500 MB |
 
 ### 6.2 Cache Header Policy
@@ -201,7 +212,12 @@ To satisfy the acceptance criteria for roadmap package `E0.3` and provide verifi
 
 ## 7. Decision 5: Capacity Target and 10,000-Concurrent-Visitor Modeling
 
-Task 4.7 requires running a representative 10,000-concurrent-visitor scenario with cold-cache and burst phases. This model translates visitor concurrency into concrete infrastructure demands:
+Task 4.7 requires running a representative 10,000-concurrent-visitor scenario with cold-cache and burst phases. This model translates visitor concurrency into planned infrastructure demands.
+The active IONOS host has 1 vCPU / 1 GB RAM. The older 2-vCPU / 8-GB sizing
+below is a historical planning baseline; it is not measured capacity. Hetzner
+is a future migration option, not an active replacement. Retain the <= 200 req/s
+origin acceptance target until owners resolve the cold-cache estimate conflict.
+Actual-host tests and owner review remain required:
 
 ### 7.1 Concurrency and Traffic Modeling
 - **Visitor Population:** 10,000 active concurrent readers exploring comparisons and reviewing sources during high campaign interest.
@@ -209,10 +225,10 @@ Task 4.7 requires running a representative 10,000-concurrent-visitor scenario wi
 - **Gross Request Rate at Edge:** 1,000 to 2,000 HTTP requests per second (req/s) delivered to Cloudflare.
 - **Origin Demand Under Steady-State Cache (Hit Ratio >= 95%):**
   - Origin receives **50 to 100 requests per second**.
-  - Hetzner 2-vCPU / 8-GB VM serving static files from memory via a non-privileged web container (e.g., Caddy or Nginx) handles 1,000+ req/s with under 15% CPU load.
+  - Historical unverified estimate: a Hetzner 2-vCPU / 8-GB VM could handle 1,000+ req/s with under 15% CPU load while serving static files from memory.
 - **Origin Demand Under Cold-Cache / Burst Phase (Hit Ratio 85%):**
   - Origin receives **150 to 300 requests per second**.
-  - The 2-vCPU / 8-GB VM origin can comfortably absorb 300 req/s with CPU usage under 50% and memory consumption under 200 MB.
+  - Historical unverified estimate: the 2-vCPU / 8-GB origin could absorb 300 req/s with CPU under 50% and memory under 200 MB. These values are not acceptance evidence.
 - **Cold-Cache Protection Safeguards:**
   - Cloudflare Tiered Caching enabled to concentrate origin revalidations.
   - Origin connection limits and keep-alive connection reuse configured between Cloudflare and the origin.
@@ -222,6 +238,10 @@ Task 4.7 requires running a representative 10,000-concurrent-visitor scenario wi
 ## 8. Decision 6: Cost Ceiling and Financial Governance
 
 ### 8.1 Monthly Budget and Cost Breakdown
+
+This retained cost model uses the earlier Hetzner plan. It is not the active
+IONOS bill or a verified traffic allowance. Actual IONOS charges and limits need
+owner evidence. The monetary targets and ceiling below are unchanged.
 
 | Component | Provider / Tier | Expected Monthly Cost | Hard Monthly Ceiling |
 |---|---|---|---|
@@ -237,7 +257,7 @@ Task 4.7 requires running a representative 10,000-concurrent-visitor scenario wi
    - Warning Alert: Triggered when projected monthly cost reaches **€25.00** (50% of ceiling).
    - Critical Alert: Triggered when projected monthly cost reaches **€40.00** (80% of ceiling).
 3. **No Uncapped Metered Billing:** The project strictly forbids unmetered serverless functions, per-invocation APIs, or uncapped egress bandwidth providers that could result in unexpected cost spikes under traffic surges or denial-of-wallet attacks.
-4. **Traffic Allocation:** Hetzner provides 20 TB of free outbound traffic per month. Combined with >= 95% Cloudflare edge offload, monthly origin egress is projected below 50 GB, well within the free allowance.
+4. **Traffic Allocation:** The historical Hetzner plan assumed 20 TB of outbound traffic per month and projected below 50 GB of origin egress with >= 95% Cloudflare edge offload. This is not verified IONOS allowance or billing evidence.
 
 ---
 
@@ -247,7 +267,7 @@ To ensure clear operational accountability and satisfy acceptance criteria, the 
 
 | Role | Named Owner / Identifier | Responsibilities |
 |---|---|---|
-| **Infrastructure and Operational Owner** | Cesc (`cesc`) / Infrastructure Lead | Hetzner server configuration, Cloudflare DNS/edge routing, TLS certificate management, uptime monitoring, latency tracking, cost ceiling enforcement, and capacity response. |
+| **Infrastructure and Operational Owner** | Cesc (`cesc`) / Infrastructure Lead | IONOS server configuration, Cloudflare DNS/edge routing, TLS certificate management, uptime monitoring, latency tracking, cost ceiling enforcement, and capacity response. |
 | **Editorial and Methodology Owner** | Cesc and Project Partner | Candidate inclusion rules, party naming, source acquisition, editorial statement review, correction policy, and human release gates G0 and G2. |
 | **Security and Release Gatekeeper** | Release Engineering Lead | CI/CD pipeline integrity, container digest pinning, vulnerability scanning, secret prohibition, reproducible builds, and rollback execution. |
 | **Privacy and Data Protection Representative** | C2 Ventures Legal / Privacy Contact (`privacidad@elecciones2026.es`) | Compliance with GDPR and LOPDGDD, maintenance of the public privacy notice, handling user rights inquiries, and liaison with AEPD. |

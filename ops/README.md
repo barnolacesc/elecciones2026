@@ -10,7 +10,10 @@ OpenSpec tasks 4.4 and 4.6 remain open until their full live evidence exists.
 
 ## Release prerequisites
 
-Cesc and the project partner must record G0 approval, confirm the IONOS setup and Cloudflare delegation. G2/G3/G4 must approve content, accessibility/security,
+Cesc and the project partner must record G0 approval. The dated setup record
+confirms active IONOS private staging, Cloudflare delegation and successful
+manual delivery; remaining account and origin checks still need evidence.
+G2/G3/G4 must approve content, accessibility/security,
 image scan, and public launch. The repository's 2023 pilot is private rehearsal
 content; it is not approved public 2026 content. Keep it behind authenticated
 staging. Never apply the public cache rule to staging.
@@ -20,6 +23,11 @@ host nginx. Use key-only SSH, disable password authentication after verifying a 
 operator session, and retain IONOS console recovery. Docker access is equivalent
 to root; only the infrastructure owner runs release commands. No remote deploy
 job or credentials are added to PR CI.
+
+The earlier 2-vCPU/8-GB sizing is a planning reference. A later Hetzner migration
+is an option, not the active host. Neither establishes capacity on IONOS.
+The setup instructions below also apply to replacement hosts; the dated record
+states what is already verified.
 
 ## Origin firewall and TLS
 
@@ -33,7 +41,8 @@ job or credentials are added to PR CI.
    effective rules and both address-family probes. Keep console access while
    changing SSH/firewall rules. Do not rely on UFW to filter Docker published ports.
 2. The production Compose file binds port 8080 to `127.0.0.1` only. Install
-   `origin.conf` in host nginx's HTTP context, verify the approved ASCII hostname, and
+   `staging-origin.conf` for the active private preview. Use `origin.conf` only
+   after G4 public approval. Verify the approved ASCII hostname, and
    remove default host sites/listeners. Host nginx listens on 443 for IPv4/IPv6.
 3. Create an origin server certificate for the approved hostname (Cloudflare
    Origin CA or a public CA). Store cert/key at `/etc/elecciones2026/tls/origin.pem`
@@ -57,7 +66,8 @@ job or credentials are added to PR CI.
 
 ## Cloudflare configuration
 
-Activate the acquired zone; use proxied A and (only if IPv6 works) AAAA records
+The preview zone delegation and proxied A record are active. Public apex routing
+is a later G4 action: use proxied A and (only if IPv6 works) AAAA records
 for the apex. Enable DNSSEC after delegation. Configure edge redirects for HTTP,
 www, and acquired defensive domains to the HTTPS apex, preserving path/query.
 Do not point an unauthenticated preview hostname at private pilot content.
@@ -95,11 +105,15 @@ signoffs, build date, and release owner. Keep the preceding image available both
 locally and in the registry. Do not prune retained releases. The production file
 uses the same serving image as local preview; no build runs on the VM.
 
-From a reviewed checkout on the origin, after the applicable gate:
+Routine private delivery uses owner manual dispatch and restricted SSH; see
+[the delivery guide](IONOS-DELIVERY.md#4-github-settings-and-manual-approval).
+The following controller commands are for the infrastructure owner only, from the
+root-owned reviewed tooling installation after the applicable gate. They are not
+commands granted to the restricted deployer:
 
 ```sh
-sudo python3 ops/release.py --image APPROVED_REPOSITORY@sha256:APPROVED_DIGEST
-sudo python3 ops/release.py --rollback
+sudo python3 /opt/elecciones2026/release.py --image APPROVED_REPOSITORY@sha256:APPROVED_DIGEST
+sudo python3 /opt/elecciones2026/release.py --rollback
 ```
 
 The controller serializes switches, pulls before replacing the current container
@@ -115,7 +129,8 @@ without pulling or changing the current/previous release record. An unhealthy re
 still fails. Install the reviewed controller update as root before relying on this
 behavior; routine image delivery does not replace host tooling.
 
-After EVERY switch or rollback, verify the edge and purge mutable page/asset URLs
+After EVERY switch or rollback, verify the edge. Private staging uses no-store
+and cache bypass. For a public release, purge mutable page/asset URLs
 (including query variants), or use a reviewed zone purge when enumeration is
 incomplete. Purge requires the operator's scoped token outside Git. Browser
 copies can remain stale for the existing five-minute TTL. Measure end-to-end
