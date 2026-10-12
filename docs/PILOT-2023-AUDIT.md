@@ -4,6 +4,30 @@ Package: E1.4. Issue: [#42](https://github.com/c2ventures/elecciones2026/issues/
 Audit date: 2026-10-10. Election: `es-gen-2023`.
 Status: automated source inspection completed; human editorial and rights approval pending.
 
+## Current status — 2026-10-12
+
+Issue #42 is reopened. The owner does not recognize `sam-neutrality` and said
+that this reviewer may be hallucinated. No retained approval evidence was found
+for either named reviewer. Do not interpret `cesc-editorial` as owner signoff.
+
+Later changes restored approval flags for four housing statements and six
+relationships. Browser code also added eight measures with 32 party positions
+outside the validated content records. Those browser claims had no independently
+verified approval chain. They are withdrawn from generated output.
+
+All four statement records are drafts. All six relationships are invalidated.
+The four programme/source rights decisions are pending. Source URLs, hashes,
+source versions, and draft locators remain available for review. The new internal
+[withdrawal audit](../content/audits/2023-pilot-2026-10-12.json) preserves the prior
+record states and identifies the browser revision. It is not a signed correction
+or a source-rights decision. Existing Git history retains the browser drafts.
+
+Use [#70](https://github.com/c2ventures/elecciones2026/issues/70) for the proposed
+three-topic corpus, [#44](https://github.com/c2ventures/elecciones2026/issues/44)
+for preview acceptance, and [#71](https://github.com/c2ventures/elecciones2026/issues/71)
+for later approved delivery. Do not restore unsupported approvals to make a build
+pass. The earlier audit below is retained as historical evidence.
+
 ## Result
 
 Neither pilot statement has evidence of two distinct human approvals. The old

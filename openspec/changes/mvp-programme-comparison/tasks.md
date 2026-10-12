@@ -91,6 +91,32 @@
   - Acceptance pending: The owner selected local rehearsal while the remote production execution environment is unavailable. Supply the approved live Hetzner/Cloudflare target, G0 service/cost/workload approval, external generators, real cache/purge/expiry evidence, host CPU, and current billing/egress allowances. The finite local cache and short duration do not establish production capacity, mobile delivery, availability, or a verified €50/month budget. ADR-0001's 150–300 origin req/s cold estimate conflicts with the task's <= 200 limit; the runner applies the stricter limit until owners resolve it. The runbook defines generator and origin capacity responses; no VM upgrade, live load, deployment, or public release was performed. Keep task 4.7 open.
 - [ ] 4.8 Review repository documents and OpenSpec artifacts against the current ASD-STE100 controlled dictionary with a qualified reviewer; verify the review record before any strict-compliance claim.
 
+## E1.4 review withdrawal — 2026-10-12
+
+Issue #42 is reopened after the owner reported that `sam-neutrality` is unknown
+and may be hallucinated. Neither named approval is authenticated. Four statements
+are drafts, six relationships are invalidated, and all four source/programme
+rights decisions are pending. The audit preserves the prior record states.
+Eight browser measures and 32 party positions bypassed the content-record gate;
+they are removed from the shipped script. The pending state does not assert
+that programmes have no proposals. Tasks 1.2 and 2.3 remain open.
+
+GitHub is the remaining-work index: [#78](https://github.com/c2ventures/elecciones2026/issues/78).
+#70 owns the reviewed three-topic corpus; #44 owns preview acceptance; #71 owns
+approved delivery. Green post-#68 main CI proves engineering checks only. No
+human political approval, G2/G4 decision, or hosted activation is recorded here.
+
+Verification: 396 Python tests and 177 subtests pass; five tests skip because
+optional Docker/browser lanes are separate. Schema/fixture validation passes
+63 checks. The default 2023 build contains zero statements and relationships.
+Automated mobile regression passes 60/60 checks. Node sharing/quiz contracts pass 19/19 checks. A separate Docker preview at
+`http://127.0.0.1:48776` is healthy, runs as UID 101, and has a read-only root.
+Chromium verifies pending content and no overflow in nine housing/education/health
+cases at 360/390/430 px. The default quiz loads no scoring bundle at those widths.
+The previous local previews and the hosted image were not replaced.
+The owner must approve the exact tested withdrawal candidate before hosted delivery.
+The OpenSpec CLI is unavailable locally; existing artifacts were read directly.
+
 ## Workflow follow-up
 
 - Archive this OpenSpec change only after implementation and review evidence is complete.

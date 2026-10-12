@@ -3,13 +3,13 @@
   "election_id": "es-gen-2023",
   "candidacy_id": "pp",
   "programme_id": "prog-pp-2023-official",
-  "status": "official",
-  "banner_text_es": "Generales 2023 (piloto): programa oficial verificado",
-  "banner_text_en": "2023 general election pilot: official verified programme",
-  "has_verified_programme": true,
-  "topics_covered": ["housing"],
+  "status": "published-unverified",
+  "banner_text_es": "Generales 2023 (piloto): revisión humana y de derechos pendiente",
+  "banner_text_en": "2023 general election pilot: human and rights review pending",
+  "has_verified_programme": false,
+  "topics_covered": [],
   "topics_absent": [],
-  "total_statements": 1,
-  "last_audit_date": "2026-10-10",
-  "notes": "Posiciones publicables verificadas con citas oficiales."
+  "total_statements": 0,
+  "last_audit_date": "2026-10-12",
+  "notes": "No hay posiciones aprobadas. Esto no indica ausencia de propuestas en el programa."
 }

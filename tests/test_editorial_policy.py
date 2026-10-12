@@ -10,6 +10,7 @@ Verifies the acceptance criteria:
 from pathlib import Path
 import json
 import unittest
+from dataclasses import replace
 
 from elecciones2026.editorial import (
     MAX_QUOTE_CHARS,
@@ -108,7 +109,14 @@ class TestUnsupportedQuoteRejection(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.register = load_register(REGISTER_PATH)
+        # Synthetic positive-test rights stay separate from repository approval states.
+        register = load_register(REGISTER_PATH)
+        cls.register = replace(register, sources=[
+            replace(source, status="verified", rights_review=replace(
+                source.rights_review, status="link_and_short_quote"))
+            if source.election_id == "es-gen-2023" else source
+            for source in register.sources
+        ])
         cls.taxonomy = load_taxonomy(TAXONOMY_PATH)
 
     def test_valid_supported_quote_passes_review(self):
@@ -345,7 +353,14 @@ class TestEditorialFixtureFile(unittest.TestCase):
         cls.assertTrue(FIXTURES_PATH.exists(), f"Missing fixture file at {FIXTURES_PATH}")
         with open(FIXTURES_PATH, "r", encoding="utf-8") as f:
             cls.data = json.load(f)
-        cls.register = load_register(REGISTER_PATH)
+        # Synthetic positive-test rights stay separate from repository approval states.
+        register = load_register(REGISTER_PATH)
+        cls.register = replace(register, sources=[
+            replace(source, status="verified", rights_review=replace(
+                source.rights_review, status="link_and_short_quote"))
+            if source.election_id == "es-gen-2023" else source
+            for source in register.sources
+        ])
         cls.taxonomy = load_taxonomy(TAXONOMY_PATH)
 
     def test_valid_statement_fixture(self):

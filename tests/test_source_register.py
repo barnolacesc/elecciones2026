@@ -56,9 +56,7 @@ class TestSourceRegister(unittest.TestCase):
                 self.assertIsNone(s.direct_url, "Unpublished 2026 programmes must not have a direct_url")
 
     def test_task_1_2_pilot_programmes_registered(self) -> None:
-        """Verify Task 1.2 acceptance: register two lawful pilot programmes with official URLs,
-
-        dates, rights status and verified SHA-256.
+        """Verify source registration without asserting rights or human approval.
         """
         register = load_register(REGISTER_PATH)
         sources_2023 = get_sources_for_election(register, "es-gen-2023")
@@ -69,29 +67,29 @@ class TestSourceRegister(unittest.TestCase):
         # Verify PP 2023 pilot programme
         self.assertIn("pp", by_party)
         pp_source = by_party["pp"]
-        self.assertEqual(pp_source.status, "verified")
+        self.assertEqual(pp_source.status, "published-unverified")
         self.assertEqual(pp_source.retrieval_date, "2026-10-10")
         self.assertEqual(pp_source.sha256, "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108")
         self.assertIn("programa_electoral_pp_23j_feijoo_2023.pdf", pp_source.direct_url)
-        self.assertEqual(pp_source.rights_review.status, "link_and_short_quote")
+        self.assertEqual(pp_source.rights_review.status, "not_reviewed")
 
         # Verify ERC 2023 pilot programme
         self.assertIn("erc", by_party)
         erc_source = by_party["erc"]
-        self.assertEqual(erc_source.status, "verified")
+        self.assertEqual(erc_source.status, "published-unverified")
         self.assertEqual(erc_source.retrieval_date, "2026-10-10")
         self.assertEqual(erc_source.sha256, "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854")
         self.assertIn("e2023-programa.pdf", erc_source.direct_url)
-        self.assertEqual(erc_source.rights_review.status, "link_and_short_quote")
+        self.assertEqual(erc_source.rights_review.status, "not_reviewed")
 
         # Verify Sumar and PNV 2023 pilot programmes
         self.assertIn("sumar", by_party)
-        self.assertEqual(by_party["sumar"].status, "verified")
-        self.assertEqual(by_party["sumar"].rights_review.status, "link_and_short_quote")
+        self.assertEqual(by_party["sumar"].status, "published-unverified")
+        self.assertEqual(by_party["sumar"].rights_review.status, "not_reviewed")
 
         self.assertIn("pnv", by_party)
-        self.assertEqual(by_party["pnv"].status, "verified")
-        self.assertEqual(by_party["pnv"].rights_review.status, "link_and_short_quote")
+        self.assertEqual(by_party["pnv"].status, "published-unverified")
+        self.assertEqual(by_party["pnv"].rights_review.status, "not_reviewed")
 
     def test_election_scoping_isolation(self) -> None:
         """Verify that 2023 pilot programmes and 2026 sources belong to disjoint election sets."""

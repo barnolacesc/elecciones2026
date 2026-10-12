@@ -19,27 +19,10 @@
     "ERC reclama transferir plenas competencias para topar directamente los precios de los contratos de arrendamiento.",
     "El PNV prioriza la gestión de alquiler protegido por el Gobierno Vasco sin enfocar su eje central en topes de precios."
   ],
-  "review_status": "approved",
-  "reviews": [
-    {
-      "reviewer_id": "cesc-editorial",
-      "review_date": "2026-10-10",
-      "verdict": "approved",
-      "review_notes": "Revisión de consistencia comparativa.",
-      "reviewer_kind": "human",
-      "evidence_ref": "audit:issue-44:cesc-editorial"
-    },
-    {
-      "reviewer_id": "sam-neutrality",
-      "review_date": "2026-10-10",
-      "verdict": "approved",
-      "review_notes": "Neutralidad en la descripción de matices competenciales.",
-      "reviewer_kind": "human",
-      "evidence_ref": "audit:issue-44:sam-neutrality"
-    }
-  ],
-  "status": "active",
-  "invalidation_reason": null,
+  "review_status": "invalidated",
+  "reviews": [],
+  "status": "invalidated",
+  "invalidation_reason": "Human review evidence is unavailable. Owner does not recognize the second reviewer.",
   "invalidated_by_correction_id": null,
   "is_fixture": false
 }

@@ -87,41 +87,21 @@ test('private pilot keeps election context and never falls back to 2026 measures
   let shared;
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023',
     { share: async data => { shared = data; } }, true, true);
-  assert.match(b.nodes['measures-container'].innerHTML, /Regulación de precios de alquiler y acceso a la vivienda \(2023\)/);
+  assert.match(b.nodes['measures-container'].innerHTML, /Revisión de contenido pendiente/);
   assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /15%|Garantir el dret/);
   await b.click();
   assert.match(shared.title, /2023/);
   assert.match(shared.url, /election=es-gen-2023/);
 
-  // Check 2023 pilot measures render across all 8 topics
-  b.nodes['topic-select'].value = 'economy-work-tax';
-  b.nodes['topic-select'].handlers.change();
-  assert.match(b.nodes['measures-container'].innerHTML, /Regulación de la jornada laboral máxima y tiempo de trabajo \(2023\)/);
-
-  b.nodes['topic-select'].value = 'education';
-  b.nodes['topic-select'].handlers.change();
-  assert.match(b.nodes['measures-container'].innerHTML, /Gratuidad y universalización de la educación infantil de 0 a 3 años \(2023\)/);
-
-  b.nodes['topic-select'].value = 'health-social-services';
-  b.nodes['topic-select'].handlers.change();
-  assert.match(b.nodes['measures-container'].innerHTML, /Refuerzo de la Atención Primaria y Salud Mental en el SNS \(2023\)/);
-
-  b.nodes['topic-select'].value = 'climate-energy';
-  b.nodes['topic-select'].handlers.change();
-  assert.match(b.nodes['measures-container'].innerHTML, /Despliegue de energías renovables y modelo de transición energética \(2023\)/);
-
-  b.nodes['topic-select'].value = 'institutions-rights';
-  b.nodes['topic-select'].handlers.change();
-  assert.match(b.nodes['measures-container'].innerHTML, /Reforma del sistema de elección del CGPJ y gobernanza judicial \(2023\)/);
-
-  b.nodes['topic-select'].value = 'immigration';
-  b.nodes['topic-select'].handlers.change();
-  assert.match(b.nodes['measures-container'].innerHTML, /Gestión de flujos migratorios, vías de regularización y acogida \(2023\)/);
-
-  b.nodes['topic-select'].value = 'foreign-policy-eu';
-  b.nodes['topic-select'].handlers.change();
-  assert.match(b.nodes['measures-container'].innerHTML, /Autonomía estratégica europea, compromisos de defensa y política exterior \(2023\)/);
-  assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /15%|Garantir el dret/);
+  for (const topic of ['housing', 'economy-work-tax', 'education', 'health-social-services',
+    'climate-energy', 'institutions-rights', 'immigration', 'foreign-policy-eu']) {
+    b.nodes['topic-select'].value = topic;
+    b.nodes['topic-select'].handlers.change();
+    const html = b.nodes['measures-container'].innerHTML;
+    assert.match(html, /Revisión de contenido pendiente/);
+    assert.match(html, /La falta de contenido aprobado no indica/);
+    assert.doesNotMatch(html, /btn-open-manifesto|party-statement|15%|Garantir el dret/);
+  }
 });
 
 test('empty-measures fallback is rendered when a topic has no registered measures', () => {
@@ -149,7 +129,7 @@ test('empty-measures fallback is rendered when a topic has no registered measure
   const context = vm.createContext({ window, document, navigator: {}, URL, URLSearchParams });
   vm.runInContext(fs.readFileSync('site/sharing.js', 'utf8'), context);
   vm.runInContext(code, context);
-  assert.match(nodes['measures-container'].innerHTML, /No hay medidas registradas todavía/);
+  assert.match(nodes['measures-container'].innerHTML, /Revisión de contenido pendiente/);
 });
 
 test('native share success, cancellation and rejection expose honest status and copy fallback', async () => {
@@ -190,12 +170,9 @@ test('unsupported or insecure native share uses clipboard; denied clipboard sele
   }
 });
 
-test('in-app manifesto excerpt viewer button and initiative context are rendered', () => {
+test('pending pilot content exposes no quote viewer or comparative assertion', () => {
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023', {}, true, true);
   const html = b.nodes['measures-container'].innerHTML;
-  assert.match(html, /class="btn-open-manifesto"/);
-  assert.match(html, /Leer extracto/);
-  assert.match(html, /class="measure-context"/);
-  assert.match(html, /class="measure-axes"/);
-  assert.match(html, /data-party-name="Partido Popular/);
+  assert.match(html, /Revisión de contenido pendiente/);
+  assert.doesNotMatch(html, /btn-open-manifesto|Leer extracto|measure-context|measure-axes/);
 });
