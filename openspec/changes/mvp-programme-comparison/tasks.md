@@ -181,3 +181,23 @@ manual acceptance stays open; this branch is not a hosted release.
 CI follow-up: three sharing assertions still expected the previous empty-state
 heading. They now check publication-pending wording while retaining election,
 quote-exclusion and sharing checks. All 19 Node sharing/quiz contracts pass.
+## E1.4 reported human approvals — 2026-10-12
+
+The owner reports his PP/ERC approval and a full screen review and approval by
+`carlesfito`, the other C2 Ventures member. Two owner-only private records bind
+the reports to the six unchanged PR #87 candidate hashes. The content records
+retain both human reviewer identities and private evidence references. The date
+records when the approval was reported, not an independently established review
+date. See `docs/pilot-review/2023/README.md` for the evidence boundary.
+
+All six candidates remain `under_review`; the static/browser publish set still
+contains zero statements and zero relationships. Verified publication dates,
+explicit source-rights decisions remain open. Reviewer affiliation declarations
+are retained separately in the private review store. No programme verification, rights permission or relationship
+approval is restored. Tasks 1.2, 2.3 and the real-corpus acceptance task remain open.
+
+Validation: Python 3.14 pytest with both pilot and budget browser lanes enabled
+passes 430 tests and 251 subtests; 10 optional Docker/private-worker checks skip.
+Schema validation passes 67 checks and editorial build validation passes six
+checks. The existing rehearsal assertion now checks authentic reported reviewer
+identities and continued unpublished status. `git diff --check` passes.
