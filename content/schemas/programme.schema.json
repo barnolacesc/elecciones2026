@@ -76,6 +76,7 @@
         "link_and_short_quote",
         "verified_public_manifesto",
         "verified_quotation_permitted",
+        "verified_link_only",
         "public_domain",
         "permission_denied",
         "pending"

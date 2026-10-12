@@ -85,6 +85,10 @@
         },
         "terms_notes": {
           "type": "string"
+        },
+        "evidence_ref": {
+          "type": ["string", "null"],
+          "description": "Private reference to the source-specific reuse decision."
         }
       }
     },

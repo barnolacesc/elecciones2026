@@ -25,6 +25,7 @@ from elecciones2026.editorial import (
     MAX_QUOTE_CHARS,
     MAX_QUOTE_WORDS,
     PERMITTED_QUOTE_RIGHTS,
+    PERMITTED_SUMMARY_RIGHTS,
     RESTRICTED_QUOTE_RIGHTS,
 )
 from elecciones2026.methodology import (
@@ -272,26 +273,38 @@ def load_and_validate_site_data(
                 validation_errors.append(f"Statement '{stmt.id}': source URL/version must resolve to one election-scoped source.")
             else:
                 src = sources[0]
-                if src.status != "verified" or src.rights_review.status not in PERMITTED_QUOTE_RIGHTS:
-                    validation_errors.append(f"Statement '{stmt.id}': source verification and quotation rights are not approved.")
+                allowed_rights = PERMITTED_QUOTE_RIGHTS if stmt.quote is not None else PERMITTED_SUMMARY_RIGHTS
+                if src.status != "verified" or src.rights_review.status not in allowed_rights:
+                    validation_errors.append(f"Statement '{stmt.id}': source verification and applicable rights are not approved.")
                 rights = src.rights_review
                 validation_errors.extend(ReviewRecord(
                     rights.reviewed_by or "", rights.review_date or "", "approved", rights.terms_notes,
                 ).validate())
                 if PLACEHOLDER_REVIEWER_PATTERN.match(rights.reviewed_by or ""):
-                    validation_errors.append(f"Statement '{stmt.id}': placeholder source rights reviewer cannot authorize quotation.")
+                    validation_errors.append(f"Statement '{stmt.id}': placeholder source rights reviewer cannot authorize publication.")
+                if not rights.evidence_ref:
+                    validation_errors.append(f"Statement '{stmt.id}': source-specific reuse decision requires an evidence reference.")
+                if not rights.terms_notes.strip():
+                    validation_errors.append(f"Statement '{stmt.id}': source-specific reuse decision requires its scope.")
                 programme_path = content_dir / "examples" / "programmes"
                 programmes = [json.loads(p.read_text()) for p in sorted(programme_path.glob("*.json"))]
                 matches = [p for p in programmes if p.get("programme_id") == stmt.programme_id]
                 if len(matches) != 1 or any(matches[0].get(k) != value for k, value in (
                     ("election_id", election_id), ("candidacy_id", stmt.party_id),
                     ("version", src.version), ("sha256", src.sha256),
-                    ("status", "official"), ("rights_status", "verified_quotation_permitted"),
+                    ("status", "official"),
                     ("is_fixture", False),
                 )):
                     validation_errors.append(f"Statement '{stmt.id}': programme provenance/hash/rights do not match its source.")
+                elif matches[0].get("rights_status") != (
+                    "verified_quotation_permitted" if src.rights_review.status in PERMITTED_QUOTE_RIGHTS
+                    else "verified_link_only"
+                ):
+                    validation_errors.append(f"Statement '{stmt.id}': programme rights do not match the source decision.")
                 elif not matches[0].get("publication_date") or not src.publication_date:
                     validation_errors.append(f"Statement '{stmt.id}': approved source and programme require publication dates.")
+                elif matches[0]["publication_date"] != src.publication_date:
+                    validation_errors.append(f"Statement '{stmt.id}': programme and source publication dates differ.")
 
         if strict_approved:
             # Rejection of unreviewed or draft statements
@@ -794,6 +807,17 @@ def render_status_badge(ctx: SiteContext, status: str) -> str:
     return f'<span class="{badge_class}">{escape(label)}</span>'
 
 
+def rights_status_label(status: str) -> str:
+    """Describe source reuse accurately in Spanish without implying publication."""
+    return {
+        "not_reviewed": "Uso pendiente de revisión",
+        "link_only": "Solo resúmenes y enlaces; sin citas",
+        "link_and_short_quote": "Enlaces y citas breves autorizadas",
+        "public_domain": "Dominio público verificado",
+        "permission_denied": "Uso no autorizado",
+    }.get(status, "Uso pendiente de revisión")
+
+
 def render_caveat(ctx: SiteContext, qualification: str) -> str:
     """Render qualification note."""
     label = escape(ctx.i18n["statement"]["caveat_label"])
@@ -853,7 +877,7 @@ def render_source_coverage_card(ctx: SiteContext, src: SourceRecord) -> str:
     retrieval_date = escape(src.retrieval_date) if src.retrieval_date else "Pendiente"
     version = escape(src.version) if src.version else "—"
     hash_code = f"<code>{src.sha256[:12]}...</code>" if src.sha256 else "—"
-    rights = escape(src.rights_review.status) if src.rights_review else "not_reviewed"
+    rights = escape(rights_status_label(src.rights_review.status)) if src.rights_review else "Uso pendiente de revisión"
 
     if src.official_url:
         link_html = f'<a href="{escape(src.official_url)}" class="source-citation" target="_blank" rel="noopener noreferrer"><span>Enlace oficial</span> <span aria-hidden="true">↗</span> <span class="sr-only">(se abre en una ventana nueva)</span></a>'
@@ -883,7 +907,7 @@ def render_source_coverage_card(ctx: SiteContext, src: SourceRecord) -> str:
           <span class="coverage-meta-value">{hash_code}</span>
         </div>
         <div class="coverage-meta-row">
-          <span class="coverage-meta-label">Derechos cita:</span>
+          <span class="coverage-meta-label">Uso autorizado:</span>
           <span class="coverage-meta-value">{rights}</span>
         </div>
       </div>
@@ -962,7 +986,7 @@ def render_party_card(
                 </button>
               </div>"""
 
-    return f"""<article class="{card_class}" aria-labelledby="party-{party_letter.lower()}-name">
+    return f"""<article class="{card_class}" data-statement-id="{escape(stmt.id)}" aria-labelledby="party-{party_letter.lower()}-name">
             <div class="party-card-header">
               <span class="{pill_class}" aria-hidden="true">{party_letter}</span>
               <div class="party-card-meta">
@@ -1010,9 +1034,12 @@ def render_base(
         <span class="brand-text">Generales<span class="brand-year">2023</span></span>
         <span class="pilot-badge">Privado</span>
       </a>"""
-        preview_banner_text = "ENSAYO PILOTO PRIVADO · Revisión pendiente"
+        preview_banner_text = ("ENSAYO PILOTO PRIVADO · Cobertura parcial"
+                               if ctx.statements else "ENSAYO PILOTO PRIVADO · Publicación pendiente")
         footer_org = "Generales 2023 (piloto) · Ensayo privado y confidencial"
-        footer_values = "Revisión humana y de derechos pendiente · No satisface G2 para 2026"
+        footer_values = ("Posiciones visibles verificadas · No satisface G2 para 2026"
+                         if ctx.statements else
+                         "Revisión humana y de derechos pendiente · No satisface G2 para 2026")
         nav_feedback_link = ""
         if "Generales 2023" not in title:
             title = f"{title} · Generales 2023"
@@ -1305,7 +1332,9 @@ def render_home_page(ctx: SiteContext) -> str:
     </details>"""
         selector_eyebrow = "01 / COMPARAR · GENERALES 2023"
         page_title = "Generales 2023 · Comparador de programas (Ensayo piloto)"
-        page_description = "Generales 2023 (piloto) · Ensayo privado. Revisión humana y de derechos pendiente; sin posiciones aprobadas."
+        page_description = ("Generales 2023 (piloto) · Ensayo privado con posiciones revisadas y fuentes originales."
+                            if ctx.statements else
+                            "Generales 2023 (piloto) · Ensayo privado. Publicación de posiciones pendiente.")
     else:
         active_rel = (
             ctx.relationships.get("rel-housing-rental-regulation-party-a-party-b")
@@ -1884,7 +1913,7 @@ def render_sources_page(ctx: SiteContext) -> str:
           <td style="padding: var(--space-3); border-bottom: 1px solid var(--color-border-subtle);">{escape(src.version)}</td>
           <td style="padding: var(--space-3); border-bottom: 1px solid var(--color-border-subtle);">{escape(src.retrieval_date)}</td>
           <td style="padding: var(--space-3); border-bottom: 1px solid var(--color-border-subtle);">{hash_code}</td>
-          <td style="padding: var(--space-3); border-bottom: 1px solid var(--color-border-subtle);">{escape(src.rights_review.status)}</td>
+          <td style="padding: var(--space-3); border-bottom: 1px solid var(--color-border-subtle);">{escape(rights_status_label(src.rights_review.status))}</td>
           <td style="padding: var(--space-3); border-bottom: 1px solid var(--color-border-subtle);">{url_link}</td>
         </tr>"""
 

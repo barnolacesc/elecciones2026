@@ -43,6 +43,7 @@ MAX_QUOTE_CHARS = 300
 
 # Rights statuses that permit verbatim quotation on the platform
 PERMITTED_QUOTE_RIGHTS = {"link_and_short_quote", "public_domain"}
+PERMITTED_SUMMARY_RIGHTS = PERMITTED_QUOTE_RIGHTS | {"link_only"}
 
 # Disallowing rights statuses
 RESTRICTED_QUOTE_RIGHTS = {"link_only", "permission_denied", "not_reviewed"}

@@ -38,6 +38,16 @@ Every published position SHALL belong to exactly one of the 8 core topics define
 - **THEN** reviewers classify it under the topic matching its primary operational mechanism (`housing`), and document the classification rationale.
 
 ### Requirement: Verbatim quotation limits and unsupported quote rejection
+An explicitly reviewed `link_only` source MAY support a neutral, quote-free editorial summary and outbound link when its programme provenance, publication date, source-specific reuse decision and two version-bound human approvals pass. `not_reviewed` and `permission_denied` SHALL NOT support publication. Programme rights status SHALL agree with the source decision. This summary rule does not permit a verbatim quote.
+
+#### Scenario: Reviewed link-only summary
+- **WHEN** a verified 2023 source has a dated, evidenced `link_only` decision and matching official programme, and two humans approve the exact quote-free statement version
+- **THEN** the statement may enter the private 2023 publish set, with its source locator and qualifications.
+
+#### Scenario: Undated report is not an approval date
+- **WHEN** an owner reports another review without the actual review date
+- **THEN** the report and its exact-version fingerprint remain audit material, but the statement cannot become approved until the date is established.
+
 Verbatim quotations extracted from official sources SHALL NOT exceed 40 words or 300 characters, SHALL be enclosed in quotation marks, and SHALL include exact locators (page or section). The system SHALL reject any statement containing an unsupported quote where the source is unverified, rights do not permit quotation, locators are missing, or quotation limits are exceeded.
 
 #### Scenario: Compliant verbatim quotation
@@ -73,4 +83,3 @@ When a source statement is corrected or marked invalidated, all comparison relat
 #### Scenario: Statement correction triggers relationship invalidation
 - **WHEN** a published statement is updated via a dated `CorrectionRecord`
 - **THEN** all comparative relationships linking that statement are marked `status: "invalidated"` and removed from active public comparison output.
-

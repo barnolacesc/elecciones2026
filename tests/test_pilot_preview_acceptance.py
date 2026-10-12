@@ -57,7 +57,7 @@ class PilotArtifactTests(unittest.TestCase):
                     self.assertEqual(metadata.social_urls, metadata.canonicals)
                     self.assertIn('data-election="es-gen-2023"', html)
                     self.assertIn('ENSAYO PILOTO PRIVADO', html)
-                    self.assertIn('Revisión humana y de derechos pendiente', html)
+                    self.assertIn('Solo posiciones verificadas', html)
                     self.assertRegex(html, r'<title>[^<]*2023[^<]*</title>')
                     self.assertNotIn('Partido Ejemplo A', html)
                     for quote in quotes:
