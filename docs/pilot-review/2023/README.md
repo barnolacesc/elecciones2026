@@ -79,7 +79,7 @@ The six pages below were rendered locally from the checksum-verified original PD
 | `stmt-pilot-pp-health-2023` | 45 | 43 | Measure 120, third bullet | New draft |
 | `stmt-pilot-erc-health-2023` | 61 | 60 | SALUT, c), fourth bullet | New draft |
 | `stmt-pilot-pp-education-2023` | 50 | 48 | Measure 146 | New draft |
-| `stmt-pilot-erc-education-2023` | 128 | 127 | EDUCACIÓ, c), fourth bullet, section continues from PDF page 127 | New draft |
+| `stmt-pilot-erc-education-2023` | 128 | 127 | EDUCACIÓ, c), fourth bullet on PDF page 128; section starts on PDF page 127 | New draft |
 
 Each content record links the registered original URL and local `23J-v1` version. Resolve its PDF checksum through its programme record and the inventory. Housing quotations were removed because source rights remain pending. Their previous text is retained in Git history and the existing [audit records](../../../content/audits/2023-pilot-2026-10-12.json); no approved correction is claimed. The summaries and qualification fields remain draft material.
 
