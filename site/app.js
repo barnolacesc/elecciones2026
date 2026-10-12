@@ -2365,10 +2365,12 @@
     function renderComparison() {
       const isValid = validateSelection();
       if (!isValid) {
+        if (window.BudgetContext) window.BudgetContext.clear();
         return;
       }
 
       const topicKey = topicSelect.value;
+      if (window.BudgetContext) window.BudgetContext.update(topicKey);
       const partyAKey = partyASelect.value;
       const partyBKey = partyBSelect.value;
 

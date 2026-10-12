@@ -89,6 +89,10 @@ class SiteContext:
     corrections: list[CorrectionRecord]
     i18n: dict[str, Any]
     templates_dir: Path
+    budget_payload: Optional[dict] = None
+    budget_manifest: Optional[dict] = None
+    budget_bundle_id: Optional[str] = None
+    budget_projection_id: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -731,6 +735,9 @@ def render_base(
     result = template
     for placeholder, val in replacements.items():
         result = result.replace(placeholder, val)
+    if ctx.budget_payload is not None:
+        from elecciones2026.budget_view import stylesheet_path
+        result = result.replace('</head>', f'<link rel="stylesheet" href="{root_path}{stylesheet_path(ctx.root_dir / "site")}">\n</head>')
     return result
 
 
@@ -752,6 +759,18 @@ def render_share_controls(ctx: SiteContext) -> str:
             <button id="copy-link-button" class="btn-share" type="button">{escape(ctx.i18n['share']['copy_button'])}</button>
           </div>
         </div>"""
+
+
+def render_budget_context(ctx: SiteContext, topic_id: str, root_path: str, comparison: bool = False) -> str:
+    """Render one shared topic region; absent bundles add no mandatory payload."""
+    if ctx.budget_payload is None:
+        return ""
+    from elecciones2026.budget_view import render_context, topic_projection
+    projection = topic_projection(ctx.budget_payload, ctx.budget_manifest, topic_id)
+    attributes = (f'id="budget-context" data-topic="{escape(topic_id)}" '
+                  f'data-base="{root_path}static/budget-topics/{ctx.budget_projection_id}/" '
+                  f'data-budget-url="{root_path}presupuestos/2023/"') if comparison else ''
+    return f'<section class="budget-context" {attributes} aria-label="Contexto presupuestario oficial">' + render_context(projection, root_path + 'presupuestos/2023/') + '</section>'
 
 
 def render_home_page(ctx: SiteContext) -> str:
@@ -977,10 +996,12 @@ def render_home_page(ctx: SiteContext) -> str:
 {measures_content}
         </div>
 
+{render_budget_context(ctx, "housing", "./", comparison=True)}
 {render_share_controls(ctx)}
       </section>
     </section>
     <script src="./sharing.js" defer></script>
+    {'<script src="./budget-context.js" defer></script>' if ctx.budget_payload is not None else ""}
     <script src="./app.js" defer></script>
 
     <section class="lower-sections">
@@ -1132,7 +1153,8 @@ def render_topic_detail(ctx: SiteContext, topic: Topic) -> str:
 
     {render_share_controls(ctx)}
     <script src="../../sharing.js" defer></script>
-    {"".join(subtopics_sections)}"""
+    {"".join(subtopics_sections)}
+    {render_budget_context(ctx, topic.id, "../../")}"""
 
     return render_base(
         ctx=ctx,
@@ -1672,10 +1694,11 @@ def build_site(
     Uses an atomic staging directory to ensure that any validation failure
     aborts without creating a partially published site.
     """
+    budget_manifest, budget_payload = None, None
     if budget_bundle is not None:
         from elecciones2026.budget import BudgetError, load_bundle
         try:
-            load_bundle(budget_bundle, (content_dir or root_dir / "content") / "taxonomy.json")
+            budget_manifest, budget_payload = load_bundle(budget_bundle, (content_dir or root_dir / "content") / "taxonomy.json")
         except (BudgetError, ValueError, KeyError, OSError) as error:
             raise BuildValidationError(f"Budget validation failed: {error}") from error
 
@@ -1689,6 +1712,17 @@ def build_site(
         custom_statements=custom_statements,
         custom_relationships=custom_relationships,
     )
+
+    ctx.budget_payload = budget_payload
+    ctx.budget_manifest = budget_manifest
+    ctx.budget_bundle_id = Path(budget_bundle).name if budget_bundle is not None else None
+    budget_projections = {}
+    if budget_payload is not None:
+        from elecciones2026.budget import canonical, digest
+        from elecciones2026.budget_view import topic_projection
+        budget_projections = {topic.id: topic_projection(budget_payload, budget_manifest, topic.id)
+                              for topic in ctx.taxonomy.topics}
+        ctx.budget_projection_id = digest(canonical(budget_projections))
 
     # Use atomic staging directory
     staging_dir = output_dir.parent / f".tmp_{output_dir.name}_{os.getpid()}"
@@ -1741,6 +1775,40 @@ def build_site(
         write_file_deterministic(staging_dir / "correcciones" / "index.html", corr_html)
         routes.append((f"{ctx.canonical_base}/correcciones/", ctx.build_date, "daily"))
 
+        if budget_bundle is not None:
+            from elecciones2026.budget import copy_reviewed_bundle
+            try:
+                copy_reviewed_bundle(budget_bundle, staging_dir, ctx.content_dir / "taxonomy.json")
+            except (BudgetError, ValueError, KeyError, OSError) as error:
+                raise BuildValidationError(f"Budget staging failed: {error}") from error
+
+        if ctx.budget_payload is not None:
+            from elecciones2026.budget import canonical
+            from elecciones2026.budget_view import render_budget_content, topic_projection
+            from elecciones2026.budget_chart import share_svg
+            labels = {topic.id: topic.name_es for topic in ctx.taxonomy.topics}
+            chart_svg = share_svg(ctx.budget_payload, ctx.budget_manifest, ctx.budget_bundle_id)
+            chart_id = hashlib.sha256(chart_svg.encode('utf-8')).hexdigest()
+            chart_path = f"static/budget-charts/{chart_id}/grafico.svg"
+            write_file_deterministic(staging_dir / chart_path, chart_svg)
+            budget_content = render_budget_content(ctx.budget_payload, ctx.budget_manifest, ctx.budget_bundle_id, labels,
+                                                   chart_url='../../' + chart_path)
+            budget_html = render_base(ctx, "PGE 2023: presupuesto aprobado · Contexto histórico",
+                                     "Presupuesto aprobado consolidado de 2023, capítulos 1–8. Contexto histórico con fuentes oficiales.",
+                                     "/presupuestos/2023/", budget_content + render_share_controls(ctx)
+                                     + '<script src="../../sharing.js" defer></script><script src="../../budget-chart.js" defer></script>', "../../")
+            write_file_deterministic(staging_dir / "presupuestos/2023/index.html", budget_html)
+            routes.append((f"{ctx.canonical_base}/presupuestos/2023/", ctx.build_date, "yearly"))
+            for topic in ctx.taxonomy.topics:
+                projection = budget_projections[topic.id]
+                target = staging_dir / "static/budget-topics" / ctx.budget_projection_id / f"{topic.id}.json"
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(canonical(projection))
+            shutil.copy2(root_dir / "site/budget-context.js", staging_dir / "budget-context.js")
+            from elecciones2026.budget_view import copy_stylesheet
+            copy_stylesheet(root_dir / "site", staging_dir)
+            shutil.copy2(root_dir / "site/budget-chart.js", staging_dir / "budget-chart.js")
+
         # 9. Sitemap & crawler files
         sitemap_xml = render_sitemap(ctx, routes)
         write_file_deterministic(staging_dir / "sitemap.xml", sitemap_xml)
@@ -1768,13 +1836,6 @@ def build_site(
         preview_target = staging_dir / preview_image_path(root_dir)
         preview_target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(site_src / "assets" / "social-preview.png", preview_target)
-
-        if budget_bundle is not None:
-            from elecciones2026.budget import copy_reviewed_bundle
-            try:
-                copy_reviewed_bundle(budget_bundle, staging_dir, ctx.content_dir / "taxonomy.json")
-            except (BudgetError, ValueError, KeyError, OSError) as error:
-                raise BuildValidationError(f"Budget staging failed: {error}") from error
 
         # Do not copy accidentally misplaced private sources or retain them in output.
         reject_private_source_artifacts(staging_dir)
