@@ -34,9 +34,9 @@ The public MVP operates on a zero-personal-data, static-serving model:
 
 ## Security and privacy contacts
 
-- **Security reports:** `seguridad@elecciones2026.es` (provisional placeholder email pending domain purchase; report via repository maintainers in interim)
-- **Privacy inquiries and rights:** `privacidad@elecciones2026.es` (Data Controller: C2 Ventures; provisional placeholder pending domain purchase)
-- **Vulnerability disclosure policy:** Coordinate disclosure with 48-hour initial response. Good-faith security research testing against staging (`preview.xn--eleccionesespaa2026-83b.es` pending activation or authenticated preview environments) without disrupting service is welcomed under standard safe harbor principles.
+- **Security reports:** `seguridad@elecciones2026.es` (provisional mailbox; registration of the new domain does not verify mail routing; report via repository maintainers in interim)
+- **Privacy inquiries and rights:** `privacidad@elecciones2026.es` (Data Controller: C2 Ventures; provisional mailbox; mail routing not verified)
+- **Vulnerability disclosure policy:** Coordinate disclosure with 48-hour initial response. Good-faith security research testing against staging (the active authenticated `preview.xn--eleccionesespaa2026-83b.es` environment) without disrupting service is welcomed under standard safe harbor principles.
 
 ## Publication gates
 
@@ -52,7 +52,7 @@ Owners for security and operational controls:
 
 Reviewable origin configuration, immutable release switching, monitoring setup,
 and live verification requirements are in [the operations runbook](../ops/README.md).
-No infrastructure was provisioned or public content deployed by this package.
+The initial E3.3 preparation did not provision infrastructure. Later owner setup and private delivery are recorded in [the dated setup record](../ops/SERVER-MIGRATION.md). No public launch is recorded.
 OpenSpec tasks 4.4 and 4.6 remain open until their live release evidence is reviewed.
 
 ## E3.3 delivery boundary
@@ -60,6 +60,6 @@ OpenSpec tasks 4.4 and 4.6 remain open until their live release evidence is revi
 [IONOS setup](../ops/IONOS-DELIVERY.md) defines private GHCR authentication, strict
 SSH delivery, origin Basic authentication for private staging, and Cloudflare
 TLS. Main CI publishes candidates; only the approved operator can dispatch
-staging delivery. The public route, independent review, alerts and measured
+staging delivery. The active origin is IONOS Ubuntu, 1 vCPU / 1 GB RAM. Cloudflare delegation, proxied preview DNS, owner-reported Full (strict)/global AOP, Basic authentication and no-store/noindex are recorded in the setup guide. [Delivery run 38182379207](https://github.com/c2ventures/elecciones2026/actions/runs/38182379207) passed approval, restricted SSH, origin health and exact external home-content verification. Manual dispatch is owner self-approval because required environment reviewers are unavailable on the private repository plan. These checks do not establish independent editorial approval or full origin protection. The older 2-vCPU/8-GB baseline and the later Hetzner migration option are planning references. The public route, independent review, live rollback/restore, alerts and measured
 capacity remain release gates. Existing contact emails above remain provisional;
 the new domain purchase does not establish working mailboxes.

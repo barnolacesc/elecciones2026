@@ -8,7 +8,7 @@ Status: planning complete; restricted private staging activation and hosted exte
 - [ ] 1.2 Record owner-confirmed finance-service retirement and backup/restore evidence for retained data; verify the selected loopback port is free before activation without deleting finance data.
 - [ ] 1.3 Record the owner-selected GitHub-hosted runner and public key-only SSH path with connection rate limiting; verify hosted-runner reachability, denial of unauthorized keys and passwords, and preserved deployer restrictions.
 - [ ] 1.4 Record unavailable required reviewers on the private repository plan, the owner-selected manual dispatch gate, main-only environment rules and protected secrets; demonstrate that missing operator approval blocks release.
-- [ ] 1.5 Reconcile IONOS, 1-vCPU/1-GB and domain references in both roadmaps, ADR-0001, architecture/security/operations documentation and OpenSpec context; review consistency and retain original release targets until explicitly revised by owners.
+- [x] 1.5 Reconcile IONOS, 1-vCPU/1-GB and domain references in both roadmaps, ADR-0001, architecture/security/operations documentation and OpenSpec context; review consistency and retain original release targets until explicitly revised by owners.
 
 ## 2. Publish an immutable release candidate
 
@@ -210,3 +210,36 @@ launch or complete E3.3 acceptance is claimed.
 
 Documentation checks: local file links and 21 shell examples validate without
 executing host commands; strict OpenSpec validation and whitespace checks pass.
+
+## Operations documentation reconciliation — 2026-10-12
+
+E3.3 / issue #81: task 1.5 is complete. Reviewed both roadmaps, ADR-0001,
+architecture, security, delivery/operations guides and OpenSpec context against
+`ops/SERVER-MIGRATION.md` and successful delivery run 38182379207. The OpenSpec
+roadmap already records private IONOS hosting; no edit was needed there. Active
+references now state IONOS Ubuntu, 1 vCPU / 1 GB RAM, active Cloudflare delegation,
+proxied preview DNS, owner-reported TLS/AOP, Basic authentication and successful
+manual private delivery. Historical pre-activation evidence remains dated and
+explicitly superseded. Earlier 2-vCPU/8-GB sizing and Hetzner cost/throughput
+estimates remain historical plans; Hetzner migration remains a future option.
+
+Original service/cost targets and proposed ADR approval status are unchanged.
+The retained public privacy notice and source-rights policy are unchanged. No
+editorial approval or public-release acceptance is inferred from private delivery.
+Controller examples now use installed root-owned paths and distinguish operator
+access from restricted deployer requests.
+
+Verification: nine existing ADR contract tests and ten existing operations tests
+pass. All 37 local links/anchors in the reviewed Markdown files resolve. Five
+shell examples pass `bash -n` without execution. OpenSpec YAML context indentation
+is valid; the OpenSpec CLI and PyYAML are unavailable in this worktree environment,
+so strict CLI/schema validation was not run. `git diff --check` passes. GitHub
+run metadata was read to confirm success; no host commands, deployment, DNS or
+account changes were performed.
+
+Remaining owner evidence: G0/G2/G3/G4 signoffs, real editorial/rights approvals,
+retained-data backup/restore, DNSSEC and other account settings, full external
+origin probes, monitoring/alert receipt, live rollback/fresh-host restore,
+actual-host capacity and billing. Tasks 4.4/4.6 in the MVP and all other incomplete
+IONOS tasks remain open. The successful run verifies its dated artifact, not
+later merged revisions or the current served site.

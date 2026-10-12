@@ -4,12 +4,20 @@ Status: the owner has completed registry login, Cloudflare delegation, origin TL
 authenticated preview nginx and SSH/UFW setup. Private staging activation and
 hosted external verification passed in delivery run 38182379207.
 The [server migration runbook](SERVER-MIGRATION.md) records the verified setup,
-remaining limits and steps to reproduce it on Hetzner. Delivery stays
-blocked until repository variable `DEPLOYMENT_READY=true` is deliberately set.
+remaining limits and a future Hetzner migration option. The owner set
+`DEPLOYMENT_READY=true` before the successful private delivery. Each later delivery
+still requires the owner-selected manual dispatch and artifact-linked approval.
+Set the variable false during preparation or migration; it is an activation
+prerequisite, not public-release approval.
 The target is Ubuntu 22.04 AMD64, 1 vCPU and 1 GB RAM, at `195.20.230.75`.
 The owner retired the finance service and rebooted the host. Preserve unrelated
 volumes. Retained-data backup, full external firewall probes, monitoring and capacity evidence remain
 open in the OpenSpec task record.
+
+The earlier 2-vCPU/8-GB host sizing remains a planning baseline. It does not
+establish capacity on the active IONOS host. Service and cost targets remain
+unchanged. The sections below are repeatable setup instructions; they do not
+mean the verified preview setup is still pending.
 
 ## 1. DNS delegation: keep DonDominio as registrar
 
@@ -122,7 +130,7 @@ unauthenticated connection limits. Rate limiting reduces bursts, not distributed
 attacks or vulnerabilities. The IP-specific operator allow rule intentionally
 bypasses the general rate limit for the approved operator address.
 
-Set repository variable `DEPLOYMENT_READY=true` only after registry pull, TLS,
+For a new setup, set repository variable `DEPLOYMENT_READY=true` only after registry pull, TLS,
 DNS, authenticated staging, firewall and hosted-runner connectivity are verified.
 Until then dispatch fails in authorization without exposing production secrets.
 
@@ -168,7 +176,12 @@ References: [Cloudflare full DNS setup](https://developers.cloudflare.com/dns/zo
 [Origin CA](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/),
 [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/).
 
-## Owner-provided live setup evidence — 2026-10-11
+## Historical owner-provided live setup evidence — 2026-10-11
+
+This pre-activation record is retained for history. The later [2026-10-12 setup
+record](SERVER-MIGRATION.md#current-setup-and-verification) supersedes its pending
+application and image-pull status: private delivery and exact external content
+verification passed in run 38182379207.
 
 Cloudflare delegation is active. The owner installed matching Origin CA certificate
 and key (expiry 2028-10-10), covering apex and wildcard, and the global Origin Pull
