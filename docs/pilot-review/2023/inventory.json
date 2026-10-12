@@ -1,0 +1,417 @@
+{
+  "package": "E1.4",
+  "issue": 70,
+  "inspection_date": "2026-10-12",
+  "election_id": "es-gen-2023",
+  "status": "preparation-only",
+  "selected_parties": [
+    "pp",
+    "erc"
+  ],
+  "selection_status": "owner-selected",
+  "worker_image_id": "sha256:cd68be1fcb3953aa9160f19f415f40004b0adc33003d647b97a882a88797e8a5",
+  "sources": [
+    {
+      "source_id": "src-2023-pp-v1",
+      "party_id": "pp",
+      "source_version": "23J-v1",
+      "source_sha256": "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
+      "direct_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+      "language": "es",
+      "publication_date": null,
+      "registered_retrieval_date": "2026-10-10",
+      "original_bytes": 8214497,
+      "original_integrity": "verified-local",
+      "extraction_integrity": "verified-local",
+      "platform": "linux/arm64",
+      "page_count": 112,
+      "pages_sha256": "f629346fcef6596b0474f4fa5790c3567e776a20b348f05aa29e9ee56febabe3",
+      "rights_status": "not_reviewed",
+      "topic_locator_candidates": {
+        "housing": [
+          {
+            "pdf_page": 33,
+            "anchor": "pdf-page-33",
+            "text_sha256": "c709ef0fc93b984f7ac2633b5e565d13665e123a191e6aadcfaed6a66c3d7f4b",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 34,
+            "anchor": "pdf-page-34",
+            "text_sha256": "fdade932b1e36ec4c4c71669a4afab304b5623e9f512cd94914a4e45c6cdc7b3",
+            "printed_page_label": "32",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
+          }
+        ],
+        "health-social-services": [
+          {
+            "pdf_page": 45,
+            "anchor": "pdf-page-45",
+            "text_sha256": "6448a20f313874c87595318a85f17f6a60ed06152b0417cf48af8c0ea5c6e175",
+            "printed_page_label": "43",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
+          },
+          {
+            "pdf_page": 46,
+            "anchor": "pdf-page-46",
+            "text_sha256": "e0a038d3e40d12bbec5e6a93c6faeca9c297ee67244bfe8cad7b29171b6bb9fa",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 47,
+            "anchor": "pdf-page-47",
+            "text_sha256": "6108703c383ff480239ae42bf0a8b3fcca56dce7f3d478cd9488eca821948474",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 48,
+            "anchor": "pdf-page-48",
+            "text_sha256": "d2ac518c57b35197467a767ea7b3fe0ca385c7578aa0a09a1e40fa936842fe26",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 49,
+            "anchor": "pdf-page-49",
+            "text_sha256": "4cc6971bda0124fcde460010ab656fbf5b9ed4ae3a30072d04c0ec999f65eb61",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ],
+        "education": [
+          {
+            "pdf_page": 50,
+            "anchor": "pdf-page-50",
+            "text_sha256": "2fdfe4aa75d39cd5a68d9c1c93feb0a63ccb1952c27816fd107b9ea211704d3b",
+            "printed_page_label": "48",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
+          },
+          {
+            "pdf_page": 51,
+            "anchor": "pdf-page-51",
+            "text_sha256": "1ba32b37056652c7f81ab1dc1148e528652c9ea7070308ae80dfb9d20b3fc735",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 52,
+            "anchor": "pdf-page-52",
+            "text_sha256": "18ee64a584980292cbd352c7298404d988d41fb1839fd091dc0f39bafd0c21d9",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ]
+      }
+    },
+    {
+      "source_id": "src-2023-erc-v1",
+      "party_id": "erc",
+      "source_version": "23J-v1",
+      "source_sha256": "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854",
+      "direct_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "language": "ca",
+      "publication_date": null,
+      "registered_retrieval_date": "2026-10-10",
+      "original_bytes": 1228157,
+      "original_integrity": "verified-local",
+      "extraction_integrity": "verified-local",
+      "platform": "linux/arm64",
+      "page_count": 132,
+      "pages_sha256": "e1518b8f6b5ac9baf4e3f9137a45390eacecb8ba004941b7624be13b39a1fac1",
+      "rights_status": "not_reviewed",
+      "topic_locator_candidates": {
+        "housing": [
+          {
+            "pdf_page": 113,
+            "anchor": "pdf-page-113",
+            "text_sha256": "4b62e469c7d4e8bbaae9b932ce2459a1635a1aec35c3dbdcd06f5648d96afb3d",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 114,
+            "anchor": "pdf-page-114",
+            "text_sha256": "d2377a261fd62cfd4d4faddadbf3ec6c377a7dd1ee9a0b8e53b7cb11f8831139",
+            "printed_page_label": "113",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
+          },
+          {
+            "pdf_page": 115,
+            "anchor": "pdf-page-115",
+            "text_sha256": "83bf868da90dde640ef5c69004dfa872a9c978cc9898aad2250d560d1aea1644",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ],
+        "health-social-services": [
+          {
+            "pdf_page": 60,
+            "anchor": "pdf-page-60",
+            "text_sha256": "02c18ba407dce39dea995e9b4cafbe5fe21fbc59e817c0b3dc3ed76f9f426bc5",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 61,
+            "anchor": "pdf-page-61",
+            "text_sha256": "916bf39a25628f3bb90009f21c279fae401c4ed045c22e4f92ecbf4bb7f8940b",
+            "printed_page_label": "60",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
+          },
+          {
+            "pdf_page": 62,
+            "anchor": "pdf-page-62",
+            "text_sha256": "bc1d47ffe7a3b5ea4daf1cb7646c2db6c6cd0a023802dfe69afcfca0ad51ef51",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 63,
+            "anchor": "pdf-page-63",
+            "text_sha256": "7cfa0405b9b089a3ec6158d8b6d7b79d1543474d65cae5b581f54db7e98a4f4d",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 64,
+            "anchor": "pdf-page-64",
+            "text_sha256": "7700a737c1e7f0adec28626cade29304bc3482b6525d4fe05ce811cb049bb8e9",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ],
+        "education": [
+          {
+            "pdf_page": 126,
+            "anchor": "pdf-page-126",
+            "text_sha256": "cbd46c90b773addf20507f165609de82afc35f2b918be078591b5493b2d30e02",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 127,
+            "anchor": "pdf-page-127",
+            "text_sha256": "2c7cb74ad8ee4f20e52b25299fb83bd12fbb7c49c7c7925df0ae33f42890d77d",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 128,
+            "anchor": "pdf-page-128",
+            "text_sha256": "a1f81930475eeb010bb9981f19e553cf7651e16d561632e5f5921c28a179fd71",
+            "printed_page_label": "127",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
+          },
+          {
+            "pdf_page": 129,
+            "anchor": "pdf-page-129",
+            "text_sha256": "cd1e7d4c86a308681223ee48594764f4c9be7bead890eaf6a8c4fe8a5179d98c",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ]
+      }
+    },
+    {
+      "source_id": "src-2023-pnv-v1",
+      "party_id": "pnv",
+      "source_version": "23J-v1",
+      "source_sha256": "46fec3a017cdc5c4e506fa5e228b97690071d5a03dfd3d8128392aa20f57d132",
+      "direct_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j",
+      "language": "es",
+      "publication_date": null,
+      "registered_retrieval_date": "2026-10-09",
+      "original_bytes": 3602932,
+      "original_integrity": "verified-local",
+      "extraction_integrity": "verified-local",
+      "platform": "linux/arm64",
+      "page_count": 52,
+      "pages_sha256": "31b7a3717669aa152f1798d2f5b8b5f474b5a7e830388e76d377155eecdeeb0d",
+      "rights_status": "not_reviewed",
+      "topic_locator_candidates": {
+        "housing": [
+          {
+            "pdf_page": 45,
+            "anchor": "pdf-page-45",
+            "text_sha256": "5e912d268144510d7520bc9705d6f6592537dbb7880818a33f195d6db4a5850c",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 46,
+            "anchor": "pdf-page-46",
+            "text_sha256": "a75fd6760d8cc4b61a8b8a0601cecbfa45af5ac2b8210e1dd64295ec46f53e1a",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ],
+        "health-social-services": [
+          {
+            "pdf_page": 45,
+            "anchor": "pdf-page-45",
+            "text_sha256": "5e912d268144510d7520bc9705d6f6592537dbb7880818a33f195d6db4a5850c",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 46,
+            "anchor": "pdf-page-46",
+            "text_sha256": "a75fd6760d8cc4b61a8b8a0601cecbfa45af5ac2b8210e1dd64295ec46f53e1a",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 47,
+            "anchor": "pdf-page-47",
+            "text_sha256": "348ce1bb9e613e246fdd1534379a1521a90d6cd06c062f7888fe1360fc3dc213",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ],
+        "education": [
+          {
+            "pdf_page": 48,
+            "anchor": "pdf-page-48",
+            "text_sha256": "1c9b4fdf99cf278636a255772a2d3b790200be6fde1bfac561abcc5226aaaf64",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 49,
+            "anchor": "pdf-page-49",
+            "text_sha256": "638c6be6c1c511780d380a18e2df8eb186d993fde48b16459cc784597229d39b",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ]
+      }
+    },
+    {
+      "source_id": "src-2023-sumar-v1",
+      "party_id": "sumar",
+      "source_version": "23J-v1",
+      "source_sha256": "d5ccdac0d20f1b93a5f703f180d086041bd988835072dd5cb5d1378bf0195820",
+      "direct_url": "https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf",
+      "language": "es",
+      "publication_date": null,
+      "registered_retrieval_date": "2026-10-09",
+      "original_bytes": 2567339,
+      "original_integrity": "verified-local",
+      "extraction_integrity": "verified-local",
+      "platform": "linux/arm64",
+      "page_count": 182,
+      "pages_sha256": "19bb7dc3dfc20e560b16e8b9be9de587743dcedec0805fbf139ce665d8847c80",
+      "rights_status": "not_reviewed",
+      "topic_locator_candidates": {
+        "housing": [
+          {
+            "pdf_page": 75,
+            "anchor": "pdf-page-75",
+            "text_sha256": "8ba8e761a6bee3d006f166c822abb69f91f346c928ad08d953e839eb70dd86e3",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 76,
+            "anchor": "pdf-page-76",
+            "text_sha256": "f96ce65b0fbd58ebe4f4c0b668891d62b270555d839a3c39a626a935900cbf3c",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 77,
+            "anchor": "pdf-page-77",
+            "text_sha256": "e3593c9350b149f2dd68730e4b271fd02654718f5a2417578f57f8c5772ea0e2",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 78,
+            "anchor": "pdf-page-78",
+            "text_sha256": "d2ac241750c0f0cff7cde58b4f95d539231d74428dbb02b68471b28868359fac",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 79,
+            "anchor": "pdf-page-79",
+            "text_sha256": "109e5902ece3298ea0699daf51f7a3f73654623026c9361fee021ff1341a0f5b",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ],
+        "health-social-services": [
+          {
+            "pdf_page": 89,
+            "anchor": "pdf-page-89",
+            "text_sha256": "2e4deab9a4b14d29989395140b227075b16b7dfde8029c80032f1ccfdf76db5c",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 90,
+            "anchor": "pdf-page-90",
+            "text_sha256": "69d676c45271f952a84e85c6805c9e00f1a65a12a42d24f81b5aec00a28a237c",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 91,
+            "anchor": "pdf-page-91",
+            "text_sha256": "19b0522e523c1f02c05e980082250cd4fd90f9725aa7ba280841daa31d09ad89",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 92,
+            "anchor": "pdf-page-92",
+            "text_sha256": "499d23da82153c9cf7aa120882ad3481da67ba3116893b5fabedcae43d8f2e95",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ],
+        "education": [
+          {
+            "pdf_page": 154,
+            "anchor": "pdf-page-154",
+            "text_sha256": "0a0e9a0f3e347f2f948fa8079ae15cde21fd1dcd23b5f9a81fc8dbec7922b730",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 155,
+            "anchor": "pdf-page-155",
+            "text_sha256": "a28738633bd59efd8376f251635b2f5a3998c00b148df34b7971c3cfe799dce2",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 156,
+            "anchor": "pdf-page-156",
+            "text_sha256": "3b1430e815b3126b08f0f1627e9830dcc7f2b073d26e22a1cef3905a63ffe57c",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 157,
+            "anchor": "pdf-page-157",
+            "text_sha256": "10ff9c8a4793ef0244e3af3de0508c09cfda2f285889401f9ede9a4b33354e59",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          },
+          {
+            "pdf_page": 158,
+            "anchor": "pdf-page-158",
+            "text_sha256": "c06fe4accbe9f391bac7368cb5526f155b8d88471c84b87f5c482cc5d6e8882b",
+            "printed_page_label": null,
+            "visual_review_status": "pending"
+          }
+        ]
+      }
+    }
+  ],
+  "selection_reference": "Owner selected PP and ERC in the project session on 2026-10-12."
+}

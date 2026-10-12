@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2023",
+  "id": "stmt-pilot-erc-education-2023",
+  "party_id": "erc",
+  "programme_id": "prog-erc-2023-official",
+  "topic_id": "education",
+  "subtopic_id": "early-childhood-education",
+  "statement_type": "explicit_proposal",
+  "summary": "Garantizar las transferencias financieras necesarias a Cataluña, la Comunidad Valenciana, las Illes Balears y las demás administraciones competentes para universalizar el primer ciclo de educación infantil de 0 a 3 años.",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+  "source_version": "23J-v1",
+  "source_page": "128",
+  "source_section": "EDUCACIÓ, c) Mentrestant, en defensa de Catalunya al Congrés i Senat, cuarta viñeta de la página PDF 128 (sección iniciada en página PDF 127); página impresa 127 (página PDF 128)",
+  "qualifications": [
+    "La propuesta se sitúa en la actuación en el Congreso y el Senado para defender los intereses de Cataluña.",
+    "Esta viñeta propone transferencias financieras para universalizar el ciclo; no especifica gratuidad ni un importe."
+  ],
+  "policy_instrument": "Transferencias financieras para universalizar el primer ciclo de educación infantil",
+  "review_status": "draft",
+  "reviews": [],
+  "last_reviewed_date": null,
+  "correction_id": null,
+  "is_fixture": false
+}
