@@ -249,7 +249,7 @@ class ProgrammeRecord:
                 errors.append("Official programme must provide retrieval_date.")
             if not self.sha256 or len(self.sha256) != 64 or not all(c in "0123456789abcdefABCDEF" for c in self.sha256):
                 errors.append("Official programme must provide valid 64-character hex SHA-256 hash.")
-            if self.rights_status not in {"verified_public_manifesto", "verified_quotation_permitted"}:
+            if self.rights_status not in {"verified_public_manifesto", "verified_quotation_permitted", "verified_link_only"}:
                 errors.append(
                     f"Official programme requires verified rights status, got '{self.rights_status}'."
                 )

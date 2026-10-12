@@ -8,6 +8,7 @@ and OpenSpec change mvp-programme-comparison.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -85,17 +86,22 @@ VALID_VERDICTS = {
 @dataclass(frozen=True)
 class ReviewRecord:
     reviewer_id: str
-    review_date: str
+    review_date: Optional[str]
     verdict: str
     review_notes: str
     reviewer_kind: Optional[str] = None
     evidence_ref: Optional[str] = None
+    reported_date: Optional[str] = None
+    content_sha256: Optional[str] = None
 
     def validate(self, *, require_human: bool = False, fixture: bool = False) -> list[str]:
         errors: list[str] = []
         if not self.reviewer_id or not ID_PATTERN.match(self.reviewer_id):
             errors.append(f"Reviewer ID '{self.reviewer_id}' must be a valid lowercase kebab-case slug.")
-        if not self.review_date or not DATE_PATTERN.match(self.review_date):
+        if self.review_date is None:
+            if require_human and self.verdict == "approved":
+                errors.append("Approval requires the actual review date; a report date is not a review date.")
+        elif not DATE_PATTERN.match(self.review_date):
             errors.append(f"Review date '{self.review_date}' must follow YYYY-MM-DD.")
         else:
             try:
@@ -104,6 +110,11 @@ class ReviewRecord:
                     errors.append("Review approval cannot be future-dated.")
             except ValueError:
                 errors.append("Review date must be a valid calendar date.")
+        if self.reported_date is not None:
+            try:
+                date.fromisoformat(self.reported_date)
+            except (TypeError, ValueError):
+                errors.append("Report date must be a valid calendar date.")
         if self.reviewer_kind not in (None, "human", "fixture", "automated"):
             errors.append("Reviewer kind must be human, fixture, or automated.")
         if self.evidence_ref is not None and not isinstance(self.evidence_ref, str):
@@ -145,6 +156,15 @@ class StatementRecord:
     correction_id: Optional[str] = None
     is_fixture: bool = False
 
+    def review_fingerprint(self) -> str:
+        """Bind a decision to the exact claim, qualification and source locator."""
+        fields = ("election_id", "id", "party_id", "programme_id", "topic_id", "subtopic_id",
+                  "statement_type", "summary", "quote", "source_url", "source_version",
+                  "source_page", "source_section", "qualifications", "policy_instrument")
+        payload = {key: getattr(self, key) for key in fields}
+        return hashlib.sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True,
+                                         separators=(",", ":")).encode("utf-8")).hexdigest()
+
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> StatementRecord:
         reviews = [
@@ -155,6 +175,8 @@ class StatementRecord:
                 review_notes=r.get("review_notes", ""),
                 reviewer_kind=r.get("reviewer_kind"),
                 evidence_ref=r.get("evidence_ref"),
+                reported_date=r.get("reported_date"),
+                content_sha256=r.get("content_sha256"),
             )
             for r in data.get("reviews", [])
         ]
@@ -226,8 +248,10 @@ class StatementRecord:
 
         # Reviews structural validation
         for r in self.reviews:
+            if r.content_sha256 is not None and r.content_sha256 != self.review_fingerprint():
+                errors.append(f"Statement {self.id}: review fingerprint does not match current content and provenance.")
             r_errors = r.validate(
-                require_human=self.election_id == "es-gen-2023",
+                require_human=self.election_id == "es-gen-2023" and self.review_status == "approved",
                 fixture=self.is_fixture and self.election_id != "es-gen-2023",
             )
             for re_err in r_errors:
@@ -285,6 +309,8 @@ class StatementRecord:
 
         # Dual review requirement for approved status
         if self.review_status == "approved":
+            if self.election_id == "es-gen-2023" and any(not r.content_sha256 for r in self.reviews):
+                errors.append(f"Statement {self.id}: political pilot approval requires a review fingerprint for each reviewer.")
             if self.election_id == "es-gen-2023" and self.is_fixture:
                 errors.append(f"Statement {self.id}: fixture approvals cannot publish political pilot claims.")
             approved_reviews = [r for r in self.reviews if r.verdict == "approved"]
@@ -302,7 +328,7 @@ class StatementRecord:
                     last_reviewed = date.fromisoformat(self.last_reviewed_date)
                     if (not self.is_fixture or self.election_id == "es-gen-2023") and last_reviewed > date.today():
                         errors.append(f"Statement {self.id}: last_reviewed_date cannot be future-dated.")
-                    approved_dates = [r.review_date for r in approved_reviews]
+                    approved_dates = [r.review_date for r in approved_reviews if r.review_date]
                     if approved_dates and self.last_reviewed_date != max(approved_dates):
                         errors.append(f"Statement {self.id}: last_reviewed_date must match the latest approval.")
                 except ValueError:

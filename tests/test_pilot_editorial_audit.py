@@ -27,8 +27,10 @@ class TestPilotEditorialAudit(unittest.TestCase):
                              "human", "test-evidence:sam")]
 
     def approved_statement(self):
-        return replace(load_statement(STATEMENT), review_status="approved",
-                       reviews=self.approvals(), last_reviewed_date="2026-10-09")
+        statement = load_statement(STATEMENT)
+        reviews = [replace(r, content_sha256=statement.review_fingerprint()) for r in self.approvals()]
+        return replace(statement, review_status="approved",
+                       reviews=reviews, last_reviewed_date="2026-10-09")
 
     def test_future_approval_and_invalid_calendar_date_rejected(self):
         future = (date.today() + timedelta(days=1)).isoformat()
@@ -106,7 +108,7 @@ class TestPilotEditorialAudit(unittest.TestCase):
                     src["rights_review"]["status"] = "not_reviewed"
             register_path.write_text(json.dumps(register))
             for strict in (True, False):
-                with self.assertRaisesRegex(BuildValidationError, "rights are not approved"):
+                with self.assertRaisesRegex(BuildValidationError, "applicable rights are not approved"):
                     load_and_validate_site_data(ROOT, content_dir=content, election_id="es-gen-2023",
                                                 strict_approved=strict,
                                                 custom_statements=[self.approved_statement()],
@@ -123,7 +125,7 @@ class TestPilotEditorialAudit(unittest.TestCase):
                     src["status"] = "verified"
                     src["publication_date"] = "2023-07-01"
                     src["rights_review"].update(status="link_and_short_quote", reviewed_by="human-alex",
-                                                review_date="2026-10-09")
+                                                review_date="2026-10-09", evidence_ref="private:rights:pp")
             register_path.write_text(json.dumps(register))
             prog_path = content / "examples/programmes/pp-2023-official.json"
             prog = json.loads(prog_path.read_text())
@@ -149,6 +151,83 @@ class TestPilotEditorialAudit(unittest.TestCase):
             prog_path.write_text(json.dumps(prog))
             with self.assertRaisesRegex(BuildValidationError, "provenance/hash/rights"):
                 load_and_validate_site_data(ROOT, **kwargs)
+
+    def test_link_only_neutral_summary_passes_but_quote_does_not(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            content = Path(tmp) / "content"
+            shutil.copytree(CONTENT, content)
+            register_path = content / "sources/register.json"
+            register = json.loads(register_path.read_text())
+            source = next(s for s in register["sources"] if s["id"] == "src-2023-pp-v1")
+            source.update(status="verified", publication_date="2023-07-04")
+            source["rights_review"].update(status="link_only", reviewed_by="human-alex",
+                                           review_date="2026-10-09", evidence_ref="private:rights:pp")
+            register_path.write_text(json.dumps(register))
+            programme_path = content / "examples/programmes/pp-2023-official.json"
+            programme = json.loads(programme_path.read_text())
+            programme.update(status="official", rights_status="verified_link_only",
+                             publication_date="2023-07-04")
+            programme_path.write_text(json.dumps(programme))
+            statement = self.approved_statement()
+            args = dict(content_dir=content, election_id="es-gen-2023",
+                        custom_relationships=[])
+            self.assertIn(statement.id, load_and_validate_site_data(
+                ROOT, custom_statements=[statement], **args).statements)
+            output = Path(tmp) / "published"
+            result = build_site(ROOT, output, content_dir=content, election_id="es-gen-2023",
+                                build_date="2026-10-12", custom_statements=[statement],
+                                custom_relationships=[])
+            self.assertEqual((result.statements_count, result.relationships_count), (1, 0))
+            html_text = "\n".join(p.read_text() for p in output.rglob("*.html"))
+            browser_text = "\n".join(p.read_text() for p in output.glob("comparison-data.*.js"))
+            payload = json.loads(json.loads(browser_text.removeprefix(
+                "window.ComparisonData = JSON.parse(").rstrip(";\n)")))
+            position = payload["measuresByTopic"]["housing"][0]["positions"]["pp"]
+            self.assertIn(statement.id, html_text)
+            self.assertIn(statement.source_section, html_text)
+            self.assertIn(statement.qualifications[0], html_text)
+            self.assertEqual(position["statementId"], statement.id)
+            self.assertEqual(position["sourceSection"], statement.source_section)
+            self.assertIn(statement.qualifications[0], position["qualifications"])
+            self.assertNotIn("private:rights:pp", html_text + browser_text)
+            source["rights_review"]["evidence_ref"] = None
+            register_path.write_text(json.dumps(register))
+            with self.assertRaisesRegex(BuildValidationError, "evidence reference"):
+                load_and_validate_site_data(ROOT, custom_statements=[statement], **args)
+            source["rights_review"]["evidence_ref"] = "private:rights:pp"
+            programme["publication_date"] = "2023-07-05"
+            programme_path.write_text(json.dumps(programme))
+            register_path.write_text(json.dumps(register))
+            with self.assertRaisesRegex(BuildValidationError, "publication dates differ"):
+                load_and_validate_site_data(ROOT, custom_statements=[statement], **args)
+            programme["publication_date"] = "2023-07-04"
+            programme_path.write_text(json.dumps(programme))
+            quoted = replace(statement, quote="Una cita literal")
+            quoted = replace(quoted, reviews=[replace(r, content_sha256=quoted.review_fingerprint())
+                                              for r in quoted.reviews])
+            with self.assertRaisesRegex(BuildValidationError, "applicable rights are not approved"):
+                load_and_validate_site_data(ROOT, custom_statements=[quoted], **args)
+            for status in ("not_reviewed", "permission_denied"):
+                source["rights_review"]["status"] = status
+                register_path.write_text(json.dumps(register))
+                with self.assertRaisesRegex(BuildValidationError, "applicable rights are not approved"):
+                    load_and_validate_site_data(ROOT, custom_statements=[statement], **args)
+            source["rights_review"]["status"] = "link_only"
+            source["publication_date"] = None
+            register_path.write_text(json.dumps(register))
+            with self.assertRaisesRegex(BuildValidationError, "publication dates"):
+                load_and_validate_site_data(ROOT, custom_statements=[statement], **args)
+
+    def test_reported_review_is_not_actual_dated_approval(self):
+        candidate = load_statement(STATEMENT)
+        self.assertEqual(candidate.review_status, "under_review")
+        self.assertEqual({r.reported_date for r in candidate.reviews}, {"2026-10-12"})
+        self.assertTrue(all(r.review_date is None for r in candidate.reviews))
+        self.assertEqual(candidate.validate(), [])
+        changed = replace(candidate, summary=candidate.summary + " Cambiada.")
+        self.assertIn("fingerprint", " ".join(changed.validate()))
+        approved = replace(candidate, review_status="approved", last_reviewed_date="2026-10-12")
+        self.assertIn("actual review date", " ".join(approved.validate()))
 
     def test_audit_retains_prior_states_without_asserting_human_approval(self):
         audit = json.loads((CONTENT / "audits/2023-pilot-2026-10-10.json").read_text())

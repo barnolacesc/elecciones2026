@@ -47,6 +47,7 @@ class RightsReview:
     reviewed_by: Optional[str]
     review_date: Optional[str]
     terms_notes: str
+    evidence_ref: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -113,6 +114,9 @@ def _parse_rights_review(data: dict[str, Any], record_id: str) -> tuple[Optional
     terms_notes = data.get("terms_notes")
     if terms_notes is None or not isinstance(terms_notes, str):
         errors.append(f"Record {record_id}: rights_review terms_notes must be a string.")
+    evidence_ref = data.get("evidence_ref")
+    if evidence_ref is not None and (not isinstance(evidence_ref, str) or not evidence_ref.strip()):
+        errors.append(f"Record {record_id}: rights_review evidence_ref must be a non-empty string when set.")
 
     if errors:
         return None, errors
@@ -122,6 +126,7 @@ def _parse_rights_review(data: dict[str, Any], record_id: str) -> tuple[Optional
         reviewed_by=data.get("reviewed_by"),
         review_date=review_date,
         terms_notes=terms_notes,
+        evidence_ref=evidence_ref,
     ), []
 
 

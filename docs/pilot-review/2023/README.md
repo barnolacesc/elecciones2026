@@ -121,3 +121,7 @@ identifies the programme presentation on 2023-07-04. The [ERC official archive](
 links the registered 2023 document but does not give its publication date.
 Neither the archive update date nor the PDF upload-directory name establishes
 that date. Source records remain unchanged pending the provenance handoff.
+
+## Issue #100 handoff
+
+See [source-specific reuse and provenance handoff](reuse-handoff.md). It supersedes the older pending-review status language above where PR #96 retained owner-attested content reports. The report date is not the actual review date, and the six records remain unpublished.

@@ -135,8 +135,18 @@
           "pattern": "^[a-z0-9-]+$"
         },
         "review_date": {
-          "type": "string",
+          "type": ["string", "null"],
           "format": "date"
+        },
+        "reported_date": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date an owner reported a review; not proof of its actual date."
+        },
+        "content_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "SHA-256 of the exact statement content and source locator under review."
         },
         "verdict": {
           "type": "string",
