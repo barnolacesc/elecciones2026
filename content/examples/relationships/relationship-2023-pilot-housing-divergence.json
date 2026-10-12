@@ -19,27 +19,10 @@
     "El PP propone facilitar crédito hipotecario de hasta el 95% del valor mediante avales para jóvenes.",
     "ERC propone transferir competencias plenas a las comunidades autónomas para regular y topar precios de alquiler."
   ],
-  "review_status": "approved",
-  "reviews": [
-    {
-      "reviewer_id": "cesc-editorial",
-      "review_date": "2026-10-10",
-      "verdict": "approved",
-      "review_notes": "Revisión de consistencia comparativa.",
-      "reviewer_kind": "human",
-      "evidence_ref": "audit:issue-44:cesc-editorial"
-    },
-    {
-      "reviewer_id": "sam-neutrality",
-      "review_date": "2026-10-10",
-      "verdict": "approved",
-      "review_notes": "Neutralidad en la descripción de divergencias.",
-      "reviewer_kind": "human",
-      "evidence_ref": "audit:issue-44:sam-neutrality"
-    }
-  ],
-  "status": "active",
-  "invalidation_reason": null,
+  "review_status": "invalidated",
+  "reviews": [],
+  "status": "invalidated",
+  "invalidation_reason": "Human review evidence is unavailable. Owner does not recognize the second reviewer.",
   "invalidated_by_correction_id": null,
   "is_fixture": false
 }

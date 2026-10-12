@@ -1,6 +1,8 @@
 # Project delivery roadmap
 
-**Status:** planning draft. This file orders work across OpenSpec changes. It is not an OpenSpec change artifact. Each feature receives its own proposal, specs, design, and tasks before an agent implements it. Do not mark a future proposal as implementation-ready.
+**Delivery status (2026-10-12):** Comparator, source-processing tools, private IONOS hosting, budget view implementation, and the mock quiz foundation are merged. Unsupported 2023 approvals are withdrawn pending real review. Public release, live capacity/recovery, and real quiz content remain open. Use [GitHub task index #78](https://github.com/c2ventures/elecciones2026/issues/78) for remaining work.
+
+**Plan status:** planning draft. This file orders work across OpenSpec changes. It is not an OpenSpec change artifact. Each feature receives its own proposal, specs, design, and tasks before an agent implements it. Do not mark a future proposal as implementation-ready.
 
 **Source of truth:** [root roadmap](../ROADMAP.md) defines product scope. This file defines delivery sequence and work packages. The [Stitch review](../docs/STITCH-REVIEW.md) is a visual reference, not a data source or codebase.
 

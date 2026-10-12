@@ -18,26 +18,9 @@
     "Rechazo expreso a medidas estatales que menoscaben el autogobierno vasco en materia de vivienda."
   ],
   "policy_instrument": "Promoción de vivienda pública en alquiler en marco foral/autonómico",
-  "review_status": "approved",
-  "reviews": [
-    {
-      "reviewer_id": "cesc-editorial",
-      "review_date": "2026-10-10",
-      "verdict": "approved",
-      "review_notes": "Factual verification against official 2023 PDF.",
-      "reviewer_kind": "human",
-      "evidence_ref": "audit:issue-44:cesc-editorial"
-    },
-    {
-      "reviewer_id": "sam-neutrality",
-      "review_date": "2026-10-10",
-      "verdict": "approved",
-      "review_notes": "Neutrality and quotation bounds verification.",
-      "reviewer_kind": "human",
-      "evidence_ref": "audit:issue-44:sam-neutrality"
-    }
-  ],
-  "last_reviewed_date": "2026-10-10",
+  "review_status": "draft",
+  "reviews": [],
+  "last_reviewed_date": null,
   "correction_id": null,
   "is_fixture": false
 }

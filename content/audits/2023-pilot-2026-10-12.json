@@ -1,0 +1,964 @@
+{
+  "date": "2026-10-12",
+  "election_id": "es-gen-2023",
+  "package": "E1.4",
+  "human_editorial_approval": false,
+  "publication_allowed": false,
+  "reason": "Owner stated that they do not know sam-neutrality and that the reviewer may be hallucinated. Neither named approval is treated as authenticated evidence.",
+  "prior_revision": "6c34e949015bacf2a490399f45cfb6af3fc2169f",
+  "prior_records": {
+    "content/examples/statements/statement-2023-pilot-pnv-housing.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "stmt-pilot-pnv-housing-2023",
+      "party_id": "pnv",
+      "programme_id": "prog-pnv-2023-official",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "statement_type": "explicit_proposal",
+      "summary": "Fomento del alquiler y promoción de vivienda pública suficiente respetando el marco competencial autonómico exclusivo y rechazando normas estatales invasivas.",
+      "summary_en": "Promotion of rental and public housing respecting exclusive regional powers and rejecting state centralization.",
+      "quote": "Abogamos por políticas que fomenten el alquiler y la promoción de vivienda pública suficiente para hacer frente a esta realidad, tal y como se viene desarrollando por el Gobierno Vasco dentro de su ámbito competencial exclusivo.",
+      "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j",
+      "source_version": "23J-v1",
+      "source_page": "45",
+      "source_section": "Punto 12; página impresa y PDF 45",
+      "qualifications": [
+        "Rechazo expreso a medidas estatales que menoscaben el autogobierno vasco en materia de vivienda."
+      ],
+      "policy_instrument": "Promoción de vivienda pública en alquiler en marco foral/autonómico",
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "cesc-editorial",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Factual verification against official 2023 PDF.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:cesc-editorial"
+        },
+        {
+          "reviewer_id": "sam-neutrality",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Neutrality and quotation bounds verification.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:sam-neutrality"
+        }
+      ],
+      "last_reviewed_date": "2026-10-10",
+      "correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/statements/statement-2023-pilot-sumar-housing.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "stmt-pilot-sumar-housing-2023",
+      "party_id": "sumar",
+      "programme_id": "prog-sumar-2023-official",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "statement_type": "explicit_proposal",
+      "summary": "Modificación de la Ley de Vivienda para establecer regulación efectiva de precios del alquiler e inclusión de alquiler social obligatorio para grandes tenedores.",
+      "summary_en": "Amendment of Housing Law to enforce rental price regulation and mandatory social rent for large holders.",
+      "quote": "Modificaremos la Ley 12/2023 de Vivienda para incluir: el alquiler social obligatorio para grandes tenedores, regulación efectiva de precios del alquiler y desarrollo de los índices de precios de referencia.",
+      "source_url": "https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf",
+      "source_version": "23J-v1",
+      "source_page": "77",
+      "source_section": "Medida 14; página PDF 77",
+      "qualifications": [
+        "Aplica a zonas declaradas de mercado tensionado.",
+        "Complementado con la meta de constituir dos millones de viviendas sociales y asequibles en 10 años."
+      ],
+      "policy_instrument": "Regulación obligatoria de precios de alquiler e índices de referencia",
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "cesc-editorial",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Factual verification against official 2023 PDF.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:cesc-editorial"
+        },
+        {
+          "reviewer_id": "sam-neutrality",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Neutrality and quotation bounds verification.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:sam-neutrality"
+        }
+      ],
+      "last_reviewed_date": "2026-10-10",
+      "correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/statements/statement-2023-pilot-erc-housing.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "stmt-pilot-erc-housing-2023",
+      "party_id": "erc",
+      "programme_id": "prog-erc-2023-official",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "statement_type": "explicit_proposal",
+      "summary": "Permitir que las comunidades autónomas con competencias en vivienda y derecho civil regulen íntegramente los contratos de arrendamiento urbano, incluidos los precios.",
+      "summary_en": "Enable autonomous communities with housing and civil law powers to regulate urban leases, including prices.",
+      "quote": "incloent la regulació dels preus de lloguer, la durada dels contractes i les seves pròrrogues",
+      "source_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "source_version": "23J-v1",
+      "source_page": "114",
+      "source_section": "HABITATGE, c) Mentrestant, en defensa de Catalunya al Congrés i Senat, primera viñeta; página impresa 113 (página PDF 114)",
+      "qualifications": [
+        "Propuesta limitada a las comunidades autónomas con competencias en vivienda y derecho civil, foral o especial.",
+        "La propuesta se sitúa en el marco del artículo 150.1 de la Constitución española."
+      ],
+      "policy_instrument": "Habilitación competencial para regular contratos de arrendamiento urbano",
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "cesc-editorial",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Factual verification against official 2023 PDF.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:cesc-editorial"
+        },
+        {
+          "reviewer_id": "sam-neutrality",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Neutrality and quotation bounds verification.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:sam-neutrality"
+        }
+      ],
+      "last_reviewed_date": "2026-10-10",
+      "correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/statements/statement-2023-pilot-proposal.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "stmt-pilot-pp-housing-2023",
+      "party_id": "pp",
+      "programme_id": "prog-pp-2023-official",
+      "topic_id": "housing",
+      "subtopic_id": "mortgage-and-purchasing",
+      "statement_type": "explicit_proposal",
+      "summary": "Programa de avales para jóvenes de hasta 35 años destinado a facilitar créditos hipotecarios de hasta el 95% del precio de la vivienda.",
+      "summary_en": "Guarantees for young people up to age 35 to facilitate mortgage credit up to 95% of the property price.",
+      "quote": "de hasta 35 años, a fin de garantizar la concesión de créditos hipotecarios por valor de hasta un 95%",
+      "source_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+      "source_version": "23J-v1",
+      "source_page": "34",
+      "source_section": "Medida 91; página impresa 32 (página PDF 34)",
+      "qualifications": [
+        "El 95% se refiere al importe del crédito respecto al precio de la vivienda, no al porcentaje del aval.",
+        "La medida 91 no precisa primera vivienda, valor de tasación, uso de ICO ni edad al solicitar."
+      ],
+      "policy_instrument": "Programa de avales para facilitar créditos hipotecarios",
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "cesc-editorial",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Factual verification against official 2023 PDF.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:cesc-editorial"
+        },
+        {
+          "reviewer_id": "sam-neutrality",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Neutrality and quotation bounds verification.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:sam-neutrality"
+        }
+      ],
+      "last_reviewed_date": "2026-10-10",
+      "correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/relationships/relationship-2023-pilot-housing-divergence.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "rel-pilot-2023-housing-pp-erc-divergence",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "measure_label": "Regulación de precios de alquiler y acceso a la vivienda",
+      "party_ids": [
+        "pp",
+        "erc"
+      ],
+      "statement_ids": [
+        "stmt-pilot-pp-housing-2023",
+        "stmt-pilot-erc-housing-2023"
+      ],
+      "relationship_type": "divergence",
+      "summary": "Divergencia entre avales hipotecarios para compra (PP) frente a habilitación autonómica para topar precios de alquiler (ERC).",
+      "differences": [
+        "El PP propone facilitar crédito hipotecario de hasta el 95% del valor mediante avales para jóvenes.",
+        "ERC propone transferir competencias plenas a las comunidades autónomas para regular y topar precios de alquiler."
+      ],
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "cesc-editorial",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Revisión de consistencia comparativa.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:cesc-editorial"
+        },
+        {
+          "reviewer_id": "sam-neutrality",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Neutralidad en la descripción de divergencias.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:sam-neutrality"
+        }
+      ],
+      "status": "active",
+      "invalidation_reason": null,
+      "invalidated_by_correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/relationships/relationship-2023-pilot-housing-pp-sumar.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "rel-pilot-2023-housing-pp-sumar",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "measure_label": "Regulación de precios de alquiler y acceso a la vivienda",
+      "party_ids": [
+        "pp",
+        "sumar"
+      ],
+      "statement_ids": [
+        "stmt-pilot-pp-housing-2023",
+        "stmt-pilot-sumar-housing-2023"
+      ],
+      "relationship_type": "divergence",
+      "summary": "Divergencia entre avales hipotecarios para compraventa (PP) frente a regulación vinculante de precios de alquiler y alquiler social obligatorio (Sumar).",
+      "differences": [
+        "El PP propone avales hipotecarios de hasta el 95% para compra y rechaza la regulación de precios.",
+        "Sumar propone topar precios mediante índices de referencia vinculantes y alquiler social obligatorio para grandes tenedores."
+      ],
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "cesc-editorial",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Revisión de consistencia comparativa.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:cesc-editorial"
+        },
+        {
+          "reviewer_id": "sam-neutrality",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Neutralidad en la descripción de divergencias.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:sam-neutrality"
+        }
+      ],
+      "status": "active",
+      "invalidation_reason": null,
+      "invalidated_by_correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/relationships/relationship-2023-pilot-housing-sumar-erc.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "rel-pilot-2023-housing-sumar-erc",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "measure_label": "Regulación de precios de alquiler y acceso a la vivienda",
+      "party_ids": [
+        "erc",
+        "sumar"
+      ],
+      "statement_ids": [
+        "stmt-pilot-erc-housing-2023",
+        "stmt-pilot-sumar-housing-2023"
+      ],
+      "relationship_type": "agreement",
+      "summary": "Coincidencia en regular y topar los precios del alquiler residencial, con matices en el ámbito competencial de aplicación.",
+      "differences": [
+        "Sumar propone un marco regulatorio estatal vinculante con índices de precios de referencia para toda España.",
+        "ERC exige transferir la competencia regulatoria plena a las comunidades autónomas para fijar sus propios límites."
+      ],
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "cesc-editorial",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Revisión de consistencia comparativa.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:cesc-editorial"
+        },
+        {
+          "reviewer_id": "sam-neutrality",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Neutralidad en la descripción de coincidencias y matices.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:sam-neutrality"
+        }
+      ],
+      "status": "active",
+      "invalidation_reason": null,
+      "invalidated_by_correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/relationships/relationship-2023-pilot-housing-pp-pnv.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "rel-pilot-2023-housing-pp-pnv",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "measure_label": "Regulación de precios de alquiler y acceso a la vivienda",
+      "party_ids": [
+        "pnv",
+        "pp"
+      ],
+      "statement_ids": [
+        "stmt-pilot-pnv-housing-2023",
+        "stmt-pilot-pp-housing-2023"
+      ],
+      "relationship_type": "partial_overlap",
+      "summary": "Matiz en el instrumento prioritario: el PP enfatiza avales hipotecarios para la compraventa juvenil, mientras el PNV centra su modelo en el parque público de alquiler protegido.",
+      "differences": [
+        "El PP propone garantizar créditos hipotecarios de hasta el 95% para facilitar la propiedad a jóvenes menores de 35 años.",
+        "El PNV prioriza el parque público de alquiler y su desarrollo adaptado al marco autonómico foral."
+      ],
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "cesc-editorial",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Revisión de consistencia comparativa.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:cesc-editorial"
+        },
+        {
+          "reviewer_id": "sam-neutrality",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Neutralidad en la descripción de matices de modelo.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:sam-neutrality"
+        }
+      ],
+      "status": "active",
+      "invalidation_reason": null,
+      "invalidated_by_correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/relationships/relationship-2023-pilot-housing-sumar-pnv.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "rel-pilot-2023-housing-sumar-pnv",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "measure_label": "Regulación de precios de alquiler y acceso a la vivienda",
+      "party_ids": [
+        "pnv",
+        "sumar"
+      ],
+      "statement_ids": [
+        "stmt-pilot-pnv-housing-2023",
+        "stmt-pilot-sumar-housing-2023"
+      ],
+      "relationship_type": "partial_overlap",
+      "summary": "Coincidencia en priorizar el alquiler público y protegido, con discrepancia en el grado de centralización normativa frente al autogobierno autonómico.",
+      "differences": [
+        "Sumar promueve una regulación estatal con obligaciones homogéneas y reforma vinculante de la Ley de Vivienda.",
+        "El PNV prioriza las políticas autonómicas de alquiler y rechaza normas estatales que invadan las competencias exclusivas vascas."
+      ],
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "cesc-editorial",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Revisión de consistencia comparativa.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:cesc-editorial"
+        },
+        {
+          "reviewer_id": "sam-neutrality",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Neutralidad en la descripción de matices competenciales.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:sam-neutrality"
+        }
+      ],
+      "status": "active",
+      "invalidation_reason": null,
+      "invalidated_by_correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/relationships/relationship-2023-pilot-housing-erc-pnv.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "id": "rel-pilot-2023-housing-erc-pnv",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "measure_label": "Regulación de precios de alquiler y acceso a la vivienda",
+      "party_ids": [
+        "erc",
+        "pnv"
+      ],
+      "statement_ids": [
+        "stmt-pilot-erc-housing-2023",
+        "stmt-pilot-pnv-housing-2023"
+      ],
+      "relationship_type": "partial_overlap",
+      "summary": "Coincidencia en la defensa del marco competencial autonómico para la vivienda, con distinto énfasis en la intervención de precios.",
+      "differences": [
+        "ERC reclama transferir plenas competencias para topar directamente los precios de los contratos de arrendamiento.",
+        "El PNV prioriza la gestión de alquiler protegido por el Gobierno Vasco sin enfocar su eje central en topes de precios."
+      ],
+      "review_status": "approved",
+      "reviews": [
+        {
+          "reviewer_id": "cesc-editorial",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Revisión de consistencia comparativa.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:cesc-editorial"
+        },
+        {
+          "reviewer_id": "sam-neutrality",
+          "review_date": "2026-10-10",
+          "verdict": "approved",
+          "review_notes": "Neutralidad en la descripción de matices competenciales.",
+          "reviewer_kind": "human",
+          "evidence_ref": "audit:issue-44:sam-neutrality"
+        }
+      ],
+      "status": "active",
+      "invalidation_reason": null,
+      "invalidated_by_correction_id": null,
+      "is_fixture": false
+    },
+    "content/examples/programmes/erc-2023-official.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "programme_id": "prog-erc-2023-official",
+      "candidacy_id": "erc",
+      "title": "Programa Electoral 2023",
+      "status": "official",
+      "version": "23J-v1",
+      "publisher": "Esquerra Republicana de Catalunya",
+      "official_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "publication_date": "2023-07-07",
+      "retrieval_date": "2026-10-10T13:34:22Z",
+      "language": "ca",
+      "sha256": "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854",
+      "rights_status": "verified_quotation_permitted",
+      "coverage_notes": "Documento oficial de 2023 verificado con cita conforme a TRLPI Art. 32.",
+      "supersedes": null,
+      "superseded_by": null,
+      "replacement_reason": null,
+      "is_fixture": false
+    },
+    "content/examples/programmes/pp-2023-official.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "programme_id": "prog-pp-2023-official",
+      "candidacy_id": "pp",
+      "title": "Programa Electoral PP 23J",
+      "status": "official",
+      "version": "23J-v1",
+      "publisher": "Partido Popular",
+      "official_url": "https://www.pp.es/categoria/elecciones-generales/",
+      "publication_date": "2023-07-06",
+      "retrieval_date": "2026-10-10T13:34:22Z",
+      "language": "es",
+      "sha256": "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
+      "rights_status": "verified_quotation_permitted",
+      "coverage_notes": "Documento oficial de 2023 verificado con cita conforme a TRLPI Art. 32.",
+      "supersedes": null,
+      "superseded_by": null,
+      "replacement_reason": null,
+      "is_fixture": false
+    },
+    "content/examples/programmes/pnv-2023-official.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "programme_id": "prog-pnv-2023-official",
+      "candidacy_id": "pnv",
+      "title": "Con voz propia. Programa Electoral 23-J",
+      "status": "official",
+      "version": "23J-v1",
+      "publisher": "EAJ-PNV",
+      "official_url": "https://www.eaj-pnv.eus/es/documentos/20945/con-voz-propia-programa-electoral-23-j",
+      "publication_date": "2023-07-07",
+      "retrieval_date": "2026-10-09T10:00:00Z",
+      "language": "es",
+      "sha256": "46fec3a017cdc5c4e506fa5e228b97690071d5a03dfd3d8128392aa20f57d132",
+      "rights_status": "verified_quotation_permitted",
+      "coverage_notes": "Documento oficial de 2023 verificado con cita conforme a TRLPI Art. 32.",
+      "supersedes": null,
+      "superseded_by": null,
+      "replacement_reason": null,
+      "is_fixture": false
+    },
+    "content/examples/programmes/sumar-2023-official.json": {
+      "schema_version": "1.0.0",
+      "election_id": "es-gen-2023",
+      "programme_id": "prog-sumar-2023-official",
+      "candidacy_id": "sumar",
+      "title": "Un Programa para ti - Movimiento Sumar 23J",
+      "status": "official",
+      "version": "23J-v1",
+      "publisher": "Movimiento Sumar",
+      "official_url": "https://movimientosumar.es/programa-electoral-23j/",
+      "publication_date": "2023-07-06",
+      "retrieval_date": "2026-10-09T10:00:00Z",
+      "language": "es",
+      "sha256": "d5ccdac0d20f1b93a5f703f180d086041bd988835072dd5cb5d1378bf0195820",
+      "rights_status": "verified_quotation_permitted",
+      "coverage_notes": "Documento oficial de 2023 verificado con cita conforme a TRLPI Art. 32.",
+      "supersedes": null,
+      "superseded_by": null,
+      "replacement_reason": null,
+      "is_fixture": false
+    },
+    "content/examples/coverage/coverage-pilot-2023-pnv.json": {
+      "id": "cov-2023-pnv",
+      "election_id": "es-gen-2023",
+      "candidacy_id": "pnv",
+      "programme_id": "prog-pnv-2023-official",
+      "status": "official",
+      "banner_text_es": "Generales 2023 (piloto): programa oficial verificado",
+      "banner_text_en": "2023 general election pilot: official verified programme",
+      "has_verified_programme": true,
+      "topics_covered": [
+        "housing"
+      ],
+      "topics_absent": [],
+      "total_statements": 1,
+      "last_audit_date": "2026-10-10",
+      "notes": "Posiciones publicables verificadas con citas oficiales."
+    },
+    "content/examples/coverage/coverage-pilot-2023-erc.json": {
+      "id": "cov-2023-erc",
+      "election_id": "es-gen-2023",
+      "candidacy_id": "erc",
+      "programme_id": "prog-erc-2023-official",
+      "status": "official",
+      "banner_text_es": "Generales 2023 (piloto): programa oficial verificado",
+      "banner_text_en": "2023 general election pilot: official verified programme",
+      "has_verified_programme": true,
+      "topics_covered": [
+        "housing"
+      ],
+      "topics_absent": [],
+      "total_statements": 1,
+      "last_audit_date": "2026-10-10",
+      "notes": "Posiciones publicables verificadas con citas oficiales."
+    },
+    "content/examples/coverage/coverage-pilot-2023-sumar.json": {
+      "id": "cov-2023-sumar",
+      "election_id": "es-gen-2023",
+      "candidacy_id": "sumar",
+      "programme_id": "prog-sumar-2023-official",
+      "status": "official",
+      "banner_text_es": "Generales 2023 (piloto): programa oficial verificado",
+      "banner_text_en": "2023 general election pilot: official verified programme",
+      "has_verified_programme": true,
+      "topics_covered": [
+        "housing"
+      ],
+      "topics_absent": [],
+      "total_statements": 1,
+      "last_audit_date": "2026-10-10",
+      "notes": "Posiciones publicables verificadas con citas oficiales."
+    },
+    "content/examples/coverage/coverage-pilot-2023-pp.json": {
+      "id": "cov-2023-pp",
+      "election_id": "es-gen-2023",
+      "candidacy_id": "pp",
+      "programme_id": "prog-pp-2023-official",
+      "status": "official",
+      "banner_text_es": "Generales 2023 (piloto): programa oficial verificado",
+      "banner_text_en": "2023 general election pilot: official verified programme",
+      "has_verified_programme": true,
+      "topics_covered": [
+        "housing"
+      ],
+      "topics_absent": [],
+      "total_statements": 1,
+      "last_audit_date": "2026-10-10",
+      "notes": "Posiciones publicables verificadas con citas oficiales."
+    },
+    "content/sources/register.json": {
+      "$schema": "./register.schema.json",
+      "version": "1.0.0",
+      "last_updated": "2026-10-10",
+      "description": "Versioned source register tracking official candidacies and programme publication for the 2026 Spanish general election and pilot rehearsal sources.",
+      "elections": [
+        {
+          "id": "es-gen-2026",
+          "name": "Elecciones Generales 2026 (29 de noviembre de 2026)",
+          "election_date": "2026-11-29",
+          "call_decree": "Real Decreto 806/2026 (BOE-A-2026-20742)",
+          "status": "active_monitoring"
+        },
+        {
+          "id": "es-gen-2023",
+          "name": "Elecciones Generales 2023 (23 de julio de 2023)",
+          "election_date": "2023-07-23",
+          "call_decree": "Real Decreto 400/2023",
+          "status": "pilot_rehearsal"
+        }
+      ],
+      "sources": [
+        {
+          "id": "src-2026-psoe-v0",
+          "election_id": "es-gen-2026",
+          "party_id": "psoe",
+          "candidature_name": "Partido Socialista Obrero Español",
+          "publisher": "PSOE",
+          "scope": "general",
+          "official_url": "https://www.psoe.es/transparencia/informacion-politica-organizativa/programa/",
+          "direct_url": null,
+          "filename": null,
+          "publication_date": null,
+          "retrieval_date": "2026-10-09",
+          "language": "es",
+          "version": "0.0",
+          "sha256": null,
+          "status": "missing",
+          "rights_review": {
+            "status": "not_reviewed",
+            "reviewed_by": null,
+            "review_date": null,
+            "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+          },
+          "replacement_history": [],
+          "notes": "Official transparency archive checked on 2026-10-09. Only July 2023 programme currently available."
+        },
+        {
+          "id": "src-2026-pp-v0",
+          "election_id": "es-gen-2026",
+          "party_id": "pp",
+          "candidature_name": "Partido Popular",
+          "publisher": "Partido Popular",
+          "scope": "general",
+          "official_url": "https://www.pp.es/categoria/elecciones-generales/",
+          "direct_url": null,
+          "filename": null,
+          "publication_date": null,
+          "retrieval_date": "2026-10-09",
+          "language": "es",
+          "version": "0.0",
+          "sha256": null,
+          "status": "missing",
+          "rights_review": {
+            "status": "not_reviewed",
+            "reviewed_by": null,
+            "review_date": null,
+            "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+          },
+          "replacement_history": [],
+          "notes": "General elections archive checked on 2026-10-09. Only July 2023 programme currently available."
+        },
+        {
+          "id": "src-2026-vox-v0",
+          "election_id": "es-gen-2026",
+          "party_id": "vox",
+          "candidature_name": "VOX",
+          "publisher": "VOX",
+          "scope": "general",
+          "official_url": "https://www.voxespana.es/programa/programa-electoral-Vox",
+          "direct_url": null,
+          "filename": null,
+          "publication_date": null,
+          "retrieval_date": "2026-10-09",
+          "language": "es",
+          "version": "0.0",
+          "sha256": null,
+          "status": "missing",
+          "rights_review": {
+            "status": "not_reviewed",
+            "reviewed_by": null,
+            "review_date": null,
+            "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+          },
+          "replacement_history": [],
+          "notes": "Official programme path checked on 2026-10-09. 2026 general election programme not verified."
+        },
+        {
+          "id": "src-2026-sumar-v0",
+          "election_id": "es-gen-2026",
+          "party_id": "sumar",
+          "candidature_name": "Movimiento Sumar",
+          "publisher": "Movimiento Sumar",
+          "scope": "general",
+          "official_url": "https://movimientosumar.es/programa-electoral-23j/",
+          "direct_url": null,
+          "filename": null,
+          "publication_date": null,
+          "retrieval_date": "2026-10-09",
+          "language": "es",
+          "version": "0.0",
+          "sha256": null,
+          "status": "missing",
+          "rights_review": {
+            "status": "not_reviewed",
+            "reviewed_by": null,
+            "review_date": null,
+            "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+          },
+          "replacement_history": [],
+          "notes": "Official 23J archive checked on 2026-10-09. Candidacy coalition configuration and 2026 programme pending."
+        },
+        {
+          "id": "src-2026-erc-v0",
+          "election_id": "es-gen-2026",
+          "party_id": "erc",
+          "candidature_name": "Esquerra Republicana de Catalunya",
+          "publisher": "Esquerra Republicana de Catalunya",
+          "scope": "general",
+          "official_url": "https://www.esquerra.cat/transparencia/programes-electorals/",
+          "direct_url": null,
+          "filename": null,
+          "publication_date": null,
+          "retrieval_date": "2026-10-09",
+          "language": "ca",
+          "version": "0.0",
+          "sha256": null,
+          "status": "missing",
+          "rights_review": {
+            "status": "not_reviewed",
+            "reviewed_by": null,
+            "review_date": null,
+            "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+          },
+          "replacement_history": [],
+          "notes": "Electoral programme archive checked on 2026-10-09. Only 2023 general election programme listed."
+        },
+        {
+          "id": "src-2026-pnv-v0",
+          "election_id": "es-gen-2026",
+          "party_id": "pnv",
+          "candidature_name": "Euzko Alderdi Jeltzalea - Partido Nacionalista Vasco",
+          "publisher": "EAJ-PNV",
+          "scope": "general",
+          "official_url": "https://www.eaj-pnv.eus/es/documentos/20945/con-voz-propia-programa-electoral-23-j",
+          "direct_url": null,
+          "filename": null,
+          "publication_date": null,
+          "retrieval_date": "2026-10-09",
+          "language": "es",
+          "version": "0.0",
+          "sha256": null,
+          "status": "missing",
+          "rights_review": {
+            "status": "not_reviewed",
+            "reviewed_by": null,
+            "review_date": null,
+            "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+          },
+          "replacement_history": [],
+          "notes": "Official document repository checked on 2026-10-09. 2026 general election programme not verified."
+        },
+        {
+          "id": "src-2026-ehbildu-v0",
+          "election_id": "es-gen-2026",
+          "party_id": "ehbildu",
+          "candidature_name": "Euskal Herria Bildu",
+          "publisher": "EH Bildu",
+          "scope": "general",
+          "official_url": "https://ehbildu.eus/",
+          "direct_url": null,
+          "filename": null,
+          "publication_date": null,
+          "retrieval_date": "2026-10-09",
+          "language": "eu",
+          "version": "0.0",
+          "sha256": null,
+          "status": "missing",
+          "rights_review": {
+            "status": "not_reviewed",
+            "reviewed_by": null,
+            "review_date": null,
+            "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+          },
+          "replacement_history": [],
+          "notes": "Official website checked on 2026-10-09. 2026 general election programme not verified."
+        },
+        {
+          "id": "src-2026-junts-v0",
+          "election_id": "es-gen-2026",
+          "party_id": "junts",
+          "candidature_name": "Junts per Catalunya",
+          "publisher": "Junts per Catalunya",
+          "scope": "general",
+          "official_url": "https://junts.cat/",
+          "direct_url": null,
+          "filename": null,
+          "publication_date": null,
+          "retrieval_date": "2026-10-09",
+          "language": "ca",
+          "version": "0.0",
+          "sha256": null,
+          "status": "missing",
+          "rights_review": {
+            "status": "not_reviewed",
+            "reviewed_by": null,
+            "review_date": null,
+            "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+          },
+          "replacement_history": [],
+          "notes": "Official website checked on 2026-10-09. 2026 general election programme not verified."
+        },
+        {
+          "id": "src-2026-bng-v0",
+          "election_id": "es-gen-2026",
+          "party_id": "bng",
+          "candidature_name": "Bloque Nacionalista Galego",
+          "publisher": "BNG",
+          "scope": "general",
+          "official_url": "https://www.bng.gal/",
+          "direct_url": null,
+          "filename": null,
+          "publication_date": null,
+          "retrieval_date": "2026-10-09",
+          "language": "gl",
+          "version": "0.0",
+          "sha256": null,
+          "status": "missing",
+          "rights_review": {
+            "status": "not_reviewed",
+            "reviewed_by": null,
+            "review_date": null,
+            "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+          },
+          "replacement_history": [],
+          "notes": "Official website checked on 2026-10-09. 2026 general election programme not verified."
+        },
+        {
+          "id": "src-2023-pp-v1",
+          "election_id": "es-gen-2023",
+          "party_id": "pp",
+          "candidature_name": "Partido Popular",
+          "publisher": "Partido Popular",
+          "scope": "general",
+          "official_url": "https://www.pp.es/categoria/elecciones-generales/",
+          "direct_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+          "filename": "programa_electoral_pp_23j_feijoo_2023.pdf",
+          "publication_date": "2023-07-06",
+          "retrieval_date": "2026-10-10",
+          "language": "es",
+          "version": "23J-v1",
+          "sha256": "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
+          "status": "verified",
+          "rights_review": {
+            "status": "link_and_short_quote",
+            "reviewed_by": "cesc-editorial",
+            "review_date": "2026-10-10",
+            "terms_notes": "Official campaign programme. Lawful quotation under TRLPI art. 32 with attribution and link to official PDF. No full PDF redistribution."
+          },
+          "replacement_history": [],
+          "notes": "Official-domain PDF downloaded on 2026-10-10; SHA-256 matches the existing 23J-v1 record."
+        },
+        {
+          "id": "src-2023-erc-v1",
+          "election_id": "es-gen-2023",
+          "party_id": "erc",
+          "candidature_name": "Esquerra Republicana de Catalunya",
+          "publisher": "Esquerra Republicana de Catalunya",
+          "scope": "general",
+          "official_url": "https://www.esquerra.cat/transparencia/programes-electorals/",
+          "direct_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+          "filename": "e2023-programa.pdf",
+          "publication_date": "2023-07-07",
+          "retrieval_date": "2026-10-10",
+          "language": "ca",
+          "version": "23J-v1",
+          "sha256": "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854",
+          "status": "verified",
+          "rights_review": {
+            "status": "link_and_short_quote",
+            "reviewed_by": "cesc-editorial",
+            "review_date": "2026-10-10",
+            "terms_notes": "Official campaign programme. Lawful quotation under TRLPI art. 32 with attribution and link to official PDF. No full PDF redistribution."
+          },
+          "replacement_history": [],
+          "notes": "Official-domain PDF downloaded on 2026-10-10; SHA-256 matches the existing 23J-v1 record."
+        },
+        {
+          "id": "src-2023-pnv-v1",
+          "election_id": "es-gen-2023",
+          "party_id": "pnv",
+          "candidature_name": "Euzko Alderdi Jeltzalea - Partido Nacionalista Vasco",
+          "publisher": "EAJ-PNV",
+          "scope": "general",
+          "official_url": "https://www.eaj-pnv.eus/es/documentos/20945/con-voz-propia-programa-electoral-23-j",
+          "direct_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j",
+          "filename": "con-voz-propia-programa-electoral-23-j.pdf",
+          "publication_date": "2023-07-07",
+          "retrieval_date": "2026-10-09",
+          "language": "es",
+          "version": "23J-v1",
+          "sha256": "46fec3a017cdc5c4e506fa5e228b97690071d5a03dfd3d8128392aa20f57d132",
+          "status": "verified",
+          "rights_review": {
+            "status": "link_and_short_quote",
+            "reviewed_by": "cesc-editorial",
+            "review_date": "2026-10-10",
+            "terms_notes": "Official campaign programme. Lawful quotation under TRLPI art. 32 with attribution and link to official PDF. No full PDF redistribution."
+          },
+          "replacement_history": [],
+          "notes": "Verified 2023 pilot source for rehearsal."
+        },
+        {
+          "id": "src-2023-sumar-v1",
+          "election_id": "es-gen-2023",
+          "party_id": "sumar",
+          "candidature_name": "Movimiento Sumar",
+          "publisher": "Movimiento Sumar",
+          "scope": "general",
+          "official_url": "https://movimientosumar.es/programa-electoral-23j/",
+          "direct_url": "https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf",
+          "filename": "Un-Programa-para-ti.pdf",
+          "publication_date": "2023-07-06",
+          "retrieval_date": "2026-10-09",
+          "language": "es",
+          "version": "23J-v1",
+          "sha256": "d5ccdac0d20f1b93a5f703f180d086041bd988835072dd5cb5d1378bf0195820",
+          "status": "verified",
+          "rights_review": {
+            "status": "link_and_short_quote",
+            "reviewed_by": "cesc-editorial",
+            "review_date": "2026-10-10",
+            "terms_notes": "Official campaign programme. Lawful quotation under TRLPI art. 32 with attribution and link to official PDF. No full PDF redistribution."
+          },
+          "replacement_history": [],
+          "notes": "Verified 2023 pilot source for rehearsal."
+        }
+      ]
+    }
+  },
+  "browser_content": {
+    "path": "site/app.js",
+    "prior_sha256": "10bb04e863fcb05382c921e1dc7cb28972facd652b82d94cae0cfbae5fd3c0d1",
+    "removed_measures": 8,
+    "political_positions": 32,
+    "note": "Prior browser drafts remain in Git history. They bypassed the editorial record validator. Re-enter only as source-linked drafts for human review."
+  }
+}

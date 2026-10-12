@@ -2,7 +2,9 @@
 
 This project will compare official party programmes for the Spanish general election on 29 November 2026. The date comes from [BOE-A-2026-20742](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742).
 
-**Status:** planning scaffold only. No party data, working comparator, or deployment exists. The visual preview uses fictional parties and text.
+**Status (2026-10-12):** The static comparator and authenticated private hosting exist. PR #68 adds the mock quiz foundation. The 2023 political content is withdrawn pending authentic human review. The public site and real quiz are not approved for release.
+
+Use the [GitHub task index](https://github.com/c2ventures/elecciones2026/issues/78) for remaining work. See the [current pilot audit](docs/PILOT-2023-AUDIT.md) for the content boundary.
 
 ## MVP
 
@@ -18,13 +20,15 @@ A later [commitment follow-through proposal](openspec/changes/commitment-follow-
 
 ## Technical plan
 
-Python 3.14 will validate editorial records and generate static HTML, CSS, JavaScript, and JSON. Docker will serve the static output in local preview and production. Document extraction will run in a separate offline environment. The public container will not contain a database, PDF parser, or editorial credentials. Use FastAPI only if a later change needs a server API.
+Python 3.14 validates editorial records and generates static HTML, CSS, JavaScript, and JSON. Docker serves the static output. Document extraction runs in a separate offline environment. The public container will not contain a database, PDF parser, or editorial credentials. Use FastAPI only if a later change needs a server API.
 
-The initial target is a Hetzner VM with about 2 vCPU and 8 GB RAM. Cloudflare Free will provide DNS and a proxy/edge layer, subject to verified plan limits. This target is not a capacity guarantee. Load tests must verify any concurrency goal before release.
+The active target is an IONOS Ubuntu VPS with 1 vCPU and 1 GB RAM. Cloudflare proxies the authenticated preview. Private delivery passed external content verification. Live capacity, monitoring, recovery, and public release checks remain open. See [the verified server setup](ops/SERVER-MIGRATION.md). Hetzner is a later migration option.
 
 ## Preview
 
-Run `docker compose up --build` and open `http://localhost:8080`. This environment has no Docker executable, so this command has not been verified here. The current base image tag is provisional. Pin it by digest, scan it, and review it before production.
+Run `docker compose up --build` and open `http://localhost:8080`. The default build uses `es-gen-2023` and keeps the quiz unavailable. Use `QUIZ_MODE=mock` only for a private fictional quiz preview. The serving image is pinned by digest. CI checks non-root, read-only serving and image parity.
+
+Human statement, comparison, and source-rights reviews are required before 2023 claims can return. Political content must come from approved records in both HTML and browser output. A historical rehearsal does not pass G2 for 2026.
 
 The public interface and editorial content are in Spanish. Repository documents, specifications, code, and comments are in English. See [writing standard](docs/WRITING-STANDARD.md).
 
