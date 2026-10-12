@@ -2,7 +2,7 @@
 
 Roadmap package: **E4.1**. GitHub issue: [#72](https://github.com/c2ventures/elecciones2026/issues/72).
 
-Status: prepared for human review on 2026-10-12. All decisions below are pending. This packet summarizes the existing contract; it does not approve or change it. The mock engine is implemented. Real question selection and release remain separate.
+Status: owner acceptance recorded on 2026-10-12; independent review and release prerequisites remain pending. The tables below retain the original proposed decisions for comparison with the dated record at the end. This packet summarizes the existing contract; the dated owner decision below records acceptance without changing the contract. The mock engine is implemented. Real question selection and release remain separate.
 
 ## Review inputs
 
@@ -86,3 +86,15 @@ An acceptance applies only to the identified revision and stated scope. A reques
 Tasks 1.1–1.3 remain open until authentic decisions and evidence are retained. Task 1.4 remains open until G4, E1.4, and applicable source rights evidence are verified for the target election. The [task record](../openspec/changes/programme-alignment-quiz/tasks.md) and [release packet](QUIZ-RELEASE.md) retain the other G5 requirements. Method acceptance does not approve real content, hosting privacy, accessibility, capacity, deployment, or public release.
 
 Preparation verification: compared this packet with the proposal, design, and four specifications; checked local Markdown link targets and whitespace. No code or scoring contract changed. Human method, copy, fairness, source, and comprehension reviews have not occurred through this preparation.
+
+## Owner decision — 2026-10-12
+
+Reviewed packet revision: `5051119d0cd54613a4258fcbe3a7990c362e4300` (merged PR #88). Reviewer: Cesc, project owner, in the project conversation. Evidence: after the assistant listed the proposed 16 questions/eight topics, complete party coverage, eight-answer/four-topic minimum, selection protocol, and Spanish wording and requested decisions, the owner replied “yea continue”. This is acceptance of the proposed method and interface drafts for continued preparation; it is not independent editorial evidence for political records.
+
+- M1–M10: accepted by the owner as the proposed method, including the scoring, weights, ties, bounds, and sensitivity defined by the linked specification.
+- B1 and B3: selection register and bias-audit protocol accepted by the owner. Independent findings and reviewer assignments are not supplied by this acceptance.
+- Spanish interface drafts: accepted by the owner for this revision. Actual participant comprehension and independent editorial review remain pending.
+- B2: independent review lane, conflict disclosures, and dispute handling assignments remain pending. No reviewer identity is invented.
+- Volunteer sample and comprehension acceptance rule: pending; the owner's reply did not select a sample or provide participant evidence.
+
+This record does not complete tasks 1.1–1.4 or authorize #73 real content activation. See [the source readiness and selection register](QUIZ-SELECTION-REGISTER.md). A future source or method change requires review against its new revision.
