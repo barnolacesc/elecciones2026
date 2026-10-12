@@ -907,10 +907,10 @@ def render_party_card(
 
     if stmt is None:
         card_class += " party-card-missing"
-        status_badge = '<span class="status-badge status-badge-missing">Revisión de contenido pendiente</span>'
-        statement_text = "No consta una posición revisada en esta medida."
+        status_badge = '<span class="status-badge status-badge-missing">Contenido pendiente de publicación</span>'
+        statement_text = "El contenido de esta medida está pendiente de publicación."
         expl = "La falta de contenido aprobado no debe interpretarse como oposición ni como apoyo."
-        source_footer = '<span class="source-citation-text text-muted">Revisión de contenido pendiente</span>'
+        source_footer = '<span class="source-citation-text text-muted">Contenido pendiente de publicación</span>'
 
         return f"""<article class="{card_class}" aria-labelledby="party-{party_letter.lower()}-name">
             <div class="party-card-header">
@@ -1008,11 +1008,11 @@ def render_base(
         brand_link = f"""<a class="brand" href="{root_path}" aria-label="Generales 2023 - Ensayo Piloto">
         <span class="brand-mark" aria-hidden="true">■</span>
         <span class="brand-text">Generales<span class="brand-year">2023</span></span>
-        <span class="pilot-badge" style="background: var(--color-warning-subtle, #fef3c7); color: var(--color-warning, #92400e); font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; margin-left: 8px;">Piloto Privado</span>
+        <span class="pilot-badge">Privado</span>
       </a>"""
-        preview_banner_text = "ENSAYO PILOTO PRIVADO · Generales 2023 (piloto) · Revisión humana y de derechos pendiente · No satisface G2"
-        footer_org = "Generales 2023 · Ensayo piloto privado y confidencial"
-        footer_values = "Aislamiento estricto de elecciones · No satisface G2 para 2026"
+        preview_banner_text = "ENSAYO PILOTO PRIVADO · Revisión pendiente"
+        footer_org = "Generales 2023 (piloto) · Ensayo privado y confidencial"
+        footer_values = "Revisión humana y de derechos pendiente · No satisface G2 para 2026"
         if "Generales 2023" not in title:
             title = f"{title} · Generales 2023"
     else:
@@ -1055,11 +1055,16 @@ def render_base(
       <nav class="nav-links" aria-label="Navegación principal">
         <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>
         <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>
+        <details class="site-menu">
+          <summary class="nav-link menu-toggle">Menú <span aria-hidden="true">+</span></summary>
+          <div class="menu-links">
         <a class="nav-link" href="{{ root_path }}cuestionario/">{{ nav_quiz }}</a>
         <a class="nav-link" href="{{ root_path }}partidos/">{{ nav_parties }}</a>
         <a class="nav-link" href="{{ root_path }}metodo/">{{ nav_methodology }}</a>
         <a class="nav-link" href="{{ root_path }}fuentes/">{{ nav_sources }}</a>
         <a class="nav-link" href="{{ root_path }}correcciones/">{{ nav_corrections }}</a>
+          </div>
+        </details>
       </nav>
     </div>
   </header>
@@ -1248,7 +1253,7 @@ def render_comparison_measures(ctx: SiteContext, payload: dict[str, Any], topic_
     measures = [m for m in payload["measuresByTopic"][topic_id]
                 if party_a in m["positions"] or party_b in m["positions"]]
     if not measures:
-        return '<div class="empty-measures" role="status" aria-live="polite"><h4>Revisión de contenido pendiente</h4><p>La falta de contenido aprobado no indica que el programa carezca de propuestas. No implica apoyo ni oposición.</p></div>'
+        return '<div class="empty-measures" role="status" aria-live="polite"><h4>Contenido pendiente de publicación</h4><p>El contenido para estas candidaturas está pendiente de publicación.</p><p>La falta de contenido aprobado no indica que el programa carezca de propuestas. No implica apoyo ni oposición.</p></div>'
     output = []
     for idx, measure in enumerate(measures, 1):
         cards = []
@@ -1259,7 +1264,7 @@ def render_comparison_measures(ctx: SiteContext, payload: dict[str, Any], topic_
                 # Several groups can contain the same party; give each heading a unique ID.
                 card = card.replace(f'party-{letter.lower()}-name', f'party-{letter.lower()}-{idx}-name')
             else:
-                card = f'<article class="party-card party-card-missing"><h4 class="party-name">{escape(ctx.parties[pid].display_name)}</h4><span class="status-badge status-badge-missing">Revisión de contenido pendiente</span><p class="party-statement">No consta una posición revisada en esta medida.</p><p class="missing-explanation">La falta de contenido aprobado no debe interpretarse como oposición ni como apoyo.</p></article>'
+                card = f'<article class="party-card party-card-missing"><h4 class="party-name">{escape(ctx.parties[pid].display_name)}</h4><span class="status-badge status-badge-missing">Contenido pendiente de publicación</span><p class="party-statement">El contenido de esta medida está pendiente de publicación.</p><p class="missing-explanation">La falta de contenido aprobado no debe interpretarse como oposición ni como apoyo.</p></article>'
             cards.append(card)
         rel = measure["relationships"].get(f"{party_a}:{party_b}") or measure["relationships"].get(f"{party_b}:{party_a}")
         rel_type = rel["type"] if rel else "not-found"
@@ -1284,13 +1289,15 @@ def render_home_page(ctx: SiteContext) -> str:
         )
         party_a_id = active_rel.party_ids[0] if active_rel else "pp"
         party_b_id = active_rel.party_ids[1] if active_rel and len(active_rel.party_ids) > 1 else "erc"
-        hero_eyebrow = "ENSAYO PILOTO PRIVADO · GENERALES 2023 (23 JUL 2023)"
-        hero_title_part1 = "Los programas de 2023,"
-        hero_title_part2 = "ensayo de comparación."
-        hero_intro = "Generales 2023 (piloto): documentos de PP y ERC con revisión humana y de derechos pendiente. Sin posiciones aprobadas para comparar. No satisface la puerta G2 para 2026."
-        mock_notice = """<aside class="notice" aria-label="Aviso del ensayo piloto">
-      <strong>Aviso de ensayo privado (Generales 2023):</strong> Esta vista corresponde al ensayo técnico con documentos de PP y ERC. Las posiciones y sus derechos de cita requieren revisión humana antes de mostrarse. Este ensayo no satisface la puerta de publicación G2 para 2026 ni presenta información de 2026.
-    </aside>"""
+        hero_eyebrow = "GENERALES 2023 · 23 JULIO 2023"
+        hero_title_part1 = "Compara los programas"
+        hero_title_part2 = "de 2023."
+        hero_intro = "PP y ERC: contenido pendiente de publicación. Puedes consultar los documentos originales."
+        mock_notice = """<details class="notice pilot-details">
+      <summary>Sobre este piloto</summary>
+      <p>
+      <strong>Aviso de ensayo privado (Generales 2023):</strong> Esta vista corresponde al ensayo técnico con documentos de PP y ERC. Las posiciones y sus derechos de cita requieren revisión humana antes de mostrarse. Este ensayo no satisface la puerta de publicación G2 para 2026 ni presenta información de 2026.</p>
+    </details>"""
         selector_eyebrow = "01 / COMPARAR · GENERALES 2023"
         page_title = "Generales 2023 · Comparador de programas (Ensayo piloto)"
         page_description = "Generales 2023 (piloto) · Ensayo privado. Revisión humana y de derechos pendiente; sin posiciones aprobadas."
@@ -1334,7 +1341,7 @@ def render_home_page(ctx: SiteContext) -> str:
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="hero-title" class="hero-title">{hero_title_part1}<br><span class="hero-em">{hero_title_part2}</span></h1>
       <p class="hero-intro">{hero_intro}</p>
-      <p>Actualización del sitio: <time datetime="{escape(ctx.build_date)}">{escape(ctx.build_date)}</time></p>
+      <p class="site-update">Actualización del sitio: <time datetime="{escape(ctx.build_date)}">{escape(ctx.build_date)}</time></p>
       <div class="hero-actions">
         <a class="btn-primary" href="#comparador">
           <span>{escape(ctx.i18n['hero']['cta'])}</span>

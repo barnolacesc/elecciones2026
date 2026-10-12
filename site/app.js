@@ -978,8 +978,8 @@
     // A missing publish record says nothing about the source programme's contents.
     return {
       name: partyData.name, status: 'missing',
-      statusLabel: 'Revisión de contenido pendiente',
-      statement: 'No consta una posición revisada en esta medida.',
+      statusLabel: 'Contenido pendiente de publicación',
+      statement: 'El contenido de esta medida está pendiente de publicación.',
       quote: null, qualifications: [],
       explanation: 'La falta de contenido aprobado no debe interpretarse como oposición ni como apoyo.',
       source: 'Revisión de contenido pendiente', sourceUrl: null, date: '', dateIso: ''
@@ -1252,8 +1252,8 @@
         if (measures.length === 0) {
           allMeasuresHtml = '<div class="empty-measures" role="status" aria-live="polite">' +
             '<p class="empty-measures-icon" aria-hidden="true">—</p>' +
-            '<h4 class="empty-measures-title">Revisión de contenido pendiente</h4>' +
-            '<p class="empty-measures-desc">No constan propuestas revisadas en el tema <strong>' + escapeHtml(topicData.name) + '</strong> para las candidaturas seleccionadas.</p>' +
+            '<h4 class="empty-measures-title">Contenido pendiente de publicación</h4>' +
+            '<p class="empty-measures-desc">El contenido de <strong>' + escapeHtml(topicData.name) + '</strong> para estas candidaturas está pendiente de publicación.</p>' +
             '<p class="empty-measures-note">La falta de contenido aprobado no indica que el programa carezca de propuestas. No implica apoyo ni oposición.</p>' +
             '</div>';
         } else {
