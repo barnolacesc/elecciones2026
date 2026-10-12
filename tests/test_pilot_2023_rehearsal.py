@@ -1,7 +1,7 @@
 """Election isolation and safe 2023 pilot output after the issue #42 audit.
 
-Source bytes remain identified by their hashes, but rights and human reviews are
-pending. Corrected drafts and the invalidated comparison must not enter output.
+Source bytes remain identified by their hashes. Reported human content approvals
+are retained, while source release gates remain pending. Corrected drafts and the invalidated comparison must not enter output.
 """
 
 from __future__ import annotations
@@ -100,7 +100,7 @@ class TestPilot2023Rehearsal(unittest.TestCase):
         self.assertEqual(erc_prog.validate(target_election_id="es-gen-2023"), [])
 
     def test_2023_statement_records_valid_and_cited(self) -> None:
-        """Verify 2023 drafts retain locators without unsupported approvals."""
+        """Verify reviewed candidates retain locators and remain unpublished."""
         pp_stmt_file = self.content_dir / "examples" / "statements" / "statement-2023-pilot-proposal.json"
         erc_stmt_file = self.content_dir / "examples" / "statements" / "statement-2023-pilot-erc-housing.json"
         self.assertTrue(pp_stmt_file.is_file())
@@ -108,8 +108,9 @@ class TestPilot2023Rehearsal(unittest.TestCase):
 
         pp_stmt = load_statement(pp_stmt_file)
         self.assertEqual(pp_stmt.election_id, "es-gen-2023")
-        self.assertEqual(pp_stmt.review_status, "draft")
-        self.assertEqual(len(pp_stmt.reviews), 0)
+        self.assertEqual(pp_stmt.review_status, "under_review")
+        self.assertEqual({r.reviewer_id for r in pp_stmt.reviews}, {"barnolacesc", "carlesfito"})
+        self.assertTrue(all(r.reviewer_kind == "human" and r.evidence_ref for r in pp_stmt.reviews))
         self.assertEqual(pp_stmt.source_page, "34")
         self.assertIsNone(pp_stmt.quote, "Pending rights must not imply quotation permission")
         self.assertEqual(pp_stmt.source_version, "23J-v1")
@@ -122,8 +123,9 @@ class TestPilot2023Rehearsal(unittest.TestCase):
 
         erc_stmt = load_statement(erc_stmt_file)
         self.assertEqual(erc_stmt.election_id, "es-gen-2023")
-        self.assertEqual(erc_stmt.review_status, "draft")
-        self.assertEqual(len(erc_stmt.reviews), 0)
+        self.assertEqual(erc_stmt.review_status, "under_review")
+        self.assertEqual({r.reviewer_id for r in erc_stmt.reviews}, {"barnolacesc", "carlesfito"})
+        self.assertTrue(all(r.reviewer_kind == "human" and r.evidence_ref for r in erc_stmt.reviews))
         self.assertEqual(erc_stmt.source_page, "114")
         self.assertIsNone(erc_stmt.quote, "Pending rights must not imply quotation permission")
         self.assertEqual(erc_stmt.source_version, "23J-v1")
