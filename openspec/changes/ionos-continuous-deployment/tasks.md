@@ -243,3 +243,26 @@ origin probes, monitoring/alert receipt, live rollback/fresh-host restore,
 actual-host capacity and billing. Tasks 4.4/4.6 in the MVP and all other incomplete
 IONOS tasks remain open. The successful run verifies its dated artifact, not
 later merged revisions or the current served site.
+
+## Next private preview preparation — 2026-10-12
+
+E3.3 / issue #71: [the candidate preparation record](../../../ops/preview-candidate-2026-10-12.md)
+distinguishes the last verified hosted image from merged main
+`0a710c85b2328cb5eadfc635785effec19dd545c`. That main revision includes the
+Swiss monochrome redesign and unsupported-review withdrawal. Its default CI
+Docker build selects 2026 synthetic fixtures, not the intended empty 2023 pilot.
+The serving-image CI configuration now explicitly selects 2023 with an unavailable
+quiz and records both in provenance. Delivery rejects absent/wrong election, quiz
+mode or canonical base, including legacy records. A corrected, scanned and tested
+main candidate is required before exact owner approval. The default candidate must not be described as a claim-free 2023 preview.
+
+Local builds confirm seven synthetic statements/three relationships for 2026
+and zero/zero for the pending 2023 pilot. Both use the merged theme and unavailable
+quiz. The full Python suite passes: 431 tests, five skips and 223 subtests. Critical
+Ruff passes. Actionlint reports only the existing unused mobile retry `attempt`
+ShellCheck warning; document links and dispatch shell syntax validate. A local
+AMD64 Docker build passes with zero published positions and the expected 2023
+home hash/theme; no image was published or existing preview changed. No workflow dispatch,
+SSH connection, deployment, public publication or host/account change occurred.
+This preparation supplies no human political, rights or release approval. All
+incomplete live/public tasks remain open; #71 is not complete.

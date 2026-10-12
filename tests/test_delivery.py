@@ -23,6 +23,8 @@ RUN = {'id': 123, 'run_attempt': 1, 'event': 'push', 'head_branch': 'main',
        'head_repository': {'full_name': delivery.REPOSITORY}, 'head_sha': 'b' * 40}
 RECORD = {'schema': 1, 'run_id': '123', 'run_attempt': '1', 'revision': 'b' * 40,
           'platform': 'linux/amd64', 'classification': 'private-staging',
+          'election_id': 'es-gen-2023', 'quiz_mode': 'unavailable',
+          'canonical_base': 'https://xn--eleccionesespaa2026-83b.es',
           'image': IMAGE, 'home_sha256': 'c' * 64}
 ENV = {'VPS_HOST': '195.20.230.75', 'VPS_USER': 'deployer', 'VPS_SSH_PORT': '22',
        'VPS_SSH_KEY': 'test-only-key', 'VPS_KNOWN_HOSTS': 'test-only-trust',
@@ -49,6 +51,9 @@ class DeliveryTests(unittest.TestCase):
         for field, value in [('revision', 'd' * 40), ('run_id', '456'),
                              ('run_attempt', '2'), ('platform', 'linux/arm64'),
                              ('classification', 'public'), ('home_sha256', ''),
+                             ('election_id', 'es-gen-2026'), ('election_id', None),
+                             ('quiz_mode', 'mock'), ('quiz_mode', None),
+                             ('canonical_base', 'https://example.invalid'), ('canonical_base', None),
                              ('image', 'ghcr.io/other/site@sha256:' + 'a' * 64)]:
             with self.subTest(field=field):
                 record = dict(RECORD, **{field: value})
