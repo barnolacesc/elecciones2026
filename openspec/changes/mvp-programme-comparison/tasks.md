@@ -177,3 +177,7 @@ These are desktop browser engines at phone widths, not real iPhone acceptance.
 The build still publishes zero statements and relationships. Original-source
 records, review marks and source-rights gates are unchanged. #44 real-corpus and
 manual acceptance stays open; this branch is not a hosted release.
+
+CI follow-up: three sharing assertions still expected the previous empty-state
+heading. They now check publication-pending wording while retaining election,
+quote-exclusion and sharing checks. All 19 Node sharing/quiz contracts pass.
