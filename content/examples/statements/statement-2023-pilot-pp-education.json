@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2023",
+  "id": "stmt-pilot-pp-education-2023",
+  "party_id": "pp",
+  "programme_id": "prog-pp-2023-official",
+  "topic_id": "education",
+  "subtopic_id": "early-childhood-education",
+  "statement_type": "explicit_proposal",
+  "summary": "Hacer universal y gratuita la educación de 0 a 3 años, con cofinanciación del Estado y las comunidades autónomas.",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+  "source_version": "23J-v1",
+  "source_page": "50",
+  "source_section": "Medida 146; página impresa 48 (página PDF 50)",
+  "qualifications": [
+    "La medida prevé nuevas plazas con financiación pública y prioridad para los lugares con mayor vulnerabilidad.",
+    "También incluye orientaciones curriculares sobre lenguaje, comprensión lectora y habilidades numéricas básicas."
+  ],
+  "policy_instrument": "Universalización y cofinanciación de la educación infantil de 0 a 3 años",
+  "review_status": "draft",
+  "reviews": [],
+  "last_reviewed_date": null,
+  "correction_id": null,
+  "is_fixture": false
+}

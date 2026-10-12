@@ -4,8 +4,11 @@
   "inspection_date": "2026-10-12",
   "election_id": "es-gen-2023",
   "status": "preparation-only",
-  "selected_parties": [],
-  "selection_status": "owner-decision-pending",
+  "selected_parties": [
+    "pp",
+    "erc"
+  ],
+  "selection_status": "owner-selected",
   "worker_image_id": "sha256:cd68be1fcb3953aa9160f19f415f40004b0adc33003d647b97a882a88797e8a5",
   "sources": [
     {
@@ -37,8 +40,8 @@
             "pdf_page": 34,
             "anchor": "pdf-page-34",
             "text_sha256": "fdade932b1e36ec4c4c71669a4afab304b5623e9f512cd94914a4e45c6cdc7b3",
-            "printed_page_label": null,
-            "visual_review_status": "pending"
+            "printed_page_label": "32",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
           }
         ],
         "health-social-services": [
@@ -46,8 +49,8 @@
             "pdf_page": 45,
             "anchor": "pdf-page-45",
             "text_sha256": "6448a20f313874c87595318a85f17f6a60ed06152b0417cf48af8c0ea5c6e175",
-            "printed_page_label": null,
-            "visual_review_status": "pending"
+            "printed_page_label": "43",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
           },
           {
             "pdf_page": 46,
@@ -83,8 +86,8 @@
             "pdf_page": 50,
             "anchor": "pdf-page-50",
             "text_sha256": "2fdfe4aa75d39cd5a68d9c1c93feb0a63ccb1952c27816fd107b9ea211704d3b",
-            "printed_page_label": null,
-            "visual_review_status": "pending"
+            "printed_page_label": "48",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
           },
           {
             "pdf_page": 51,
@@ -132,8 +135,8 @@
             "pdf_page": 114,
             "anchor": "pdf-page-114",
             "text_sha256": "d2377a261fd62cfd4d4faddadbf3ec6c377a7dd1ee9a0b8e53b7cb11f8831139",
-            "printed_page_label": null,
-            "visual_review_status": "pending"
+            "printed_page_label": "113",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
           },
           {
             "pdf_page": 115,
@@ -155,8 +158,8 @@
             "pdf_page": 61,
             "anchor": "pdf-page-61",
             "text_sha256": "916bf39a25628f3bb90009f21c279fae401c4ed045c22e4f92ecbf4bb7f8940b",
-            "printed_page_label": null,
-            "visual_review_status": "pending"
+            "printed_page_label": "60",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
           },
           {
             "pdf_page": 62,
@@ -199,8 +202,8 @@
             "pdf_page": 128,
             "anchor": "pdf-page-128",
             "text_sha256": "a1f81930475eeb010bb9981f19e553cf7651e16d561632e5f5921c28a179fd71",
-            "printed_page_label": null,
-            "visual_review_status": "pending"
+            "printed_page_label": "127",
+            "visual_review_status": "automated-visual-inspection-human-review-pending"
           },
           {
             "pdf_page": 129,
@@ -409,5 +412,6 @@
         ]
       }
     }
-  ]
+  ],
+  "selection_reference": "Owner selected PP and ERC in the project session on 2026-10-12."
 }
