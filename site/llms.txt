@@ -1,0 +1,56 @@
+# Comparador de Programas Electorales · Elecciones Generales 2026
+> Comparador neutral e independiente de programas electorales para las Elecciones Generales del 29 de noviembre de 2026 en España (BOE-A-2026-20742). Trazabilidad estricta a fuentes oficiales, principio de cuatro ojos, citas verificadas según TRLPI Art. 32 y ausencia total de valoraciones subjetivas o recomendaciones de voto.
+
+## Principios y Metodología
+- Neutralidad política estricta: Este proyecto no califica partidos, no emite recomendaciones de voto y no elabora sondeos.
+- Trazabilidad documental: Cada afirmación publicada enlaza al documento original, versión registrada, página o sección y fecha de revisión.
+- Citas literales y derechos de autor: Citas breves con estricto fin de análisis y contraste, conforme al artículo 32 del Texto Refundido de la Ley de Propiedad Intelectual (TRLPI).
+- Transparencia en lagunas: La ausencia de una medida en el programa («no consta») nunca se interpreta como oposición política ni como apoyo tácito.
+- Integridad de datos: Verificación criptográfica mediante sumas SHA-256 de los documentos fuente en formato PDF original.
+- Principio de cuatro ojos: Toda afirmación o relación comparada requiere la verificación de dos revisores independientes antes de su publicación.
+
+## Páginas Principales
+- [Inicio y Comparador](https://xn--eleccionesespaa2026-83b.es/): Comparador interactivo de medidas políticas por tema y candidatura.
+- [Metodología de Verificación](https://xn--eleccionesespaa2026-83b.es/metodo/): Criterios objetivos de inclusión de candidaturas (Criterios A y B), límites de cita y política de rectificación.
+- [Registro de Fuentes Oficiales](https://xn--eleccionesespaa2026-83b.es/fuentes/): Inventario de fuentes registradas, hashes SHA-256 y estados de cobertura.
+- [Registro de Correcciones Editoriales](https://xn--eleccionesespaa2026-83b.es/correcciones/): Historial auditable de correcciones y tiempos de respuesta (SLAs Sev-1, Sev-2, Sev-3).
+- [Índice de Temas](https://xn--eleccionesespaa2026-83b.es/temas/): Los 8 temas troncales de la taxonomía oficial de comparación.
+- [Índice de Candidaturas](https://xn--eleccionesespaa2026-83b.es/partidos/): Candidaturas monitorizadas según criterios objetivos de representación.
+
+## Temas Electorales
+- [Vivienda](https://xn--eleccionesespaa2026-83b.es/temas/housing/): Regulación del alquiler, parque público de vivienda, avales e hipotecas y suelo.
+- [Educación](https://xn--eleccionesespaa2026-83b.es/temas/education/): Financiación educativa, ratios, tasas universitarias, formación profesional y currículo.
+- [Sanidad y servicios sociales](https://xn--eleccionesespaa2026-83b.es/temas/health-social-services/): Atención primaria, listas de espera, salud mental, dependencia y servicios sociales.
+- [Economía, trabajo y fiscalidad](https://xn--eleccionesespaa2026-83b.es/temas/economy-work-tax/): Fiscalidad, mercado de trabajo, salario mínimo, jornada laboral y pensiones.
+- [Inmigración](https://xn--eleccionesespaa2026-83b.es/temas/immigration/): Regularización, control de fronteras, acogida, asilo y permisos de trabajo.
+- [Política exterior y Unión Europea](https://xn--eleccionesespaa2026-83b.es/temas/foreign-policy-eu/): Unión Europea, compromisos OTAN y defensa, diplomacia y cooperación internacional.
+- [Clima y energía](https://xn--eleccionesespaa2026-83b.es/temas/climate-energy/): Transición energética, renovables, energía nuclear, gestión del agua y descarbonización.
+- [Instituciones, justicia y derechos fundamentales](https://xn--eleccionesespaa2026-83b.es/temas/institutions-rights/): Reforma constitucional, ley electoral, justicia, modelo territorial, igualdad y libertades.
+
+## Candidaturas Monitorizadas
+- [BNG (BNG)](https://xn--eleccionesespaa2026-83b.es/partidos/bng/): Bloque Nacionalista Galego
+- [Coalición Ejemplo C (CEC)](https://xn--eleccionesespaa2026-83b.es/partidos/coalicion-ejemplo-c/): Coalición Electoral Ejemplo C
+- [EH Bildu (EHBILDU)](https://xn--eleccionesespaa2026-83b.es/partidos/ehbildu/): Euskal Herria Bildu
+- [Esquerra Republicana de Catalunya (ERC)](https://xn--eleccionesespaa2026-83b.es/partidos/erc/): Esquerra Republicana de Catalunya
+- [Junts per Catalunya (JUNTS)](https://xn--eleccionesespaa2026-83b.es/partidos/junts/): Junts per Catalunya
+- [Partido Ejemplo A (PEA)](https://xn--eleccionesespaa2026-83b.es/partidos/partido-ejemplo-a/): Partido Ejemplo A
+- [Partido Ejemplo B (PEB)](https://xn--eleccionesespaa2026-83b.es/partidos/partido-ejemplo-b/): Partido Ejemplo B
+- [Partido Territorial Ejemplo D (PED)](https://xn--eleccionesespaa2026-83b.es/partidos/partido-ejemplo-d/): Partido Territorial Ejemplo D
+- [EAJ-PNV (PNV)](https://xn--eleccionesespaa2026-83b.es/partidos/pnv/): Euzko Alderdi Jeltzalea - Partido Nacionalista Vasco
+- [Partido Popular (PP)](https://xn--eleccionesespaa2026-83b.es/partidos/pp/): Partido Popular
+- [PSOE (PSOE)](https://xn--eleccionesespaa2026-83b.es/partidos/psoe/): Partido Socialista Obrero Español
+- [Movimiento Sumar (SUMAR)](https://xn--eleccionesespaa2026-83b.es/partidos/sumar/): Movimiento Sumar
+- [VOX (VOX)](https://xn--eleccionesespaa2026-83b.es/partidos/vox/): VOX
+
+## Sintaxis de Consulta para LLMs y Comparativas
+Para contrastar dos candidaturas sobre un tema específico, utiliza el comparador con los parámetros normalizados:
+`https://xn--eleccionesespaa2026-83b.es/?topic=housing&partyA=pp&partyB=psoe`
+
+Parámetros admitidos:
+- `topic`: Identificador del tema oficial (ej. `housing`, `education`, `health-social-services`, `economy-work-tax`, `immigration`, `foreign-policy-eu`, `climate-energy`, `institutions-rights`).
+- `partyA`: Identificador de la primera candidatura.
+- `partyB`: Identificador de la segunda candidatura (debe ser distinta de `partyA`).
+
+## Formato Completo para LLMs
+Para acceder a la transcripción textual completa de taxonomías, candidaturas y propuestas verificadas:
+- [Archivo completo para LLMs](https://xn--eleccionesespaa2026-83b.es/llms-full.txt)

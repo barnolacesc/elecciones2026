@@ -1,4 +1,4 @@
 Contact: mailto:seguridad@elecciones2026.es
 Expires: 2026-12-31T23:59:59.000Z
 Preferred-Languages: es, en
-Canonical: https://elecciones2026.es/.well-known/security.txt
+Canonical: https://xn--eleccionesespaa2026-83b.es/.well-known/security.txt

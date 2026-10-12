@@ -1,0 +1,298 @@
+# Archivo Integral de Datos Electorales · Elecciones Generales 2026
+Fecha de compilación: 2026-10-09 | Elección: es-gen-2026 | URL canónica: https://xn--eleccionesespaa2026-83b.es/
+
+## 1. Taxonomía Temática y Subtemas
+### Tema: Vivienda (`housing`)
+Regulación del alquiler, parque público de vivienda, avales e hipotecas y suelo.
+Subtemas:
+- `rental-regulation`: Regulación del alquiler y precios
+- `public-housing-stock`: Parque público y vivienda social
+- `mortgage-and-purchasing`: Hipotecas y ayudas para la compra
+- `evictions-and-vulnerability`: Desahucios y protección de vulnerabilidad
+- `tourist-accommodation`: Viviendas de uso turístico
+
+### Tema: Educación (`education`)
+Financiación educativa, ratios, tasas universitarias, formación profesional y currículo.
+Subtemas:
+- `school-funding-and-ratios`: Financiación escolar, centros concertados y ratios
+- `early-childhood-education`: Educación infantil (0-3 años)
+- `vocational-training`: Formación profesional
+- `university-and-scholarships`: Tasas universitarias y becas
+- `curriculum-and-languages`: Currículo educativo y lenguas
+
+### Tema: Sanidad y servicios sociales (`health-social-services`)
+Atención primaria, listas de espera, salud mental, dependencia y servicios sociales.
+Subtemas:
+- `primary-care-and-sns`: Atención primaria y refuerzo del SNS
+- `waiting-lists-and-management`: Listas de espera y gestión sanitaria
+- `mental-health-and-coverage`: Salud mental y prestaciones bucodentales/ópticas
+- `dependency-and-eldercare`: Sistema de dependencia y residencias de mayores
+- `disability-and-inclusion`: Discapacidad e inclusión social
+
+### Tema: Economía, trabajo y fiscalidad (`economy-work-tax`)
+Fiscalidad, mercado de trabajo, salario mínimo, jornada laboral y pensiones.
+Subtemas:
+- `tax-reform-and-brackets`: Reforma fiscal, IRPF y sociedades
+- `labor-regulations-and-smi`: Normativa laboral, contratos y salario mínimo
+- `working-hours-reduction`: Jornada laboral y conciliación
+- `pensions-and-social-security`: Sostenibilidad de pensiones y Seguridad Social
+- `industrial-policy-and-smes`: Política industrial, autónomos y pymes
+
+### Tema: Inmigración (`immigration`)
+Regularización, control de fronteras, acogida, asilo y permisos de trabajo.
+Subtemas:
+- `regularization-processes`: Procesos de regularización extraordinaria
+- `border-control-and-security`: Control de fronteras y fuerzas de seguridad
+- `reception-and-asylum`: Centros de acogida y derecho de asilo
+- `unaccompanied-minors`: Menores no acompañados (MENA)
+- `labor-migration-channels`: Canales de migración laboral
+
+### Tema: Política exterior y Unión Europea (`foreign-policy-eu`)
+Unión Europea, compromisos OTAN y defensa, diplomacia y cooperación internacional.
+Subtemas:
+- `eu-treaties-and-fiscal-rules`: Tratados de la UE y reglas fiscales comunitarias
+- `defense-spending-and-nato`: Gasto en defensa y alianzas de seguridad
+- `bilateral-relations`: Relaciones bilaterales (Iberoamérica y Mediterráneo)
+- `development-cooperation`: Cooperación al desarrollo y ayuda humanitaria
+- `international-trade-treaties`: Tratados comerciales y acuerdos arancelarios
+
+### Tema: Clima y energía (`climate-energy`)
+Transición energética, renovables, energía nuclear, gestión del agua y descarbonización.
+Subtemas:
+- `emission-targets-and-decarbonization`: Objetivos de emisiones y descarbonización
+- `renewables-and-grid`: Despliegue de energías renovables y red eléctrica
+- `nuclear-energy-lifecycle`: Calendario nuclear y gestión de residuos
+- `water-management-and-drought`: Gestión del agua e infraestructuras contra la sequía
+- `biodiversity-and-circular-economy`: Protección de la biodiversidad y economía circular
+
+### Tema: Instituciones, justicia y derechos fundamentales (`institutions-rights`)
+Reforma constitucional, ley electoral, justicia, modelo territorial, igualdad y libertades.
+Subtemas:
+- `electoral-law-and-constitution`: Reforma constitucional y régimen electoral (LOREG)
+- `judicial-governance-and-cgpj`: Gobernanza judicial y elección del CGPJ
+- `transparency-and-anti-corruption`: Transparencia pública y medidas anticorrupción
+- `territorial-model-and-sfa`: Modelo territorial y financiación autonómica
+- `civil-liberties-and-equality`: Libertades públicas, igualdad y derechos LGTBI+
+
+## 2. Candidaturas y Fuentes Oficiales Registradas
+### Candidatura: BNG (`bng`)
+- Nombre oficial: Bloque Nacionalista Galego
+- Siglas: BNG
+- Ámbito territorial: general
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing
+- URL oficial: https://www.bng.gal/
+- Versión: 0.0
+- Fecha de consulta: 2026-10-09
+- Hash SHA-256: Pendiente de verificación
+- Derechos de cita: not_reviewed
+
+### Candidatura: Coalición Ejemplo C (`coalicion-ejemplo-c`)
+- Nombre oficial: Coalición Electoral Ejemplo C
+- Siglas: CEC
+- Ámbito territorial: national
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing (no disponible)
+
+### Candidatura: EH Bildu (`ehbildu`)
+- Nombre oficial: Euskal Herria Bildu
+- Siglas: EHBILDU
+- Ámbito territorial: general
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing
+- URL oficial: https://ehbildu.eus/
+- Versión: 0.0
+- Fecha de consulta: 2026-10-09
+- Hash SHA-256: Pendiente de verificación
+- Derechos de cita: not_reviewed
+
+### Candidatura: Esquerra Republicana de Catalunya (`erc`)
+- Nombre oficial: Esquerra Republicana de Catalunya
+- Siglas: ERC
+- Ámbito territorial: Cataluña
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing
+- URL oficial: https://www.esquerra.cat/transparencia/programes-electorals/
+- Versión: 0.0
+- Fecha de consulta: 2026-10-09
+- Hash SHA-256: Pendiente de verificación
+- Derechos de cita: not_reviewed
+
+### Candidatura: Junts per Catalunya (`junts`)
+- Nombre oficial: Junts per Catalunya
+- Siglas: JUNTS
+- Ámbito territorial: general
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing
+- URL oficial: https://junts.cat/
+- Versión: 0.0
+- Fecha de consulta: 2026-10-09
+- Hash SHA-256: Pendiente de verificación
+- Derechos de cita: not_reviewed
+
+### Candidatura: Partido Ejemplo A (`partido-ejemplo-a`)
+- Nombre oficial: Partido Ejemplo A
+- Siglas: PEA
+- Ámbito territorial: national
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing (no disponible)
+
+### Candidatura: Partido Ejemplo B (`partido-ejemplo-b`)
+- Nombre oficial: Partido Ejemplo B
+- Siglas: PEB
+- Ámbito territorial: national
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing (no disponible)
+
+### Candidatura: Partido Territorial Ejemplo D (`partido-ejemplo-d`)
+- Nombre oficial: Partido Territorial Ejemplo D
+- Siglas: PED
+- Ámbito territorial: Cataluña
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing (no disponible)
+
+### Candidatura: EAJ-PNV (`pnv`)
+- Nombre oficial: Euzko Alderdi Jeltzalea - Partido Nacionalista Vasco
+- Siglas: PNV
+- Ámbito territorial: general
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing
+- URL oficial: https://www.eaj-pnv.eus/es/documentos/20945/con-voz-propia-programa-electoral-23-j
+- Versión: 0.0
+- Fecha de consulta: 2026-10-09
+- Hash SHA-256: Pendiente de verificación
+- Derechos de cita: not_reviewed
+
+### Candidatura: Partido Popular (`pp`)
+- Nombre oficial: Partido Popular
+- Siglas: PP
+- Ámbito territorial: national
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing
+- URL oficial: https://www.pp.es/categoria/elecciones-generales/
+- Versión: 0.0
+- Fecha de consulta: 2026-10-09
+- Hash SHA-256: Pendiente de verificación
+- Derechos de cita: not_reviewed
+
+### Candidatura: PSOE (`psoe`)
+- Nombre oficial: Partido Socialista Obrero Español
+- Siglas: PSOE
+- Ámbito territorial: general
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing
+- URL oficial: https://www.psoe.es/transparencia/informacion-politica-organizativa/programa/
+- Versión: 0.0
+- Fecha de consulta: 2026-10-09
+- Hash SHA-256: Pendiente de verificación
+- Derechos de cita: not_reviewed
+
+### Candidatura: Movimiento Sumar (`sumar`)
+- Nombre oficial: Movimiento Sumar
+- Siglas: SUMAR
+- Ámbito territorial: general
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing
+- URL oficial: https://movimientosumar.es/programa-electoral-23j/
+- Versión: 0.0
+- Fecha de consulta: 2026-10-09
+- Hash SHA-256: Pendiente de verificación
+- Derechos de cita: not_reviewed
+
+### Candidatura: VOX (`vox`)
+- Nombre oficial: VOX
+- Siglas: VOX
+- Ámbito territorial: general
+- Criterio de inclusión: criterion_a_parliamentary_representation
+- Estado del programa: missing
+- URL oficial: https://www.voxespana.es/programa/programa-electoral-Vox
+- Versión: 0.0
+- Fecha de consulta: 2026-10-09
+- Hash SHA-256: Pendiente de verificación
+- Derechos de cita: not_reviewed
+
+## 3. Posiciones y Afirmaciones Electorales Verificadas
+### Afirmación `stmt-party-a-economy-smi-001`: partido-ejemplo-a en `economy-work-tax` / `labor-regulations-and-smi`
+- Tipo: explicit_proposal
+- Resumen neutral: Blindar por ley que el Salario Mínimo Interprofesional alcance de manera permanente el 60% del salario medio neto en España.
+- Cita literal: «Garantizaremos por ley que el salario mínimo interprofesional sea siempre equivalente al 60% del salario medio neto.»
+- Matiz / condición: Revisión anual vinculada a los datos del Comité de Expertos del Ministerio de Trabajo.
+- Estado de revisión: approved (Última revisión: 2026-10-17)
+
+### Afirmación `stmt-party-b-economy-001`: partido-ejemplo-b en `economy-work-tax` / `working-hours-reduction`
+- Tipo: explicit_proposal
+- Resumen neutral: Reducir la jornada laboral máxima legal a 37,5 horas semanales sin reducción de salario, con calendario de adaptación sectorial.
+- Cita literal: «Avanzaremos hacia la jornada laboral de 37,5 horas semanales sin merma salarial mediante diálogo social.»
+- Matiz / condición: Sujeto a acuerdos en mesas de diálogo social tripartito.
+- Matiz / condición: Período transitorio de dos años para pequeñas y medianas empresas con menos de 10 trabajadores.
+- Estado de revisión: approved (Última revisión: 2026-10-17)
+
+### Afirmación `stmt-coalicion-c-housing-001`: coalicion-ejemplo-c en `housing` / `mortgage-and-purchasing`
+- Tipo: explicit_proposal
+- Resumen neutral: Línea de avales públicos directos del Estado de hasta el 20% del valor de tasación para la fianza o entrada hipotecaria de menores de 35 años con renta hasta 4 veces el IPREM.
+- Cita literal: «Habilitaremos un aval público del 20% para la compra de primera vivienda por personas jóvenes con ingresos de hasta cuatro veces el IPREM.»
+- Matiz / condición: Límite de ingresos de 4 veces el IPREM.
+- Matiz / condición: Compatible con ayudas autonómicas de emancipación juvenil.
+- Estado de revisión: approved (Última revisión: 2026-10-18)
+
+### Afirmación `stmt-party-a-housing-001`: partido-ejemplo-a en `housing` / `rental-regulation`
+- Tipo: explicit_proposal
+- Resumen neutral: Limitar los precios de alquiler en zonas tensionadas mediante un índice estatal de referencia y sanciones a grandes tenedores infractores.
+- Cita literal: «Estableceremos un límite de precios vinculante en zonas de mercado residencial tensionado basado en el índice de precios de referencia.»
+- Matiz / condición: Aplica exclusivamente en municipios declarados como zona de mercado tensionado.
+- Matiz / condición: Exención temporal de dos años para viviendas objeto de rehabilitación energética integral.
+- Estado de revisión: approved (Última revisión: 2026-10-17)
+
+### Afirmación `stmt-party-a-housing-002`: partido-ejemplo-a en `housing` / `mortgage-and-purchasing`
+- Tipo: explicit_proposal
+- Resumen neutral: Bonificación pública de tipos de interés hipotecarios para adquisición de primera vivienda por jóvenes menores de 35 años con renta inferior a 3,5 veces el IPREM.
+- Cita literal: «Bonificaremos hasta dos puntos el tipo de interés de las hipotecas para jóvenes menores de 35 años que compren su primera vivienda.»
+- Matiz / condición: Límite de renta individual o de unidad de convivencia fijado en 3,5 veces el IPREM.
+- Matiz / condición: Aplica exclusivamente para hipotecas sobre vivienda habitual.
+- Estado de revisión: approved (Última revisión: 2026-10-17)
+
+### Afirmación `stmt-party-b-housing-001`: partido-ejemplo-b en `housing` / `rental-regulation`
+- Tipo: explicit_proposal
+- Resumen neutral: Intervenir los precios del alquiler en áreas tensionadas mediante índices autonómicos y movilización de viviendas desocupadas.
+- Cita literal: «Toparemos los precios abusivos del alquiler en las zonas residenciales declaradas tensionadas.»
+- Matiz / condición: Prevé competencia transferida a las comunidades autónomas para ajustar los índices a la baja.
+- Estado de revisión: approved (Última revisión: 2026-10-17)
+
+### Afirmación `stmt-party-d-housing-not-found`: partido-ejemplo-d en `housing` / `rental-regulation`
+- Tipo: not_found
+- Resumen neutral: No se localiza propuesta ni posición sobre regulación de precios de alquiler en las fuentes oficiales revisadas de esta candidatura.
+- Estado de revisión: approved (Última revisión: 2026-10-17)
+
+## 4. Relaciones Comparativas Verificadas entre Candidaturas
+### Comparativa `rel-economy-smi-party-a-partido-d`: Evolución y fijación del Salario Mínimo Interprofesional (SMI) (`economy-work-tax` / `labor-regulations-and-smi`)
+- Partidos comparados: partido-ejemplo-a, partido-ejemplo-d
+- Tipo de relación: single_party
+- Resumen comparativo: Partido A propone blindar por ley que el SMI alcance el 60% del salario medio neto, mientras que Partido D no dispone de programa ni posición localizada sobre la materia.
+- Diferencias identificadas:
+  * Partido D tiene estado 'missing' de programa para 2026; la ausencia no constituye oposición.
+- Afirmaciones fuente vinculadas: stmt-party-a-economy-smi-001
+
+### Comparativa `rel-housing-youth-subsidy-party-a-coalicion-c`: Ayudas públicas directas y avales para acceso a la vivienda para jóvenes (`housing` / `mortgage-and-purchasing`)
+- Partidos comparados: partido-ejemplo-a, coalicion-ejemplo-c
+- Tipo de relación: partial_overlap
+- Resumen comparativo: Ambas candidaturas contemplan apoyo público al acceso a la vivienda para menores de 35 años, pero mediante instrumentos operativos distintos: Partido A propone bonificación de tipos de interés y Coalición C propone avales directos del 20% del valor de tasación.
+- Diferencias identificadas:
+  * Instrumento principal: subvención al tipo de interés (Partido A) frente a aval estatal de entrada hipotecaria (Coalición C).
+  * Umbral de renta: Partido A limita a 3,5 veces el IPREM; Coalición C limita a 4 veces el IPREM.
+- Afirmaciones fuente vinculadas: stmt-party-a-housing-002, stmt-coalicion-c-housing-001
+
+### Comparativa `rel-housing-rental-regulation-party-a-party-b`: Regulación de precios de alquiler en zonas de mercado tensionado (`housing` / `rental-regulation`)
+- Partidos comparados: partido-ejemplo-a, partido-ejemplo-b
+- Tipo de relación: agreement
+- Resumen comparativo: Ambas formaciones políticas proponen establecer techos vinculantes de precios para alquileres de vivienda en áreas declaradas de mercado tensionado.
+- Diferencias identificadas:
+  * Partido A condiciona la medida a un índice estatal único; Partido B prevé que las comunidades autónomas puedan fijar índices más restrictivos.
+  * Partido A introduce una exención de 2 años por rehabilitación integral; Partido B no contempla exenciones temporales.
+- Afirmaciones fuente vinculadas: stmt-party-a-housing-001, stmt-party-b-housing-001
+
+## 5. Criterios de Calidad y Rectificación
+- Criterio de inclusión A: Representación parlamentaria obtenida en las anteriores Cortes Generales o Parlamento Europeo.
+- Criterio de inclusión B: Candidaturas proclamadas que alcancen al menos el 50% del censo electoral estatal.
+- Niveles de rectificación: Sev-1 (crítica, resolución <= 12h), Sev-2 (grave, <= 24h), Sev-3 (menor, <= 48h).
+- Cualquier rectificación sobre una afirmación fuente invalida automáticamente las relaciones comparativas derivadas.
+- Contacto editorial: editorial@elecciones2026.es

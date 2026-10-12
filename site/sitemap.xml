@@ -1,112 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://elecciones2026.es/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/correcciones/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/correcciones/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/fuentes/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/fuentes/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.7</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/metodo/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/metodo/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/bng/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/bng/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/coalicion-ejemplo-c/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/coalicion-ejemplo-c/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/ehbildu/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/ehbildu/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/erc/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/erc/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/junts/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/junts/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/partido-ejemplo-a/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/partido-ejemplo-a/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/partido-ejemplo-b/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/partido-ejemplo-b/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/partido-ejemplo-d/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/partido-ejemplo-d/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/pnv/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/pnv/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/pp/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/pp/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/psoe/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/psoe/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/sumar/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/sumar/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/partidos/vox/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/partidos/vox/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/temas/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/temas/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/temas/climate-energy/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/temas/climate-energy/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/temas/economy-work-tax/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/temas/economy-work-tax/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/temas/education/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/temas/education/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/temas/foreign-policy-eu/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/temas/foreign-policy-eu/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/temas/health-social-services/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/temas/health-social-services/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/temas/housing/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/temas/housing/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/temas/immigration/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/temas/immigration/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>  <url>
-    <loc>https://elecciones2026.es/temas/institutions-rights/</loc>
+    <loc>https://xn--eleccionesespaa2026-83b.es/temas/institutions-rights/</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
