@@ -45,7 +45,7 @@ The target origin is the existing Ubuntu IONOS VPS with 1 vCPU and 1 GB RAM. The
 
 Monthly infrastructure costs are capped at a **€50.00 / month hard ceiling**, with baseline operations expected at ~€9.00–€15.00 / month. Uncapped serverless or metered bandwidth services are forbidden.
 
-Protect origin access where feasible: restrict ports to Cloudflare IPs, enable TLS and HSTS, apply updates, monitor availability, use ephemeral access logs without personal data (<= 14 days retention), and retain the preceding immutable artifact for one-command rollback.
+Protect origin access where feasible: restrict ports to Cloudflare IPs, enable TLS and HSTS, apply updates, monitor aggregate availability without visitor identifiers, and retain the preceding immutable artifact for one-command rollback. The shared static origin disables access and request-error logging to meet the quiz's stricter delivery boundary. Edge, host, and monitoring settings still need a separate zero-tracking review before G5.
 
 ## Decisions confirmed and pre-release gates
 

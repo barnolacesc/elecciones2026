@@ -1,0 +1,415 @@
+{
+  "schema_version": "1.0.0",
+  "method_version": "1.0.0",
+  "taxonomy_version": "1.0.0",
+  "mode": "mock",
+  "election_id": "quiz-fixture",
+  "version": "mock-1.0.0",
+  "items": [
+    {
+      "id": "mock-01",
+      "measure_id": "mock-measure-01",
+      "topic_id": "housing",
+      "text": "Elemento de prueba 1. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-02",
+      "measure_id": "mock-measure-02",
+      "topic_id": "housing",
+      "text": "Elemento de prueba 2. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-03",
+      "measure_id": "mock-measure-03",
+      "topic_id": "education",
+      "text": "Elemento de prueba 3. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-04",
+      "measure_id": "mock-measure-04",
+      "topic_id": "education",
+      "text": "Elemento de prueba 4. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-05",
+      "measure_id": "mock-measure-05",
+      "topic_id": "health-social-services",
+      "text": "Elemento de prueba 5. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-06",
+      "measure_id": "mock-measure-06",
+      "topic_id": "health-social-services",
+      "text": "Elemento de prueba 6. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-07",
+      "measure_id": "mock-measure-07",
+      "topic_id": "economy-work-tax",
+      "text": "Elemento de prueba 7. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-08",
+      "measure_id": "mock-measure-08",
+      "topic_id": "economy-work-tax",
+      "text": "Elemento de prueba 8. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-09",
+      "measure_id": "mock-measure-09",
+      "topic_id": "immigration",
+      "text": "Elemento de prueba 9. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-10",
+      "measure_id": "mock-measure-10",
+      "topic_id": "immigration",
+      "text": "Elemento de prueba 10. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-11",
+      "measure_id": "mock-measure-11",
+      "topic_id": "foreign-policy-eu",
+      "text": "Elemento de prueba 11. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-12",
+      "measure_id": "mock-measure-12",
+      "topic_id": "foreign-policy-eu",
+      "text": "Elemento de prueba 12. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-13",
+      "measure_id": "mock-measure-13",
+      "topic_id": "climate-energy",
+      "text": "Elemento de prueba 13. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-14",
+      "measure_id": "mock-measure-14",
+      "topic_id": "climate-energy",
+      "text": "Elemento de prueba 14. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-15",
+      "measure_id": "mock-measure-15",
+      "topic_id": "institutions-rights",
+      "text": "Elemento de prueba 15. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    },
+    {
+      "id": "mock-16",
+      "measure_id": "mock-measure-16",
+      "topic_id": "institutions-rights",
+      "text": "Elemento de prueba 16. Elige una respuesta para probar el cuestionario.",
+      "qualifications": [
+        "Este elemento no representa ninguna propuesta política."
+      ]
+    }
+  ],
+  "parties": [
+    {
+      "id": "mock-a",
+      "name": "Ejemplo A (ficticio)",
+      "positions": [
+        {
+          "item_id": "mock-01",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-02",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-03",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-04",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-05",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-06",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-07",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-08",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-09",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-10",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-11",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-12",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-13",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-14",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-15",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-16",
+          "status": "reject",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "id": "mock-b",
+      "name": "Ejemplo B (ficticio)",
+      "positions": [
+        {
+          "item_id": "mock-01",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-02",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-03",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-04",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-05",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-06",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-07",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-08",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-09",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-10",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-11",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-12",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-13",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-14",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-15",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-16",
+          "status": "support",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "mock-c",
+      "name": "Ejemplo C (ficticio)",
+      "positions": [
+        {
+          "item_id": "mock-01",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-02",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-03",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-04",
+          "status": "missing",
+          "value": null,
+          "reason": "Falta un dato de prueba; no significa estar en contra."
+        },
+        {
+          "item_id": "mock-05",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-06",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-07",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-08",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-09",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-10",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-11",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-12",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-13",
+          "status": "support",
+          "value": 1
+        },
+        {
+          "item_id": "mock-14",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-15",
+          "status": "reject",
+          "value": -1
+        },
+        {
+          "item_id": "mock-16",
+          "status": "support",
+          "value": 1
+        }
+      ]
+    }
+  ]
+}

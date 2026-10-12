@@ -691,6 +691,7 @@ def render_base(
       <nav class="nav-links" aria-label="Navegación principal">
         <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>
         <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>
+        <a class="nav-link" href="{{ root_path }}cuestionario/">{{ nav_quiz }}</a>
         <a class="nav-link" href="{{ root_path }}partidos/">{{ nav_parties }}</a>
         <a class="nav-link" href="{{ root_path }}metodo/">{{ nav_methodology }}</a>
         <a class="nav-link" href="{{ root_path }}fuentes/">{{ nav_sources }}</a>
@@ -722,6 +723,7 @@ def render_base(
         "{{ preview_banner_text }}": preview_banner_text,
         "{{ nav_comparator }}": escape(ctx.i18n["nav"]["comparator"]),
         "{{ nav_topics }}": escape(ctx.i18n["nav"]["topics"]),
+        "{{ nav_quiz }}": escape(ctx.i18n["nav"].get("quiz", "Cuestionario")),
         "{{ nav_parties }}": escape(ctx.i18n["nav"]["parties"]),
         "{{ nav_methodology }}": escape(ctx.i18n["nav"]["methodology"]),
         "{{ nav_sources }}": escape(ctx.i18n["nav"]["sources"]),
@@ -1688,6 +1690,8 @@ def build_site(
     custom_statements: Optional[list[StatementRecord]] = None,
     custom_relationships: Optional[list[RelationshipRecord]] = None,
     budget_bundle: Optional[Path] = None,
+    quiz_mode: str = "unavailable",
+    quiz_file: Optional[Path] = None,
 ) -> SiteBuildResult:
     """Generate the complete static site deterministically into output_dir.
 
@@ -1723,6 +1727,17 @@ def build_site(
         budget_projections = {topic.id: topic_projection(budget_payload, budget_manifest, topic.id)
                               for topic in ctx.taxonomy.topics}
         ctx.budget_projection_id = digest(canonical(budget_projections))
+
+    from elecciones2026.quiz import QuizValidationError, prepare_quiz, render_quiz_content
+    if quiz_mode not in {"unavailable", "mock", "reviewed"}:
+        raise BuildValidationError("Invalid quiz mode.")
+    quiz_bundle = None
+    if quiz_mode != "unavailable":
+        quiz_path = quiz_file or (ctx.content_dir / "quiz" / f"{quiz_mode}.json")
+        try:
+            quiz_bundle = prepare_quiz(quiz_path, ctx, mock=quiz_mode == "mock")
+        except (ValueError, OSError, QuizValidationError) as error:
+            raise BuildValidationError(f"Quiz validation failed: {error}") from error
 
     # Use atomic staging directory
     staging_dir = output_dir.parent / f".tmp_{output_dir.name}_{os.getpid()}"
@@ -1809,6 +1824,46 @@ def build_site(
             copy_stylesheet(root_dir / "site", staging_dir)
             shutil.copy2(root_dir / "site/budget-chart.js", staging_dir / "budget-chart.js")
 
+        # Quiz authoring records stay private; only validated public fields enter the bundle.
+        quiz_style = root_dir / "site" / "quiz.css"
+        quiz_style_name = f"quiz.{compute_sha256(quiz_style)[:16]}.css"
+        shutil.copy2(quiz_style, staging_dir / quiz_style_name)
+        quiz_scripts = []
+        if quiz_bundle is not None and quiz_bundle["available"]:
+            for name in ("quiz-engine.js", "quiz-ui.js"):
+                source = root_dir / "site" / name
+                target = f"{source.stem}.{compute_sha256(source)[:16]}{source.suffix}"
+                shutil.copy2(source, staging_dir / target)
+                quiz_scripts.append(target)
+            encoded = json.dumps(quiz_bundle, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+            bundle_script = f"window.QuizBundle = {encoded};\n"
+            digest = hashlib.sha256(bundle_script.encode()).hexdigest()[:16]
+            bundle_name = f"quiz-data.{digest}.js"
+            write_file_deterministic(staging_dir / bundle_name, bundle_script)
+            quiz_scripts.insert(0, bundle_name)
+        quiz_content = render_quiz_content(quiz_bundle)
+        quiz_content += ''.join(f'<script src="../{name}" defer></script>\n' for name in quiz_scripts)
+        quiz_description = ("Demostración privada con datos ficticios. No representa programas reales."
+                            if quiz_mode == "mock" else "Coincidencia con medidas revisadas."
+                            if quiz_mode == "reviewed" else "El cuestionario aún no está disponible.")
+        quiz_html = render_base(ctx, "Cuestionario de coincidencia", quiz_description,
+                                "/cuestionario/", quiz_content, root_path="../")
+        # Fetch imported design tokens with the main stylesheet, avoiding a
+        # second stylesheet request round trip before the local quiz can start.
+        quiz_html = quiz_html.replace('<link rel="stylesheet" href="../styles.css">',
+            '<link rel="preload" href="../tokens/tokens.css" as="style">\n'
+            '  <link rel="stylesheet" href="../styles.css">')
+        quiz_html = quiz_html.replace('</head>', f'<link rel="stylesheet" href="../{quiz_style_name}">\n</head>')
+        quiz_html = quiz_html.replace('<meta charset="utf-8">',
+            '<meta charset="utf-8">\n<meta name="referrer" content="no-referrer">'
+            f'\n<link rel="icon" href="../{preview_image_path(root_dir)}">')
+        if quiz_mode != "reviewed":
+            quiz_html = quiz_html.replace('<meta charset="utf-8">',
+                '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">')
+        else:
+            routes.append((f"{ctx.canonical_base}/cuestionario/", ctx.build_date, "weekly"))
+        write_file_deterministic(staging_dir / "cuestionario" / "index.html", quiz_html)
+
         # 9. Sitemap & crawler files
         sitemap_xml = render_sitemap(ctx, routes)
         write_file_deterministic(staging_dir / "sitemap.xml", sitemap_xml)
@@ -1841,6 +1896,12 @@ def build_site(
         reject_private_source_artifacts(staging_dir)
         if output_dir.exists():
             reject_private_source_artifacts(output_dir)
+            # Withdraw obsolete quiz bundles when changing mode or source version.
+            for obsolete in output_dir.iterdir():
+                generated_quiz_asset = re.fullmatch(
+                    r"(?:quiz-(?:data|engine|ui)\.[0-9a-f]{16}\.js|quiz\.[0-9a-f]{16}\.css)", obsolete.name)
+                if generated_quiz_asset and obsolete.is_file() and not (staging_dir / obsolete.name).exists():
+                    obsolete.unlink()
 
         # Atomic swap / copy into output_dir
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -1941,6 +2002,9 @@ def main(args: Optional[list[str]] = None) -> int:
     build_p.add_argument("--canonical-base", type=str, default=DEFAULT_CANONICAL_BASE, help="Canonical base URL.")
     build_p.add_argument("--strict", action="store_true", default=True, help="Enforce strict approved status.")
     build_p.add_argument("--budget-bundle", type=Path, help="Optional immutable budget bundle; requires human review.")
+    build_p.add_argument("--quiz-mode", choices=("unavailable", "mock", "reviewed"), default="unavailable",
+                         help="Mock quiz is opt-in for private preview; reviewed mode requires approved input.")
+    build_p.add_argument("--quiz-file", type=Path, help="Versioned quiz authoring JSON.")
 
     # Command: check-determinism
     det_p = subparsers.add_parser("check-determinism", help="Verify build determinism across repeated runs.")
@@ -1967,6 +2031,8 @@ def main(args: Optional[list[str]] = None) -> int:
                 build_date=parsed.build_date,
                 strict_approved=parsed.strict,
                 budget_bundle=parsed.budget_bundle,
+                quiz_mode=parsed.quiz_mode,
+                quiz_file=parsed.quiz_file,
             )
             print(f"Build completed successfully in {res.output_dir}:")
             print(f"  - Topics: {res.topics_count}")

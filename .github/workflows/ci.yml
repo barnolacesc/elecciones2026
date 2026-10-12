@@ -40,6 +40,12 @@ jobs:
           node --check ops/load/client.cjs
           node --test tests/load_behavior.cjs
 
+      - name: Verify local quiz arithmetic and edge cases (E4.2)
+        run: |
+          node --check site/quiz-engine.js
+          node --check site/quiz-ui.js
+          node --test tests/quiz_behavior.cjs
+
       - name: Install test and audit dependencies
         run: |
           python -m pip install --upgrade pip
@@ -151,6 +157,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node for quiz flow checks
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Install development browser tooling
         run: |
           pip install playwright==1.63.0
@@ -172,6 +183,47 @@ jobs:
         with:
           name: budget-view-e10-3
           path: build/budget-view-e10-3.json
+
+      - name: Check complete mock quiz flow and browser privacy boundaries
+        run: |
+          PYTHONPATH=src python -m elecciones2026.generator build --quiz-mode mock --output-dir build/quiz-browser
+          PYTHONPATH=src python -m elecciones2026.generator build --output-dir build/quiz-browser/unavailable
+          python -m http.server 8765 --bind 127.0.0.1 --directory build/quiz-browser > /tmp/quiz-http.log 2>&1 &
+          quiz_server_pid=$!
+          trap 'kill "$quiz_server_pid"' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/cuestionario/ > /dev/null; then break; fi
+            sleep 0.2
+          done
+          PLAYWRIGHT_MODULE=$(python -c 'from pathlib import Path; import playwright; print(Path(playwright.__file__).parent / "driver" / "package")') \
+          QUIZ_TEST_URL=http://127.0.0.1:8765 QUIZ_UNAVAILABLE_URL=http://127.0.0.1:8765/unavailable/cuestionario/ node tests/quiz_browser.cjs
+          PLAYWRIGHT_MODULE=$(python -c 'from pathlib import Path; import playwright; print(Path(playwright.__file__).parent / "driver" / "package")') \
+          QUIZ_TEST_URL=http://127.0.0.1:8765 QUIZ_PRIVACY_EVIDENCE=build/quiz-privacy.json node tests/quiz_privacy.cjs
+          PLAYWRIGHT_MODULE=$(python -c 'from pathlib import Path; import playwright; print(Path(playwright.__file__).parent / "driver" / "package")') \
+          QUIZ_TEST_URL=http://127.0.0.1:8765 QUIZ_ACCESSIBILITY_EVIDENCE=build/quiz-accessibility.json node tests/quiz_accessibility.cjs
+          PLAYWRIGHT_MODULE=$(python -c 'from pathlib import Path; import playwright; print(Path(playwright.__file__).parent / "driver" / "package")') \
+          QUIZ_TEST_URL=http://127.0.0.1:8765 QUIZ_PERFORMANCE_EVIDENCE=build/quiz-performance.json node tests/quiz_performance.cjs
+
+      - name: Retain synthetic quiz delivery measurements
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quiz-performance-e4-4
+          path: build/quiz-performance.json
+
+      - name: Retain quiz keyboard and contrast observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quiz-accessibility-e4-3
+          path: build/quiz-accessibility.json
+
+      - name: Retain sanitized quiz transport observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quiz-privacy-e4-4
+          path: build/quiz-privacy.json
 
       - name: Retain browser observations and review limits
         if: always()
@@ -272,6 +324,18 @@ jobs:
 
       - name: Rehearse immutable origin release and rollback (E3.3)
         run: python3 ops/smoke.py --base-image elecciones2026:ci
+
+      - name: Rehearse private quiz rollback and withdrawal (E4.4)
+        run: |
+          docker build --build-arg ELECTION_ID=es-gen-2023 --build-arg QUIZ_MODE=mock -t elecciones2026:quiz-ci .
+          python3 ops/quiz_smoke.py --mock-image elecciones2026:quiz-ci --output build/quiz-release.json
+
+      - name: Retain synthetic quiz recovery observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quiz-release-e4-4
+          path: build/quiz-release.json
 
       - name: Run isolated steady, cold-cache, and burst reader scenarios (E3.4)
         run: python3 ops/load/run.py --image elecciones2026:ci --seconds 20 --output build/load

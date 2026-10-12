@@ -71,6 +71,28 @@ follow redirects, disable TLS verification, or discard HTTP error responses.
 
 ## Measurements and interpretation
 
+### E4.4 quiz fixture
+
+Build an explicit private mock image and select the quiz workload:
+
+```sh
+docker build --build-arg QUIZ_MODE=mock -t elecciones2026:quiz-load .
+python3 ops/load/run.py --image elecciones2026:quiz-load --quiz --output build/quiz-load
+```
+
+The quiz workload requests only `/cuestionario/` and its generated local resources.
+The same reader schedules, reload rate, and limits apply. An unavailable build is
+rejected because it has no scoring bundle. This is HTTP delivery evidence; the
+separate `tests/quiz_performance.cjs` runner measures browser readiness with fictional
+data. Neither run executes scoring on the server.
+
+The origin normally disables request logs. The harness replaces that directive
+only in the temporary configuration of its isolated fixture container. Its numeric
+log includes timestamp, status, elapsed time, and response bytes only, restricted
+to the harness marker. It retains no paths, addresses, answers, or identifiers.
+The preview and production configuration remain unchanged. Never enable this
+fixture override on a visitor-serving origin.
+
 Reports contain the plan, image identity, revision, host observations, and per-phase:
 
 - Offered, sent, completed, dropped, and failed requests; reader count, peak in-flight
