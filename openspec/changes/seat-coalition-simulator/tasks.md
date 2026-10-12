@@ -2,7 +2,7 @@
 
 Planning package: **E5.1**, issue #75. Implementation packages: **E5.2–E5.3**. E5.4 sharing is deferred. Release gate: **G6**.
 
-These are reviewable tasks, not implementation permission. The owner authorized planning before the quiz's real corpus is ready. A new implementation request and human E5.1 decisions are required before coding. G4 remains a public release prerequisite; private fixture work before G4 needs explicit permission. No human rule, rights, copy, or release approval is recorded here.
+The owner authorized private technical continuation after PR #91 was presented (conversation reply: “continue”, 2026-10-12). This permits bounded E5.2 fixture engine work before G4 and does not establish the pending human E5.1 rule, rights, copy, or release reviews. Further packages retain their stated prerequisites. G4 remains a public release prerequisite; private fixture work before G4 needs explicit permission. No human rule, rights, copy, or release approval is recorded here.
 
 ## 1. E5.1 — Human rule and method decisions
 
@@ -13,8 +13,10 @@ These are reviewable tasks, not implementation permission. The owner authorized 
 
 ## 2. E5.2 — Pure seat engine
 
-- [ ] 2.1 Implement the pure validation/state contract and a short input guide. Verify generic fixtures cover 1–30 groups, unique IDs, normalized duplicate labels, Unicode/hostile labels, empty/invalid counts, 0/350 boundaries, total excess, and preservation of raw invalid text.
-- [ ] 2.2 Implement assigned/remainder and selected-sum/deficit/surplus arithmetic. Verify 175/176/177 boundaries, zero selection, zero-seat groups, incomplete distributions, removal/reselection, duplicate/unknown IDs, and invariance under row permutations; include the numeric contract in the guide.
+- [x] 2.1 Implement the pure validation/state contract and a short input guide. Verify generic fixtures cover 1–30 groups, unique IDs, normalized duplicate labels, Unicode/hostile labels, empty/invalid counts, 0/350 boundaries, total excess, and preservation of raw invalid text.
+  - E5.2 evidence (2026-10-12): `site/simulator-engine.js` and [input guide](../../../docs/SIMULATOR-ENGINE.md) define pure validation, row errors, preserved raw counts, and explicit complete/incomplete/invalid results. `node --check site/simulator-engine.js` and `node --test tests/simulator_behavior.cjs` PASS (19 contracts), including all specified validation cases and browser-export loading without DOM/IO APIs. No public rule or content approval is asserted.
+- [x] 2.2 Implement assigned/remainder and selected-sum/deficit/surplus arithmetic. Verify 175/176/177 boundaries, zero selection, zero-seat groups, incomplete distributions, removal/reselection, duplicate/unknown IDs, and invariance under row permutations; include the numeric contract in the guide.
+  - E5.2 evidence (2026-10-12): Pure `calculate` replaces results from current rows/selections, rejects stale unknown IDs, deduplicates selection, and returns the selected sum and exact threshold deficit/surplus. The guide records removal/reset responsibilities. Numeric suite PASS (19 contracts), including all six three-row permutations and all 351 two-group splits. Combined simulator/quiz/share/load Node suite PASS (43 contracts). CI runs the new engine suite; browser UI and reviewed profiles remain separate tasks.
 
 ## 3. E5.3 — Spanish phone flow
 
@@ -44,3 +46,9 @@ The existing proposal was completed with two capability specs, design and these 
 - Review this planning PR and retain actual human decisions before creating implementation-ready issues.
 - Start application only after a new implementation request and the applicable prerequisite decisions.
 - Archive after implementation, verification and project review are complete; synchronize main specs through the approved workflow.
+
+## E5.2 bounded-package verification — 2026-10-12
+
+The user requested continued implementation after the planning packet. Tasks 2.1 and 2.2 are technically complete with assigned generic fixtures; remaining human/profile/UI/release tasks stay open. Node syntax and 19 simulator contracts PASS; all 43 simulator/quiz/share/load contracts PASS. Targeted CI-security and static-generator regression suite PASS (16 tests). Strict OpenSpec, local Markdown links, and whitespace checks PASS. The generated site does not copy this engine or activate a simulator route. No source review, public artifact, merge, or deployment was performed.
+
+GitHub tracking: [engine #92](https://github.com/c2ventures/elecciones2026/issues/92), [interface #93](https://github.com/c2ventures/elecciones2026/issues/93), and [static integration #94](https://github.com/c2ventures/elecciones2026/issues/94). These record bounded technical work and dependencies; task 1.4 remains open until its human plan acceptance requirement is met.
