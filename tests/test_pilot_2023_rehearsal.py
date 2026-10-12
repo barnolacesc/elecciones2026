@@ -324,8 +324,9 @@ class TestPilot2023Rehearsal(unittest.TestCase):
         self.assertNotIn('role="tabpanel"', home_html)
 
         # Both party cards present in single measure group
-        self.assertIn('class="party-card party-card-a', home_html)
-        self.assertIn('class="party-card party-card-b', home_html)
+        self.assertIn("Revisión de contenido pendiente", home_html)
+        self.assertNotIn('class="party-card party-card-a', home_html)
+        self.assertNotIn('class="party-card party-card-b', home_html)
         self.assertEqual(len(ctx.statements), 0)
         self.assertEqual(len(ctx.relationships), 0)
         self.assertIn("Revisión humana y de derechos pendiente", home_html)

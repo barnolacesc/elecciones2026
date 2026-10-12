@@ -16,6 +16,7 @@ from pathlib import Path
 import re
 import shutil
 import sys
+import tempfile
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set, Tuple
 from urllib.parse import urlsplit
@@ -251,7 +252,8 @@ def load_and_validate_site_data(
     filtered_statements: dict[str, StatementRecord] = {}
     for stmt_id, stmt in statements.items():
         if stmt.election_id != election_id:
-            # Skip statements belonging to other elections for this build
+            if custom_statements is not None:
+                validation_errors.append(f"Statement '{stmt.id}': explicit publish set has an election mismatch.")
             continue
 
         if election_id == "es-gen-2023":
@@ -346,6 +348,8 @@ def load_and_validate_site_data(
     filtered_relationships: dict[str, RelationshipRecord] = {}
     for rel_id, rel in relationships.items():
         if rel.election_id != election_id:
+            if custom_relationships is not None:
+                validation_errors.append(f"Relationship '{rel.id}': explicit publish set has an election mismatch.")
             continue
 
         if rel.status == "invalidated":
@@ -815,7 +819,10 @@ def render_source_citation(ctx: SiteContext, stmt: StatementRecord) -> str:
         locators.append(f"{ctx.i18n['statement']['section']} {stmt.source_section}")
     locator_text = " · ".join(locators) if locators else "Programa oficial"
 
-    url = escape(stmt.source_url)
+    source_url = stmt.source_url
+    if stmt.source_page and "#" not in source_url:
+        source_url += f"#page={stmt.source_page}"
+    url = escape(source_url)
     sr_notice = escape(ctx.i18n["statement"]["opens_new_window"])
     return f"""<a class="source-citation" href="{url}" target="_blank" rel="noopener noreferrer">
                 <span aria-hidden="true">↗</span> Fuente: <span>{escape(locator_text)}</span>
@@ -898,13 +905,12 @@ def render_party_card(
     pill_class = f"party-pill party-pill-{party_letter.lower()}"
     card_class = f"party-card party-card-{party_letter.lower()}"
 
-    if stmt is None or stmt.statement_type == "not_found":
+    if stmt is None:
         card_class += " party-card-missing"
-        status_badge = '<span class="status-badge status-badge-missing">No consta en el programa</span>'
-        statement_text = ctx.i18n["statement"]["not_found_statement"]
-        expl = ctx.i18n["statement"]["not_found_explanation"]
-        source_footer = f"""<span class="source-citation-text text-muted">Fuente analizada: Programa oficial</span>
-              <time class="source-date" datetime="{ctx.build_date}">Rev. {ctx.build_date}</time>"""
+        status_badge = '<span class="status-badge status-badge-missing">Revisión de contenido pendiente</span>'
+        statement_text = "No consta una posición revisada en esta medida."
+        expl = "La falta de contenido aprobado no debe interpretarse como oposición ni como apoyo."
+        source_footer = '<span class="source-citation-text text-muted">Revisión de contenido pendiente</span>'
 
         return f"""<article class="{card_class}" aria-labelledby="party-{party_letter.lower()}-name">
             <div class="party-card-header">
@@ -924,8 +930,12 @@ def render_party_card(
           </article>"""
 
     # Normal position
-    status_badge = render_status_badge(ctx, "official")
+    status_badge = ('<span class="status-badge status-badge-missing">No consta en el programa</span>'
+                    if stmt.statement_type == "not_found" else render_status_badge(ctx, "official"))
     caveats_html = "".join(render_caveat(ctx, q) for q in stmt.qualifications)
+    if stmt.statement_type == "not_found":
+        card_class += " party-card-missing"
+        caveats_html += f'<p class="missing-explanation">{escape(ctx.i18n["statement"]["not_found_explanation"])}</p>'
     citation_html = render_source_citation(ctx, stmt)
     rev_date = stmt.last_reviewed_date or ctx.build_date
 
@@ -941,7 +951,7 @@ def render_party_card(
                   data-party-pill-class="{escape(pill_class)}"
                   data-status-label="Programa oficial"
                   data-source="{escape(stmt.source_version or 'Programa oficial')}"
-                  data-section="{escape(stmt.source_section or '')}"
+                  data-section="{escape(' · '.join(filter(None, [f'pág. {stmt.source_page}' if stmt.source_page else '', stmt.source_section])))}"
                   data-instrument="{escape(stmt.policy_instrument or '')}"
                   data-quote="{escape(stmt.quote)}"
                   data-caveats="{caveats_json}"
@@ -1131,13 +1141,146 @@ def render_budget_context(ctx: SiteContext, topic_id: str, root_path: str, compa
     return f'<section class="budget-context" {attributes} aria-label="Contexto presupuestario oficial">' + render_context(projection, root_path + 'presupuestos/2023/') + '</section>'
 
 
+def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
+    """Project the validated HTML publish set; never load drafts or source bytes."""
+    errors = []
+    for stmt in ctx.statements.values():
+        errors.extend(stmt.validate(target_election_id=ctx.election_id))
+        if stmt.review_status != "approved":
+            errors.append(f"Statement '{stmt.id}': only approved records may enter browser output.")
+        if stmt.party_id not in ctx.parties:
+            errors.append(f"Statement '{stmt.id}': unknown party.")
+        if stmt.source_url:
+            try:
+                url = urlsplit(stmt.source_url)
+                _ = url.port
+                unsafe = (url.scheme not in {"https", "http"} or not url.hostname
+                          or url.username is not None or url.password is not None
+                          or "\\" in stmt.source_url
+                          or any(ord(char) <= 32 or ord(char) == 127 for char in stmt.source_url))
+            except ValueError:
+                unsafe = True
+            if unsafe:
+                errors.append(f"Statement '{stmt.id}': source URL must be absolute HTTP(S) without credentials or unsafe characters.")
+    for rel in ctx.relationships.values():
+        errors.extend(rel.validate(target_election_id=ctx.election_id,
+                                   statements_by_id=ctx.statements, for_build=True))
+        if any(pid not in ctx.parties for pid in rel.party_ids):
+            errors.append(f"Relationship '{rel.id}': unknown party.")
+        targets = [ctx.statements[sid] for sid in rel.statement_ids if sid in ctx.statements]
+        if (len({stmt.party_id for stmt in targets}) != len(targets)
+                or any(stmt.party_id not in rel.party_ids or stmt.topic_id != rel.topic_id
+                       or stmt.subtopic_id != rel.subtopic_id for stmt in targets)):
+            errors.append(f"Relationship '{rel.id}': statement party/topic scope does not match its measure.")
+    if errors:
+        raise BuildValidationError("Comparison publication failed:\n  - " + "\n  - ".join(errors))
+
+    topics = {t.id: {"id": t.id, "name": t.name_es, "description": t.description_es}
+              for t in ctx.taxonomy.topics}
+    parties = {pid: {"id": pid, "name": p.display_name, "shortName": p.short_name,
+                     "electionId": ctx.election_id, "isFixture": p.is_fixture}
+               for pid, p in sorted(ctx.parties.items())}
+    measures = {tid: [] for tid in topics}
+
+    def position(stmt: StatementRecord) -> dict[str, Any]:
+        locators = [f"v{stmt.source_version}"] if stmt.source_version else []
+        if stmt.source_page:
+            locators.append(f"{ctx.i18n['statement']['page']} {stmt.source_page}")
+        if stmt.source_section:
+            locators.append(f"{ctx.i18n['statement']['section']} {stmt.source_section}")
+        locator = " · ".join(locators)
+        link = stmt.source_url
+        if link and stmt.source_page and "#" not in link:
+            link += f"#page={stmt.source_page}"
+        return {"statementId": stmt.id, "electionId": stmt.election_id,
+                "programmeId": stmt.programme_id, "sourceVersion": stmt.source_version,
+                "sourcePage": stmt.source_page, "sourceSection": stmt.source_section,
+                "status": "missing" if stmt.statement_type == "not_found" else "official",
+                "statusLabel": "No consta en el programa" if stmt.statement_type == "not_found" else "Propuesta revisada",
+                "statement": stmt.summary, "quote": stmt.quote,
+                "policyInstrument": stmt.policy_instrument, "section": locator,
+                "qualifications": stmt.qualifications,
+                "source": locator, "sourceUrl": link,
+                "date": stmt.last_reviewed_date or ctx.build_date}
+
+    referenced = set()
+    for rel in sorted(ctx.relationships.values(), key=lambda r: r.id):
+        positions = {ctx.statements[sid].party_id: position(ctx.statements[sid])
+                     for sid in rel.statement_ids}
+        referenced.update(rel.statement_ids)
+        measures[rel.topic_id].append({
+            "id": rel.id, "electionId": ctx.election_id, "title": rel.measure_label,
+            "summary": "", "positions": positions,
+            "relationships": {":".join(rel.party_ids): {
+                "relationshipId": rel.id, "statementIds": rel.statement_ids,
+                "type": rel.relationship_type,
+                "typeLabel": ctx.i18n["relationship_badges"].get(rel.relationship_type, rel.relationship_type),
+                "icon": {"agreement": "✓", "divergence": "≠"}.get(rel.relationship_type, "—"),
+                "summary": rel.summary, "differences": rel.differences,
+            }},
+        })
+    for stmt in sorted(ctx.statements.values(), key=lambda s: s.id):
+        if stmt.id not in referenced:
+            measures[stmt.topic_id].append({
+                "id": stmt.id, "electionId": ctx.election_id,
+                "title": stmt.policy_instrument or topics[stmt.topic_id]["name"],
+                "summary": "", "positions": {stmt.party_id: position(stmt)}, "relationships": {},
+            })
+    return {"version": 1, "electionId": ctx.election_id, "buildDate": ctx.build_date,
+            "topics": topics, "parties": parties, "measuresByTopic": measures}
+
+
+def comparison_bundle_script(ctx: SiteContext) -> str:
+    """Store inert strings in a local script with deterministic content and escaping."""
+    encoded = json.dumps(build_comparison_payload(ctx), ensure_ascii=True, sort_keys=True, separators=(",", ":"))
+    literal = json.dumps(encoded, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+    return f"window.ComparisonData = JSON.parse({literal});\n"
+
+
+def comparison_bundle_name(ctx: SiteContext) -> str:
+    digest = hashlib.sha256(comparison_bundle_script(ctx).encode()).hexdigest()[:16]
+    return f"comparison-data.{digest}.js"
+
+
+def render_comparison_measures(ctx: SiteContext, payload: dict[str, Any], topic_id: str,
+                               party_a: str, party_b: str) -> str:
+    """Render the same record projection that the browser uses, without inferred links."""
+    measures = [m for m in payload["measuresByTopic"][topic_id]
+                if party_a in m["positions"] or party_b in m["positions"]]
+    if not measures:
+        return '<div class="empty-measures" role="status" aria-live="polite"><h4>Revisión de contenido pendiente</h4><p>La falta de contenido aprobado no indica que el programa carezca de propuestas. No implica apoyo ni oposición.</p></div>'
+    output = []
+    for idx, measure in enumerate(measures, 1):
+        cards = []
+        for letter, pid in (("A", party_a), ("B", party_b)):
+            pos = measure["positions"].get(pid)
+            if pos:
+                card = render_party_card(ctx, ctx.statements[pos["statementId"]], pid, letter)
+                # Several groups can contain the same party; give each heading a unique ID.
+                card = card.replace(f'party-{letter.lower()}-name', f'party-{letter.lower()}-{idx}-name')
+            else:
+                card = f'<article class="party-card party-card-missing"><h4 class="party-name">{escape(ctx.parties[pid].display_name)}</h4><span class="status-badge status-badge-missing">Revisión de contenido pendiente</span><p class="party-statement">No consta una posición revisada en esta medida.</p><p class="missing-explanation">La falta de contenido aprobado no debe interpretarse como oposición ni como apoyo.</p></article>'
+            cards.append(card)
+        rel = measure["relationships"].get(f"{party_a}:{party_b}") or measure["relationships"].get(f"{party_b}:{party_a}")
+        rel_type = rel["type"] if rel else "not-found"
+        if rel_type not in {"agreement", "divergence", "qualification", "partial_overlap"}:
+            rel_type = "not-found"
+        if rel_type == "partial_overlap":
+            rel_type = "qualification"
+        label = rel["typeLabel"] if rel else "Comparación pendiente de revisión"
+        summary = rel["summary"] if rel else "No consta una relación revisada entre las candidaturas seleccionadas. La falta de contenido aprobado no implica apoyo ni oposición."
+        differences = '<ul class="analysis-differences">' + ''.join(f'<li>{escape(d)}</li>' for d in rel["differences"]) + '</ul>' if rel and rel["differences"] else ""
+        output.append(f'<article class="measure-group" aria-labelledby="measure-{idx}-title"><div class="measure-head"><p class="measure-topic-label">TEMA: {escape(payload["topics"][topic_id]["name"].upper())}</p><h3 id="measure-{idx}-title" class="measure-title">{escape(measure["title"])}</h3><p class="measure-summary">{escape(measure["summary"])}</p></div><div class="measure-cards">{"".join(cards)}</div><aside class="analysis-callout rel-callout-{rel_type}" aria-label="Lectura comparada"><h4>{escape(label)}</h4><p>{escape(summary)}</p>{differences}</aside></article>')
+    return "\n".join(output)
+
+
 def render_home_page(ctx: SiteContext) -> str:
     """Render index.html with accessible comparator and static fallback."""
     # Find sample active comparison
     if ctx.election_id == "es-gen-2023":
         active_rel = (
             ctx.relationships.get("rel-pilot-2023-housing-pp-erc-divergence")
-            or next((r for r in ctx.relationships.values() if r.status == "active"), None)
+            or next((r for r in sorted(ctx.relationships.values(), key=lambda r: r.id) if r.status == "active"), None)
         )
         party_a_id = active_rel.party_ids[0] if active_rel else "pp"
         party_b_id = active_rel.party_ids[1] if active_rel and len(active_rel.party_ids) > 1 else "erc"
@@ -1154,7 +1297,7 @@ def render_home_page(ctx: SiteContext) -> str:
     else:
         active_rel = (
             ctx.relationships.get("rel-housing-rental-regulation-party-a-party-b")
-            or next((r for r in ctx.relationships.values() if r.status == "active"), None)
+            or next((r for r in sorted(ctx.relationships.values(), key=lambda r: r.id) if r.status == "active"), None)
         )
         party_a_id = active_rel.party_ids[0] if active_rel else "partido-ejemplo-a"
         party_b_id = active_rel.party_ids[1] if active_rel and len(active_rel.party_ids) > 1 else "partido-ejemplo-b"
@@ -1171,7 +1314,7 @@ def render_home_page(ctx: SiteContext) -> str:
 
     topic_options = []
     for t in ctx.taxonomy.topics:
-        selected = ' selected' if (active_rel and t.id == active_rel.topic_id) or t.id == "housing" else ""
+        selected = ' selected' if t.id == (active_rel.topic_id if active_rel else "housing") else ""
         topic_options.append(f'<option value="{escape(t.id)}"{selected}>{escape(t.name_es)}</option>')
 
     party_a_options = []
@@ -1183,126 +1326,15 @@ def render_home_page(ctx: SiteContext) -> str:
         party_a_options.append(f'<option value="{escape(pid)}"{sel_a}>{escape(p.display_name)}</option>')
         party_b_options.append(f'<option value="{escape(pid)}"{sel_b}>{escape(p.display_name)}</option>')
 
-    # Get statements for party A and B
-    stmt_a = None
-    stmt_b = None
-    if active_rel and len(active_rel.statement_ids) >= 2:
-        stmt_a = ctx.statements.get(active_rel.statement_ids[0])
-        stmt_b = ctx.statements.get(active_rel.statement_ids[1])
-    if not stmt_a:
-        stmt_a = next((s for s in ctx.statements.values() if s.party_id == party_a_id and (not active_rel or s.topic_id == active_rel.topic_id)), None)
-    if not stmt_b:
-        stmt_b = next((s for s in ctx.statements.values() if s.party_id == party_b_id and (not active_rel or s.topic_id == active_rel.topic_id)), None)
-
-    party_a_card = render_party_card(ctx, stmt_a, party_a_id, "A")
-    party_b_card = render_party_card(ctx, stmt_b, party_b_id, "B")
-
-    # Relationship callout
-    analysis_heading = ctx.i18n["analysis"]["heading"]
-    analysis_text = ctx.i18n["analysis"]["note"]
-    if active_rel:
-        analysis_text = active_rel.summary
-        rel_type_label = ctx.i18n["relationship_badges"].get(active_rel.relationship_type, active_rel.relationship_type)
-        analysis_heading = f"Lectura comparada: {rel_type_label}"
-
-    # Prepare grouped measures for the default topic (housing)
-    stmt_a_2 = ctx.statements.get("stmt-party-a-housing-002")
-    party_a_card_2 = render_party_card(ctx, stmt_a_2, party_a_id, "A")
-    party_b_card_2 = render_party_card(ctx, None, party_b_id, "B")
-
-    # Differences list for measure 1
-    differences_html = ""
-    if active_rel and active_rel.differences:
-        items = "".join(f"<li>{escape(d)}</li>" for d in active_rel.differences)
-        differences_html = f'<ul class="analysis-differences">{items}</ul>'
-
-    rel_type = active_rel.relationship_type if active_rel else "agreement"
-    if rel_type == "agreement":
-        rel_callout_class = "rel-callout-agreement"
-        rel_icon = "✓"
-    elif rel_type == "divergence":
-        rel_callout_class = "rel-callout-divergence"
-        rel_icon = "≠"
-    elif rel_type == "qualification":
-        rel_callout_class = "rel-callout-qualification"
-        rel_icon = "~"
-    else:
-        rel_callout_class = "rel-callout-not-found"
-        rel_icon = "—"
-
-    measure_1_html = f"""<article class="measure-group" aria-labelledby="measure-1-title">
-            <div class="measure-head">
-              <p id="measure-topic-label" class="measure-topic-label">TEMA: VIVIENDA</p>
-              <h3 id="measure-1-title" class="measure-title">Medida: {escape(active_rel.measure_label if active_rel else 'Regulación de precios de alquiler en zonas de mercado tensionado')}</h3>
-              <p id="measure-summary" class="measure-summary">Políticas de contención y límites obligatorios a los precios de arrendamiento de vivienda en áreas declaradas de mercado tensionado.</p>
-              <div class="measure-context" role="region" aria-label="Alcance y claves de la iniciativa">
-                <p class="measure-context-desc">Esta medida evalúa las políticas de contención del alquiler residencial frente al incremento de precios en áreas urbanas, analizando los modelos de índice de precios de referencia y el régimen sancionador a grandes tenedores.</p>
-                <div class="measure-axes">
-                  <span class="measure-axes-label">Claves de contraste en esta medida:</span>
-                  <ul class="measure-axes-list">
-                    <li>Modelo de contención: índice estatal homogéneo vinculante frente a índices de ajuste autonómico.</li>
-                    <li>Régimen de excepciones: moratorias temporales por rehabilitación integral frente a aplicación general sin exenciones.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="measure-cards">
-              {party_a_card}
-              {party_b_card}
-            </div>
-
-            <aside id="analysis-callout" class="analysis-callout {rel_callout_class}" aria-label="Lectura comparada">
-              <span class="analysis-icon" aria-hidden="true">{rel_icon}</span>
-              <div>
-                <h4 id="analysis-title">{escape(analysis_heading)}</h4>
-                <p id="analysis-text">{escape(analysis_text)}</p>
-                {differences_html}
-              </div>
-            </aside>
-          </article>"""
-
-    measure_2_html = f"""<article class="measure-group" aria-labelledby="measure-2-title">
-            <div class="measure-head">
-              <p class="measure-topic-label">TEMA: VIVIENDA</p>
-              <h3 id="measure-2-title" class="measure-title">Medida: Ayudas públicas directas y avales para acceso a la vivienda para jóvenes</h3>
-              <p class="measure-summary">Instrumentos de apoyo financiero público para facilitar la emancipación y la adquisición o fianza de primera vivienda por jóvenes menores de 35 años.</p>
-              <div class="measure-context" role="region" aria-label="Alcance y claves de la iniciativa">
-                <p class="measure-context-desc">Esta medida analiza las fórmulas de intervención pública para facilitar el acceso de jóvenes a la vivienda habitual, contrastando subvenciones directas a intereses frente a coberturas crediticias de fianza o entrada.</p>
-                <div class="measure-axes">
-                  <span class="measure-axes-label">Claves de contraste en esta medida:</span>
-                  <ul class="measure-axes-list">
-                    <li>Instrumento financiero: bonificación de tipos de interés hipotecario frente a líneas directas de aval de entrada.</li>
-                    <li>Criterios de elegibilidad: límites de renta basados en múltiplos del IPREM (3,5x frente a 4x).</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="measure-cards">
-              {party_a_card_2}
-              {party_b_card_2}
-            </div>
-
-            <aside class="analysis-callout rel-callout-not-found" aria-label="Lectura comparada">
-              <span class="analysis-icon" aria-hidden="true">—</span>
-              <div>
-                <h4>Sin posición comparable en esta medida</h4>
-                <p>Partido Ejemplo A propone bonificación de tipos de interés hipotecarios, mientras que en el documento revisado de Partido Ejemplo B no consta propuesta específica sobre este instrumento.</p>
-                <p class="missing-explanation">«No consta» indica ausencia documental en el texto; nunca se interpretará como oposición política ni como acuerdo tácito.</p>
-              </div>
-            </aside>
-          </article>"""
-
-    if ctx.election_id == "es-gen-2023":
-        measures_content = f"          {measure_1_html}"
-    else:
-        measures_content = f"          {measure_1_html}\n          {measure_2_html}"
+    payload = build_comparison_payload(ctx)
+    default_topic = active_rel.topic_id if active_rel else "housing"
+    measures_content = render_comparison_measures(ctx, payload, default_topic, party_a_id, party_b_id)
 
     content = f"""    <section class="hero" aria-labelledby="hero-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="hero-title" class="hero-title">{hero_title_part1}<br><span class="hero-em">{hero_title_part2}</span></h1>
       <p class="hero-intro">{hero_intro}</p>
+      <p>Actualización del sitio: <time datetime="{escape(ctx.build_date)}">{escape(ctx.build_date)}</time></p>
       <div class="hero-actions">
         <a class="btn-primary" href="#comparador">
           <span>{escape(ctx.i18n['hero']['cta'])}</span>
@@ -1360,6 +1392,7 @@ def render_home_page(ctx: SiteContext) -> str:
     </section>
     <script src="./sharing.js" defer></script>
     {'<script src="./budget-context.js" defer></script>' if ctx.budget_payload is not None else ""}
+    <script src="./{comparison_bundle_name(ctx)}" defer></script>
     <script src="./app.js" defer></script>
 
     <section class="lower-sections">
@@ -1401,7 +1434,7 @@ def render_home_page(ctx: SiteContext) -> str:
         canonical_path="/",
         content=content,
         root_path="./",
-    )
+    ).replace('<body ', '<body data-comparison="validated" ', 1)
 
 
 def render_topic_index(ctx: SiteContext) -> str:
@@ -2264,6 +2297,49 @@ def reject_private_source_artifacts(directory: Path) -> None:
             raise ValueError(f"Private source artifact cannot enter static output: {path.relative_to(directory)}")
 
 
+def reject_symlink_output_path(output_dir: Path) -> None:
+    """Reject caller-selected symlinks before creating publication directories."""
+    for path in (output_dir.absolute(), *output_dir.absolute().parents):
+        if path.is_symlink():
+            # macOS exposes these system directories through fixed OS aliases.
+            system_alias = (sys.platform == "darwin" and str(path) in {"/var", "/tmp"}
+                            and str(path.resolve()) == f"/private{path}")
+            if not system_alias:
+                raise BuildValidationError("Output directory and its parents must not be symlinks.")
+
+
+def publish_directory(staging_dir: Path, output_dir: Path) -> None:
+    """Replace the full artifact and restore its predecessor if the switch fails.
+
+    A two-rename switch can briefly leave the path absent. It never exposes a
+    mixed tree. This offline builder is not a live hosting release controller.
+    """
+    reject_symlink_output_path(output_dir)
+    if output_dir.is_symlink() or staging_dir.is_symlink():
+        raise BuildValidationError("Publication directories must not be symlinks.")
+    if any(p.is_symlink() for p in staging_dir.rglob("*")):
+        raise BuildValidationError("Candidate artifact must not contain symlinks.")
+    backup = Path(tempfile.mkdtemp(prefix=f".previous_{output_dir.name}_", dir=output_dir.parent))
+    backup.rmdir()
+    moved_previous = False
+    switched = False
+    try:
+        if output_dir.exists():
+            output_dir.rename(backup)
+            moved_previous = True
+        try:
+            staging_dir.rename(output_dir)
+            switched = True
+        except BaseException:
+            if moved_previous:
+                backup.rename(output_dir)
+            raise
+    finally:
+        # If recovery itself failed, retain the previous artifact for inspection.
+        if switched and backup.exists():
+            shutil.rmtree(backup, ignore_errors=True)
+
+
 def build_site(
     root_dir: Path,
     output_dir: Path,
@@ -2324,11 +2400,12 @@ def build_site(
         except (ValueError, OSError, QuizValidationError) as error:
             raise BuildValidationError(f"Quiz validation failed: {error}") from error
 
-    # Use atomic staging directory
-    staging_dir = output_dir.parent / f".tmp_{output_dir.name}_{os.getpid()}"
-    if staging_dir.exists():
-        shutil.rmtree(staging_dir)
-    staging_dir.mkdir(parents=True, exist_ok=True)
+    # Use a private sibling directory so rename stays on the output filesystem.
+    reject_symlink_output_path(output_dir)
+    output_dir.parent.mkdir(parents=True, exist_ok=True)
+    if output_dir.is_symlink():
+        raise BuildValidationError("Output directory must not be a symlink.")
+    staging_dir = Path(tempfile.mkdtemp(prefix=f".tmp_{output_dir.name}_", dir=output_dir.parent))
 
     try:
         routes: list[tuple[str, str, str]] = []
@@ -2477,6 +2554,7 @@ def build_site(
         if (site_src / "app.js").exists():
             shutil.copy2(site_src / "app.js", staging_dir / "app.js")
 
+        write_file_deterministic(staging_dir / comparison_bundle_name(ctx), comparison_bundle_script(ctx))
         shutil.copy2(site_src / "sharing.js", staging_dir / "sharing.js")
 
         preview_target = staging_dir / preview_image_path(root_dir)
@@ -2487,34 +2565,13 @@ def build_site(
         reject_private_source_artifacts(staging_dir)
         if output_dir.exists():
             reject_private_source_artifacts(output_dir)
-            # Withdraw obsolete quiz bundles when changing mode or source version.
-            for obsolete in output_dir.iterdir():
-                generated_quiz_asset = re.fullmatch(
-                    r"(?:quiz-(?:data|engine|ui)\.[0-9a-f]{16}\.js|quiz\.[0-9a-f]{16}\.css)", obsolete.name)
-                if generated_quiz_asset and obsolete.is_file() and not (staging_dir / obsolete.name).exists():
-                    obsolete.unlink()
+        # Hash the complete candidate before changing the published directory.
+        publish_files = sorted(p for p in staging_dir.rglob("*") if p.is_file())
+        candidate_hashes = {str(p.relative_to(staging_dir)): compute_sha256(p) for p in publish_files}
+        publish_directory(staging_dir, output_dir)
 
-        # Atomic swap / copy into output_dir
-        output_dir.mkdir(parents=True, exist_ok=True)
-        # Copy staging contents to output_dir
-        for root, dirs, files in os.walk(staging_dir):
-            rel_dir = Path(root).relative_to(staging_dir)
-            target_sub = output_dir / rel_dir
-            target_sub.mkdir(parents=True, exist_ok=True)
-            for f in sorted(files):
-                shutil.copy2(Path(root) / f, target_sub / f)
-
-        # Collect hashes and written files
-        files_written: list[str] = []
-        file_hashes: dict[str, str] = {}
-        for root, dirs, files in os.walk(output_dir):
-            for f in sorted(files):
-                file_path = Path(root) / f
-                rel_path = str(file_path.relative_to(output_dir))
-                files_written.append(rel_path)
-                file_hashes[rel_path] = compute_sha256(file_path)
-
-        files_written.sort()
+        files_written = sorted(candidate_hashes)
+        file_hashes = candidate_hashes
 
         return SiteBuildResult(
             output_dir=output_dir,

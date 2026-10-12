@@ -228,7 +228,7 @@ class TestStaticSiteGenerator(unittest.TestCase):
         self.assertIn("Limitar los precios de alquiler", housing_html)
         self.assertIn("Estableceremos un límite de precios vinculante", housing_html)
         # Source citation link directly in HTML
-        self.assertIn("href=\"https://partido-ejemplo-a.es/programa-2026.pdf\"", housing_html)
+        self.assertIn("href=\"https://partido-ejemplo-a.es/programa-2026.pdf#page=34\"", housing_html)
         self.assertIn("pág. 34", housing_html)
         # Explicit missing state rendered
         self.assertIn("No consta en el programa", housing_html)
@@ -339,6 +339,9 @@ class TestStaticSiteGenerator(unittest.TestCase):
             qualifications=[malicious_caveat],
             source_page="1",
             source_url="https://example.com/source.pdf",
+            source_version="1.0.0",
+            last_reviewed_date="2026-10-09",
+            is_fixture=True,
             review_status="approved",
             reviews=[
                 ReviewRecord("rev-1", "2026-10-09", "approved", "verified"),
@@ -350,6 +353,7 @@ class TestStaticSiteGenerator(unittest.TestCase):
             root_dir=ROOT_DIR,
             output_dir=self.output_dir,
             custom_statements=[xss_stmt],
+            custom_relationships=[],
             build_date="2026-10-09",
         )
 
