@@ -70,6 +70,68 @@ class BudgetImportSecurityTests(unittest.TestCase):
         with self.assertRaisesRegex(budget.BudgetError, "review required"):
             budget.validate_reviews(candidate["reviews.json"], candidate, candidate["corrections.json"], True)
 
+    def test_publication_requires_direct_normalized_values_review(self):
+        with self.assertRaisesRegex(budget.BudgetError, "review required for normalized-values"):
+            budget.validate_reviews([], self.payload, [], require_publication=True)
+        for role in ("financial", "rights", "editorial"):
+            candidate = copy.deepcopy(self.payload)
+            review = self.review("values.json", "normalized-values")
+            review.update(id="fixture-values-" + role, role=role)
+            candidate["reviews.json"] = [review]
+            budget.validate_payload(candidate, ROOT / "content/taxonomy.json")
+            with self.assertRaisesRegex(budget.BudgetError, "Placeholder review"):
+                budget.validate_reviews(candidate["reviews.json"], candidate, [], True)
+
+    def test_all_three_values_review_roles_are_required_and_fixture_stays_private(self):
+        reviews = []
+        for role in ("financial", "rights", "editorial"):
+            review = self.review("values.json", "normalized-values")
+            review.update(id="synthetic-values-" + role, role=role,
+                          human_reviewer_id="synthetic-fixture-review-only")
+            reviews.append(review)
+        for missing_role in ("financial", "rights", "editorial"):
+            with self.subTest(missing_role=missing_role):
+                partial = [review for review in reviews if review["role"] != missing_role]
+                with self.assertRaisesRegex(budget.BudgetError, "review required for normalized-values"):
+                    budget.validate_reviews(partial, self.payload, [], True)
+        with self.assertRaisesRegex(budget.BudgetError, "Fixture data"):
+            budget.validate_reviews(reviews, self.payload, [], True)
+
+    def test_reconciled_changed_values_with_recomputed_manifest_invalidate_review(self):
+        candidate = copy.deepcopy(self.payload)
+        candidate["reviews.json"] = [self.review("values.json", "normalized-values")]
+        values = candidate["values.json"]
+        for cell in values["cells"]:
+            if cell["section_code"] == "01":
+                cell["amount_thousand_eur"] = "0.02" if cell["policy_code"] == "11" else "0.01"
+        for margin in values["margins"]:
+            if margin["kind"] == "policy":
+                margin["amount_thousand_eur"] = "0.02" if margin["code"] == "11" else "0.01"
+        budget.validate_values(values, candidate["source.json"], candidate["measurement.json"])
+        serialized = {name: budget.canonical(value) for name, value in candidate.items()}
+        manifest = copy.deepcopy(self.manifest)
+        manifest["review_refs"] = ["fixture-review"]
+        manifest["files"] = [{"path": name, "bytes": len(raw), "sha256": budget.digest(raw)}
+                             for name, raw in sorted(serialized.items())]
+        manifest_raw = budget.canonical(manifest)
+        path = self.fixture.root / budget.digest(manifest_raw)
+        path.mkdir()
+        (path / "manifest.json").write_bytes(manifest_raw)
+        for name, raw in serialized.items():
+            (path / name).write_bytes(raw)
+        with self.assertRaisesRegex(budget.BudgetError, "invalidated"):
+            budget.load_bundle(path, require_publication=False)
+
+    def test_changed_values_version_and_withdrawal_invalidate_direct_review(self):
+        review = self.review("values.json", "normalized-values")
+        candidate = copy.deepcopy(self.payload)
+        candidate["values.json"]["source_version"] += "-corrected"
+        with self.assertRaisesRegex(budget.BudgetError, "invalidated"):
+            budget.validate_reviews([review], candidate, [], False)
+        review["decision"] = "invalidated"
+        with self.assertRaisesRegex(budget.BudgetError, "withdrawn review"):
+            budget.validate_reviews([review], self.payload, [], True)
+
     def test_source_urls_are_checked_during_import_and_bundle_validation(self):
         unsafe = ('javascript:alert(1)', 'file:///etc/passwd', 'http://example.invalid/data',
                   'https:///missing-host', 'https://user:secret@example.invalid/',

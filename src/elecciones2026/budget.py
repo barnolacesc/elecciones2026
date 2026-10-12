@@ -324,6 +324,7 @@ def validate_reviews(reviews, payload, corrections, require_publication):
     subjects = {payload[name]["id"]: (name, payload[name]) for name in ("source.json", "measurement.json")}
     subjects["topic-mapping"] = ("mapping.json", payload["mapping.json"])
     subjects["section-dictionary"] = ("sections.json", payload["sections.json"])
+    subjects["normalized-values"] = ("values.json", payload["values.json"])
     approved = {key: set() for key in subjects}
     invalidated = {ref for correction in corrections for ref in correction["invalidated_review_refs"]}
     seen = set()
@@ -350,12 +351,15 @@ def validate_reviews(reviews, payload, corrections, require_publication):
                     raise BudgetError("Placeholder review cannot approve publication")
             approved[review["subject_id"]].add(review["role"])
     if require_publication:
+        # The manifest proves integrity, not human acceptance of derived amounts.
+        if approved["normalized-values"] != {"financial", "rights", "editorial"}:
+            raise BudgetError("Human financial, rights, and editorial review required for normalized-values")
         if payload["source.json"]["is_fixture"]:
             raise BudgetError("Fixture data cannot enter a public build")
         if payload["source.json"]["rights_status"] not in {"public_domain", "link_and_short_quote", "approved_derived_display"}:
             raise BudgetError("Source reuse rights are not approved")
         for key, (name, subject) in subjects.items():
-            if subject["review_state"] != "approved" or approved[key] != {"financial", "rights", "editorial"}:
+            if (name != "values.json" and subject["review_state"] != "approved") or approved[key] != {"financial", "rights", "editorial"}:
                 raise BudgetError(f"Human financial, rights, and editorial review required for {key}")
         if any(topic["review_state"] != "approved" for topic in payload["mapping.json"]["mappings"]):
             raise BudgetError("Topic mapping review is pending")
