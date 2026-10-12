@@ -111,8 +111,13 @@ class TestPilot2023Rehearsal(unittest.TestCase):
         self.assertEqual(pp_stmt.review_status, "draft")
         self.assertEqual(len(pp_stmt.reviews), 0)
         self.assertEqual(pp_stmt.source_page, "34")
-        self.assertIsNotNone(pp_stmt.quote)
-        self.assertLessEqual(len(pp_stmt.quote.split()), 40, "Quote must satisfy TRLPI Art. 32 word limit")
+        self.assertIsNone(pp_stmt.quote, "Pending rights must not imply quotation permission")
+        self.assertEqual(pp_stmt.source_version, "23J-v1")
+        self.assertEqual(
+            pp_stmt.source_url,
+            "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+        )
+        self.assertIsNone(pp_stmt.last_reviewed_date)
         self.assertEqual(pp_stmt.validate(target_election_id="es-gen-2023"), [])
 
         erc_stmt = load_statement(erc_stmt_file)
@@ -120,8 +125,13 @@ class TestPilot2023Rehearsal(unittest.TestCase):
         self.assertEqual(erc_stmt.review_status, "draft")
         self.assertEqual(len(erc_stmt.reviews), 0)
         self.assertEqual(erc_stmt.source_page, "114")
-        self.assertIsNotNone(erc_stmt.quote)
-        self.assertLessEqual(len(erc_stmt.quote.split()), 40, "Quote must satisfy TRLPI Art. 32 word limit")
+        self.assertIsNone(erc_stmt.quote, "Pending rights must not imply quotation permission")
+        self.assertEqual(erc_stmt.source_version, "23J-v1")
+        self.assertEqual(
+            erc_stmt.source_url,
+            "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+        )
+        self.assertIsNone(erc_stmt.last_reviewed_date)
         self.assertEqual(erc_stmt.validate(target_election_id="es-gen-2023"), [])
 
     def test_2023_relationship_record_valid(self) -> None:
