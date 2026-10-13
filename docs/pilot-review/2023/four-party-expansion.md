@@ -1,6 +1,6 @@
 # Four-party 2023 preview expansion handoff
 
-Roadmap package: **E1.4**. Election: `es-gen-2023`. Status: preparation only; no new approval or publication. This handoff extends the *candidate* scope to PP, ERC, PNV and Sumar without changing the owner-selected PP/ERC three-topic review reported in #70. The owner must confirm the four-party scope before editorial activation.
+Roadmap package: **E1.4**. Election: `es-gen-2023`. Status: preparation only; no new approval or publication. This handoff extends the *candidate* scope to PP, ERC, PNV and Sumar without changing the owner-selected PP/ERC three-topic review reported in #70. Cesc requested this four-party 2023 pilot scope. This request does not approve any individual claim, the separate 2026 candidate policy, or a release artifact.
 
 The comparison selects exactly two of the four registered 2023 parties at a time. The source register and programme records contain four historical originals. The generated publish set currently has **zero** approved statements and relationships, so no pair or topic has a factual comparison to restore. A registered original is not an approved position. A missing reviewed position does not mean that the party opposes a proposal.
 
@@ -14,7 +14,7 @@ The PP/ERC health and education candidates in #101 are separate from the three r
 
 ## Owner decisions needed before claim activation
 
-- [ ] Confirm PP, ERC, PNV and Sumar as the 2023 pilot comparison set. The listed originals and UI selection alone do not approve editorial coverage.
+- [ ] Record PP, ERC, PNV and Sumar as Cesc’s requested 2023 pilot set; obtain any separate partner/editorial-owner sign-off required by G0. Do not carry this selection into the 2026 candidate policy.
 - [ ] For each source and exact final statement, provide or verify dated human review evidence, physical locator and qualifications; decide lawful neutral-summary reuse and, separately, any quotation rights. PP/ERC reports in #101 are not a substitute for missing source-specific rights, dates or final evidence. PNV/Sumar have no recorded human approvals.
 - [ ] Approve each exact two-party relationship after its two underlying statements pass. No relationship may inherit statement approval.
 - [ ] Approve the exact authenticated-preview artifact and its content boundary under #44/#71 only after the completed source and editorial record is reviewed.
@@ -24,7 +24,7 @@ Agents can collect source candidates and test the site, but cannot supply these 
 
 ## Exact review sequence
 
-1. The owners confirm whether PP, ERC, PNV and Sumar are the intended four-party 2023 pilot set, and which two-party comparisons to prioritize. Record this independently of 2026 candidate inclusion.
+1. Record Cesc’s requested PP, ERC, PNV and Sumar 2023 pilot scope and any required partner/editorial-owner sign-off. Prioritize pairs as an implementation choice unless the owners specify otherwise. Record this independently of 2026 candidate inclusion.
 2. Complete #101's PP/ERC source provenance, PDF publication-date and source-specific neutral-summary reuse decisions. Inspect the retained private review evidence; the report date is not the actual review date. Keep #96/#101 dependency resolution explicit.
 3. For PNV and Sumar housing, verify original source identity/hash, physical page and printed label, qualifications, translation where applicable, and publication-date evidence in the private archive. Obtain source-specific lawful reuse decisions. Choose reviewed quote-free summaries or separately authorized short quotations. Obtain two authentic human approvals bound to the final exact text and source version.
 4. For immigration and economy, search all four registered originals using a documented and symmetric scope. Prepare only specific source-linked candidate measures with exact page/section and qualifications. Record rejected candidates and search gaps. Never create `not_found` from an incomplete search or draft a numeric quiz mapping from a party's silence.
