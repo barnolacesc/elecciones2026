@@ -1292,11 +1292,11 @@ def render_home_page(ctx: SiteContext) -> str:
         hero_eyebrow = "GENERALES 2023 · 23 JULIO 2023"
         hero_title_part1 = "Compara los programas"
         hero_title_part2 = "de 2023."
-        hero_intro = "PP y ERC: contenido pendiente de publicación. Puedes consultar los documentos originales."
+        hero_intro = "PP, ERC, PNV y Sumar: compara la cobertura revisada disponible y consulta los documentos originales."
         mock_notice = """<details class="notice pilot-details">
       <summary>Sobre este piloto</summary>
       <p>
-      <strong>Aviso de ensayo privado (Generales 2023):</strong> Esta vista corresponde al ensayo técnico con documentos de PP y ERC. Las posiciones y sus derechos de cita requieren revisión humana antes de mostrarse. Este ensayo no satisface la puerta de publicación G2 para 2026 ni presenta información de 2026.</p>
+      <strong>Aviso de ensayo privado (Generales 2023):</strong> Esta vista corresponde al ensayo técnico con documentos de PP, ERC, PNV y Sumar. Las posiciones visibles dependen de la revisión editorial de cada fuente, derecho de reutilización y propuesta. Una posición ausente no implica oposición. Este ensayo no satisface la puerta de publicación G2 para 2026 ni presenta información de 2026.</p>
     </details>"""
         selector_eyebrow = "01 / COMPARAR · GENERALES 2023"
         page_title = "Generales 2023 · Comparador de programas (Ensayo piloto)"
