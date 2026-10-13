@@ -1292,7 +1292,7 @@ def render_home_page(ctx: SiteContext) -> str:
         hero_eyebrow = "GENERALES 2023 · 23 JULIO 2023"
         hero_title_part1 = "Compara los programas"
         hero_title_part2 = "de 2023."
-        hero_intro = "PP, ERC, PNV y Sumar: compara la cobertura revisada disponible y consulta los documentos originales."
+        hero_intro = "PP, ERC, PNV y Sumar: consulta el estado de cobertura y los documentos originales de 2023."
         mock_notice = """<details class="notice pilot-details">
       <summary>Sobre este piloto</summary>
       <p>

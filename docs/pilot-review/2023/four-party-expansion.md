@@ -12,6 +12,16 @@ The comparison selects exactly two of the four registered 2023 parties at a time
 
 The PP/ERC health and education candidates in #101 are separate from the three requested topics. Their reported reviews do not transfer to PNV/Sumar, immigration or economy. The PNV/Sumar housing drafts contain verbatim quotation fields and are **not** publication-ready: quote-specific rights and limits apply. Do not silently strip or rewrite those fields and inherit approval. Their locators, summaries and qualifications need human checks against the original pages. All comparison relationships in the historical pilot remain invalidated or unapproved; showing two positions must not imply agreement or divergence.
 
+## Owner decisions needed before claim activation
+
+- [ ] Confirm PP, ERC, PNV and Sumar as the 2023 pilot comparison set. The listed originals and UI selection alone do not approve editorial coverage.
+- [ ] For each source and exact final statement, provide or verify dated human review evidence, physical locator and qualifications; decide lawful neutral-summary reuse and, separately, any quotation rights. PP/ERC reports in #101 are not a substitute for missing source-specific rights, dates or final evidence. PNV/Sumar have no recorded human approvals.
+- [ ] Approve each exact two-party relationship after its two underlying statements pass. No relationship may inherit statement approval.
+- [ ] Approve the exact authenticated-preview artifact and its content boundary under #44/#71 only after the completed source and editorial record is reviewed.
+- [ ] For a real quiz, separately approve the 16-item/eight-topic target-election corpus, party mappings, bias and user-review evidence, then make the G5 release decision. The fictional mock is not that artifact.
+
+Agents can collect source candidates and test the site, but cannot supply these approvals. Immigration and economy have no reviewed candidate measures for any of the four parties, so there is currently no exact content to approve for those topics.
+
 ## Exact review sequence
 
 1. The owners confirm whether PP, ERC, PNV and Sumar are the intended four-party 2023 pilot set, and which two-party comparisons to prioritize. Record this independently of 2026 candidate inclusion.
