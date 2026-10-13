@@ -26,6 +26,16 @@ def command(*args, **kwargs):
     return subprocess.check_output(list(args), text=True, **kwargs).strip()
 
 
+def wait_container_removed(name, timeout_seconds=15):
+    """Wait for Docker's asynchronous --rm cleanup before reusing a name or port."""
+    deadline = time.monotonic() + timeout_seconds
+    while subprocess.run(['docker', 'container', 'inspect', name],
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0:
+        if time.monotonic() >= deadline:
+            raise TimeoutError(f'Docker did not remove stopped container: {name}')
+        time.sleep(0.1)
+
+
 def free_port():
     with socket.socket() as sock:
         sock.bind(('127.0.0.1', 0))
@@ -159,6 +169,7 @@ def local_run(plan, image, output, quiz=False):
             for scenario in plan['scenarios']:
                 if scenario['cold_cache']:
                     command('docker', 'stop', edge)
+                    wait_container_removed(edge)
                     start_edge()  # A noncached readiness endpoint leaves workload URLs cold.
                 else:
                     for path in pages + assets:

@@ -41,6 +41,28 @@ class TestQuizLoadFixtures(unittest.TestCase):
         self.assertEqual((ROOT / 'nginx/default.conf').read_text(), original)
 
 
+class TestEdgeRestart(unittest.TestCase):
+    def test_waits_for_auto_removed_container_before_reusing_name(self):
+        results = [subprocess_result(0), subprocess_result(0), subprocess_result(1)]
+        with patch.object(runner.subprocess, 'run', side_effect=results) as inspect, \
+             patch.object(runner.time, 'sleep') as sleep:
+            runner.wait_container_removed('edge', timeout_seconds=5)
+        self.assertEqual(inspect.call_count, 3)
+        self.assertEqual(sleep.call_count, 2)
+        self.assertEqual(inspect.call_args_list[0].args[0], ['docker', 'container', 'inspect', 'edge'])
+
+    def test_times_out_if_docker_never_removes_container(self):
+        with patch.object(runner.subprocess, 'run', return_value=subprocess_result(0)), \
+             patch.object(runner.time, 'monotonic', side_effect=[0, 1]), \
+             patch.object(runner.time, 'sleep'):
+            with self.assertRaises(TimeoutError):
+                runner.wait_container_removed('edge', timeout_seconds=0.5)
+
+
+def subprocess_result(returncode):
+    return runner.subprocess.CompletedProcess(args=['docker'], returncode=returncode)
+
+
 class TestLoadReport(unittest.TestCase):
     def client(self):
         return {'sent': 10000, 'completed': 10000, 'dropped': 0, 'network_errors': 0,
