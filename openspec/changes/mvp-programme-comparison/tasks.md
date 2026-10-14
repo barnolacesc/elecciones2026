@@ -151,6 +151,27 @@ Combined Chromium evidence (orchestrator, 2026-10-12): Nine pending 2023 cases p
 
 Evidence: `tests/test_pilot_preview_acceptance.py` adds one ordinary artifact test and three opt-in Playwright tests; the mobile CI job enables the browser lane. The CI-equivalent unittest command passes all four tests in 1.910 seconds. The focused pilot/browser/audit run passes 40 tests and 45 subtests. Python 3.14 pytest with the pilot browser lane enabled passes 427 tests and 245 subtests in 5.79 seconds; 13 optional Docker/private-worker/budget-browser tests skip. Critical Ruff rules and `git diff --check` pass. Docker auto-detection is disabled for this run; no Docker parity, live hosting or capacity claim is made. The suite uses a temporary loopback server and cleans up its own resources. See `docs/pilot-preview-acceptance.md` for commands, coverage and the uncompleted owner checklist. Native share uses a test stub; this is not real phone share-sheet evidence or a WCAG conformance audit. No merge, deployment, source-record change or public release was performed. The OpenSpec CLI is unavailable locally; the existing artifacts were read directly.
 
+## E1.4 reported human approvals — 2026-10-12
+
+The owner reports his PP/ERC approval and a full screen review and approval by
+`carlesfito`, the other C2 Ventures member. Two owner-only private records bind
+the reports to the six unchanged PR #87 candidate hashes. The content records
+retain both human reviewer identities and private evidence references. The date
+records when the approval was reported, not an independently established review
+date. See `docs/pilot-review/2023/README.md` for the evidence boundary.
+
+All six candidates remain `under_review`; the static/browser publish set still
+contains zero statements and zero relationships. Verified publication dates,
+explicit source-rights decisions remain open. Reviewer affiliation declarations
+are retained separately in the private review store. No programme verification, rights permission or relationship
+approval is restored. Tasks 1.2, 2.3 and the real-corpus acceptance task remain open.
+
+Validation: Python 3.14 pytest with both pilot and budget browser lanes enabled
+passes 430 tests and 251 subtests; 10 optional Docker/private-worker checks skip.
+Schema validation passes 67 checks and editorial build validation passes six
+checks. The existing rehearsal assertion now checks authentic reported reviewer
+identities and continued unpublished status. `git diff --check` passes.
+
 ## E2.2 mobile preview layout — issue #98, 2026-10-12
 
 The owner's phone screenshot showed wrapped navigation and repeated pilot
