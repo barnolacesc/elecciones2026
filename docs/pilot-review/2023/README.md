@@ -2,7 +2,7 @@
 
 Roadmap package: **E1.4**. Issues: [#70](https://github.com/c2ventures/elecciones2026/issues/70) and [#42](https://github.com/c2ventures/elecciones2026/issues/42).
 Inspection date: 2026-10-12. Election: `es-gen-2023`.
-Status: PP and ERC selected by the owner; source rights and human reviews are pending.
+Status: PP and ERC selected. Two human content approvals are recorded from the owner report; source publication and rights release gates remain open.
 
 This pack gives reviewers a verified local source inventory and starting locations for housing, health and social services, and education. The owner selected PP and ERC in the project session on 2026-10-12. Four new quote-free statement drafts cover their health and education proposals; the existing housing drafts remain unpublished. The inventory retains the two unselected sources for traceability. Selection does not approve coverage, rights or content. No relationship assertion or approval record is added.
 
@@ -46,7 +46,7 @@ The inventory includes each candidate page's text checksum and extraction anchor
 
 ## Open decisions and exit limits
 
-- Two-party selection is recorded. Two real reviewers, private approval retention/access and source-rights decisions are missing.
+- Two-party selection and owner-reported approvals by `barnolacesc` and `carlesfito` are recorded. Source-rights decisions and publication-date evidence remain missing.
 - Agent visual inspection and draft Spanish summaries are prepared for six source locations. Human review, publication-date evidence, coverage completeness and relationship review are incomplete.
 - Four new statements are drafts with empty reviews. No source status, rights flag, review mark or invalidated relationship is restored by this pack.
 
@@ -90,3 +90,34 @@ No comparison relationship is created. Different health and housing instruments 
 Selected-party checks (2026-10-12): `schemas validate-all` passed 67 checks; `editorial validate-build` passed six gate checks. A dated `es-gen-2023` static build completed with zero published statements and zero relationships. An output inspection confirmed that the six selected draft IDs and summaries were absent from generated HTML and browser scripts. Archive metadata, all candidate page hashes and local documentation links were rechecked. `git diff --check` passed. No human editorial review, source-rights decision or hosted release was performed.
 
 Full regression check (2026-10-12): `DOCKER_HOST=unix:///tmp/elecciones-issue70-no-docker.sock PYTHONPATH=src uv run --no-project --with pytest --with pytest-subtests python -m pytest -q --tb=short` passed 423 tests and 214 subtests; 13 optional checks were skipped. Docker was deliberately unavailable, and this run did not enable the optional budget browser lane. The housing rehearsal test now requires quote-free drafts with exact registered URLs, source version, page locators, empty reviews and no last-reviewed date. Approved/public quotation gates are unchanged. These results do not establish Docker parity or human acceptance.
+
+## Reported human reviews — 2026-10-12
+
+The owner reports approving the PP/ERC candidates and confirms that `carlesfito`,
+the other C2 Ventures member, completed a full review from the owner screen and
+approved them. A GitHub comment is not required. The second review is an owner
+attestation, not a direct signed record from the reviewer. The report date is
+2026-10-12; the actual review date was not supplied.
+
+Two private records bind these reports to the six unchanged candidate records
+from PR #87 (`da4a5407b2949690625ed0ce3c6988c5fa206271`) as merged at
+`01b77bcdcafb988bb5ea88e7d5df6afc34bcc430`. Their references use
+`private-reviews:es-gen-2023/owner-reported-approval-2026-10-12.json` and
+`private-reviews:es-gen-2023/owner-attested-carlesfito-approval-2026-10-12.json`.
+Resolve these references in the owner-only private review store, beside the
+private source archive. Complete evidence stays outside Git and serving images.
+
+Each candidate retains two reported human approval records but remains
+`under_review`. No quotation permission, programme publication date or comparison relationship
+approval is inferred. Reviewer affiliation declarations are retained separately
+in the private review store.
+The source register and programme rights/status fields remain pending.
+The current generator requires verified programme dates and quotation rights
+even for these quote-free summaries. Content review alone does not pass that
+publication gate. Tasks 1.2 and 2.3 and issues #42/#70 remain open.
+
+Source-date investigation: the [PP announcement](https://www.pp.es/actualidad/articulos/programa-electoral-propone-365-medidas-reconstruccion-economica-social-e/)
+identifies the programme presentation on 2023-07-04. The [ERC official archive](https://www.esquerra.cat/transparencia/programes-electorals/)
+links the registered 2023 document but does not give its publication date.
+Neither the archive update date nor the PDF upload-directory name establishes
+that date. Source records remain unchanged pending the provenance handoff.
