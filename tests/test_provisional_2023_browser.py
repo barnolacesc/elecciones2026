@@ -68,7 +68,7 @@ class ProvisionalBrowserTests(unittest.TestCase):
                     page.locator('input[name="answer"][value="agree"]').check()
                     page.locator('#pilot-quiz button').click()
                 self.assertEqual(page.locator('#pilot-results .card').count(), 12)
-                self.assertIn('no un porcentaje', page.locator('#pilot-results').inner_text())
+                self.assertIn('no son un porcentaje', page.locator('#pilot-results').inner_text())
                 page.goto(self.base + '/fuentes/')
                 self.assertIn('Fuentes del piloto', page.locator('h1').inner_text())
                 self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
