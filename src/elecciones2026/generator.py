@@ -1292,11 +1292,11 @@ def render_home_page(ctx: SiteContext) -> str:
         hero_eyebrow = "GENERALES 2023 · 23 JULIO 2023"
         hero_title_part1 = "Compara los programas"
         hero_title_part2 = "de 2023."
-        hero_intro = "PP y ERC: contenido pendiente de publicación. Puedes consultar los documentos originales."
+        hero_intro = "PP, ERC, PNV y Sumar: consulta el estado de cobertura y los documentos originales de 2023."
         mock_notice = """<details class="notice pilot-details">
       <summary>Sobre este piloto</summary>
       <p>
-      <strong>Aviso de ensayo privado (Generales 2023):</strong> Esta vista corresponde al ensayo técnico con documentos de PP y ERC. Las posiciones y sus derechos de cita requieren revisión humana antes de mostrarse. Este ensayo no satisface la puerta de publicación G2 para 2026 ni presenta información de 2026.</p>
+      <strong>Aviso de ensayo privado (Generales 2023):</strong> Esta vista corresponde al ensayo técnico con documentos de PP, ERC, PNV y Sumar. Las posiciones visibles dependen de la revisión editorial de cada fuente, derecho de reutilización y propuesta. Una posición ausente no implica oposición. Este ensayo no satisface la puerta de publicación G2 para 2026 ni presenta información de 2026.</p>
     </details>"""
         selector_eyebrow = "01 / COMPARAR · GENERALES 2023"
         page_title = "Generales 2023 · Comparador de programas (Ensayo piloto)"
@@ -2360,12 +2360,15 @@ def build_site(
     budget_bundle: Optional[Path] = None,
     quiz_mode: str = "unavailable",
     quiz_file: Optional[Path] = None,
+    pilot_provisional: bool = False,
 ) -> SiteBuildResult:
     """Generate the complete static site deterministically into output_dir.
 
     Uses an atomic staging directory to ensure that any validation failure
     aborts without creating a partially published site.
     """
+    if pilot_provisional and (election_id != "es-gen-2023" or quiz_mode != "unavailable"):
+        raise BuildValidationError("Provisional pilot is limited to the private 2023 build without the standard quiz.")
     budget_manifest, budget_payload = None, None
     if budget_bundle is not None:
         from elecciones2026.budget import BudgetError, load_bundle
@@ -2569,6 +2572,10 @@ def build_site(
         preview_target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(site_src / "assets" / "social-preview.png", preview_target)
 
+        if pilot_provisional:
+            from elecciones2026.provisional2023 import write as write_provisional_pilot
+            write_provisional_pilot(root_dir, staging_dir, ctx.canonical_base)
+
         # Do not copy accidentally misplaced private sources or retain them in output.
         reject_private_source_artifacts(staging_dir)
         if output_dir.exists():
@@ -2661,6 +2668,7 @@ def main(args: Optional[list[str]] = None) -> int:
     build_p.add_argument("--quiz-mode", choices=("unavailable", "mock", "reviewed"), default="unavailable",
                          help="Mock quiz is opt-in for private preview; reviewed mode requires approved input.")
     build_p.add_argument("--quiz-file", type=Path, help="Versioned quiz authoring JSON.")
+    build_p.add_argument("--pilot-provisional", action="store_true", help="Private source-linked 2023 pilot only.")
 
     # Command: check-determinism
     det_p = subparsers.add_parser("check-determinism", help="Verify build determinism across repeated runs.")
@@ -2689,6 +2697,7 @@ def main(args: Optional[list[str]] = None) -> int:
                 budget_bundle=parsed.budget_bundle,
                 quiz_mode=parsed.quiz_mode,
                 quiz_file=parsed.quiz_file,
+                pilot_provisional=parsed.pilot_provisional,
             )
             print(f"Build completed successfully in {res.output_dir}:")
             print(f"  - Topics: {res.topics_count}")
