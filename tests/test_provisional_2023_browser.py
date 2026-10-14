@@ -64,10 +64,13 @@ class ProvisionalBrowserTests(unittest.TestCase):
                 self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
                 page.goto(self.base + '/cuestionario/')
                 self.assertNotIn('PP:', page.locator('#pilot-quiz').inner_text())
-                for _ in range(24):
+                for _ in range(12):
                     page.locator('input[name="answer"][value="agree"]').check()
                     page.locator('#pilot-quiz button').click()
-                self.assertEqual(page.locator('#pilot-results .card').count(), 24)
+                self.assertEqual(page.locator('#pilot-results .card').count(), 12)
+                self.assertEqual(page.locator('#pilot-results .pilot-summary-card').count(), 1)
+                self.assertEqual(page.locator('#pilot-results .pilot-party-row').count(), 4)
+                self.assertEqual(page.locator('#pilot-results .pilot-share-btn').count(), 1)
                 self.assertIn('no son un porcentaje', page.locator('#pilot-results').inner_text())
                 page.goto(self.base + '/fuentes/')
                 self.assertIn('Fuentes del piloto', page.locator('h1').inner_text())

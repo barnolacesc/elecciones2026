@@ -115,10 +115,11 @@ def quiz(data: dict, image_url: str = "") -> str:
 <p>Lee una propuesta cada vez y expresa tu opinión sin conocer antes la candidatura. Al terminar podrás consultar sus autores y fuentes. Esto <strong>no calcula afinidad partidista</strong> ni recomienda el voto.</p>
 <p class="warning">Piloto histórico y provisional, sin revisión editorial humana. Tus respuestas permanecen en esta pestaña; no se envían ni se guardan.</p></div>
 <form id="pilot-quiz"><p id="pilot-progress" aria-live="polite"></p><fieldset><legend id="pilot-question"></legend><p id="pilot-statement"></p><div class="quiz-options">
-<label class="quiz-option"><input type="radio" name="answer" value="strongly-disagree">Muy en desacuerdo</label>
-<label class="quiz-option"><input type="radio" name="answer" value="disagree">En desacuerdo</label>
-<label class="quiz-option"><input type="radio" name="answer" value="agree">De acuerdo</label>
-<label class="quiz-option"><input type="radio" name="answer" value="neutral">Indiferente</label></div></fieldset>
+<label class="quiz-option"><input type="radio" name="answer" value="strongly-agree">Totalmente de acuerdo</label>
+<label class="quiz-option"><input type="radio" name="answer" value="agree">Más bien de acuerdo</label>
+<label class="quiz-option"><input type="radio" name="answer" value="neutral">Indiferente</label>
+<label class="quiz-option"><input type="radio" name="answer" value="disagree">Más bien en desacuerdo</label>
+<label class="quiz-option"><input type="radio" name="answer" value="strongly-disagree">Totalmente en desacuerdo</label></div></fieldset>
 <p id="pilot-answer-error" role="alert" hidden>Selecciona una respuesta para continuar.</p><button type="submit" class="button" id="pilot-next">Siguiente propuesta</button></form>
 <div id="pilot-results" tabindex="-1" aria-live="polite"></div>'''
     return frame("Cuestionario exploratorio", body, nested=True, image_url=image_url)
