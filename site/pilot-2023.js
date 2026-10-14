@@ -212,34 +212,192 @@
 
       const shareSection = element('div', '', 'pilot-share-section');
       const actionGroup = element('div', '', 'pilot-actions-group');
-      const shareBtn = element('button', 'Compartir mis resultados', 'button pilot-share-btn');
+      const shareBtn = element('button', 'Compartir texto (Wordle)', 'button pilot-share-btn');
       shareBtn.type = 'button';
+      const imageBtn = element('button', 'Descargar tarjeta (imagen)', 'button button-secondary pilot-image-btn');
+      imageBtn.type = 'button';
       const retakeBtn = element('button', 'Repetir cuestionario', 'button button-secondary pilot-retake-btn');
       retakeBtn.type = 'button';
       retakeBtn.addEventListener('click', () => { window.location.reload(); });
-      actionGroup.append(shareBtn, retakeBtn);
+      actionGroup.append(shareBtn, imageBtn, retakeBtn);
 
       const shareStatus = element('p', '', 'pilot-share-status');
       shareStatus.setAttribute('role', 'status');
       shareStatus.setAttribute('aria-live', 'polite');
       shareStatus.hidden = true;
 
+      async function generateResultsImage(stats, totalAnswers) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1200;
+        canvas.height = 675;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) throw new Error('Canvas 2D unavailable');
+
+        function roundRectPath(x, y, w, h, r) {
+          if (ctx.roundRect) {
+            ctx.roundRect(x, y, w, h, r);
+          } else {
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y, x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x, y + h, r);
+            ctx.arcTo(x, y + h, x, y, r);
+            ctx.arcTo(x, y, x + w, y, r);
+            ctx.closePath();
+          }
+        }
+
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, 1200, 675);
+
+        ctx.strokeStyle = '#e2e8f0';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        roundRectPath(20, 20, 1160, 635, 16);
+        ctx.stroke();
+
+        ctx.fillStyle = '#64748b';
+        ctx.font = 'bold 13px system-ui, -apple-system, sans-serif';
+        ctx.fillText('PILOTO HISTÓRICO · ELECCIONES 2023', 60, 65);
+
+        ctx.fillStyle = '#0a0d12';
+        ctx.font = 'bold 30px system-ui, -apple-system, sans-serif';
+        ctx.fillText('Test de propuestas electorales a ciegas', 60, 105);
+
+        ctx.fillStyle = '#475569';
+        ctx.font = '500 17px system-ui, -apple-system, sans-serif';
+        ctx.fillText(`Resultados tras valorar ${totalAnswers} medidas de los programas sin conocer las siglas`, 60, 135);
+
+        ctx.strokeStyle = '#e2e8f0';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(60, 155);
+        ctx.lineTo(1140, 155);
+        ctx.stroke();
+
+        function drawBadge(text, x, y, bg, border, color) {
+          ctx.font = 'bold 13px system-ui, -apple-system, sans-serif';
+          const textWidth = ctx.measureText(text).width;
+          const w = textWidth + 18;
+          const h = 26;
+          ctx.fillStyle = bg;
+          ctx.strokeStyle = border;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          roundRectPath(x, y, w, h, 6);
+          ctx.fill();
+          ctx.stroke();
+          ctx.fillStyle = color;
+          ctx.fillText(text, x + 9, y + 17);
+          return w;
+        }
+
+        let startY = 195;
+        const rowGap = 85;
+
+        for (const p of stats) {
+          ctx.fillStyle = '#0a0d12';
+          ctx.font = 'bold 22px system-ui, -apple-system, sans-serif';
+          ctx.fillText(p.name, 60, startY);
+
+          let badgeX = 180;
+          if (p.supported > 0) {
+            badgeX += drawBadge(`✓ ${p.supported} a favor`, badgeX, startY - 20, '#dcfce7', '#86efac', '#14532d') + 8;
+          }
+          if (p.opposed > 0) {
+            badgeX += drawBadge(`✕ ${p.opposed} en contra`, badgeX, startY - 20, '#fee2e2', '#fca5a5', '#7f1d1d') + 8;
+          }
+          if (p.neutral > 0) {
+            const neutralText = p.neutral === 1 ? '– 1 neutra' : `– ${p.neutral} neutras`;
+            drawBadge(neutralText, badgeX, startY - 20, '#f1f5f9', '#cbd5e1', '#334155');
+          }
+
+          const barY = startY + 12;
+          const barW = 1080;
+          const barH = 14;
+
+          ctx.fillStyle = '#e2e8f0';
+          ctx.beginPath();
+          roundRectPath(60, barY, barW, barH, 7);
+          ctx.fill();
+
+          if (p.total > 0) {
+            const supPct = p.supported / p.total;
+            const neuPct = p.neutral / p.total;
+            const oppPct = p.opposed / p.total;
+
+            ctx.save();
+            ctx.beginPath();
+            roundRectPath(60, barY, barW, barH, 7);
+            ctx.clip();
+
+            let curX = 60;
+            if (supPct > 0) {
+              const w = Math.round(barW * supPct);
+              ctx.fillStyle = '#16a34a';
+              ctx.fillRect(curX, barY, w, barH);
+              curX += w;
+            }
+            if (neuPct > 0) {
+              const w = Math.round(barW * neuPct);
+              ctx.fillStyle = '#94a3b8';
+              ctx.fillRect(curX, barY, w, barH);
+              curX += w;
+            }
+            if (oppPct > 0) {
+              const w = barW - (curX - 60);
+              ctx.fillStyle = '#dc2626';
+              ctx.fillRect(curX, barY, w, barH);
+            }
+            ctx.restore();
+          }
+
+          startY += rowGap;
+        }
+
+        ctx.strokeStyle = '#e2e8f0';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(60, 550);
+        ctx.lineTo(1140, 550);
+        ctx.stroke();
+
+        ctx.fillStyle = '#0a0d12';
+        ctx.font = 'bold 15px system-ui, -apple-system, sans-serif';
+        ctx.fillText('¿Coincidirías con quien crees? Haz la prueba en:', 60, 580);
+        ctx.fillStyle = '#0a0d12';
+        ctx.font = '500 15px system-ui, -apple-system, sans-serif';
+        const displayUrl = (location.origin + location.pathname).replace(/\/$/, '') + '/';
+        ctx.fillText(displayUrl, 60, 606);
+
+        ctx.fillStyle = '#64748b';
+        ctx.font = '12px system-ui, -apple-system, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('Archivo histórico de 2023 · Datos provisionales sin revisión editorial humana.', 1140, 580);
+        ctx.fillText('No calcula afinidad partidista ni recomienda el voto.', 1140, 602);
+        ctx.textAlign = 'left';
+
+        return new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+      }
+
       const shareUrl = window.location.href.split('#')[0];
       const shareLines = partyStats.map(p => {
+        const blocks = '🟩'.repeat(p.supported) + '⬜'.repeat(p.neutral) + '🟥'.repeat(p.opposed);
         const parts = [];
         if (p.supported) parts.push(`${p.supported} a favor`);
         if (p.opposed) parts.push(`${p.opposed} en contra`);
-        if (p.neutral) parts.push(`${p.neutral} neutras`);
-        return `• ${p.name}: ${parts.join(', ') || '0 valoradas'}`;
+        if (p.neutral) parts.push(p.neutral === 1 ? '1 neutra' : `${p.neutral} neutras`);
+        const textSummary = parts.length > 0 ? ` (${parts.join(', ')})` : '';
+        return `• ${p.name}: ${blocks || '▫️'}${textSummary}`;
       });
-      const shareText = `Resultados de mi cuestionario de propuestas electorales a ciegas:\n${shareLines.join('\n')}\n\nHaz la prueba tú también en:\n${shareUrl}`;
+      const shareBody = `🗳️ Test electoral a ciegas: ${answers.length} medidas valoradas sin ver las siglas\n\n${shareLines.join('\n')}\n\n(🟩 a favor · ⬜ neutra · 🟥 en contra)\n\n¿Coincidirías con quien crees? Haz la prueba aquí:`;
+      const shareText = `${shareBody}\n${shareUrl}`;
 
       shareBtn.addEventListener('click', async () => {
         if (navigator.share) {
           try {
             await navigator.share({
-              title: 'Mis resultados en el cuestionario de propuestas',
-              text: shareText,
+              title: 'Mis resultados en el test electoral a ciegas',
+              text: shareBody,
               url: shareUrl
             });
             return;
@@ -260,6 +418,46 @@
         }
         shareStatus.textContent = shareText;
         shareStatus.hidden = false;
+      });
+
+      imageBtn.addEventListener('click', async () => {
+        imageBtn.disabled = true;
+        const origText = imageBtn.textContent;
+        imageBtn.textContent = 'Generando tarjeta…';
+        try {
+          const blob = await generateResultsImage(partyStats, answers.length);
+          if (!blob) throw new Error('Image generation failed');
+          const file = new File([blob], 'mis-resultados-electorales.png', { type: 'image/png' });
+
+          if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              title: 'Mis resultados en el test electoral a ciegas',
+              text: 'He valorado propuestas electorales sin ver las siglas. ¡Haz la prueba tú también!',
+              files: [file]
+            });
+            shareStatus.textContent = '¡Tarjeta compartida!';
+            shareStatus.hidden = false;
+          } else {
+            const url = URL.createObjectURL(file);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = file.name;
+            document.body.append(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 60000);
+            shareStatus.textContent = '¡Tarjeta descargada (PNG)! Ya puedes adjuntarla en Twitter, WhatsApp o tus redes.';
+            shareStatus.hidden = false;
+          }
+        } catch (err) {
+          if (err.name !== 'AbortError') {
+            shareStatus.textContent = 'No se pudo generar la tarjeta de imagen. Puedes compartir el texto.';
+            shareStatus.hidden = false;
+          }
+        } finally {
+          imageBtn.disabled = false;
+          imageBtn.textContent = origText;
+        }
       });
       shareSection.append(actionGroup, shareStatus);
       summaryCard.append(shareSection);
