@@ -3,7 +3,7 @@ import re
 import unittest
 from pathlib import Path
 
-from elecciones2026.provisional2023 import load, comparison, quiz
+from elecciones2026.provisional2023 import load, comparison, quiz, sources
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -25,7 +25,12 @@ class ProvisionalPilotTests(unittest.TestCase):
         self.assertIn("sin revisión editorial humana", home)
         self.assertIn("no calcula afinidad partidista", questions)
         self.assertEqual(home.count('class="card"'), 12)
-        self.assertEqual(questions.count('class="quiz-option"'), 12)
+        self.assertEqual(questions.count('class="quiz-option"'), 4)
+        self.assertNotIn('PP:', questions)
+        self.assertNotIn('Sumar:', questions)
+        self.assertIn('Muy en desacuerdo', questions)
+        self.assertIn('Indiferente', questions)
+        self.assertIn('Fuentes del piloto', sources(data))
         self.assertEqual(home.count('target="_blank"'), 12)
         self.assertNotIn("sam-neutrality", home + questions)
         self.assertNotIn("2026</h1>", home + questions)
