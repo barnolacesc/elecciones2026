@@ -88,7 +88,15 @@
   }
   const quiz = document.getElementById('pilot-quiz');
   if (quiz) {
-    const questions = data.positions.slice();
+    function shuffle(arr) {
+      const copy = arr.slice();
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+    const questions = shuffle(data.positions);
     const answers = [];
     const results = document.getElementById('pilot-results');
     let index = 0;
@@ -194,8 +202,14 @@
       summaryCard.append(partyList);
 
       const shareSection = element('div', '', 'pilot-share-section');
+      const actionGroup = element('div', '', 'pilot-actions-group');
       const shareBtn = element('button', 'Compartir mis resultados', 'button pilot-share-btn');
       shareBtn.type = 'button';
+      const retakeBtn = element('button', 'Repetir cuestionario', 'button button-secondary pilot-retake-btn');
+      retakeBtn.type = 'button';
+      retakeBtn.addEventListener('click', () => { window.location.reload(); });
+      actionGroup.append(shareBtn, retakeBtn);
+
       const shareStatus = element('p', '', 'pilot-share-status');
       shareStatus.setAttribute('role', 'status');
       shareStatus.setAttribute('aria-live', 'polite');
@@ -238,7 +252,7 @@
         shareStatus.textContent = shareText;
         shareStatus.hidden = false;
       });
-      shareSection.append(shareBtn, shareStatus);
+      shareSection.append(actionGroup, shareStatus);
       summaryCard.append(shareSection);
 
       results.replaceChildren(summaryCard);

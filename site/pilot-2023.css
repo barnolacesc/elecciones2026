@@ -506,13 +506,30 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   border-top: 1px solid #e2e8f0;
 }
 
-.pilot-share-btn {
+.pilot-actions-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pilot-share-btn, .pilot-retake-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  width: 100%;
+  flex: 1 1 200px;
   max-width: 320px;
+}
+
+.button-secondary {
+  background: #ffffff;
+  color: #0a0d12;
+  border: 1px solid #d0d5dd;
+}
+
+.button-secondary:hover {
+  background: #f1f5f9;
+  border-color: #0a0d12;
 }
 
 .pilot-share-status {
