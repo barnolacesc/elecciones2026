@@ -9,14 +9,17 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ProvisionalPilotTests(unittest.TestCase):
-    def test_four_parties_three_topics_and_exact_citations(self):
+    def test_four_parties_five_topics_and_exact_citations(self):
         data = load(ROOT)
-        self.assertEqual(len(data["positions"]), 12)
+        self.assertEqual(len(data["topics"]), 5)
+        self.assertEqual(len(data["positions"]), 24)
         for position in data["positions"]:
             self.assertTrue(position["url"].startswith("https://"))
             self.assertTrue(position["url"].endswith(f'#page={position["page"]}'))
             self.assertRegex(position["sha256"], r"^[a-f0-9]{64}$")
             self.assertNotIn("approved", position)
+            self.assertTrue(position.get("measure_id"))
+            self.assertTrue(position.get("measure_title"))
 
     def test_provisional_notice_and_source_links(self):
         data = load(ROOT)
@@ -24,14 +27,15 @@ class ProvisionalPilotTests(unittest.TestCase):
         questions = quiz(data)
         self.assertIn("sin revisión editorial humana", home)
         self.assertIn("no calcula afinidad partidista", questions)
-        self.assertEqual(home.count('class="card"'), 12)
+        self.assertEqual(home.count('class="card"'), 24)
+        self.assertIn('class="measure-group"', home)
         self.assertEqual(questions.count('class="quiz-option"'), 4)
         self.assertNotIn('PP:', questions)
         self.assertNotIn('Sumar:', questions)
         self.assertIn('Muy en desacuerdo', questions)
         self.assertIn('Indiferente', questions)
         self.assertIn('Fuentes del piloto', sources(data))
-        self.assertEqual(home.count('target="_blank"'), 12)
+        self.assertEqual(home.count('target="_blank"'), 24)
         self.assertNotIn("sam-neutrality", home + questions)
         self.assertNotIn("2026</h1>", home + questions)
 

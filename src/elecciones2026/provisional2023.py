@@ -16,18 +16,18 @@ def load(root: Path) -> dict:
     sources = {s["party_id"]: s for s in register["sources"] if s["election_id"] == "es-gen-2023"}
     assert data["election_id"] == "es-gen-2023" and data["status"] == "historical-provisional-private"
     assert set(sources) == set(PARTIES)
-    assert len(data["positions"]) == 12
-    assert {(p["topic"], p["party"]) for p in data["positions"]} == {
-        (t["id"], party) for t in data["topics"] for party in PARTIES
-    }
+    assert len(data["positions"]) >= 12
+    topic_ids = {t["id"] for t in data["topics"]}
     for position in data["positions"]:
+        assert position["party"] in PARTIES
+        assert position["topic"] in topic_ids
         source = sources[position["party"]]
         url = source["direct_url"]
         parsed = urlsplit(url)
         assert parsed.scheme == "https" and parsed.hostname and not parsed.username and not parsed.password
         assert isinstance(source["sha256"], str) and len(source["sha256"]) == 64
         assert isinstance(position["page"], int) and position["page"] > 0
-        assert all(position.get(k) for k in ("summary", "title", "locator", "qualification"))
+        assert all(position.get(k) for k in ("summary", "title", "locator", "qualification", "measure_id", "measure_title"))
         position["url"] = url + f'#page={position["page"]}'
         position["sha256"] = source["sha256"]
     return data
@@ -72,21 +72,41 @@ def card(position: dict) -> str:
 def comparison(data: dict, image_url: str = "") -> str:
     topics = ''.join(f'<option value="{esc(t["id"])}">{esc(t["name"])}</option>' for t in data["topics"])
     parties = ''.join(f'<option value="{esc(pid)}">{esc(name)}</option>' for pid, name in PARTIES.items())
-    sections = ''.join(f'<section class="topic-section" data-topic="{esc(t["id"])}">'
-                       f'<h2>{esc(t["name"])}</h2><div class="cards">'
-                       + ''.join(card(p) for p in data["positions"] if p["topic"] == t["id"])
-                       + '</div></section>' for t in data["topics"])
+    sections_parts = []
+    for t in data["topics"]:
+        topic_positions = [p for p in data["positions"] if p["topic"] == t["id"]]
+        measures: dict[str, dict] = {}
+        for p in topic_positions:
+            m_id = p["measure_id"]
+            if m_id not in measures:
+                measures[m_id] = {"title": p["measure_title"], "positions": []}
+            measures[m_id]["positions"].append(p)
+        m_parts = []
+        for m_id, m_data in measures.items():
+            m_parts.append(
+                f'<div class="measure-group"><h3 class="measure-title">{esc(m_data["title"])}</h3>'
+                f'<div class="cards">'
+                + ''.join(card(p) for p in m_data["positions"])
+                + '</div></div>'
+            )
+        sections_parts.append(
+            f'<section class="topic-section" data-topic="{esc(t["id"])}">'
+            f'<h2>{esc(t["name"])}</h2>' + ''.join(m_parts) + '</section>'
+        )
+    sections = ''.join(sections_parts)
+    num_positions = len(data["positions"])
+    num_topics = len(data["topics"])
     body = f'''<div class="hero"><p class="eyebrow">23J 2023 · privado · provisional</p>
 <h1>Compara cuatro programas de 2023</h1>
-<p>PP, ERC, PNV y Sumar. Doce medidas concretas en vivienda, inmigración y economía, enlazadas a los programas originales.</p>
+<p>PP, ERC, PNV y Sumar. {num_positions} medidas concretas en {num_topics} temas, agrupadas por propuesta y enlazadas a los programas originales.</p>
 <p class="warning"><strong>Lectura provisional:</strong> resúmenes asistidos por extracción de PDF, sin revisión editorial humana. Las propuestas no son equivalentes entre sí; no inferimos acuerdos, desacuerdos ni resultados de gobierno.</p>
 <a class="button" href="./cuestionario/">Explorar con el cuestionario</a></div>
 <div class="controls"><label>Tema <select id="pilot-topic">{topics}</select></label>
 <label>Primera candidatura <select id="pilot-a">{parties}</select></label>
 <label>Segunda candidatura <select id="pilot-b">{parties}</select></label>
 <p id="pilot-error" role="alert" hidden>Selecciona dos candidaturas distintas.</p></div>
-<div id="pilot-comparison" class="cards" aria-live="polite"></div>
-<details><summary>Ver las doce medidas y sus fuentes</summary>{sections}</details>'''
+<div id="pilot-comparison" class="measure-groups" aria-live="polite"></div>
+<details><summary>Ver las {num_positions} medidas y sus fuentes</summary>{sections}</details>'''
     return frame("Comparador de programas", body, image_url=image_url)
 
 

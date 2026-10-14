@@ -27,6 +27,14 @@
     article.append(citation);
     return article;
   }
+  function emptyCard(party) {
+    const article = element('article', '', 'card card-empty');
+    article.append(element('span', names[party], 'party'));
+    article.append(element('h3', 'Sin propuesta registrada', 'empty-title'));
+    article.append(element('p', 'No consta propuesta específica sobre esta medida en el extracto analizado del programa de 2023.', 'empty-note'));
+    article.append(element('p', 'Matiz: Una medida ausente o no seleccionada no implica oposición.', 'qualification'));
+    return article;
+  }
   const topic = document.getElementById('pilot-topic');
   if (topic) {
     const a = document.getElementById('pilot-a');
@@ -42,9 +50,33 @@
       target.replaceChildren();
       error.hidden = a.value !== b.value;
       if (!error.hidden) return;
-      for (const party of [a.value, b.value]) {
-        const position = data.positions.find(p => p.topic === topic.value && p.party === party);
-        if (position) target.append(card(position));
+      const topicMeasures = [];
+      for (const p of data.positions) {
+        if (p.topic === topic.value && !topicMeasures.some(m => m.id === p.measure_id)) {
+          topicMeasures.push({ id: p.measure_id, title: p.measure_title });
+        }
+      }
+      const relevantMeasures = topicMeasures.filter(m =>
+        data.positions.some(p => p.measure_id === m.id && (p.party === a.value || p.party === b.value))
+      );
+      if (relevantMeasures.length === 0) {
+        target.append(element('p', 'No constan propuestas específicas para las candidaturas seleccionadas en este tema.', 'empty-note'));
+      } else {
+        for (const m of relevantMeasures) {
+          const group = element('div', '', 'measure-group');
+          group.append(element('h3', m.title, 'measure-title'));
+          const cards = element('div', '', 'cards');
+          for (const party of [a.value, b.value]) {
+            const pos = data.positions.find(p => p.measure_id === m.id && p.party === party);
+            if (pos) {
+              cards.append(card(pos));
+            } else {
+              cards.append(emptyCard(party));
+            }
+          }
+          group.append(cards);
+          target.append(group);
+        }
       }
       const url = new URL(location.href);
       url.search = new URLSearchParams({topic: topic.value, partyA: a.value, partyB: b.value}).toString();
