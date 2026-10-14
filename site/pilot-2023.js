@@ -13,8 +13,9 @@
     if (className) node.className = className;
     return node;
   }
-  function card(position) {
-    const article = element('article', '', 'card');
+  function card(position, extraClass) {
+    const className = extraClass ? `card ${extraClass}` : 'card';
+    const article = element('article', '', className);
     article.append(element('span', names[position.party], 'party'));
     article.append(element('h3', position.title));
     article.append(element('p', position.summary));
@@ -148,13 +149,44 @@
         const row = element('div', '', 'pilot-party-row');
         const info = element('div', '', 'pilot-party-info');
         info.append(element('span', p.name, 'pilot-party-name'));
-        info.append(element('span', `${p.supported} de ${p.total} propuestas apoyadas`, 'pilot-party-count'));
+
+        const badgeGroup = element('div', '', 'pilot-badge-group');
+        if (p.supported > 0) {
+          badgeGroup.append(element('span', `✓ ${p.supported} a favor`, 'pilot-badge pilot-badge-green'));
+        }
+        if (p.opposed > 0) {
+          badgeGroup.append(element('span', `✕ ${p.opposed} en contra`, 'pilot-badge pilot-badge-red'));
+        }
+        if (p.neutral > 0) {
+          badgeGroup.append(element('span', `– ${p.neutral} neutras`, 'pilot-badge pilot-badge-neutral'));
+        }
+        info.append(badgeGroup);
         row.append(info);
 
         const barContainer = element('div', '', 'pilot-bar-container');
-        const bar = element('div', '', 'pilot-bar-fill');
-        bar.style.width = p.total > 0 ? Math.round((p.supported / p.total) * 100) + '%' : '0%';
-        barContainer.append(bar);
+        if (p.total > 0) {
+          const supPct = Math.round((p.supported / p.total) * 100);
+          const neuPct = Math.round((p.neutral / p.total) * 100);
+          const oppPct = 100 - supPct - neuPct;
+          if (supPct > 0) {
+            const seg = element('div', '', 'pilot-bar-segment pilot-bar-green');
+            seg.style.width = supPct + '%';
+            seg.title = `${p.supported} a favor (${supPct}%)`;
+            barContainer.append(seg);
+          }
+          if (neuPct > 0) {
+            const seg = element('div', '', 'pilot-bar-segment pilot-bar-neutral');
+            seg.style.width = neuPct + '%';
+            seg.title = `${p.neutral} neutras (${neuPct}%)`;
+            barContainer.append(seg);
+          }
+          if (oppPct > 0) {
+            const seg = element('div', '', 'pilot-bar-segment pilot-bar-red');
+            seg.style.width = oppPct + '%';
+            seg.title = `${p.opposed} en contra (${oppPct}%)`;
+            barContainer.append(seg);
+          }
+        }
         row.append(barContainer);
 
         partyList.append(row);
@@ -170,7 +202,13 @@
       shareStatus.hidden = true;
 
       const shareUrl = window.location.href.split('#')[0];
-      const shareLines = partyStats.map(p => `• ${p.name}: ${p.supported} de ${p.total} propuestas apoyadas`);
+      const shareLines = partyStats.map(p => {
+        const parts = [];
+        if (p.supported) parts.push(`${p.supported} a favor`);
+        if (p.opposed) parts.push(`${p.opposed} en contra`);
+        if (p.neutral) parts.push(`${p.neutral} neutras`);
+        return `• ${p.name}: ${parts.join(', ') || '0 valoradas'}`;
+      });
       const shareText = `Resultados de mi cuestionario de propuestas electorales a ciegas:\n${shareLines.join('\n')}\n\nHaz la prueba tú también en:\n${shareUrl}`;
 
       shareBtn.addEventListener('click', async () => {
@@ -207,10 +245,21 @@
       results.append(element('h2', 'Tus respuestas y sus fuentes'));
       results.append(element('p', 'Consulta a continuación la candidatura de cada propuesta y el documento original de donde procede:', 'pilot-details-lead'));
       for (const {position, answer} of answers) {
+        const isAgreed = answer === 'strongly-agree' || answer === 'agree' || answer === 'somewhat-agree';
+        const isOpposed = answer === 'strongly-disagree' || answer === 'disagree' || answer === 'somewhat-disagree';
+        const cardClass = isAgreed ? 'card-agreed' : isOpposed ? 'card-opposed' : 'card-neutral';
+        const pillClass = isAgreed ? 'status-agreed' : isOpposed ? 'status-opposed' : 'status-neutral';
+        const pillLabel = isAgreed ? '✓ A favor' : isOpposed ? '✕ En contra' : '– Indiferente';
+
         const section = element('section', '', 'result-topic');
         section.append(element('h3', data.topics.find(t => t.id === position.topic).name));
-        section.append(element('p', 'Tu respuesta: ' + labels[answer]));
-        section.append(card(position));
+
+        const answerP = element('p', '', 'pilot-user-answer');
+        const pill = element('span', pillLabel, `pilot-answer-pill ${pillClass}`);
+        answerP.append(pill, document.createTextNode(' Tu respuesta: ' + labels[answer]));
+        section.append(answerP);
+
+        section.append(card(position, cardClass));
         results.append(section);
       }
       results.append(element('p', 'Estas respuestas no son un porcentaje de afinidad ni una recomendación de voto.'));
