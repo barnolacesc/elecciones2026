@@ -54,23 +54,43 @@
     render();
   }
   const quiz = document.getElementById('pilot-quiz');
-  if (quiz) quiz.addEventListener('submit', event => {
-    event.preventDefault();
+  if (quiz) {
+    const questions = data.positions.slice();
+    const answers = [];
     const results = document.getElementById('pilot-results');
-    results.replaceChildren(element('h2', 'Tus medidas seleccionadas'));
-    let count = 0;
-    for (const topic of data.topics) {
-      const chosen = quiz.querySelector('input[name="' + topic.id + '"]:checked');
-      if (!chosen) continue;
-      const position = data.positions.find(p => p.topic === topic.id && p.party === chosen.value);
-      if (!position) continue;
-      const section = element('section', '', 'result-topic');
-      section.append(element('h3', topic.name));
-      section.append(card(position));
-      results.append(section); count++;
+    let index = 0;
+    function showQuestion() {
+      const position = questions[index];
+      document.getElementById('pilot-progress').textContent = 'Propuesta ' + (index + 1) + ' de ' + questions.length;
+      document.getElementById('pilot-question').textContent = data.topics.find(t => t.id === position.topic).name;
+      document.getElementById('pilot-statement').textContent = position.summary;
+      document.getElementById('pilot-next').textContent = index === questions.length - 1 ? 'Ver respuestas y fuentes' : 'Siguiente propuesta';
+      quiz.reset();
+      document.getElementById('pilot-answer-error').hidden = true;
     }
-    if (!count) results.append(element('p', 'Elige al menos una medida para ver sus fuentes.'));
-    else results.append(element('p', 'Estas son tus elecciones, no un porcentaje de afinidad ni una recomendación de voto. Puedes cambiar las respuestas.'));
-    results.focus();
-  });
+    showQuestion();
+    quiz.addEventListener('submit', event => {
+      event.preventDefault();
+      const chosen = quiz.querySelector('input[name="answer"]:checked');
+      if (!chosen) {
+        document.getElementById('pilot-answer-error').hidden = false;
+        return;
+      }
+      answers.push({position: questions[index], answer: chosen.value});
+      index++;
+      if (index < questions.length) { showQuestion(); return; }
+      quiz.hidden = true;
+      results.replaceChildren(element('h2', 'Tus respuestas y sus fuentes'));
+      const labels = {"strongly-disagree": 'Muy en desacuerdo', disagree: 'En desacuerdo', agree: 'De acuerdo', neutral: 'Indiferente'};
+      for (const {position, answer} of answers) {
+      const section = element('section', '', 'result-topic');
+      section.append(element('h3', data.topics.find(t => t.id === position.topic).name));
+      section.append(element('p', 'Tu respuesta: ' + labels[answer]));
+      section.append(card(position));
+      results.append(section);
+      }
+      results.append(element('p', 'Estas respuestas no son un porcentaje de afinidad ni una recomendación de voto.'));
+      results.focus();
+    });
+  }
 })();

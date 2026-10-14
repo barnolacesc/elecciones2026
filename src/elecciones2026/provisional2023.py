@@ -91,17 +91,30 @@ def comparison(data: dict, image_url: str = "") -> str:
 
 
 def quiz(data: dict, image_url: str = "") -> str:
-    questions = ''.join(f'<fieldset data-topic="{esc(t["id"])}"><legend>{esc(t["name"])}: ¿qué medida te interesa explorar?</legend>'
-                        + ''.join(f'<label class="quiz-option"><input type="radio" name="{esc(t["id"])}" value="{esc(p["party"])}">'
-                                  f'<strong>{esc(PARTIES[p["party"]])}: {esc(p["title"])}</strong><span>{esc(p["summary"])}</span></label>'
-                                  for p in data["positions"] if p["topic"] == t["id"])
-                        + '</fieldset>' for t in data["topics"])
     body = f'''<div class="hero"><p class="eyebrow">Cuestionario exploratorio · 2023</p><h1>Explora las medidas que priorizarías</h1>
-<p>Elige una medida de cada tema. Verás tus elecciones y sus fuentes. Esto <strong>no calcula afinidad partidista</strong>: los programas ofrecen medidas diferentes y seleccionar una no implica rechazar las demás.</p>
+<p>Lee una propuesta cada vez y expresa tu opinión sin conocer antes la candidatura. Al terminar podrás consultar sus autores y fuentes. Esto <strong>no calcula afinidad partidista</strong> ni recomienda el voto.</p>
 <p class="warning">Piloto histórico y provisional, sin revisión editorial humana. Tus respuestas permanecen en esta pestaña; no se envían ni se guardan.</p></div>
-<form id="pilot-quiz">{questions}<button type="submit" class="button">Ver mis elecciones y fuentes</button></form>
+<form id="pilot-quiz"><p id="pilot-progress" aria-live="polite"></p><fieldset><legend id="pilot-question"></legend><p id="pilot-statement"></p><div class="quiz-options">
+<label class="quiz-option"><input type="radio" name="answer" value="strongly-disagree">Muy en desacuerdo</label>
+<label class="quiz-option"><input type="radio" name="answer" value="disagree">En desacuerdo</label>
+<label class="quiz-option"><input type="radio" name="answer" value="agree">De acuerdo</label>
+<label class="quiz-option"><input type="radio" name="answer" value="neutral">Indiferente</label></div></fieldset>
+<p id="pilot-answer-error" role="alert" hidden>Selecciona una respuesta para continuar.</p><button type="submit" class="button" id="pilot-next">Siguiente propuesta</button></form>
 <div id="pilot-results" tabindex="-1" aria-live="polite"></div>'''
     return frame("Cuestionario exploratorio", body, nested=True, image_url=image_url)
+
+
+def sources(data: dict, image_url: str = "") -> str:
+    documents = {}
+    for position in data["positions"]:
+        documents[position["party"]] = position
+    cards = ''.join(f'<article class="card"><h2>{esc(PARTIES[party])}</h2><p>Programa de las elecciones generales de 2023.</p>'
+                    f'<p class="citation">{citation(position)}</p><p class="locator">SHA-256: {esc(position["sha256"])}</p></article>'
+                    for party, position in documents.items())
+    body = f'''<div class="hero"><p class="eyebrow">23J 2023 · privado · provisional</p><h1>Fuentes del piloto</h1>
+<p>Los cuatro documentos originales usados en esta vista histórica. Las citas del comparador y del cuestionario enlazan a páginas concretas. Los resúmenes no tienen revisión editorial humana.</p></div>
+<div class="cards">{cards}</div>'''
+    return frame("Fuentes", body, nested=True, image_url=image_url)
 
 
 def write(root: Path, staging: Path, canonical_base: str) -> None:
@@ -113,6 +126,9 @@ def write(root: Path, staging: Path, canonical_base: str) -> None:
     quiz_dir = staging / "cuestionario"
     quiz_dir.mkdir(exist_ok=True)
     (quiz_dir / "index.html").write_text(quiz(data, image_url), encoding="utf-8")
+    sources_dir = staging / "fuentes"
+    sources_dir.mkdir(exist_ok=True)
+    (sources_dir / "index.html").write_text(sources(data, image_url), encoding="utf-8")
     (staging / "pilot-2023.css").write_bytes((root / "site/pilot-2023.css").read_bytes())
     (staging / "pilot-2023.js").write_bytes((root / "site/pilot-2023.js").read_bytes())
     (staging / "pilot-2023-data.json").write_text(json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":")), encoding="utf-8")
