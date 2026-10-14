@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import html
+import hashlib
 import json
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -36,12 +37,13 @@ def esc(value: object) -> str:
     return html.escape(str(value), quote=True)
 
 
-def frame(title: str, body: str, *, nested: bool = False) -> str:
+def frame(title: str, body: str, *, nested: bool = False, image_url: str = "") -> str:
     root = "../" if nested else "./"
     return f'''<!doctype html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="referrer" content="no-referrer">
+<meta property="og:image" content="{esc(image_url)}">
 <title>{esc(title)} · Generales 2023 · piloto privado</title>
 <link rel="stylesheet" href="{root}pilot-2023.css"></head>
 <body><a class="skip" href="#principal">Saltar al contenido</a>
@@ -67,7 +69,7 @@ def card(position: dict) -> str:
             f'<p class="citation">{citation(position)}</p></article>')
 
 
-def comparison(data: dict) -> str:
+def comparison(data: dict, image_url: str = "") -> str:
     topics = ''.join(f'<option value="{esc(t["id"])}">{esc(t["name"])}</option>' for t in data["topics"])
     parties = ''.join(f'<option value="{esc(pid)}">{esc(name)}</option>' for pid, name in PARTIES.items())
     sections = ''.join(f'<section class="topic-section" data-topic="{esc(t["id"])}">'
@@ -85,10 +87,10 @@ def comparison(data: dict) -> str:
 <p id="pilot-error" role="alert" hidden>Selecciona dos candidaturas distintas.</p></div>
 <div id="pilot-comparison" class="cards" aria-live="polite"></div>
 <details><summary>Ver las doce medidas y sus fuentes</summary>{sections}</details>'''
-    return frame("Comparador de programas", body)
+    return frame("Comparador de programas", body, image_url=image_url)
 
 
-def quiz(data: dict) -> str:
+def quiz(data: dict, image_url: str = "") -> str:
     questions = ''.join(f'<fieldset data-topic="{esc(t["id"])}"><legend>{esc(t["name"])}: ¿qué medida te interesa explorar?</legend>'
                         + ''.join(f'<label class="quiz-option"><input type="radio" name="{esc(t["id"])}" value="{esc(p["party"])}">'
                                   f'<strong>{esc(PARTIES[p["party"]])}: {esc(p["title"])}</strong><span>{esc(p["summary"])}</span></label>'
@@ -99,15 +101,18 @@ def quiz(data: dict) -> str:
 <p class="warning">Piloto histórico y provisional, sin revisión editorial humana. Tus respuestas permanecen en esta pestaña; no se envían ni se guardan.</p></div>
 <form id="pilot-quiz">{questions}<button type="submit" class="button">Ver mis elecciones y fuentes</button></form>
 <div id="pilot-results" tabindex="-1" aria-live="polite"></div>'''
-    return frame("Cuestionario exploratorio", body, nested=True)
+    return frame("Cuestionario exploratorio", body, nested=True, image_url=image_url)
 
 
-def write(root: Path, staging: Path) -> None:
+def write(root: Path, staging: Path, canonical_base: str) -> None:
     data = load(root)
-    (staging / "index.html").write_text(comparison(data), encoding="utf-8")
+    image = root / "site/assets/social-preview.png"
+    image_digest = hashlib.sha256(image.read_bytes()).hexdigest()[:16]
+    image_url = f"{canonical_base}/assets/social-preview-{image_digest}.png"
+    (staging / "index.html").write_text(comparison(data, image_url), encoding="utf-8")
     quiz_dir = staging / "cuestionario"
     quiz_dir.mkdir(exist_ok=True)
-    (quiz_dir / "index.html").write_text(quiz(data), encoding="utf-8")
+    (quiz_dir / "index.html").write_text(quiz(data, image_url), encoding="utf-8")
     (staging / "pilot-2023.css").write_bytes((root / "site/pilot-2023.css").read_bytes())
     (staging / "pilot-2023.js").write_bytes((root / "site/pilot-2023.js").read_bytes())
     (staging / "pilot-2023-data.json").write_text(json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":")), encoding="utf-8")

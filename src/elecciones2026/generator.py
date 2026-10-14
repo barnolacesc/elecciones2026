@@ -2574,7 +2574,7 @@ def build_site(
 
         if pilot_provisional:
             from elecciones2026.provisional2023 import write as write_provisional_pilot
-            write_provisional_pilot(root_dir, staging_dir)
+            write_provisional_pilot(root_dir, staging_dir, ctx.canonical_base)
 
         # Do not copy accidentally misplaced private sources or retain them in output.
         reject_private_source_artifacts(staging_dir)
