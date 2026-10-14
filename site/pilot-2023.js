@@ -226,20 +226,23 @@
 
       const shareUrl = window.location.href.split('#')[0];
       const shareLines = partyStats.map(p => {
+        const blocks = '🟩'.repeat(p.supported) + '⬜'.repeat(p.neutral) + '🟥'.repeat(p.opposed);
         const parts = [];
         if (p.supported) parts.push(`${p.supported} a favor`);
         if (p.opposed) parts.push(`${p.opposed} en contra`);
-        if (p.neutral) parts.push(`${p.neutral} neutras`);
-        return `• ${p.name}: ${parts.join(', ') || '0 valoradas'}`;
+        if (p.neutral) parts.push(p.neutral === 1 ? '1 neutra' : `${p.neutral} neutras`);
+        const textSummary = parts.length > 0 ? ` (${parts.join(', ')})` : '';
+        return `• ${p.name}: ${blocks || '▫️'}${textSummary}`;
       });
-      const shareText = `Resultados de mi cuestionario de propuestas electorales a ciegas:\n${shareLines.join('\n')}\n\nHaz la prueba tú también en:\n${shareUrl}`;
+      const shareBody = `🗳️ Test electoral a ciegas: ${answers.length} medidas valoradas sin ver las siglas\n\n${shareLines.join('\n')}\n\n(🟩 a favor · ⬜ neutra · 🟥 en contra)\n\n¿Coincidirías con quien crees? Haz la prueba aquí:`;
+      const shareText = `${shareBody}\n${shareUrl}`;
 
       shareBtn.addEventListener('click', async () => {
         if (navigator.share) {
           try {
             await navigator.share({
-              title: 'Mis resultados en el cuestionario de propuestas',
-              text: shareText,
+              title: 'Mis resultados en el test electoral a ciegas',
+              text: shareBody,
               url: shareUrl
             });
             return;
