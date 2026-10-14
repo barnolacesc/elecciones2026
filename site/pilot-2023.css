@@ -386,12 +386,233 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   display: none;
 }
 
+.pilot-summary-card {
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0 2rem;
+  box-shadow: 0 1px 3px rgba(10, 13, 18, 0.05);
+}
+
+.pilot-summary-card h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.pilot-summary-lead {
+  color: #3e454f;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+}
+
+.pilot-party-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pilot-party-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.pilot-party-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pilot-party-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #0a0d12;
+}
+
+.pilot-badge-group {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pilot-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+
+.pilot-badge-green {
+  background: #dcfce7;
+  color: #14532d;
+  border: 1px solid #86efac;
+}
+
+.pilot-badge-red {
+  background: #fee2e2;
+  color: #7f1d1d;
+  border: 1px solid #fca5a5;
+}
+
+.pilot-badge-neutral {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.pilot-bar-container {
+  width: 100%;
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+  display: flex;
+}
+
+.pilot-bar-segment {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.pilot-bar-green {
+  background: #16a34a;
+}
+
+.pilot-bar-neutral {
+  background: #94a3b8;
+}
+
+.pilot-bar-red {
+  background: #dc2626;
+}
+
+.pilot-share-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.pilot-actions-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pilot-share-btn, .pilot-retake-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: 1 1 200px;
+  max-width: 320px;
+}
+
+.button-secondary {
+  background: #ffffff;
+  color: #0a0d12;
+  border: 1px solid #d0d5dd;
+}
+
+.button-secondary:hover {
+  background: #f1f5f9;
+  border-color: #0a0d12;
+}
+
+.pilot-share-status {
+  color: #0b6b38;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.result-topic {
+  margin-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1.25rem;
+}
+
+.pilot-user-answer {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  margin: 0.5rem 0 0.85rem;
+  flex-wrap: wrap;
+  font-weight: 500;
+}
+
+.pilot-answer-pill {
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  display: inline-block;
+  letter-spacing: 0.02em;
+}
+
+.pilot-answer-pill.status-agreed {
+  background: #dcfce7;
+  color: #14532d;
+  border: 1px solid #86efac;
+}
+
+.pilot-answer-pill.status-opposed {
+  background: #fee2e2;
+  color: #7f1d1d;
+  border: 1px solid #fca5a5;
+}
+
+.pilot-answer-pill.status-neutral {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+/* Card border accents based on stance */
+.card.card-agreed {
+  border-left: 5px solid #16a34a;
+}
+
+.card.card-opposed {
+  border-left: 5px solid #dc2626;
+}
+
+.card.card-neutral {
+  border-left: 5px solid #94a3b8;
+}
+
+.pilot-details-lead {
+  color: #3e454f;
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 500px) {
   header {
     align-items: flex-start;
   }
   .cards {
     grid-template-columns: 1fr;
+  }
+  .pilot-summary-card {
+    padding: 1rem;
+  }
+  .pilot-party-info {
+    flex-wrap: wrap;
+    gap: 0.25rem;
   }
 }
 

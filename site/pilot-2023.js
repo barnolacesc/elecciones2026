@@ -13,8 +13,9 @@
     if (className) node.className = className;
     return node;
   }
-  function card(position) {
-    const article = element('article', '', 'card');
+  function card(position, extraClass) {
+    const className = extraClass ? `card ${extraClass}` : 'card';
+    const article = element('article', '', className);
     article.append(element('span', names[position.party], 'party'));
     article.append(element('h3', position.title));
     article.append(element('p', position.summary));
@@ -87,7 +88,24 @@
   }
   const quiz = document.getElementById('pilot-quiz');
   if (quiz) {
-    const questions = data.positions.slice();
+    function shuffle(arr) {
+      const copy = arr.slice();
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+    function selectQuestions(positions, targetPerParty = 3) {
+      const selected = [];
+      for (const partyKey of Object.keys(names)) {
+        const partyPositions = positions.filter(p => p.party === partyKey);
+        const shuffledParty = shuffle(partyPositions);
+        selected.push(...shuffledParty.slice(0, Math.min(targetPerParty, partyPositions.length)));
+      }
+      return shuffle(selected);
+    }
+    const questions = selectQuestions(data.positions, 3);
     const answers = [];
     const results = document.getElementById('pilot-results');
     let index = 0;
@@ -112,14 +130,160 @@
       index++;
       if (index < questions.length) { showQuestion(); return; }
       quiz.hidden = true;
-      results.replaceChildren(element('h2', 'Tus respuestas y sus fuentes'));
-      const labels = {"strongly-disagree": 'Muy en desacuerdo', disagree: 'En desacuerdo', agree: 'De acuerdo', neutral: 'Indiferente'};
+      const labels = {
+        'strongly-agree': 'Totalmente de acuerdo',
+        'agree': 'Más bien de acuerdo',
+        'somewhat-agree': 'Más bien de acuerdo',
+        'neutral': 'Indiferente',
+        'disagree': 'Más bien en desacuerdo',
+        'somewhat-disagree': 'Más bien en desacuerdo',
+        'strongly-disagree': 'Totalmente en desacuerdo'
+      };
+
+      const partyStats = Object.keys(names).map(partyKey => {
+        const partyAnswers = answers.filter(a => a.position.party === partyKey);
+        const supported = partyAnswers.filter(a => a.answer === 'strongly-agree' || a.answer === 'agree' || a.answer === 'somewhat-agree').length;
+        const neutral = partyAnswers.filter(a => a.answer === 'neutral').length;
+        const opposed = partyAnswers.filter(a => a.answer === 'strongly-disagree' || a.answer === 'disagree' || a.answer === 'somewhat-disagree').length;
+        return {
+          party: partyKey,
+          name: names[partyKey],
+          supported,
+          neutral,
+          opposed,
+          total: partyAnswers.length
+        };
+      });
+
+      partyStats.sort((a, b) => b.supported - a.supported || b.neutral - a.neutral || a.name.localeCompare(b.name, 'es'));
+
+      const summaryCard = element('section', '', 'pilot-summary-card');
+      summaryCard.append(element('h2', 'Resumen de resultados'));
+      summaryCard.append(element('p', `Has valorado ${answers.length} propuestas a ciegas. Este es el número de medidas que has apoyado de cada candidatura:`, 'pilot-summary-lead'));
+
+      const partyList = element('div', '', 'pilot-party-results');
+      for (const p of partyStats) {
+        const row = element('div', '', 'pilot-party-row');
+        const info = element('div', '', 'pilot-party-info');
+        info.append(element('span', p.name, 'pilot-party-name'));
+
+        const badgeGroup = element('div', '', 'pilot-badge-group');
+        if (p.supported > 0) {
+          badgeGroup.append(element('span', `✓ ${p.supported} a favor`, 'pilot-badge pilot-badge-green'));
+        }
+        if (p.opposed > 0) {
+          badgeGroup.append(element('span', `✕ ${p.opposed} en contra`, 'pilot-badge pilot-badge-red'));
+        }
+        if (p.neutral > 0) {
+          badgeGroup.append(element('span', `– ${p.neutral} neutras`, 'pilot-badge pilot-badge-neutral'));
+        }
+        info.append(badgeGroup);
+        row.append(info);
+
+        const barContainer = element('div', '', 'pilot-bar-container');
+        if (p.total > 0) {
+          const supPct = Math.round((p.supported / p.total) * 100);
+          const neuPct = Math.round((p.neutral / p.total) * 100);
+          const oppPct = 100 - supPct - neuPct;
+          if (supPct > 0) {
+            const seg = element('div', '', 'pilot-bar-segment pilot-bar-green');
+            seg.style.width = supPct + '%';
+            seg.title = `${p.supported} a favor (${supPct}%)`;
+            barContainer.append(seg);
+          }
+          if (neuPct > 0) {
+            const seg = element('div', '', 'pilot-bar-segment pilot-bar-neutral');
+            seg.style.width = neuPct + '%';
+            seg.title = `${p.neutral} neutras (${neuPct}%)`;
+            barContainer.append(seg);
+          }
+          if (oppPct > 0) {
+            const seg = element('div', '', 'pilot-bar-segment pilot-bar-red');
+            seg.style.width = oppPct + '%';
+            seg.title = `${p.opposed} en contra (${oppPct}%)`;
+            barContainer.append(seg);
+          }
+        }
+        row.append(barContainer);
+
+        partyList.append(row);
+      }
+      summaryCard.append(partyList);
+
+      const shareSection = element('div', '', 'pilot-share-section');
+      const actionGroup = element('div', '', 'pilot-actions-group');
+      const shareBtn = element('button', 'Compartir mis resultados', 'button pilot-share-btn');
+      shareBtn.type = 'button';
+      const retakeBtn = element('button', 'Repetir cuestionario', 'button button-secondary pilot-retake-btn');
+      retakeBtn.type = 'button';
+      retakeBtn.addEventListener('click', () => { window.location.reload(); });
+      actionGroup.append(shareBtn, retakeBtn);
+
+      const shareStatus = element('p', '', 'pilot-share-status');
+      shareStatus.setAttribute('role', 'status');
+      shareStatus.setAttribute('aria-live', 'polite');
+      shareStatus.hidden = true;
+
+      const shareUrl = window.location.href.split('#')[0];
+      const shareLines = partyStats.map(p => {
+        const parts = [];
+        if (p.supported) parts.push(`${p.supported} a favor`);
+        if (p.opposed) parts.push(`${p.opposed} en contra`);
+        if (p.neutral) parts.push(`${p.neutral} neutras`);
+        return `• ${p.name}: ${parts.join(', ') || '0 valoradas'}`;
+      });
+      const shareText = `Resultados de mi cuestionario de propuestas electorales a ciegas:\n${shareLines.join('\n')}\n\nHaz la prueba tú también en:\n${shareUrl}`;
+
+      shareBtn.addEventListener('click', async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: 'Mis resultados en el cuestionario de propuestas',
+              text: shareText,
+              url: shareUrl
+            });
+            return;
+          } catch (err) {
+            if (err.name === 'AbortError') return;
+          }
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          try {
+            await navigator.clipboard.writeText(shareText);
+            shareStatus.textContent = '¡Resultados copiados al portapapeles para compartir!';
+            shareStatus.hidden = false;
+            const originalText = shareBtn.textContent;
+            shareBtn.textContent = '¡Copiado al portapapeles!';
+            setTimeout(() => { shareBtn.textContent = originalText; }, 2500);
+            return;
+          } catch (_) {}
+        }
+        shareStatus.textContent = shareText;
+        shareStatus.hidden = false;
+      });
+      shareSection.append(actionGroup, shareStatus);
+      summaryCard.append(shareSection);
+
+      results.replaceChildren(summaryCard);
+      results.append(element('h2', 'Tus respuestas y sus fuentes'));
+      results.append(element('p', 'Consulta a continuación la candidatura de cada propuesta y el documento original de donde procede:', 'pilot-details-lead'));
       for (const {position, answer} of answers) {
-      const section = element('section', '', 'result-topic');
-      section.append(element('h3', data.topics.find(t => t.id === position.topic).name));
-      section.append(element('p', 'Tu respuesta: ' + labels[answer]));
-      section.append(card(position));
-      results.append(section);
+        const isAgreed = answer === 'strongly-agree' || answer === 'agree' || answer === 'somewhat-agree';
+        const isOpposed = answer === 'strongly-disagree' || answer === 'disagree' || answer === 'somewhat-disagree';
+        const cardClass = isAgreed ? 'card-agreed' : isOpposed ? 'card-opposed' : 'card-neutral';
+        const pillClass = isAgreed ? 'status-agreed' : isOpposed ? 'status-opposed' : 'status-neutral';
+        const pillLabel = isAgreed ? '✓ A favor' : isOpposed ? '✕ En contra' : '– Indiferente';
+
+        const section = element('section', '', 'result-topic');
+        section.append(element('h3', data.topics.find(t => t.id === position.topic).name));
+
+        const answerP = element('p', '', 'pilot-user-answer');
+        const pill = element('span', pillLabel, `pilot-answer-pill ${pillClass}`);
+        answerP.append(pill, document.createTextNode(' Tu respuesta: ' + labels[answer]));
+        section.append(answerP);
+
+        section.append(card(position, cardClass));
+        results.append(section);
       }
       results.append(element('p', 'Estas respuestas no son un porcentaje de afinidad ni una recomendación de voto.'));
       results.focus();

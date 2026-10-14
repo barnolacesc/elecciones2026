@@ -29,15 +29,24 @@ class ProvisionalPilotTests(unittest.TestCase):
         self.assertIn("no calcula afinidad partidista", questions)
         self.assertEqual(home.count('class="card"'), 24)
         self.assertIn('class="measure-group"', home)
-        self.assertEqual(questions.count('class="quiz-option"'), 4)
+        self.assertEqual(questions.count('class="quiz-option"'), 5)
         self.assertNotIn('PP:', questions)
         self.assertNotIn('Sumar:', questions)
-        self.assertIn('Muy en desacuerdo', questions)
+        self.assertIn('Totalmente en desacuerdo', questions)
+        self.assertIn('Más bien en desacuerdo', questions)
         self.assertIn('Indiferente', questions)
+        self.assertIn('Más bien de acuerdo', questions)
+        self.assertIn('Totalmente de acuerdo', questions)
         self.assertIn('Fuentes del piloto', sources(data))
         self.assertEqual(home.count('target="_blank"'), 24)
         self.assertNotIn("sam-neutrality", home + questions)
         self.assertNotIn("2026</h1>", home + questions)
+
+    def test_quiz_options_balanced_scale(self):
+        data = load(ROOT)
+        questions = quiz(data)
+        values = re.findall(r'value="([^"]+)"', questions)
+        self.assertEqual(values, ['strongly-agree', 'agree', 'neutral', 'disagree', 'strongly-disagree'])
 
 
 if __name__ == "__main__":
