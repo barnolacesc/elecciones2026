@@ -43,6 +43,7 @@ def candidate(record: dict, run: dict) -> str:
             and record.get("classification") == "private-staging"
             and record.get("election_id") == "es-gen-2023"
             and record.get("quiz_mode") == "unavailable"
+            and record.get("pilot_mode") == "source-linked-provisional"
             and record.get("canonical_base") == "https://xn--eleccionesespaa2026-83b.es"
             and re.fullmatch(r"[a-f0-9]{64}", record.get("home_sha256", ""))):
         raise DeliveryError("Candidate evidence does not match the approved CI run")

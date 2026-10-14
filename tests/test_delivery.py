@@ -24,6 +24,7 @@ RUN = {'id': 123, 'run_attempt': 1, 'event': 'push', 'head_branch': 'main',
 RECORD = {'schema': 1, 'run_id': '123', 'run_attempt': '1', 'revision': 'b' * 40,
           'platform': 'linux/amd64', 'classification': 'private-staging',
           'election_id': 'es-gen-2023', 'quiz_mode': 'unavailable',
+          'pilot_mode': 'source-linked-provisional',
           'canonical_base': 'https://xn--eleccionesespaa2026-83b.es',
           'image': IMAGE, 'home_sha256': 'c' * 64}
 ENV = {'VPS_HOST': '195.20.230.75', 'VPS_USER': 'deployer', 'VPS_SSH_PORT': '22',
@@ -53,6 +54,7 @@ class DeliveryTests(unittest.TestCase):
                              ('classification', 'public'), ('home_sha256', ''),
                              ('election_id', 'es-gen-2026'), ('election_id', None),
                              ('quiz_mode', 'mock'), ('quiz_mode', None),
+                             ('pilot_mode', None), ('pilot_mode', 'other'),
                              ('canonical_base', 'https://example.invalid'), ('canonical_base', None),
                              ('image', 'ghcr.io/other/site@sha256:' + 'a' * 64)]:
             with self.subTest(field=field):
@@ -161,6 +163,12 @@ class DeliveryTests(unittest.TestCase):
         import sys
         result = subprocess.run([sys.executable, '-c', code], env=environment, capture_output=True)
         self.assertEqual(result.returncode, 0, result.stderr)
+        pilot = dict(environment, GITHUB_ACTOR='chad-openclaw',
+                     GITHUB_TRIGGERING_ACTOR='chad-openclaw',
+                     APPROVAL_RECORD='Cesc Telegram 2026-10-14 private 2023 pilot')
+        self.assertEqual(subprocess.run([sys.executable, '-c', code], env=pilot).returncode, 0)
+        self.assertNotEqual(subprocess.run([sys.executable, '-c', code],
+                           env=dict(pilot, APPROVAL_RECORD='unrelated')).returncode, 0)
         for changes in [{'APPROVED': 'false'}, {'READY': ''}, {'APPROVAL_RECORD': ''},
                         {'GITHUB_REF': 'refs/heads/feature'}, {'GITHUB_ACTOR': 'someone-else'},
                         {'GITHUB_TRIGGERING_ACTOR': 'someone-else'},
