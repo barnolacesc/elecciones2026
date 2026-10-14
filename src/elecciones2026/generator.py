@@ -2360,12 +2360,15 @@ def build_site(
     budget_bundle: Optional[Path] = None,
     quiz_mode: str = "unavailable",
     quiz_file: Optional[Path] = None,
+    pilot_provisional: bool = False,
 ) -> SiteBuildResult:
     """Generate the complete static site deterministically into output_dir.
 
     Uses an atomic staging directory to ensure that any validation failure
     aborts without creating a partially published site.
     """
+    if pilot_provisional and (election_id != "es-gen-2023" or quiz_mode != "unavailable"):
+        raise BuildValidationError("Provisional pilot is limited to the private 2023 build without the standard quiz.")
     budget_manifest, budget_payload = None, None
     if budget_bundle is not None:
         from elecciones2026.budget import BudgetError, load_bundle
@@ -2569,6 +2572,10 @@ def build_site(
         preview_target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(site_src / "assets" / "social-preview.png", preview_target)
 
+        if pilot_provisional:
+            from elecciones2026.provisional2023 import write as write_provisional_pilot
+            write_provisional_pilot(root_dir, staging_dir)
+
         # Do not copy accidentally misplaced private sources or retain them in output.
         reject_private_source_artifacts(staging_dir)
         if output_dir.exists():
@@ -2661,6 +2668,7 @@ def main(args: Optional[list[str]] = None) -> int:
     build_p.add_argument("--quiz-mode", choices=("unavailable", "mock", "reviewed"), default="unavailable",
                          help="Mock quiz is opt-in for private preview; reviewed mode requires approved input.")
     build_p.add_argument("--quiz-file", type=Path, help="Versioned quiz authoring JSON.")
+    build_p.add_argument("--pilot-provisional", action="store_true", help="Private source-linked 2023 pilot only.")
 
     # Command: check-determinism
     det_p = subparsers.add_parser("check-determinism", help="Verify build determinism across repeated runs.")
@@ -2689,6 +2697,7 @@ def main(args: Optional[list[str]] = None) -> int:
                 budget_bundle=parsed.budget_bundle,
                 quiz_mode=parsed.quiz_mode,
                 quiz_file=parsed.quiz_file,
+                pilot_provisional=parsed.pilot_provisional,
             )
             print(f"Build completed successfully in {res.output_dir}:")
             print(f"  - Topics: {res.topics_count}")
