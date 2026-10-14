@@ -96,7 +96,16 @@
       }
       return copy;
     }
-    const questions = shuffle(data.positions);
+    function selectQuestions(positions, targetPerParty = 3) {
+      const selected = [];
+      for (const partyKey of Object.keys(names)) {
+        const partyPositions = positions.filter(p => p.party === partyKey);
+        const shuffledParty = shuffle(partyPositions);
+        selected.push(...shuffledParty.slice(0, Math.min(targetPerParty, partyPositions.length)));
+      }
+      return shuffle(selected);
+    }
+    const questions = selectQuestions(data.positions, 3);
     const answers = [];
     const results = document.getElementById('pilot-results');
     let index = 0;
@@ -150,7 +159,7 @@
 
       const summaryCard = element('section', '', 'pilot-summary-card');
       summaryCard.append(element('h2', 'Resumen de resultados'));
-      summaryCard.append(element('p', 'Has valorado 12 propuestas a ciegas. Este es el número de medidas que has apoyado de cada candidatura:', 'pilot-summary-lead'));
+      summaryCard.append(element('p', `Has valorado ${answers.length} propuestas a ciegas. Este es el número de medidas que has apoyado de cada candidatura:`, 'pilot-summary-lead'));
 
       const partyList = element('div', '', 'pilot-party-results');
       for (const p of partyStats) {
