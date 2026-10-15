@@ -46,6 +46,11 @@ jobs:
           node --check site/quiz-ui.js
           node --test tests/quiz_behavior.cjs
 
+      - name: Verify manual seat inputs and coalition arithmetic (E5.2)
+        run: |
+          node --check site/simulator-engine.js
+          node --test tests/simulator_behavior.cjs
+
       - name: Install test and audit dependencies
         run: |
           python -m pip install --upgrade pip
