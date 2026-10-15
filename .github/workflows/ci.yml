@@ -46,10 +46,12 @@ jobs:
           node --check site/quiz-ui.js
           node --test tests/quiz_behavior.cjs
 
-      - name: Verify manual seat inputs and coalition arithmetic (E5.2)
+      - name: Verify manual seat inputs, coalition arithmetic, and simulator UI (E5.2, E5.3)
         run: |
           node --check site/simulator-engine.js
+          node --check site/simulator-ui.js
           node --test tests/simulator_behavior.cjs
+          node --test tests/simulator_ui_behavior.cjs
 
       - name: Install test and audit dependencies
         run: |

@@ -193,3 +193,57 @@ test('browser export works without DOM, storage, network, or telemetry APIs', ()
   assert.equal(Object.isFrozen(context.SimulatorEngine), true);
   assert.equal(Object.isFrozen(context.SimulatorEngine.limits), true);
 });
+
+test('serializeScenario and deserializeScenario round-trip valid scenarios without loss', () => {
+  const groups = [row('a', 120), row('b', 56), row('c', 30)];
+  const selected = ['a', 'b'];
+  const token = engine.serializeScenario(groups, selected);
+  assert.ok(typeof token === 'string' && token.length > 0);
+  assert.ok(!/[+/=]/.test(token)); // URL-safe
+  const restored = engine.deserializeScenario(token);
+  assert.ok(restored);
+  assert.equal(restored.groups.length, 3);
+  assert.equal(restored.groups[0].id, 'a');
+  assert.equal(restored.groups[0].seats, '120');
+  assert.deepEqual(restored.selectedIds, ['a', 'b']);
+
+  // Also accepts full ?s= query string
+  const fromQuery = engine.deserializeScenario(`https://preview.test/simulador/?s=${token}&utm_source=tracker#hash`);
+  assert.deepEqual(fromQuery, restored);
+});
+
+test('deserializeScenario rejects malformed, corrupted, or hostile inputs', () => {
+  assert.equal(engine.deserializeScenario(''), null);
+  assert.equal(engine.deserializeScenario('not-base64-???'), null);
+  assert.equal(engine.deserializeScenario(null), null);
+
+  // Group count above limit
+  const tooMany = Array.from({length: 31}, (_, i) => row(`g${i}`, 1));
+  const badToken = Buffer.from(JSON.stringify({g: tooMany.map(g => [g.id, g.label, g.seats]), c: []})).toString('base64');
+  assert.equal(engine.deserializeScenario(badToken), null);
+
+  // Excess seats > 350
+  const excess = Buffer.from(JSON.stringify({g: [['a', 'A', '351']], c: []})).toString('base64');
+  assert.equal(engine.deserializeScenario(excess), null);
+
+  // Filter unknown selected IDs
+  const validWithUnknown = Buffer.from(JSON.stringify({g: [['a', 'A', '100']], c: ['a', 'ghost']})).toString('base64');
+  const result = engine.deserializeScenario(validWithUnknown);
+  assert.ok(result);
+  assert.deepEqual(result.selectedIds, ['a']);
+});
+
+test('stableSimulatorUrl produces clean URL with zero tracking parameters', () => {
+  const href = 'https://preview.test/simulador/?visitor=secret&utm_source=facebook&s=old#private';
+  const groups = [row('a', 176)];
+  const cleanUrl = engine.stableSimulatorUrl(href, groups, ['a']);
+  assert.ok(cleanUrl.startsWith('https://preview.test/simulador/?s='));
+  assert.ok(!cleanUrl.includes('visitor'));
+  assert.ok(!cleanUrl.includes('utm_source'));
+  assert.ok(!cleanUrl.includes('#private'));
+
+  // Invalid scenario falls back to clean base URL without query params
+  assert.equal(engine.stableSimulatorUrl(href, [row('a', 999)]), 'https://preview.test/simulador/');
+  assert.equal(engine.stableSimulatorUrl(href, []), 'https://preview.test/simulador/');
+});
+
