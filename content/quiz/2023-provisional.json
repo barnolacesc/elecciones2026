@@ -6,7 +6,10 @@
     {"id": "education", "name": "Educación"},
     {"id": "health-social-services", "name": "Sanidad y servicios sociales"},
     {"id": "economy-work-tax", "name": "Economía y empleo"},
-    {"id": "immigration", "name": "Inmigración"}
+    {"id": "immigration", "name": "Inmigración"},
+    {"id": "climate-energy", "name": "Clima y transición energética"},
+    {"id": "foreign-policy-eu", "name": "Política exterior y UE"},
+    {"id": "institutions-rights", "name": "Instituciones y derechos"}
   ],
   "positions": [
     {
@@ -272,6 +275,138 @@
       "page": 81,
       "locator": "Medidas 276 y 278; página impresa 79",
       "qualification": "Resumen de dos medidas concretas; no describe toda su política migratoria."
+    },
+    {
+      "topic": "climate-energy",
+      "measure_id": "climate-nuclear-lifecycle",
+      "measure_title": "Calendario y vida útil de centrales nucleares",
+      "party": "pp",
+      "title": "Extensión de la vida útil de las centrales nucleares",
+      "summary": "Propone extender la vida útil de las centrales nucleares existentes en España, con el visto bueno del Consejo de Seguridad Nuclear y en el marco de la normativa europea.",
+      "page": 38,
+      "locator": "Medida 114; página impresa 36 (página PDF 38)",
+      "qualification": "Condiciona la extensión de la vida útil al visto bueno preceptivo del CSN y a la normativa europea."
+    },
+    {
+      "topic": "climate-energy",
+      "measure_id": "climate-nuclear-lifecycle",
+      "measure_title": "Calendario y vida útil de centrales nucleares",
+      "party": "sumar",
+      "title": "Mantenimiento del calendario de cierre nuclear",
+      "summary": "Propone mantener el calendario de cierre del parque nuclear español, aplicar una moratoria a cualquier nueva iniciativa nuclear y sacar la energía nuclear del mercado marginalista.",
+      "page": 48,
+      "locator": "Un nuevo modelo energético, punto 9; página 48",
+      "qualification": "Plantea una moratoria y mayor gravamen a los residuos radiactivos garantizando la transición justa de los trabajadores."
+    },
+    {
+      "topic": "climate-energy",
+      "measure_id": "climate-nuclear-lifecycle",
+      "measure_title": "Calendario y vida útil de centrales nucleares",
+      "party": "erc",
+      "title": "Fondo de Transición Nuclear",
+      "summary": "Exige la aportación del Estado al Fondo de Transición Nuclear de la Generalitat de Catalunya con cargo a los ingresos públicos estatales derivados de la energía nuclear.",
+      "page": 103,
+      "locator": "Transició energètica, l'energia a Madrid, apartado c), viñeta 13; página impresa 102 (página PDF 103)",
+      "qualification": "Reclama recursos equivalentes a los aportados por la Generalitat para mitigar el impacto socioeconómico en zonas nucleares."
+    },
+    {
+      "topic": "climate-energy",
+      "measure_id": "climate-renewables-deployment",
+      "measure_title": "Despliegue e implantación de renovables",
+      "party": "pnv",
+      "title": "Aceleración de renovables y agilización de trámites",
+      "summary": "Propone acelerar la implantación de energías renovables agilizando los procesos de tramitación y proporcionando un marco normativo estable para las inversiones.",
+      "page": 20,
+      "locator": "Lucha contra el cambio climático, sostenibilidad ambiental y energética; página 20",
+      "qualification": "Defiende un mix energético con nuevas tecnologías que equilibre sostenibilidad, seguridad de suministro y competitividad de costes."
+    },
+    {
+      "topic": "foreign-policy-eu",
+      "measure_id": "foreign-defense-spending",
+      "measure_title": "Gasto en defensa y compromisos con la OTAN",
+      "party": "pp",
+      "title": "Cumplimiento del 2% del PIB en defensa para la OTAN",
+      "summary": "Propone asumir un papel activo en la Alianza Atlántica y cumplir el compromiso adquirido con los aliados de destinar un 2 % del PIB en seguridad y defensa.",
+      "page": 103,
+      "locator": "Medida 335; página impresa 101 (página PDF 103)",
+      "qualification": "Vincula el incremento a compromisos internacionales en la OTAN y al desarrollo de la industria nacional de defensa."
+    },
+    {
+      "topic": "foreign-policy-eu",
+      "measure_id": "foreign-defense-spending",
+      "measure_title": "Gasto en defensa y compromisos con la OTAN",
+      "party": "erc",
+      "title": "Reducción del gasto militar y desnuclearización",
+      "summary": "Propone la desmilitarización y el desarme, rechazando el objetivo de gasto del 2 % de la OTAN y priorizando la cooperación y la resolución pacífica de conflictos.",
+      "page": 28,
+      "locator": "Cooperació, apartados a) y b); página impresa 27 (página PDF 28)",
+      "qualification": "Considera excesivo el presupuesto militar y defiende destinar recursos prioritariamente a cooperación y paz."
+    },
+    {
+      "topic": "foreign-policy-eu",
+      "measure_id": "foreign-defense-spending",
+      "measure_title": "Gasto en defensa y compromisos con la OTAN",
+      "party": "sumar",
+      "title": "Auditoría del gasto militar y autonomía de la OTAN",
+      "summary": "Propone auditar los programas especiales de armamento y avanzar hacia un espacio europeo de seguridad sujeto a control democrático, reduciendo la subordinación a la OTAN.",
+      "page": 139,
+      "locator": "Una política exterior para cuidar la democracia y el planeta, puntos 3 y 6; página 139",
+      "qualification": "Plantea desplazar progresivamente las garantías de seguridad hacia una autonomía estratégica integral comunitaria."
+    },
+    {
+      "topic": "foreign-policy-eu",
+      "measure_id": "foreign-strategic-autonomy",
+      "measure_title": "Autonomía estratégica y gobernanza de la UE",
+      "party": "pnv",
+      "title": "Autonomía estratégica abierta y reconocimiento en la UE",
+      "summary": "Propone avanzar de manera decidida en la autonomía estratégica abierta de la UE en industria, materias primas y seguridad común, con reconocimiento de realidades nacionales como Euskadi.",
+      "page": 35,
+      "locator": "Europa: retos y oportunidades, apartado Ucrania y Nuevos retos; página 35",
+      "qualification": "Defiende un nuevo marco de gobernanza europea que impulse la industrialización y la cohesión territorial."
+    },
+    {
+      "topic": "institutions-rights",
+      "measure_id": "institutions-cgpj-election",
+      "measure_title": "Gobernanza judicial y elección del CGPJ",
+      "party": "pp",
+      "title": "Elección directa de vocales judiciales del CGPJ por jueces",
+      "summary": "Propone reformar la Ley Orgánica del Poder Judicial para que los jueces y magistrados elijan directamente a los 12 vocales de procedencia judicial del CGPJ.",
+      "page": 75,
+      "locator": "Medida 237; página impresa 73 (página PDF 75)",
+      "qualification": "Prevé derogar además la reforma legislativa que limitaba nombramientos con mandato caducado."
+    },
+    {
+      "topic": "institutions-rights",
+      "measure_id": "institutions-cgpj-election",
+      "measure_title": "Gobernanza judicial y elección del CGPJ",
+      "party": "sumar",
+      "title": "Elección parlamentaria del CGPJ y desbloqueo",
+      "summary": "Propone mantener el modelo de elección parlamentaria de los vocales del CGPJ, reforzando mayorías democráticas para evitar bloqueos y estableciendo el cese automático al expirar mandato.",
+      "page": 129,
+      "locator": "Un proyecto para ensanchar la democracia, medida 20; página 129",
+      "qualification": "Defiende reformular el sistema de mayorías y garantizar la representación plural y paritaria en el gobierno judicial."
+    },
+    {
+      "topic": "institutions-rights",
+      "measure_id": "institutions-cgpj-election",
+      "measure_title": "Gobernanza judicial y elección del CGPJ",
+      "party": "erc",
+      "title": "Democratización y reforma del acceso judicial",
+      "summary": "Propone modificar la Ley Orgánica del Poder Judicial para democratizar sus contenidos, los órganos de gobierno judicial y los sistemas de acceso a las carreras judicial y fiscal.",
+      "page": 20,
+      "locator": "Una justícia independent garantia dels drets i llibertats, apartado c), viñeta 5; página impresa 19 (página PDF 20)",
+      "qualification": "Denuncia la politización del CGPJ y el bloqueo partidista en la cúpula judicial."
+    },
+    {
+      "topic": "institutions-rights",
+      "measure_id": "institutions-territorial-justice",
+      "measure_title": "Modelo territorial y administración de justicia",
+      "party": "pnv",
+      "title": "Consejo Vasco de Justicia y culminación judicial en el TSJPV",
+      "summary": "Propone crear el Consejo Vasco de Justicia para el gobierno judicial en Euskadi y que la organización judicial culmine en el Tribunal Superior de Justicia del País Vasco.",
+      "page": 9,
+      "locator": "Adecuación de la Administración de Justicia a la realidad autonómica vasca; página 9",
+      "qualification": "Reserva para el Tribunal Supremo únicamente la unificación doctrinal en el conjunto del Estado."
     }
   ]
 }
