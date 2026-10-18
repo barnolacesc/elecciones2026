@@ -516,7 +516,16 @@
     const sampleBtn = document.getElementById('simulator-sample');
     if (sampleBtn) {
       sampleBtn.addEventListener('click', function () {
-        state.groups = defaultGroups();
+        const profile = window.SimulatorProfile;
+        if (profile && Array.isArray(profile.sample_groups) && profile.sample_groups.length) {
+          state.groups = profile.sample_groups.map((g, idx) => ({
+            id: g.id || ('g-' + (idx + 1)),
+            label: g.label || ('Grupo ' + (idx + 1)),
+            seats: String(g.seats || '0')
+          }));
+        } else {
+          state.groups = defaultGroups();
+        }
         state.selectedIds = [];
         announce('Ejemplo cargado.');
         update();

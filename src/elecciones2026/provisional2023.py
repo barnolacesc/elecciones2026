@@ -48,7 +48,7 @@ def frame(title: str, body: str, *, nested: bool = False, image_url: str = "", e
 <link rel="stylesheet" href="{root}pilot-2023.css"></head>
 <body><a class="skip" href="#principal">Saltar al contenido</a>
 <header><a class="brand" href="{root}">Generales 2023 <small>piloto privado</small></a>
-<nav aria-label="Navegación principal"><a href="{root}">Comparador</a><a href="{root}cuestionario/">Cuestionario</a><a href="{root}presupuestos/">Presupuestos</a><a href="{root}fuentes/">Fuentes</a></nav></header>
+<nav aria-label="Navegación principal"><a href="{root}">Comparador</a><a href="{root}cuestionario/">Cuestionario</a><a href="{root}presupuestos/">Presupuestos</a><a href="{root}simulador/">Simulador</a><a href="{root}fuentes/">Fuentes</a></nav></header>
 <main id="principal">{body}</main>
 <footer><p>Archivo histórico de las elecciones generales del 23 de julio de 2023. No describe programas de 2026 ni recomienda el voto.</p>
 <p>Resúmenes provisionales de medidas concretas; consulta el documento original. Una medida no seleccionada o ausente no implica oposición.</p></footer>
@@ -165,6 +165,50 @@ def budget(data: dict, budget_data: dict, image_url: str = "") -> str:
     return frame("Presupuestos 2023", content, nested=True, image_url=image_url, extra_script=extra_script)
 
 
+def load_simulator(root: Path) -> dict:
+    path = root / "content/simulator/rules.json"
+    if not path.exists():
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    assert data["schema_version"] == "1.0.0"
+    assert data["total_seats"] == 350
+    assert data["majority_threshold"] == 176
+    return {
+        "available": True,
+        "mode": "reviewed",
+        "election_id": "es-gen-2023",
+        "chamber_id": data["chamber_id"],
+        "chamber_name": data["chamber_name"],
+        "total_seats": data["total_seats"],
+        "majority_threshold": data["majority_threshold"],
+        "rule_type": data["rule_type"],
+        "description": data["description"],
+        "investiture_second_ballot_rule": data.get("investiture_second_ballot_rule", "simple_majority"),
+        "investiture_second_ballot_note": data.get("investiture_second_ballot_note", ""),
+        "citations": data["citations"],
+        "sample_groups": [
+            {"id": "pp", "label": "Partido Popular", "seats": "137"},
+            {"id": "psoe", "label": "PSOE", "seats": "121"},
+            {"id": "vox", "label": "VOX", "seats": "33"},
+            {"id": "sumar", "label": "Sumar", "seats": "31"},
+            {"id": "erc", "label": "ERC", "seats": "7"},
+            {"id": "junts", "label": "Junts", "seats": "7"},
+            {"id": "ehbildu", "label": "EH Bildu", "seats": "6"},
+            {"id": "pnv", "label": "EAJ-PNV", "seats": "5"},
+            {"id": "bng", "label": "BNG", "seats": "1"},
+            {"id": "cc", "label": "CC", "seats": "1"},
+            {"id": "upn", "label": "UPN", "seats": "1"},
+        ],
+    }
+
+
+def simulator(data: dict, simulator_data: dict, image_url: str = "") -> str:
+    from elecciones2026.simulator import render_simulator_content
+    content = render_simulator_content(simulator_data, mode="reviewed")
+    extra_script = '<script src="../simulator-data.js" defer></script><script src="../simulator-engine.js" defer></script><script src="../simulator-ui.js" defer></script>'
+    return frame("Simulador de escaños y mayorías", content, nested=True, image_url=image_url, extra_script=extra_script)
+
+
 def write(root: Path, staging: Path, canonical_base: str) -> None:
     data = load(root)
     image = root / "site/assets/social-preview.png"
@@ -186,6 +230,15 @@ def write(root: Path, staging: Path, canonical_base: str) -> None:
         chart_svg = share_svg(budget_data["payload"], budget_data["manifest"], budget_data["bundle_id"], preview=True)
         (budget_dir / "grafico.svg").write_text(chart_svg, encoding="utf-8")
         (staging / "budget-chart.js").write_bytes((root / "site/budget-chart.js").read_bytes())
+    simulator_data = load_simulator(root)
+    if simulator_data:
+        sim_dir = staging / "simulador"
+        sim_dir.mkdir(exist_ok=True)
+        (sim_dir / "index.html").write_text(simulator(data, simulator_data, image_url), encoding="utf-8")
+        encoded_profile = json.dumps(simulator_data, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+        (staging / "simulator-data.js").write_text(f"window.SimulatorProfile = {encoded_profile};\n", encoding="utf-8")
+        (staging / "simulator-engine.js").write_bytes((root / "site/simulator-engine.js").read_bytes())
+        (staging / "simulator-ui.js").write_bytes((root / "site/simulator-ui.js").read_bytes())
     (staging / "pilot-2023.css").write_bytes((root / "site/pilot-2023.css").read_bytes())
     (staging / "pilot-2023.js").write_bytes((root / "site/pilot-2023.js").read_bytes())
     (staging / "pilot-2023-data.json").write_text(json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":")), encoding="utf-8")
