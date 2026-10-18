@@ -27,21 +27,35 @@ operator root shell; SSH and external probes explicitly marked Mac run locally.
 | Nginx | TLS listener on IPv4/IPv6 443; default port-80 site disabled | Authenticated preview returns 200 with required security/no-store headers |
 | SSH | Key-only root/operator access; restricted deployer forced command | New operator login and effective deployer settings verified |
 | Firewall | Active UFW, deny incoming, allow outgoing, deny routed; IPv6 enabled | Public SSH LIMIT, operator-specific SSH ALLOW, Cloudflare-only 443; old 5001 rule removed |
-| GitHub | Hosted runners, main-only production environment, DEPLOYMENT_READY=true | Delivery run 38182379207 passed approval, restricted SSH and external verification |
+| GitHub | Hosted runners, main-only production environment, DEPLOYMENT_READY=true | Delivery run 38285301273 passed approval, restricted SSH and external verification |
 | Preview analytics | Configuration Rule matches preview hostname; Disable RUM enabled | Owner deployed rule; hosted page hash now matches the approved image |
 | Application | Approved private candidate activated and healthy | Exact home hash verified from hosted runner; live rollback/restore and capacity remain unverified |
 
 Always update this table after a real verification. A login, nginx syntax check or
 401 response does not establish a healthy application or measured capacity.
 
-Successful private staging evidence: [delivery run 38182379207](https://github.com/c2ventures/elecciones2026/actions/runs/38182379207),
-using successful main CI run `38154601720`, attempt `2`:
+Successful private staging evidence: [delivery run 38285301273](https://github.com/c2ventures/elecciones2026/actions/runs/38285301273),
+using successful main CI run `38281740524`, attempt `1`, revision
+`01b77bcdcafb988bb5ea88e7d5df6afc34bcc430`:
 
-- Image: `ghcr.io/c2ventures/elecciones2026@sha256:3e1a312b46d94d3b56ec11135241651c3ae30e88c4c3e77dac7efb4d642f2905`.
-- Home SHA-256: `f4d6642a24ae9c1c5cb9afc994004ddf5dbe58ced40e7cfd865af07524e9d010`.
-- Origin health, pre/post unauthenticated rejection, authenticated HTTP 200,
-  security headers, no-store and exact content passed. This is private staging
-  evidence; public G4, monitoring, live rollback/restore and capacity remain open.
+- Image: `ghcr.io/c2ventures/elecciones2026@sha256:6a0ed41438faba6f81cce2a61d4cce7e4fb288b1fa395e03f32de708d30741ca`.
+- Home SHA-256: `2615469859601fa902710fa849c0f194729a1b1e51282982f74ebb976de9591b`.
+- Boundary: private `es-gen-2023` preview, merged redesign, zero published
+  statements and relationships, and unavailable quiz. PP/ERC candidates remain unpublished.
+- The owner approved this exact tested candidate in the project session on
+  2026-10-12. Retained reference:
+  `private-reviews:es-gen-2023/owner-preview-release-38281740524-1.json`.
+- Protected delivery passed the origin deployment, pre/post unauthenticated 401,
+  authenticated HTTP 200, exact home bytes and required security/no-store headers.
+  A separate local curl request with the deployment user agent confirmed 401,
+  Basic authentication, private/no-store and noindex/nofollow after delivery.
+- Exact-image inspection and CI establish the election, redesign, zero-claim
+  browser projection and unavailable quiz. Hosted browser/device checks remain
+  in #44; public G4, monitoring, live rollback/restore and capacity remain open.
+
+Delivery `38182379207` is historical evidence for the preceding image. It
+predates the review withdrawal and redesign; do not restore it without a new
+content and release review.
 
 ## Configuration and secret inventory
 

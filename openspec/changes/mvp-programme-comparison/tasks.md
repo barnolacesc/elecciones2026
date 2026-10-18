@@ -204,6 +204,27 @@ CI follow-up: three sharing assertions still expected the previous empty-state
 heading. They now check publication-pending wording while retaining election,
 quote-exclusion and sharing checks. All 19 Node sharing/quiz contracts pass.
 
+## E3.3 authenticated preview delivery — 2026-10-12
+
+Issue #71: the owner approved the exact inspected CI `38281740524`, attempt 1,
+revision `01b77bcdcafb988bb5ea88e7d5df6afc34bcc430`, image digest
+`sha256:6a0ed41438faba6f81cce2a61d4cce7e4fb288b1fa395e03f32de708d30741ca`.
+Protected [delivery 38285301273](https://github.com/c2ventures/elecciones2026/actions/runs/38285301273)
+passed authorization, restricted origin delivery, pre/post unauthenticated 401,
+authenticated 200, exact home SHA-256 and required security/no-store headers.
+A separate local curl probe with the deployment user agent confirms 401, Basic
+authentication, private/no-store and noindex/nofollow.
+
+The hosted artifact is the pending `es-gen-2023` preview with the merged redesign,
+zero published political claims and unavailable quiz. Exact image/config/hash
+inspection and CI cover its content boundary; no authenticated hosted browser
+route or real-device observation is claimed. Owner approval evidence stays in
+the private store; `ops/SERVER-MIGRATION.md` retains its reference.
+
+#71 technical delivery is complete. #42/#70 source/content handoff and #44 real
+corpus/manual acceptance remain open. Tasks 1.2, 2.3, 4.4, 4.6 and 4.7 remain
+open for their wider editorial, public operation, restore and capacity gates.
+
 ## E1.4 four-party historical preview preparation — 2026-10-13
 
 The owner requested comparison coverage for PP, ERC, PNV and Sumar across housing, immigration and economy, and a usable quiz. The 2023 source register contains all four originals. Seven candidate statements exist: PP/ERC housing, health and education, plus PNV/Sumar housing. None is in the approved publish set; no immigration or economy candidate and no reviewed relationship exists. The default quiz remains unavailable; its fictional mock is a technical rehearsal, not a political result. G5 requires a 16-item, eight-topic target-election corpus and separate human fairness/release evidence.

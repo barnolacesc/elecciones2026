@@ -2,9 +2,12 @@
 
 Roadmap package: **E3.3**. Issue: [#71](https://github.com/c2ventures/elecciones2026/issues/71).
 
-Status: the merged main candidate uses the wrong election for the intended
-2023 preview. The corrected CI configuration is prepared in this branch. Successful main CI,
-exact owner approval, manual dispatch and hosted verification are pending. This record does not authorize delivery.
+Status: the corrected 2023 candidate was inspected, approved by the owner and
+delivered successfully in [run 38285301273](https://github.com/c2ventures/elecciones2026/actions/runs/38285301273).
+The preparation notes below preserve the earlier investigation. See the
+[delivery record](SERVER-MIGRATION.md#current-setup-and-verification) for the
+current digest, owner approval reference and hosted verification. PP/ERC
+content remains unpublished; public release is separate.
 
 ## Build selection and content boundary
 
