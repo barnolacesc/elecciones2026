@@ -7,11 +7,15 @@ Explain reviewed historical official allocations in Spanish through accessible s
 ## ADDED Requirements
 
 ### Requirement: Spanish historical measurement labels
-The view SHALL show year, approved status, scope, chapters, consolidation, units, exact denominator, rounding, source/version, and review/update date. Public labels and explanatory notes SHALL use reviewed Spanish. It SHALL explain that this PGE sector does not include all autonomous-community and local-government expenditure.
+The view SHALL show year, approved status, scope, chapters, consolidation, units, exact denominator, rounding, source/version, and review/update date. Public labels and explanatory notes SHALL use reviewed Spanish. It SHALL explain that this PGE sector does not include all autonomous-community and local-government expenditure. It SHALL distinguish planned credits from actual expenditure and state whether financial operations and debt principal are included in the displayed total.
 
 #### Scenario: Health or education context
 - **WHEN** a reader opens either topic
 - **THEN** the scope note is adjacent to the figures and states that these allocations are not total Spanish public expenditure on that function.
+
+#### Scenario: Reader interprets a debt or spending headline
+- **WHEN** a reader opens the overview or a debt-related policy
+- **THEN** the nearby note identifies the selected chapters and denominator, distinguishes debt interest from principal repayment, and does not call approved credits money already spent.
 
 ### Requirement: Traceable amount and share
 Each numeric policy or section row SHALL show million euros and share of the named consolidated denominator, with an official source locator and dataset version. Section shares SHALL use that same denominator; a share within a policy requires a separately named denominator and label. Chart and table SHALL use the same reviewed values.

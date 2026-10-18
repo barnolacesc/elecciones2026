@@ -17,6 +17,8 @@ Status: research draft. Checked: 2026-10-11. This note does not approve a public
 - Keep planned credits, modified credits, recognised obligations, and payments in separate views. Do not mix SEPG budget amounts with IGAE execution amounts in one treemap or percentage denominator.
 - Preserve the original source file, retrieval date, checksum, table identifier, transformation script, and a reviewed output snapshot. Check redistribution terms before storing source files in the public repository.
 - Do not infer a party's responsibility or the result of a policy from a budget line. This feature is public-finance context, not a party score.
+- Before publication, review whether chapters 1–8 are the right denominator for the overview. Explain the treatment of financial operations, debt interest, and debt principal. Do not change the denominator to match another site without a new reconciliation and financial review.
+- Do not present a central-government health or education line as total spending in Spain. Autonomous communities have material expenditure outside this PGE sector. Do not combine different institutional scopes without compatible official data and a separate review.
 
 ## Mobile-first presentation
 
@@ -28,3 +30,9 @@ Start with a ranked list of spending policies. Each row shows a proportional bar
 - Identify an official programme-level table and an auditable join before adding initiative or programme drill-down. Do not infer programme amounts from policy-by-section totals.
 - Decide whether execution merits a later, separately scoped view after checking coverage comparability and update cadence.
 - Have a financial-data reviewer sign off on the denominator, consolidation and double-counting rules, and any public headline number.
+
+## External presentation reference (not a data source)
+
+[Civio's ¿Dónde van mis impuestos?](https://dondevanmisimpuestos.es/) is a useful reference for navigation by spending purpose, source notes, methodological explanations, and an accessible path from overview to detail. Its [methodology](https://dondevanmisimpuestos.es/metodologia) explains why administrative reorganisations make long-term ministry comparisons difficult. Its [reader cautions](https://dondevanmisimpuestos.es/ojo_con_esto) distinguish planned from executed spending, central from autonomous-community spending, and debt interest from principal repayment.
+
+Do not import figures from this site or assume its coverage, chapter selection, update date, or accounting basis matches the selected SEPG 2023 table. The reference site's global presentation excludes chapters 8 and 9; this project's draft contract selects chapters 1–8. Those totals and percentages are not directly comparable. Use the pinned official SEPG files and the reviewed contract for every public figure. Use the reference for explanatory structure only; do not copy its text, graphics, or code without a separate rights review.

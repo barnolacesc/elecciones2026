@@ -25,11 +25,22 @@ The register SHALL retain the publisher, source and table URLs, table ID, public
 - **THEN** the register records the gap or conflict, preserves the pinned version, and blocks a replacement until human review resolves it.
 
 ### Requirement: Reviewed measurement contract
-Publication SHALL require a rights decision and human financial-data approval of the source, denominator, basis, scope, and rounding rules, plus human editorial approval of Spanish labels and mappings. Agents SHALL NOT create approval marks. Approval SHALL bind to exact source and derived-data versions; changes SHALL invalidate dependent approvals.
+Publication SHALL require a rights decision and human financial-data approval of the source, denominator, basis, scope, chapter selection, debt treatment, and rounding rules. It SHALL require human editorial approval of Spanish labels and mappings. Agents SHALL NOT create approval marks. Approval SHALL bind to exact source and derived-data versions; changes SHALL invalidate dependent approvals.
 
 #### Scenario: Review pending
 - **WHEN** a source, measurement contract, or mapping is draft, rejected, or invalidated
 - **THEN** the public build rejects the affected budget publish set without a partial release.
+
+#### Scenario: Another chart uses a different total
+- **WHEN** a reviewer compares this chapters 1–8 dataset with a chart that excludes chapters 8 and 9
+- **THEN** the review records the different denominators and does not copy or reconcile percentages across them without compatible official rows and a new approval.
+
+### Requirement: Explicit financial-scope review
+The financial review SHALL explain whether financial operations are included in the selected total. It SHALL distinguish debt interest from principal repayment before a public chart is approved.
+
+#### Scenario: Debt treatment is unclear
+- **WHEN** the source contract does not identify how debt interest and principal affect the selected chapters
+- **THEN** the budget publish set remains blocked until the financial reviewer resolves the scope and denominator.
 
 ### Requirement: Exact arithmetic and reconciliation
 Validation SHALL preserve official codes and reconcile cells, policy totals, and section totals independently to the same official denominator. Shares SHALL use unrounded values. Thousand euros SHALL convert to million euros by division by 1,000. Margins SHALL NOT be added to leaf cells; tolerances SHALL be explicit and justified by source precision.
