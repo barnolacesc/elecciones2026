@@ -9,10 +9,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ProvisionalPilotTests(unittest.TestCase):
-    def test_four_parties_five_topics_and_exact_citations(self):
+    def test_four_parties_eight_topics_and_exact_citations(self):
         data = load(ROOT)
-        self.assertEqual(len(data["topics"]), 5)
-        self.assertEqual(len(data["positions"]), 24)
+        self.assertEqual(len(data["topics"]), 8)
+        self.assertEqual(len(data["positions"]), 36)
+        expected_topics = {
+            "housing", "education", "health-social-services", "economy-work-tax",
+            "immigration", "climate-energy", "foreign-policy-eu", "institutions-rights"
+        }
+        self.assertEqual({t["id"] for t in data["topics"]}, expected_topics)
         for position in data["positions"]:
             self.assertTrue(position["url"].startswith("https://"))
             self.assertTrue(position["url"].endswith(f'#page={position["page"]}'))
@@ -27,7 +32,7 @@ class ProvisionalPilotTests(unittest.TestCase):
         questions = quiz(data)
         self.assertIn("sin revisión editorial humana", home)
         self.assertIn("no calcula afinidad partidista", questions)
-        self.assertEqual(home.count('class="card"'), 24)
+        self.assertEqual(home.count('class="card"'), 36)
         self.assertIn('class="measure-group"', home)
         self.assertEqual(questions.count('class="quiz-option"'), 5)
         self.assertNotIn('PP:', questions)
@@ -38,7 +43,7 @@ class ProvisionalPilotTests(unittest.TestCase):
         self.assertIn('Más bien de acuerdo', questions)
         self.assertIn('Totalmente de acuerdo', questions)
         self.assertIn('Fuentes del piloto', sources(data))
-        self.assertEqual(home.count('target="_blank"'), 24)
+        self.assertEqual(home.count('target="_blank"'), 36)
         self.assertNotIn("sam-neutrality", home + questions)
         self.assertNotIn("2026</h1>", home + questions)
 
