@@ -1,0 +1,456 @@
+/* Simulator phone layout and responsive hemicycle. Uses local project tokens. */
+.simulator-shell {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  box-sizing: border-box;
+}
+
+body:has(.simulator-shell) .footer-inner {
+  color: var(--color-text-secondary);
+}
+
+.simulator-shell h1 {
+  font-size: clamp(1.6rem, 5vw, 2.3rem);
+  line-height: 1.2;
+  margin: 0.5rem 0 0.8rem;
+  text-wrap: balance;
+}
+
+.simulator-shell h2 {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 0.8rem;
+}
+
+.simulator-shell h3 {
+  font-size: 1.05rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.simulator-shell p {
+  text-wrap: pretty;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.simulator-kicker {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.simulator-intro {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.simulator-shell [hidden] {
+  display: none !important;
+}
+
+/* 44px min touch targets */
+.simulator-shell button,
+.simulator-shell input[type="text"],
+.simulator-shell input[type="number"],
+.simulator-shell a {
+  min-height: 44px;
+  font: inherit;
+  color: var(--color-text-primary);
+  box-sizing: border-box;
+}
+
+.simulator-shell button {
+  min-width: 44px;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg-surface);
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.simulator-shell button:hover {
+  background: var(--color-bg-surface-alt);
+}
+
+.simulator-shell button.simulator-primary {
+  background: var(--color-bg-primary);
+  border-color: var(--color-bg-primary);
+  color: var(--color-text-inverse);
+}
+
+.simulator-shell button.simulator-primary:hover {
+  background: var(--color-bg-primary-hover);
+}
+
+.simulator-shell button.simulator-danger {
+  color: #b91c1c;
+  border-color: #fca5a5;
+  background: #fff;
+}
+
+.simulator-shell button.simulator-danger:hover {
+  background: #fef2f2;
+}
+
+.simulator-shell :focus-visible {
+  outline: 3px solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+.simulator-shell input[type="text"],
+.simulator-shell input[type="number"] {
+  border: 1px solid var(--color-border-strong);
+  border-radius: 8px;
+  background: var(--color-bg-surface);
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+}
+
+.simulator-shell input[aria-invalid="true"] {
+  border-color: #dc2626;
+  background: #fff5f5;
+}
+
+.simulator-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.25rem 0;
+}
+
+.simulator-actions button {
+  flex: 1 1 10rem;
+}
+
+/* Results & threshold indicators */
+.simulator-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.simulator-stat-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: 10px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.simulator-stat-label {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.simulator-stat-val {
+  font-size: 1.65rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.simulator-stat-sub {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.2rem;
+}
+
+/* Coalition Threshold Banner */
+.simulator-threshold-banner {
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-default);
+  background: var(--color-bg-surface);
+  margin: 1.25rem 0;
+}
+
+.simulator-threshold-banner.majority-reached {
+  border-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.simulator-threshold-banner.majority-short {
+  border-color: #d97706;
+  background: #fffbeb;
+}
+
+.simulator-threshold-banner.chamber-overflow {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.simulator-threshold-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.simulator-threshold-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Hemicycle Visualization Container */
+.simulator-hemicycle-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: 14px;
+  padding: 1.25rem 0.75rem;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.simulator-hemicycle-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.simulator-hemicycle-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.simulator-hemicycle-dot {
+  transition: r 120ms ease, fill 120ms ease, opacity 120ms ease;
+}
+
+.simulator-hemicycle-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.simulator-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.simulator-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Responsive Table */
+.simulator-table-container {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.simulator-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.simulator-table th,
+.simulator-table td {
+  padding: 0.65rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-default);
+  vertical-align: middle;
+}
+
+.simulator-table th {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  border-bottom: 2px solid var(--color-border-strong);
+}
+
+.simulator-table .num-cell {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Checkbox styling with 44px touch area */
+.simulator-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.simulator-checkbox-label input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--color-bg-primary);
+  cursor: pointer;
+}
+
+/* Group Color Swatch in table */
+.group-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.group-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Inline Field Errors */
+.field-error {
+  color: #dc2626;
+  font-size: 0.78rem;
+  margin-top: 0.25rem;
+}
+
+/* Error summary alert */
+.simulator-error-summary {
+  background: #fef2f2;
+  border: 1px solid #f87171;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+  color: #991b1b;
+}
+
+.simulator-error-summary ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.25rem;
+}
+
+/* Share Section */
+.simulator-share-box {
+  background: var(--color-bg-surface-alt);
+  border: 1px solid var(--color-border-default);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 2rem 0;
+}
+
+.simulator-share-box h3 {
+  margin-top: 0;
+}
+
+.simulator-share-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.simulator-share-row input {
+  flex: 1 1 16rem;
+}
+
+.simulator-feedback {
+  margin-top: 0.6rem;
+  font-weight: 500;
+  color: #166534;
+}
+
+/* Legal & Method Notes Card */
+.simulator-legal-notes {
+  border: 1px solid var(--color-border-default);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 2rem 0;
+  background: var(--color-bg-surface);
+}
+
+.simulator-legal-notes summary {
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.simulator-legal-list {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.simulator-legal-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.45;
+}
+
+/* Mobile Stacked Layout (≤ 640px) */
+@media (max-width: 640px) {
+  .simulator-table thead {
+    display: none;
+  }
+  .simulator-table,
+  .simulator-table tbody,
+  .simulator-table tr,
+  .simulator-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .simulator-table tr {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-default);
+    border-radius: 10px;
+    padding: 0.85rem;
+    margin-bottom: 0.85rem;
+  }
+  .simulator-table td {
+    border-bottom: none;
+    padding: 0.35rem 0;
+    text-align: left;
+  }
+  .simulator-table .num-cell {
+    text-align: left;
+  }
+  .simulator-row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  .simulator-row-fields {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    gap: 0.5rem;
+    align-items: start;
+  }
+  .simulator-row-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-border-default);
+  }
+}
+
+/* Respect motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .simulator-hemicycle-dot {
+    transition: none;
+  }
+}

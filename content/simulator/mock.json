@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "method_version": "1.0.0",
+  "mode": "mock",
+  "chamber_id": "congreso-de-los-diputados",
+  "chamber_name": "Congreso de los Diputados (Maqueta)",
+  "election_id": "simulator-fixture",
+  "total_seats": 350,
+  "majority_threshold": 176,
+  "rule_type": "absolute_majority",
+  "description": "Demostración privada de reglas de investidura y simulación de escaños con datos genéricos.",
+  "investiture_second_ballot_rule": "simple_majority",
+  "investiture_second_ballot_note": "La segunda votación requiere mayoría simple (más síes que noes). Esta herramienta solo calcula la mayoría absoluta.",
+  "citations": [
+    {
+      "source_id": "constitucion-espanola",
+      "title": "Constitución Española",
+      "article": "Artículo 68.1",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229",
+      "summary": "Fija la composición del Congreso entre 300 y 400 Diputados según determine la ley."
+    },
+    {
+      "source_id": "loreg-1985",
+      "title": "Ley Orgánica 5/1985, de 19 de junio, del Régimen Electoral General",
+      "article": "Artículo 162.1",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672",
+      "summary": "Establece que el Congreso de los Diputados está integrado por trescientos cincuenta Diputados."
+    },
+    {
+      "source_id": "constitucion-investidura",
+      "title": "Constitución Española",
+      "article": "Artículo 99.3",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229",
+      "summary": "Exige mayoría absoluta de los miembros del Congreso en primera votación."
+    }
+  ],
+  "sample_groups": [
+    {"id": "grupo-a", "label": "Grupo A", "seats": "135"},
+    {"id": "grupo-b", "label": "Grupo B", "seats": "120"},
+    {"id": "grupo-c", "label": "Grupo C", "seats": "33"},
+    {"id": "grupo-d", "label": "Grupo D", "seats": "28"},
+    {"id": "grupo-e", "label": "Grupo E", "seats": "15"},
+    {"id": "grupo-f", "label": "Grupo F", "seats": "10"},
+    {"id": "grupo-g", "label": "Grupo G", "seats": "9"}
+  ]
+}

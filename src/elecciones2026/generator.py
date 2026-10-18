@@ -2360,6 +2360,8 @@ def build_site(
     budget_bundle: Optional[Path] = None,
     quiz_mode: str = "unavailable",
     quiz_file: Optional[Path] = None,
+    simulator_mode: str = "unavailable",
+    simulator_file: Optional[Path] = None,
     pilot_provisional: bool = False,
 ) -> SiteBuildResult:
     """Generate the complete static site deterministically into output_dir.
@@ -2409,6 +2411,20 @@ def build_site(
             quiz_bundle = prepare_quiz(quiz_path, ctx, mock=quiz_mode == "mock")
         except (ValueError, OSError, QuizValidationError) as error:
             raise BuildValidationError(f"Quiz validation failed: {error}") from error
+
+    from elecciones2026.simulator import SimulatorValidationError, prepare_simulator, render_simulator_content
+    if simulator_mode not in {"unavailable", "mock", "reviewed"}:
+        raise BuildValidationError("Invalid simulator mode.")
+    simulator_bundle = None
+    if simulator_mode != "unavailable":
+        simulator_path = simulator_file or (ctx.content_dir / "simulator" / f"{simulator_mode}.json")
+        if not simulator_path.exists() and simulator_mode == "reviewed":
+            simulator_path = ctx.content_dir / "simulator" / "rules.json"
+        try:
+            simulator_bundle = prepare_simulator(simulator_path, ctx, mock=simulator_mode == "mock")
+        except (ValueError, OSError, SimulatorValidationError) as error:
+            raise BuildValidationError(f"Simulator validation failed: {error}") from error
+
 
     # Use a private sibling directory so rename stays on the output filesystem.
     reject_symlink_output_path(output_dir)
@@ -2537,7 +2553,46 @@ def build_site(
             routes.append((f"{ctx.canonical_base}/cuestionario/", ctx.build_date, "weekly"))
         write_file_deterministic(staging_dir / "cuestionario" / "index.html", quiz_html)
 
+        # Simulator assets and shell
+        simulator_style = root_dir / "site" / "simulator.css"
+        simulator_style_name = f"simulator.{compute_sha256(simulator_style)[:16]}.css"
+        shutil.copy2(simulator_style, staging_dir / simulator_style_name)
+        simulator_scripts = []
+        if simulator_bundle is not None and simulator_bundle.get("available"):
+            for name in ("simulator-engine.js", "simulator-ui.js"):
+                source = root_dir / "site" / name
+                target = f"{source.stem}.{compute_sha256(source)[:16]}{source.suffix}"
+                shutil.copy2(source, staging_dir / target)
+                simulator_scripts.append(target)
+            encoded = json.dumps(simulator_bundle, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+            bundle_script = f"window.SimulatorProfile = {encoded};\n"
+            digest = hashlib.sha256(bundle_script.encode()).hexdigest()[:16]
+            bundle_name = f"simulator-data.{digest}.js"
+            write_file_deterministic(staging_dir / bundle_name, bundle_script)
+            simulator_scripts.insert(0, bundle_name)
+        simulator_content = render_simulator_content(simulator_bundle, mode=simulator_mode)
+        simulator_content += ''.join(f'<script src="../{name}" defer></script>\n' for name in simulator_scripts)
+        simulator_description = ("Demostración técnica de simulación de escaños y mayorías."
+                                 if simulator_mode == "mock" else "Simulador interactivo de escaños y coaliciones para el Congreso de los Diputados."
+                                 if simulator_mode == "reviewed" else "Reglas parlamentarias y mayorías de investidura para el Congreso de los Diputados.")
+        simulator_html = render_base(ctx, "Simulador de escaños y mayorías", simulator_description,
+                                     "/simulador/", simulator_content, root_path="../")
+        simulator_html = simulator_html.replace('<link rel="stylesheet" href="../styles.css">',
+            '<link rel="preload" href="../tokens/tokens.css" as="style">\n'
+            '  <link rel="stylesheet" href="../styles.css">')
+        simulator_html = simulator_html.replace('</head>', f'<link rel="stylesheet" href="../{simulator_style_name}">\n</head>')
+        simulator_html = simulator_html.replace('<meta charset="utf-8">',
+            '<meta charset="utf-8">\n<meta name="referrer" content="no-referrer">'
+            f'\n<link rel="icon" href="../{preview_image_path(root_dir)}">')
+        if simulator_mode != "reviewed":
+            simulator_html = simulator_html.replace('<meta charset="utf-8">',
+                '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">')
+        else:
+            routes.append((f"{ctx.canonical_base}/simulador/", ctx.build_date, "weekly"))
+        write_file_deterministic(staging_dir / "simulador" / "index.html", simulator_html)
+
         # 9. Sitemap & crawler files
+
         sitemap_xml = render_sitemap(ctx, routes)
         write_file_deterministic(staging_dir / "sitemap.xml", sitemap_xml)
 
@@ -2668,6 +2723,9 @@ def main(args: Optional[list[str]] = None) -> int:
     build_p.add_argument("--quiz-mode", choices=("unavailable", "mock", "reviewed"), default="unavailable",
                          help="Mock quiz is opt-in for private preview; reviewed mode requires approved input.")
     build_p.add_argument("--quiz-file", type=Path, help="Versioned quiz authoring JSON.")
+    build_p.add_argument("--simulator-mode", choices=("unavailable", "mock", "reviewed"), default="unavailable",
+                         help="Simulator mode: unavailable (static info), mock (private preview), or reviewed.")
+    build_p.add_argument("--simulator-file", type=Path, help="Versioned simulator profile JSON.")
     build_p.add_argument("--pilot-provisional", action="store_true", help="Private source-linked 2023 pilot only.")
 
     # Command: check-determinism
@@ -2697,6 +2755,8 @@ def main(args: Optional[list[str]] = None) -> int:
                 budget_bundle=parsed.budget_bundle,
                 quiz_mode=parsed.quiz_mode,
                 quiz_file=parsed.quiz_file,
+                simulator_mode=parsed.simulator_mode,
+                simulator_file=parsed.simulator_file,
                 pilot_provisional=parsed.pilot_provisional,
             )
             print(f"Build completed successfully in {res.output_dir}:")

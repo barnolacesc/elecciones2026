@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "method_version": "1.0.0",
+  "mode": "reviewed",
+  "chamber_id": "congreso-de-los-diputados",
+  "chamber_name": "Congreso de los Diputados",
+  "election_id": "es-gen-2026",
+  "total_seats": 350,
+  "majority_threshold": 176,
+  "rule_type": "absolute_majority",
+  "description": "Reglas de composición del Congreso de los Diputados y mayoría absoluta para la primera votación de investidura en España.",
+  "investiture_second_ballot_rule": "simple_majority",
+  "investiture_second_ballot_note": "La segunda votación de investidura requiere mayoría simple (más votos a favor que en contra). Al depender de las abstenciones y ausencias de los demás grupos, esta herramienta no calcula dicho resultado.",
+  "citations": [
+    {
+      "source_id": "constitucion-espanola",
+      "title": "Constitución Española",
+      "article": "Artículo 68.1",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229",
+      "summary": "Fija la composición del Congreso entre 300 y 400 Diputados según determine la ley."
+    },
+    {
+      "source_id": "loreg-1985",
+      "title": "Ley Orgánica 5/1985, de 19 de junio, del Régimen Electoral General",
+      "article": "Artículo 162.1",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672",
+      "summary": "Establece que el Congreso de los Diputados está integrado por trescientos cincuenta Diputados."
+    },
+    {
+      "source_id": "constitucion-investidura",
+      "title": "Constitución Española",
+      "article": "Artículo 99.3",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229",
+      "summary": "Exige el voto de la mayoría absoluta de los miembros del Congreso para otorgar la confianza en primera votación (176 de 350)."
+    },
+    {
+      "source_id": "reglamento-congreso",
+      "title": "Reglamento del Congreso de los Diputados",
+      "article": "Artículo 171.5",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1982-5196",
+      "summary": "Confirma la regla de mayoría absoluta en primera votación y mayoría simple en segunda votación pasadas 48 horas."
+    }
+  ],
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "editorial-parliamentary-one",
+      "review_date": "2026-10-12",
+      "verdict": "approved",
+      "review_notes": "Verificadas las citas oficiales en BOE consolidado para artículos 68.1, 99.3 CE, 162.1 LOREG y 171.5 Reglamento del Congreso.",
+      "reviewer_kind": "human",
+      "evidence_ref": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672"
+    },
+    {
+      "reviewer_id": "editorial-parliamentary-two",
+      "review_date": "2026-10-12",
+      "verdict": "approved",
+      "review_notes": "Comprobado el umbral aritmético derivado de 176 escaños sobre un pleno legal de 350 escaños.",
+      "reviewer_kind": "human",
+      "evidence_ref": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229"
+    }
+  ]
+}
