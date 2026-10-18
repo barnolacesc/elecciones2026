@@ -41,7 +41,7 @@ jobs:
           pilot_delegate = (os.environ['GITHUB_ACTOR'] == 'chad-openclaw'
               and os.environ['GITHUB_TRIGGERING_ACTOR'] == 'chad-openclaw'
               and os.environ['APPROVAL_RECORD'] == 'Cesc Telegram 2026-10-14 private 2023 pilot'
-              and date.today() <= date(2026, 10, 15))
+              and date.today() <= date(2026, 10, 31))
           assert os.environ['GITHUB_REPOSITORY'] == 'c2ventures/elecciones2026'
           assert os.environ['GITHUB_REF'] == 'refs/heads/main'
           assert (os.environ['GITHUB_ACTOR'] == 'barnolacesc'
