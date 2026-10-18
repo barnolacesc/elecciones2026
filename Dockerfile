@@ -35,7 +35,7 @@ FROM nginxinc/nginx-unprivileged:stable-alpine@sha256:15c994d10d6d78658721c3bcaf
 
 # Upgrade security-sensitive packages to address known upstream advisories
 USER root
-RUN apk --no-cache upgrade tiff zlib
+RUN apk --no-cache upgrade
 USER 101
 
 # Copy custom Nginx configuration implementing ADR-0001 headers and cache rules
