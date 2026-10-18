@@ -3,7 +3,7 @@ import re
 import unittest
 from pathlib import Path
 
-from elecciones2026.provisional2023 import load, comparison, quiz, sources
+from elecciones2026.provisional2023 import load, load_budget, comparison, quiz, sources, budget, write
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -46,12 +46,57 @@ class ProvisionalPilotTests(unittest.TestCase):
         self.assertEqual(home.count('target="_blank"'), 36)
         self.assertNotIn("sam-neutrality", home + questions)
         self.assertNotIn("2026</h1>", home + questions)
+        self.assertIn('href="./presupuestos/"', home)
+        self.assertIn('href="../presupuestos/"', questions)
 
     def test_quiz_options_balanced_scale(self):
         data = load(ROOT)
         questions = quiz(data)
         values = re.findall(r'value="([^"]+)"', questions)
         self.assertEqual(values, ['strongly-agree', 'agree', 'neutral', 'disagree', 'strongly-disagree'])
+
+    def test_budget_provisional_loading_and_contract(self):
+        budget_data = load_budget(ROOT)
+        self.assertEqual(budget_data["election_id"], "es-gen-2023")
+        self.assertEqual(budget_data["status"], "historical-provisional-private")
+        self.assertEqual(budget_data["bundle_id"], "2023-provisional")
+        policies = [m for m in budget_data["payload"]["values.json"]["margins"] if m["kind"] == "policy"]
+        self.assertEqual(len(policies), 27)
+        denominator = budget_data["payload"]["measurement.json"]["denominator_amount_thousand_eur"]
+        self.assertEqual(denominator, "485985812.22")
+
+    def test_budget_page_rendering_and_navigation(self):
+        data = load(ROOT)
+        budget_data = load_budget(ROOT)
+        budget_html = budget(data, budget_data)
+        self.assertIn("PGE 2023: presupuesto aprobado", budget_html)
+        self.assertIn("¿Cómo se reparte el presupuesto?", budget_html)
+        self.assertIn("Para comparar magnitudes", budget_html)
+        self.assertIn("485.985,81", budget_html)
+        self.assertIn('href="../presupuestos/"', budget_html)
+        self.assertIn('data-chart-url="./grafico.svg"', budget_html)
+        self.assertIn('<script src="../budget-chart.js" defer></script>', budget_html)
+        self.assertIn("BORRADOR PRIVADO", budget_html)
+        self.assertIn("Políticas de gasto, de mayor a menor importe", budget_html)
+
+    def test_write_provisional_pilot_generates_budget_and_assets(self):
+        import tempfile
+        data = load(ROOT)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            staging = Path(tmpdir)
+            write(ROOT, staging, "https://preview.example.com")
+            self.assertTrue((staging / "index.html").exists())
+            self.assertTrue((staging / "cuestionario/index.html").exists())
+            self.assertTrue((staging / "fuentes/index.html").exists())
+            self.assertTrue((staging / "presupuestos/index.html").exists())
+            self.assertTrue((staging / "presupuestos/grafico.svg").exists())
+            self.assertTrue((staging / "budget-chart.js").exists())
+            self.assertTrue((staging / "pilot-2023.css").exists())
+            self.assertTrue((staging / "pilot-2023.js").exists())
+            self.assertTrue((staging / "pilot-2023-data.json").exists())
+            svg_content = (staging / "presupuestos/grafico.svg").read_text(encoding="utf-8")
+            self.assertIn("<svg", svg_content)
+            self.assertIn("¿Cómo se reparte el presupuesto?", svg_content)
 
 
 if __name__ == "__main__":

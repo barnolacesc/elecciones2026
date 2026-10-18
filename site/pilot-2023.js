@@ -1,7 +1,7 @@
 /* Private historical pilot. No analytics, persistence or inferred party positions. */
 (async function () {
   'use strict';
-  const nested = location.pathname.includes('/cuestionario/');
+  const nested = ['/cuestionario/', '/fuentes/', '/presupuestos/'].some(p => location.pathname.includes(p));
   const response = await fetch((nested ? '../' : './') + 'pilot-2023-data.json', {cache: 'no-store'});
   if (!response.ok) return;
   const data = await response.json();

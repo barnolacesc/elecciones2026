@@ -37,7 +37,7 @@ def esc(value: object) -> str:
     return html.escape(str(value), quote=True)
 
 
-def frame(title: str, body: str, *, nested: bool = False, image_url: str = "") -> str:
+def frame(title: str, body: str, *, nested: bool = False, image_url: str = "", extra_script: str = "") -> str:
     root = "../" if nested else "./"
     return f'''<!doctype html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -48,11 +48,11 @@ def frame(title: str, body: str, *, nested: bool = False, image_url: str = "") -
 <link rel="stylesheet" href="{root}pilot-2023.css"></head>
 <body><a class="skip" href="#principal">Saltar al contenido</a>
 <header><a class="brand" href="{root}">Generales 2023 <small>piloto privado</small></a>
-<nav aria-label="Navegación principal"><a href="{root}">Comparador</a><a href="{root}cuestionario/">Cuestionario</a><a href="{root}fuentes/">Fuentes</a></nav></header>
+<nav aria-label="Navegación principal"><a href="{root}">Comparador</a><a href="{root}cuestionario/">Cuestionario</a><a href="{root}presupuestos/">Presupuestos</a><a href="{root}fuentes/">Fuentes</a></nav></header>
 <main id="principal">{body}</main>
 <footer><p>Archivo histórico de las elecciones generales del 23 de julio de 2023. No describe programas de 2026 ni recomienda el voto.</p>
 <p>Resúmenes provisionales de medidas concretas; consulta el documento original. Una medida no seleccionada o ausente no implica oposición.</p></footer>
-<script src="{root}pilot-2023.js" defer></script></body></html>'''
+<script src="{root}pilot-2023.js" defer></script>{extra_script}</body></html>'''
 
 
 def citation(position: dict) -> str:
@@ -138,6 +138,33 @@ def sources(data: dict, image_url: str = "") -> str:
     return frame("Fuentes", body, nested=True, image_url=image_url)
 
 
+def load_budget(root: Path) -> dict:
+    path = root / "content/budget/2023-provisional.json"
+    if not path.exists():
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    assert data["election_id"] == "es-gen-2023"
+    assert data["status"] == "historical-provisional-private"
+    assert "payload" in data and "manifest" in data and "bundle_id" in data
+    return data
+
+
+def budget(data: dict, budget_data: dict, image_url: str = "") -> str:
+    from elecciones2026.budget_view import render_budget_content
+    topic_labels = {t["id"]: t["name"] for t in data["topics"]}
+    content = render_budget_content(
+        budget_data["payload"],
+        budget_data["manifest"],
+        budget_data["bundle_id"],
+        topic_labels,
+        root_path="../",
+        preview=True,
+        chart_url="./grafico.svg",
+    )
+    extra_script = '<script src="../budget-chart.js" defer></script>'
+    return frame("Presupuestos 2023", content, nested=True, image_url=image_url, extra_script=extra_script)
+
+
 def write(root: Path, staging: Path, canonical_base: str) -> None:
     data = load(root)
     image = root / "site/assets/social-preview.png"
@@ -150,6 +177,15 @@ def write(root: Path, staging: Path, canonical_base: str) -> None:
     sources_dir = staging / "fuentes"
     sources_dir.mkdir(exist_ok=True)
     (sources_dir / "index.html").write_text(sources(data, image_url), encoding="utf-8")
+    budget_data = load_budget(root)
+    if budget_data:
+        budget_dir = staging / "presupuestos"
+        budget_dir.mkdir(exist_ok=True)
+        (budget_dir / "index.html").write_text(budget(data, budget_data, image_url), encoding="utf-8")
+        from elecciones2026.budget_chart import share_svg
+        chart_svg = share_svg(budget_data["payload"], budget_data["manifest"], budget_data["bundle_id"], preview=True)
+        (budget_dir / "grafico.svg").write_text(chart_svg, encoding="utf-8")
+        (staging / "budget-chart.js").write_bytes((root / "site/budget-chart.js").read_bytes())
     (staging / "pilot-2023.css").write_bytes((root / "site/pilot-2023.css").read_bytes())
     (staging / "pilot-2023.js").write_bytes((root / "site/pilot-2023.js").read_bytes())
     (staging / "pilot-2023-data.json").write_text(json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":")), encoding="utf-8")
