@@ -1,5 +1,12 @@
 # Elections 2026 — Roadmap draft 0.2
 
+**2026-10-19 delivery priority:** Cesc has requested a complete, clearly labelled
+2023 general-election comparator as the working product before importing 2026
+programmes. The [2023-first delivery roadmap](docs/PRODUCT-ROADMAP-2023-2026.md)
+sets the current sequence and acceptance gates. This supersedes the phase order
+below where it differs; the existing OpenSpec packages remain implementation
+references, not evidence that their editorial or release gates have passed.
+
 ## 1. Purpose and rules
 
 The site will help people compare party programmes for the Spanish general election on 29 November 2026. It will not recommend a vote or predict party conduct. The election date is in [BOE-A-2026-20742](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742). Official changes take priority.
