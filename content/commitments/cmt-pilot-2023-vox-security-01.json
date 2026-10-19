@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/commitment.schema.json",
+  "schema_version": "1.0.0",
+  "id": "cmt-pilot-2023-vox-security-01",
+  "election_id": "es-gen-2023",
+  "party_id": "vox",
+  "topic_id": "institutions-rights",
+  "pledge": {
+    "summary_es": "Oposición y voto en contra de cualquier intento de derogación o modificación que debilite la Ley Orgánica 4/2015 de Seguridad Ciudadana.",
+    "verbatim_quote": "Oposición frontal y voto en contra de cualquier intento de derogación o modificación que debilite la Ley Orgánica 4/2015 de Protección de la Seguridad Ciudadana...",
+    "source_id": "src-2023-vox-prog",
+    "page": 64,
+    "section": "Medida 112"
+  },
+  "governance_context": {
+    "role": "opposition",
+    "legislature": "XV",
+    "period_start": "2023-11-17",
+    "period_end": "2026-10-01",
+    "jurisdiction": "state"
+  },
+  "status": "enacted_as_pledged",
+  "evidence": [
+    {
+      "source_type": "bocg_vote",
+      "official_id": "BOCG-15-DS-C-VOT-SEC",
+      "title": "Diario de Sesiones del Congreso de los Diputados, votaciones en Comisión de Interior y Pleno sobre la reforma de la Ley Orgánica 4/2015",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DS_P_30.PDF",
+      "date": "2024-04-25",
+      "finding_summary_es": "Registro de votaciones en el Congreso de los Diputados donde el Grupo Parlamentario Vox emitió voto negativo constante contra todas las propuestas de reforma o flexibilización de la Ley Orgánica 4/2015."
+    }
+  ],
+  "editorial_review": {
+    "drafter": "researcher-01",
+    "reviewed_by_1": "auditor-citation-01",
+    "reviewed_by_2": "auditor-neutrality-02",
+    "lead_editor_signoff": "editor-in-chief",
+    "review_date": "2026-10-15",
+    "agreement_status": "unanimous"
+  }
+}

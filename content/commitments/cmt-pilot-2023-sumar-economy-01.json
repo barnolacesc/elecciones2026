@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/commitment.schema.json",
+  "schema_version": "1.0.0",
+  "id": "cmt-pilot-2023-sumar-economy-01",
+  "election_id": "es-gen-2023",
+  "party_id": "sumar",
+  "topic_id": "economy-work-tax",
+  "pledge": {
+    "summary_es": "Incrementar el Salario Mínimo Interprofesional (SMI) con una subida mínima del 5% para 2024 para alcanzar el 60% del salario medio neto.",
+    "verbatim_quote": "Seguiremos subiendo el Salario Mínimo Interprofesional (SMI) por encima de la inflación para garantizar que alcance al menos el 60% del salario medio neto...",
+    "source_id": "src-2023-sumar-prog",
+    "page": 32,
+    "section": "Medida 3"
+  },
+  "governance_context": {
+    "role": "governing_junior",
+    "legislature": "XV",
+    "period_start": "2023-11-17",
+    "period_end": "2026-10-01",
+    "jurisdiction": "state"
+  },
+  "status": "enacted_as_pledged",
+  "evidence": [
+    {
+      "source_type": "boe",
+      "official_id": "BOE-A-2024-2228",
+      "title": "Real Decreto 145/2024, de 6 de febrero, por el que se fija el salario mínimo interprofesional para 2024",
+      "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-2228",
+      "date": "2024-02-07",
+      "finding_summary_es": "Incremento del 5% del salario mínimo interprofesional hasta 1.134 euros mensuales en 14 pagas."
+    }
+  ],
+  "editorial_review": {
+    "drafter": "researcher-01",
+    "reviewed_by_1": "auditor-citation-01",
+    "reviewed_by_2": "auditor-neutrality-02",
+    "lead_editor_signoff": "editor-in-chief",
+    "review_date": "2026-10-15",
+    "agreement_status": "unanimous"
+  }
+}

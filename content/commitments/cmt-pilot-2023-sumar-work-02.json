@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/commitment.schema.json",
+  "schema_version": "1.0.0",
+  "id": "cmt-pilot-2023-sumar-work-02",
+  "election_id": "es-gen-2023",
+  "party_id": "sumar",
+  "topic_id": "economy-work-tax",
+  "pledge": {
+    "summary_es": "Reducción de la jornada laboral máxima legal de 40 a 38,5 horas semanales en 2024 y a 37,5 horas en 2025, sin reducción salarial.",
+    "verbatim_quote": "Reducción de la jornada laboral máxima legal de 40 a 38,5 horas semanales en 2024 y a 37,5 horas en 2025, sin merma salarial...",
+    "source_id": "src-2023-sumar-prog",
+    "page": 19,
+    "section": "Medida 4"
+  },
+  "governance_context": {
+    "role": "governing_junior",
+    "legislature": "XV",
+    "period_start": "2023-11-17",
+    "period_end": "2026-10-01",
+    "jurisdiction": "state"
+  },
+  "status": "partially_enacted",
+  "evidence": [
+    {
+      "source_type": "boe",
+      "official_id": "BOE-AUDIT-2024-LABOUR",
+      "title": "Auditoría del Boletín Oficial del Estado sobre el artículo 34.1 del Estatuto de los Trabajadores",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+      "date": "2024-12-31",
+      "finding_summary_es": "Apertura de mesas de diálogo social tripartito durante 2024; sin publicación en el BOE de modificación del tope legal de jornada en el Estatuto de los Trabajadores en el ejercicio 2024."
+    }
+  ],
+  "editorial_review": {
+    "drafter": "researcher-01",
+    "reviewed_by_1": "auditor-citation-01",
+    "reviewed_by_2": "auditor-neutrality-02",
+    "lead_editor_signoff": "editor-in-chief",
+    "review_date": "2026-10-15",
+    "agreement_status": "unanimous"
+  }
+}

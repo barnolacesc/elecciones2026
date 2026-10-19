@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/commitment.schema.json",
+  "schema_version": "1.0.0",
+  "id": "cmt-pilot-2023-psoe-institutions-01",
+  "election_id": "es-gen-2023",
+  "party_id": "psoe",
+  "topic_id": "institutions-rights",
+  "pledge": {
+    "summary_es": "Rechazo de una ley de amnistía por considerarla fuera del marco constitucional durante la campaña previa a las elecciones generales de 2023.",
+    "verbatim_quote": null,
+    "source_id": "src-2023-psoe-prog",
+    "page": null,
+    "section": "Compromiso de campaña"
+  },
+  "governance_context": {
+    "role": "governing_senior",
+    "legislature": "XV",
+    "period_start": "2023-11-17",
+    "period_end": "2026-10-01",
+    "jurisdiction": "state"
+  },
+  "status": "contrary_action_taken",
+  "evidence": [
+    {
+      "source_type": "boe",
+      "official_id": "BOE-A-2024-11774",
+      "title": "Ley Orgánica 1/2024, de 10 de junio, de amnistía para la normalización institucional, política y social en Cataluña",
+      "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-11774",
+      "date": "2024-06-11",
+      "finding_summary_es": "Promulgación de la ley orgánica de amnistía registrada por el Grupo Parlamentario Socialista y aprobada en votación plenaria del Congreso con 177 votos favorables."
+    },
+    {
+      "source_type": "bocg_vote",
+      "official_id": "BOCG-15-DS-C-37",
+      "title": "Diario de Sesiones del Congreso de los Diputados, Pleno núm. 37, votación de dictamen de la proposición de ley orgánica",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DS_P_37.PDF",
+      "date": "2024-05-30",
+      "finding_summary_es": "Votación nominal en el Congreso de los Diputados donde el Grupo Parlamentario Socialista emitió voto afirmativo unánime."
+    }
+  ],
+  "editorial_review": {
+    "drafter": "researcher-01",
+    "reviewed_by_1": "auditor-citation-01",
+    "reviewed_by_2": "auditor-neutrality-02",
+    "lead_editor_signoff": "editor-in-chief",
+    "review_date": "2026-10-15",
+    "agreement_status": "unanimous"
+  }
+}

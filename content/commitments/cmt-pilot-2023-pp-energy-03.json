@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/commitment.schema.json",
+  "schema_version": "1.0.0",
+  "id": "cmt-pilot-2023-pp-energy-03",
+  "election_id": "es-gen-2023",
+  "party_id": "pp",
+  "topic_id": "climate-energy",
+  "pledge": {
+    "summary_es": "Frenar el desmantelamiento de las centrales nucleares y prolongar su vida útil para garantizar la seguridad de suministro.",
+    "verbatim_quote": "Revertiremos el desmantelamiento de las centrales nucleares y prolongaremos su vida útil para garantizar la seguridad de suministro...",
+    "source_id": "src-2023-pp-prog",
+    "page": 39,
+    "section": "Medida 14"
+  },
+  "governance_context": {
+    "role": "opposition",
+    "legislature": "XV",
+    "period_start": "2023-11-17",
+    "period_end": "2026-10-01",
+    "jurisdiction": "state"
+  },
+  "status": "blocked_by_parliament",
+  "evidence": [
+    {
+      "source_type": "bocg_initiative",
+      "official_id": "BOCG-15-D-78",
+      "title": "BOCG Congreso de los Diputados, Serie D, núm. 78, Proposición no de Ley relativa al mantenimiento de la energía nuclear",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/BOCG/D/BOCG-15-D-78.PDF",
+      "date": "2024-03-12",
+      "finding_summary_es": "Registro de iniciativa parlamentaria por el Grupo Popular instando al Gobierno a paralizar el calendario de cierre nuclear."
+    },
+    {
+      "source_type": "bocg_vote",
+      "official_id": "BOCG-15-DS-C-21",
+      "title": "Diario de Sesiones del Congreso de los Diputados, Pleno núm. 21",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DS_P_21.PDF",
+      "date": "2024-03-19",
+      "finding_summary_es": "Votación plenaria en el Congreso: 168 votos a favor (PP, Vox, UPN) y 177 en contra (PSOE, Sumar y socios parlamentarios). Iniciativa rechazada."
+    }
+  ],
+  "editorial_review": {
+    "drafter": "researcher-01",
+    "reviewed_by_1": "auditor-citation-01",
+    "reviewed_by_2": "auditor-neutrality-02",
+    "lead_editor_signoff": "editor-in-chief",
+    "review_date": "2026-10-15",
+    "agreement_status": "unanimous"
+  }
+}
