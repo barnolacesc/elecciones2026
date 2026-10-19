@@ -30,3 +30,28 @@ require editorial review of this design and requirement delta.
 - [ ] Review a separate proposal-level design/spec for initiative extraction,
   exact page evidence, independent statement and relationship approvals, and
   correction invalidation before implementing the full 2023 corpus.
+
+## P1.1 — Proposal and comparison method (stacked on P0.1)
+
+- [x] Draft the initiative, topic-search and relationship requirement deltas.
+  Evidence: `specs/editorial-statements/spec.md` and
+  `specs/programme-comparison/spec.md` in this change.
+- [x] Draft the P1 evidence flow, fail-closed projection and fixture plan.
+  Evidence: the P1.1 section of `design.md`; no source or claim changed.
+- [ ] Owner/editorial review: resolve search stopping rules, proposal
+  granularity, relationship approval roles and public coverage wording.
+- [ ] Reconcile this P1 delta with P0.1 after PR #114 lands; complete the
+  reviewed OpenSpec change before any 2023 corpus implementation.
+- [ ] Implement and test the versioned private extraction/coverage queue and
+  independent statement/relationship gates using fictional fixtures only.
+- [ ] Populate real 2023 candidates and relationships only after P0 rights,
+  exact-source and human editorial gates; keep public activation separate.
+
+P1.1 validation (2026-10-19): a local structure check found four statement
+requirements/seven scenarios and three comparison requirements/six scenarios;
+it confirmed the draft status and dependency gates. `git diff --check` passed.
+No implementation, source, editorial record or public output changed.
+OpenSpec CLI and project Python 3.14/pytest are unavailable on this host.
+The stacked PR has no automatic CI because `.github/workflows/ci.yml` targets
+pull requests into `main` only; run CI after PR #114 lands and this PR is
+retargeted. CI will remain engineering evidence, not human review.
