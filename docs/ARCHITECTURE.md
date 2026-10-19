@@ -26,6 +26,14 @@ Comparison runs in the browser. No user account, database, PDF parser, editorial
 
 Build phone layouts first at 360–430 CSS px. Stack party cards, keep source links near claims, use 44-px touch targets, and avoid horizontal scroll. Add wide layouts as progressive enhancement. Aim for WCAG 2.2 AA and verify the actual flow.
 
+## Public write service (Package E8.5 Proposal Box)
+
+The improvement proposal box (`/propuestas/`) introduces an untrusted public write boundary operating under strict zero-PII and defense-in-depth principles:
+- **Zero PII & Data Minimization:** Submissions require no accounts, emails, or names. Automated regex scrubbing sanitizes accidental emails and Spanish phone numbers.
+- **Anti-Abuse & Anti-Replay:** Ingestion validates HMAC single-use tokens, time-locks ($\ge 3.0$s, $\le 600$s), anti-replay nonces, and IPv4 `/32` / IPv6 `/64` subnet rate limits (maximum 3 requests/hour). Spambots filling the hidden honeypot are silently tagged as spam.
+- **Storage Isolation:** Local SQLite repository (`data/feedback.db`) operates in WAL mode (`PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL;`) with 100% parameterized SQL queries, completely isolated from static site build artifacts.
+- **Offline Triage:** Maintainers process proposals offline using `tools/feedback_triage.py`. No web administration dashboard is exposed.
+
 ## Edge, domain, and service levels
 
 The owner registered `eleccionesespaña2026.es` at DonDominio. Its ASCII canonical base is `https://xn--eleccionesespaa2026-83b.es`; authenticated staging uses `preview.xn--eleccionesespaa2026-83b.es`. Cloudflare delegation and proxied preview DNS are active. Origin TLS uses Full (strict) and global Authenticated Origin Pulls (AOP), as reported by the owner. The preview requires HTTP Basic authentication and sends no-store/noindex. Owner-selected manual delivery passed restricted SSH, origin health and exact external home-content verification in [run 38182379207](https://github.com/c2ventures/elecciones2026/actions/runs/38182379207). See the [2026-10-12 setup record](../ops/SERVER-MIGRATION.md). DNSSEC and public routing remain unverified. Defensive domains remain proposals, not acquired domains. See [IONOS delivery setup](../ops/IONOS-DELIVERY.md).
