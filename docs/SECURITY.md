@@ -17,6 +17,7 @@ The public MVP operates on a zero-personal-data, static-serving model:
 - **In-Memory Comparison:** Topic and party selections exist solely in browser DOM memory. Shareable links encode selections in the URL query string solely to allow recipients to reproduce the view; selections are never stored on an origin database.
 - **Technical Logging Boundary:** Earlier MVP planning allowed anonymized technical connection logs for up to 14 days. Quiz delivery has a stricter zero-tracking requirement and cannot use that retention policy. The shared static Nginx origin now disables access logging and discards request-error logs for all routes, including shared quiz assets. Startup/configuration diagnostics and identifier-free aggregate health checks remain available. This local configuration does not verify Cloudflare, IONOS host logging, monitoring, or error-service settings; those require recorded review before G5.
 - **Future Feature Isolation:** The Phase 2 Quiz (Epic E4) evaluates answers strictly client-side in browser memory to protect Article 9 GDPR special category data (political opinions). Optional discrepancy reporting (Epic E8) requires a dedicated Data Protection Impact Assessment (DPIA) before any implementation.
+- **Improvement Proposal Box (Package E8.5):** The public proposal box (`/propuestas/`) operates without user accounts, emails, or names. Automated regex scrubbing strips accidental emails and Spanish phone numbers. Submissions are protected via single-use HMAC nonces, time-lock bounds ($\ge 3$s), and IPv4 `/32` / IPv6 `/64` subnet rate limits (3 submissions/hour). Spambots are trapped with invisible honeypots. Data persists in Local SQLite with 100% parameterized queries, and triage is offline.
 - **Official Privacy Notice:** The binding Spanish public privacy notice text is documented in `docs/DECISION-RECORD.md` Section 5.5.
 
 ## Threat checks
@@ -26,6 +27,7 @@ The public MVP operates on a zero-personal-data, static-serving model:
 | False or changed programme | Official source, URL, hash, version, independent review |
 | Partisan or misleading summary | Editorial method, qualifications, equal presentation, correction review |
 | XSS or injection | Typed records, output escaping, restrictive CSP, hostile-input tests |
+| Untrusted feedback write / flood | Package E8.5: Single-use HMAC nonces, time-lock ($\ge 3$s), subnet rate limits, SimHash deduplication, parameterized queries, and offline CLI triage |
 | CI or dependency compromise | Least privilege, pinned versions/actions, scan reports, protected release |
 | Malicious PDF or URL | Isolated extraction, resource limits, SSRF guard, failure tests |
 | Traffic flood / denial-of-wallet | Edge cache (>=95% steady), targeted rate rules, burst tests, €50/mo hard cost ceiling |

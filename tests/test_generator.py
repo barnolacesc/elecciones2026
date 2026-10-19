@@ -404,6 +404,32 @@ class TestStaticSiteGenerator(unittest.TestCase):
         self.assertIn("Contact: mailto:seguridad@elecciones2026.es", content)
         self.assertIn("Expires: 2026-12-31T23:59:59.000Z", content)
 
+    def test_task_e8_5_proposals_page_generation(self) -> None:
+        """Verify Package E8.5: propuestas/index.html is generated with correct form, honeypot, and canonical."""
+        build_site(
+            root_dir=ROOT_DIR,
+            output_dir=self.output_dir,
+            build_date="2026-10-09",
+        )
+
+        prop_path = self.output_dir / "propuestas" / "index.html"
+        self.assertTrue(prop_path.is_file())
+        content = prop_path.read_text(encoding="utf-8")
+
+        self.assertIn('<html lang="es">', content)
+        self.assertIn('<link rel="canonical" href="https://xn--eleccionesespaa2026-83b.es/propuestas/">', content)
+        self.assertIn('Buzón de propuestas', content)
+        self.assertIn('name="_hp_company"', content)
+        self.assertIn('minlength="10"', content)
+        self.assertIn('maxlength="600"', content)
+        self.assertIn('form id="proposal-form"', content)
+        self.assertIn('Buzón de propuestas</a>', content)
+
+        # Also check sitemap.xml contains /propuestas/
+        sitemap_path = self.output_dir / "sitemap.xml"
+        sitemap_content = sitemap_path.read_text(encoding="utf-8")
+        self.assertIn("https://xn--eleccionesespaa2026-83b.es/propuestas/", sitemap_content)
+
 
 if __name__ == "__main__":
     unittest.main()

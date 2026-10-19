@@ -1063,6 +1063,7 @@ def render_base(
         <a class="nav-link" href="{{ root_path }}metodo/">{{ nav_methodology }}</a>
         <a class="nav-link" href="{{ root_path }}fuentes/">{{ nav_sources }}</a>
         <a class="nav-link" href="{{ root_path }}correcciones/">{{ nav_corrections }}</a>
+        <a class="nav-link" href="{{ root_path }}propuestas/">{{ nav_feedback }}</a>
           </div>
         </details>
       </nav>
@@ -1075,6 +1076,7 @@ def render_base(
     <div class="footer-inner">
       <span>{{ footer_org }}</span>
       <span>{{ footer_values }}</span>
+      <a href="{{ root_path }}propuestas/" class="footer-link">{{ nav_feedback }}</a>
     </div>
   </footer>
 </body>
@@ -1099,6 +1101,7 @@ def render_base(
         "{{ nav_sources }}": escape(ctx.i18n["nav"]["sources"]),
         "{{ nav_correcciones }}": escape(ctx.i18n["nav"]["corrections"]),
         "{{ nav_corrections }}": escape(ctx.i18n["nav"]["corrections"]),
+        "{{ nav_feedback }}": escape(ctx.i18n.get("feedback", {}).get("link_text", "Buzón de propuestas")),
         "{{ footer_org }}": footer_org,
         "{{ footer_values }}": footer_values,
         "{{ content }}": content,
@@ -2068,6 +2071,212 @@ def render_corrections_page(ctx: SiteContext) -> str:
     )
 
 
+def render_proposals_page(ctx: SiteContext) -> str:
+    """Render propuestas/index.html with the Improvement Proposal Box (Package E8.5)."""
+    feedback_i18n = ctx.i18n.get("feedback", {})
+    title = feedback_i18n.get("title", "Buzón de propuestas de mejora")
+    subtitle = feedback_i18n.get("subtitle", "¿Qué te gustaría ver diferente en esta aplicación?")
+    intro = feedback_i18n.get("intro", "Tu opinión nos ayuda a hacer esta herramienta más útil y clara. Leemos todas las propuestas para priorizar nuevas funciones y ajustes.")
+    privacy_notice = feedback_i18n.get("privacy_notice", "Aviso: No introduzcas datos personales ni información confidencial. No realizamos respuestas personalizadas.")
+
+    hero_eyebrow = "PARTICIPACIÓN Y MEJORA CONTINUA"
+    page_title = f"{title} · Elecciones 2026"
+    page_description = "Buzón de propuestas y sugerencias anónimas para la mejora continua del comparador de programas electorales de las Elecciones Generales 2026."
+
+    content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
+      <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="proposals-title">
+      <p class="hero-eyebrow">{hero_eyebrow}</p>
+      <h1 id="proposals-title" class="hero-title">{escape(title)}</h1>
+      <p class="hero-intro">{escape(subtitle)}</p>
+    </section>
+
+    <section style="margin-bottom: var(--space-8); max-width: 680px;">
+      <article class="party-card">
+        <p class="party-statement">{escape(intro)}</p>
+        <div class="party-caveat" style="margin-top: var(--space-3);" role="note">
+          <strong>Aviso de privacidad:</strong> {escape(privacy_notice)}
+        </div>
+
+        <form id="proposal-form" method="POST" action="/api/propuestas" style="margin-top: var(--space-6);">
+          <!-- Honeypot anti-spam trap (invisible to humans, filled by automated spambots) -->
+          <div style="display:none !important; position:absolute; left:-9999px;" aria-hidden="true">
+            <label for="_hp_company">Empresa / Sitio web:</label>
+            <input type="text" name="_hp_company" id="_hp_company" tabindex="-1" autocomplete="off" value="">
+          </div>
+
+          <!-- Cryptographic anti-replay token and client timing metadata -->
+          <input type="hidden" name="token" id="proposal-token" value="">
+          <input type="hidden" name="completion_time_ms" id="completion-time" value="0">
+
+          <div style="margin-bottom: var(--space-4);">
+            <label for="proposal-category" style="display: block; font-weight: bold; margin-bottom: var(--space-2);">
+              Categoría de la propuesta:
+            </label>
+            <select id="proposal-category" name="category" class="filter-select" style="width: 100%; min-height: 44px; padding: var(--space-2) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: var(--font-size-base); background-color: var(--color-bg-surface); color: var(--color-text-primary);">
+              <option value="general">General</option>
+              <option value="comparator">Comparador de medidas</option>
+              <option value="sources">Fuentes y citas originales</option>
+              <option value="ui">Diseño, contraste y usabilidad</option>
+              <option value="methodology">Metodología y criterios neutrales</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: var(--space-4);">
+            <label for="proposal-text" style="display: block; font-weight: bold; margin-bottom: var(--space-2);">
+              Tu propuesta de mejora:
+            </label>
+            <textarea id="proposal-text" name="text" rows="5" minlength="10" maxlength="600" required placeholder="Describe qué cambio, función o ajuste propones..." style="width: 100%; box-sizing: border-box; padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: inherit; font-size: var(--font-size-base); background-color: var(--color-bg-surface); color: var(--color-text-primary); resize: vertical;"></textarea>
+            <div id="char-counter" style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--space-1);" aria-live="polite">
+              0 / 600 caracteres (mínimo 10)
+            </div>
+          </div>
+
+          <div id="proposal-feedback-msg" style="display: none; margin-bottom: var(--space-4); padding: var(--space-3); border-radius: var(--radius-sm);" role="status"></div>
+
+          <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+            <button type="submit" id="proposal-submit-btn" class="nav-link" style="min-height: 44px; padding: 0 var(--space-6); background-color: var(--color-text-primary); color: var(--color-bg-canvas); border: none; cursor: pointer; font-weight: bold;" disabled aria-disabled="true">
+              Enviar propuesta
+            </button>
+            <a href="../" class="nav-link" style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 var(--space-4);">
+              Cancelar
+            </a>
+          </div>
+        </form>
+
+        <div id="proposal-success-card" style="display: none; margin-top: var(--space-4);" role="status" aria-live="polite">
+          <div class="party-caveat" style="border-left-color: #107c41;">
+            <h2 style="font-size: var(--font-size-base); margin: 0 0 var(--space-2); color: var(--color-text-primary);">¡Muchas gracias por tu idea!</h2>
+            <p style="margin: 0 0 var(--space-3);">Hemos registrado tu propuesta en nuestro buzón. El equipo la revisará periódicamente para valorar su incorporación al comparador.</p>
+            <a href="../" class="nav-link" style="display: inline-flex; min-height: 44px; align-items: center; font-weight: bold;">← Volver al comparador</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <script>
+      (function() {{
+        var form = document.getElementById('proposal-form');
+        var textarea = document.getElementById('proposal-text');
+        var counter = document.getElementById('char-counter');
+        var submitBtn = document.getElementById('proposal-submit-btn');
+        var feedbackMsg = document.getElementById('proposal-feedback-msg');
+        var successCard = document.getElementById('proposal-success-card');
+        var tokenInput = document.getElementById('proposal-token');
+        var timeInput = document.getElementById('completion-time');
+
+        if (!form || !textarea) return;
+
+        var startTime = Date.now();
+        var cooldownKey = 'elecciones_proposal_cooldown';
+        var lastSubmission = localStorage.getItem(cooldownKey);
+
+        if (lastSubmission && (Date.now() - parseInt(lastSubmission, 10) < 300000)) {{
+          if (feedbackMsg) {{
+            feedbackMsg.style.display = 'block';
+            feedbackMsg.style.backgroundColor = 'var(--color-bg-surface)';
+            feedbackMsg.style.border = '1px solid var(--color-border)';
+            feedbackMsg.textContent = 'Ya has enviado una propuesta recientemente. Por favor, espera unos minutos antes de enviar otra.';
+          }}
+        }}
+
+        fetch('/api/propuestas/token', {{ method: 'GET' }})
+          .then(function(res) {{ return res.json(); }})
+          .then(function(data) {{
+            if (data && data.token && tokenInput) {{
+              tokenInput.value = data.token;
+            }}
+          }})
+          .catch(function() {{
+            if (tokenInput && !tokenInput.value) {{
+              tokenInput.value = Math.floor(Date.now() / 1000) + '.' + Math.random().toString(36).substring(2);
+            }}
+          }});
+
+        textarea.addEventListener('input', function() {{
+          var len = textarea.value.trim().length;
+          counter.textContent = len + ' / 600 caracteres (mínimo 10)';
+          if (len >= 10 && len <= 600) {{
+            submitBtn.removeAttribute('disabled');
+            submitBtn.setAttribute('aria-disabled', 'false');
+          }} else {{
+            submitBtn.setAttribute('disabled', 'disabled');
+            submitBtn.setAttribute('aria-disabled', 'true');
+          }}
+        }});
+
+        form.addEventListener('submit', function(e) {{
+          e.preventDefault();
+          var len = textarea.value.trim().length;
+          if (len < 10 || len > 600) return;
+
+          submitBtn.setAttribute('disabled', 'disabled');
+          submitBtn.textContent = 'Enviando propuesta...';
+          timeInput.value = Date.now() - startTime;
+
+          var payload = {{
+            text: textarea.value,
+            category: document.getElementById('proposal-category').value,
+            completion_time_ms: parseInt(timeInput.value, 10),
+            honeypot: document.getElementById('_hp_company').value,
+            token: tokenInput.value
+          }};
+
+          fetch('/api/propuestas', {{
+            method: 'POST',
+            headers: {{
+              'Content-Type': 'application/json; charset=utf-8',
+              'X-Requested-With': 'Elections2026-Feedback'
+            }},
+            body: JSON.stringify(payload)
+          }})
+          .then(function(response) {{
+            return response.json().then(function(data) {{
+              return {{ status: response.status, data: data }};
+            }});
+          }})
+          .then(function(res) {{
+            if (res.status === 201 || (res.data && res.data.success)) {{
+              localStorage.setItem(cooldownKey, Date.now().toString());
+              form.style.display = 'none';
+              if (successCard) successCard.style.display = 'block';
+            }} else {{
+              submitBtn.removeAttribute('disabled');
+              submitBtn.textContent = 'Enviar propuesta';
+              if (feedbackMsg) {{
+                feedbackMsg.style.display = 'block';
+                feedbackMsg.style.backgroundColor = '#fde7e9';
+                feedbackMsg.style.color = '#a80000';
+                feedbackMsg.textContent = (res.data && res.data.user_message_es) || 'No se pudo enviar la propuesta. Inténtalo de nuevo más tarde.';
+              }}
+            }}
+          }})
+          .catch(function() {{
+            submitBtn.removeAttribute('disabled');
+            submitBtn.textContent = 'Enviar propuesta';
+            if (feedbackMsg) {{
+              feedbackMsg.style.display = 'block';
+              feedbackMsg.style.backgroundColor = '#fde7e9';
+              feedbackMsg.style.color = '#a80000';
+              feedbackMsg.textContent = 'Error de conexión. Por favor, comprueba tu conexión y vuelve a intentarlo.';
+            }}
+          }});
+        }});
+      }})();
+    </script>"""
+
+    return render_base(
+        ctx=ctx,
+        title=page_title,
+        description=page_description,
+        canonical_path="/propuestas/",
+        content=content,
+        root_path="../",
+    )
+
+
 
 def render_sitemap(ctx: SiteContext, routes: list[tuple[str, str, str]]) -> str:
     """Render accurate sitemap.xml with all canonical routes and priorities."""
@@ -2477,6 +2686,11 @@ def build_site(
         corr_html = render_corrections_page(ctx)
         write_file_deterministic(staging_dir / "correcciones" / "index.html", corr_html)
         routes.append((f"{ctx.canonical_base}/correcciones/", ctx.build_date, "daily"))
+
+        # 9. Proposals page (/propuestas/)
+        proposals_html = render_proposals_page(ctx)
+        write_file_deterministic(staging_dir / "propuestas" / "index.html", proposals_html)
+        routes.append((f"{ctx.canonical_base}/propuestas/", ctx.build_date, "weekly"))
 
         if budget_bundle is not None:
             from elecciones2026.budget import copy_reviewed_bundle

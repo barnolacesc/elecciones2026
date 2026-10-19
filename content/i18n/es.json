@@ -92,5 +92,32 @@
   "footer": {
     "org": "Elecciones 2026 · Proyecto cívico independiente",
     "values": "Neutralidad · Fuentes directas · Transparencia"
+  },
+  "feedback": {
+    "link_text": "Buzón de propuestas",
+    "link_aria": "¿Tienes alguna sugerencia de mejora? Cuéntanos en el buzón de propuestas",
+    "title": "Buzón de propuestas de mejora",
+    "subtitle": "¿Qué te gustaría ver diferente en esta aplicación?",
+    "intro": "Tu opinión nos ayuda a hacer esta herramienta más útil y clara. Leemos todas las propuestas para priorizar nuevas funciones y ajustes.",
+    "privacy_notice": "Aviso: No introduzcas datos personales ni información confidencial. No realizamos respuestas personalizadas.",
+    "category_label": "Categoría (opcional):",
+    "categories": {
+      "general": "General",
+      "comparator": "Comparador",
+      "sources": "Fuentes",
+      "ui": "Diseño y usabilidad",
+      "methodology": "Metodología"
+    },
+    "text_label": "Tu propuesta de mejora:",
+    "text_placeholder": "Describe qué cambio, función o ajuste propones...",
+    "counter_format": "{current} / {max} caracteres (mínimo {min})",
+    "submit_btn": "Enviar propuesta",
+    "submitting_btn": "Enviando propuesta...",
+    "cancel_btn": "Cancelar",
+    "return_btn": "Volver al comparador",
+    "success_title": "¡Muchas gracias por tu idea!",
+    "success_text": "Hemos registrado tu propuesta en nuestro buzón. El equipo la revisará periódicamente para valorar su incorporación al proyecto.",
+    "cooldown_title": "Propuesta enviada recientemente",
+    "cooldown_text": "Ya has enviado una propuesta hace unos momentos. Para evitar saturaciones, por favor espera unos minutos antes de enviar otra sugerencia."
   }
 }
