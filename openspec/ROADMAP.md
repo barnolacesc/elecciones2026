@@ -1,5 +1,27 @@
 # Project delivery roadmap
 
+## 2023-first OpenSpec alignment (2026-10-19)
+
+The [current product priority](../docs/PRODUCT-ROADMAP-2023-2026.md) is a
+complete, reviewed `es-gen-2023` comparator before a 2026 corpus. The table
+below maps **every phase** to an OpenSpec change. It supersedes the delivery
+order later in this file where they conflict; old G0–G10 gates and package
+history remain as audit context, not claims of completion.
+
+| Phase | OpenSpec change | Readiness / required next artifact |
+|---|---|---|
+| P0–P1: 2023 coverage, initiatives, comparisons | `2023-corpus-completion` plus existing `mvp-programme-comparison` | New proposal only; draft/review specs, design and tasks before implementation. Existing technical pipeline does not establish complete editorial coverage. |
+| P2: mobile comparator | `mvp-programme-comparison` | Existing implementation; audit and test actual phone flow against P2 acceptance. New bounded changes require updated tasks/specs. |
+| P3: reviewed quiz | `programme-alignment-quiz` | Mock foundation exists; reviewed 2023 question set and G5 release decision remain pending. |
+| P4: 2026 refresh and budget reuse | `election-corpus-refresh` plus existing `budget-context` | New refresh proposal only; complete specs/design/tasks after 2023 model is reviewed. Budget values require period/source reconciliation. |
+| P5: multi-source polls | `multi-source-poll-observatory` superseding CIS-only scope of `cis-data-observatory` | New proposal only; define a comparable, rights-safe method before implementation. |
+| P6: pactometer/hemicycle | `seat-coalition-simulator` | Existing private manual simulator foundation; reviewed rule/UX release gate remains. |
+
+No proposal-only change is implementation-ready. Each scheduled development run
+selects one bounded package, links its PR to the applicable change and tasks,
+and records evidence. Editorial approval, merge and release are distinct gates;
+automated runs cannot grant them. See the [daily development contract](../docs/PRODUCT-ROADMAP-2023-2026.md#daily-development-contract).
+
 **Delivery status (2026-10-12):** Comparator, source-processing tools, private IONOS hosting, budget view implementation, and the mock quiz foundation are merged. Unsupported 2023 approvals are withdrawn pending real review. Public release, live capacity/recovery, and real quiz content remain open. Use [GitHub task index #78](https://github.com/c2ventures/elecciones2026/issues/78) for remaining work.
 
 **Plan status:** planning draft. This file orders work across OpenSpec changes. It is not an OpenSpec change artifact. Each feature receives its own proposal, specs, design, and tasks before an agent implements it. Do not mark a future proposal as implementation-ready.
