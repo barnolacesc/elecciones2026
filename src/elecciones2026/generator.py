@@ -1013,6 +1013,7 @@ def render_base(
         preview_banner_text = "ENSAYO PILOTO PRIVADO · Revisión pendiente"
         footer_org = "Generales 2023 (piloto) · Ensayo privado y confidencial"
         footer_values = "Revisión humana y de derechos pendiente · No satisface G2 para 2026"
+        nav_feedback_link = ""
         if "Generales 2023" not in title:
             title = f"{title} · Generales 2023"
     else:
@@ -1023,6 +1024,8 @@ def render_base(
         preview_banner_text = f"{escape(ctx.i18n['preview_banner']['badge'])} · {escape(ctx.i18n['preview_banner']['text'])}"
         footer_org = escape(ctx.i18n["footer"]["org"])
         footer_values = escape(ctx.i18n["footer"]["values"])
+        feedback_label = escape(ctx.i18n.get("feedback", {}).get("link_text", "Buzón de propuestas"))
+        nav_feedback_link = f'\n        <a class="nav-link" href="{root_path}propuestas/">{feedback_label}</a>'
 
     if base_template_file.exists():
         template = base_template_file.read_text(encoding="utf-8")
@@ -1062,8 +1065,7 @@ def render_base(
         <a class="nav-link" href="{{ root_path }}partidos/">{{ nav_parties }}</a>
         <a class="nav-link" href="{{ root_path }}metodo/">{{ nav_methodology }}</a>
         <a class="nav-link" href="{{ root_path }}fuentes/">{{ nav_sources }}</a>
-        <a class="nav-link" href="{{ root_path }}correcciones/">{{ nav_corrections }}</a>
-        <a class="nav-link" href="{{ root_path }}propuestas/">{{ nav_feedback }}</a>
+        <a class="nav-link" href="{{ root_path }}correcciones/">{{ nav_corrections }}</a>{{ nav_feedback_link }}
           </div>
         </details>
       </nav>
@@ -1101,6 +1103,7 @@ def render_base(
         "{{ nav_correcciones }}": escape(ctx.i18n["nav"]["corrections"]),
         "{{ nav_corrections }}": escape(ctx.i18n["nav"]["corrections"]),
         "{{ nav_feedback }}": escape(ctx.i18n.get("feedback", {}).get("link_text", "Buzón de propuestas")),
+        "{{ nav_feedback_link }}": nav_feedback_link,
         "{{ footer_org }}": footer_org,
         "{{ footer_values }}": footer_values,
         "{{ content }}": content,
@@ -2686,10 +2689,11 @@ def build_site(
         write_file_deterministic(staging_dir / "correcciones" / "index.html", corr_html)
         routes.append((f"{ctx.canonical_base}/correcciones/", ctx.build_date, "daily"))
 
-        # 9. Proposals page (/propuestas/)
-        proposals_html = render_proposals_page(ctx)
-        write_file_deterministic(staging_dir / "propuestas" / "index.html", proposals_html)
-        routes.append((f"{ctx.canonical_base}/propuestas/", ctx.build_date, "weekly"))
+        # 9. Proposals page (/propuestas/) - only for 2026 application
+        if ctx.election_id != "es-gen-2023":
+            proposals_html = render_proposals_page(ctx)
+            write_file_deterministic(staging_dir / "propuestas" / "index.html", proposals_html)
+            routes.append((f"{ctx.canonical_base}/propuestas/", ctx.build_date, "weekly"))
 
         if budget_bundle is not None:
             from elecciones2026.budget import copy_reviewed_bundle
