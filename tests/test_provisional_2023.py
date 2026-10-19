@@ -3,7 +3,7 @@ import re
 import unittest
 from pathlib import Path
 
-from elecciones2026.provisional2023 import load, load_budget, load_simulator, comparison, quiz, sources, budget, simulator, write
+from elecciones2026.provisional2023 import load, load_budget, load_simulator, comparison, quiz, sources, budget, simulator, commitments, write
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -50,6 +50,8 @@ class ProvisionalPilotTests(unittest.TestCase):
         self.assertIn('href="../presupuestos/"', questions)
         self.assertIn('href="./simulador/"', home)
         self.assertIn('href="../simulador/"', questions)
+        self.assertIn('href="./compromisos/"', home)
+        self.assertIn('href="../compromisos/"', questions)
 
     def test_quiz_options_balanced_scale(self):
         data = load(ROOT)
@@ -104,6 +106,18 @@ class ProvisionalPilotTests(unittest.TestCase):
         self.assertIn('href="../simulador/"', sim_html)
         self.assertIn("Reglamento del Congreso", sim_html)
 
+    def test_commitments_page_rendering_and_navigation(self):
+        from elecciones2026.commitments import load_all_commitments
+        all_commitments = load_all_commitments(ROOT / "content/commitments")
+        cmt_html = commitments(all_commitments)
+        self.assertIn("Seguimiento de compromisos previos", cmt_html)
+        self.assertIn("Criterio metodológico estricto", cmt_html)
+        self.assertIn('id="commitment-topic-filter"', cmt_html)
+        self.assertIn('id="commitment-party-filter"', cmt_html)
+        self.assertIn('id="commitment-status-filter"', cmt_html)
+        self.assertEqual(cmt_html.count('class="commitment-card"'), 10)
+        self.assertIn('href="../compromisos/"', cmt_html)
+
     def test_write_provisional_pilot_generates_budget_and_assets(self):
         import tempfile
         data = load(ROOT)
@@ -113,6 +127,7 @@ class ProvisionalPilotTests(unittest.TestCase):
             self.assertTrue((staging / "index.html").exists())
             self.assertTrue((staging / "cuestionario/index.html").exists())
             self.assertTrue((staging / "fuentes/index.html").exists())
+            self.assertTrue((staging / "compromisos/index.html").exists())
             self.assertTrue((staging / "presupuestos/index.html").exists())
             self.assertTrue((staging / "presupuestos/grafico.svg").exists())
             self.assertTrue((staging / "budget-chart.js").exists())
@@ -123,6 +138,10 @@ class ProvisionalPilotTests(unittest.TestCase):
             self.assertTrue((staging / "pilot-2023.css").exists())
             self.assertTrue((staging / "pilot-2023.js").exists())
             self.assertTrue((staging / "pilot-2023-data.json").exists())
+            cmt_content = (staging / "compromisos/index.html").read_text(encoding="utf-8")
+            self.assertIn("Seguimiento de compromisos previos", cmt_content)
+            self.assertIn('id="commitment-topic-filter"', cmt_content)
+            self.assertEqual(cmt_content.count('class="commitment-card"'), 10)
             svg_content = (staging / "presupuestos/grafico.svg").read_text(encoding="utf-8")
             self.assertIn("<svg", svg_content)
             self.assertIn("¿Cómo se reparte el presupuesto?", svg_content)

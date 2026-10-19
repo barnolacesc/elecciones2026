@@ -7,6 +7,7 @@ the No-Lie Rule against accusatory framing, and the Four-Eyes dual review protoc
 
 from __future__ import annotations
 
+import html
 import json
 import re
 from dataclasses import dataclass
@@ -396,3 +397,180 @@ def load_all_commitments(directory: str | Path) -> list[CommitmentRecord]:
     for file_path in sorted(dir_path.glob("*.json")):
         commitments.append(load_commitment(file_path))
     return commitments
+
+
+STATUS_LABELS_ES: dict[str, str] = {
+    "enacted_as_pledged": "Cumplida según programa",
+    "partially_enacted": "Parcialmente cumplida",
+    "contrary_action_taken": "Acción contraria documentada",
+    "coalition_compromise": "Modificada por pacto",
+    "blocked_by_parliament": "Iniciada pero rechazada en Cortes",
+    "no_initiative_registered": "Sin iniciativa registrada",
+    "outside_state_competence": "Competencia no estatal",
+    "unassessable": "Evidencia no concluyente",
+}
+
+STATUS_CSS_CLASSES: dict[str, str] = {
+    "enacted_as_pledged": "badge-status-enacted",
+    "partially_enacted": "badge-status-partially",
+    "contrary_action_taken": "badge-status-contrary",
+    "coalition_compromise": "badge-status-compromise",
+    "blocked_by_parliament": "badge-status-blocked",
+    "no_initiative_registered": "badge-status-blocked",
+    "outside_state_competence": "badge-status-blocked",
+    "unassessable": "badge-status-blocked",
+}
+
+GOVERNANCE_ROLE_LABELS_ES: dict[str, str] = {
+    "governing_sole": "Gobierno en solitario",
+    "governing_senior": "Gobierno (socio principal)",
+    "governing_junior": "Gobierno (socio minoritario)",
+    "opposition": "Oposición parlamentaria",
+}
+
+PARTY_NAMES: dict[str, str] = {
+    "psoe": "PSOE",
+    "sumar": "Sumar",
+    "pp": "PP",
+    "vox": "Vox",
+    "erc": "ERC",
+    "pnv": "PNV",
+}
+
+TOPIC_NAMES: dict[str, str] = {
+    "housing": "Vivienda",
+    "education": "Educación",
+    "health-social-services": "Sanidad y servicios sociales",
+    "economy-work-tax": "Economía y empleo",
+    "immigration": "Inmigración",
+    "climate-energy": "Clima y energía",
+    "foreign-policy-eu": "Política exterior y UE",
+    "institutions-rights": "Instituciones y derechos",
+}
+
+
+def _esc(val: object) -> str:
+    return html.escape(str(val), quote=True)
+
+
+def render_commitment_card(cmt: CommitmentRecord) -> str:
+    """Render a single commitment record into an accessible, semantic HTML article."""
+    party_name = PARTY_NAMES.get(cmt.party_id, cmt.party_id.upper())
+    topic_name = TOPIC_NAMES.get(cmt.topic_id, cmt.topic_id)
+    status_label = STATUS_LABELS_ES.get(cmt.status, cmt.status)
+    status_css = STATUS_CSS_CLASSES.get(cmt.status, "badge-status-blocked")
+    role_label = GOVERNANCE_ROLE_LABELS_ES.get(cmt.governance_context.role, cmt.governance_context.role)
+
+    cit_parts = []
+    if cmt.pledge.page:
+        cit_parts.append(f"pág. {cmt.pledge.page}")
+    if cmt.pledge.section:
+        cit_parts.append(cmt.pledge.section)
+    cit_str = f"Programa electoral 2023 ({', '.join(cit_parts)})" if cit_parts else "Programa electoral 2023"
+
+    ev_items_html = []
+    for ev in cmt.evidence:
+        source_label = ev.source_type.upper().replace("_", " ")
+        ev_items_html.append(
+            f'<li class="evidence-item">'
+            f'<span class="evidence-type">[{_esc(source_label)}]</span> '
+            f'<a href="{_esc(ev.url)}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">'
+            f'{_esc(ev.title)} ↗</a> '
+            f'<span class="evidence-date">({_esc(ev.date)})</span>: '
+            f'<span class="evidence-finding">{_esc(ev.finding_summary_es)}</span>'
+            f'</li>'
+        )
+    evidence_html = "\n        ".join(ev_items_html)
+
+    if cmt.governance_context.role == "opposition":
+        context_note = (
+            "Auditoría parlamentaria: Al ser fuerza de oposición sin competencias ejecutivas, "
+            "se audita el sentido de su voto e iniciativas en Cortes (BOCG), no la ausencia de decretos."
+        )
+    else:
+        context_note = (
+            "Auditoría ejecutiva: Al formar parte del Gobierno del Estado, "
+            "se auditan las leyes, decretos y resoluciones promulgadas en el Boletín Oficial del Estado (BOE)."
+        )
+
+    return (
+        f'<article class="commitment-card" data-party="{_esc(cmt.party_id)}" data-topic="{_esc(cmt.topic_id)}" data-status="{_esc(cmt.status)}">\n'
+        f'  <div class="commitment-header">\n'
+        f'    <div class="commitment-badges">\n'
+        f'      <span class="party">{_esc(party_name)}</span>\n'
+        f'      <span class="badge-topic">{_esc(topic_name)}</span>\n'
+        f'      <span class="badge-role">{_esc(role_label)}</span>\n'
+        f'    </div>\n'
+        f'    <span class="badge-status {status_css}">{_esc(status_label)}</span>\n'
+        f'  </div>\n'
+        f'  <div class="commitment-pledge">\n'
+        f'    <p class="pledge-summary"><strong>Compromiso:</strong> {_esc(cmt.pledge.summary_es)}</p>\n'
+        f'    <span class="commitment-pledge-citation">{_esc(cit_str)}</span>\n'
+        f'  </div>\n'
+        f'  <div class="commitment-evidence">\n'
+        f'    <h4>Evidencia soberana primaria (BOE / Cortes Generales)</h4>\n'
+        f'    <ul class="evidence-list">\n'
+        f'        {evidence_html}\n'
+        f'    </ul>\n'
+        f'  </div>\n'
+        f'  <p class="qualification">{_esc(context_note)}</p>\n'
+        f'</article>'
+    )
+
+
+def render_commitments_content(commitments: list[CommitmentRecord]) -> str:
+    """Render the inner HTML body for the commitments explorer."""
+    topics_in_use = sorted({c.topic_id for c in commitments})
+    topic_options = '<option value="all">Todos los temas</option>' + "".join(
+        f'<option value="{_esc(tid)}">{_esc(TOPIC_NAMES.get(tid, tid))}</option>'
+        for tid in topics_in_use
+    )
+
+    parties_in_use = sorted({c.party_id for c in commitments})
+    party_options = '<option value="all">Todas las candidaturas</option>' + "".join(
+        f'<option value="{_esc(pid)}">{_esc(PARTY_NAMES.get(pid, pid.upper()))}</option>'
+        for pid in parties_in_use
+    )
+
+    statuses_in_use = sorted({c.status for c in commitments})
+    status_options = '<option value="all">Todos los estados</option>' + "".join(
+        f'<option value="{_esc(st)}">{_esc(STATUS_LABELS_ES.get(st, st))}</option>'
+        for st in statuses_in_use
+    )
+
+    cards_html = "\n".join(render_commitment_card(c) for c in commitments)
+    total_count = len(commitments)
+
+    return f'''<div class="hero">
+  <p class="eyebrow">Trazabilidad soberana · Legislatura previa (2023–2026)</p>
+  <h1>Seguimiento de compromisos previos</h1>
+  <p>Auditoría documental y contrastada de {total_count} medidas electorales de 2023 mediante fuentes soberanas primarias (BOE y Diario de Sesiones de las Cortes Generales).</p>
+  <div class="warning">
+    <strong>Criterio metodológico estricto:</strong> Este seguimiento no calcula porcentajes agregados de "honestidad" ni juzga intenciones políticas. Se basa exclusivamente en actos jurídicos y votaciones nominales oficiales. Las fuerzas de gobierno se auditan en el BOE y las de la oposición en sus votaciones en el Congreso.
+  </div>
+</div>
+
+<div class="controls">
+  <label>Tema
+    <select id="commitment-topic-filter">{topic_options}</select>
+  </label>
+  <label>Candidatura
+    <select id="commitment-party-filter">{party_options}</select>
+  </label>
+  <label>Estado de cumplimiento
+    <select id="commitment-status-filter">{status_options}</select>
+  </label>
+</div>
+
+<div id="commitments-results" class="commitments-grid">
+{cards_html}
+</div>
+<p id="commitments-empty" class="empty-note" style="display: none; text-align: center; padding: 2rem;">No se encontraron compromisos que coincidan con los filtros seleccionados.</p>'''
+
+
+def render_commitments_page(commitments: list[CommitmentRecord], *, nested: bool = True, image_url: str = "") -> str:
+    """Render the full standalone commitments explorer page using the standard layout frame."""
+    from elecciones2026.provisional2023 import frame
+    content = render_commitments_content(commitments)
+    return frame("Seguimiento de compromisos", content, nested=nested, image_url=image_url)
+

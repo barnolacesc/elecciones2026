@@ -11,6 +11,9 @@ from elecciones2026.commitments import (
     CommitmentValidationError,
     load_all_commitments,
     load_commitment,
+    render_commitment_card,
+    render_commitments_content,
+    render_commitments_page,
     validate_commitment_dict,
 )
 
@@ -149,6 +152,40 @@ class CommitmentTests(unittest.TestCase):
         with self.assertRaises(CommitmentValidationError) as ctx:
             validate_commitment_dict(data_corrupt)
         self.assertIn("Invalid topic_id: 'space-exploration'", str(ctx.exception))
+
+    def test_render_commitment_card_semantic_structure(self):
+        """Verify that commitment card renders accessible semantic HTML with primary evidence links."""
+        records = load_all_commitments(COMMITMENTS_DIR)
+        psoe_rec = next(r for r in records if r.party_id == "psoe")
+        pp_rec = next(r for r in records if r.party_id == "pp")
+
+        card_html_gov = render_commitment_card(psoe_rec)
+        self.assertIn('class="commitment-card"', card_html_gov)
+        self.assertIn('data-party="psoe"', card_html_gov)
+        self.assertIn('data-topic="housing"', card_html_gov)
+        self.assertIn(f'data-status="{psoe_rec.status}"', card_html_gov)
+        self.assertIn('Auditoría ejecutiva', card_html_gov)
+        self.assertIn('https://www.boe.es', card_html_gov)
+        self.assertIn('rel="noopener noreferrer"', card_html_gov)
+        self.assertNotIn("mentira", card_html_gov.lower())
+        self.assertNotIn("engaño", card_html_gov.lower())
+
+        card_html_opp = render_commitment_card(pp_rec)
+        self.assertIn('Auditoría parlamentaria', card_html_opp)
+        self.assertIn('data-party="pp"', card_html_opp)
+
+    def test_render_commitments_page_and_controls(self):
+        """Verify full page rendering with filtering controls, header, and metadata."""
+        records = load_all_commitments(COMMITMENTS_DIR)
+        page_html = render_commitments_page(records)
+        self.assertIn("Seguimiento de compromisos previos", page_html)
+        self.assertIn('id="commitment-topic-filter"', page_html)
+        self.assertIn('id="commitment-party-filter"', page_html)
+        self.assertIn('id="commitment-status-filter"', page_html)
+        self.assertEqual(page_html.count('class="commitment-card"'), 10)
+        self.assertIn('href="../cuestionario/"', page_html)
+        self.assertIn('href="../compromisos/"', page_html)
+        self.assertIn('href="../fuentes/"', page_html)
 
 
 if __name__ == "__main__":
