@@ -51,5 +51,7 @@ P1.1 validation (2026-10-19): a local structure check found four statement
 requirements/seven scenarios and three comparison requirements/six scenarios;
 it confirmed the draft status and dependency gates. `git diff --check` passed.
 No implementation, source, editorial record or public output changed.
-OpenSpec CLI and project Python 3.14/pytest are unavailable on this host;
-the docs-only PR's CI remains separate engineering evidence, not human review.
+OpenSpec CLI and project Python 3.14/pytest are unavailable on this host.
+The stacked PR has no automatic CI because `.github/workflows/ci.yml` targets
+pull requests into `main` only; run CI after PR #114 lands and this PR is
+retargeted. CI will remain engineering evidence, not human review.
