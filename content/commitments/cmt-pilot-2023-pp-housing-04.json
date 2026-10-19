@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/commitment.schema.json",
+  "schema_version": "1.0.0",
+  "id": "cmt-pilot-2023-pp-housing-04",
+  "election_id": "es-gen-2023",
+  "party_id": "pp",
+  "topic_id": "housing",
+  "pledge": {
+    "summary_es": "Aprobar una ley orgánica contra la ocupación ilegal con desalojos en plazo de 24 horas y endurecimiento penal.",
+    "verbatim_quote": "Aprobaremos una Ley Orgánica contra la ocupación ilegal que garantice el desalojo exprés de los okupas en un plazo máximo de 24 horas y endurezca las penas...",
+    "source_id": "src-2023-pp-prog",
+    "page": 49,
+    "section": "Medida 22"
+  },
+  "governance_context": {
+    "role": "opposition",
+    "legislature": "XV",
+    "period_start": "2023-11-17",
+    "period_end": "2026-10-01",
+    "jurisdiction": "state"
+  },
+  "status": "blocked_by_parliament",
+  "evidence": [
+    {
+      "source_type": "bocg_initiative",
+      "official_id": "BOCG-15-SEN-III-4",
+      "title": "BOCG Senado, Serie III, núm. 4, Aprobación de la Proposición de Ley orgánica contra la ocupación ilegal",
+      "url": "https://www.senado.es/legis15/publicaciones/pdf/senado/bocg/BOCG_D_15_4_61.PDF",
+      "date": "2024-02-07",
+      "finding_summary_es": "Aprobación de la proposición de ley en el pleno del Senado por mayoría absoluta del Grupo Parlamentario Popular y remisión al Congreso de los Diputados."
+    },
+    {
+      "source_type": "bocg_initiative",
+      "official_id": "BOCG-15-CONG-B-68-1",
+      "title": "BOCG Congreso de los Diputados, Serie B, núm. 68-1",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/BOCG/B/BOCG-15-B-68-1.PDF",
+      "date": "2024-02-16",
+      "finding_summary_es": "Entrada de la iniciativa en el Congreso de los Diputados con continuas prórrogas del plazo de presentación de enmiendas acordadas por la Mesa del Congreso."
+    }
+  ],
+  "editorial_review": {
+    "drafter": "researcher-01",
+    "reviewed_by_1": "auditor-citation-01",
+    "reviewed_by_2": "auditor-neutrality-02",
+    "lead_editor_signoff": "editor-in-chief",
+    "review_date": "2026-10-15",
+    "agreement_status": "unanimous"
+  }
+}

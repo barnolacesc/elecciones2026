@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/commitment.schema.json",
+  "schema_version": "1.0.0",
+  "id": "cmt-pilot-2023-pp-justice-01",
+  "election_id": "es-gen-2023",
+  "party_id": "pp",
+  "topic_id": "institutions-rights",
+  "pledge": {
+    "summary_es": "Reformar la Ley Orgánica del Poder Judicial para que los doce vocales judiciales sean elegidos directamente por jueces antes de renovar el CGPJ.",
+    "verbatim_quote": "Reformaremos de manera inmediata la Ley Orgánica del Poder Judicial para que los doce vocales de procedencia judicial sean elegidos directamente por los jueces...",
+    "source_id": "src-2023-pp-prog",
+    "page": 21,
+    "section": "Medida 8"
+  },
+  "governance_context": {
+    "role": "opposition",
+    "legislature": "XV",
+    "period_start": "2023-11-17",
+    "period_end": "2026-10-01",
+    "jurisdiction": "state"
+  },
+  "status": "coalition_compromise",
+  "evidence": [
+    {
+      "source_type": "boe",
+      "official_id": "BOE-A-2024-15967",
+      "title": "Ley Orgánica 2/2024, de 1 de agosto, de regulación de la elección de los vocales del CGPJ y de reforma de la Ley Orgánica 6/1985",
+      "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-15967",
+      "date": "2024-08-02",
+      "finding_summary_es": "Acuerdo institucional suscrito con mediación de la Comisión Europea renovando el CGPJ con el modelo parlamentario de 3/5 e introduciendo el mandato de elaborar una propuesta de reforma del sistema electoral."
+    },
+    {
+      "source_type": "bocg_vote",
+      "official_id": "BOCG-15-DS-C-46",
+      "title": "Diario de Sesiones del Congreso de los Diputados, Pleno núm. 46",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DS_P_46.PDF",
+      "date": "2024-07-23",
+      "finding_summary_es": "Votación nominal de aprobación del dictamen donde el Grupo Parlamentario Popular emitió voto afirmativo favorable."
+    }
+  ],
+  "editorial_review": {
+    "drafter": "researcher-01",
+    "reviewed_by_1": "auditor-citation-01",
+    "reviewed_by_2": "auditor-neutrality-02",
+    "lead_editor_signoff": "editor-in-chief",
+    "review_date": "2026-10-15",
+    "agreement_status": "unanimous"
+  }
+}

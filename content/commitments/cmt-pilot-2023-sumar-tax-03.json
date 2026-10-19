@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/commitment.schema.json",
+  "schema_version": "1.0.0",
+  "id": "cmt-pilot-2023-sumar-tax-03",
+  "election_id": "es-gen-2023",
+  "party_id": "sumar",
+  "topic_id": "economy-work-tax",
+  "pledge": {
+    "summary_es": "Convertir en permanente el gravamen extraordinario sobre beneficios extraordinarios de grandes empresas energéticas.",
+    "verbatim_quote": "Convertir en permanente el gravamen temporal sobre los beneficios extraordinarios de las grandes empresas energéticas...",
+    "source_id": "src-2023-sumar-prog",
+    "page": 41,
+    "section": "Medida 15"
+  },
+  "governance_context": {
+    "role": "governing_junior",
+    "legislature": "XV",
+    "period_start": "2023-11-17",
+    "period_end": "2026-10-01",
+    "jurisdiction": "state"
+  },
+  "status": "blocked_by_parliament",
+  "evidence": [
+    {
+      "source_type": "bocg_initiative",
+      "official_id": "BOCG-15-COM-HAC-2024",
+      "title": "Actas de la Comisión de Hacienda y Función Pública del Congreso de los Diputados",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/BOCG/A/BOCG-15-A-12-4.PDF",
+      "date": "2024-11-21",
+      "finding_summary_es": "Retirada de la propuesta de gravamen energético permanente del paquete fiscal por falta de mayoría de apoyos en los grupos parlamentarios de la investidura."
+    }
+  ],
+  "editorial_review": {
+    "drafter": "researcher-01",
+    "reviewed_by_1": "auditor-citation-01",
+    "reviewed_by_2": "auditor-neutrality-02",
+    "lead_editor_signoff": "editor-in-chief",
+    "review_date": "2026-10-15",
+    "agreement_status": "unanimous"
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elecciones2026.es/schemas/commitment.schema.json",
+  "title": "CommitmentRecord",
+  "description": "Source-linked prior election commitment with sovereign evidence, institutional context, and dual-review audit.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "election_id",
+    "party_id",
+    "topic_id",
+    "pledge",
+    "governance_context",
+    "status",
+    "evidence",
+    "editorial_review"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^cmt-[a-z0-9-]+$"
+    },
+    "election_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "party_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "topic_id": {
+      "type": "string",
+      "enum": [
+        "housing",
+        "education",
+        "health-social-services",
+        "economy-work-tax",
+        "immigration",
+        "foreign-policy-eu",
+        "climate-energy",
+        "institutions-rights"
+      ]
+    },
+    "pledge": {
+      "type": "object",
+      "required": ["summary_es", "source_id"],
+      "properties": {
+        "summary_es": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "verbatim_quote": {
+          "type": ["string", "null"],
+          "maxLength": 1000
+        },
+        "source_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "page": {
+          "type": ["integer", "string", "null"]
+        },
+        "section": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "governance_context": {
+      "type": "object",
+      "required": ["role", "legislature"],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "governing_sole",
+            "governing_senior",
+            "governing_junior",
+            "opposition"
+          ]
+        },
+        "legislature": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9-]+$"
+        },
+        "period_start": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "period_end": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "enum": ["state", "regional", "local"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "enacted_as_pledged",
+        "partially_enacted",
+        "contrary_action_taken",
+        "coalition_compromise",
+        "blocked_by_parliament",
+        "no_initiative_registered",
+        "outside_state_competence",
+        "unassessable"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "source_type",
+          "official_id",
+          "title",
+          "url",
+          "date",
+          "finding_summary_es"
+        ],
+        "properties": {
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "boe",
+              "bocg_initiative",
+              "bocg_vote",
+              "igae",
+              "ine"
+            ]
+          },
+          "official_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "finding_summary_es": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "editorial_review": {
+      "type": "object",
+      "required": [
+        "drafter",
+        "reviewed_by_1",
+        "reviewed_by_2",
+        "lead_editor_signoff",
+        "review_date",
+        "agreement_status"
+      ],
+      "properties": {
+        "drafter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_by_1": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_by_2": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lead_editor_signoff": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "agreement_status": {
+          "type": "string",
+          "enum": ["unanimous", "lead_editor_resolved"]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

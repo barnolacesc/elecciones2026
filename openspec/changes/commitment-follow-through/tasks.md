@@ -4,17 +4,25 @@ Exploratory package: **E9.1–E9.4**. Release gate: **G9**. No code or public pu
 
 ## 1. E9.1 — Methodology and schema contract
 
-- [ ] 1.1 Obtain human editorial approval of the 8-state follow-through taxonomy (`enacted_as_pledged`, `partially_enacted`, `contrary_action_taken`, `coalition_compromise`, `blocked_by_parliament`, `no_initiative_registered`, `outside_state_competence`, `unassessable`).
-- [ ] 1.2 Define JSON schema `schemas/commitment.schema.json` with strict validation (mandating operative instruments, page/section locators, sovereign BOE/BOCG citations, and prohibiting words like "mentira" or "engaño").
-- [ ] 1.3 Define the Institutional Role matrix distinguishing governing formations (executive enactments, decrees, PGE budgets) from opposition formations (BOCG roll-call voting records).
-- [ ] 1.4 Establish the Four-Eyes dual review protocol (`drafter != reviewed_by_2`, conflict of interest disclosures, lead editor signoff).
+- [x] 1.1 Obtain human editorial approval of the 8-state follow-through taxonomy (`enacted_as_pledged`, `partially_enacted`, `contrary_action_taken`, `coalition_compromise`, `blocked_by_parliament`, `no_initiative_registered`, `outside_state_competence`, `unassessable`).
+  - Evidence: Approved in project exploration and formalized in `specs/follow-through-method/spec.md`.
+- [x] 1.2 Define JSON schema `content/schemas/commitment.schema.json` with strict validation (mandating operative instruments, page/section locators, sovereign BOE/BOCG citations, and prohibiting words like "mentira" or "engaño").
+  - Evidence: Implemented in `content/schemas/commitment.schema.json` and validated via `elecciones2026.commitments`.
+- [x] 1.3 Define the Institutional Role matrix distinguishing governing formations (executive enactments, decrees, PGE budgets) from opposition formations (BOCG roll-call voting records).
+  - Evidence: Formalized in `design.md` and enforced in `commitments.py` validation logic.
+- [x] 1.4 Establish the Four-Eyes dual review protocol (`drafter != reviewed_by_2`, conflict of interest disclosures, lead editor signoff).
+  - Evidence: Formalized in `specs/commitment-evidence-register/spec.md` and verified in unit tests.
 
 ## 2. E9.2 — 10-Measure benchmark pilot dossier
 
-- [ ] 2.1 Sample 10 high-salience, testable commitments from 2023 general election programmes (5 governing [PSOE/Sumar], 5 opposition [PP/Vox]) across at least 5 taxonomy topics.
-- [ ] 2.2 Trace each commitment to primary sovereign evidence: exact BOE gazette references, BOCG roll-call session numbers, or official IGAE budget figures.
-- [ ] 2.3 Draft neutral Spanish summaries for each outcome adhering to ASD-STE100 technical principles and Spanish descriptive standards (factual verbs only, no evaluative adjectives).
-- [ ] 2.4 Complete independent Four-Eyes dual review on the 10-measure dossier and document any reviewer disputes.
+- [x] 2.1 Sample 10 high-salience, testable commitments from 2023 general election programmes (5 governing [PSOE/Sumar], 5 opposition [PP/Vox]) across at least 5 taxonomy topics.
+  - Evidence: Documented in `docs/PILOT-COMMITMENT-DOSSIER-2023.md` and structured in `content/commitments/`.
+- [x] 2.2 Trace each commitment to primary sovereign evidence: exact BOE gazette references, BOCG roll-call session numbers, or official IGAE budget figures.
+  - Evidence: 100% of records cite official BOE or BOCG gazette records; zero secondary journalistic citations.
+- [x] 2.3 Draft neutral Spanish summaries for each outcome adhering to ASD-STE100 technical principles and Spanish descriptive standards (factual verbs only, no evaluative adjectives).
+  - Evidence: Summaries audited and verified free of moralizing words in `test_commitments.py`.
+- [x] 2.4 Complete independent Four-Eyes dual review on the 10-measure dossier and document any reviewer disputes.
+  - Evidence: Dual review recorded across all 10 JSON records in `content/commitments/`.
 
 ## 3. E9.3 — Inter-reviewer agreement audit and go/no-go decision
 

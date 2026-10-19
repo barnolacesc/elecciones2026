@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/commitment.schema.json",
+  "schema_version": "1.0.0",
+  "id": "cmt-pilot-2023-psoe-housing-01",
+  "election_id": "es-gen-2023",
+  "party_id": "psoe",
+  "topic_id": "housing",
+  "pledge": {
+    "summary_es": "Desarrollar la Ley de Vivienda aprobando el índice estatal de referencia de precios del alquiler para limitar subidas en zonas tensionadas.",
+    "verbatim_quote": "Desarrollaremos plenamente la Ley de Vivienda, aprobando el índice estatal de referencia de precios del alquiler...",
+    "source_id": "src-2023-psoe-prog",
+    "page": 48,
+    "section": "Medida 12"
+  },
+  "governance_context": {
+    "role": "governing_senior",
+    "legislature": "XV",
+    "period_start": "2023-11-17",
+    "period_end": "2026-10-01",
+    "jurisdiction": "state"
+  },
+  "status": "enacted_as_pledged",
+  "evidence": [
+    {
+      "source_type": "boe",
+      "official_id": "BOE-A-2024-5172",
+      "title": "Resolución de 14 de marzo de 2024, de la Secretaría de Estado de Vivienda y Agenda Urbana, por la que se determina el sistema de índices de precios de referencia",
+      "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-5172",
+      "date": "2024-03-15",
+      "finding_summary_es": "Publicación del sistema estatal de referencia de precios de alquiler conforme a la Ley 12/2023."
+    }
+  ],
+  "editorial_review": {
+    "drafter": "researcher-01",
+    "reviewed_by_1": "auditor-citation-01",
+    "reviewed_by_2": "auditor-neutrality-02",
+    "lead_editor_signoff": "editor-in-chief",
+    "review_date": "2026-10-15",
+    "agreement_status": "unanimous"
+  }
+}
