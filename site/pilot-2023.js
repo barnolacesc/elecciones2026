@@ -1,7 +1,7 @@
 /* Private historical pilot. No analytics, persistence or inferred party positions. */
 (async function () {
   'use strict';
-  const nested = ['/cuestionario/', '/fuentes/', '/presupuestos/'].some(p => location.pathname.includes(p));
+  const nested = ['/cuestionario/', '/fuentes/', '/presupuestos/', '/simulador/', '/compromisos/'].some(p => location.pathname.includes(p));
   const response = await fetch((nested ? '../' : './') + 'pilot-2023-data.json', {cache: 'no-store'});
   if (!response.ok) return;
   const data = await response.json();
@@ -486,5 +486,64 @@
       results.append(element('p', 'Estas respuestas no son un porcentaje de afinidad ni una recomendación de voto.'));
       results.focus();
     });
+  }
+
+  const topicFilter = document.getElementById('commitment-topic-filter');
+  if (topicFilter) {
+    const partyFilter = document.getElementById('commitment-party-filter');
+    const statusFilter = document.getElementById('commitment-status-filter');
+    const commitmentsGrid = document.getElementById('commitments-results');
+    const commitmentsEmpty = document.getElementById('commitments-empty');
+
+    if (commitmentsGrid && partyFilter && statusFilter) {
+      function filterCommitments() {
+        const selectedTopic = topicFilter.value;
+        const selectedParty = partyFilter.value;
+        const selectedStatus = statusFilter.value;
+        let visibleCount = 0;
+
+        const cards = commitmentsGrid.querySelectorAll('.commitment-card');
+        for (const card of cards) {
+          const matchTopic = selectedTopic === 'all' || card.dataset.topic === selectedTopic;
+          const matchParty = selectedParty === 'all' || card.dataset.party === selectedParty;
+          const matchStatus = selectedStatus === 'all' || card.dataset.status === selectedStatus;
+
+          if (matchTopic && matchParty && matchStatus) {
+            card.style.display = '';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        }
+
+        if (commitmentsEmpty) {
+          commitmentsEmpty.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        const params = new URLSearchParams(location.search);
+        if (selectedTopic !== 'all') params.set('topic', selectedTopic); else params.delete('topic');
+        if (selectedParty !== 'all') params.set('party', selectedParty); else params.delete('party');
+        if (selectedStatus !== 'all') params.set('status', selectedStatus); else params.delete('status');
+        const newQuery = params.toString();
+        const newUrl = location.pathname + (newQuery ? '?' + newQuery : '');
+        history.replaceState({}, '', newUrl);
+      }
+
+      const urlParams = new URLSearchParams(location.search);
+      if (urlParams.get('topic') && Array.from(topicFilter.options).some(o => o.value === urlParams.get('topic'))) {
+        topicFilter.value = urlParams.get('topic');
+      }
+      if (urlParams.get('party') && Array.from(partyFilter.options).some(o => o.value === urlParams.get('party'))) {
+        partyFilter.value = urlParams.get('party');
+      }
+      if (urlParams.get('status') && Array.from(statusFilter.options).some(o => o.value === urlParams.get('status'))) {
+        statusFilter.value = urlParams.get('status');
+      }
+
+      topicFilter.addEventListener('change', filterCommitments);
+      partyFilter.addEventListener('change', filterCommitments);
+      statusFilter.addEventListener('change', filterCommitments);
+      filterCommitments();
+    }
   }
 })();

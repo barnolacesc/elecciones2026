@@ -1558,3 +1558,162 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
     transition: none;
   }
 }
+
+/* Commitments follow-through explorer */
+.commitments-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.commitment-card {
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.commitment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.commitment-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.badge-topic {
+  background: #f0f2f5;
+  color: #3e454f;
+  border: 1px solid #d0d5dd;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.badge-role {
+  background: #f8f9fa;
+  color: #6b7280;
+  border: 1px solid #e2e8f0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+}
+
+.badge-status {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid transparent;
+}
+
+.badge-status-enacted {
+  background: #e6f4ea;
+  color: #137333;
+  border-color: #ceead6;
+}
+
+.badge-status-partially {
+  background: #fef7e0;
+  color: #b06000;
+  border-color: #feefc3;
+}
+
+.badge-status-contrary {
+  background: #fce8e6;
+  color: #c5221f;
+  border-color: #fad2cf;
+}
+
+.badge-status-compromise {
+  background: #e8f0fe;
+  color: #1a73e8;
+  border-color: #d2e3fc;
+}
+
+.badge-status-blocked {
+  background: #f1f3f4;
+  color: #5f6368;
+  border-color: #dadce0;
+}
+
+.commitment-pledge {
+  margin: 0.25rem 0;
+}
+
+.commitment-pledge .pledge-summary {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #0a0d12;
+  margin: 0 0 0.35rem 0;
+}
+
+.commitment-pledge-citation {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+  display: block;
+}
+
+.commitment-evidence {
+  padding: 0.85rem 1rem;
+  background: #f8f9fa;
+  border-left: 3px solid #0a0d12;
+  border-radius: 0 4px 4px 0;
+  margin: 0.25rem 0;
+}
+
+.commitment-evidence h4 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #3e454f;
+  margin: 0 0 0.5rem 0;
+}
+
+.evidence-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #0a0d12;
+}
+
+.evidence-item {
+  margin-bottom: 0.5rem;
+}
+
+.evidence-item:last-child {
+  margin-bottom: 0;
+}
+
+.evidence-type {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #262c36;
+}
+
+.evidence-date {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.evidence-finding {
+  color: #0a0d12;
+}
+
