@@ -1166,7 +1166,8 @@
       return;
     }
 
-    const route = window.NeutralSharing.readSelection(window.location.href, TOPICS, PARTIES);
+    const pageElection = (PUBLISH_DATA && PUBLISH_DATA.electionId) || document.body.dataset.election;
+    const route = window.NeutralSharing.readSelection(window.location.href, TOPICS, PARTIES, pageElection);
     const initialTopic = route.topic;
     const initialPartyA = route.partyA;
     const initialPartyB = route.partyB;

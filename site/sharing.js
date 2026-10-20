@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  function readSelection(href, topics, parties) {
+  function readSelection(href, topics, parties, pageElection) {
     const params = new URL(href).searchParams;
     const own = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
     const single = key => params.getAll(key).length === 1 ? params.get(key) : null;
@@ -13,8 +13,9 @@
     const election = rawElection === '2023' ? 'es-gen-2023' : rawElection;
     const pilot = election === 'es-gen-2023';
     const validElection = params.getAll('election').length <= 1 &&
-      (!election || election === 'es-gen-2026' || pilot);
-    const validTopic = own(topics, topic);
+      (!election || election === 'es-gen-2026' || pilot) &&
+      (!pageElection || !election || election === pageElection);
+    const validTopic = validElection && own(topics, topic);
     const validPair = validElection && validTopic && own(parties, partyA) &&
       own(parties, partyB) && partyA !== partyB &&
       (!pilot || [partyA, partyB].every(id => ['pp', 'erc', 'sumar', 'pnv'].includes(id)));
