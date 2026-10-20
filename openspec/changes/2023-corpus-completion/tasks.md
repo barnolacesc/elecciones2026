@@ -55,3 +55,11 @@ OpenSpec CLI and project Python 3.14/pytest are unavailable on this host.
 The stacked PR has no automatic CI because `.github/workflows/ci.yml` targets
 pull requests into `main` only; run CI after PR #114 lands and this PR is
 retargeted. CI will remain engineering evidence, not human review.
+
+P0.2 readiness audit (2026-10-20):
+`docs/2023-CORPUS-READINESS-AUDIT-2026-10-20.md` maps the merged draft
+requirements to current register/schema/parser gaps and fictional acceptance
+cases. It records four pilot sources with unresolved rights, the unapproved
+2023 denominator, PR #101's independent conflict/review gate, and the main
+mock-quiz browser CI failure. This is documentation evidence only; none of
+the owner decisions or later P0/P1 implementation tasks above is complete.
