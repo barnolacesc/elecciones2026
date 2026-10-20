@@ -3,7 +3,8 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const { test } = require('node:test');
 
-function browser(href = 'https://preview.test/', navigator = {}, secure = true, app = false) {
+function browser(href = 'https://preview.test/', navigator = {}, secure = true, app = false,
+  election = null, generated = false) {
   const nodes = {};
   for (const id of ['share-button', 'share-feedback', 'share-fallback', 'share-link',
     'copy-link-button', 'selection-form', 'topic-select', 'party-a-select',
@@ -19,11 +20,16 @@ function browser(href = 'https://preview.test/', navigator = {}, secure = true, 
   nodes['party-a-select'].value = 'party-a';
   nodes['party-b-select'].value = 'party-b';
   const location = { href };
-  const document = { readyState: 'complete', body: { dataset: {} },
+  const document = { readyState: 'complete', body: {
+    dataset: election ? { election, ...(generated ? { comparison: 'validated' } : {}) } : {} },
     getElementById: id => nodes[id],
     querySelector: selector => selector === '.preview-banner' ? nodes.banner : nodes.label };
   const window = { location, isSecureContext: secure,
     history: { replaceState(_, __, value) { location.href = value; } } };
+  if (generated) window.ComparisonData = {
+    electionId: election, topics: { housing: { name: 'Vivienda' } },
+    parties: { pp: { name: 'PP' }, erc: { name: 'ERC' } }, measuresByTopic: {}
+  };
   const context = vm.createContext({ window, document, navigator, URL, URLSearchParams });
   vm.runInContext(fs.readFileSync('site/sharing.js', 'utf8'), context);
   if (app) vm.runInContext(fs.readFileSync('site/app.js', 'utf8'), context);
@@ -49,6 +55,33 @@ test('allowlisted selection restores; malformed, duplicate and prototype IDs fai
     'topic=housing&partyA=pp&partyB=erc&election=2023&election=2026'
   ]) assert.equal(read(query).partyA, null, query);
   assert.equal(read('topic=housing&partyA=pp&partyB=erc&election=2023').pilot, true);
+});
+
+test('shared links cannot switch the generated page to another election', async () => {
+  const query = '?topic=housing&partyA=pp&partyB=erc';
+  const sample = browser();
+  assert.equal(sample.window.NeutralSharing.readSelection(
+    'https://preview.test/' + query + '&election=2023', topics, parties, 'es-gen-2026').partyA, null);
+  assert.equal(sample.window.NeutralSharing.readSelection(
+    'https://preview.test/' + query + '&election=es-gen-2026', topics, parties, 'es-gen-2023').topic, null);
+  assert.equal(sample.window.NeutralSharing.readSelection(
+    'https://preview.test/' + query + '&election=2023', topics, parties, 'es-gen-2023').partyA, 'pp');
+  assert.equal(sample.window.NeutralSharing.readSelection(
+    'https://preview.test/' + query + '&election=es-gen-2026', topics, parties, 'es-gen-2026').partyB, 'erc');
+
+  for (const [pageElection, linkElection, expectedUrl] of [
+    ['es-gen-2026', '2023', 'https://preview.test/'],
+    ['es-gen-2023', 'es-gen-2026', 'https://preview.test/?election=es-gen-2023']
+  ]) {
+    let shared;
+    const b = browser('https://preview.test/' + query + '&election=' + linkElection,
+      { share: async data => { shared = data; } }, true, true, pageElection, true);
+    assert.equal(b.window.location.href, expectedUrl);
+    await b.click();
+    assert.equal(shared.url, expectedUrl);
+    assert.equal(b.window.NeutralSharing.getState().partyA, undefined);
+    assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /party-statement|Fuente:/);
+  }
 });
 
 test('URLs discard arbitrary query state and fragments and preserve preview origin', () => {
