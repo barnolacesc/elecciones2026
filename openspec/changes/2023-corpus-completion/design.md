@@ -144,3 +144,85 @@ rule for each document/topic, the proposal-granularity arbitration process,
 the relationship-review quorum/segregation rule, and reader-facing coverage
 wording. These are review questions, not agent decisions. The existing 2026
 methodology is a reference; its 2026 inclusion rule does not become a 2023 rule.
+
+## P0.2 draft — inventory reconciliation handoff
+
+Status: proposal-only, for owner and OpenSpec review. This is a bounded data
+contract for the *future* P0 inventory reconciler, not an inclusion decision or
+permission to alter source records. It follows P0.1 and does not change the
+P1.1 proposal method above.
+
+### Input records and keys
+
+| Record | Required identity and evidence | Pending state |
+|---|---|---|
+| Inclusion rule | `es-gen-2023`, immutable rule revision, eligibility criterion, authoritative enumeration evidence reference, territorial and coalition treatment, exception policy, human decision reference | Draft/unapproved rules cannot establish a denominator. |
+| Candidature manifest row | Rule revision, stable candidature ID, exact ballot/list name, constituencies or scope, official enumeration evidence, inclusion decision and decision reference | Candidate rows remain candidates until reconciled under the approved rule. A party ID is not automatically a candidature ID. |
+| Document discovery row | Candidature ID, document role (`general`, `territorial_annex`, `coalition`, `replacement`, or other reviewed role), publisher, official landing and direct URLs when found, language, source ID/version/hash when bytes exist, dated retrieval evidence, publication-date evidence or unknown, private archive reference, replacement link, discovery status | An unlocated document records search attempts and `not_located`; it does not assert that no document existed. A PDF path or local hash is not publication-date evidence. |
+| Version-bound review decision | Exact source ID and hash/version, decision kind (`authenticity`, `rights`, or `editorial`), scope of permitted use, human decider, date, private evidence reference | Each kind stays independent and pending by default; a source URL or review of summary wording cannot authorize quotes or PDF redistribution. |
+
+The record names describe a proposed interface, **not** new approved schema
+fields. Keep private source bytes, extraction text, page renders and decision
+evidence out of Git and the static build. A public projection may contain only
+approved metadata and reviewed claims. Unknown values remain explicit; do not
+coerce them to a date, a negative search result or an approval.
+
+### Reconciliation output and invalidation
+
+The reconciler should produce a versioned, reproducible snapshot with input
+revisions, rule decision reference, enumeration source, included candidature
+count, candidature-to-document joins, unresolved document searches, and
+separate source-authenticity, rights and topic-search states. Its rows must
+distinguish `not_located`, `located_unverified`, `verified`, `partial`, and
+`replaced` without equating any of them to topic-level `not stated`.
+
+Only an approved, fully reconciled candidature manifest can supply the
+**candidature** denominator. Count documents separately because one
+candidature can have multiple relevant documents. Report `covered / included`
+only with the exact rule revision and coverage definition; while either is
+unapproved, output raw pilot counts and `denominator_unresolved`, never a
+percentage or an “all programmes” label. A document's verified bytes do not
+make its topic search complete. No empty extraction result produces a negative
+policy claim.
+
+Changing the rule or official enumeration invalidates the candidature
+denominator and dependent coverage totals. Adding an annex or replacement
+invalidates affected document/topic coverage. A source hash/version change
+also sends exact page anchors and dependent statements/relationships to
+re-review; it never mutates the prior source version in place. Rights and
+editorial decisions must be rebound to the exact new version by their human
+owners. A deterministic report should list invalidated dependencies rather
+than silently carrying forward earlier approvals.
+
+### Fictional acceptance cases before implementation
+
+1. An included fictional candidature with no located programme remains in the
+   denominator with an unresolved search, not a `not stated` position.
+2. A fictional coalition has a joint programme and a territorial annex; both
+   document rows join to one candidature without merging their rights states.
+3. A document has verified bytes but an unknown publication date and pending
+   rights; integrity is reported, publication/quotation permission is not.
+4. A replacement changes the hash; the old row and its evidence remain, while
+   page anchors, topic searches and related claims are flagged for review.
+5. An unapproved rule, or a manifest row without authoritative inclusion
+   evidence, yields `denominator_unresolved` and no coverage percentage.
+6. A topic extraction yields no candidates but its annex was not searched; the
+   topic remains unknown, not `not_found` or opposed.
+
+### Evidence and decisions still needed
+
+On `origin/main` at `9542582` (2026-10-21), the register has four 2023 pilot
+source rows (PP, ERC, PNV, Sumar), each `published-unverified`, rights
+`not_reviewed`, and publication date unknown. There is no approved 2023
+inclusion rule or candidature manifest. Draft PR #101 changes source/editorial
+gates and is conflicting with current main; this design neither edits its
+files nor treats its green CI as human review. The prior readiness audit maps
+current schema gaps, including the register timestamp mismatch. This package
+specifies the next handoff only; it does not repeat that audit or implement it.
+
+Before P0.2 implementation, owners must choose the official enumeration
+source and eligibility rule, territorial/coalition treatment, source and rights
+decision owners, private evidence-store policy, and the reviewed meaning of
+`verified` coverage. Reconcile the eventual field design with PR #101 and
+obtain OpenSpec/editorial review. Do not populate real candidate/rights rows
+from this draft alone.
