@@ -225,7 +225,8 @@ class PilotBrowserTests(unittest.TestCase):
         page = context.new_page()
         try:
             page.goto(self.base + '/?topic=education&partyA=partido-ejemplo-a&partyB=partido-ejemplo-b&election=es-gen-2026')
-            expect(page.locator('#measures-container')).to_contain_text('Contenido pendiente de publicación')
+            expect(page.locator('#measures-container')).to_be_empty()
+            expect(page.locator('#selection-error')).to_contain_text('dos candidaturas distintas')
             self.assertEqual(page.locator('.party-statement, .measure-group').count(), 0)
             self.assertEqual(page.locator('#party-a-select').input_value(), 'pp')
             self.assertEqual(page.locator('#party-b-select').input_value(), 'erc')
