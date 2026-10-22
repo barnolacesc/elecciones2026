@@ -1229,6 +1229,8 @@
     function renderComparison() {
       const isValid = validateSelection();
       if (!isValid) {
+        // Never leave claims from the previous pair visible beside an invalid selection.
+        if (measuresContainer) measuresContainer.innerHTML = '';
         if (window.BudgetContext) window.BudgetContext.clear();
         return;
       }

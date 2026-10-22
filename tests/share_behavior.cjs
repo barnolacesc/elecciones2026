@@ -116,6 +116,20 @@ test('home stays home; selecting a comparison round-trips through the real app',
   assert.equal(restored.window.location.href, 'https://preview.test/');
 });
 
+test('invalid selection removes the previous comparison and its share state', () => {
+  const b = browser('https://preview.test/?topic=housing&partyA=party-a&partyB=party-b',
+    {}, true, true);
+  assert.match(b.nodes['measures-container'].innerHTML, /party-statement/);
+
+  b.nodes['party-b-select'].value = 'party-a';
+  b.nodes['party-b-select'].handlers.change();
+
+  assert.equal(b.nodes['measures-container'].innerHTML, '');
+  assert.match(b.nodes['selection-error'].textContent, /dos candidaturas distintas/);
+  assert.equal(b.window.location.href, 'https://preview.test/');
+  assert.equal(b.window.NeutralSharing.getState().partyA, undefined);
+});
+
 test('private pilot keeps election context and never falls back to 2026 measures', async () => {
   let shared;
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023',
