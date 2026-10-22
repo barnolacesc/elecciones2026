@@ -380,6 +380,14 @@ main {
   line-height: var(--line-height-snug);
 }
 
+.measure-comparison .comparison-results-heading {
+  margin: var(--space-4) 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-snug);
+  scroll-margin-top: var(--space-4);
+}
+
 .measure-head {
   margin-bottom: var(--space-4);
 }

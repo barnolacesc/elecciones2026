@@ -16,6 +16,15 @@ function browser(href = 'https://preview.test/', navigator = {}, secure = true, 
       addEventListener(event, handler) { this.handlers[event] = handler; },
       focus() { this.focused = true; }, select() { this.selected = true; } };
   }
+  const headingClasses = new Set(['sr-only']);
+  nodes['compare-results-heading'] = {
+    textContent: 'Comparación de propuestas agrupadas por medida',
+    classList: { add(name) { headingClasses.add(name); }, remove(name) { headingClasses.delete(name); },
+      contains(name) { return headingClasses.has(name); } },
+    setAttribute(name, value) { this[name] = value; },
+    focus() { this.focused = true; },
+    scrollIntoView() { this.scrolled = true; }
+  };
   nodes['topic-select'].value = 'housing';
   nodes['party-a-select'].value = 'party-a';
   nodes['party-b-select'].value = 'party-b';
@@ -128,6 +137,23 @@ test('invalid selection removes the previous comparison and its share state', ()
   assert.match(b.nodes['selection-error'].textContent, /dos candidaturas distintas/);
   assert.equal(b.window.location.href, 'https://preview.test/');
   assert.equal(b.window.NeutralSharing.getState().partyA, undefined);
+});
+
+test('submit moves keyboard focus to a visible, selection-specific result heading', () => {
+  const b = browser('https://preview.test/', {}, true, true);
+  const heading = b.nodes['compare-results-heading'];
+  assert.match(heading.textContent, /Vivienda.*Partido A.*Partido B/);
+  assert.equal(heading.classList.contains('sr-only'), false);
+
+  b.nodes['selection-form'].handlers.submit({ preventDefault() {} });
+  assert.equal(heading.focused, true);
+  assert.equal(heading.scrolled, true);
+  assert.equal(heading.tabindex, '-1');
+
+  b.nodes['party-b-select'].value = 'party-a';
+  b.nodes['party-b-select'].handlers.change();
+  assert.equal(heading.textContent, 'Comparación de propuestas agrupadas por medida');
+  assert.equal(heading.classList.contains('sr-only'), true);
 });
 
 test('private pilot keeps election context and never falls back to 2026 measures', async () => {

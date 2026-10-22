@@ -21,6 +21,14 @@ The MVP SHALL let users select exactly two parties and one topic at a time, rest
 - **WHEN** no approved measure is available for the selected topic and parties
 - **THEN** the empty state explains that absence is not support or opposition and offers a keyboard-accessible route to source coverage and method, including without JavaScript.
 
+#### Scenario: Keyboard submission reaches results
+- **WHEN** the reader submits a valid topic and party selection
+- **THEN** the result heading names that selection and receives keyboard focus before the measure content.
+
+#### Scenario: Invalid selection clears result context
+- **WHEN** the selection becomes invalid
+- **THEN** the previous result heading and measure content no longer describe the old selection.
+
 ### Requirement: Evidence-based agreement and difference
 The site SHALL show an agreement only when reviewers have approved a specific comparable measure; it SHALL show relevant scope, funding or timing differences beside any shared headline.
 
