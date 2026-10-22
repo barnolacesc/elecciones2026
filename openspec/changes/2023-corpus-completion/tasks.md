@@ -63,3 +63,20 @@ cases. It records four pilot sources with unresolved rights, the unapproved
 2023 denominator, PR #101's independent conflict/review gate, and the main
 mock-quiz browser CI failure. This is documentation evidence only; none of
 the owner decisions or later P0/P1 implementation tasks above is complete.
+
+## P0.2 — Inventory reconciliation handoff draft (2026-10-21)
+
+- [x] Draft a field-level input/output contract, independent review decisions,
+  invalidation rules and fictional acceptance cases in `design.md`. Reconciled
+  against `origin/main` `9542582`, the four 2023 pilot source rows and open
+  draft PR #101; no source or editorial record changed.
+- [ ] Owner/editorial review of the proposed record semantics, enumeration and
+  inclusion policy, coalition/territorial treatment, rights ownership,
+  evidence-store policy and coverage definitions. This draft is not approval.
+- [ ] After review and PR #101 reconciliation, revise the applicable spec and
+  task acceptance criteria for implementation. Then implement using fictional
+  fixtures; enumerate real 2023 rows only under the approved rule.
+
+Validation for this draft: `git diff --check` and a structure check of the six
+fictional cases and pending gates. No corpus implementation or political claim
+test applies to a design-only change; CI remains technical evidence only.
