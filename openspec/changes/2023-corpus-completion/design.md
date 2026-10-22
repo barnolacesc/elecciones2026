@@ -226,3 +226,19 @@ decision owners, private evidence-store policy, and the reviewed meaning of
 `verified` coverage. Reconcile the eventual field design with PR #101 and
 obtain OpenSpec/editorial review. Do not populate real candidate/rights rows
 from this draft alone.
+
+## P0.3 draft — official enumeration evidence
+
+The [2026-10-22 evidence handoff](../../../docs/2023-CANDIDATURE-ENUMERATION-EVIDENCE-2026-10-22.md)
+identifies the BOE's 2023 proclaimed-candidature notice and its two linked
+corrections as a candidate primary input. One correction changes a Teruel
+Congress entry from `No proclamada` to a candidate list; another changes a
+Baleares coalition ballot name. The proposed manifest therefore retains
+constituency, chamber, original status/name, every applied correction and
+evidence locator as separate, reviewable facts. Corrections are not destructive
+overwrites. A presented-candidature list is only a cross-check.
+
+This does not approve the inclusion rule, establish a final denominator or
+certify that no other official changes exist. Owner and peer review must set
+the rule, finality/search protocol and coalition identity mapping before any
+real manifest is treated as complete. No programme or rights state changes.

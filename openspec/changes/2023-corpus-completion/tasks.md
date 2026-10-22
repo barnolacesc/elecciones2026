@@ -80,3 +80,22 @@ the owner decisions or later P0/P1 implementation tasks above is complete.
 Validation for this draft: `git diff --check` and a structure check of the six
 fictional cases and pending gates. No corpus implementation or political claim
 test applies to a design-only change; CI remains technical evidence only.
+
+## P0.3 — Official enumeration evidence handoff (2026-10-22)
+
+- [x] Identify the official 2023 proclaimed-candidature notice, its two linked
+  corrections and the presented-list distinction; record the Teruel status and
+  Baleares ballot-name cases in the dated evidence handoff. This is a source
+  audit, not an enumerated or approved manifest.
+- [x] Draft a correction-preserving design and requirement scenario without
+  changing source, rights, editorial or public records.
+- [ ] Owner sets and approves Congress/chamber and constituency/coalition
+  inclusion units, finality/search protocol and reviewer. Peer-check every
+  corrected row before any denominator or completeness claim.
+- [ ] After approval, enumerate and reconcile the full manifest and separately
+  discover programmes, annexes and rights decisions. PR #101's editorial gate
+  and its merge conflict remain independent blockers.
+
+Validation: official BOE pages and linked correction notices inspected on
+2026-10-22; `git diff --check` and document-structure checks. No software or
+political-content tests apply to this proposal-only source handoff.

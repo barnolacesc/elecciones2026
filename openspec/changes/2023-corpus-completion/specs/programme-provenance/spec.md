@@ -24,6 +24,14 @@ SHALL NOT be treated as that denominator.
 - **THEN** it remains in the manifest with discovery evidence and an explicit
   missing/unverified state; no policy position or opposition is inferred.
 
+#### Scenario: Proclamation corrected after publication
+- **WHEN** an official correction changes a Congress candidature's
+  proclamation status or exact ballot name
+- **THEN** the manifest preserves the original and corrected values with
+  constituency, chamber and both evidence references; coverage counts remain
+  unresolved until the correction is applied and reviewed under the approved
+  inclusion rule.
+
 ### Requirement: Distinct document and rights records
 
 The system SHALL inventory each candidate general programme, territorial
