@@ -81,3 +81,28 @@ records by omission of the correction.
 - **WHEN** a programme is replaced with a new source hash
 - **THEN** dependent page evidence and relationships stay unpublished until
   reviewed against the replacement, while the old version remains traceable.
+
+### Requirement: Approved 2023 taxonomy applicability
+
+A 2023 proposal classification or topic-coverage claim SHALL be bound to a
+versioned taxonomy that the human editorial owners explicitly approve for
+`es-gen-2023`. Topic-ID membership in the existing `es-gen-2026` taxonomy,
+a matching version string, or a provisional quiz label SHALL NOT substitute
+for that decision. The review record SHALL identify the exact taxonomy
+revision, election scope and effective corpus revision. A change to category
+boundaries or subtopics SHALL preserve the prior classification and invalidate
+affected statement, relationship, coverage and quiz dependencies for review.
+
+#### Scenario: Shared IDs without 2023 approval
+
+- **WHEN** a 2023 candidate uses a valid core topic and subtopic from the
+  2026-scoped taxonomy but no 2023 applicability decision exists
+- **THEN** the system treats the classification as provisional and does not
+  count it as reviewed 2023 topic coverage.
+
+#### Scenario: Taxonomy boundary revision
+
+- **WHEN** an approved 2023 category boundary or subtopic changes
+- **THEN** affected classifications and downstream coverage or comparison
+  decisions remain traceable and pending review rather than inheriting the
+  old approval automatically.
