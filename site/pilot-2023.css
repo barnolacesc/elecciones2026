@@ -267,6 +267,13 @@ select:focus {
   text-underline-offset: 2px;
 }
 
+.citation a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0;
+}
+
 .qualification {
   color: #5e6674;
   font-size: 0.9rem;

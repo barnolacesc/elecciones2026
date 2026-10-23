@@ -60,6 +60,12 @@ class ProvisionalBrowserTests(unittest.TestCase):
                 page.locator('#pilot-b').select_option('sumar')
                 self.assertEqual(page.locator('#pilot-comparison .card').count(), 2)
                 self.assertIn('page=10', page.locator('#pilot-comparison .card').first.locator('a').get_attribute('href'))
+                for link in page.locator('#pilot-comparison .citation a').all():
+                    rectangle = link.bounding_box()
+                    self.assertIsNotNone(rectangle)
+                    self.assertGreaterEqual(rectangle['height'], 44)
+                    link.focus()
+                    self.assertTrue(link.evaluate('(element) => element === document.activeElement'))
                 self.assertIn('topic=immigration', page.url)
                 page.locator('#pilot-topic').select_option('climate-energy')
                 page.locator('#pilot-a').select_option('pp')
