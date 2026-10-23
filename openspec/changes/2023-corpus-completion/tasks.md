@@ -72,6 +72,12 @@ retargeted. CI will remain engineering evidence, not human review.
   keep real 2023 set activation behind source rights and statement/relationship
   review gates. No current pilot record is promoted by this task.
 
+Validation (2026-10-23): a local structure check confirmed three P1.2
+WHEN/THEN scenarios, the design section and unresolved editorial tasks;
+`git diff --check` passed. This proposal changes no code or public data.
+OpenSpec CLI and project Python 3.14 are unavailable locally; PR CI is the
+engineering regression check, not editorial review.
+
 P0.2 readiness audit (2026-10-20):
 `docs/2023-CORPUS-READINESS-AUDIT-2026-10-20.md` maps the merged draft
 requirements to current register/schema/parser gaps and fictional acceptance
