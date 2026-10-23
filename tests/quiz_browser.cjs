@@ -87,6 +87,12 @@ async function checkKeyboard(page) {
       await page.getByRole('button', {name: 'Ver resultado', exact: true}).click();
       assert.equal(await page.locator('.quiz-review').count(), 0, 'Finishing must not require review');
       assert.equal(await page.locator('.quiz-score').count(), 2);
+      const setIdentity = await page.evaluate(() => ({version: window.QuizBundle.version,
+        method: window.QuizBundle.method_version}));
+      const resultIntro = await page.locator('#quiz-app').innerText();
+      assert.ok(resultIntro.includes(`Conjunto de preguntas: ${setIdentity.version}.`));
+      assert.ok(resultIntro.includes(`Versión del método: ${setIdentity.method}.`));
+      assert.match(resultIntro, /preguntas y posiciones ficticias.*no describen ningún programa político/);
       if (width === 390 && process.env.QUIZ_SCREENSHOT) await page.screenshot({path: process.env.QUIZ_SCREENSHOT});
       assert.match(await page.locator('.quiz-result').last().innerText(), /Cobertura insuficiente/);
       await page.getByText('Cambiar el peso de los temas', {exact: true}).click();
@@ -128,6 +134,7 @@ async function checkKeyboard(page) {
       await page.getByRole('button', {name: 'Ver resultado', exact: true}).click();
       assert.equal(await page.locator('.quiz-review').count(), 0);
       assert.match(await page.locator('#quiz-app').innerText(), /No hay respuestas suficientes/);
+      assert.match(await page.locator('#quiz-app').innerText(), /preguntas y posiciones ficticias/);
       await page.getByRole('button', {name: 'Cambiar respuestas', exact: true}).click();
       await page.getByRole('button', {name: 'Cambiar pregunta 16', exact: true}).click();
       await page.getByRole('button', {name: 'No lo sé / Omitir', exact: true}).click();
