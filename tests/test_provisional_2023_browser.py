@@ -91,6 +91,30 @@ class ProvisionalBrowserTests(unittest.TestCase):
                 self.assertTrue(all(request.url.startswith(self.base) for request in requests))
                 context.close()
 
+    def test_pilot_shares_only_neutral_quiz_link(self):
+        payloads = []
+        for answer in ('agree', 'strongly-disagree'):
+            context = self.browser.new_context(viewport={'width': 390, 'height': 800})
+            context.add_init_script('''
+                window.sharedPayloads = [];
+                navigator.share = async payload => { window.sharedPayloads.push(payload); };
+            ''')
+            page = context.new_page()
+            page.goto(self.base + '/cuestionario/?answer=private#result')
+            for _ in range(12):
+                page.locator(f'input[name="answer"][value="{answer}"]').check()
+                page.locator('#pilot-quiz button').click()
+            self.assertEqual(page.locator('.pilot-share-btn').count(), 1)
+            self.assertEqual(page.locator('.pilot-image-btn').count(), 0)
+            page.locator('.pilot-share-btn').click()
+            payloads.append(page.evaluate('window.sharedPayloads[0]'))
+            context.close()
+        self.assertEqual(payloads[0], payloads[1])
+        self.assertEqual(payloads[0]['url'], self.base + '/cuestionario/')
+        self.assertNotIn('result', str(payloads[0]))
+        self.assertNotIn('private', str(payloads[0]))
+        self.assertNotIn('PP', str(payloads[0]))
+
 
 if __name__ == '__main__':
     unittest.main()
