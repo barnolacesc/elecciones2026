@@ -273,3 +273,66 @@ This does not approve the inclusion rule, establish a final denominator or
 certify that no other official changes exist. Owner and peer review must set
 the rule, finality/search protocol and coalition identity mapping before any
 real manifest is treated as complete. No programme or rights state changes.
+
+## P1.3 draft — topic-search evidence and absence gate
+
+Status: proposal-only. This narrows the P1.1 topic-search requirement; it does
+not approve a search protocol, a `not_found` record, or implementation. P0's
+approved candidature manifest, relevant document set, rights decisions and
+2023 taxonomy applicability are prerequisites. P1.2's comparison-set question
+is separate: even an approved topic search cannot prove that a displayed
+measure set is exhaustive.
+
+### Search unit and private evidence ledger
+
+The review unit is `(election_id, candidature_id, topic_id, taxonomy_revision,
+source_set_revision)`. The source set enumerates every document version deemed
+relevant to that candidature and topic, including annexes and replacements, or
+records a human-reviewed reason for exclusion. Each source entry records its
+immutable ID/hash, searched page or section ranges, method, search date,
+reviewer, unresolved ranges, candidate IDs and evidence reference. A tool's
+empty result is evidence about that tool run only; it is not a negative policy
+finding. Private search notes and source text do not enter Git or the public
+static artifact.
+
+### Proposed state and publication boundary
+
+| State | Meaning | Permitted public conclusion |
+|---|---|---|
+| `scope_pending` | Inclusion, taxonomy or relevant source set is unresolved. | Coverage unresolved; no topic absence. |
+| `search_pending` | Source set is fixed but one or more required ranges are unsearched. | Partial coverage; no topic absence. |
+| `review_pending` | Search ran, but scope, candidates or negative finding await human review. | Review pending; no topic absence. |
+| `reviewed_with_candidates` | All required source ranges and candidate dispositions were reviewed. | Only independently approved statements may appear; not a completeness claim by itself. |
+| `reviewed_no_supported_candidate` | All required source ranges were reviewed and no candidate supports a proposal under the approved protocol. | A carefully scoped absence label may be considered after separate editorial approval; never opposition. |
+| `invalidated` | Rule, taxonomy, source set/version or review evidence changed. | Fall back to unresolved until re-review. |
+
+This is a proposed internal state vocabulary, not an approved schema change.
+The projection must retain the source-set and taxonomy revisions behind any
+absence label. It must not generalize a document/topic finding to the party's
+entire election platform or to a different election. A source link or rights
+decision does not certify that a topic search was complete. Pending rights
+continue to block claim publication independently of search state.
+
+### Dependency and fictional acceptance cases
+
+1. A programme was searched but a relevant territorial annex is unsearched:
+   `search_pending`, never `not_found`.
+2. An extractor returns zero hits over every PDF page, but no human has checked
+   scope and method: `review_pending`, never a reviewed absence.
+3. Two search methods disagree or a reviewer finds an ambiguous aim: retain
+   the candidate and unresolved decision; do not force a negative conclusion.
+4. A reviewer excludes an annex with a recorded scope reason; the exclusion
+   remains visible in the private ledger and requires the approved protocol.
+5. A source replacement, changed taxonomy revision or new relevant annex
+   invalidates the prior negative finding and its reader-facing label.
+6. A reviewed search yields proposals for one subtopic but not another:
+   do not imply all measures or the whole topic were exhaustively compared.
+
+### Decisions for owner/editorial review
+
+Approve the 2023 document/topic relevance and search-stopping protocol,
+acceptable evidence for ranges that are non-searchable, reviewer quorum for
+negative findings, treatment of translated sources, and exact Spanish wording
+for a scoped absence. These cannot be supplied by CI or an agent. After review,
+the implementation task can define a concrete schema and validators against
+the agreed protocol; until then this draft is a fail-closed handoff only.
