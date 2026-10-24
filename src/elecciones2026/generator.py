@@ -1258,7 +1258,7 @@ def render_comparison_measures(ctx: SiteContext, payload: dict[str, Any], topic_
     measures = [m for m in payload["measuresByTopic"][topic_id]
                 if party_a in m["positions"] or party_b in m["positions"]]
     if not measures:
-        return '<div class="empty-measures" role="status" aria-live="polite"><h4>Contenido pendiente de publicación</h4><p>El contenido para estas candidaturas está pendiente de publicación.</p><p>La falta de contenido aprobado no indica que el programa carezca de propuestas. No implica apoyo ni oposición.</p></div>'
+        return '<div class="empty-measures" role="status" aria-live="polite"><h4>Contenido pendiente de publicación</h4><p>El contenido para estas candidaturas está pendiente de publicación.</p><p>La falta de contenido aprobado no indica que el programa carezca de propuestas. No implica apoyo ni oposición.</p><a class="action-link" href="./metodo/">Consultar cobertura y método</a></div>'
     output = []
     for idx, measure in enumerate(measures, 1):
         cards = []

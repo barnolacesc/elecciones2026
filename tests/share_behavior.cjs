@@ -135,6 +135,8 @@ test('private pilot keeps election context and never falls back to 2026 measures
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023',
     { share: async data => { shared = data; } }, true, true);
   assert.match(b.nodes['measures-container'].innerHTML, /Contenido pendiente de publicación/);
+  assert.match(b.nodes['measures-container'].innerHTML,
+    /<a class="action-link" href="\.\/metodo\/">Consultar cobertura y método<\/a>/);
   assert.doesNotMatch(b.nodes['measures-container'].innerHTML, /15%|Garantir el dret/);
   await b.click();
   assert.match(shared.title, /2023/);

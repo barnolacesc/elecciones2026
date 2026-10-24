@@ -1258,6 +1258,7 @@
             '<h4 class="empty-measures-title">Contenido pendiente de publicación</h4>' +
             '<p class="empty-measures-desc">El contenido de <strong>' + escapeHtml(topicData.name) + '</strong> para estas candidaturas está pendiente de publicación.</p>' +
             '<p class="empty-measures-note">La falta de contenido aprobado no indica que el programa carezca de propuestas. No implica apoyo ni oposición.</p>' +
+            '<a class="action-link" href="./metodo/">Consultar cobertura y método</a>' +
             '</div>';
         } else {
           for (let i = 0; i < measures.length; i++) {
