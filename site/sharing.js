@@ -45,6 +45,15 @@
     const copy = document.getElementById('copy-link-button');
     if (!button || !feedback || !fallback || !input || !copy) return;
     let pending = false;
+    let stateVersion = 0;
+    function resetFeedback() {
+      stateVersion += 1;
+      fallback.hidden = true;
+      input.value = '';
+      feedback.textContent = '';
+      feedback.classList.add('sr-only');
+    }
+    window.NeutralSharing.resetFeedback = resetFeedback;
     function message(text) {
       feedback.textContent = text;
       feedback.classList.remove('sr-only');
@@ -55,18 +64,25 @@
       message('Puedes copiar el enlace o seleccionarlo para compartirlo.');
     }
     async function copyLink(url) {
+      const version = stateVersion;
       try {
         if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('Clipboard unavailable');
         await navigator.clipboard.writeText(url);
-        message('Enlace copiado al portapapeles.');
+        if (version === stateVersion) message('Enlace copiado al portapapeles.');
       } catch (_) {
+        if (version !== stateVersion) return;
         offerCopy(url);
         input.focus();
         input.select();
         message('Selecciona y copia el enlace para compartirlo.');
       }
     }
-    copy.addEventListener('click', () => copyLink(input.value));
+    copy.addEventListener('click', () => {
+      const state = window.NeutralSharing.getState ? window.NeutralSharing.getState() : null;
+      const url = stableUrl(window.location.href, state);
+      input.value = url;
+      return copyLink(url);
+    });
     button.addEventListener('click', async function () {
       if (pending) return;
       const state = window.NeutralSharing.getState ? window.NeutralSharing.getState() : null;
@@ -79,21 +95,22 @@
         url: url
       };
       pending = true;
+      const version = stateVersion;
       try {
         if (window.isSecureContext && typeof navigator.share === 'function' &&
             (!navigator.canShare || navigator.canShare(data))) {
           try {
             await navigator.share(data);
-            message('Enlace compartido.');
+            if (version === stateVersion) message('Enlace compartido.');
           } catch (_) {
             // A fresh gesture is needed for clipboard access after closing a share sheet.
-            offerCopy(url);
+            if (version === stateVersion) offerCopy(url);
           }
         } else {
           await copyLink(url);
         }
       } catch (_) {
-        offerCopy(url);
+        if (version === stateVersion) offerCopy(url);
       } finally {
         pending = false;
       }

@@ -77,6 +77,10 @@ The MVP SHALL offer a Share control on home, topic, and comparison views. It SHA
 - **WHEN** the browser does not support native sharing
 - **THEN** the reader can copy the same stable URL with an accessible control.
 
+#### Scenario: Selection changes while a copy fallback is visible
+- **WHEN** the reader changes the selected topic or parties after opening a copy fallback
+- **THEN** the old comparison URL and share status are cleared, and the next Share action uses the current selection.
+
 #### Scenario: Comparison link opened
 - **WHEN** a reader opens a shared two-party/topic link
 - **THEN** the site restores valid selections and shows the approved comparison and source context. Invalid IDs do not create a claim.

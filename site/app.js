@@ -1279,6 +1279,7 @@
     }
     window.NeutralSharing.getState = currentState;
     function updateComparison() {
+      if (window.NeutralSharing.resetFeedback) window.NeutralSharing.resetFeedback();
       comparisonActive = true;
       renderComparison();
       if (!validateSelection()) {

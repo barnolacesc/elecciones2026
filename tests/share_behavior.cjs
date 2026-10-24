@@ -217,6 +217,40 @@ test('unsupported or insecure native share uses clipboard; denied clipboard sele
   }
 });
 
+test('changing comparison clears an obsolete manual share link', async () => {
+  const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc',
+    {}, true, true);
+  await b.click();
+  assert.equal(b.nodes['share-link'].value,
+    'https://preview.test/?topic=housing&partyA=pp&partyB=erc');
+  assert.equal(b.nodes['share-fallback'].hidden, false);
+
+  b.nodes['topic-select'].value = 'education';
+  b.nodes['topic-select'].handlers.change();
+  assert.equal(b.nodes['share-fallback'].hidden, true);
+  assert.equal(b.nodes['share-link'].value, '');
+  assert.equal(b.nodes['share-feedback'].textContent, '');
+
+  await b.click();
+  assert.equal(b.nodes['share-link'].value,
+    'https://preview.test/?topic=education&partyA=pp&partyB=erc');
+});
+
+test('late native-share failure cannot restore an obsolete comparison link', async () => {
+  let rejectShare;
+  const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc', {
+    share: () => new Promise((_, reject) => { rejectShare = reject; })
+  }, true, true);
+  const sharing = b.click();
+  b.nodes['topic-select'].value = 'education';
+  b.nodes['topic-select'].handlers.change();
+  rejectShare(new Error('Share dismissed'));
+  await sharing;
+  assert.equal(b.nodes['share-fallback'].hidden, true);
+  assert.equal(b.nodes['share-link'].value, '');
+  assert.equal(b.nodes['share-feedback'].textContent, '');
+});
+
 test('pending pilot content exposes no quote viewer or comparative assertion', () => {
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023', {}, true, true);
   const html = b.nodes['measures-container'].innerHTML;
