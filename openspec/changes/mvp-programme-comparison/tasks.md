@@ -240,3 +240,5 @@ Local checks: `git diff --check` passed; a static assertion checked that the 202
 ## E2.3/E2.5 empty-comparison next step — 2026-10-24
 
 The source-gated empty comparison now links to the existing coverage/method page in both generated HTML and the browser re-render. The absence disclaimer remains, and the link uses the existing 44-px `action-link` target. No source status, political claim or approval changed. `node --check site/app.js`, `node --test tests/share_behavior.cjs` (12/12) and `git diff --check` pass locally. A Python 3.14 generated-artifact regression is added but cannot run under this host's Python 3.11; CI is required. Physical-phone and screen-reader acceptance remain open under task 3.5.
+
+CI follow-up: [run 40107470726](https://github.com/c2ventures/elecciones2026/actions/runs/40107470726) passed the Python/schema/determinism/security, rendered mobile/keyboard and Docker serving-parity jobs for code revision `7a87f21`. The private-candidate publication job was skipped. Automated checks do not establish real-device or human editorial acceptance.
