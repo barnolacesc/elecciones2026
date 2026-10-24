@@ -154,6 +154,10 @@
   function results() {
     heading('Coincidencia con las medidas que has respondido');
     const result = engine.calculate(bundle, state.answers, state.weights);
+    paragraph(`Conjunto de preguntas: ${bundle.version}. Versión del método: ${bundle.method_version}.`);
+    if (bundle.mode === 'mock') {
+      paragraph('Demostración con preguntas y posiciones ficticias. Estos porcentajes no describen ningún programa político.');
+    }
     paragraph(`${result.answered} de 16 respuestas · ${result.topicCount} de 8 temas respondidos.`);
     paragraph('El porcentaje resume solo las preguntas que has respondido. Una respuesta neutral sí cuenta; una pregunta omitida no cuenta en este porcentaje.');
     paragraph('Omitir no significa estar en contra. Este resultado no recomienda a quién votar.');
