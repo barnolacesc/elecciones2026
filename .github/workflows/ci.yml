@@ -35,6 +35,11 @@ jobs:
           node --check site/sharing.js
           node --test tests/share_behavior.cjs
 
+      - name: Verify private 2023 two-party selection recovery (E2.5)
+        run: |
+          node --check site/pilot-2023.js
+          node --test tests/pilot_selection_behavior.cjs
+
       - name: Verify load measurement and saturation behavior (E3.4)
         run: |
           node --check ops/load/client.cjs

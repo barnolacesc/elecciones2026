@@ -50,7 +50,23 @@
     function render() {
       target.replaceChildren();
       error.hidden = a.value !== b.value;
-      if (!error.hidden) return;
+      for (const control of [a, b]) {
+        if (error.hidden) {
+          control.removeAttribute('aria-invalid');
+          control.removeAttribute('aria-describedby');
+        } else {
+          control.setAttribute('aria-invalid', 'true');
+          control.setAttribute('aria-describedby', 'pilot-error');
+        }
+      }
+      if (!error.hidden) {
+        // A copied address must never restore the previous valid comparison.
+        const url = new URL(location.href);
+        url.search = '';
+        url.hash = '';
+        history.replaceState({}, '', url);
+        return;
+      }
       const topicMeasures = [];
       for (const p of data.positions) {
         if (p.topic === topic.value && !topicMeasures.some(m => m.id === p.measure_id)) {
