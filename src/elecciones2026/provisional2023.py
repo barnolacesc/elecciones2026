@@ -100,7 +100,9 @@ def comparison(data: dict, image_url: str = "") -> str:
 <h1>Compara cuatro programas de 2023</h1>
 <p>PP, ERC, PNV y Sumar. {num_positions} medidas concretas en {num_topics} temas, agrupadas por propuesta y enlazadas a los programas originales.</p>
 <p class="warning"><strong>Lectura provisional:</strong> resúmenes asistidos por extracción de PDF, sin revisión editorial humana. Las propuestas no son equivalentes entre sí; no inferimos acuerdos, desacuerdos ni resultados de gobierno.</p>
-<a class="button" href="./cuestionario/">Explorar con el cuestionario</a></div>
+<a class="button" href="#comparador">Elegir tema y candidaturas</a>
+<a class="button button-secondary" href="./fuentes/">Consultar fuentes del piloto</a></div>
+<h2 id="comparador" tabindex="-1">Elige un tema y dos candidaturas</h2>
 <div class="controls"><label>Tema <select id="pilot-topic">{topics}</select></label>
 <label>Primera candidatura <select id="pilot-a">{parties}</select></label>
 <label>Segunda candidatura <select id="pilot-b">{parties}</select></label>
