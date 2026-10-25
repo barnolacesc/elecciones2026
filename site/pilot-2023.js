@@ -2,10 +2,36 @@
 (async function () {
   'use strict';
   const nested = ['/cuestionario/', '/fuentes/', '/presupuestos/', '/simulador/', '/compromisos/'].some(p => location.pathname.includes(p));
-  const response = await fetch((nested ? '../' : './') + 'pilot-2023-data.json', {cache: 'no-store'});
-  if (!response.ok) return;
-  const data = await response.json();
-  if (data.election_id !== 'es-gen-2023' || data.status !== 'historical-provisional-private') return;
+  let data;
+  try {
+    const response = await fetch((nested ? '../' : './') + 'pilot-2023-data.json', {cache: 'no-store'});
+    if (!response.ok) throw new Error('pilot data unavailable');
+    data = await response.json();
+    if (data.election_id !== 'es-gen-2023' || data.status !== 'historical-provisional-private') {
+      throw new Error('pilot data outside private 2023 scope');
+    }
+  } catch (_) {
+    const target = document.getElementById('pilot-comparison');
+    if (target) {
+      for (const id of ['pilot-topic', 'pilot-a', 'pilot-b']) {
+        document.getElementById(id).disabled = true;
+      }
+      const notice = document.createElement('p');
+      notice.setAttribute('role', 'alert');
+      notice.textContent = 'No se ha podido cargar el comparador interactivo. Puedes consultar las medidas y fuentes del piloto en la lista completa.';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'button';
+      button.textContent = 'Ver todas las medidas';
+      button.addEventListener('click', () => {
+        const completeList = target.nextElementSibling;
+        completeList.open = true;
+        completeList.querySelector('summary').focus();
+      });
+      target.replaceChildren(notice, button);
+    }
+    return;
+  }
   const names = {pp: 'PP', erc: 'ERC', pnv: 'PNV', sumar: 'Sumar'};
   function element(tag, text, className) {
     const node = document.createElement(tag);
