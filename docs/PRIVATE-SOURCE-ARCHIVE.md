@@ -22,12 +22,22 @@ The Dockerfile pins the base by digest and Poppler package to `25.12.0-r1`. Its 
 
 ## Acquire explicitly, then process offline
 
-`content/sources/download-policy.json` lists the exact official hosts permitted for the two 2023 rehearsal sources. Review any additions, including redirects. HTTPS, standard port, DNS/private-address checks, redirect limits, 15-second socket timeouts, permitted MIME types, a 50 MiB ceiling, PDF inspection, and the **registered** SHA-256 apply before storage. Missing hashes are rejected. A changed remote document is not automatically accepted or relabelled.
+`content/sources/download-policy.json` lists the exact official hosts permitted for the four registered 2023 rehearsal sources (PP, ERC, PNV and Sumar). Review any additions, including redirects. HTTPS, standard port, DNS/private-address checks, redirect limits, 15-second socket timeouts, permitted MIME types, a 50 MiB ceiling, PDF inspection, and the **registered** SHA-256 apply before storage. Missing hashes are rejected. A changed remote document is not automatically accepted or relabelled.
+
+The four rows in `content/sources/register.json` are a **pilot**, not an approved
+2023 candidature or programme denominator. All four remain
+`published-unverified`, with rights `not_reviewed` and unknown publication
+dates. The dated `docs/pilot-review/2023/inventory.json` reports local byte and
+extraction checks for these four originals as of 2026-10-12; that historical
+check does not prove current remote bytes, source authenticity, rights or
+topic coverage. Reconcile the registered URL, hash and private archive object
+before a new acquisition. A remote hash mismatch must stop for source-owner
+review; do not change the registered hash merely to make the download pass.
 
 Acquisition is the only document-processing command that can contact an official party host:
 
 ```sh
-for source in src-2023-pp-v1 src-2023-erc-v1; do
+for source in src-2023-pp-v1 src-2023-erc-v1 src-2023-pnv-v1 src-2023-sumar-v1; do
   PYTHONPATH=src python3 -m elecciones2026.private_archive acquire \
     --archive "$ELECTIONS_PRIVATE_ARCHIVE" --source-id "$source"
 done
@@ -38,7 +48,7 @@ For a previously downloaded PDF, add `--file /absolute/private/path/document.pdf
 Once the image and originals are local, extraction and verification need no external network:
 
 ```sh
-for source in src-2023-pp-v1 src-2023-erc-v1; do
+for source in src-2023-pp-v1 src-2023-erc-v1 src-2023-pnv-v1 src-2023-sumar-v1; do
   PYTHONPATH=src python3 -m elecciones2026.private_archive extract \
     --archive "$ELECTIONS_PRIVATE_ARCHIVE" --source-id "$source" \
     --image "$ELECTIONS_PDF_IMAGE_ID"
