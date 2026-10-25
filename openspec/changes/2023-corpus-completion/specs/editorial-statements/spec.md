@@ -120,6 +120,53 @@ records by omission of the correction.
 - **THEN** dependent page evidence and relationships stay unpublished until
   reviewed against the replacement, while the old version remains traceable.
 
+### Requirement: Review applicability across relevant documents
+
+Before publishing a 2023 initiative, the system SHALL account for relevant
+general, territorial, coalition and replacement documents under the approved
+candidature/document scope. It SHALL bind each candidate to its exact source
+version, speaker and territorial applicability, and retain potentially
+overlapping candidates and their review disposition. No document role,
+apparent date or URL order SHALL automatically resolve a material conflict or
+establish that one text supersedes another. An unresolved material conflict
+SHALL block an unqualified synthesized position and any relationship using
+that position; unaffected approved statements MAY remain eligible with a
+reviewed scope limitation. The precedence, attribution and conflict-review
+rules require human editorial approval before implementation.
+
+#### Scenario: Territorial qualification differs
+
+- **WHEN** a general document and a territorial annex address the same measure
+  with different eligibility in one constituency
+- **THEN** the difference enters review and neither an election-wide summary
+  nor a cross-party relation silently erases the territorial qualification.
+
+#### Scenario: Unproven replacement
+
+- **WHEN** a second URL appears newer but no evidenced replacement chain exists
+- **THEN** the earlier source remains traceable and neither source is treated
+  as automatically superseded.
+
+#### Scenario: Coalition attribution unresolved
+
+- **WHEN** a coalition document and a member-party document overlap but their
+  speaker-to-candidature mapping is not approved
+- **THEN** the system withholds a merged candidature position rather than
+  attributing both texts to the same approved speaker.
+
+#### Scenario: Conflict affects only one initiative
+
+- **WHEN** one candidate has unresolved material terms and a separate
+  non-conflicting candidate has all publication approvals
+- **THEN** the unresolved candidate remains in the private accounting while
+  the approved candidate can be shown only under the reviewed scope rule.
+
+#### Scenario: Applicability decision changes
+
+- **WHEN** a reviewed source-scope or precedence decision is corrected
+- **THEN** dependent statements and comparison relationships are invalidated
+  until re-reviewed against the corrected decision.
+
 ### Requirement: Approved 2023 taxonomy applicability
 
 A 2023 proposal classification or topic-coverage claim SHALL be bound to a
