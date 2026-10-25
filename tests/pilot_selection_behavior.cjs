@@ -7,7 +7,7 @@ function node(value = '') {
   const attributes = new Map();
   return {
     value, hidden: true, children: [], handlers: {}, attributes,
-    replaceChildren() { this.children = []; },
+    replaceChildren(...children) { this.children = children; },
     append(child) { this.children.push(child); },
     addEventListener(type, handler) { this.handlers[type] = handler; },
     setAttribute(name, val) { attributes.set(name, val); },
@@ -15,7 +15,7 @@ function node(value = '') {
   };
 }
 
-async function pilot(href) {
+async function pilot(href, response) {
   const nodes = {
     'pilot-topic': node('housing'), 'pilot-a': node('pp'),
     'pilot-b': node('erc'), 'pilot-comparison': node(), 'pilot-error': node()
@@ -26,17 +26,34 @@ async function pilot(href) {
     election_id: 'es-gen-2023', status: 'historical-provisional-private',
     topics: [{ id: 'housing', name: 'Vivienda' }], positions: []
   };
+  const summary = node();
+  summary.focus = () => { summary.focused = true; };
+  const staticList = node();
+  staticList.querySelector = () => summary;
+  nodes['pilot-comparison'].nextElementSibling = staticList;
   const document = {
     getElementById(id) { return nodes[id] || null; },
     createElement() { return node(); }
   };
   const context = vm.createContext({
     document, location, history, URL, URLSearchParams,
-    fetch: async () => ({ ok: true, json: async () => data })
+    fetch: async () => response || ({ ok: true, json: async () => data })
   });
   await vm.runInContext(fs.readFileSync('site/pilot-2023.js', 'utf8'), context);
-  return { nodes, location };
+  return { nodes, location, staticList, summary };
 }
+
+test('unavailable private data offers the static source list without active selectors', async () => {
+  const { nodes, staticList, summary } = await pilot('https://private.test/', { ok: false });
+  for (const id of ['pilot-topic', 'pilot-a', 'pilot-b']) assert.equal(nodes[id].disabled, true);
+  const [alert, button] = nodes['pilot-comparison'].children;
+  assert.equal(alert.attributes.get('role'), 'alert');
+  assert.match(alert.textContent, /No se ha podido cargar/);
+  assert.equal(button.textContent, 'Ver todas las medidas');
+  button.handlers.click();
+  assert.equal(staticList.open, true);
+  assert.equal(summary.focused, true);
+});
 
 test('duplicate pilot parties clear stale comparison URL and describe the error', async () => {
   const { nodes, location } = await pilot(
