@@ -16,6 +16,21 @@ def load(root: Path) -> dict:
     sources = {s["party_id"]: s for s in register["sources"] if s["election_id"] == "es-gen-2023"}
     assert data["election_id"] == "es-gen-2023" and data["status"] == "historical-provisional-private"
     assert set(sources) == set(PARTIES)
+    for source in sources.values():
+        parsed = urlsplit(source["direct_url"])
+        assert parsed.scheme == "https" and parsed.hostname and not parsed.username and not parsed.password
+        assert isinstance(source["sha256"], str) and len(source["sha256"]) == 64
+    data["source_documents"] = {
+        party: {
+            "direct_url": source["direct_url"],
+            "version": source["version"],
+            "retrieval_date": source["retrieval_date"],
+            "status": source["status"],
+            "rights_status": source["rights_review"]["status"],
+            "sha256": source["sha256"],
+        }
+        for party, source in sources.items()
+    }
     assert len(data["positions"]) >= 12
     topic_ids = {t["id"] for t in data["topics"]}
     for position in data["positions"]:
@@ -23,9 +38,6 @@ def load(root: Path) -> dict:
         assert position["topic"] in topic_ids
         source = sources[position["party"]]
         url = source["direct_url"]
-        parsed = urlsplit(url)
-        assert parsed.scheme == "https" and parsed.hostname and not parsed.username and not parsed.password
-        assert isinstance(source["sha256"], str) and len(source["sha256"]) == 64
         assert isinstance(position["page"], int) and position["page"] > 0
         assert all(position.get(k) for k in ("summary", "title", "locator", "qualification", "measure_id", "measure_title"))
         position["url"] = url + f'#page={position["page"]}'
@@ -129,12 +141,22 @@ def quiz(data: dict, image_url: str = "") -> str:
 
 
 def sources(data: dict, image_url: str = "") -> str:
-    documents = {}
-    for position in data["positions"]:
-        documents[position["party"]] = position
-    cards = ''.join(f'<article class="card"><h2>{esc(PARTIES[party])}</h2><p>Programa de las elecciones generales de 2023.</p>'
-                    f'<p class="citation">{citation(position)}</p><p class="locator">SHA-256: {esc(position["sha256"])}</p></article>'
-                    for party, position in documents.items())
+    status_labels = {"published-unverified": "Documento registrado; contenido sin verificar"}
+    rights_labels = {"not_reviewed": "Derechos de uso sin revisar"}
+    cards = ''.join(
+        f'<article class="card"><h2>{esc(PARTIES[party])}</h2>'
+        '<p>Documento registrado para las elecciones generales de 2023. '
+        'Los resúmenes de medidas no tienen revisión editorial humana.</p>'
+        f'<p>{esc(status_labels.get(data["source_documents"][party]["status"], "Estado del documento sin verificar"))}. '
+        f'{esc(rights_labels.get(data["source_documents"][party]["rights_status"], "Consulte la revisión de derechos"))}.</p>'
+        f'<p>Versión: {esc(data["source_documents"][party]["version"])} · '
+        f'Consulta del enlace: {esc(data["source_documents"][party]["retrieval_date"])}</p>'
+        f'<p class="citation"><a href="{esc(data["source_documents"][party]["direct_url"])}" '
+        'target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">'
+        'Abrir documento registrado ↗</a></p>'
+        f'<p class="locator">SHA-256: {esc(data["source_documents"][party]["sha256"])}</p></article>'
+        for party in PARTIES
+    )
     body = f'''<div class="hero"><p class="eyebrow">23J 2023 · privado · provisional</p><h1>Fuentes del piloto</h1>
 <p>Los cuatro documentos originales usados en esta vista histórica. Las citas del comparador y del cuestionario enlazan a páginas concretas. Los resúmenes no tienen revisión editorial humana.</p></div>
 <div class="cards">{cards}</div>'''

@@ -1,4 +1,5 @@
 """Source-linked private pilot contract; no fabricated review claims."""
+from html.parser import HTMLParser
 import re
 import unittest
 from pathlib import Path
@@ -6,6 +7,17 @@ from pathlib import Path
 from elecciones2026.provisional2023 import load, load_budget, load_simulator, comparison, quiz, sources, budget, simulator, commitments, write
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+class ExternalLinks(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.urls = []
+
+    def handle_starttag(self, tag, attrs):
+        href = dict(attrs).get("href", "")
+        if tag == "a" and href.startswith("https://"):
+            self.urls.append(href)
 
 
 class ProvisionalPilotTests(unittest.TestCase):
@@ -52,6 +64,23 @@ class ProvisionalPilotTests(unittest.TestCase):
         self.assertIn('href="../simulador/"', questions)
         self.assertIn('href="./compromisos/"', home)
         self.assertIn('href="../compromisos/"', questions)
+
+    def test_source_index_uses_document_urls_independent_of_measure_order(self):
+        data = load(ROOT)
+        expected = [data["source_documents"][party]["direct_url"] for party in ("pp", "erc", "pnv", "sumar")]
+        for positions in (data["positions"], list(reversed(data["positions"]))):
+            reordered = {**data, "positions": positions}
+            page = sources(reordered)
+            links = ExternalLinks()
+            links.feed(page)
+            self.assertEqual(links.urls, expected)
+            self.assertNotIn("#page=", page)
+            self.assertEqual(page.count("Contenido y derechos de uso pendientes"), 0)
+            self.assertEqual(page.count("Derechos de uso sin revisar"), 4)
+            self.assertEqual(page.count("Documento registrado; contenido sin verificar"), 4)
+        home = comparison(data)
+        for position in data["positions"]:
+            self.assertIn(position["url"], home)
 
     def test_quiz_options_balanced_scale(self):
         data = load(ROOT)
@@ -127,6 +156,11 @@ class ProvisionalPilotTests(unittest.TestCase):
             self.assertTrue((staging / "index.html").exists())
             self.assertTrue((staging / "cuestionario/index.html").exists())
             self.assertTrue((staging / "fuentes/index.html").exists())
+            source_links = ExternalLinks()
+            source_links.feed((staging / "fuentes/index.html").read_text(encoding="utf-8"))
+            self.assertEqual(source_links.urls, [
+                data["source_documents"][party]["direct_url"] for party in ("pp", "erc", "pnv", "sumar")
+            ])
             self.assertTrue((staging / "compromisos/index.html").exists())
             self.assertTrue((staging / "presupuestos/index.html").exists())
             self.assertTrue((staging / "presupuestos/grafico.svg").exists())
