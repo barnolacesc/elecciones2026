@@ -533,7 +533,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   flex-wrap: wrap;
 }
 
-.pilot-share-btn, .pilot-retake-btn, .pilot-image-btn {
+.pilot-share-btn, .pilot-retake-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
