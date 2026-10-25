@@ -770,6 +770,10 @@ main {
   line-height: var(--line-height-base);
 }
 
+.empty-measures .action-link {
+  margin-top: var(--space-3);
+}
+
 .analysis-differences li {
   margin-bottom: var(--space-1);
 }

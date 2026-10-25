@@ -46,6 +46,19 @@ class TestStaticSiteGenerator(unittest.TestCase):
         if self.temp_dir.exists():
             shutil.rmtree(self.temp_dir, ignore_errors=True)
 
+    def test_empty_2023_comparison_links_to_coverage_without_claims(self) -> None:
+        """A source-gated empty comparison still has a useful next step without JS."""
+        build_site(
+            root_dir=ROOT_DIR,
+            output_dir=self.output_dir,
+            election_id="es-gen-2023",
+            build_date="2026-10-24",
+        )
+        home = (self.output_dir / "index.html").read_text(encoding="utf-8")
+        self.assertIn('href="./metodo/">Consultar cobertura y método</a>', home)
+        self.assertIn('La falta de contenido aprobado no indica', home)
+        self.assertNotIn('class="party-statement"', home)
+
     def test_task_3_1_deterministic_repeat_build_identical_hashes(self) -> None:
         """Verify Task 3.1: identical approved input produces identical output across multiple builds."""
         dir1 = self.temp_dir / "build_run_1"
