@@ -379,6 +379,15 @@ jobs:
           ignore-unfixed: false
           scanners: vuln
 
+      - name: Retain serving image vulnerability findings
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: serving-image-vulnerabilities
+          path: build/scan.json
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: Save the tested candidate and provenance
         if: github.repository == 'c2ventures/elecciones2026' && github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
