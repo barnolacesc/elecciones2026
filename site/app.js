@@ -1161,6 +1161,7 @@
     const partyBSelect = document.getElementById('party-b-select');
     const errorEl = document.getElementById('selection-error');
     const measuresContainer = document.getElementById('measures-container');
+    const resultsHeading = document.getElementById('compare-results-heading');
 
     if (!form || !topicSelect || !partyASelect || !partyBSelect || !errorEl) {
       return;
@@ -1231,6 +1232,10 @@
       if (!isValid) {
         // Never leave claims from the previous pair visible beside an invalid selection.
         if (measuresContainer) measuresContainer.innerHTML = '';
+        if (resultsHeading) {
+          resultsHeading.textContent = 'Comparación de propuestas agrupadas por medida';
+          resultsHeading.classList.add('sr-only');
+        }
         if (window.BudgetContext) window.BudgetContext.clear();
         return;
       }
@@ -1241,6 +1246,12 @@
       const partyBKey = partyBSelect.value;
 
       const topicData = TOPICS[topicKey] || TOPICS['housing'];
+      if (resultsHeading) {
+        resultsHeading.textContent = 'Comparación: ' + topicData.name + ' — ' +
+          PARTIES[partyAKey].name + ' y ' + PARTIES[partyBKey].name;
+        resultsHeading.classList.remove('sr-only');
+        resultsHeading.classList.add('comparison-results-heading');
+      }
       let measures = payloadMatchesElection ? (MEASURES_BY_TOPIC[topicKey] || []) : [];
       measures = measures.filter(function (m) {
         const election = isPilot2023 ? 'es-gen-2023' : 'es-gen-2026';
@@ -1298,8 +1309,12 @@
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();
       updateComparison();
-      if (validateSelection() && measuresContainer && typeof measuresContainer.scrollIntoView === 'function') {
-        measuresContainer.scrollIntoView({ behavior: 'auto', block: 'start' });
+      if (validateSelection() && resultsHeading && typeof resultsHeading.focus === 'function') {
+        resultsHeading.setAttribute('tabindex', '-1');
+        resultsHeading.focus({ preventScroll: true });
+        if (typeof resultsHeading.scrollIntoView === 'function') {
+          resultsHeading.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }
       }
     });
 
