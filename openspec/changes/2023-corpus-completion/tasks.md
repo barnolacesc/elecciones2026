@@ -162,3 +162,6 @@ Validation for this draft: `git diff --check` and a structure check of the
 requirement, five scenarios and pending review tasks. No source, rights,
 statement, comparison or public output changes; CI is engineering evidence,
 not human review.
+PR #150 run `40185225258` did not execute the test or mobile jobs: GitHub
+reported an account payment/spending-limit block before any job steps began.
+Re-run CI after billing is restored; local checks do not replace it.
