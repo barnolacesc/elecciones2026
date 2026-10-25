@@ -130,6 +130,12 @@ function textContrast() {
     await page.keyboard.press('Enter');
     await inspect('results');
     check('Results remain text, not a chart', await page.locator('.quiz-score').count() === 2);
+    const normalScores = await page.locator('.quiz-score').allTextContents();
+    await tabTo(page, 'button', 'Cambiar respuestas');
+    await page.keyboard.press('Enter');
+    const originalReview = await page.locator('.quiz-review').innerText();
+    await tabTo(page, 'button', 'Continuar y ver resultado');
+    await page.keyboard.press('Enter');
     await tabTo(page, 'button', 'Borrar respuestas');
     // Traverse back to the disclosure through native Tab order, without pointer use.
     for (let i = 0; i < 160; i++) {
@@ -148,8 +154,52 @@ function textContrast() {
     check('Weight update exposes a polite status', await page.locator('#quiz-status').evaluate(el =>
       el.getAttribute('role') === 'status' && el.textContent.includes('actualizados')));
     await inspect('changed weights');
-    await tabTo(page, 'button', 'Restablecer pesos');
+    const resetRequests = [];
+    const recordResetRequest = request => resetRequests.push(request.url());
+    page.on('request', recordResetRequest);
+    for (const width of [360, 390, 430]) {
+      await page.setViewportSize({width, height: 844});
+      await tabTo(page, 'combobox', 'Vivienda');
+      await page.keyboard.press('d');
+      await page.waitForFunction(() => document.querySelector('#weight-housing').value === '2');
+      check(`${width}px: changed weights affect fixture scores`,
+        JSON.stringify(await page.locator('.quiz-score').allTextContents()) !== JSON.stringify(normalScores));
+      await tabTo(page, 'button', 'Restablecer pesos');
+      const resetControl = page.getByRole('button', {name: 'Restablecer pesos', exact: true, includeHidden: true});
+      await page.keyboard.press('Enter');
+      check(`${width}px: weight reset preserves focus and disclosure`, await resetControl.evaluate(el =>
+        el === document.activeElement && el.closest('details').open));
+      check(`${width}px: all eight weights return to normal`, await page.locator('.quiz-weight select').evaluateAll(elements =>
+        elements.length === 8 && elements.every(el => el.value === '1')));
+      assert.deepEqual(await page.locator('.quiz-score').allTextContents(), normalScores,
+        `${width}px: weight reset restores baseline scores`);
+      check(`${width}px: weight reset retains answer coverage`,
+        (await page.locator('#quiz-app').innerText()).includes('8 de 16 respuestas · 4 de 8 temas respondidos.'));
+      check(`${width}px: weight reset exposes polite confirmation`, await page.locator('#quiz-status').evaluate(el =>
+        el.getAttribute('role') === 'status' && el.textContent === 'Todos los temas tienen peso normal.'));
+      check(`${width}px: reset focus visible, unobscured and 44px`, await resetControl.evaluate(el => {
+        const rect = el.getBoundingClientRect();
+        const style = getComputedStyle(el);
+        const top = document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2);
+        return rect.width >= 44 && rect.height >= 44 && rect.top >= 0 && rect.bottom <= innerHeight
+          && (top === el || el.contains(top)) && style.outlineStyle !== 'none' && parseFloat(style.outlineWidth) > 0
+          && document.documentElement.scrollWidth <= innerWidth;
+      }));
+      await page.keyboard.press('Shift+Tab');
+      check(`${width}px: reverse Tab reaches last topic`, await page.locator('.quiz-weight select').last()
+        .evaluate(el => el === document.activeElement));
+      await page.keyboard.press('Tab');
+      check(`${width}px: forward Tab returns to reset`, await resetControl.evaluate(el => el === document.activeElement));
+      await page.keyboard.press('Tab');
+      check(`${width}px: forward Tab leaves weights for result details`, await page.locator('.quiz-result summary').first()
+        .evaluate(el => el === document.activeElement));
+    }
+    page.off('request', recordResetRequest);
+    check('Weight reset and keyboard navigation send no requests', resetRequests.length === 0);
+    await tabTo(page, 'button', 'Cambiar respuestas');
     await page.keyboard.press('Enter');
+    check('Weight reset preserves every answer and skip',
+      (await page.locator('.quiz-review').innerText()) === originalReview);
     await tabTo(page, 'button', 'Borrar respuestas');
     await page.keyboard.press('Enter');
     check('Reset returns to introduction', await page.getByRole('button', {name: 'Empezar', exact: true}).count() === 1);
