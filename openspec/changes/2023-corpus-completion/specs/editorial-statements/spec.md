@@ -68,6 +68,44 @@ never mean explicit opposition.
 - **WHEN** automated extraction returns no candidates for a topic
 - **THEN** the result is an unreviewed search outcome, not `not_found`.
 
+### Requirement: Version-bound topic-search evidence
+
+Before publishing a `not_found` or equivalent absence label, the system SHALL
+retain a human-reviewed search ledger bound to the exact election,
+candidature, topic, taxonomy revision and relevant document-set revision. The
+ledger SHALL identify each included source version, searched page/section
+scope, method, reviewer, candidate dispositions and unresolved exclusions.
+An approved inclusion and source-scope protocol SHALL govern which documents
+must be searched. Empty extraction, a single searched document or rights
+approval SHALL NOT substitute for that ledger. An absence conclusion SHALL be
+scoped to the reviewed source set and SHALL NOT imply political opposition or
+completeness of the entire party platform.
+
+#### Scenario: Unsearched annex
+
+- **WHEN** the main programme has been searched but a relevant annex has not
+- **THEN** the topic remains partial and no absence label is publishable.
+
+#### Scenario: Empty machine search without human review
+
+- **WHEN** an extractor returns no candidates across the fixed source set but
+  the search scope, method or candidate dispositions are pending human review
+- **THEN** coverage remains pending; `not_found` is not publishable.
+
+#### Scenario: Approved scoped negative finding
+
+- **WHEN** the approved protocol and human reviewers establish that all
+  relevant source ranges were searched with no supported candidate
+- **THEN** any absence label identifies its reviewed source scope and cannot
+  be used as an agreement or divergence operand.
+
+#### Scenario: New relevant document or changed taxonomy
+
+- **WHEN** an annex or replacement joins the source set, or the applicable
+  taxonomy revision changes
+- **THEN** the former negative finding is invalidated and unpublished until
+  its exact dependencies are re-reviewed.
+
 ### Requirement: Correction dependency invalidation
 
 A changed source version/hash, locator, taxonomy assignment or statement

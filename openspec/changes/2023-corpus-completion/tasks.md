@@ -121,3 +121,22 @@ test applies to a design-only change; CI remains technical evidence only.
 Validation: official BOE pages and linked correction notices inspected on
 2026-10-22; `git diff --check` and document-structure checks. No software or
 political-content tests apply to this proposal-only source handoff.
+
+## P1.3 — Topic-search evidence and absence gate draft (2026-10-24)
+
+- [x] Draft the version-bound search-ledger and fail-closed absence requirement,
+  six fictional cases and proposed states in this change's `design.md` and
+  `specs/editorial-statements/spec.md`. Reconciled against `origin/main`
+  `77de048`, the four pilot source rows and draft/conflicting PR #101. No real
+  search, rights decision, editorial record or public artifact changed.
+- [ ] Owner/editorial review: approve the relevant-document and search-stopping
+  protocol, negative-finding reviewer quorum, non-searchable source handling,
+  translation treatment and reader-facing Spanish wording. This draft is not
+  an editorial decision.
+- [ ] After P0 inventory/taxonomy review and PR #101 reconciliation, align the
+  concrete schema and validator tasks with the approved protocol. Use only
+  fictional fixtures for implementation until source rights and editorial
+  gates are satisfied; test invalidation and private/public projection.
+
+P1.3 validation is a documentation/requirement structure check and
+`git diff --check`; neither can approve a negative political claim.
