@@ -48,7 +48,8 @@ def frame(title: str, body: str, *, nested: bool = False, image_url: str = "", e
 <link rel="stylesheet" href="{root}pilot-2023.css"></head>
 <body><a class="skip" href="#principal">Saltar al contenido</a>
 <header><a class="brand" href="{root}">Generales 2023 <small>piloto privado</small></a>
-<nav aria-label="Navegación principal"><a href="{root}">Comparador</a><a href="{root}cuestionario/">Cuestionario</a><a href="{root}presupuestos/">Presupuestos</a><a href="{root}simulador/">Simulador</a><a href="{root}compromisos/">Compromisos</a><a href="{root}fuentes/">Fuentes</a></nav></header>
+<nav class="desktop-nav" aria-label="Navegación principal"><a href="{root}">Comparador</a><a href="{root}cuestionario/">Cuestionario</a><a href="{root}presupuestos/">Presupuestos</a><a href="{root}simulador/">Simulador</a><a href="{root}compromisos/">Compromisos</a><a href="{root}fuentes/">Fuentes</a></nav>
+<details class="mobile-nav"><summary aria-label="Abrir navegación">Menú</summary><nav aria-label="Navegación móvil"><a href="{root}">Comparador</a><a href="{root}cuestionario/">Cuestionario</a><a href="{root}presupuestos/">Presupuestos</a><a href="{root}simulador/">Simulador</a><a href="{root}compromisos/">Compromisos</a><a href="{root}fuentes/">Fuentes</a></nav></details></header>
 <main id="principal">{body}</main>
 <footer><p>Archivo histórico de las elecciones generales del 23 de julio de 2023. No describe programas de 2026 ni recomienda el voto.</p>
 <p>Resúmenes provisionales de medidas concretas; consulta el documento original. Una medida no seleccionada o ausente no implica oposición.</p></footer>
@@ -96,12 +97,12 @@ def comparison(data: dict, image_url: str = "") -> str:
     sections = ''.join(sections_parts)
     num_positions = len(data["positions"])
     num_topics = len(data["topics"])
-    body = f'''<div class="hero"><p class="eyebrow">23J 2023 · privado · provisional</p>
-<h1>Compara cuatro programas de 2023</h1>
-<p>PP, ERC, PNV y Sumar. {num_positions} medidas concretas en {num_topics} temas, agrupadas por propuesta y enlazadas a los programas originales.</p>
-<p class="warning"><strong>Lectura provisional:</strong> resúmenes asistidos por extracción de PDF, sin revisión editorial humana. Las propuestas no son equivalentes entre sí; no inferimos acuerdos, desacuerdos ni resultados de gobierno.</p>
-<a class="button" href="#comparador">Elegir tema y candidaturas</a>
-<a class="button button-secondary" href="./fuentes/">Consultar fuentes del piloto</a></div>
+    body = f'''<div class="hero pilot-home-hero"><p class="eyebrow">23J 2023 · piloto privado</p>
+<h1>¿Qué proponen los partidos sobre lo que te importa?</h1>
+<p class="pilot-home-lede">Elige un tema y compara medidas de PP, ERC, PNV y Sumar, con enlaces a sus programas originales.</p>
+<div class="pilot-home-actions"><a class="button" href="#comparador">Comparar dos partidos →</a><a class="button button-secondary" href="./cuestionario/">Explorar el cuestionario →</a></div>
+<p class="pilot-home-scope">{num_positions} medidas · {num_topics} temas · elecciones generales de 2023</p>
+<details class="warning pilot-home-warning"><summary><strong>Piloto provisional:</strong> resúmenes sin revisión editorial humana. Lee los límites.</summary><p>Resúmenes asistidos por extracción de PDF. Las propuestas no son equivalentes entre sí; no inferimos acuerdos, desacuerdos ni resultados de gobierno. No es información de las elecciones de 2026. <a href="./fuentes/">Consulta las fuentes del piloto.</a></p></details></div>
 <h2 id="comparador" tabindex="-1">Elige un tema y dos candidaturas</h2>
 <div class="controls"><label>Tema <select id="pilot-topic">{topics}</select></label>
 <label>Primera candidatura <select id="pilot-a">{parties}</select></label>
