@@ -78,6 +78,26 @@ WHEN/THEN scenarios, the design section and unresolved editorial tasks;
 OpenSpec CLI and project Python 3.14 are unavailable locally; PR CI is the
 engineering regression check, not editorial review.
 
+## P1.5 — Relationship decision collision gate (2026-10-25 draft)
+
+- [x] Reconcile `origin/main` `8e2fab4`, draft/conflicting PR #101 and open
+  PRs #149/#150; inspect the per-record validation and ID-ordered emission
+  path. Draft one requirement, four fictional scenarios and the private ledger
+  design. No corpus, editorial, rights or public record changed.
+- [ ] Editorial/OpenSpec review: decide policy-question identity, legitimate
+  pair reuse, collision arbitrator and correction/supersession evidence. This
+  draft is not approval of any relationship or implementation.
+- [ ] After P0/P1 review, specify the concrete ledger schema, cross-record
+  validator and acceptance tests for static/browser parity using fictional
+  fixtures. Block affected publication on unresolved duplicate decisions.
+- [ ] Reconcile any real relationship candidates only through the independent
+  human review gate; do not promote the four-source pilot from this draft.
+
+Draft validation (2026-10-25): `git diff --check` passed. A local structure
+check found one P1.5 requirement, four paired WHEN/THEN fictional scenarios,
+the design section and open review tasks. OpenSpec CLI was unavailable in
+this checkout. These checks validate draft structure, not editorial meaning.
+
 P0.2 readiness audit (2026-10-20):
 `docs/2023-CORPUS-READINESS-AUDIT-2026-10-20.md` maps the merged draft
 requirements to current register/schema/parser gaps and fictional acceptance

@@ -176,6 +176,43 @@ only one reviewed pair), a 2:2 case with one unmatched measure on each side,
 and a pending-annex case to check set accounting and bounded copy. Passing
 fixture checks cannot approve real completeness or political meaning.
 
+## P1.5 draft — relationship decision collision gate
+
+Status: proposal-only, for editorial and OpenSpec review. This refines the
+P1.2 comparison-set ledger without implementing it or approving any real
+2023 relationship. It does not change P0 source rights or P1.4 document
+applicability decisions.
+
+The current builder validates each relationship separately and then emits one
+measure group per active relationship ID. It does not reconcile two different
+active IDs that name the same statement pair. Consequently, two contradictory
+or duplicate reviewed-looking cards could coexist for one exact pair. The
+current four-source pilot has no active reviewed relationship; this is a
+future publication boundary, not a claim that a live contradiction exists.
+
+Propose a private decision ledger keyed by election, exact unordered pair of
+statement *versions*, and an editorially approved policy-question identity.
+It records each candidate relationship ID, type, caveats, review disposition,
+supersession/correction link and effective-state decision. Before publication,
+the build checks the full candidate set, including competing IDs; it never
+picks the first, last or newest record. A collision leaves the affected pair
+unpublished pending independent human arbitration. An invalidated predecessor
+stays in audit history, while a separately approved successor may be effective.
+Distinct statement pairs are valid even if they share one operand. The
+comparison-set ledger must count each effective pair and retain unmatched
+statements; collision handling cannot conceal P1.2 coverage gaps.
+
+Fictional acceptance fixtures should cover opposite classifications for one
+pair, duplicate same-type decisions with different caveats, an invalidated
+predecessor and approved successor, and one statement in two distinct pairs.
+Verify the static fallback and browser payload reject or omit the same
+unresolved pair. No fixture establishes the right political interpretation.
+
+Editorial owners must decide the policy-question identity and granularity,
+who may arbitrate a collision, whether genuinely distinct questions can reuse
+one exact pair, and the private correction trail. Only after that review may a
+concrete schema and validator task be marked implementation-ready.
+
 ## P0.2 draft — inventory reconciliation handoff
 
 Status: proposal-only, for owner and OpenSpec review. This is a bounded data
