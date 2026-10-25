@@ -43,7 +43,7 @@ method approval, and tasks 3.3–3.5/G5 remain separate and incomplete.
 - [x] Verify the old behavior fails the new regression, then verify normal
   weights, baseline scores, retained answers, visible 44px focus target,
   forward/reverse Tab order, and no interaction requests at 360/390/430 px.
-- [ ] Record local checks and remote CI status without claiming human review.
+- [x] Record local checks and remote CI status without claiming human review.
 
 Local evidence (2026-10-25):
 
@@ -82,8 +82,13 @@ Remote baseline: [main CI 40179863768](https://github.com/c2ventures/elecciones2
 passed validation, rendered mobile, and Docker jobs but failed to start the
 fork-isolation job because GitHub reported failed account payments or an
 insufficient spending limit. PR #151's CI had the same scheduling annotation.
-These are not code-test failures or permission to bypass CI. Branch CI remains
-to be observed. No human screen-reader/device/comprehension, editorial, source,
+These are not code-test failures or permission to bypass CI.
+[PR #152](https://github.com/c2ventures/elecciones2026/pull/152), tested code
+revision `7c55b10`: [CI 40198602933](https://github.com/c2ventures/elecciones2026/actions/runs/40198602933)
+failed without starting validation or rendered-mobile jobs, with the same
+payment/spending-limit annotation. Docker and dependent jobs were skipped.
+The local checks above passed; remote CI is **blocked, not passing**.
+No human screen-reader/device/comprehension, editorial, source,
 provider-privacy, G5, merge, deployment, or publication approval is asserted.
 
 ### Existing phone-flow tasks
