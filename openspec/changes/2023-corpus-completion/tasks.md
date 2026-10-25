@@ -56,6 +56,28 @@ The stacked PR has no automatic CI because `.github/workflows/ci.yml` targets
 pull requests into `main` only; run CI after PR #114 lands and this PR is
 retargeted. CI will remain engineering evidence, not human review.
 
+## P1.2 — Comparison-set integrity (2026-10-23 draft)
+
+- [x] Draft the set-accounting requirement and asymmetric fictional scenarios
+  in `specs/programme-comparison/spec.md`; document the proposed ledger and
+  one-position-per-party display limitation in `design.md`.
+- [ ] Editorial owners review policy-question granularity, one-to-many
+  treatment, permitted exclusions, ledger reviewer and bounded Spanish copy.
+  This draft is not approval of a real relation or completeness claim.
+- [ ] After P0 scope and P1 method review, specify the ledger schema and
+  acceptance tests before implementing it. Test that every eligible approved
+  statement is included or explicitly excluded, unmatched measures survive,
+  and incomplete source/topic coverage cannot yield an exhaustive summary.
+- [ ] Reconcile the approved method with the existing static/browser payload;
+  keep real 2023 set activation behind source rights and statement/relationship
+  review gates. No current pilot record is promoted by this task.
+
+Validation (2026-10-23): a local structure check confirmed three P1.2
+WHEN/THEN scenarios, the design section and unresolved editorial tasks;
+`git diff --check` passed. This proposal changes no code or public data.
+OpenSpec CLI and project Python 3.14 are unavailable locally; PR CI is the
+engineering regression check, not editorial review.
+
 P0.2 readiness audit (2026-10-20):
 `docs/2023-CORPUS-READINESS-AUDIT-2026-10-20.md` maps the merged draft
 requirements to current register/schema/parser gaps and fictional acceptance

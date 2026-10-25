@@ -67,3 +67,37 @@ required sources or searches are unresolved.
 - **WHEN** the candidature manifest or relevant document scope is not approved
 - **THEN** the site does not publish a percentage or claim that all 2023
   programmes or topics were covered.
+
+### Requirement: Account for the full reviewed comparison set
+
+For a selected election, topic and two candidatures, the comparison SHALL
+account for every eligible, publishable statement version in the reviewed
+topic scope. A relationship SHALL describe only its exact operands and policy
+question; it SHALL NOT stand in for all measures from either candidature.
+Unpaired measures SHALL remain visible as single-party measures or have an
+explicit, reviewable exclusion reason and a reader-facing scope limitation.
+The method SHALL disclose the included statement set, unmatched measures and
+the review stage before any aggregate or topic-wide agreement claim. If the
+source/topic coverage or this accounting is incomplete, the view SHALL use
+bounded wording about the measures shown, not an exhaustive comparison claim.
+
+#### Scenario: One reviewed relation and one unmatched measure
+
+- **WHEN** candidature A has two publishable measures in a topic, candidature
+  B has one, and a reviewed relation covers only one A/B pair
+- **THEN** the other A measure is not silently discarded and the relation is
+  not described as agreement or divergence across the whole topic.
+
+#### Scenario: Several measures answer one policy question
+
+- **WHEN** one candidature has multiple reviewed measures for a policy
+  question that the current display can represent with only one position
+- **THEN** the extra measures remain in the accounting and publication is
+  blocked or clearly limited until reviewers choose a lossless grouping rule;
+  the renderer does not select one silently.
+
+#### Scenario: Pending source scope
+
+- **WHEN** a required annex or topic search remains unreviewed
+- **THEN** the displayed comparison may describe its reviewed measures but
+  does not claim complete topic coverage or party-wide agreement.

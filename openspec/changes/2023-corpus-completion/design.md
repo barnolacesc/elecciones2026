@@ -145,6 +145,37 @@ the relationship-review quorum/segregation rule, and reader-facing coverage
 wording. These are review questions, not agent decisions. The existing 2026
 methodology is a reference; its 2026 inclusion rule does not become a 2023 rule.
 
+## P1.2 draft — comparison-set integrity
+
+This proposal-only method refinement concerns selection and presentation of
+already reviewed measures. It does not revise P0 candidature/source evidence,
+approve a political relationship, or implement a renderer. The existing
+comparison payload groups by measure and currently stores one position per
+party in each measure; a relationship record names specific statement IDs.
+Those structures alone do not prove that every eligible statement is shown or
+that a selected relation represents a party's complete topic position.
+
+For each election/topic/two-candidature view, propose a deterministic set
+ledger: eligible approved statement IDs and versions; included measure IDs;
+relationship IDs and exact operands; unmatched statement IDs; excluded IDs
+with a reviewed reason; source/topic coverage revision; and a completeness
+state. The ledger is a private build input/audit output until its schema and
+public projection are reviewed. It must not contain source PDF text, private
+review evidence or personal political answers. An approved relation describes
+only its paired measures. It cannot erase unmatched measures or promote a
+partial set into a party-wide agreement summary.
+
+Before implementation, editorial owners must decide the policy-question
+granularity, whether one-to-many matches are permitted, when an exclusion is
+editorially acceptable, the reviewer for the ledger, and Spanish wording for
+partial coverage. If the current one-position-per-party display cannot show
+all included measures without loss, the build must fail closed or present an
+explicitly limited view under a reviewed rule; arbitrary first/last selection
+is not a valid resolution. Use fictional asymmetric fixtures (2:1 measures,
+only one reviewed pair), a 2:2 case with one unmatched measure on each side,
+and a pending-annex case to check set accounting and bounded copy. Passing
+fixture checks cannot approve real completeness or political meaning.
+
 ## P0.2 draft — inventory reconciliation handoff
 
 Status: proposal-only, for owner and OpenSpec review. This is a bounded data
