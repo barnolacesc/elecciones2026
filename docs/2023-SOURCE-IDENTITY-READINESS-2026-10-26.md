@@ -24,8 +24,9 @@ rights grant, political claim, candidature denominator or release decision.
   files or proposed statements.
 - The latest main CI run at inspection, [40179863768](https://github.com/c2ventures/elecciones2026/actions/runs/40179863768),
   failed in the fork-PR/deploy-credential protection job; three other jobs
-  passed and release was skipped. This is engineering status, not a corpus
-  decision. The preceding main run was successful.
+  passed and release was skipped. GitHub annotated the failed job as **not
+  started** because of account payment or spending-limit status; it is not a
+  demonstrated test regression. The preceding main run was successful.
 
 ## Specific gap and handoff
 
@@ -51,3 +52,8 @@ Evidence: local `origin/main` register and schema; OpenSpec P0/P1 drafts;
 GitHub PR #101/#113 and current open-PR/issue/CI metadata; local `git
 merge-tree` against fetched PR #101 head. A green future CI run cannot supply
 the missing human source, rights or political-content decisions.
+
+PR #155 CI run [40293266028](https://github.com/c2ventures/elecciones2026/actions/runs/40293266028)
+also did not start its test and rendered-mobile jobs for the same GitHub
+billing/spending-limit reason; downstream jobs were skipped. Local structural
+validation and `git diff --check` passed, but hosted CI remains unverified.

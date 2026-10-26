@@ -158,4 +158,7 @@ P1.3 validation is a documentation/requirement structure check and
 
 Validation: `git diff --check` and a local requirement/design/task structure
 check. No source, rights, content or public output was changed. CI is technical
-evidence, not a human authenticity or editorial review.
+evidence, not a human authenticity or editorial review. PR #155 run
+`40293266028` could not start test jobs because GitHub reported an account
+payment or spending-limit block; hosted CI is therefore unverified, not a
+passing or failing test result.
