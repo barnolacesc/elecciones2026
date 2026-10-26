@@ -83,16 +83,23 @@ scope and rights before P1 proposal publication.
 - Latest checked main CI run
   [40179863768](https://github.com/c2ventures/elecciones2026/actions/runs/40179863768)
   on `8e2fab4` has an overall failure: the fork-PR/deploy-credential job
-  failed with no steps or retrievable failed log (`gh run view --log-failed`
-  returned `log not found: 121129463757`). The test, rendered-browser and
-  Docker parity jobs passed; private release was skipped. The available
-  evidence does not identify the cause of that one job failure. Do not call
-  main wholly green or attribute the failure to PR #101.
+  failed before any steps. Its GitHub check-run annotation states that the
+  job was not started because recent account payments failed or the spending
+  limit needs to be increased; it directs the account owner to Billing &
+  plans. The test, rendered-browser and Docker parity jobs passed; private
+  release was skipped. Do not call main wholly green or attribute the
+  account-level job block to PR #101.
+- This audit's draft PR #156 triggered
+  [run 40300408011](https://github.com/c2ventures/elecciones2026/actions/runs/40300408011).
+  Its test and rendered-browser jobs likewise did not start; their check-run
+  annotations report the same account payment/spending-limit block. Downstream
+  jobs were skipped. Thus PR #156 has no CI test result, not a failing test.
 
 **Next integration gate:** resolve PR #101 on its own branch, preserve the
 four-source pilot scope and unknown review/publication dates, then rerun the
 focused editorial/build/browser checks and full CI on the *resolved* head.
-Investigate the current main CI failure independently. Private source-page
+The GitHub account owner must resolve the Actions billing/spending-limit block
+before relying on new hosted CI. Private source-page
 recheck, version-bound rights and lawful summary-use decisions, actual human
 review evidence, and an approved 2023 scope/coverage rule remain human gates.
 No passing test, conflict-free merge or link-only label substitutes for them.
