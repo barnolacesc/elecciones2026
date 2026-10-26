@@ -144,3 +144,49 @@ affected statement, relationship, coverage and quiz dependencies for review.
 - **THEN** affected classifications and downstream coverage or comparison
   decisions remain traceable and pending review rather than inheriting the
   old approval automatically.
+
+### Requirement: Reviewable initiative identity across source occurrences
+
+The private 2023 extraction queue SHALL distinguish a source occurrence, a
+candidate measure and a reviewed initiative identity. Each occurrence SHALL
+retain its exact source version/hash and locator. A proposed split, grouping or
+duplicate disposition SHALL retain all contributing occurrence IDs, rationale,
+reviewer decision and superseded candidate IDs. Text similarity, repeated
+extraction runs or a shared topic SHALL NOT merge candidates or count one
+initiative twice. A change to the operative action, beneficiary, jurisdiction,
+condition, amount or timing SHALL remain unresolved until a human reviewer
+decides whether it is the same initiative, a qualification, a distinct
+initiative or a conflict under the document-applicability protocol. Public
+summaries SHALL NOT inherit approval from an earlier candidate grouping.
+
+#### Scenario: Repeated extraction of one passage
+
+- **WHEN** two runs find the same measure at the same source version and locator
+- **THEN** both extraction events remain auditable, but the proposed coverage
+  count does not become two initiatives solely because of the repeated run.
+
+#### Scenario: One sentence, two independent measures
+
+- **WHEN** one passage states two separately actionable instruments
+- **THEN** reviewers may split it into two candidate initiatives sharing the
+  occurrence, with a recorded split rationale and separate review paths.
+
+#### Scenario: Same measure in programme and annex
+
+- **WHEN** two relevant documents appear to repeat a measure
+- **THEN** both exact locators remain in the private lineage and the identity
+  decision stays pending until source scope and a human duplicate review pass;
+  neither occurrence is silently discarded.
+
+#### Scenario: Similar wording with a material condition change
+
+- **WHEN** two passages differ in eligibility or timing despite similar words
+- **THEN** automatic deduplication is rejected and the difference enters the
+  document-applicability and editorial review queue.
+
+#### Scenario: Reclassified or split approved candidate
+
+- **WHEN** an approved candidate is later split or grouped differently
+- **THEN** its old identity and review remain traceable, while the new public
+  statements, relationships and coverage counts remain pending exact-version
+  review; no approval is inherited.

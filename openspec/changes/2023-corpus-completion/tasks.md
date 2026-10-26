@@ -140,3 +140,25 @@ political-content tests apply to this proposal-only source handoff.
 
 P1.3 validation is a documentation/requirement structure check and
 `git diff --check`; neither can approve a negative political claim.
+
+## P1.6 — Initiative identity and duplicate lineage draft (2026-10-26)
+
+- [x] Audit the current statement/source boundary and draft a private
+  occurrence-to-candidate-to-initiative requirement, design and five fictional
+  scenarios. This is a proposal only; no real initiative, right or approval is
+  added. See `docs/2023-INITIATIVE-LINEAGE-AUDIT-2026-10-26.md`.
+- [ ] Owners review initiative granularity, reviewer quorum/segregation,
+  territorial identity treatment, multi-citation presentation and count
+  definitions. Reconcile the approved decisions with P0 source scope, P1.4
+  document applicability, P1.2 set accounting and PR #101.
+- [ ] After those reviews, define a private ledger schema and validator with
+  fictional split/duplicate/revision fixtures. Prove repeated extraction does
+  not inflate counts, distinct conditions do not auto-merge, and regrouping
+  invalidates dependent statements, comparisons, coverage and quiz items.
+- [ ] Review any proposed public projection and exact-content source-use
+  decisions separately. Do not treat this draft or CI as editorial approval.
+
+Validation (2026-10-26): `git diff --check` and a five-scenario structure
+check; no source PDF, political claim, rights record, schema, code or public
+artifact changed. The local Python interpreter is 3.11, not the project 3.14
+runtime; PR CI remains an independent engineering gate.
