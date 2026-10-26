@@ -54,3 +54,45 @@ Evidence commands for this audit: `git merge-tree --write-tree origin/main
 origin/pr-101`; inspection of `content/sources/register.json` and the eight
 `content/examples/statements/*2023*` records on `fe5e05e`; GitHub PR #101,
 PR #124 and CI metadata. No private PDFs or reviewer evidence were opened.
+
+## 2026-10-26 integration-readiness recheck
+
+Roadmap package: **E1.4**. This is a dated refresh of the conflict and release
+gate evidence above, not a new rights decision, source inventory, review or
+resolved PR candidate. The 2023-first product roadmap still puts P0 source
+scope and rights before P1 proposal publication.
+
+- `origin/main` is `8e2fab4`; draft PR #101 remains at `f8506a1`, with zero
+  GitHub reviews and GitHub `CONFLICTING`/`DIRTY` merge state. A fresh
+  `git merge-tree --write-tree origin/main origin/audit-pr101` reports the
+  same **nine content-conflict paths** listed above. The merge was simulated;
+  no files on PR #101 were changed. Its four successful CI jobs date from
+  2026-10-12, before these main-branch changes, and its private-release job
+  was skipped. Those checks do not test the combined tree.
+- Current main still has four `es-gen-2023` source rows (PP, ERC, PNV, Sumar),
+  all `published-unverified`, all with `rights_review.status=not_reviewed`,
+  and all with `publication_date=null`. Its eight 2023 statement examples are
+  six `under_review` and two `draft`; its six 2023 relationship examples are
+  `invalidated`. These are repository record counts, not a complete
+  candidature/document inventory, topic-search result, or publishable corpus.
+- Open PRs #149, #150, #151 and #155 separately draft rights withdrawal,
+  multi-document scope, relationship-collision and source-identity gates.
+  They do not resolve PR #101's conflicts or grant editorial approval. Avoid
+  carrying their proposed semantics into the PR #101 merge without a reviewed
+  decision and a fresh test run.
+- Latest checked main CI run
+  [40179863768](https://github.com/c2ventures/elecciones2026/actions/runs/40179863768)
+  on `8e2fab4` has an overall failure: the fork-PR/deploy-credential job
+  failed with no steps or retrievable failed log (`gh run view --log-failed`
+  returned `log not found: 121129463757`). The test, rendered-browser and
+  Docker parity jobs passed; private release was skipped. The available
+  evidence does not identify the cause of that one job failure. Do not call
+  main wholly green or attribute the failure to PR #101.
+
+**Next integration gate:** resolve PR #101 on its own branch, preserve the
+four-source pilot scope and unknown review/publication dates, then rerun the
+focused editorial/build/browser checks and full CI on the *resolved* head.
+Investigate the current main CI failure independently. Private source-page
+recheck, version-bound rights and lawful summary-use decisions, actual human
+review evidence, and an approved 2023 scope/coverage rule remain human gates.
+No passing test, conflict-free merge or link-only label substitutes for them.
