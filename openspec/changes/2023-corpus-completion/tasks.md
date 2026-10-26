@@ -158,7 +158,11 @@ P1.3 validation is a documentation/requirement structure check and
 - [ ] Review any proposed public projection and exact-content source-use
   decisions separately. Do not treat this draft or CI as editorial approval.
 
-Validation (2026-10-26): `git diff --check` and a five-scenario structure
-check; no source PDF, political claim, rights record, schema, code or public
-artifact changed. The local Python interpreter is 3.11, not the project 3.14
-runtime; PR CI remains an independent engineering gate.
+Validation (2026-10-26): `git diff --check`, a five-scenario structure check,
+and 51 passing existing tests (`PYTHONPATH=src python3 -m unittest
+tests.test_editorial_gates tests.test_editorial_policy
+tests.test_source_register`). No source PDF, political claim, rights record,
+schema, code or public artifact changed. The local interpreter is Python 3.11,
+not the project 3.14 runtime. PR #158 CI jobs did not start test steps:
+GitHub annotated an account payment/spending-limit block. CI remains unverified
+and is not editorial approval.

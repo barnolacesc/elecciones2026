@@ -41,6 +41,10 @@ statement/comparison/coverage/quiz dependencies. Owners must decide identity
 granularity, territorial equivalence, reviewer quorum, count wording and
 multi-citation presentation before schema or runtime implementation.
 
-Local verification for this proposal: `git diff --check` plus a structure
-check of the five WHEN/THEN cases and separate owner/implementation tasks.
-Neither check is editorial review, rights clearance or release approval.
+Local verification for this proposal: `git diff --check`, a structure check
+of the five WHEN/THEN cases and separate owner/implementation tasks, and 51
+passing existing unittest cases with `PYTHONPATH=src` on Python 3.11. The
+project's Python 3.14/PR CI gate is unverified: PR #158 jobs did not start test
+steps, and GitHub's annotation cites failed account payments or a spending
+limit. Neither local checks nor a future passing CI run would be editorial
+review, rights clearance or release approval.
