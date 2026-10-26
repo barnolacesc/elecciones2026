@@ -69,3 +69,36 @@ review of the relevant source, not merely no extracted candidate.
 #### Scenario: Empty extraction
 - **WHEN** extraction finds no initiative for a topic
 - **THEN** the topic remains unreviewed/unknown, not `not stated` or opposed.
+
+### Requirement: Publisher-bound source identity
+
+Before a 2023 document version is marked authentic, the inventory SHALL retain
+reviewable evidence connecting the claimed publisher's official entry point to
+the exact retrieved bytes and hash. The evidence SHALL identify the observed
+landing URL, document URL, redirect or mirror chain, access date, final content
+hash and private evidence reference. A URL, matching filename, HTTP success or
+locally verified hash alone SHALL NOT establish publisher authenticity. The
+authenticity decision SHALL remain separate from rights and editorial review.
+Multiple URLs with identical bytes SHALL remain separately evidenced locations
+of one source version only after a reviewer confirms their identity; different
+bytes SHALL remain distinct versions pending review.
+
+#### Scenario: Official page and unbound document
+- **WHEN** an official landing page is registered but no retained evidence binds
+  it to the downloaded document version
+- **THEN** byte integrity may be reported, but authenticity remains pending.
+
+#### Scenario: Redirect to a mirror
+- **WHEN** the registered document URL redirects to a different host
+- **THEN** the redirect chain and final bytes are recorded for human review;
+  neither the destination nor identical bytes inherit official status or rights.
+
+#### Scenario: Same URL returns changed bytes
+- **WHEN** a later retrieval from the same URL has a different hash
+- **THEN** the prior version and evidence remain intact and the new bytes enter
+  source-identity, locator and downstream editorial re-review before use.
+
+#### Scenario: Duplicate locations
+- **WHEN** two candidate URLs return the same hash
+- **THEN** they are not counted as two programme versions or silently merged;
+  the reviewer records whether they are mirrors of the same exact version.

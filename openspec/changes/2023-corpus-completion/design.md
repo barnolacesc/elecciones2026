@@ -336,3 +336,54 @@ negative findings, treatment of translated sources, and exact Spanish wording
 for a scoped absence. These cannot be supplied by CI or an agent. After review,
 the implementation task can define a concrete schema and validators against
 the agreed protocol; until then this draft is a fail-closed handoff only.
+
+## P0.4 draft — publisher-bound source identity
+
+Status: proposal-only. This narrows the P0 authenticity handoff for each
+document version; it does not verify any current publisher page, grant reuse
+rights, approve a candidature or implement a fetcher. It is separate from
+rights withdrawal (draft PR #149) and multi-document applicability (draft PR
+#150).
+
+### Evidence unit and review boundary
+
+For each candidate source version, propose a private evidence unit keyed by
+`election_id`, source ID, document role and SHA-256. It records the claimed
+publisher, official landing-page URL and captured reference, observed link or
+discovery path to the document, every redirect and final URL, access timestamp,
+content hash, and private capture reference. If a page links to an archive or
+third-party host, record the chain rather than replacing the publisher URL
+with the destination. An inaccessible page, changed redirect or unavailable
+capture leaves the identity question pending; it is not a reason to fill an
+unknown publication date from a path or filename.
+
+A human source-authenticity reviewer decides whether the evidence binds the
+claimed publisher to those exact bytes. Hash verification proves only byte
+identity. Rights reviewers decide permitted use independently for the exact
+version; editorial reviewers decide claims and locators independently. A
+mirror may be an alternate location for an approved version only after its
+chain and hash are reviewed. An equal hash alone does not establish publisher
+authority, and two locations do not increase document coverage. Different
+hashes at one URL remain separate version candidates, with old evidence kept.
+
+### Proposed reconciliation and fictional cases
+
+The future report lists each version's identity state (`pending`, `reviewed`,
+or `invalidated`), observed URL chain, exact hash and decision reference. It
+lists alternate locations separately from document/version counts. A changed
+landing link, redirect, final hash or publisher claim invalidates the affected
+identity decision and dependent locator check; rights and statement reviews
+are not silently copied to new bytes. The public build receives no captures,
+source bytes, redirect logs or private decision evidence.
+
+Fictional acceptance cases: (1) official page but no captured link to the PDF;
+(2) official page redirecting to a third-party mirror with matching bytes;
+(3) two URLs with equal hashes but no reviewer equivalence decision; (4) a
+stable URL returning new bytes; (5) a deleted landing page with retained,
+dated private evidence. All remain pending or versioned as appropriate; none
+authorizes a quote or political claim.
+
+The owner must choose the acceptable evidence capture, freshness/recheck rule,
+reviewer, and handling of inaccessible historic publisher pages. Review this
+contract with the P0 inclusion and document-scope decisions, and reconcile its
+eventual schema with PR #101 before implementation.
