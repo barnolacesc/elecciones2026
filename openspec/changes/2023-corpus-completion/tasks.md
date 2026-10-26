@@ -162,3 +162,6 @@ passed; `PYTHONPATH=src python3 -m unittest tests.test_editorial_gates
 tests.test_schemas -q` passed 47 existing tests on Python 3.11. Project
 Python 3.14 and pytest were unavailable locally. Existing implementation
 tests cannot approve this draft or a political correction.
+PR #157 CI run `40308249819` failed before both test and mobile jobs reported
+any steps; `gh run view --log-failed` returned no job log. This is not a test
+result or an editorial decision. The CI execution blocker remains unresolved.
