@@ -29,6 +29,10 @@ The MVP SHALL let users select exactly two parties and one topic at a time, rest
 - **WHEN** the selection becomes invalid
 - **THEN** the previous result heading and measure content no longer describe the old selection.
 
+#### Scenario: Invalid pair submission reaches correction control
+- **WHEN** the reader submits the same candidature in both selectors
+- **THEN** the error is shown and keyboard focus moves to the second selector, which references that error.
+
 ### Requirement: Evidence-based agreement and difference
 The site SHALL show an agreement only when reviewers have approved a specific comparable measure; it SHALL show relevant scope, funding or timing differences beside any shared headline.
 

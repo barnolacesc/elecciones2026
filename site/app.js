@@ -1309,7 +1309,13 @@
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();
       updateComparison();
-      if (validateSelection() && resultsHeading && typeof resultsHeading.focus === 'function') {
+      if (!validateSelection()) {
+        // The second selector is where a reader can correct a duplicate pair.
+        // Keep the existing described error adjacent to the focused control.
+        partyBSelect.focus();
+        return;
+      }
+      if (resultsHeading && typeof resultsHeading.focus === 'function') {
         resultsHeading.setAttribute('tabindex', '-1');
         resultsHeading.focus({ preventScroll: true });
         if (typeof resultsHeading.scrollIntoView === 'function') {
