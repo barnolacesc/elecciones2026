@@ -140,3 +140,25 @@ political-content tests apply to this proposal-only source handoff.
 
 P1.3 validation is a documentation/requirement structure check and
 `git diff --check`; neither can approve a negative political claim.
+
+## P1.4 — Correction dependency closure draft (2026-10-26)
+
+- [x] Reconcile the current correction schema, loader and review gate with the
+  P1 coverage/comparison/quiz dependency needs. Evidence:
+  `docs/2023-CORRECTION-DEPENDENCY-AUDIT-2026-10-26.md`.
+- [x] Draft the version-bound impact, withholding and projection-consistency
+  requirement, design and fictional scenarios in this change. Proposal only;
+  no source, editorial, quiz or public record changed.
+- [ ] Owner/editorial review: decide correction severity, reviewer segregation,
+  rights-withdrawal handling, partial-comparison wording and public notice.
+- [ ] After P0/P1 contracts and PR #101 are reconciled, specify the concrete
+  dependency graph, schema migration and transaction boundary. Test source
+  replacement, retraction, reclassification, missing IDs, cross-election
+  isolation and static/browser parity with fictional fixtures before any real
+  2023 activation.
+
+Validation (2026-10-26): requirement/scenario structure and `git diff --check`
+passed; `PYTHONPATH=src python3 -m unittest tests.test_editorial_gates
+tests.test_schemas -q` passed 47 existing tests on Python 3.11. Project
+Python 3.14 and pytest were unavailable locally. Existing implementation
+tests cannot approve this draft or a political correction.

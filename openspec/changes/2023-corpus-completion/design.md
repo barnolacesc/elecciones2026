@@ -336,3 +336,58 @@ negative findings, treatment of translated sources, and exact Spanish wording
 for a scoped absence. These cannot be supplied by CI or an agent. After review,
 the implementation task can define a concrete schema and validators against
 the agreed protocol; until then this draft is a fail-closed handoff only.
+
+## P1.4 draft — correction dependency closure
+
+Status: proposal-only. This specifies how a future 2023 correction should
+invalidate derived decisions; it does not change current records, approve a
+correction, or authorize implementation. It depends on approved P0 source,
+rights and taxonomy contracts and the P1 statement/relationship method.
+
+### Proposed review transaction
+
+1. Identify the immutable election, source/version, statement or relationship
+   revision being corrected and retain the prior state and reason. A correction
+   to source authenticity, rights or document scope remains a distinct human
+   decision; a content reviewer cannot silently confer those approvals.
+2. Compute the transitive dependent set before public projection: exact source
+   locators; initiative candidates; topic searches and absence findings;
+   statement summaries; paired relationships; comparison-set ledgers; and
+   quiz items that cite affected statements. Record each affected ID/revision,
+   disposition and reviewer queue. A rights withdrawal also suspends affected
+   public uses according to the approved rights policy.
+3. Withhold affected public claims and derived labels until their respective
+   human reviewers recheck the new exact versions. Keep unrelated, already
+   approved measures available when the approved presentation method allows
+   a clearly limited view. Do not convert withheld content into `not stated`.
+4. Produce a deterministic private impact report and a public correction
+   summary containing only approved, non-sensitive metadata. The old version
+   stays traceable privately. The static build and browser publish set must
+   agree; omission of a correction or an invalidated dependency must not
+   revive a claim on the next rebuild.
+
+The existing correction schema lists `invalidated_relationship_ids`, and the
+generator loads correction records, but a complete dependency-closure contract
+for 2023 topic coverage, comparison sets and quiz citations is not specified.
+This draft does not assert that any current public 2023 claim is affected.
+
+### Fictional acceptance cases and pending decisions
+
+- Changing a fictional source hash with unchanged prose still withholds old
+  page locators and every dependent approval until exact-version review.
+- Retracting one of two paired fictional statements withholds its relationship
+  and set-wide conclusion, without fabricating a negative position for that
+  candidature or suppressing an unrelated reviewed measure.
+- Reclassifying a measure across topics invalidates both old and new topic
+  accounting, any scoped absence and quiz item selection that used the old
+  assignment. A label-only taxonomy edit is classified by reviewers, not by
+  an automatic string comparison.
+- A corrected statement cited by a provisional quiz item cannot inherit its
+  old item approval. No answer values enter the impact report or URLs.
+- A correction affecting `es-gen-2023` cannot invalidate or revive records in
+  `es-gen-2026`; a missing dependency ID fails the private reconciliation.
+
+Editorial owners must settle correction severity and public notice wording,
+reviewer segregation, whether a rights withdrawal removes links as well as
+summaries, and how an incomplete comparison is displayed. The approved schema,
+transaction boundary and tests follow those decisions, not this draft alone.
