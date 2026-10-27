@@ -246,7 +246,8 @@ CI follow-up: [run 40107470726](https://github.com/c2ventures/elecciones2026/act
 
 ## E1.4 PR #101 gate integration — 2026-10-27
 
-This integration rebases PR #101's link-only summary gate onto current main without
+Against `origin/main` `8e2fab4`, this integration rebases PR #101 head `f8506a1`'s
+link-only summary gate without
 promoting the six PP/ERC candidates. The four-party private pilot copy and its
 coverage disclaimer remain. The gate requires an exact source/version, a dated
 human source-specific reuse decision with scope and private evidence reference,
@@ -263,5 +264,9 @@ relationship or public release has been approved by this integration.
 - [ ] Resolve the supersession/closeout of PR #101 after this integration is
   reviewed. Its historical green CI is not integrated-branch acceptance.
 
-Validation for this integration is recorded in its PR CI and the dated
-reconciliation audit. A passing engineering test cannot supply human review.
+Local Node selection/sharing checks pass (14/14), and `git diff --check` passes.
+Python tests cannot run on this host's Python 3.11 because existing code uses
+newer f-string syntax; this branch needs PR CI. The `origin/main` CI run
+`40179863768` failed before this integration; PR #101's old green run does
+not prove the integrated branch. A passing engineering test cannot supply
+human review.

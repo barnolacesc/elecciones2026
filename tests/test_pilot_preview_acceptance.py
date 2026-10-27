@@ -57,7 +57,7 @@ class PilotArtifactTests(unittest.TestCase):
                     self.assertEqual(metadata.social_urls, metadata.canonicals)
                     self.assertIn('data-election="es-gen-2023"', html)
                     self.assertIn('ENSAYO PILOTO PRIVADO', html)
-                    self.assertIn('Solo posiciones verificadas', html)
+                    self.assertIn('Revisión humana y de derechos pendiente', html)
                     self.assertRegex(html, r'<title>[^<]*2023[^<]*</title>')
                     self.assertNotIn('Partido Ejemplo A', html)
                     for quote in quotes:
@@ -169,7 +169,7 @@ class PilotBrowserTests(unittest.TestCase):
                 with self.subTest(route=route):
                     page.goto(self.base + route)
                     self.assertIn('2023', page.title())
-                    self.assertIn('Revisión pendiente', page.locator('.preview-banner').inner_text())
+                    self.assertIn('Publicación pendiente', page.locator('.preview-banner').inner_text())
                     self.assertIn('Revisión humana y de derechos pendiente', page.locator('body > footer').inner_text())
                     self.assertGreater(len(page.locator('main').inner_text()), 40)
                     layout = page.evaluate(LAYOUT)

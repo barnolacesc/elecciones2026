@@ -178,6 +178,9 @@ class TestPilotEditorialAudit(unittest.TestCase):
                                 build_date="2026-10-12", custom_statements=[statement],
                                 custom_relationships=[])
             self.assertEqual((result.statements_count, result.relationships_count), (1, 0))
+            home_text = (output / "index.html").read_text()
+            self.assertIn("Posiciones visibles verificadas", home_text)
+            self.assertIn("PP, ERC, PNV y Sumar", home_text)
             html_text = "\n".join(p.read_text() for p in output.rglob("*.html"))
             browser_text = "\n".join(p.read_text() for p in output.glob("comparison-data.*.js"))
             payload = json.loads(json.loads(browser_text.removeprefix(

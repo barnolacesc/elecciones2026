@@ -1,6 +1,6 @@
 # PP/ERC source-specific reuse handoff — 2026-10-12
 
-Roadmap package: **E1.4**. This is a decision brief, **not** a rights approval or publication authorization. The six reviewed candidate records remain outside the publish set.
+Roadmap package: **E1.4**. This is a decision brief, **not** a rights approval or publication authorization. The six owner-reported candidate records remain outside the publish set.
 
 ## Verified public evidence and private recheck boundary
 
@@ -26,4 +26,4 @@ If the owner approves the proposed scope, the source status can become `link_onl
 
 ## Content-review dependency
 
-PR [#96](https://github.com/c2ventures/elecciones2026/pull/96) reports owner and `carlesfito` approval of the six unchanged #87 candidates. This branch incorporates those records, retaining owner-attested versus direct-review provenance. Each reported decision points to private evidence and a SHA-256 fingerprint of its exact statement wording, qualifications, source URL/version and locators. The actual review dates are **not recorded**; `reported_date` is 2026-10-12 and `review_date` is null. Do not promote to `approved` or infer `last_reviewed_date` until the dates and version-bound evidence are confirmed through the authorized editorial workflow. Do not repeat review solely because there is no direct GitHub comment. Any substantive wording or qualification change requires a new human approval for the changed fingerprint.
+PR [#96](https://github.com/c2ventures/elecciones2026/pull/96) reports owner and `carlesfito` approval of the six unchanged #87 candidates. Merged PR #96 already retained those records on main; this integration preserves owner-attested versus direct-review provenance. Each reported decision points to private evidence and a SHA-256 fingerprint of its exact statement wording, qualifications, source URL/version and locators. The actual review dates are **not recorded**; `reported_date` is 2026-10-12 and `review_date` is null. Do not promote to `approved` or infer `last_reviewed_date` until the dates and version-bound evidence are confirmed through the authorized editorial workflow. Do not repeat review solely because there is no direct GitHub comment. Any substantive wording or qualification change requires a new human approval for the changed fingerprint.

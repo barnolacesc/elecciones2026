@@ -124,4 +124,4 @@ that date. Source records remain unchanged pending the provenance handoff.
 
 ## Issue #100 handoff
 
-See [source-specific reuse and provenance handoff](reuse-handoff.md). It supersedes the older pending-review status language above where PR #96 retained owner-attested content reports. The report date is not the actual review date, and the six records remain unpublished.
+See [source-specific reuse and provenance handoff](reuse-handoff.md). It supersedes the older pending-review status language above where merged PR #96 retained owner-attested content reports. The report date is not the actual review date, and the six records remain unpublished.
