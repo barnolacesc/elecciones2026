@@ -135,6 +135,17 @@
       document.getElementById('pilot-answer-error').hidden = true;
     }
     showQuestion();
+    function clearPoliticalState() {
+      answers.length = 0;
+      index = 0;
+      quiz.hidden = false;
+      results.replaceChildren();
+      showQuestion();
+    }
+    window.addEventListener('pagehide', clearPoliticalState);
+    window.addEventListener('pageshow', event => {
+      if (event.persisted) clearPoliticalState();
+    });
     quiz.addEventListener('submit', event => {
       event.preventDefault();
       const chosen = quiz.querySelector('input[name="answer"]:checked');

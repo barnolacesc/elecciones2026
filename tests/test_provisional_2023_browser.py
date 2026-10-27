@@ -115,6 +115,26 @@ class ProvisionalBrowserTests(unittest.TestCase):
         self.assertNotIn('private', str(payloads[0]))
         self.assertNotIn('PP', str(payloads[0]))
 
+    def test_pilot_discards_answers_on_exit_and_cache_restore(self):
+        context = self.browser.new_context(viewport={'width': 390, 'height': 800})
+        page = context.new_page()
+        page.goto(self.base + '/cuestionario/')
+        page.locator('input[name="answer"][value="agree"]').check()
+        page.locator('#pilot-quiz button').click()
+        self.assertIn('Propuesta 2 de 12', page.locator('#pilot-progress').inner_text())
+
+        page.goto(self.base + '/fuentes/')
+        page.go_back()
+        self.assertIn('Propuesta 1 de 12', page.locator('#pilot-progress').inner_text())
+        self.assertFalse(page.locator('input[name="answer"]:checked').count())
+        self.assertFalse(page.locator('#pilot-results').inner_text().strip())
+
+        page.locator('input[name="answer"][value="strongly-disagree"]').check()
+        page.evaluate("window.dispatchEvent(new PageTransitionEvent('pageshow', {persisted: true}))")
+        self.assertIn('Propuesta 1 de 12', page.locator('#pilot-progress').inner_text())
+        self.assertFalse(page.locator('input[name="answer"]:checked').count())
+        context.close()
+
 
 if __name__ == '__main__':
     unittest.main()
