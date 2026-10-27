@@ -25,6 +25,10 @@ The MVP SHALL let users select exactly two parties and one topic at a time, rest
 - **WHEN** the reader submits a valid topic and party selection
 - **THEN** the result heading names that selection and receives keyboard focus before the measure content.
 
+#### Scenario: Dismissing a source excerpt
+- **WHEN** a reader closes the source excerpt dialog with Escape or its close control
+- **THEN** keyboard focus returns to the still-connected control that opened it.
+
 #### Scenario: Invalid selection clears result context
 - **WHEN** the selection becomes invalid
 - **THEN** the previous result heading and measure content no longer describe the old selection.
