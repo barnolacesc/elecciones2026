@@ -266,7 +266,8 @@ relationship or public release has been approved by this integration.
 
 Local Node selection/sharing checks pass (14/14), and `git diff --check` passes.
 Python tests cannot run on this host's Python 3.11 because existing code uses
-newer f-string syntax; this branch needs PR CI. The `origin/main` CI run
-`40179863768` failed before this integration; PR #101's old green run does
-not prove the integrated branch. A passing engineering test cannot supply
+newer f-string syntax. PR #166 CI run `40496978474` did not start its
+validation jobs: GitHub annotated failed account payments or a spending limit.
+The `origin/main` CI run `40179863768` failed before this integration in its
+fork-isolation job; PR #101's old green run does not prove this branch. A passing engineering test cannot supply
 human review.
