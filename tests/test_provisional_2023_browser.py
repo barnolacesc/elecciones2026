@@ -115,6 +115,33 @@ class ProvisionalBrowserTests(unittest.TestCase):
         self.assertNotIn('private', str(payloads[0]))
         self.assertNotIn('PP', str(payloads[0]))
 
+    def test_exiting_quiz_discards_partial_and_completed_answers(self):
+        context = self.browser.new_context(viewport={'width': 390, 'height': 800})
+        page = context.new_page()
+        try:
+            page.goto(self.base + '/cuestionario/')
+            page.locator('input[name="answer"][value="agree"]').check()
+            page.locator('#pilot-quiz button').click()
+            self.assertIn('Propuesta 2 de 12', page.locator('#pilot-progress').inner_text())
+            page.goto(self.base + '/fuentes/')
+            page.go_back()
+            self.assertIn('Propuesta 1 de 12', page.locator('#pilot-progress').inner_text())
+            self.assertEqual(page.locator('input[name="answer"]:checked').count(), 0)
+            self.assertEqual(page.locator('#pilot-results').inner_text(), '')
+
+            for _ in range(12):
+                page.locator('input[name="answer"][value="agree"]').check()
+                page.locator('#pilot-quiz button').click()
+            self.assertEqual(page.locator('#pilot-results .card').count(), 12)
+            page.goto(self.base + '/fuentes/')
+            page.go_back()
+            self.assertTrue(page.locator('#pilot-quiz').is_visible())
+            self.assertIn('Propuesta 1 de 12', page.locator('#pilot-progress').inner_text())
+            self.assertEqual(page.locator('input[name="answer"]:checked').count(), 0)
+            self.assertEqual(page.locator('#pilot-results').inner_text(), '')
+        finally:
+            context.close()
+
 
 if __name__ == '__main__':
     unittest.main()
