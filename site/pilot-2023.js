@@ -21,7 +21,7 @@
     article.append(element('p', position.summary));
     article.append(element('p', 'Matiz: ' + position.qualification, 'qualification'));
     const citation = element('p', '', 'citation');
-    const link = element('a', 'Programa original, PDF pág. ' + position.page + ' ↗');
+    const link = element('a', 'Programa original, PDF pág. ' + position.page + ' (se abre en otra pestaña) ↗');
     link.href = position.url;
     link.target = '_blank'; link.rel = 'noopener noreferrer'; link.referrerPolicy = 'no-referrer';
     citation.append(link, element('span', position.locator, 'locator'));
