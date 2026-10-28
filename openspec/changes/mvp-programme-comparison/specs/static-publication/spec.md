@@ -59,6 +59,10 @@ The public release SHALL use a cacheable static artifact through the configured 
 - **WHEN** a representative test models 10,000 concurrent visitors, including cold-cache and burst phases
 - **THEN** the team can compare recorded metrics with the approved service targets and must not claim capacity if the targets fail.
 
+#### Scenario: Stable-name interface asset changes
+- **WHEN** a release or correction changes CSS or JavaScript without changing its URL
+- **THEN** browsers and the edge revalidate that asset instead of treating it as immutable, while content-addressed bundles keep long-lived immutable caching.
+
 ### Requirement: Crawlable source-linked pages
 The public site SHALL expose indexable Spanish HTML pages for topics, parties, methodology, and sources, subject to source rights and publication status. It SHALL provide accurate titles, canonical links, a sitemap, and a `robots.txt` policy.
 

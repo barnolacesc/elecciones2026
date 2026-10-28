@@ -39,7 +39,7 @@ The improvement proposal box (`/propuestas/`) introduces an untrusted public wri
 The owner registered `eleccionesespaña2026.es` at DonDominio. Its ASCII canonical base is `https://xn--eleccionesespaa2026-83b.es`; authenticated staging uses `preview.xn--eleccionesespaa2026-83b.es`. Cloudflare delegation and proxied preview DNS are active. Origin TLS uses Full (strict) and global Authenticated Origin Pulls (AOP), as reported by the owner. The preview requires HTTP Basic authentication and sends no-store/noindex. Owner-selected manual delivery passed restricted SSH, origin health and exact external home-content verification in [run 38182379207](https://github.com/c2ventures/elecciones2026/actions/runs/38182379207). See the [2026-10-12 setup record](../ops/SERVER-MIGRATION.md). DNSSEC and public routing remain unverified. Defensive domains remain proposals, not acquired domains. See [IONOS delivery setup](../ops/IONOS-DELIVERY.md).
 
 Public edge caching policy (G4; not the private preview):
-- Fingerprinted static assets (`/static/*`, CSS, JS, images): `Cache-Control: public, max-age=31536000, immutable` (edge TTL 365 days).
+- Fingerprinted static assets (including `comparison-data.<hash>.js`): `Cache-Control: public, max-age=31536000, immutable` (edge TTL 365 days). Stable-name CSS and JS, including `/tokens/`, instead use `public, no-cache` so browsers revalidate after a release or correction. The remaining image/font paths need a separate filename audit before public release.
 - Mutable HTML pages (`/`, `/temas/*`, `/fuentes/`, `/metodo/`): `Cache-Control: public, max-age=300, stale-while-revalidate=86400` (edge TTL 300s).
 
 Proposed release service level objectives (see `docs/DECISION-RECORD.md`):
