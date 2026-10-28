@@ -77,7 +77,10 @@
         data.positions.some(p => p.measure_id === m.id && (p.party === a.value || p.party === b.value))
       );
       if (relevantMeasures.length === 0) {
-        target.append(element('p', 'No constan propuestas específicas para las candidaturas seleccionadas en este tema.', 'empty-note'));
+        target.append(element('p', 'Este piloto no incluye medidas para estas candidaturas en este tema. La ausencia no indica apoyo ni oposición.', 'empty-note'));
+        const sources = element('a', 'Consultar fuentes y límites del piloto', 'button');
+        sources.href = './fuentes/';
+        target.append(sources);
       } else {
         for (const m of relevantMeasures) {
           const group = element('div', '', 'measure-group');

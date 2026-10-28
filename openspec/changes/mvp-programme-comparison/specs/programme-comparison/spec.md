@@ -21,6 +21,10 @@ The MVP SHALL let users select exactly two parties and one topic at a time, rest
 - **WHEN** no approved measure is available for the selected topic and parties
 - **THEN** the empty state explains that absence is not support or opposition and offers a keyboard-accessible route to source coverage and method, including without JavaScript.
 
+#### Scenario: Private provisional pilot has no selected measure
+- **WHEN** the private 2023 pilot has no measure for the selected topic and candidacies
+- **THEN** it labels the gap as limited pilot coverage, avoids a claim about the full programmes, and offers a keyboard-accessible route to the pilot sources and limitations.
+
 #### Scenario: Keyboard submission reaches results
 - **WHEN** the reader submits a valid topic and party selection
 - **THEN** the result heading names that selection and receives keyboard focus before the measure content.
