@@ -144,3 +144,32 @@ affected statement, relationship, coverage and quiz dependencies for review.
 - **THEN** affected classifications and downstream coverage or comparison
   decisions remain traceable and pending review rather than inheriting the
   old approval automatically.
+
+### Requirement: Preserve quantitative claim context
+
+A candidate or reviewed statement that contains a quantity SHALL retain the
+exact source version and locator for the value, plus its stated unit, reference
+period, population or denominator, geographic scope, condition and whether it
+is a commitment, target, baseline or example. Unstated context SHALL remain
+unknown. A derived or converted value SHALL require a separately reviewable
+calculation, input provenance, rounding rule and human approval before public
+use; a tool SHALL NOT silently normalize quantities.
+
+#### Scenario: Target mistaken for current amount
+
+- **WHEN** a fictional source promises a future target and gives a current
+  baseline in the same passage
+- **THEN** the two values retain distinct roles and the summary does not
+  present the target as an existing allocation or achieved result.
+
+#### Scenario: Missing period or denominator
+
+- **WHEN** a fictional measure gives a number without a period or denominator
+- **THEN** the missing context remains unknown and no annualized or per-person
+  value is inferred.
+
+#### Scenario: Corrected quantitative source
+
+- **WHEN** the source version, cited value or its qualifier changes
+- **THEN** the prior interpretation and any derived value are invalidated for
+  review, with the old source-linked version retained.
