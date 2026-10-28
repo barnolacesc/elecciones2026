@@ -140,3 +140,30 @@ political-content tests apply to this proposal-only source handoff.
 
 P1.3 validation is a documentation/requirement structure check and
 `git diff --check`; neither can approve a negative political claim.
+
+## P1.7 — Source-language bridge (2026-10-28 draft)
+
+- [x] Reconcile current `origin/main` (`8e2fab4`), draft/conflicting PR #101,
+  proposed replacement #166, the four pilot source rows, eight statement
+  examples and the 2023 review worksheet. The existing dated translation
+  audit identifies a repository-visible evidence gap, not missing private
+  review proof. PR #173 addresses numeric comparability, not language review.
+- [x] Draft a version-bound language-check requirement and private-to-public
+  design with fictional fail-closed cases. No PDF, political answer, review
+  mark, source right, application code or public artifact is changed.
+- [ ] Editorial/OpenSpec review: decide evidence standard, reviewer
+  responsibility/competence and whether the existing dual-human review can
+  explicitly carry the language check; inspect any private exact-revision
+  evidence without treating this draft as approval.
+- [ ] After P0 source/rights and P1 method decisions, specify concrete record
+  and validator tasks. Test fictional Catalan-to-Spanish pending/approved
+  evidence, material correction, changed source/locator and Spanish-source
+  bypass in both static and browser publish sets. Keep real activation behind
+  human editorial and separate release gates.
+
+Validation (2026-10-28): the local structure check found one requirement and
+five WHEN/THEN scenarios; the four-source/eight-statement repository baseline
+parsed and `git diff --check` passed. Focused Python unit tests could not run:
+the host has Python 3.11, while `generator.py` requires the project's Python
+3.14 syntax. Hosted CI and human translation review are separate. No
+implementation task is marked complete by this draft.
