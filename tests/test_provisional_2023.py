@@ -31,6 +31,7 @@ class ProvisionalPilotTests(unittest.TestCase):
         home = comparison(data)
         questions = quiz(data)
         self.assertIn("sin revisión editorial humana", home)
+        self.assertIn('id="pilot-link-error" role="alert" hidden', home)
         self.assertIn("no calcula afinidad partidista", questions)
         self.assertEqual(home.count('class="card"'), 36)
         self.assertIn('class="measure-group"', home)

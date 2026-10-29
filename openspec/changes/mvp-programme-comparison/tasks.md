@@ -243,3 +243,19 @@ Local checks: `git diff --check` passed; a static assertion checked that the 202
 The source-gated empty comparison now links to the existing coverage/method page in both generated HTML and the browser re-render. The absence disclaimer remains, and the link uses the existing 44-px `action-link` target. No source status, political claim or approval changed. `node --check site/app.js`, `node --test tests/share_behavior.cjs` (12/12) and `git diff --check` pass locally. A Python 3.14 generated-artifact regression is added but cannot run under this host's Python 3.11; CI is required. Physical-phone and screen-reader acceptance remain open under task 3.5.
 
 CI follow-up: [run 40107470726](https://github.com/c2ventures/elecciones2026/actions/runs/40107470726) passed the Python/schema/determinism/security, rendered mobile/keyboard and Docker serving-parity jobs for code revision `7a87f21`. The private-candidate publication job was skipped. Automated checks do not establish real-device or human editorial acceptance.
+
+## E2.5 provisional comparison-link recovery — 2026-10-29
+
+The private 2023 pilot now restores only a single, complete, known topic and
+distinct-party pair. Duplicate, partial, unknown and prototype-property query
+values show an alert and no comparison until the reader changes a selection;
+the malformed URL is cleared. Valid selections remove unrelated query and
+fragment state before updating the address. No political record, right or
+review status changed.
+
+`node --test tests/pilot_selection_behavior.cjs` passes 3 cases; the targeted
+provisional Python suite passes 9 tests under Python 3.11; `node --check
+site/pilot-2023.js` and `git diff --check` pass locally. Project Python 3.14,
+Docker and rendered phone checks are unavailable here, so CI is still required.
+These checks do not complete physical-phone, screen-reader or participant
+acceptance in task 3.5.

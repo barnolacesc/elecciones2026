@@ -108,6 +108,7 @@ def comparison(data: dict, image_url: str = "") -> str:
 <label>Primera candidatura <select id="pilot-a">{parties}</select></label>
 <label>Segunda candidatura <select id="pilot-b">{parties}</select></label>
 <p id="pilot-error" role="alert" hidden>Selecciona dos candidaturas distintas.</p></div>
+<p id="pilot-link-error" role="alert" hidden>El enlace de comparación no es válido. Elige un tema y dos candidaturas para continuar.</p>
 <div id="pilot-comparison" class="measure-groups" aria-live="polite"></div>
 <details><summary>Ver las {num_positions} medidas y sus fuentes</summary>{sections}</details>'''
     return frame("Comparador de programas", body, image_url=image_url)
