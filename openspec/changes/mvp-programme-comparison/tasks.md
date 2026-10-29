@@ -259,3 +259,9 @@ site/pilot-2023.js` and `git diff --check` pass locally. Project Python 3.14,
 Docker and rendered phone checks are unavailable here, so CI is still required.
 These checks do not complete physical-phone, screen-reader or participant
 acceptance in task 3.5.
+
+CI follow-up: [PR #185 run 40892912777](https://github.com/c2ventures/elecciones2026/actions/runs/40892912777)
+did not execute either test job. GitHub's check annotation says the job was not
+started because recent account payments failed or the spending limit needs to
+increase; both jobs have no runner or steps. This is an infrastructure blocker,
+not a failed test assertion. CI and human review remain pending.
