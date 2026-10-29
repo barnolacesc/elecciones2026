@@ -157,4 +157,6 @@ P1.3 validation is a documentation/requirement structure check and
 
 Validation: repository audit and four fictional requirement scenarios;
 `git diff --check`. No implementation, real source or political claim changed.
-CI, when available, is engineering evidence only.
+PR #182 CI run 40858569921 did not execute steps: GitHub annotated both test
+jobs with an account payment/spending-limit block. Local structure checks
+passed; they are not equivalent to CI or editorial review.
