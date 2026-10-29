@@ -336,3 +336,38 @@ negative findings, treatment of translated sources, and exact Spanish wording
 for a scoped absence. These cannot be supplied by CI or an agent. After review,
 the implementation task can define a concrete schema and validators against
 the agreed protocol; until then this draft is a fail-closed handoff only.
+
+## P0.10 draft — shared-document attribution gate
+
+Status: proposal-only; owner and OpenSpec review required before schema or
+inventory implementation. Repository audit:
+[`docs/2023-SHARED-DOCUMENT-ATTRIBUTION-AUDIT-2026-10-29.md`](../../../docs/2023-SHARED-DOCUMENT-ATTRIBUTION-AUDIT-2026-10-29.md).
+
+The proposed model separates a document-version identity (source ID, immutable
+hash/version, publisher and archive reference) from a candidature-applicability
+edge (election, approved manifest/rule revision, candidature, constituency,
+document role and applicability scope). Each edge has evidence, reviewer,
+decision state and revision. Several approved edges can refer to one source
+version, but cannot borrow each other's scope, rights or editorial decisions.
+The source/version still carries its independent authenticity and reuse-rights
+gates; applicability does not grant publication or quotation permission.
+
+The private reconciler should expose both counts: distinct source versions and
+included candidatures with reviewed applicable documents. It should preserve
+pending/disputed edges and avoid an apparent completeness percentage when the
+inclusion denominator or required edges are unresolved. A changed manifest,
+source version, edge decision or territorial scope invalidates only affected
+candidature/topic dependencies, including negative-search findings and
+relationships. The public projection cannot duplicate a coalition measure as
+two independent party positions solely because two manifest rows share bytes.
+
+Fictional acceptance cases: one source/two lists with only one approved edge;
+coalition programme with an unapproved member-party edge; identical bytes at
+different URLs with conflicting scopes; withdrawn edge invalidating one
+candidature's coverage but preserving an unaffected edge. These are model
+checks, not claims about actual 2023 documents.
+
+Owner decisions: candidature granularity and coalition treatment; sufficient
+publisher/ballot evidence for an edge; edge-review quorum; public shared-source
+label and denominator wording. Reconcile with P0.2/P0.3, P1 document scope and
+PR #101/#166 before implementation.
