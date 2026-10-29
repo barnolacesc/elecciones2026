@@ -115,6 +115,33 @@ class ProvisionalBrowserTests(unittest.TestCase):
         self.assertNotIn('private', str(payloads[0]))
         self.assertNotIn('PP', str(payloads[0]))
 
+    def test_phone_source_index_journey_and_link_targets(self):
+        for width in (360, 390, 430):
+            with self.subTest(width=width):
+                context = self.browser.new_context(viewport={'width': width, 'height': 800}, has_touch=True)
+                page = context.new_page()
+                page.goto(self.base + '/')
+                warning = page.locator('.pilot-home-warning summary')
+                self.assertGreaterEqual(warning.bounding_box()['height'], 44)
+                warning.click()
+                page.locator('.pilot-home-warning a[href="./fuentes/"]').click()
+                self.assertEqual(page.locator('h1').inner_text(), 'Fuentes del piloto')
+                self.assertEqual(page.locator('.cards > .card').count(), 4)
+                for link in page.locator('.cards > .card .citation a').all():
+                    rectangle = link.bounding_box()
+                    self.assertIsNotNone(rectangle)
+                    self.assertGreaterEqual(rectangle['height'], 44)
+                    self.assertTrue(link.get_attribute('href').startswith('https://'))
+                    self.assertEqual(link.get_attribute('target'), '_blank')
+                    self.assertIn('noopener', link.get_attribute('rel').split())
+                    link.focus()
+                    self.assertTrue(link.evaluate('(element) => element === document.activeElement'))
+                self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
+                page.locator('.mobile-nav summary').click()
+                page.get_by_role('navigation', name='Navegación móvil').get_by_role('link', name='Comparador').click()
+                self.assertEqual(page.locator('h1').inner_text(), '¿Qué proponen los partidos sobre lo que te importa?')
+                context.close()
+
 
 if __name__ == '__main__':
     unittest.main()
