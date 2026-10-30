@@ -132,7 +132,7 @@
   }
   function decimal(value) { return value.toLocaleString('es-ES', {maximumFractionDigits: 1}); }
   function resultDetails(party, card) {
-    const details = node('details'); details.append(node('summary', 'Por qué aparece este porcentaje'));
+    const details = node('details'); details.append(node('summary', `Por qué aparece el porcentaje de ${party.name}`));
     for (const topic of party.contributions) {
       details.append(node('h3', `${topic.name} · ${topic.weight === 1 ? 'peso normal' : 'doble peso'}`));
       if (!topic.count) details.append(node('p', 'Tema sin respuestas: no cuenta en este porcentaje.'));

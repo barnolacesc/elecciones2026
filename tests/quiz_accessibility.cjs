@@ -130,6 +130,21 @@ function textContrast() {
     await page.keyboard.press('Enter');
     await inspect('results');
     check('Results remain text, not a chart', await page.locator('.quiz-score').count() === 2);
+    const explanationLabels = await page.locator('#quiz-app .quiz-result').evaluateAll(cards =>
+      cards.map(card => ({party: card.querySelector('h2')?.textContent,
+        label: card.querySelector('details > summary')?.textContent})).filter(({label}) => label));
+    check('Each result explanation names its party', explanationLabels.length === 2
+      && explanationLabels.every(({party, label}) => label === `Por qué aparece el porcentaje de ${party}`)
+      && new Set(explanationLabels.map(({label}) => label)).size === explanationLabels.length);
+    const firstExplanation = page.locator('#quiz-app .quiz-result details > summary').first();
+    for (let i = 0; i < 160; i++) {
+      if (await firstExplanation.evaluate(el => el === document.activeElement)) break;
+      await page.keyboard.press('Tab');
+    }
+    check('Party-specific explanation reachable by keyboard', await firstExplanation.evaluate(el =>
+      el === document.activeElement));
+    await page.keyboard.press('Enter');
+    check('Party-specific explanation opens by keyboard', await firstExplanation.evaluate(el => el.parentElement.open));
     await tabTo(page, 'button', 'Borrar respuestas');
     // Traverse back to the disclosure through native Tab order, without pointer use.
     for (let i = 0; i < 160; i++) {
