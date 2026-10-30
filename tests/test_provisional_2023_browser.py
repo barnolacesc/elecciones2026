@@ -115,6 +115,27 @@ class ProvisionalBrowserTests(unittest.TestCase):
         self.assertNotIn('private', str(payloads[0]))
         self.assertNotIn('PP', str(payloads[0]))
 
+    def test_unanswered_question_returns_focus_to_answer_group(self):
+        for width in (360, 390, 430):
+            with self.subTest(width=width):
+                context = self.browser.new_context(viewport={'width': width, 'height': 800})
+                page = context.new_page()
+                page.goto(self.base + '/cuestionario/')
+                page.locator('#pilot-next').click()
+                first_answer = page.locator('input[name="answer"]').first
+                self.assertTrue(first_answer.evaluate('(element) => element === document.activeElement'))
+                self.assertTrue(page.locator('#pilot-answer-error').is_visible())
+                self.assertEqual(first_answer.get_attribute('aria-invalid'), 'true')
+                self.assertEqual(first_answer.get_attribute('aria-describedby'), 'pilot-answer-error')
+                page.keyboard.press('Space')
+                self.assertFalse(page.locator('#pilot-answer-error').is_visible())
+                self.assertIsNone(first_answer.get_attribute('aria-invalid'))
+                self.assertIsNone(first_answer.get_attribute('aria-describedby'))
+                page.locator('#pilot-next').click()
+                self.assertIn('Propuesta 2', page.locator('#pilot-progress').inner_text())
+                self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
+                context.close()
+
 
 if __name__ == '__main__':
     unittest.main()
