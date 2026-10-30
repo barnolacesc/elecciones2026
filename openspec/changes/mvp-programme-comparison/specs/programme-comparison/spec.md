@@ -17,6 +17,10 @@ The MVP SHALL let users select exactly two parties and one topic at a time, rest
 - **WHEN** the reader opens a measure at a phone-sized viewport
 - **THEN** both party positions and their source links appear in one vertical section without switching tabs.
 
+#### Scenario: Pilot mobile navigation keyboard exit
+- **WHEN** a keyboard reader presses Escape inside the open private-pilot mobile menu
+- **THEN** the menu closes and focus returns to its summary control without changing the comparison.
+
 #### Scenario: No approved comparison for the selected pair
 - **WHEN** no approved measure is available for the selected topic and parties
 - **THEN** the empty state explains that absence is not support or opposition and offers a keyboard-accessible route to source coverage and method, including without JavaScript.

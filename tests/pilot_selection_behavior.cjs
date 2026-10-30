@@ -15,11 +15,16 @@ function node(value = '') {
   };
 }
 
-async function pilot(href) {
+async function pilot(href, dataAvailable = true) {
   const nodes = {
     'pilot-topic': node('housing'), 'pilot-a': node('pp'),
     'pilot-b': node('erc'), 'pilot-comparison': node(), 'pilot-error': node()
   };
+  const summary = node();
+  summary.focus = () => { summary.focused = true; };
+  const mobileNav = node();
+  mobileNav.open = false;
+  mobileNav.querySelector = selector => selector === 'summary' ? summary : null;
   const location = { href, pathname: '/' };
   const history = { replaceState(_state, _title, url) { location.href = String(url); } };
   const data = {
@@ -28,15 +33,30 @@ async function pilot(href) {
   };
   const document = {
     getElementById(id) { return nodes[id] || null; },
+    querySelector(selector) { return selector === '.mobile-nav' ? mobileNav : null; },
     createElement() { return node(); }
   };
   const context = vm.createContext({
     document, location, history, URL, URLSearchParams,
-    fetch: async () => ({ ok: true, json: async () => data })
+    fetch: async () => ({ ok: dataAvailable, json: async () => data })
   });
   await vm.runInContext(fs.readFileSync('site/pilot-2023.js', 'utf8'), context);
-  return { nodes, location };
+  return { nodes, location, mobileNav, summary };
 }
+
+test('Escape closes the open mobile menu and returns focus even without pilot data', async () => {
+  const { mobileNav, summary } = await pilot('https://private.test/', false);
+  assert.equal(typeof mobileNav.handlers.keydown, 'function');
+  mobileNav.open = true;
+  let prevented = false;
+  mobileNav.handlers.keydown({ key: 'Enter', preventDefault() { prevented = true; } });
+  assert.equal(mobileNav.open, true);
+  assert.equal(prevented, false);
+  mobileNav.handlers.keydown({ key: 'Escape', preventDefault() { prevented = true; } });
+  assert.equal(mobileNav.open, false);
+  assert.equal(summary.focused, true);
+  assert.equal(prevented, true);
+});
 
 test('duplicate pilot parties clear stale comparison URL and describe the error', async () => {
   const { nodes, location } = await pilot(

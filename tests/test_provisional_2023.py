@@ -52,6 +52,8 @@ class ProvisionalPilotTests(unittest.TestCase):
         self.assertIn('href="../simulador/"', questions)
         self.assertIn('href="./compromisos/"', home)
         self.assertIn('href="../compromisos/"', questions)
+        self.assertIn('summary aria-label="Menú de navegación"', home)
+        self.assertIn('summary aria-label="Menú de navegación"', questions)
 
     def test_quiz_options_balanced_scale(self):
         data = load(ROOT)

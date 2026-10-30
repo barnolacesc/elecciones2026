@@ -49,7 +49,7 @@ def frame(title: str, body: str, *, nested: bool = False, image_url: str = "", e
 <body><a class="skip" href="#principal">Saltar al contenido</a>
 <header><a class="brand" href="{root}">Generales 2023 <small>piloto privado</small></a>
 <nav class="desktop-nav" aria-label="Navegación principal"><a href="{root}">Comparador</a><a href="{root}cuestionario/">Cuestionario</a><a href="{root}presupuestos/">Presupuestos</a><a href="{root}simulador/">Simulador</a><a href="{root}compromisos/">Compromisos</a><a href="{root}fuentes/">Fuentes</a></nav>
-<details class="mobile-nav"><summary aria-label="Abrir navegación">Menú</summary><nav aria-label="Navegación móvil"><a href="{root}">Comparador</a><a href="{root}cuestionario/">Cuestionario</a><a href="{root}presupuestos/">Presupuestos</a><a href="{root}simulador/">Simulador</a><a href="{root}compromisos/">Compromisos</a><a href="{root}fuentes/">Fuentes</a></nav></details></header>
+<details class="mobile-nav"><summary aria-label="Menú de navegación">Menú</summary><nav aria-label="Navegación móvil"><a href="{root}">Comparador</a><a href="{root}cuestionario/">Cuestionario</a><a href="{root}presupuestos/">Presupuestos</a><a href="{root}simulador/">Simulador</a><a href="{root}compromisos/">Compromisos</a><a href="{root}fuentes/">Fuentes</a></nav></details></header>
 <main id="principal">{body}</main>
 <footer><p>Archivo histórico de las elecciones generales del 23 de julio de 2023. No describe programas de 2026 ni recomienda el voto.</p>
 <p>Resúmenes provisionales de medidas concretas; consulta el documento original. Una medida no seleccionada o ausente no implica oposición.</p></footer>

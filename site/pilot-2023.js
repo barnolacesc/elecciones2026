@@ -1,6 +1,15 @@
 /* Private historical pilot. No analytics, persistence or inferred party positions. */
 (async function () {
   'use strict';
+  const mobileNav = document.querySelector('.mobile-nav');
+  if (mobileNav) {
+    mobileNav.addEventListener('keydown', event => {
+      if (event.key !== 'Escape' || !mobileNav.open) return;
+      mobileNav.open = false;
+      mobileNav.querySelector('summary').focus();
+      event.preventDefault();
+    });
+  }
   const nested = ['/cuestionario/', '/fuentes/', '/presupuestos/', '/simulador/', '/compromisos/'].some(p => location.pathname.includes(p));
   const response = await fetch((nested ? '../' : './') + 'pilot-2023-data.json', {cache: 'no-store'});
   if (!response.ok) return;
