@@ -25,6 +25,7 @@ async function fill(page, label) {
     for (const testCase of [
       {name: 'native share, agreement fixture', mode: 'native', answer: 'Totalmente de acuerdo'},
       {name: 'native share, opposition fixture', mode: 'native', answer: 'Totalmente en desacuerdo'},
+      {name: 'native share cancelled', mode: 'cancel', answer: 'Más bien en desacuerdo'},
       {name: 'copy-link fallback', mode: 'copy', answer: 'Ni de acuerdo ni en desacuerdo'},
       {name: 'manual link fallback', mode: 'manual', answer: 'Más bien de acuerdo'}
     ]) {
@@ -33,7 +34,10 @@ async function fill(page, label) {
         window.fixtureSharePayloads = [];
         window.fixtureCopiedLinks = [];
         Object.defineProperty(navigator, 'share', {configurable: true,
-          value: mode === 'native' ? async payload => { window.fixtureSharePayloads.push(payload); } : undefined});
+          value: ['native', 'cancel'].includes(mode) ? async payload => {
+            window.fixtureSharePayloads.push(payload);
+            if (mode === 'cancel') throw new DOMException('Cancelled', 'AbortError');
+          } : undefined});
         Object.defineProperty(navigator, 'clipboard', {configurable: true,
           value: mode === 'copy' ? {writeText: async url => { window.fixtureCopiedLinks.push(url); }} : undefined});
       }, testCase.mode);
@@ -69,8 +73,15 @@ async function fill(page, label) {
       assert.equal(canonicalUrl.search, ''); assert.equal(canonicalUrl.hash, '');
       await page.getByRole('button', {name: 'Compartir el cuestionario', exact: true}).click();
       const captured = await page.evaluate(() => ({shared: window.fixtureSharePayloads, copied: window.fixtureCopiedLinks}));
-      if (testCase.mode === 'native') {
+      if (testCase.mode === 'native' || testCase.mode === 'cancel') {
         assert.deepEqual(captured, {shared: [{title: 'Cuestionario de coincidencia', url: canonical}], copied: []});
+        if (testCase.mode === 'cancel') {
+          await page.getByRole('button', {name: 'Compartir el cuestionario', exact: true}).click();
+          assert.equal(await page.locator('#quiz-share-fallback').count(), 1,
+            'Repeated cancellation must not duplicate the fallback');
+          assert.equal(await page.locator('#quiz-share-fallback').innerText(), `Enlace al cuestionario: ${canonical}`);
+          assert.match(await page.locator('#quiz-status').innerText(), /No se ha compartido/);
+        }
       } else if (testCase.mode === 'copy') {
         assert.deepEqual(captured, {shared: [], copied: [canonical]});
       } else {

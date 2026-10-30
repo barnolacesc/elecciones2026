@@ -225,12 +225,22 @@
   }
   async function share() {
     const url = document.querySelector('link[rel="canonical"]').href;
+    const showManualLink = message => {
+      let fallback = document.getElementById('quiz-share-fallback');
+      if (!fallback) {
+        fallback = node('p', `Enlace al cuestionario: ${url}`, {id: 'quiz-share-fallback'});
+        app.append(fallback);
+      }
+      announce(message);
+    };
     try {
       if (navigator.share) await navigator.share({title: 'Cuestionario de coincidencia', url});
       else if (navigator.clipboard) { await navigator.clipboard.writeText(url); announce('Enlace al cuestionario copiado.'); }
-      else { paragraph(`Enlace al cuestionario: ${url}`); announce('El enlace está al final del cuestionario.'); }
+      else showManualLink('El enlace está al final del cuestionario.');
     } catch (error) {
-      if (error.name !== 'AbortError') { paragraph(`Enlace al cuestionario: ${url}`); announce('Puedes copiar el enlace mostrado.'); }
+      showManualLink(error?.name === 'AbortError'
+        ? 'No se ha compartido. Puedes copiar el enlace mostrado al final del cuestionario.'
+        : 'Puedes copiar el enlace mostrado al final del cuestionario.');
     }
   }
   function render(focus = true) {
