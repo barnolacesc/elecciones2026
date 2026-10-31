@@ -336,3 +336,38 @@ negative findings, treatment of translated sources, and exact Spanish wording
 for a scoped absence. These cannot be supplied by CI or an agent. After review,
 the implementation task can define a concrete schema and validators against
 the agreed protocol; until then this draft is a fail-closed handoff only.
+
+## P1.7 draft — extraction-visibility handoff
+
+Status: proposal-only. This refines P1.3's treatment of non-searchable source
+ranges; it does not implement OCR, alter private PDFs or approve an absence
+claim. The P0 source/version and relevant-document scope decisions, approved
+2023 taxonomy and human search protocol remain prerequisites.
+
+A future private per-range visibility ledger should join `(election_id,
+candidature_id, source_id, source_sha256, physical_pdf_page_or_section_range,
+extractor_identity, extraction_artifact_hash, topic_search_revision)` to the
+P1.3 search ledger. It should record extraction outcome, whether the original
+page was visually inspected, the inspection method and reviewer, legibility
+limitations, unresolved text/reading-order regions, any alternate-processing
+run and a private evidence reference. The proposed states are `uninspected`,
+`extracted_unverified`, `visual_review_pending`, `visually_checked`, and
+`unresolved`. These are draft semantics, not approved schema values. The
+ledger must not copy full source text or page images into Git or the static
+build.
+
+The current E1.2 worker verifies page count and deterministic text hashes; it
+cannot certify visual completeness. A blank `pages.json` entry can be a blank
+page, an image-only page or extraction failure. Nonempty text can still omit a
+column, table, footnote or qualification. Therefore P1.3 may reach a reviewed
+negative finding only if every required range has a reviewed visibility path
+under the owner-approved protocol. A reviewer can document manual inspection
+of a range; automatic OCR, if later approved, is an aid and never substitutes
+for source/rights, proposal or absence review. Tool or source-version changes
+must invalidate dependent range observations and search conclusions.
+
+Before implementation, owners must decide visual-sampling versus full-range
+inspection, treatment of tables/footnotes and inaccessible pages, acceptable
+alternate processing, reviewer quorum, private evidence retention and the
+threshold for declaring a range searchable. Fictional acceptance cases are in
+`specs/editorial-statements/spec.md`. No real 2023 page is classified here.
