@@ -140,3 +140,17 @@ political-content tests apply to this proposal-only source handoff.
 
 P1.3 validation is a documentation/requirement structure check and
 `git diff --check`; neither can approve a negative political claim.
+
+## P0.14 — EH Bildu 23J document discovery (2026-10-31)
+
+- [x] Record the publisher-hosted 23J PDF lead and separate Senate coalition
+  context without importing bytes, assigning a programme role or promoting a
+  source record. Evidence: `docs/2023-EH-BILDU-SOURCE-DISCOVERY-2026-10-31.md`.
+- [ ] Owner/editorial review: decide Congress/Senate candidature applicability,
+  document role and completeness, exact-byte identity, date, rights, other
+  documents and replacements under the approved inclusion rule. No topic
+  absence or political-content approval follows from this discovery.
+
+Validation: local repository assertions, publisher PDF HEAD and article check,
+web retrieval metadata, and `git diff --check`. No source PDF, political
+statement or public output was changed; CI cannot supply a human decision.
