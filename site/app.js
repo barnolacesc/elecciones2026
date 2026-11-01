@@ -1326,6 +1326,14 @@
 
     let lastFocusedTrigger = null;
 
+    function restoreManifestoFocus() {
+      const trigger = lastFocusedTrigger;
+      lastFocusedTrigger = null;
+      if (trigger && trigger.isConnected !== false && typeof trigger.focus === 'function') {
+        trigger.focus();
+      }
+    }
+
     function openManifestoModal(data) {
       let dialog = document.getElementById('manifesto-dialog');
       if (!dialog && typeof document.createElement === 'function' && document.body && typeof document.body.appendChild === 'function') {
@@ -1419,9 +1427,7 @@
           dialog.close();
         } else {
           dialog.removeAttribute('open');
-        }
-        if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
-          lastFocusedTrigger.focus();
+          restoreManifestoFocus();
         }
       }
 
@@ -1437,6 +1443,8 @@
       });
 
       if (typeof dialog.showModal === 'function') {
+        // Native Escape/cancel and button dismissal both emit close.
+        dialog.addEventListener('close', restoreManifestoFocus, { once: true });
         dialog.showModal();
       } else {
         dialog.setAttribute('open', '');

@@ -297,3 +297,34 @@ test('pending pilot content exposes no quote viewer or comparative assertion', (
   assert.match(html, /Contenido pendiente de publicación/);
   assert.doesNotMatch(html, /btn-open-manifesto|Leer extracto|measure-context|measure-axes/);
 });
+
+test('source dialog returns focus after Escape and button dismissal', () => {
+  const b = browser('https://preview.test/', {}, true, true);
+  const dialog = b.nodes['manifesto-dialog'];
+  const closeButton = { handlers: {}, addEventListener(type, handler) { this.handlers[type] = handler; } };
+  dialog.querySelector = selector => selector === '#dialog-close-btn' ? closeButton : null;
+  const trigger = {
+    isConnected: true, focusCount: 0,
+    focus() { this.focusCount += 1; },
+    getAttribute(name) { return name === 'data-caveats' ? '[]' : ''; }
+  };
+  const open = () => b.nodes['measures-container'].handlers.click({
+    target: { closest: selector => selector === '.btn-open-manifesto' ? trigger : null }
+  });
+
+  open();
+  assert.equal(dialog.opened, true);
+  dialog.handlers.close(); // Native Escape/cancel closes the dialog without button click.
+  assert.equal(trigger.focusCount, 1);
+
+  open();
+  closeButton.handlers.click();
+  assert.equal(dialog.opened, false);
+  dialog.handlers.close(); // Native close event follows dialog.close().
+  assert.equal(trigger.focusCount, 2);
+
+  open();
+  trigger.isConnected = false;
+  dialog.handlers.close();
+  assert.equal(trigger.focusCount, 2); // Do not focus a detached trigger.
+});
