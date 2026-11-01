@@ -1,6 +1,12 @@
-# Elections 2026 — Roadmap draft 0.2
+# Elections 2026 — Roadmap draft 0.3
 
-**2026-10-19 delivery priority:** Cesc has requested a complete, clearly labelled
+**2026-11-01 delivery priority:** Cesc has directed the project to:
+1. **Hold off on pre-campaign hub:** Do not build or publish a pre-campaign hub or temporary landing before the official electoral campaign starts (13 November 2026).
+2. **Defer 2026 party loading:** Do not load real 2026 candidacies or premature manifestos until official party programmes are published during the campaign.
+3. **Finish the full comparator:** Focus development entirely on completing the full multi-party comparator covering all parliamentary forces (PP, PSOE, VOX, Sumar, ERC, Junts, EH Bildu, EAJ-PNV, BNG, UPN) across all 8 taxonomy topics so voters can compare all parties' records.
+4. **No scope creep:** Do not spend engineering resources on other exploratory features.
+
+**2026-10-19 baseline:** Cesc previously requested a complete, clearly labelled
 2023 general-election comparator as the working product before importing 2026
 programmes. The [2023-first delivery roadmap](docs/PRODUCT-ROADMAP-2023-2026.md)
 sets the current sequence and acceptance gates. This supersedes the phase order
