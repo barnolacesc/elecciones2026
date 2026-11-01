@@ -26,7 +26,7 @@ Facilitator checkpoint: eight numeric answers across four topics, eight skipped 
 
 Draft prompt: “Cambia solo la pregunta 1 a «Totalmente en desacuerdo» y vuelve al resultado. Busca la explicación del Ejemplo A. Explica qué ha cambiado y cómo afecta al porcentaje.”
 
-Expected evidence: the volunteer can enter optional review, edit question 1, and return directly to results. They open “Por qué aparece este porcentaje”, identify the assigned answer, the example's fictional support position, and 0% agreement on that item. Housing has 0% mean instead of 50%. With four equally weighted answered topics, Example A falls from 50% to 37.5% (38% display), a decrease of 12.5 points. Both questions in each topic count in its mean; skipped topics do not count in the current aggregate.
+Expected evidence: the volunteer can enter optional review, edit question 1, and return directly to results. They open the party-specific “Por qué aparece el porcentaje de …” control, identify the assigned answer, the example's fictional support position, and 0% agreement on that item. Housing has 0% mean instead of 50%. With four equally weighted answered topics, Example A falls from 50% to 37.5% (38% display), a decrease of 12.5 points. Both questions in each topic count in its mean; skipped topics do not count in the current aggregate.
 
 ### 2. Explain a topic weight
 
