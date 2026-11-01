@@ -61,6 +61,7 @@ class ProvisionalBrowserTests(unittest.TestCase):
                 self.assertEqual(page.locator('#pilot-comparison .card').count(), 2)
                 self.assertIn('page=10', page.locator('#pilot-comparison .card').first.locator('a').get_attribute('href'))
                 for link in page.locator('#pilot-comparison .citation a').all():
+                    self.assertIn('(se abre en otra pestaña)', link.inner_text())
                     rectangle = link.bounding_box()
                     self.assertIsNotNone(rectangle)
                     self.assertGreaterEqual(rectangle['height'], 44)

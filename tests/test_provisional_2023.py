@@ -56,6 +56,8 @@ class ProvisionalPilotTests(unittest.TestCase):
         self.assertIn('Totalmente de acuerdo', questions)
         self.assertIn('Fuentes del piloto', sources(data))
         self.assertEqual(home.count('target="_blank"'), 36)
+        self.assertEqual(home.count('(se abre en otra pestaña)'), 36)
+        self.assertEqual(sources(data).count('(se abre en otra pestaña)'), 4)
         self.assertNotIn("sam-neutrality", home + questions)
         self.assertNotIn("2026</h1>", home + questions)
         self.assertIn('href="./presupuestos/"', home)

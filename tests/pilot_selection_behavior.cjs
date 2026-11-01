@@ -15,7 +15,7 @@ function node(value = '') {
   };
 }
 
-async function pilot(href) {
+async function pilot(href, positions = []) {
   const nodes = {
     'pilot-topic': node('housing'), 'pilot-a': node('pp'),
     'pilot-b': node('erc'), 'pilot-comparison': node(), 'pilot-error': node()
@@ -24,11 +24,11 @@ async function pilot(href) {
   const history = { replaceState(_state, _title, url) { location.href = String(url); } };
   const data = {
     election_id: 'es-gen-2023', status: 'historical-provisional-private',
-    topics: [{ id: 'housing', name: 'Vivienda' }], positions: []
+    topics: [{ id: 'housing', name: 'Vivienda' }], positions
   };
   const document = {
     getElementById(id) { return nodes[id] || null; },
-    createElement() { return node(); }
+    createElement(tag) { return Object.assign(node(), { tagName: tag }); }
   };
   const context = vm.createContext({
     document, location, history, URL, URLSearchParams,
@@ -65,4 +65,22 @@ test('duplicate pilot parties clear stale comparison URL and describe the error'
     assert.equal(nodes[id].attributes.has('aria-invalid'), false);
     assert.equal(nodes[id].attributes.has('aria-describedby'), false);
   }
+});
+
+test('pilot citation names its new-tab behavior in the rendered comparison', async () => {
+  const position = {
+    topic: 'housing', party: 'pp', measure_id: 'measure-1', measure_title: 'Medida',
+    title: 'Propuesta', summary: 'Texto de prueba', qualification: 'Sin matices',
+    page: 3, locator: 'Página 3', url: 'https://example.test/programa.pdf#page=3'
+  };
+  const { nodes } = await pilot('https://private.test/', [position]);
+  function descendants(node) {
+    return [node, ...node.children.flatMap(descendants)];
+  }
+  const links = descendants(nodes['pilot-comparison']).filter(node => node.tagName === 'a');
+  assert.equal(links.length, 1);
+  assert.match(links[0].textContent, /PDF pág\. 3 \(se abre en otra pestaña\)/);
+  assert.equal(links[0].target, '_blank');
+  assert.equal(links[0].rel, 'noopener noreferrer');
+  assert.equal(links[0].referrerPolicy, 'no-referrer');
 });

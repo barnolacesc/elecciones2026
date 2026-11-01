@@ -70,7 +70,8 @@ def frame(title: str, body: str, *, nested: bool = False, image_url: str = "", e
 
 def citation(position: dict) -> str:
     return (f'<a href="{esc(position["url"])}" target="_blank" rel="noopener noreferrer" '
-            f'referrerpolicy="no-referrer">Programa original, PDF pág. {position["page"]} ↗</a>'
+            f'referrerpolicy="no-referrer">Programa original, PDF pág. {position["page"]} '
+            '(se abre en otra pestaña) ↗</a>'
             f'<span class="locator">{esc(position["locator"])}</span>')
 
 
