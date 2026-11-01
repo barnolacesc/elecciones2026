@@ -20,6 +20,10 @@ The MVP SHALL let users select exactly two parties and one topic at a time, rest
 #### Scenario: External source navigation in the private 2023 pilot
 - **WHEN** a reader follows a programme citation from a static or interactive pilot card
 - **THEN** the link text states that the source opens in a new tab before navigation.
+#### Scenario: Pilot mobile navigation keyboard exit
+- **WHEN** a keyboard reader presses Escape inside the open private-pilot mobile menu
+- **THEN** the menu closes and focus returns to its summary control without changing the comparison.
+
 
 #### Scenario: No approved comparison for the selected pair
 - **WHEN** no approved measure is available for the selected topic and parties

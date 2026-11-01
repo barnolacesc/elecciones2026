@@ -67,6 +67,8 @@ class ProvisionalPilotTests(unittest.TestCase):
         self.assertIn('href="../simulador/"', questions)
         self.assertIn('href="./compromisos/"', home)
         self.assertIn('href="../compromisos/"', questions)
+        self.assertIn('summary aria-label="Menú de navegación"', home)
+        self.assertIn('summary aria-label="Menú de navegación"', questions)
 
     def test_source_index_uses_document_urls_independent_of_measure_order(self):
         data = load(ROOT)

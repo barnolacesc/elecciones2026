@@ -7,7 +7,7 @@ function node(value = '') {
   const attributes = new Map();
   return {
     value, hidden: true, children: [], handlers: {}, attributes,
-    replaceChildren() { this.children = []; },
+    replaceChildren(...children) { this.children = children; },
     append(child) { this.children.push(child); },
     addEventListener(type, handler) { this.handlers[type] = handler; },
     setAttribute(name, val) { attributes.set(name, val); },
@@ -15,12 +15,19 @@ function node(value = '') {
   };
 }
 
-async function pilot(href, positions = []) {
+async function pilot(href, positionsOrAvailable = []) {
+  const positions = Array.isArray(positionsOrAvailable) ? positionsOrAvailable : [];
+  const dataAvailable = typeof positionsOrAvailable === 'boolean' ? positionsOrAvailable : true;
   const nodes = {
     'pilot-topic': node('housing'), 'pilot-a': node('pp'),
     'pilot-b': node('erc'), 'pilot-comparison': node(), 'pilot-error': node(),
     'pilot-link-error': node()
   };
+  const summary = node();
+  summary.focus = () => { summary.focused = true; };
+  const mobileNav = node();
+  mobileNav.open = false;
+  mobileNav.querySelector = selector => selector === 'summary' ? summary : null;
   const location = { href, pathname: '/', search: new URL(href).search };
   const history = { replaceState(_state, _title, url) {
     location.href = String(url);
@@ -32,15 +39,30 @@ async function pilot(href, positions = []) {
   };
   const document = {
     getElementById(id) { return nodes[id] || null; },
+    querySelector(selector) { return selector === '.mobile-nav' ? mobileNav : null; },
     createElement(tag) { return Object.assign(node(), { tagName: tag }); }
   };
   const context = vm.createContext({
     document, location, history, URL, URLSearchParams,
-    fetch: async () => ({ ok: true, json: async () => data })
+    fetch: async () => ({ ok: dataAvailable, json: async () => data })
   });
   await vm.runInContext(fs.readFileSync('site/pilot-2023.js', 'utf8'), context);
-  return { nodes, location };
+  return { nodes, location, mobileNav, summary };
 }
+
+test('Escape closes the open mobile menu and returns focus even without pilot data', async () => {
+  const { mobileNav, summary } = await pilot('https://private.test/', false);
+  assert.equal(typeof mobileNav.handlers.keydown, 'function');
+  mobileNav.open = true;
+  let prevented = false;
+  mobileNav.handlers.keydown({ key: 'Enter', preventDefault() { prevented = true; } });
+  assert.equal(mobileNav.open, true);
+  assert.equal(prevented, false);
+  mobileNav.handlers.keydown({ key: 'Escape', preventDefault() { prevented = true; } });
+  assert.equal(mobileNav.open, false);
+  assert.equal(summary.focused, true);
+  assert.equal(prevented, true);
+});
 
 test('duplicate pilot parties clear stale comparison URL and describe the error', async () => {
   const { nodes, location } = await pilot(
@@ -118,5 +140,4 @@ test('malformed pilot deep links show no comparison until a new selection', asyn
     assert.equal(nodes['pilot-link-error'].hidden, true, query);
     assert.equal(nodes['pilot-comparison'].children.length, 2, query);
   }
-
 });
