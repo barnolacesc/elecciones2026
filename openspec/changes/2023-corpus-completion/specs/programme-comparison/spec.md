@@ -143,3 +143,38 @@ correct or approve a real relationship.
   reviewed statements under approved policy questions
 - **THEN** the distinct pairs are retained for set accounting rather than
   rejected as duplicate decisions.
+
+### Requirement: Close correction dependencies before publication
+
+For `es-gen-2023`, a correction to a source version, locator, taxonomy
+assignment, statement or relationship SHALL produce a version-bound impact
+set before the static and browser publish sets are built. The impact set SHALL
+include affected topic-search/absence decisions, statements, relationships,
+comparison-set accounting and quiz citations, where present. Each affected
+derived claim SHALL be withheld until its own applicable human review is
+renewed; an omitted or unresolved dependency SHALL fail closed. Withheld
+content SHALL NOT be rendered as `not stated` or as disagreement. Correction
+history SHALL retain prior versions without exposing private evidence, source
+bytes or political answers. The precise review roles and public notice policy
+remain owner/editorial decisions.
+
+#### Scenario: Corrected statement in a paired measure
+
+- **WHEN** one approved statement in a reviewed pair is retracted or changed
+- **THEN** its relationship and any set-wide conclusion are withheld until
+  the exact new pair is reviewed; an unrelated approved measure is not
+  automatically described as absent.
+
+#### Scenario: Source replacement with an old page locator
+
+- **WHEN** an in-scope source version changes but a dependent statement still
+  points to the old page locator
+- **THEN** publication fails closed for that statement and its dependents,
+  even if the visible summary text did not change.
+
+#### Scenario: Correction omitted from one projection
+
+- **WHEN** the static and browser publish sets disagree about an invalidated
+  relationship or topic-coverage conclusion
+- **THEN** the build fails instead of reviving the claim in one view.
+
