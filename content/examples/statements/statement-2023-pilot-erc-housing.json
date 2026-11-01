@@ -23,19 +23,23 @@
   "reviews": [
     {
       "reviewer_id": "barnolacesc",
-      "review_date": "2026-10-12",
+      "review_date": null,
       "verdict": "approved",
       "review_notes": "Owner content approval reported in the project session on this date. Source publication and rights release gates remain open.",
       "reviewer_kind": "human",
-      "evidence_ref": "private-reviews:es-gen-2023/owner-reported-approval-2026-10-12.json"
+      "evidence_ref": "private-reviews:es-gen-2023/owner-reported-approval-2026-10-12.json",
+      "reported_date": "2026-10-12",
+      "content_sha256": "c172728f16e0aab58270b947576debd00df22ec9bdb2f73d04f4f296f52ad517"
     },
     {
       "reviewer_id": "carlesfito",
-      "review_date": "2026-10-12",
+      "review_date": null,
       "verdict": "approved",
       "review_notes": "Owner-attested full screen review and approval, reported on this date. No direct reviewer comment; source release gates remain open.",
       "reviewer_kind": "human",
-      "evidence_ref": "private-reviews:es-gen-2023/owner-attested-carlesfito-approval-2026-10-12.json"
+      "evidence_ref": "private-reviews:es-gen-2023/owner-attested-carlesfito-approval-2026-10-12.json",
+      "reported_date": "2026-10-12",
+      "content_sha256": "c172728f16e0aab58270b947576debd00df22ec9bdb2f73d04f4f296f52ad517"
     }
   ],
   "last_reviewed_date": null,

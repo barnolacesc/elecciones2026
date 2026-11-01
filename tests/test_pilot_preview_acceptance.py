@@ -169,7 +169,7 @@ class PilotBrowserTests(unittest.TestCase):
                 with self.subTest(route=route):
                     page.goto(self.base + route)
                     self.assertIn('2023', page.title())
-                    self.assertIn('Revisión pendiente', page.locator('.preview-banner').inner_text())
+                    self.assertIn('Publicación pendiente', page.locator('.preview-banner').inner_text())
                     self.assertIn('Revisión humana y de derechos pendiente', page.locator('body > footer').inner_text())
                     self.assertGreater(len(page.locator('main').inner_text()), 40)
                     layout = page.evaluate(LAYOUT)

@@ -245,3 +245,31 @@ Local checks: `git diff --check` passed; a static assertion checked that the 202
 The source-gated empty comparison now links to the existing coverage/method page in both generated HTML and the browser re-render. The absence disclaimer remains, and the link uses the existing 44-px `action-link` target. No source status, political claim or approval changed. `node --check site/app.js`, `node --test tests/share_behavior.cjs` (12/12) and `git diff --check` pass locally. A Python 3.14 generated-artifact regression is added but cannot run under this host's Python 3.11; CI is required. Physical-phone and screen-reader acceptance remain open under task 3.5.
 
 CI follow-up: [run 40107470726](https://github.com/c2ventures/elecciones2026/actions/runs/40107470726) passed the Python/schema/determinism/security, rendered mobile/keyboard and Docker serving-parity jobs for code revision `7a87f21`. The private-candidate publication job was skipped. Automated checks do not establish real-device or human editorial acceptance.
+
+## E1.4 PR #101 gate integration — 2026-10-27
+
+Against `origin/main` `8e2fab4`, this integration rebases PR #101 head `f8506a1`'s
+link-only summary gate without
+promoting the six PP/ERC candidates. The four-party private pilot copy and its
+coverage disclaimer remain. The gate requires an exact source/version, a dated
+human source-specific reuse decision with scope and private evidence reference,
+matching programme rights and publication dates, and independent editorial
+review. `link_only` permits a quote-free approved summary, never a quotation.
+The six candidate records remain unpublished; no source right, reviewer date,
+relationship or public release has been approved by this integration.
+
+- [ ] Human owners: verify original bytes and six page/section locators in the
+  private archive, exact PDF publication dates or an explicit policy resolution,
+  two source-specific reuse decisions, and actual dates/evidence for both
+  editorial reviewers. Re-run real-content and mobile acceptance only after
+  those gates pass.
+- [ ] Resolve the supersession/closeout of PR #101 after this integration is
+  reviewed. Its historical green CI is not integrated-branch acceptance.
+
+Local Node selection/sharing checks pass (14/14), and `git diff --check` passes.
+Python tests cannot run on this host's Python 3.11 because existing code uses
+newer f-string syntax. PR #166 CI run `40496978474` did not start its
+validation jobs: GitHub annotated failed account payments or a spending limit.
+The `origin/main` CI run `40179863768` failed before this integration in its
+fork-isolation job; PR #101's old green run does not prove this branch. A passing engineering test cannot supply
+human review.
