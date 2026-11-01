@@ -197,6 +197,9 @@ jobs:
       - name: Verify provisional 2023 comparison and quiz at phone widths
         run: PYTHONPATH=src ELECTIONS_TEST_PROVISIONAL_BROWSER=1 python -m unittest discover -s tests -p test_provisional_2023_browser.py -v
 
+      - name: Verify reduced-motion behavior on generated mobile routes (E2.5)
+        run: PYTHONPATH=src ELECTIONS_TEST_REDUCED_MOTION_BROWSER=1 python -m unittest discover -s tests -p test_reduced_motion_browser.py -v
+
       - name: Retain budget viewport and network observations
         if: always()
         uses: actions/upload-artifact@v4
