@@ -131,6 +131,48 @@ def run_audit(root: Path) -> dict:
                     check(f'{width}: accessible source name', citation.count() > 0 and 'Fuente:' in citation.aria_snapshot())
                     page.locator('#party-b-select').select_option('partido-ejemplo-d')
                     check(f'{width}: missing coverage', page.locator('.party-card-missing').count() > 0)
+                    # Exercise the rendered manual-share route without depending on
+                    # host clipboard permissions or a native share sheet. Only
+                    # fictional fixture selections are used here.
+                    page.evaluate("""() => {
+                      Object.defineProperty(navigator, 'share', {configurable: true, value: undefined});
+                      Object.defineProperty(navigator, 'clipboard', {configurable: true, value: undefined});
+                    }""")
+                    page.locator('#party-b-select').select_option('partido-ejemplo-b')
+                    page.locator('#share-button').tap()
+                    page.wait_for_function("!document.getElementById('share-fallback').hidden")
+                    share = page.evaluate("""() => {
+                      const input = document.getElementById('share-link');
+                      const copy = document.getElementById('copy-link-button');
+                      const fallback = document.getElementById('share-fallback');
+                      const url = new URL(input.value);
+                      return {
+                        url: input.value,
+                        visible: !fallback.hidden,
+                        focused: document.activeElement === input,
+                        selected: input.selectionStart === 0 && input.selectionEnd === input.value.length,
+                        named: !!input.labels.length,
+                        input_height: input.getBoundingClientRect().height,
+                        target_height: copy.getBoundingClientRect().height,
+                        params: [...url.searchParams.keys()].sort(),
+                        scroll_width: document.documentElement.scrollWidth
+                      };
+                    }""")
+                    check(f'{width}: manual share fallback', share['visible'] and share['focused']
+                          and share['selected'] and share['named']
+                          and share['input_height'] >= 43.5 and share['target_height'] >= 43.5
+                          and share['scroll_width'] <= width
+                          and share['params'] == ['partyA', 'partyB', 'topic']
+                          and share['url'] == base + '/?topic=housing&partyA=partido-ejemplo-a&partyB=partido-ejemplo-b',
+                          share)
+                    page.locator('#topic-select').select_option('education')
+                    check(f'{width}: obsolete share link cleared',
+                          page.locator('#share-fallback').is_hidden()
+                          and page.locator('#share-link').input_value() == '')
+                    page.locator('#share-button').tap()
+                    page.wait_for_function("!document.getElementById('share-fallback').hidden")
+                    check(f'{width}: share uses new topic', page.locator('#share-link').input_value()
+                          == base + '/?topic=education&partyA=partido-ejemplo-a&partyB=partido-ejemplo-b')
                     for route in ('/', '/metodo/', '/fuentes/', '/temas/housing/'):
                         page.goto(base + route)
                         result = page.evaluate(LAYOUT)
