@@ -643,3 +643,38 @@ reported initiative count. Reconcile these decisions with P0 source scope,
 P1.4 applicability, P1.2 set accounting and PR #101 before implementation.
 No agent or passing test can make these editorial decisions.
 
+## P1 quantitative-comparability draft — value and basis ledger
+
+Status: proposal-only. This narrows P1.1's amount and relationship method; it
+does not approve a number, calculation, political relationship or renderer.
+The [dated baseline audit](../../../docs/2023-QUANTITATIVE-COMPARABILITY-AUDIT-2026-10-28.md)
+records the current schema boundary. P0 source/rights decisions, 2023 taxonomy
+approval, candidate interpretation and separate relationship review remain
+prerequisites.
+
+For each candidate quantity, propose a private ledger keyed to exact election,
+source ID/version/hash, page or section, candidate and statement versions. It
+distinguishes the cited value from any derived value and records unit, period,
+population/denominator, geography, conditions, value role, evidence reference,
+review state and unresolved fields. The source wording and private evidence
+remain outside Git and the static build. A transformation additionally records
+input IDs, formula, assumptions and rounding; no missing value is filled from
+general knowledge or a different party's document.
+
+For a numeric comparison, reviewers first decide whether the policy question,
+value role and all material bases match. If they do not, the measures may still
+appear individually with their qualifications, but the comparison cannot rank
+their magnitudes. A reviewed conversion can support a bounded difference only
+when its inputs, method and resulting claim receive independent relationship
+approval. Changing a source value, qualifier or conversion invalidates the
+derived claim and dependent relationship, not the historical record. No
+calculation can grant source reuse rights or editorial approval by itself.
+
+Fictional acceptance cases: future target versus current baseline; annual
+amount versus multi-year total; percentage versus percentage-point change;
+missing denominator; and compatible same-basis values with an approved,
+auditable conversion. The owner/editorial review must decide which conversions
+are allowed, materiality and rounding rules, who checks calculations, and
+Spanish wording for incomparable figures. Only after that review should a
+concrete schema, validator and public presentation be specified and built.
+

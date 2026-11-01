@@ -178,3 +178,35 @@ remain owner/editorial decisions.
   relationship or topic-coverage conclusion
 - **THEN** the build fails instead of reviving the claim in one view.
 
+### Requirement: Review quantitative comparability before ranking magnitudes
+
+A comparison SHALL NOT describe one measure as numerically larger, smaller or
+equivalent to another unless reviewers establish that the values refer to the
+same policy question and compatible units, reference periods, populations,
+geographies, conditions and value roles. Any approved conversion SHALL retain
+its source inputs, method and rounding rule. Incompatible or unknown context
+SHALL be shown as separate, qualified statements without a numeric ranking;
+the relationship review SHALL record this limitation independently of the
+individual statement reviews.
+
+#### Scenario: Annual and total amounts
+
+- **WHEN** one fictional proposal states an annual amount and another a
+  multi-year total without a reviewed conversion basis
+- **THEN** neither is ranked against the other, even when both mention the
+  same policy instrument.
+
+#### Scenario: Percentage and percentage points
+
+- **WHEN** fictional measures use a percentage of a population and a change
+  in percentage points
+- **THEN** the comparison does not equate or subtract the figures without a
+  reviewed common denominator and calculation.
+
+#### Scenario: Compatible reviewed quantities
+
+- **WHEN** exact source-linked measures share a reviewed basis, value role
+  and scope, and a human approves the relationship and any conversion
+- **THEN** the comparison may state the bounded numeric difference with its
+  method and qualifications, without implying programme-wide superiority.
+

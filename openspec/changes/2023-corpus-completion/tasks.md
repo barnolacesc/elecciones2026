@@ -291,3 +291,20 @@ and is not editorial approval.
   delta, schema, design and fictional data/rendered tests before implementing
   a coverage projection. Do not infer completeness from the four pilot rows.
 
+## P1 quantitative-comparability method draft (2026-10-28)
+
+- [x] Audit current statement/relationship schemas and P1 method against
+  numeric-basis and derived-value risks. Evidence:
+  `docs/2023-QUANTITATIVE-COMPARABILITY-AUDIT-2026-10-28.md`.
+- [x] Draft version-bound quantity and numeric-comparison requirements,
+  private ledger design and fictional acceptance cases in this change. No
+  corpus record, source right, comparison output or runtime code changed.
+- [ ] Owner/editorial review: choose permitted conversions, materiality,
+  calculation reviewer, rounding and reader-facing Spanish limitations.
+- [ ] After P0/P1 review, reconcile with overlapping open OpenSpec PRs and
+  specify a concrete private schema, validators and presentation. Test with
+  fictional values before any real quantitative claim enters publication.
+
+Validation: requirement/scenario structure and `git diff --check`; CI is
+technical evidence only and cannot approve numerical political interpretation.
+
