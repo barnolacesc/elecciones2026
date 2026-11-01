@@ -44,7 +44,11 @@ test('duplicate pilot parties clear stale comparison URL and describe the error'
   );
   assert.equal(location.href, 'https://private.test/?topic=housing&partyA=pp&partyB=erc#old');
   assert.equal(nodes['pilot-error'].hidden, true);
-  assert.equal(nodes['pilot-comparison'].children.length, 1);
+  assert.equal(nodes['pilot-comparison'].children.length, 2);
+  assert.match(nodes['pilot-comparison'].children[0].textContent, /La ausencia no indica apoyo ni oposición/);
+  assert.equal(nodes['pilot-comparison'].children[1].href, './fuentes/');
+  assert.match(nodes['pilot-comparison'].children[1].textContent, /fuentes y límites/);
+  assert.equal(nodes['pilot-comparison'].children[1].className, 'button');
 
   nodes['pilot-b'].value = 'pp';
   nodes['pilot-b'].handlers.change();
@@ -59,7 +63,7 @@ test('duplicate pilot parties clear stale comparison URL and describe the error'
   nodes['pilot-b'].value = 'erc';
   nodes['pilot-b'].handlers.change();
   assert.equal(nodes['pilot-error'].hidden, true);
-  assert.equal(nodes['pilot-comparison'].children.length, 1);
+  assert.equal(nodes['pilot-comparison'].children.length, 2);
   assert.equal(location.href, 'https://private.test/?topic=housing&partyA=pp&partyB=erc');
   for (const id of ['pilot-a', 'pilot-b']) {
     assert.equal(nodes[id].attributes.has('aria-invalid'), false);
