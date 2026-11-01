@@ -101,3 +101,45 @@ bounded wording about the measures shown, not an exhaustive comparison claim.
 - **WHEN** a required annex or topic search remains unreviewed
 - **THEN** the displayed comparison may describe its reviewed measures but
   does not claim complete topic coverage or party-wide agreement.
+
+### Requirement: Resolve duplicate relationship decisions before publication
+
+For an election and exact unordered pair of approved statement versions, the
+comparison SHALL have at most one effective, human-reviewed relationship
+decision for a policy question. The publication gate SHALL detect competing
+active decisions even when their IDs, labels or review dates differ. It SHALL
+not choose a winner by file order, ID, recency or relationship type. Historical
+invalidated decisions remain traceable but are not effective decisions. If
+reviewers intend distinct policy questions for the same pair, they SHALL
+record and approve that distinction before either can be displayed. A single
+statement may participate in different reviewed pairs; that alone is not a
+collision. This requirement does not decide which political interpretation is
+correct or approve a real relationship.
+
+#### Scenario: Conflicting classifications for one exact pair
+
+- **WHEN** two active relationship records use the same election and exact
+  statement versions but one says agreement and the other says divergence
+- **THEN** neither is selected by the renderer and the affected comparison
+  fails closed pending human resolution.
+
+#### Scenario: Duplicate classification with different IDs
+
+- **WHEN** two active records for the same exact pair and policy question both
+  say partial overlap but have different IDs or caveats
+- **THEN** the duplicate still requires reconciliation; matching type alone
+  does not establish one approved effective decision.
+
+#### Scenario: Historical decision and replacement
+
+- **WHEN** the earlier decision is explicitly invalidated with a retained
+  correction trail and a new exact-pair decision is independently approved
+- **THEN** only the new decision may be effective; the old one remains in the
+  audit history and cannot reappear in a later build.
+
+#### Scenario: One statement in two distinct pairs
+
+- **WHEN** a reviewed statement is paired separately with two different
+  reviewed statements under approved policy questions
+- **THEN** the distinct pairs are retained for set accounting rather than
+  rejected as duplicate decisions.
