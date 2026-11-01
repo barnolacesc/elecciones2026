@@ -371,3 +371,20 @@ PR #182 CI run 40858569921 did not execute steps: GitHub annotated both test
 jobs with an account payment/spending-limit block. Local structure checks
 passed; they are not equivalent to CI or editorial review.
 
+## P0.13 — BNG 2023 document discovery (2026-10-30)
+
+- [x] Record the official archive's three distinct 2023 general-election
+  document leads and their observed response metadata without importing PDFs
+  or promoting them to verified source records. Evidence:
+  `docs/2023-BNG-SOURCE-DISCOVERY-2026-10-30.md`.
+- [ ] Owner/editorial review: decide 2023 candidature applicability, the three
+  document roles and derivative relationship, exact-byte source identity,
+  publication dates, rights and any annex/replacement scope. No topic absence
+  or political-content approval follows from this discovery.
+
+Validation: `python3` assertions passed for the four existing pilot rows, their
+pending rights and the distinct 2026 BNG placeholder. Three publisher PDFs
+returned `200 application/pdf` to HEAD; retrieval metadata reported 68, 4
+and 16 pages. `git diff --check` passed. No private PDF, hash or publication
+review was performed; GitHub CI remains separate engineering evidence.
+
