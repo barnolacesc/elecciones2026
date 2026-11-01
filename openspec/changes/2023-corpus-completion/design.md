@@ -430,3 +430,60 @@ store, challenged-use authentication, effective-time policy, use vocabulary,
 review quorum and release-response owner. Reconcile any approved schema with
 PR #101 and the P0 source-use queue. Fictional tests can check propagation,
 but cannot establish a real right or complete a served-site withdrawal.
+
+## P1.4 draft — multi-document proposal applicability and conflict gate
+
+Status: proposal-only. P0.1 inventories general, territorial, coalition and
+replacement documents separately, but a source-to-candidature join does not
+decide which document governs a proposal or whether two records conflict.
+The 2023 pilot register contains only four general-scope source rows; it is
+not evidence that annexes are absent. Draft PR #101 concerns six PP/ERC
+summaries and source-use gates, not a reviewed document-precedence policy.
+
+### Proposed private decision ledger
+
+For each candidate initiative, retain the exact source version, document
+role, publisher, candidature/constituency scope, applicability claim and
+evidence locator. Compare potentially overlapping initiatives from the same
+candidature by their policy question, action, beneficiary, jurisdiction,
+conditions, amount and timing. Record one of `distinct_scope`, `compatible`,
+`potential_conflict`, or `superseded` as a *draft classification*, with linked
+candidate IDs, source versions, grounds and reviewer disposition. These are
+proposed review states, not approved schema fields or political findings.
+
+No rule should silently prefer a general programme, annex, coalition text,
+newer URL or apparent publication date. A replacement requires an evidenced
+version chain; a territorial annex may narrow geography without replacing the
+general text; coalition and member-party documents may have different
+speakers. The editorial owner must decide the authoritative document-scope
+and precedence policy after the P0 candidature/document manifest is reviewed.
+Unknown scope, publisher identity, date or replacement relationship stays
+unresolved. Private PDF text and adjudication evidence never enter Git or the
+public artifact.
+
+### Projection and acceptance boundary
+
+A public statement must identify its own applicable source/scope. If a
+materially overlapping initiative has unresolved applicability or conflicting
+terms, the system must not emit an unqualified synthesized party position or
+use that initiative in an agreement/divergence relation. Independently
+approved, non-conflicting statements may remain eligible under the reviewed
+policy, with a bounded scope limitation; a blanket ban on the whole party is
+not implied. The P1.2 comparison-set ledger must retain excluded/conflicted
+IDs so selection cannot silently erase them. A source replacement or scope
+decision change invalidates affected statement and relationship approvals.
+
+Fictional acceptance cases: (1) a general document and territorial annex
+state different eligibility in one constituency; (2) two documents cover
+different constituencies and are not falsely merged; (3) a later URL has no
+evidenced replacement chain; (4) a coalition document and member-party text
+have unapproved speaker mapping; (5) an approved non-conflicting statement
+survives while a conflicting one is withheld; (6) a corrected scope decision
+invalidates a previously approved relationship. Tests must exercise the
+private ledger and static/browser publication projection, not real positions.
+
+Owner/editorial review must decide document precedence, coalition attribution,
+territorial display scope, conflict materiality and adjudication roles before
+implementation. This draft grants none of those decisions and changes no
+source, rights, review or public record.
+

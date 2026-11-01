@@ -177,3 +177,29 @@ P1.3 validation is a documentation/requirement structure check and
 
 Validation for this draft: requirement/scenario structure and `git diff
 --check`. CI may check engineering structure but is not human rights review.
+
+## P1.4 — Multi-document applicability and conflict gate (2026-10-25 draft)
+
+- [x] Reconcile `origin/main` `8e2fab4`, the four general-scope 2023 pilot
+  source rows, open draft/conflicting PR #101 and open rights-withdrawal PR
+  #149. Draft the distinct document-scope/conflict requirement and design in
+  this change. No annex absence, source precedence, political position or
+  editorial decision is inferred from the pilot.
+- [ ] Owner/editorial review: approve document precedence and replacement
+  evidence rules, territorial scope, coalition attribution, material-conflict
+  threshold, adjudication roles and bounded reader-facing wording.
+- [ ] After P0 inventory and P1 method review, specify the private ledger
+  schema and validators. Test the six fictional cases in `design.md`, including
+  static/browser projection and invalidation, before any real record is used.
+- [ ] Reconcile with P1.2 comparison-set accounting and PR #101's source-use
+  gate. Keep conflicting or unapproved candidates out of published relations;
+  human content approval and release remain separate.
+
+Validation for this draft: `git diff --check` and a structure check of the
+requirement, five scenarios and pending review tasks. No source, rights,
+statement, comparison or public output changes; CI is engineering evidence,
+not human review.
+PR #150 run `40185225258` did not execute the test or mobile jobs: GitHub
+reported an account payment/spending-limit block before any job steps began.
+Re-run CI after billing is restored; local checks do not replace it.
+
