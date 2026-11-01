@@ -156,6 +156,18 @@ test('submit moves keyboard focus to a visible, selection-specific result headin
   assert.equal(heading.classList.contains('sr-only'), true);
 });
 
+test('duplicate pair submission focuses the second selector for correction', () => {
+  const b = browser('https://preview.test/', {}, true, true);
+  b.nodes['party-b-select'].value = 'party-a';
+  b.nodes['selection-form'].handlers.submit({ preventDefault() {} });
+
+  assert.equal(b.nodes['party-b-select'].focused, true);
+  assert.match(b.nodes['selection-error'].textContent, /dos candidaturas distintas/);
+  assert.equal(b.nodes['compare-results-heading'].focused, undefined);
+  assert.equal(b.nodes['measures-container'].innerHTML, '');
+  assert.equal(b.window.location.href, 'https://preview.test/');
+});
+
 test('private pilot keeps election context and never falls back to 2026 measures', async () => {
   let shared;
   const b = browser('https://preview.test/?topic=housing&partyA=pp&partyB=erc&election=2023',
