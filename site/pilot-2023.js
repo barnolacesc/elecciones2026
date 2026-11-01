@@ -42,11 +42,21 @@
     const b = document.getElementById('pilot-b');
     const target = document.getElementById('pilot-comparison');
     const error = document.getElementById('pilot-error');
+    const linkError = document.getElementById('pilot-link-error');
     b.value = 'erc';
     const params = new URLSearchParams(location.search);
-    if (data.topics.some(t => t.id === params.get('topic'))) topic.value = params.get('topic');
-    if (names[params.get('partyA')]) a.value = params.get('partyA');
-    if (names[params.get('partyB')]) b.value = params.get('partyB');
+    const keys = ['topic', 'partyA', 'partyB'];
+    const hasSelection = keys.some(key => params.has(key));
+    const validLink = keys.every(key => params.getAll(key).length === 1) &&
+      data.topics.some(t => t.id === params.get('topic')) &&
+      Object.hasOwn(names, params.get('partyA')) &&
+      Object.hasOwn(names, params.get('partyB')) &&
+      params.get('partyA') !== params.get('partyB');
+    if (validLink) {
+      topic.value = params.get('topic');
+      a.value = params.get('partyA');
+      b.value = params.get('partyB');
+    }
     function render() {
       target.replaceChildren();
       error.hidden = a.value !== b.value;
@@ -100,10 +110,22 @@
       }
       const url = new URL(location.href);
       url.search = new URLSearchParams({topic: topic.value, partyA: a.value, partyB: b.value}).toString();
+      url.hash = '';
       history.replaceState({}, '', url);
     }
-    for (const control of [topic, a, b]) control.addEventListener('change', render);
-    render();
+    for (const control of [topic, a, b]) control.addEventListener('change', () => {
+      linkError.hidden = true;
+      render();
+    });
+    if (hasSelection && !validLink) {
+      linkError.hidden = false;
+      const url = new URL(location.href);
+      url.search = '';
+      url.hash = '';
+      history.replaceState({}, '', url);
+    } else {
+      render();
+    }
   }
   const quiz = document.getElementById('pilot-quiz');
   if (quiz) {

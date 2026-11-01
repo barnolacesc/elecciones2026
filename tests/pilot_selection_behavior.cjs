@@ -18,10 +18,14 @@ function node(value = '') {
 async function pilot(href, positions = []) {
   const nodes = {
     'pilot-topic': node('housing'), 'pilot-a': node('pp'),
-    'pilot-b': node('erc'), 'pilot-comparison': node(), 'pilot-error': node()
+    'pilot-b': node('erc'), 'pilot-comparison': node(), 'pilot-error': node(),
+    'pilot-link-error': node()
   };
-  const location = { href, pathname: '/' };
-  const history = { replaceState(_state, _title, url) { location.href = String(url); } };
+  const location = { href, pathname: '/', search: new URL(href).search };
+  const history = { replaceState(_state, _title, url) {
+    location.href = String(url);
+    location.search = new URL(location.href).search;
+  } };
   const data = {
     election_id: 'es-gen-2023', status: 'historical-provisional-private',
     topics: [{ id: 'housing', name: 'Vivienda' }], positions
@@ -42,7 +46,7 @@ test('duplicate pilot parties clear stale comparison URL and describe the error'
   const { nodes, location } = await pilot(
     'https://private.test/?topic=housing&partyA=pp&partyB=erc#old'
   );
-  assert.equal(location.href, 'https://private.test/?topic=housing&partyA=pp&partyB=erc#old');
+  assert.equal(location.href, 'https://private.test/?topic=housing&partyA=pp&partyB=erc');
   assert.equal(nodes['pilot-error'].hidden, true);
   assert.equal(nodes['pilot-comparison'].children.length, 2);
   assert.match(nodes['pilot-comparison'].children[0].textContent, /La ausencia no indica apoyo ni oposición/);
@@ -87,4 +91,32 @@ test('pilot citation names its new-tab behavior in the rendered comparison', asy
   assert.equal(links[0].target, '_blank');
   assert.equal(links[0].rel, 'noopener noreferrer');
   assert.equal(links[0].referrerPolicy, 'no-referrer');
+});
+
+test('valid pilot deep link restores the exact topic and party pair', async () => {
+  const { nodes, location } = await pilot('https://private.test/?topic=housing&partyA=erc&partyB=pp');
+  assert.equal(nodes['pilot-a'].value, 'erc');
+  assert.equal(nodes['pilot-b'].value, 'pp');
+  assert.equal(nodes['pilot-link-error'].hidden, true);
+  assert.equal(nodes['pilot-comparison'].children.length, 2);
+  assert.equal(location.href, 'https://private.test/?topic=housing&partyA=erc&partyB=pp');
+});
+
+test('malformed pilot deep links show no comparison until a new selection', async () => {
+  for (const query of [
+    'topic=housing&partyA=pp&partyB=pp',
+    'topic=housing&partyA=pp&partyA=erc&partyB=erc',
+    'topic=housing&partyA=constructor&partyB=erc',
+    'topic=housing&partyA=pp',
+    'topic=unknown&partyA=pp&partyB=erc'
+  ]) {
+    const { nodes, location } = await pilot('https://private.test/?' + query);
+    assert.equal(nodes['pilot-link-error'].hidden, false, query);
+    assert.equal(nodes['pilot-comparison'].children.length, 0, query);
+    assert.equal(location.href, 'https://private.test/', query);
+    nodes['pilot-b'].handlers.change();
+    assert.equal(nodes['pilot-link-error'].hidden, true, query);
+    assert.equal(nodes['pilot-comparison'].children.length, 2, query);
+  }
+
 });

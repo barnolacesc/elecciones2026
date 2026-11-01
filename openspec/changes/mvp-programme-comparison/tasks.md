@@ -282,3 +282,25 @@ validation jobs: GitHub annotated failed account payments or a spending limit.
 The `origin/main` CI run `40179863768` failed before this integration in its
 fork-isolation job; PR #101's old green run does not prove this branch. A passing engineering test cannot supply
 human review.
+## E2.5 provisional comparison-link recovery — 2026-10-29
+
+The private 2023 pilot now restores only a single, complete, known topic and
+distinct-party pair. Duplicate, partial, unknown and prototype-property query
+values show an alert and no comparison until the reader changes a selection;
+the malformed URL is cleared. Valid selections remove unrelated query and
+fragment state before updating the address. No political record, right or
+review status changed.
+
+`node --test tests/pilot_selection_behavior.cjs` passes 3 cases; the targeted
+provisional Python suite passes 9 tests under Python 3.11; `node --check
+site/pilot-2023.js` and `git diff --check` pass locally. Project Python 3.14,
+Docker and rendered phone checks are unavailable here, so CI is still required.
+These checks do not complete physical-phone, screen-reader or participant
+acceptance in task 3.5.
+
+CI follow-up: [PR #185 run 40892912777](https://github.com/c2ventures/elecciones2026/actions/runs/40892912777)
+did not execute either test job. GitHub's check annotation says the job was not
+started because recent account payments failed or the spending limit needs to
+increase; both jobs have no runner or steps. This is an infrastructure blocker,
+not a failed test assertion. CI and human review remain pending.
+
