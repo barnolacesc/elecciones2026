@@ -6,6 +6,48 @@ editorial gates remain in force.
 
 ## ADDED Requirements
 
+### Requirement: Review shared-document applicability per candidature
+
+The 2023 inventory SHALL distinguish an immutable document version from each
+proposed applicability edge to an included candidature. An edge SHALL identify
+the approved manifest/rule revision, exact document version/hash, election,
+candidature and constituency scope, document role, evidence and independent
+human disposition. A shared file, URL, publisher or coalition name alone SHALL
+NOT establish applicability to every related ballot list or member party.
+Pending or disputed edges SHALL remain visible in private coverage accounting
+but SHALL NOT establish reviewed source coverage, proposal attribution or a
+public claim. Counts SHALL label distinct documents and candidatures
+separately. This is a proposal-only requirement pending owner review.
+
+#### Scenario: One source proposed for two ballot lists
+
+- **WHEN** one fictional document version is proposed for two included
+  constituency-level candidatures but only one edge is evidenced and reviewed
+- **THEN** the document is counted once, the reviewed candidature may use its
+  scoped source, and the other candidature remains pending rather than
+  inheriting coverage or statements.
+
+#### Scenario: Coalition document and member party
+
+- **WHEN** a fictional coalition programme is linked to a coalition ballot
+  candidature and a member party has no separately reviewed applicability edge
+- **THEN** the member party receives no independent position or coverage from
+  coalition membership alone.
+
+#### Scenario: Applicability withdrawn or source replaced
+
+- **WHEN** an approved edge is withdrawn, its scope changes, or its exact
+  source version is replaced
+- **THEN** affected candidature coverage, topic searches, statements and
+  relationships enter re-review; unaffected edges retain their own decisions.
+
+#### Scenario: Same bytes at different URLs
+
+- **WHEN** two publisher URLs serve equal bytes but have different claimed
+  candidature or territorial scopes
+- **THEN** byte equality alone neither merges applicability decisions nor
+  grants rights, and unresolved scope stays pending.
+
 ### Requirement: Approved 2023 inclusion denominator
 
 The system SHALL derive claims of 2023 candidature completeness only from a

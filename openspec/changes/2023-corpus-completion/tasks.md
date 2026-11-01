@@ -1,6 +1,7 @@
 # Tasks: 2023 corpus completion
 
 Status: proposal-only. The checkboxes below are not implementation approval.
+
 P0.1 is the bounded specification/audit package in this PR; later packages
 require editorial review of this design and requirement delta.
 
@@ -350,4 +351,23 @@ implementation task is marked complete by this draft.
 
 Validation: `git diff --check` and a local structure/baseline check. CI is
 engineering evidence only; it cannot approve dates, rights or political claims.
+
+## P0.10 — Shared-document attribution draft (2026-10-29)
+
+- [x] Audit the current singular source/programme identity fields and PR
+  #101/#166 boundary; draft a version-bound candidature-applicability
+  requirement, design and four fictional cases. Evidence:
+  `docs/2023-SHARED-DOCUMENT-ATTRIBUTION-AUDIT-2026-10-29.md`.
+- [ ] Owner/editorial review: approve the candidature/coalition unit, edge
+  evidence and review quorum, and distinct-document versus candidature
+  coverage wording. This draft approves no actual mapping or rights use.
+- [ ] After P0.2/P0.3 and P1 document-scope reconciliation, specify the exact
+  schema and validators using fictional fixtures. Require edge-specific
+  invalidation and fail-closed public projection before real data entry.
+
+Validation: repository audit and four fictional requirement scenarios;
+`git diff --check`. No implementation, real source or political claim changed.
+PR #182 CI run 40858569921 did not execute steps: GitHub annotated both test
+jobs with an account payment/spending-limit block. Local structure checks
+passed; they are not equivalent to CI or editorial review.
 
