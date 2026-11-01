@@ -30,6 +30,69 @@ Owner review preparation (2026-10-12): [decision record](../../../docs/QUIZ-METH
 
 ## 3. E4.3 — Phone flow and scoring explanation
 
+### E4.3 bounded follow-up — weight-reset focus (2026-10-25)
+
+Scope: private mock UI and its existing keyboard regression only. Baseline
+`origin/main` is `8e2fab4`; PR #113 is merged. Open PRs #149–#151 change the
+proposal-only corpus specifications; #101 changes editorial/publication gates.
+None owns this quiz UI or its specification/test files. Real quiz activation,
+method approval, and tasks 3.3–3.5/G5 remain separate and incomplete.
+
+- [x] Preserve the open weight disclosure and reset-button focus after resetting
+  weights, without changing answers or adding persistence/network operations.
+- [x] Verify the old behavior fails the new regression, then verify normal
+  weights, baseline scores, retained answers, visible 44px focus target,
+  forward/reverse Tab order, and no interaction requests at 360/390/430 px.
+- [x] Record local checks and remote CI status without claiming human review.
+
+Local evidence (2026-10-25):
+
+- Baseline reproduction: the new `tests/quiz_accessibility.cjs` assertion fails
+  against the unchanged UI at `360px: weight reset preserves focus and disclosure`.
+  After the fix, **64 keyboard/semantic/contrast checks pass**, including reset
+  focus, normal weights, original fixture scores and answer review, both Tab
+  directions, no overflow, and zero requests during the reset exercise.
+- `node tests/quiz_browser.cjs` — PASS at 320/360/390/430 px, four landscape
+  sizes, doubled root text, text spacing, combined reflow/spacing, and
+  no-script/corrupt/unavailable fallbacks. This is not native browser zoom.
+- `node tests/quiz_privacy.cjs` — **5 cases PASS**; answer-independent resources,
+  no interaction requests, generic sharing, and no-referrer source transport.
+- `node --test tests/quiz_behavior.cjs` — **11 contracts PASS**.
+- `PYTHONPATH=src python3.14 -m unittest discover -s tests -p test_quiz.py -q`
+  — **17 tests PASS**, including mock determinism and default unavailability.
+- Mock and default builds via `python3.14 -m elecciones2026.generator build`
+  pass; JavaScript syntax, strict OpenSpec validation, and `git diff --check`
+  pass. No authoring records, sources, scoring rules, or release settings change.
+
+Execution: Python 3.14.9 and Playwright Core 1.63.0 / headless Chromium 153;
+loopback-only preview at `127.0.0.1:8766`, explicitly enabled fictional mock
+bundle, plus a default unavailable build. Browser commands use
+`PLAYWRIGHT_MODULE=/app/node_modules/playwright-core`,
+`QUIZ_TEST_URL=http://127.0.0.1:8766`, and
+`QUIZ_UNAVAILABLE_URL=http://127.0.0.1:8766/unavailable/cuestionario/`.
+The initial Python 3.11 build could not parse the generator; the initial browser
+launch lacked shared libraries and then fonts. Python 3.14 and browser tooling
+were provisioned locally; libraries/fonts were extracted under ignored
+`build/tooling` and selected with `LD_LIBRARY_PATH` / `FONTCONFIG_FILE`, without
+changing application dependencies or production configuration. Sanitized
+observations are in ignored `build/quiz-accessibility.json` and
+`build/quiz-privacy.json`; no personal answers were used or retained.
+
+Remote baseline: [main CI 40179863768](https://github.com/c2ventures/elecciones2026/actions/runs/40179863768)
+passed validation, rendered mobile, and Docker jobs but failed to start the
+fork-isolation job because GitHub reported failed account payments or an
+insufficient spending limit. PR #151's CI had the same scheduling annotation.
+These are not code-test failures or permission to bypass CI.
+[PR #152](https://github.com/c2ventures/elecciones2026/pull/152), tested code
+revision `7c55b10`: [CI 40198602933](https://github.com/c2ventures/elecciones2026/actions/runs/40198602933)
+failed without starting validation or rendered-mobile jobs, with the same
+payment/spending-limit annotation. Docker and dependent jobs were skipped.
+The local checks above passed; remote CI is **blocked, not passing**.
+No human screen-reader/device/comprehension, editorial, source,
+provider-privacy, G5, merge, deployment, or publication approval is asserted.
+
+### Existing phone-flow tasks
+
 - [x] 3.1 Build the Spanish introduction, question, optional answer review, results, and in-page method/source states. Verify explicit navigation, direct results without required review, no automatic advance or preselection, editing any item, an unfinished-to-skipped notice, unavailable-set/no-script fallback, and current source links.
   - Evidence (local mock implementation, 2026-10-11): Spanish introduction/question/review/result/method flow and explicit mock/no-script/unavailable states implemented. tests/quiz_browser.cjs passes answer/review/edit/reset/cache-restore/reload and no-script checks at 320/360/390/430 px. Public copy review and real content remain open.
   - E4.3 follow-up (2026-10-11): Review is optional. “Ver resultado” and skipping the final item open results directly; a question-state notice explains unfinished items count as skipped. Browser regression PASS at 320/360/390/430 px for direct finish, early finish, final skip, optional review, editing, targets, layout, and existing privacy/reset checks. Node contracts: 24 PASS. Strict OpenSpec validation and JavaScript syntax/diff checks PASS. Local Docker preview rebuilt; full accessibility and editorial reviews remain open.

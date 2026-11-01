@@ -58,6 +58,12 @@ The flow SHALL provide semantic headings, labelled grouped answers, keyboard ope
 - **WHEN** navigation controls remain visible during scrolling
 - **THEN** they do not obscure focused elements, source links, or magnified content.
 
+#### Scenario: Reset topic weights without losing keyboard position
+- **WHEN** a visitor activates “Restablecer pesos” in the result's weight disclosure
+- **THEN** all topic weights return to normal and results recalculate without changing answers.
+- **AND** the disclosure remains open, focus stays on the replacement reset control, and a concise polite status confirms the change without moving focus to the result heading.
+- **AND** forward and reverse keyboard navigation remain available at 360, 390, and 430 CSS px, with a visible, unobscured reset target of at least 44 by 44 CSS px.
+
 ### Requirement: Plain Spanish result explanation
 Public UI SHALL use neutral `es-ES` with reviewed scoring and uncertainty explanations. Results SHALL identify alignment with the answered measures, answer coverage, set version, source limits, weights, and the meaning of skips. Details SHALL be reachable without reading a formula or interpreting a chart.
 

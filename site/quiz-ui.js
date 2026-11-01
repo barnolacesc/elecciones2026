@@ -186,8 +186,11 @@
     }
     weights.append(button('Restablecer pesos', () => {
       state.previous = Object.fromEntries(result.parties.filter(p => p.eligible).map(p => [p.id, p.score]));
-      state.weights = {}; render(); announce('Todos los temas tienen peso normal.');
-    }));
+      state.weights = {}; render(false);
+      const updated = document.getElementById('quiz-reset-weights');
+      updated.closest('details').open = true; updated.focus();
+      announce('Todos los temas tienen peso normal.');
+    }, {id: 'quiz-reset-weights'}));
     app.append(weights);
     for (const party of result.parties) {
       const card = node('article', null, {class: 'quiz-result'}); card.append(node('h2', party.name));

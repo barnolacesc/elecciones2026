@@ -102,6 +102,15 @@ The question state shows topic, “Pregunta N de 16”, response group, source d
 
 Show visitor answer labels and support/rejection words in item details, with the item text and agreement percentage. Explain a normalized topic weight as its share of the current calculation, and state whether an aggregate rose, fell, or stayed unchanged. When all 16 items are answered, explain that the full-set limits equal the current percentage instead of suggesting that skipped items remain. The formula stays available in the method disclosure. The local copy is a draft; use `docs/QUIZ-COMPREHENSION.md` for voluntary human checks without collecting political preferences.
 
+Resetting topic weights is an in-place result update, not navigation to a new
+state. Rebuild the results without heading focus, reopen the weight disclosure,
+and focus the replacement reset button by its stable control ID. Use the
+existing polite status to confirm normal weights. Preserve answers and the
+previous aggregate for the existing change explanation. The control ID contains
+no answer or score. Test forward/reverse keyboard navigation, focus visibility,
+and unchanged answer coverage with fictional fixtures at 360/390/430 CSS px;
+this does not replace manual screen-reader or real-device acceptance.
+
 The complete flow must pass the [WCAG 2.2 A/AA conformance requirements](https://www.w3.org/TR/WCAG22/#conformance-reqs). Maintain a criterion audit covering all pages and states, including errors, no-script and unavailable-set states. Test 360/390/430 px, reflow at 320 CSS px, orientation, zoom, text spacing, keyboard, VoiceOver/Safari, and NVDA/Firefox. Verify text/control contrast, labels, reading order, status messages, pointer cancellation, and focus not obscured. Do not claim compliance from automated tests or these artifacts alone.
 
 ### 6. Memory boundary and zero tracking
