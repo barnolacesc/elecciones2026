@@ -78,6 +78,11 @@ sources and rights visible; human owner signs inclusion and editorial policy.
   no misleading coverage, dead CTA or unlabeled election context. Desktop is
   supported but not the design baseline.
 
+**Current evidence boundary (2026-10-26):** the [E2.5 private 2023 mobile
+audit](2023-MOBILE-ACCEPTANCE-AUDIT-2026-10-26.md) records passing local
+artifact/Node contracts and the still-missing rendered, device, participant
+and source-review evidence. P2 exit is not met by those technical checks.
+
 ### P3 — Usable, defensible questionnaire
 
 - Replace provisional/mock items with a balanced set drawn only from reviewed
