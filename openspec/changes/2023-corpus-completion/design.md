@@ -711,3 +711,45 @@ it. Reconcile the decision with PR #101/#166; test only fictional multilingual
 fixtures until source rights and editorial gates pass. CI can test references
 and invalidation but cannot decide translation quality or source rights.
 
+## P0.9 draft — temporal provenance of source versions
+
+Status: proposal-only. This refines P0 document discovery and the source gate
+for the later P1 corpus. It neither dates a real programme nor changes rights,
+coverage, editorial records or public output. The dated baseline is in
+`docs/2023-TEMPORAL-PROVENANCE-AUDIT-2026-10-29.md`.
+
+### Proposed evidence record
+
+For each source version, keep distinct event types: publisher's claimed
+publication, observed publisher page or link, bytes retrieved, bytes archived,
+and human review. Record the event date with precision and timezone when
+known, evidence type, evidence locator/private snapshot reference, observer,
+and the exact source ID/hash or an explicit `version_unresolved` link. Do not
+collapse a page date or archive capture into the PDF publication date. A
+current PDF at an unchanged URL may not be the PDF that an older page linked.
+
+The proposed chronology decision points to the accepted evidence records,
+version/hash, deciding human and decision date. It can conclude an evidenced
+date, a bounded interval, or `unknown`; an interval must not be presented as
+an exact day. Evidence sufficient for *a programme existed* may still be
+insufficient for *this exact version existed* at that time. The owner must
+decide whether a source with unknown exact publication date can support a
+private historical comparator and what reader-facing uncertainty it requires.
+Rights permission and statement review cannot answer that chronology question.
+
+### Fail-closed behavior and fictional checks
+
+An altered hash at a stable URL creates a new version and queues chronology,
+page anchors, statements and relationships for review. Historical evidence
+for the older version is retained. The deterministic audit should report
+unknown and contested dates without manufacturing a sortable date or hiding
+the source; the eventual public projection needs reviewed wording for any
+uncertainty it includes. Fictional checks cover a date-like filename, a later
+retrieval, an undated PDF linked from a dated page, a stable-URL replacement,
+and a rights-approved but chronologically unresolved version.
+
+Before implementation, the owner/editorial team must approve acceptable
+evidence classes, how a publisher's revision notices and external captures
+are weighed, interval precision, reviewers, and the publication rule for
+unknown dates. This draft makes no legal or historical determination.
+

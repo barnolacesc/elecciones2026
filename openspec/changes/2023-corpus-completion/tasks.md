@@ -335,3 +335,19 @@ the host has Python 3.11, while `generator.py` requires the project's Python
 3.14 syntax. Hosted CI and human translation review are separate. No
 implementation task is marked complete by this draft.
 
+## P0.9 — Source-version chronology gate (2026-10-29 draft)
+
+- [x] Reconcile current main's four 2023 pilot source dates and rights, open
+  PR #101 and its integration candidate, and the current CI execution state.
+  Evidence: `docs/2023-TEMPORAL-PROVENANCE-AUDIT-2026-10-29.md`.
+- [x] Draft a version-bound date-evidence requirement, design and fictional
+  cases in this change. No real source date, right or approval was changed.
+- [ ] Owner/editorial review: decide acceptable chronology evidence and
+  precision, reviewers, and treatment of historically unresolved versions.
+- [ ] After P0 inclusion/source review and OpenSpec approval, define a private
+  evidence schema and fixture tests. Reconcile PR #101/#166 before changing
+  its source fields or validators. Never infer dates from URLs or metadata.
+
+Validation: `git diff --check` and a local structure/baseline check. CI is
+engineering evidence only; it cannot approve dates, rights or political claims.
+

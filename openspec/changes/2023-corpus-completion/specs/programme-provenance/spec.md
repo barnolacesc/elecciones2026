@@ -134,3 +134,44 @@ bytes SHALL remain distinct versions pending review.
 - **WHEN** two candidate URLs return the same hash
 - **THEN** they are not counted as two programme versions or silently merged;
   the reviewer records whether they are mirrors of the same exact version.
+
+### Requirement: Version-bound temporal provenance
+
+The inventory SHALL distinguish a document's evidenced publication date from
+the dates on which a URL was observed, bytes were retrieved or archived, and a
+human reviewed a source or reuse decision. A claimed publication date SHALL
+identify its evidence, the exact document version or hash to which it applies,
+and the human decision accepting that evidence. Unknown publication dates SHALL
+remain unknown. A URL path, filename, PDF metadata, filesystem timestamp or
+later retrieval date alone SHALL NOT establish that the same bytes were public
+before the 2023 election. Source authenticity, chronology, reuse rights and
+editorial approval SHALL remain independent decisions.
+
+#### Scenario: Later retrieval of a 2023-labelled file
+
+- **WHEN** a file whose URL or title contains `2023` was retrieved in 2026 but
+  no evidence dates publication of its exact version
+- **THEN** the inventory retains the retrieval date and an unknown publication
+  date; it does not claim pre-election availability.
+
+#### Scenario: Dated page does not identify exact bytes
+
+- **WHEN** a publisher page has a date but its link may have served a revised
+  file at the same URL
+- **THEN** that page is recorded as candidate chronology evidence, not an
+  automatic publication date for the current hash.
+
+#### Scenario: Replacement at a stable URL
+
+- **WHEN** a newly retrieved file at the same URL has a different hash
+- **THEN** the prior version and its dated evidence remain traceable, and the
+  new version's chronology is pending until separately reviewed; previous
+  statement and locator approvals are not inherited.
+
+#### Scenario: Rights review without date evidence
+
+- **WHEN** a human approves a limited source use but the version's publication
+  date remains unknown
+- **THEN** the rights decision does not fill the date or prove historical
+  availability; the publication policy handles that uncertainty separately.
+
