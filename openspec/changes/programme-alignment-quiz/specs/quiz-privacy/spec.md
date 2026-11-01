@@ -45,6 +45,11 @@ Any quiz share or copy-link action SHALL provide only the canonical generic quiz
 - **WHEN** a visitor selects “Compartir el cuestionario”
 - **THEN** the share payload is the same generic URL for every answer set, without query parameters or a result fragment.
 
+#### Scenario: Native share is cancelled or unavailable
+- **WHEN** the native share sheet is dismissed, or no share/clipboard API can complete
+- **THEN** the visitor can select and manually copy the same generic canonical URL from a labelled, focused control.
+- **AND** repeating the action does not duplicate the fallback or expose answers, weights or results.
+
 ### Requirement: Operational privacy gate
 Before G5, operators SHALL verify browser, CDN/edge, origin, monitoring, and error configuration against zero tracking. Retained visitor-level logs, IP or user-agent histories, cookies, and request correlation SHALL be absent for quiz delivery. Aggregate availability metrics SHALL contain no visitor identifiers or political data. An incompatible provider setting SHALL block release.
 

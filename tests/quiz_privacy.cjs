@@ -25,6 +25,7 @@ async function fill(page, label) {
     for (const testCase of [
       {name: 'native share, agreement fixture', mode: 'native', answer: 'Totalmente de acuerdo'},
       {name: 'native share, opposition fixture', mode: 'native', answer: 'Totalmente en desacuerdo'},
+      {name: 'cancelled native share', mode: 'native-cancel', answer: 'Más bien en desacuerdo'},
       {name: 'copy-link fallback', mode: 'copy', answer: 'Ni de acuerdo ni en desacuerdo'},
       {name: 'manual link fallback', mode: 'manual', answer: 'Más bien de acuerdo'}
     ]) {
@@ -33,7 +34,10 @@ async function fill(page, label) {
         window.fixtureSharePayloads = [];
         window.fixtureCopiedLinks = [];
         Object.defineProperty(navigator, 'share', {configurable: true,
-          value: mode === 'native' ? async payload => { window.fixtureSharePayloads.push(payload); } : undefined});
+          value: mode.startsWith('native') ? async payload => {
+            window.fixtureSharePayloads.push(payload);
+            if (mode === 'native-cancel') throw new DOMException('Dismissed', 'AbortError');
+          } : undefined});
         Object.defineProperty(navigator, 'clipboard', {configurable: true,
           value: mode === 'copy' ? {writeText: async url => { window.fixtureCopiedLinks.push(url); }} : undefined});
       }, testCase.mode);
@@ -69,13 +73,21 @@ async function fill(page, label) {
       assert.equal(canonicalUrl.search, ''); assert.equal(canonicalUrl.hash, '');
       await page.getByRole('button', {name: 'Compartir el cuestionario', exact: true}).click();
       const captured = await page.evaluate(() => ({shared: window.fixtureSharePayloads, copied: window.fixtureCopiedLinks}));
-      if (testCase.mode === 'native') {
+      if (testCase.mode.startsWith('native')) {
         assert.deepEqual(captured, {shared: [{title: 'Cuestionario de coincidencia', url: canonical}], copied: []});
+        if (testCase.mode === 'native-cancel') {
+          const fallback = page.locator('#quiz-share-link');
+          assert.equal(await fallback.inputValue(), canonical);
+          assert.equal(await fallback.evaluate(element => element.readOnly), true);
+          assert.equal(await fallback.evaluate(element => document.activeElement === element), true);
+          await page.getByRole('button', {name: 'Compartir el cuestionario', exact: true}).click();
+          assert.equal(await page.locator('#quiz-share-link').count(), 1);
+        }
       } else if (testCase.mode === 'copy') {
         assert.deepEqual(captured, {shared: [], copied: [canonical]});
       } else {
         assert.deepEqual(captured, {shared: [], copied: []});
-        assert.match(await page.locator('#quiz-app').innerText(), new RegExp(`Enlace al cuestionario: ${canonical.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
+        assert.equal(await page.locator('#quiz-share-link').inputValue(), canonical);
       }
       await page.getByRole('button', {name: 'Borrar respuestas', exact: true}).click();
       assert.equal(requests.length, initialRequests, 'Complete interaction and sharing must cause zero application requests');
