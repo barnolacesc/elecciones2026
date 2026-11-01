@@ -203,3 +203,25 @@ PR #150 run `40185225258` did not execute the test or mobile jobs: GitHub
 reported an account payment/spending-limit block before any job steps began.
 Re-run CI after billing is restored; local checks do not replace it.
 
+## P0.4 — Publisher-bound source identity draft (2026-10-26)
+
+- [x] Reconcile current main, the four 2023 pilot register rows and PR #101;
+  record the limited evidence in
+  `docs/2023-SOURCE-IDENTITY-READINESS-2026-10-26.md`. This does not recheck
+  publisher websites or private PDFs.
+- [x] Draft the exact-byte authenticity requirement, review boundary and
+  fictional redirect/mirror/version cases in the provenance spec and design.
+- [ ] Owner/source-authenticity review: choose the evidence capture and
+  recheck protocol, reviewer, historic-page handling and mirror-equivalence
+  rule. Keep this separate from rights and editorial decisions.
+- [ ] After P0 review and PR #101 reconciliation, specify the private record
+  schema and validators; test only fictional cases before any real version is
+  marked authentic. Reconcile with P0 document scope and withdrawal rules.
+
+Validation: `git diff --check` and a local requirement/design/task structure
+check. No source, rights, content or public output was changed. CI is technical
+evidence, not a human authenticity or editorial review. PR #155 run
+`40293266028` could not start test jobs because GitHub reported an account
+payment or spending-limit block; hosted CI is therefore unverified, not a
+passing or failing test result.
+
