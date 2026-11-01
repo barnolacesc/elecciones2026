@@ -420,3 +420,21 @@ Validation: local repository assertions, publisher PDF HEAD and article check,
 web retrieval metadata, and `git diff --check`. No source PDF, political
 statement or public output was changed; CI cannot supply a human decision.
 
+## P1.7 — Extraction-visibility handoff (2026-10-31 draft)
+
+- [x] Audit the current E1.2 artifact boundary and P1.3 search-state gap;
+  draft a private range-ledger design and five fictional requirement cases.
+  Evidence: `docs/2023-EXTRACTION-VISIBILITY-AUDIT-2026-10-31.md`, this
+  change's `design.md` and `specs/editorial-statements/spec.md`. No PDFs,
+  claims, rights, source records, renderer or routing changed.
+- [ ] Owner/editorial review: approve the visual-inspection protocol, range
+  granularity, non-searchable/table handling, alternate processing and reviewer
+  quorum. This draft is not a source-quality or negative-finding approval.
+- [ ] After P0 and P1.3 review, reconcile a concrete private ledger schema,
+  invalidation rules and tests against the approved protocol. Use fictional
+  blank, image-only, omitted-column, tool-change and OCR cases before any real
+  2023 search conclusion is considered.
+
+Validation: `git diff --check` and local document-structure checks only. CI
+and fixture tests cannot replace human inspection or editorial review.
+

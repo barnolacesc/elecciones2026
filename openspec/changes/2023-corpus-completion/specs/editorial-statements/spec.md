@@ -347,3 +347,52 @@ build, retains source wording and reviewer deliberation.
 - **THEN** those fields remain unknown; the summary does not assert that the
   measure has no cap or deadline.
 
+### Requirement: Account for extraction visibility before topic-search review
+
+For each required source version and page or section range, the private 2023
+search ledger SHALL distinguish a successful text extraction from human-verified
+visual readability, an extraction failure, and an uninspected range. It SHALL
+bind the observation to the immutable source hash, physical page range,
+extractor identity and evidence reference. A byte-valid PDF, matching page
+count, nonempty machine text, or empty machine text SHALL NOT by itself prove
+that all policy-relevant wording was readable or searched. Unresolved ranges
+SHALL block a reviewed negative finding under the separate topic-search gate.
+The visual review evidence and extracted text SHALL remain private; this
+requirement grants no source rights or editorial approval.
+
+#### Scenario: Image-only page with empty extracted text
+
+- **WHEN** a required physical page has empty text extraction but visible text
+  has not been inspected by a human reviewer
+- **THEN** its visibility state remains unresolved and no topic absence can be
+  approved from the machine result.
+
+#### Scenario: Nonempty extraction loses a material column
+
+- **WHEN** the extracted text is nonempty but a visual check finds omitted or
+  reordered policy text in a second column
+- **THEN** the affected range is marked extraction-incomplete and any dependent
+  search conclusion waits for a documented manual or reviewed alternate pass.
+
+#### Scenario: Blank page verified visually
+
+- **WHEN** an empty extracted page is visually confirmed to contain no relevant
+  text under the approved review protocol
+- **THEN** the ledger may mark that page inspected, without treating it as a
+  negative finding for the entire document or topic.
+
+#### Scenario: Extraction tool changes
+
+- **WHEN** a replacement extractor or new image version produces different
+  text for the same source hash
+- **THEN** the old and new observations remain traceable and dependent search
+  conclusions are re-evaluated; the new extraction does not silently inherit
+  a prior visibility decision.
+
+#### Scenario: OCR proposed for an unreadable range
+
+- **WHEN** an editor proposes OCR or another processing route for a range that
+  could not be searched reliably
+- **THEN** the range remains unresolved until the route, its output and the
+  original page are reviewed; OCR text alone cannot approve a claim or absence.
+
