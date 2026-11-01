@@ -92,6 +92,27 @@ class ProvisionalBrowserTests(unittest.TestCase):
                 self.assertTrue(all(request.url.startswith(self.base) for request in requests))
                 context.close()
 
+    def test_comparison_data_failure_keeps_static_source_path(self):
+        for width in (360, 390, 430):
+            with self.subTest(width=width):
+                context = self.browser.new_context(viewport={'width': width, 'height': 800}, has_touch=True)
+                page = context.new_page()
+                page.route('**/pilot-2023-data.json', lambda route: route.fulfill(status=503, body='Unavailable'))
+                page.goto(self.base + '/')
+                notice = page.locator('#pilot-comparison [role="alert"]')
+                self.assertIn('No se ha podido cargar', notice.inner_text())
+                for control_id in ('pilot-topic', 'pilot-a', 'pilot-b'):
+                    self.assertTrue(page.locator(f'#{control_id}').is_disabled())
+                button = page.get_by_role('button', name='Ver todas las medidas')
+                self.assertGreaterEqual(button.bounding_box()['height'], 44)
+                button.click()
+                self.assertTrue(page.locator('#pilot-comparison + details').evaluate('(element) => element.open'))
+                self.assertTrue(page.locator('#pilot-comparison + details summary').evaluate(
+                    '(element) => element === document.activeElement'))
+                self.assertGreater(page.locator('#pilot-comparison + details .citation a').count(), 0)
+                self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
+                context.close()
+
     def test_pilot_shares_only_neutral_quiz_link(self):
         payloads = []
         for answer in ('agree', 'strongly-disagree'):

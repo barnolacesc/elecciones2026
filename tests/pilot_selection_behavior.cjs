@@ -17,7 +17,7 @@ function node(value = '') {
 
 async function pilot(href, positionsOrAvailable = []) {
   const positions = Array.isArray(positionsOrAvailable) ? positionsOrAvailable : [];
-  const dataAvailable = typeof positionsOrAvailable === 'boolean' ? positionsOrAvailable : true;
+  const dataAvailable = typeof positionsOrAvailable === 'boolean' ? positionsOrAvailable : (positionsOrAvailable?.ok !== false);
   const nodes = {
     'pilot-topic': node('housing'), 'pilot-a': node('pp'),
     'pilot-b': node('erc'), 'pilot-comparison': node(), 'pilot-error': node(),
@@ -25,6 +25,9 @@ async function pilot(href, positionsOrAvailable = []) {
   };
   const summary = node();
   summary.focus = () => { summary.focused = true; };
+  const staticList = node();
+  staticList.querySelector = () => summary;
+  nodes['pilot-comparison'].nextElementSibling = staticList;
   const mobileNav = node();
   mobileNav.open = false;
   mobileNav.querySelector = selector => selector === 'summary' ? summary : null;
@@ -47,8 +50,20 @@ async function pilot(href, positionsOrAvailable = []) {
     fetch: async () => ({ ok: dataAvailable, json: async () => data })
   });
   await vm.runInContext(fs.readFileSync('site/pilot-2023.js', 'utf8'), context);
-  return { nodes, location, mobileNav, summary };
+  return { nodes, location, mobileNav, summary, staticList };
 }
+
+test('unavailable private data offers the static source list without active selectors', async () => {
+  const { nodes, staticList, summary } = await pilot('https://private.test/', false);
+  for (const id of ['pilot-topic', 'pilot-a', 'pilot-b']) assert.equal(nodes[id].disabled, true);
+  const [alert, button] = nodes['pilot-comparison'].children;
+  assert.equal(alert.attributes.get('role'), 'alert');
+  assert.match(alert.textContent, /No se ha podido cargar/);
+  assert.equal(button.textContent, 'Ver todas las medidas');
+  button.handlers.click();
+  assert.equal(staticList.open, true);
+  assert.equal(summary.focused, true);
+});
 
 test('Escape closes the open mobile menu and returns focus even without pilot data', async () => {
   const { mobileNav, summary } = await pilot('https://private.test/', false);
