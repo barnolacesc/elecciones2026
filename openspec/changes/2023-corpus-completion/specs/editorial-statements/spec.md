@@ -267,3 +267,50 @@ use; a tool SHALL NOT silently normalize quantities.
 - **THEN** the prior interpretation and any derived value are invalidated for
   review, with the old source-linked version retained.
 
+### Requirement: Source-language bridge for Spanish summaries
+
+A Spanish public summary derived from a non-Spanish source SHALL retain an
+explicitly evidenced language check bound to the exact source version and
+physical locator, statement revision, source/output languages and material
+qualifications. The editorial owners SHALL decide whether this check is a
+distinct decision or an explicit, traceable part of the existing independent
+statement reviews. A completed worksheet, source link or successful build
+SHALL NOT substitute for authentic review evidence. Language review SHALL NOT
+grant source reuse rights or approve the political interpretation by itself.
+Private source wording and translation working notes SHALL stay outside Git
+and the public artifact.
+
+#### Scenario: Non-Spanish source without evidenced language check
+
+- **WHEN** a Spanish candidate summary cites a Catalan-language source but no
+  language check is bound to that exact source and statement revision
+- **THEN** the summary remains unpublished even if its source hash matches and
+  its generic statement reviews are otherwise present.
+
+#### Scenario: Existing reviews contain the explicit check
+
+- **WHEN** the editorial owners accept evidence that the required check was
+  made within the existing independent reviews of the exact revisions
+- **THEN** the bridge may refer to those decisions without inventing an
+  additional reviewer, date or approval state.
+
+#### Scenario: Material translation correction
+
+- **WHEN** review changes the Spanish rendering of a source qualification,
+  jurisdiction, amount or timing
+- **THEN** the statement is versioned and dependent relationships, coverage
+  presentation and quiz mappings stay pending until their exact dependencies
+  are reviewed again.
+
+#### Scenario: Source or locator changes
+
+- **WHEN** the source bytes, version or physical locator change
+- **THEN** the prior language check cannot approve the new source-to-summary
+  mapping and the affected summary remains unpublished pending re-review.
+
+#### Scenario: Spanish source without translation
+
+- **WHEN** a Spanish summary derives directly from a Spanish-language source
+- **THEN** normal source, rights and statement gates apply without requiring a
+  fictitious translation decision.
+

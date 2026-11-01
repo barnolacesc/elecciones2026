@@ -678,3 +678,36 @@ are allowed, materiality and rounding rules, who checks calculations, and
 Spanish wording for incomparable figures. Only after that review should a
 concrete schema, validator and public presentation be specified and built.
 
+## P1.7 draft — source-language bridge
+
+Status: proposal-only. This package formalizes the repository-visible gap in
+`docs/2023-TRANSLATION-TRACEABILITY-AUDIT-2026-10-24.md`; it does not inspect
+source PDFs, certify a translation, change the six PP/ERC candidate records or
+resolve draft PR #101. P0 source identity and rights, P1 statement review and
+P1 relationship review remain independent gates.
+
+The proposed private bridge joins an exact source ID/version/hash and physical
+page/section to a statement ID/revision. It records source and output language,
+the material terms checked (including qualifications, jurisdiction, amounts
+and timing where stated), human disposition, decision date and private evidence
+reference. The bridge stores no source text in Git. The public projection may
+contain only the approved Spanish summary and lawful source locator, never
+translation notes or a new claim that the source is Spanish.
+
+An existing independent review can satisfy the language check only if its
+authentic evidence explicitly covers that exact mapping and the editorial
+owners accept that evidence standard. This design does not impose a third
+reviewer or retroactively mark the pilot reviewed. A changed source version,
+locator or statement wording invalidates the bridge and its dependent public
+projection. If a material translation correction changes meaning, the
+statement's relationships and quiz mappings also enter re-review; coverage
+cannot silently retain the old summary. A Spanish-source record follows the
+ordinary review route without a manufactured translation approval.
+
+Before implementation, editorial owners must decide the evidence format,
+responsible reviewer competence, whether the existing dual-human review can
+carry this check, and whether any exact private pilot review already contains
+it. Reconcile the decision with PR #101/#166; test only fictional multilingual
+fixtures until source rights and editorial gates pass. CI can test references
+and invalidation but cannot decide translation quality or source rights.
+
