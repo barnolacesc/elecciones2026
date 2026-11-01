@@ -228,7 +228,7 @@
   }
   async function share() {
     const url = document.querySelector('link[rel="canonical"]').href;
-    function offerManualLink() {
+    function offerManualLink(isCancel = false) {
       let input = app.querySelector('#quiz-share-link');
       if (!input) {
         const wrapper = node('div', null, {class: 'quiz-share-fallback'});
@@ -240,15 +240,17 @@
       input.value = url;
       input.focus();
       input.select();
-      announce('Selecciona y copia el enlace al cuestionario.');
+      announce(isCancel
+        ? 'No se ha compartido. Selecciona y copia el enlace al cuestionario.'
+        : 'Selecciona y copia el enlace al cuestionario.');
     }
     try {
       if (navigator.share) await navigator.share({title: 'Cuestionario de coincidencia', url});
       else if (navigator.clipboard) { await navigator.clipboard.writeText(url); announce('Enlace al cuestionario copiado.'); }
-      else offerManualLink();
+      else offerManualLink(false);
     } catch (error) {
       // A dismissed native sheet needs a new gesture before clipboard access.
-      offerManualLink();
+      offerManualLink(error?.name === 'AbortError');
     }
   }
   function render(focus = true) {

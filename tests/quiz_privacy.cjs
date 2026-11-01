@@ -26,6 +26,7 @@ async function fill(page, label) {
       {name: 'native share, agreement fixture', mode: 'native', answer: 'Totalmente de acuerdo'},
       {name: 'native share, opposition fixture', mode: 'native', answer: 'Totalmente en desacuerdo'},
       {name: 'cancelled native share', mode: 'native-cancel', answer: 'Más bien en desacuerdo'},
+
       {name: 'copy-link fallback', mode: 'copy', answer: 'Ni de acuerdo ni en desacuerdo'},
       {name: 'manual link fallback', mode: 'manual', answer: 'Más bien de acuerdo'}
     ]) {
@@ -37,6 +38,7 @@ async function fill(page, label) {
           value: mode.startsWith('native') ? async payload => {
             window.fixtureSharePayloads.push(payload);
             if (mode === 'native-cancel') throw new DOMException('Dismissed', 'AbortError');
+
           } : undefined});
         Object.defineProperty(navigator, 'clipboard', {configurable: true,
           value: mode === 'copy' ? {writeText: async url => { window.fixtureCopiedLinks.push(url); }} : undefined});
@@ -82,6 +84,7 @@ async function fill(page, label) {
           assert.equal(await fallback.evaluate(element => document.activeElement === element), true);
           await page.getByRole('button', {name: 'Compartir el cuestionario', exact: true}).click();
           assert.equal(await page.locator('#quiz-share-link').count(), 1);
+
         }
       } else if (testCase.mode === 'copy') {
         assert.deepEqual(captured, {shared: [], copied: [canonical]});
