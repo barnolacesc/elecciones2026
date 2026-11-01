@@ -336,3 +336,60 @@ negative findings, treatment of translated sources, and exact Spanish wording
 for a scoped absence. These cannot be supplied by CI or an agent. After review,
 the implementation task can define a concrete schema and validators against
 the agreed protocol; until then this draft is a fail-closed handoff only.
+
+## P0.5 draft — rights withdrawal and use-scope changes
+
+Status: proposal-only. This package addresses a decision changing **without**
+any PDF byte or source-version change. It does not determine legal rights,
+alter the four pilot source records, repair PR #101, or authorize publication.
+
+### Reconciled gap (2026-10-25)
+
+At `origin/main` `8e2fab4`, the four registered 2023 pilot sources remain
+`published-unverified`, rights `not_reviewed`, publication date unknown. The
+current `RightsReview` contains one status, reviewer, date and notes, without a
+decision revision, use-specific evidence pointer or withdrawal history. Current
+generator and quiz checks inspect rights status for quotation but cannot
+identify a later withdrawal of an unchanged version. Draft PR #101 proposes
+version-bound `link_only` summaries and remains conflicting, unreviewed and
+unmerged. This delta is for the future reviewed 2023 contract and does not
+change PR #101's files or assert that any current record was approved.
+
+### Proposed decision and dependency contract
+
+The private rights ledger should append immutable events keyed by election,
+source ID, exact version/hash, use type, decision revision and private evidence
+reference. Event types for review are grant, narrow, withdraw, expire, challenge
+and resolve. The effective decision is the latest **human-authorized** state
+for the exact use and version; an unresolved credible challenge should fail
+closed for the affected use pending owner adjudication. Preserve event time
+and effective time separately. The reviewer must decide how expiry and
+challenges are authenticated; an agent or CI cannot create a real decision.
+
+The dependency report should join a decision revision to each approved
+statement, quote, relationship, quiz item and built artifact using that source.
+On a restrictive event, invalidate only affected uses while preserving their
+prior decisions and separate editorial reviews. A narrower quote permission
+does not automatically remove a permitted outbound link, and a link decision
+does not allow a paraphrase. The next deterministic build should fail closed or
+omit the affected projection under an explicitly reviewed rule. If an earlier
+artifact is already served, report its ID and correction/release action to the
+owner; rebuilding in CI is not deployment or proof that readers no longer see
+it. Private evidence and source bytes stay outside Git and public artifacts.
+
+### Fictional cases and review questions
+
+1. Same source hash, quote grant narrowed to link-only: quote is withheld;
+   approved link survives only if it has its own current use decision.
+2. A challenge is recorded but unresolved: affected paraphrase, comparison
+   and quiz citation are withheld, not silently grandfathered.
+3. A use grant expires between two builds: the later build cannot reuse it;
+   the earlier served artifact appears in a release-remediation report.
+4. A decision is re-granted after review: prior statement and relationship
+   approvals are not automatically renewed; exact dependencies are rechecked.
+
+Before implementation, human owners must decide the authoritative decision
+store, challenged-use authentication, effective-time policy, use vocabulary,
+review quorum and release-response owner. Reconcile any approved schema with
+PR #101 and the P0 source-use queue. Fictional tests can check propagation,
+but cannot establish a real right or complete a served-site withdrawal.

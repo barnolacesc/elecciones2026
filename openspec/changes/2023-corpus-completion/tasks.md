@@ -140,3 +140,20 @@ political-content tests apply to this proposal-only source handoff.
 
 P1.3 validation is a documentation/requirement structure check and
 `git diff --check`; neither can approve a negative political claim.
+
+## P0.5 — Rights withdrawal and use-scope change draft (2026-10-25)
+
+- [x] Reconcile current rights fields, four 2023 source states, PR #101 and
+  generator/quiz use gates; draft the decision-revision, dependency and served-
+  artifact handoff in `design.md` and `specs/programme-provenance/spec.md`.
+  No real decision, source record, code or public artifact changes.
+- [ ] Human source-rights owner reviews event authenticity, use vocabulary,
+  effective time, challenged-use policy, decision-store access and release
+  response. A challenge does not let an agent adjudicate a legal permission.
+- [ ] After P0 review and PR #101 reconciliation, specify concrete records and
+  validators; test restrictive and renewed decisions with fictional fixtures,
+  including unchanged hashes and already served artifacts. Keep real 2023
+  activation behind source, editorial and release gates.
+
+Validation for this draft: requirement/scenario structure and `git diff
+--check`. CI may check engineering structure but is not human rights review.

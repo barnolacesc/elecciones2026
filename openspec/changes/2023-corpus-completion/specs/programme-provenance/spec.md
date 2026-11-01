@@ -52,6 +52,38 @@ Rights SHALL be decided separately per exact source/version and proposed use.
   traceable and dependent anchors enter re-review rather than being replaced
   in place.
 
+### Requirement: Current rights decision and withdrawal propagation
+
+For each exact 2023 source version and proposed use, the publication projection
+SHALL depend on the current, human-attributed rights decision, not only a
+historical approval or the source hash. A withdrawal, narrower use decision,
+expiry, or credible unresolved challenge SHALL retain the prior decision for
+audit, mark affected uses pending or denied, and invalidate dependent public
+statements, quotations, comparisons and quiz items for release review. A
+decision for outbound linking SHALL NOT authorize paraphrase, quotation or PDF
+redistribution. A changed rights decision SHALL NOT erase a separately
+reviewed source-integrity or editorial record, but neither record overrides the
+current use restriction. CI SHALL NOT infer or self-approve a new permission.
+
+#### Scenario: Same bytes, narrower permission
+- **WHEN** the rights owner narrows permission for an unchanged source hash
+  from short quotation to outbound linking only
+- **THEN** quotations and any other no-longer-permitted uses leave the next
+  publish set, their prior decisions remain auditable, and unaffected links
+  remain subject to their own current decision and editorial gates.
+
+#### Scenario: Approval challenged without a final decision
+- **WHEN** a credible challenge to a version-bound use decision is recorded
+  but the human rights owner has not resolved it
+- **THEN** affected uses are withheld from the next publish set and no prior
+  approval is silently reused.
+
+#### Scenario: Existing served artifact
+- **WHEN** an affected claim is already in a served static artifact
+- **THEN** the system records affected artifact and dependency IDs for an
+  owner-controlled correction or withdrawal release; a passing rebuild alone
+  SHALL NOT be reported as removal from the served site.
+
 ### Requirement: Reproducible coverage accounting
 
 The system SHALL reconcile included candidatures to document-discovery rows
