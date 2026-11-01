@@ -276,3 +276,18 @@ not the project 3.14 runtime. PR #158 CI jobs did not start test steps:
 GitHub annotated an account payment/spending-limit block. CI remains unverified
 and is not editorial approval.
 
+## P0.5 — Coverage projection handoff (2026-10-27 draft)
+
+- [x] Reconcile the four-row 2023 pilot, example review states, unresolved
+  2023 denominator/taxonomy and overlapping open PRs; draft stage-separated
+  coverage requirements, design and fictional cases. Evidence:
+  `docs/2023-COVERAGE-PROJECTION-HANDOFF-2026-10-27.md`. No source, rights,
+  editorial, public output or deployment record changed.
+- [ ] Owner/editorial review: approve the coverage units, denominators,
+  stage definitions, public unknown/partial wording and snapshot invalidation
+  rules. This draft grants no such decision.
+- [ ] After P0 inventory and P1 search/comparison reviews, reconcile the
+  approved contract with other open P0/P1 drafts; add the formal requirement
+  delta, schema, design and fictional data/rendered tests before implementing
+  a coverage projection. Do not infer completeness from the four pilot rows.
+
