@@ -223,6 +223,42 @@ async function checkKeyboard(page) {
     assert.deepEqual(invalidErrors, []);
     await invalidContext.close();
     console.log('PASS corrupt bundle: no answers or partial score, readable error and method at 320px.');
+    // Intercepted metadata is deliberately nonpolitical and never enters the build.
+    // Mock bundles have no citations, so they cannot exercise long real-world identifiers.
+    for (const width of widths) {
+      const sourceContext = await browser.newContext({viewport: {width, height: 844}});
+      const sourcePage = await sourceContext.newPage();
+      await sourcePage.route('**/quiz-data.*.js', async route => {
+        const response = await route.fetch();
+        const script = await response.text();
+        const bundle = JSON.parse(script.slice(script.indexOf('=') + 1).trim().replace(/;$/, ''));
+        bundle.mode = 'reviewed';
+        bundle.election_id = 'layout-fixture';
+        bundle.version = 'layout-only';
+        for (const party of bundle.parties) for (const position of party.positions) {
+          if (position.value !== null) position.source = {
+            statement_id: 'layout-only', programme_id: 'source-' + 'a'.repeat(80),
+            version: 'layout-only', sha256: '0'.repeat(64), page: '2', section: 'section-' + 'b'.repeat(80),
+            review_date: 'No editorial review: layout test only', rights_status: 'Not approved: test only',
+            url: 'https://quiz-source.invalid/layout-only#page=2',
+            qualifications: ['Synthetic metadata ' + 'c'.repeat(120)],
+            summary: 'Synthetic layout text. No programme or political claim.'
+          };
+        }
+        await route.fulfill({response, body: `window.QuizBundle = ${JSON.stringify(bundle)};\n`});
+      });
+      await sourcePage.goto(`${base}/cuestionario/`, {waitUntil: 'networkidle'});
+      await sourcePage.getByRole('button', {name: 'Empezar', exact: true}).click();
+      await sourcePage.locator('#quiz-app summary').first().click();
+      assert.equal(await sourcePage.getByRole('link', {name: 'Abrir fuente oficial (ventana nueva)', exact: true}).count(), 2);
+      await checkLayout(sourcePage, `${width}px: long source metadata`, width);
+      if (width === 320) {
+        await sourcePage.addStyleTag({content: 'html { font-size: 200% !important; }'});
+        await checkLayout(sourcePage, '320px: long source metadata at 200% text size', width);
+      }
+      await sourceContext.close();
+    }
+    console.log('PASS 320/360/390/430px: intercepted long source metadata reflows without horizontal scroll; source links retain 44px targets.');
     if (process.env.QUIZ_UNAVAILABLE_URL) {
       const unavailableContext = await browser.newContext({viewport: {width: 320, height: 844}});
       const unavailablePage = await unavailableContext.newPage();
