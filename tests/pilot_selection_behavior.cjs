@@ -169,6 +169,7 @@ test('provisional quiz discards answers and results on exit and cache restoratio
   quiz.selected = null;
   quiz.reset = () => { quiz.selected = null; };
   quiz.querySelector = () => quiz.selected && {value: quiz.selected};
+  quiz.querySelectorAll = () => [Object.assign(node(), { focus() {} })];
   const document = {
     getElementById(id) { return nodes[id] || null; },
     querySelector(selector) { return selector === '.mobile-nav' ? node() : null; },

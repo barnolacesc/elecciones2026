@@ -184,6 +184,16 @@
     const questions = selectQuestions(data.positions, 3);
     const answers = [];
     const results = document.getElementById('pilot-results');
+    const answerError = document.getElementById('pilot-answer-error');
+    const answerControls = Array.from(quiz.querySelectorAll('input[name="answer"]'));
+    function clearAnswerError() {
+      answerError.hidden = true;
+      for (const control of answerControls) {
+        control.removeAttribute('aria-invalid');
+        control.removeAttribute('aria-describedby');
+      }
+    }
+    for (const control of answerControls) control.addEventListener('change', clearAnswerError);
     let index = 0;
     function showQuestion() {
       const position = questions[index];
@@ -192,7 +202,7 @@
       document.getElementById('pilot-statement').textContent = position.summary;
       document.getElementById('pilot-next').textContent = index === questions.length - 1 ? 'Ver respuestas y fuentes' : 'Siguiente propuesta';
       quiz.reset();
-      document.getElementById('pilot-answer-error').hidden = true;
+      clearAnswerError();
     }
     function clearPoliticalState() {
       answers.length = 0;
@@ -210,7 +220,12 @@
       event.preventDefault();
       const chosen = quiz.querySelector('input[name="answer"]:checked');
       if (!chosen) {
-        document.getElementById('pilot-answer-error').hidden = false;
+        answerError.hidden = false;
+        for (const control of answerControls) {
+          control.setAttribute('aria-invalid', 'true');
+          control.setAttribute('aria-describedby', 'pilot-answer-error');
+        }
+        if (answerControls[0]) answerControls[0].focus();
         return;
       }
       answers.push({position: questions[index], answer: chosen.value});
