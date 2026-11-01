@@ -788,3 +788,53 @@ publisher/ballot evidence for an edge; edge-review quorum; public shared-source
 label and denominator wording. Reconcile with P0.2/P0.3, P1 document scope and
 PR #101/#166 before implementation.
 
+## P1.4 draft — qualification fidelity across summary and comparison
+
+Status: proposal-only for editorial and OpenSpec review. This package narrows
+the existing P1.1 requirement to preserve source-stated qualifications. It
+does not approve a real summary, change source rights, edit the pilot records,
+or implement publication logic. P0 source identity/rights, 2023 taxonomy and
+P1 initiative-granularity decisions remain prerequisites.
+
+### Evidence and review boundary
+
+The current 2023 example statement shape has one `qualifications` field and
+one `source_page`/`source_section` pair. That shape does not by itself show
+which source span supports a condition that is elsewhere in the document, or
+whether a shortened summary retained a material exception. The proposed
+private review unit is a version-bound qualification ledger: measure ID and
+source version/hash; each operative clause and material limit; its exact
+page/section locator; the proposed summary location where it is represented;
+and a human disposition (`retained`, `material_omission`, `not_applicable`, or
+`unresolved`) with evidence reference. These labels are design candidates,
+not approved schema values or automated political judgments. Source wording,
+private review notes and PDFs remain outside Git and the public build.
+
+Review the operative clause and qualifications against the full relevant
+source range, not just a search snippet. A reviewer may approve concise copy
+only after checking that the eligibility, geography, instrument, amount and
+timing still mean the same thing. A second reviewer checks neutrality and
+what a two-party comparison would imply. A relationship decision cites the
+exact reviewed statement versions and cannot strip a qualification from one
+side to create an apparent agreement or divergence. Missing source evidence,
+review disagreement or a changed source version blocks the affected statement
+and dependent relationship; it does not create a negative party position.
+
+### Fictional acceptance cases and decisions
+
+1. The operative measure and eligibility limit appear on different pages:
+   two locators are retained; an unqualified headline remains unpublished.
+2. A general rule has a stated exception: the summary and relationship keep
+   its effect, or the omission is unresolved and both stay unpublished.
+3. An amount or deadline is absent from the reviewed source range: record
+   unknown, never an unlimited promise or a zero value.
+4. A new document version changes a condition: retain the old evidence and
+   invalidate the statement, its comparison and any quiz item using it.
+
+Editorial owners must decide the materiality test for limits, how to represent
+multiple locators in public copy, reviewer disposition/quorum, and whether a
+qualified measure needs a shorter headline plus visible detail on a phone.
+Only after those decisions and reviewed specs/design/tasks may an engineer
+define schema, validator and fictional-fixture implementation. CI cannot
+approve a political interpretation or a rights decision.
+

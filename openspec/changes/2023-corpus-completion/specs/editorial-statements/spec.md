@@ -314,3 +314,36 @@ and the public artifact.
 - **THEN** normal source, rights and statement gates apply without requiring a
   fictitious translation decision.
 
+### Requirement: Source-bound qualification fidelity
+
+A candidate and its proposed public summary SHALL distinguish the operative
+measure from every source-stated condition, exception, affected population,
+territorial limit, amount and time limit that changes its meaning. Each such
+qualification SHALL have a locator in the same immutable source version, or
+an explicit unresolved evidence state. A reviewer SHALL decide whether a
+shorter summary preserves the measure's scope; a generated summary or a
+single broad page citation SHALL NOT establish that decision. Unresolved or
+disputed material qualifications SHALL block publication of that statement
+and any relationship that uses it. The private evidence ledger, not the public
+build, retains source wording and reviewer deliberation.
+
+#### Scenario: Condition is separated from the headline
+
+- **WHEN** a fictional source states a measure in one section and limits its
+  eligible population in another section of the same version
+- **THEN** the candidate records both locators and the public summary cannot
+  present the measure as universal while the limitation is unreviewed.
+
+#### Scenario: Exception changes the comparison
+
+- **WHEN** a fictional measure has a source-stated exception that changes who
+  is covered, but a proposed summary or relationship omits that exception
+- **THEN** the statement and dependent relationship remain unpublished until
+  human reviewers resolve the omission against the exact source version.
+
+#### Scenario: No stated limit is not an unlimited promise
+
+- **WHEN** the reviewed source range does not state an amount or deadline
+- **THEN** those fields remain unknown; the summary does not assert that the
+  measure has no cap or deadline.
+

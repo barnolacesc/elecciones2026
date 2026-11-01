@@ -388,3 +388,21 @@ returned `200 application/pdf` to HEAD; retrieval metadata reported 68, 4
 and 16 pages. `git diff --check` passed. No private PDF, hash or publication
 review was performed; GitHub CI remains separate engineering evidence.
 
+## P1.4 — Qualification fidelity draft (2026-10-30)
+
+- [x] Reconcile `origin/main` `8e2fab4`, four 2023 pilot source rows and the
+  open PR #101 gate; draft source-bound qualification scenarios and a private
+  review-ledger design. This changes no real source, claim, review, rights or
+  public output. PR #101 remains draft, conflicting and without human reviews;
+  PR #166 separately attempts its integration and has failing checks.
+- [ ] Editorial owners review the materiality test, multi-locator presentation,
+  reviewer quorum/disposition and phone-visible qualified-copy rule. No agent
+  may resolve these by marking a real record approved.
+- [ ] After P0/P1 review and PR #101 reconciliation, specify the concrete
+  ledger schema and validator against fictional multi-page, exception,
+  unknown-limit and replacement fixtures. Verify dependent comparison and
+  quiz invalidation before any real 2023 activation.
+
+Validation for this proposal: structure and whitespace checks only. CI is
+technical evidence, not editorial or source-rights approval.
+
