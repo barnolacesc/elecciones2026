@@ -143,8 +143,13 @@ class TestDockerConfiguration(unittest.TestCase):
         self.assertIn("server_tokens off;", content)
 
         # 2. ADR-0001 Cache-Control rules
-        # Immutable static assets (31536000s)
+        # Fingerprinted comparison JS is immutable; stable names revalidate.
         self.assertIn('Cache-Control "public, max-age=31536000, immutable"', content)
+        self.assertIn('location ~* ^/comparison-data\\.[0-9a-f]{16}\\.js$ {', content)
+        self.assertIn('location ~* \\.(?:css|js)$ {', content)
+        self.assertIn('location ^~ /tokens/ {', content)
+        self.assertIn('Cache-Control "public, no-cache"', content)
+        self.assertLess(content.index('location ~* ^/comparison-data'), content.index('location ~* \\.(?:css|js)$'))
         # HTML pages (300s, stale-while-revalidate=86400)
         self.assertIn('Cache-Control "public, max-age=300, stale-while-revalidate=86400"', content)
         # Security & crawler files (3600s, stale-while-revalidate=86400)
@@ -265,18 +270,32 @@ class TestLiveDockerContainerParity(unittest.TestCase):
             self.assertIn('<html lang="es">', body)
             self.assertTrue("Elecciones" in body or "Generales" in body)
 
-    def test_container_serves_static_assets_with_immutable_cache(self) -> None:
-        """Verify running container serves CSS and JS with immutable cache header."""
+    def test_container_revalidates_stable_name_styles_and_scripts(self) -> None:
+        """Stable URLs must not pin old comparison/quiz UI across releases."""
         if not self.docker_ready:
             self.skipTest("Docker daemon not available in test environment")
 
-        for asset in ["styles.css", "app.js"]:
+        for asset in ["styles.css", "tokens/tokens.css", "app.js", "sharing.js"]:
             req = urllib.request.Request(f"http://127.0.0.1:{self.port}/{asset}")
             with urllib.request.urlopen(req, timeout=5) as resp:
                 self.assertEqual(resp.status, 200)
                 cache_ctrl = resp.headers.get("Cache-Control", "")
-                self.assertIn("max-age=31536000", cache_ctrl)
-                self.assertIn("immutable", cache_ctrl)
+                self.assertEqual(cache_ctrl, "public, no-cache")
+                self.assertEqual(resp.headers.get("X-Content-Type-Options"), "nosniff")
+
+    def test_container_keeps_fingerprinted_comparison_bundle_immutable(self) -> None:
+        """The content-addressed comparison bundle retains long-lived caching."""
+        if not self.docker_ready:
+            self.skipTest("Docker daemon not available in test environment")
+
+        origin = f"http://127.0.0.1:{self.port}"
+        with urllib.request.urlopen(origin, timeout=5) as resp:
+            html = resp.read().decode("utf-8")
+        match = re.search(r'comparison-data\.[0-9a-f]{16}\.js', html)
+        self.assertIsNotNone(match)
+        with urllib.request.urlopen(f"{origin}/{match.group(0)}", timeout=5) as resp:
+            self.assertEqual(resp.status, 200)
+            self.assertEqual(resp.headers.get("Cache-Control"), "public, max-age=31536000, immutable")
 
     def test_container_preserves_social_metadata_and_serves_preview_png(self) -> None:
         """E3.1a: verify the shipped home page is not replaced by the prototype."""

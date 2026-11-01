@@ -198,6 +198,9 @@ To satisfy the acceptance criteria for roadmap package `E0.3` and provide verifi
 - **Immutable Static Assets** (`/static/*`, fingerprinted CSS, JS, images, icons):
   - Header: `Cache-Control: public, max-age=31536000, immutable`
   - Edge Cache TTL: 365 days.
+- **Stable-name CSS and JS** (current generated styles/scripts, including `/tokens/`):
+  - Header: `Cache-Control: public, no-cache` until filenames are content-addressed.
+  - Revalidate on reuse; immutable caching is reserved for URLs that change with content.
 - **Mutable HTML Pages** (`/`, `/temas/*`, `/metodo/`, `/fuentes/`, `/correcciones/`):
   - Header: `Cache-Control: public, max-age=300, stale-while-revalidate=86400`
   - Edge Cache TTL: 300 seconds (5 minutes). Allows rapid propagation of corrections while absorbing traffic surges.
