@@ -593,3 +593,53 @@ reviewer segregation, whether a rights withdrawal removes links as well as
 summaries, and how an incomplete comparison is displayed. The approved schema,
 transaction boundary and tests follow those decisions, not this draft alone.
 
+## P1.6 draft — initiative identity and duplicate lineage
+
+Status: proposal-only. This refines P1.1's one-actionable-measure rule without
+changing source records or approving 2023 content. It precedes the P1.2
+comparison-set projection. P1.4 document applicability decides which source
+versions govern a candidature; P1.5 relationship collision concerns paired
+statements. Neither decides whether two extracted passages represent one
+initiative.
+
+### Proposed private ledger
+
+Use three separate units: `(source ID, immutable hash, locator, extraction
+event)` for an occurrence; a versioned candidate for an interpreted actionable
+measure; and a reviewer-assigned initiative identity. Keep a many-to-many
+occurrence-to-candidate link: one sentence can contain two instruments and one
+initiative can recur across documents. The decision ledger records `split`,
+`same initiative`, `distinct`, `qualification`, or `unresolved`, the compared
+candidate versions, all source locators, reviewer/evidence references and the
+reason. These are proposed states, not approved schema values. A machine may
+suggest a match but cannot finalize identity or suppress an occurrence.
+
+Count reviewed initiative identities only after every source occurrence in
+the relevant document set has an explicit disposition. Keep raw occurrence
+and candidate counts separately, with their denominator and review state.
+Never turn an unresolved duplicate into a second public claim or silently
+discard it to improve a coverage percentage. A changed source, candidate
+granularity or identity decision creates a new ledger revision and sends
+affected statements, topic counts, comparison sets and quiz dependencies to
+review. Preserve the earlier decision and its citations. Rights and statement
+approval remain independent; no private source text or approval evidence is
+copied to the static artifact.
+
+### Review boundaries and acceptance cases
+
+Use the five fictional scenarios in the editorial-statements delta. Test
+repeated runs, one-to-many splits, cross-document repetition, materially
+different conditions and revision of an approved grouping. A fixture should
+also check that a pending annex under P1.4 prevents a final initiative count
+and that a grouped initiative can retain two source locators without treating
+either as quotation permission. The public projection may show a summary only
+after the exact final statement and its source-use decision pass their separate
+gates.
+
+The owners must decide identity granularity, reviewer quorum/segregation,
+whether equivalent measures in different territorial scopes may share an
+identity, how multiple citations appear to readers, and the meaning of a
+reported initiative count. Reconcile these decisions with P0 source scope,
+P1.4 applicability, P1.2 set accounting and PR #101 before implementation.
+No agent or passing test can make these editorial decisions.
+

@@ -250,3 +250,29 @@ PR #157 CI run `40308249819` failed before both test and mobile jobs reported
 any steps; `gh run view --log-failed` returned no job log. This is not a test
 result or an editorial decision. The CI execution blocker remains unresolved.
 
+## P1.6 — Initiative identity and duplicate lineage draft (2026-10-26)
+
+- [x] Audit the current statement/source boundary and draft a private
+  occurrence-to-candidate-to-initiative requirement, design and five fictional
+  scenarios. This is a proposal only; no real initiative, right or approval is
+  added. See `docs/2023-INITIATIVE-LINEAGE-AUDIT-2026-10-26.md`.
+- [ ] Owners review initiative granularity, reviewer quorum/segregation,
+  territorial identity treatment, multi-citation presentation and count
+  definitions. Reconcile the approved decisions with P0 source scope, P1.4
+  document applicability, P1.2 set accounting and PR #101.
+- [ ] After those reviews, define a private ledger schema and validator with
+  fictional split/duplicate/revision fixtures. Prove repeated extraction does
+  not inflate counts, distinct conditions do not auto-merge, and regrouping
+  invalidates dependent statements, comparisons, coverage and quiz items.
+- [ ] Review any proposed public projection and exact-content source-use
+  decisions separately. Do not treat this draft or CI as editorial approval.
+
+Validation (2026-10-26): `git diff --check`, a five-scenario structure check,
+and 51 passing existing tests (`PYTHONPATH=src python3 -m unittest
+tests.test_editorial_gates tests.test_editorial_policy
+tests.test_source_register`). No source PDF, political claim, rights record,
+schema, code or public artifact changed. The local interpreter is Python 3.11,
+not the project 3.14 runtime. PR #158 CI jobs did not start test steps:
+GitHub annotated an account payment/spending-limit block. CI remains unverified
+and is not editorial approval.
+
