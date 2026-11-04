@@ -433,7 +433,11 @@ statement or public output was changed; CI cannot supply a human decision.
 
 Validation: publisher HTML/web-viewer and `HEAD` metadata, local register
 assertions, and `git diff --check`. No PDF bytes, hash, rights or publication
-review was performed; hosted CI remains a separate engineering gate.
+review was performed. [PR #200 CI](https://github.com/c2ventures/elecciones2026/actions/runs/41800599117)
+failed: two pytest failures, nine Docker-parity setup errors and the browser
+quiz check. The same named failures and counts occurred on the preceding
+[main run](https://github.com/c2ventures/elecciones2026/actions/runs/41343879201).
+This documentation-only package does not repair or waive those separate gates.
 
 ## P1.7 — Extraction-visibility handoff (2026-10-31 draft)
 
