@@ -57,6 +57,29 @@ The stacked PR has no automatic CI because `.github/workflows/ci.yml` targets
 pull requests into `main` only; run CI after PR #114 lands and this PR is
 retargeted. CI will remain engineering evidence, not human review.
 
+## P1.1-L — Exact source-locator verification (2026-11-04 draft)
+
+- [x] Reconcile the existing locator audit against current `origin/main`, the
+  four registered 2023 pilot sources, draft/conflicting PR #101 and open P0
+  coverage/rights PRs #200–#202. Draft the human locator requirement, private
+  decision flow and fictional cases. No PDF, source, rights, claim or public
+  artifact changed.
+- [ ] Editorial/OpenSpec review: decide exact-page inspection protocol,
+  reviewer/quorum and independence, private evidence retention, multi-page
+  and web-section treatment, and reader-facing citation wording.
+- [ ] After P0 source/document/rights and P1 statement review, specify the
+  concrete private decision schema and validator. Test exact hash/revision
+  joins, printed-versus-physical page distinction, multi-page qualifications,
+  web sections and invalidation with fictional fixtures only.
+- [ ] Verify approved outbound citations on representative mobile PDF/web
+  viewers before any real 2023 statement is activated. Keep source and
+  relationship editorial approvals and publication as separate gates.
+
+Draft validation (2026-11-04): requirement/scenario structure and
+`git diff --check`; current-main CI failure and PR #101's prior green CI are
+not human locator review. This package contains no implementation or real
+political-content decision.
+
 ## P1.2 — Comparison-set integrity (2026-10-23 draft)
 
 - [x] Draft the set-accounting requirement and asymmetric fictional scenarios

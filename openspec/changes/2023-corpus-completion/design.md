@@ -838,6 +838,47 @@ Only after those decisions and reviewed specs/design/tasks may an engineer
 define schema, validator and fictional-fixture implementation. CI cannot
 approve a political interpretation or a rights decision.
 
+## P1.1-L draft — exact source-locator verification
+
+Status: proposal-only. This formalizes the dated locator audit in
+`docs/2023-SOURCE-LOCATOR-VERIFICATION-AUDIT-2026-10-24.md`; it does not
+recheck a PDF, grant source rights, approve a political summary or change the
+public build. P0 source identity, document applicability and rights decisions,
+plus P1 statement and comparison reviews, remain independent gates.
+
+The proposed private locator-decision unit joins `(election_id,
+candidature_id, statement_id, statement_revision, source_id, source_sha256,
+source_version, inspected_locator_set)` to a reviewer, decision reference and
+private evidence reference. A PDF locator set distinguishes physical page
+indices from printed labels and covers every page needed for a measure and
+its material qualifications. A web locator identifies a stable section in a
+captured immutable version. The private evidence can record inspected bytes,
+rendered pages and limitations; none of those source materials enters Git or
+the public build. The public projection receives only an eligible reviewed
+outcome and safe page/section citation metadata.
+
+Machine checks may verify page bounds, source/hash joins and dependency
+freshness; they cannot verify that the cited measure is on the page. A human
+decision must confirm that content and qualification scope. A source or
+statement revision, document replacement, changed candidature applicability
+or material locator correction invalidates the decision and dependent
+comparisons. A `#page` fragment is only a navigation hint, so mobile
+acceptance must separately verify outbound source behavior and offer a
+readable citation when a PDF viewer ignores the fragment.
+
+Fictional acceptance cases: in-range but unchecked page; physical index and
+printed label differing; a condition on a second page; a same-named section
+in another web version; and a decision from another election or source hash.
+These test the proposed join and fail-closed behavior, not any real 2023
+programme statement.
+
+Editorial owners must decide the inspection protocol, reviewer/quorum and
+segregation, acceptable private evidence retention, multi-page citation copy
+and how to handle a web section without a durable anchor. Only after those
+decisions and P0/P1 reconciliation may a concrete schema/validator and
+fictional-fixture tests be designed for implementation. Passing CI is not a
+human locator or source-rights review.
+
 ## P1.7 draft — extraction-visibility handoff
 
 Status: proposal-only. This refines P1.3's treatment of non-searchable source

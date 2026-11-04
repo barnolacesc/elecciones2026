@@ -48,6 +48,51 @@ An automated extraction or a source link alone SHALL NOT approve a statement.
 - **THEN** publication remains blocked; no quote or paraphrase permission is
   inferred from the content reviews.
 
+### Requirement: Human-verified exact source locator
+
+For `es-gen-2023`, a publishable statement SHALL have a human locator decision
+bound to its election, candidature, statement revision, source ID, immutable
+source hash/version and every page or stable section needed to support the
+measure and its material qualifications. The private decision SHALL identify
+the inspected source bytes, physical PDF page index or stable web section,
+reviewer, decision reference and unresolved limitations. A printed page label
+SHALL be kept distinct from the physical PDF page index. A valid page number,
+candidate search hit, extraction result or generated `#page` fragment SHALL
+NOT count as this decision. Missing, stale, mismatched or unresolved locator
+evidence SHALL block the affected statement and dependent comparison; source
+authenticity, rights, summary and relationship approvals remain separate.
+
+#### Scenario: In-range page without human check
+
+- **WHEN** a candidate page number is within the PDF bounds but no human has
+  confirmed that the exact source bytes and page support the measure
+- **THEN** the statement and relationships using it remain unpublished.
+
+#### Scenario: Printed label differs from physical page
+
+- **WHEN** the reviewed PDF page index and its printed page label differ
+- **THEN** both coordinates remain distinguishable, and a citation does not
+  present the printed label as the `#page` navigation index.
+
+#### Scenario: Qualification continues on another page
+
+- **WHEN** the measure is on one page and a material condition is on another
+- **THEN** the locator decision covers both pages before the qualified
+  statement or a relationship using it can be published.
+
+#### Scenario: Stable section in a web source
+
+- **WHEN** a non-PDF document uses a section locator
+- **THEN** the decision binds the reviewed section to the immutable source
+  version; an unrelated same-named section or free-form label is insufficient.
+
+#### Scenario: Version or election mismatch
+
+- **WHEN** a locator decision refers to different source bytes, statement
+  revision, candidature or election, or its document is replaced
+- **THEN** that decision cannot approve the current statement; the old
+  evidence remains traceable and affected dependents require re-review.
+
 ### Requirement: Audited topic search before an absence claim
 
 For every in-scope candidature and topic, coverage SHALL identify relevant
