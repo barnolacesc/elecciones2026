@@ -78,7 +78,11 @@ retargeted. CI will remain engineering evidence, not human review.
 Draft validation (2026-11-04): requirement/scenario structure and
 `git diff --check`; current-main CI failure and PR #101's prior green CI are
 not human locator review. This package contains no implementation or real
-political-content decision.
+political-content decision. PR #203 CI run `41821921863` failed: pytest
+reported two assertions and nine Docker-readiness errors, and the rendered
+mock-quiz browser check failed (`3 !== 2`). The branch changes only OpenSpec
+Markdown; current-main run `41343879201` was also red. No passing CI or
+editorial approval is claimed.
 
 ## P1.2 — Comparison-set integrity (2026-10-23 draft)
 
@@ -460,4 +464,3 @@ statement or public output was changed; CI cannot supply a human decision.
 
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
-
