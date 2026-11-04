@@ -1,5 +1,8 @@
 # 2023 source-use decision queue — 2026-10-23
 
+> Historical decision packet. See the 2026-11-04 reconciliation below for the
+> current PR state; the pending human source-use decisions have not been made.
+
 Roadmap package: **P0.1-R**, a documentation-only rights and coverage handoff
 under the proposal-only `2023-corpus-completion` change. Election:
 `es-gen-2023`. This is a request for human decisions, not a rights opinion,
@@ -94,3 +97,24 @@ mark a rights status. Once reviewed, update the applicable OpenSpec design,
 spec and tasks, reconcile PR #101 on its own branch, then implement/test only
 the approved contract. No corpus content, source record, public build, or
 deployment changes in P0.1-R.
+
+## P0.1-R reconciliation — 2026-11-04
+
+Merged [PR #166](https://github.com/c2ventures/elecciones2026/pull/166)
+superseded the *code integration* proposed in draft
+[PR #101](https://github.com/c2ventures/elecciones2026/pull/101). PR #101
+remains open, conflicting and unreviewed; it is not a current implementation
+handoff. The source-use handoff now exists on main at
+`docs/pilot-review/2023/reuse-handoff.md`, not only on PR #101's branch.
+
+At `origin/main` `488b6f5`, all four registered 2023 pilot source versions
+still have `not_reviewed` rights, `published-unverified` source status and
+unknown publication dates. No PP/ERC source-specific use permission, PNV/Sumar
+permission, approved full-corpus denominator or reviewed topic absence can be
+inferred from #166. The existing per-source decision packet above is still
+pending. Apply it to the exact source version and proposed use after the
+human owner is identified; do not turn this audit into a rights decision.
+
+This update is based on the source register and GitHub PR metadata, not a new
+publisher fetch or private PDF/reviewer-evidence inspection. The independent
+P0 inventory and P1 statement/relationship review tasks remain open.

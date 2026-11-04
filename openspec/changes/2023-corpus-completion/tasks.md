@@ -14,6 +14,13 @@ require editorial review of this design and requirement delta.
 - [ ] Owner/editorial review: approve or revise 2023 inclusion rule, evidence
   standard, rights decision owner and private-store contract. No agent signoff.
 
+P0.1-R current-main reconciliation (2026-11-04):
+`docs/2023-PR101-RECONCILIATION-2026-10-23.md` and
+`docs/2023-SOURCE-USE-DECISION-QUEUE-2026-10-23.md` preserve their historical
+snapshots and record that PR #166 merged PR #101's integration while #101 stays
+open/conflicting. Four 2023 pilot source rights and publication dates remain
+unresolved. This closes no owner/editorial task and changes no source record.
+
 ## Later P0 work — not started
 
 - [ ] Enumerate the eligible 2023 candidature manifest from authoritative
@@ -437,4 +444,3 @@ statement or public output was changed; CI cannot supply a human decision.
 
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
-

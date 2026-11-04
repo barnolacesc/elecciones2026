@@ -1,5 +1,8 @@
 # PR #101 reconciliation handoff — 2026-10-23
 
+> Historical snapshot. The 2026-11-04 current-main reconciliation is below;
+> the 2026-10-23 conflict count and suggested repair are not current actions.
+
 Roadmap package: P0–P1 review-gate audit (`2023-corpus-completion`, existing
 P0 owner/editorial and P1 review tasks). This is a **documentation-only**
 handoff, not a conflict resolution, rights decision, editorial approval, or
@@ -103,3 +106,33 @@ before relying on new hosted CI. Private source-page
 recheck, version-bound rights and lawful summary-use decisions, actual human
 review evidence, and an approved 2023 scope/coverage rule remain human gates.
 No passing test, conflict-free merge or link-only label substitutes for them.
+
+## Current-main reconciliation — 2026-11-04
+
+- `origin/main` is `488b6f5`. [PR #166](https://github.com/c2ventures/elecciones2026/pull/166)
+  merged the current-main integration of PR #101's source/editorial gate on
+  2026-11-01 (`68ad686`). Do not apply PR #101's older gate a second time.
+- [PR #101](https://github.com/c2ventures/elecciones2026/pull/101) is still
+  open and draft at `f8506a1`, with no submitted review and GitHub reporting
+  `CONFLICTING`. `git merge-tree --write-tree origin/main origin/pr-101` now
+  reports six conflicts: the pilot-review README and reuse handoff, MVP tasks,
+  generator, and two pilot tests. Its 2026-10-12 green checks do not test the
+  merged #166 code or resolve these conflicts. The PR owner should close or
+  explicitly re-scope #101 after checking #166; this audit does neither.
+- The four registered 2023 pilot sources (PP, ERC, PNV, Sumar) remain
+  `published-unverified`, with `rights_review.status = not_reviewed` and
+  `publication_date = null`. They are not a complete-candidature denominator.
+  The six PP/ERC candidate statements remain unpublished; a source-specific
+  human rights decision, exact-version/date evidence and editorial completion
+  remain separate gates. No private archive or PDF was inspected in this
+  reconciliation.
+- Current-main CI [run 41343879201](https://github.com/c2ventures/elecciones2026/actions/runs/41343879201)
+  failed. Its test lane reported two failures, including the provisional 2023
+  source-link assertion; the rendered browser lane also failed. Do not cite
+  either current-main CI or PR #101's old CI as a passed release gate.
+
+Evidence: `git fetch origin main pull/101/head`; GitHub PR #101/#166 metadata;
+`git merge-tree --write-tree origin/main origin/pr-101`; filtered
+`content/sources/register.json`; current-main CI metadata. This dated addendum
+changes no source, rights, statement, relationship, routing or publication
+record.
