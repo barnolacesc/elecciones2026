@@ -420,6 +420,21 @@ Validation: local repository assertions, publisher PDF HEAD and article check,
 web retrieval metadata, and `git diff --check`. No source PDF, political
 statement or public output was changed; CI cannot supply a human decision.
 
+## P0.15 — Coalición por Canarias 23J document discovery (2026-11-04)
+
+- [x] Record the publisher's 23J manifesto lead and the two differently sized
+  PDF endpoints without importing bytes or promoting either to an approved
+  programme version. Evidence: `docs/2023-CC-SOURCE-DISCOVERY-2026-11-04.md`.
+- [ ] Owner/editorial review: reconcile corrected Congress/Senate candidature
+  and signatory scope, document role and completeness, the two exact PDF
+  versions, publication chronology, source authenticity, rights and any other
+  applicable programme or annex. No topic or political-content approval
+  follows from this discovery.
+
+Validation: publisher HTML/web-viewer and `HEAD` metadata, local register
+assertions, and `git diff --check`. No PDF bytes, hash, rights or publication
+review was performed; hosted CI remains a separate engineering gate.
+
 ## P1.7 — Extraction-visibility handoff (2026-10-31 draft)
 
 - [x] Audit the current E1.2 artifact boundary and P1.3 search-state gap;
