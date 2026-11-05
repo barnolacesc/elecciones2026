@@ -47,6 +47,46 @@ remain an editorial decision before implementation.
 - **THEN** the former relationship is invalidated and cannot reappear without
   approval of the new exact pair.
 
+### Requirement: Resolve dissent against the exact relationship revision
+
+An active relationship SHALL NOT become publishable solely because a quorum of
+approvals exists if a current `rejected` or `needs_changes` verdict for the
+same exact relationship revision remains unresolved. The private review packet
+SHALL bind every verdict to the election, relationship revision, exact
+statement versions, policy question, classification, grounds and caveats.
+Resolution SHALL be recorded by an authorized human under an approved
+relationship-review protocol; an automated count, later file order or changed
+record ID SHALL NOT resolve dissent. A materially changed packet SHALL require
+fresh independent relationship review. Historical verdicts SHALL remain
+traceable without being inherited by a new revision. The owner must decide
+reviewer quorum, segregation and dispute authority before implementation.
+
+#### Scenario: Rejection after two approvals
+
+- **WHEN** two reviewers approve a relationship revision and a current reviewer
+  rejects that same revision without a recorded resolution
+- **THEN** the relationship is withheld even though the approval count is two.
+
+#### Scenario: Changes requested after approval
+
+- **WHEN** a current verdict requests changes to the grounds or caveats
+- **THEN** the existing revision is withheld and a changed packet needs its own
+  review; the prior approvals do not transfer.
+
+#### Scenario: Objection to a historical revision
+
+- **WHEN** a verdict is bound to a superseded revision rather than the exact
+  current packet
+- **THEN** it remains in the audit trail and is not silently counted for or
+  against the current revision's approval decision.
+
+#### Scenario: Disputed relation with approved statements
+
+- **WHEN** both operand statements meet their separate publication gates but
+  their relationship has unresolved current dissent
+- **THEN** no comparative claim appears; the statements may appear individually
+  only if their own source, rights and editorial gates pass.
+
 ### Requirement: Distinguish no comparison from disagreement
 
 The comparison SHALL distinguish a reviewed difference, a single-party

@@ -57,6 +57,24 @@ The stacked PR has no automatic CI because `.github/workflows/ci.yml` targets
 pull requests into `main` only; run CI after PR #114 lands and this PR is
 retargeted. CI will remain engineering evidence, not human review.
 
+## P1.1 — Relationship-review dissent gate (2026-11-05 draft)
+
+- [x] Reconcile current main `488b6f5`, open draft/conflicting PR #101, the
+  four 2023 pilot source rows, existing relationship validator and main CI.
+  Evidence: `docs/2023-RELATIONSHIP-DISSENT-HANDOFF-2026-11-05.md`.
+- [x] Draft the exact-revision dissent requirement, private packet design and
+  fictional fail-closed cases. No real review, rights, source or public record
+  changed.
+- [ ] Owner/editorial review: decide dispute authority, quorum, reviewer
+  segregation, conflict handling and private evidence retention. Review this
+  spec/design/tasks delta before treating the package as implementation-ready.
+- [ ] After those decisions and PR #101 reconciliation, specify the private
+  packet schema, resolution record and validator. Test all fictional dissent,
+  revision and static/browser parity cases before real relationship entry.
+
+Draft validation: `git diff --check` and local requirement/scenario structure
+checks. Main CI is already red at `488b6f5`; CI is not editorial review.
+
 ## P1.2 — Comparison-set integrity (2026-10-23 draft)
 
 - [x] Draft the set-accounting requirement and asymmetric fictional scenarios

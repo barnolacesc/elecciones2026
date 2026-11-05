@@ -213,6 +213,32 @@ who may arbitrate a collision, whether genuinely distinct questions can reuse
 one exact pair, and the private correction trail. Only after that review may a
 concrete schema and validator task be marked implementation-ready.
 
+## P1.1 draft — relationship-review dissent handoff
+
+Status: proposal-only. The dated audit
+[`docs/2023-RELATIONSHIP-DISSENT-HANDOFF-2026-11-05.md`](../../../docs/2023-RELATIONSHIP-DISSENT-HANDOFF-2026-11-05.md)
+reconciles this boundary with current main and PR #101. This refines the
+independent relationship gate, not the P1.5 duplicate-decision gate. No real
+relationship or reviewer disposition is changed.
+
+Propose an immutable private review packet for each relationship revision:
+election, relationship ID/revision, exact unordered operand statement IDs and
+versions, policy question, type, grounds, caveats and evidence reference. Each
+human verdict targets that packet. A current `rejected` or `needs_changes`
+verdict with no recorded human resolution blocks publication even if two other
+verdicts are `approved`. A changed operand, type, ground or material caveat
+creates a new packet; old verdicts remain historical. The effective-decision
+ledger must also check P1.5 collisions before static or browser projection.
+
+Use fictional fixtures for two approvals plus a rejection, two approvals plus
+`needs_changes`, an objection bound only to an older revision, a changed
+operand after approval and approved statements with a disputed relationship.
+Static and browser outputs must agree that the unresolved relation is absent;
+neither may convert it into opposition or `not stated`. The owner/editorial
+team must decide who can resolve a dispute, whether that person may also count
+as a reviewer, the fresh-approval quorum, conflicts of interest and private
+evidence retention. Until then this is not an implementation-ready contract.
+
 ## P0.2 draft — inventory reconciliation handoff
 
 Status: proposal-only, for owner and OpenSpec review. This is a bounded data
