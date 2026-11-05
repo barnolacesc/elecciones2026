@@ -72,4 +72,4 @@ The site SHALL use neutral/stable ordering, disclose comparison rules and covera
 
 #### Scenario: Private pilot reader opens the source index
 - **WHEN** the reader follows a document link from the private 2023 pilot source index
-- **THEN** its destination comes from that party's registered document URL, independent of measure ordering, while individual measure citations retain their own page locators and provisional review limits remain visible.
+- **THEN** its destination comes from that party's registered document URL, independent of measure ordering, its link text announces the new tab, and individual measure citations retain their own page locators and provisional review limits remain visible.

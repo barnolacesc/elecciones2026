@@ -155,7 +155,7 @@ def sources(data: dict, image_url: str = "") -> str:
         f'Consulta del enlace: {esc(data["source_documents"][party]["retrieval_date"])}</p>'
         f'<p class="citation"><a href="{esc(data["source_documents"][party]["direct_url"])}" '
         'target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">'
-        'Abrir documento registrado ↗</a></p>'
+        'Abrir documento registrado (se abre en otra pestaña) ↗</a></p>'
         f'<p class="locator">SHA-256: {esc(data["source_documents"][party]["sha256"])}</p></article>'
         for party in PARTIES
     )
