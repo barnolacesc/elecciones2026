@@ -74,6 +74,39 @@ SHALL NOT be treated as that denominator.
   unresolved until the correction is applied and reviewed under the approved
   inclusion rule.
 
+### Requirement: Independent official-results cross-check
+
+Before an approved 2023 candidature manifest supports a completeness claim,
+reviewers SHALL cross-check its corrected proclamation rows against the official
+Congress results record and applicable errata. The reconciliation SHALL retain
+the source identifiers, chamber, constituency, exact observed formation label,
+rule revision, mapping decision and unresolved mismatches. Results evidence
+SHALL NOT silently replace proclamation evidence, collapse distinct ballot
+labels into one party, establish programme applicability, or supply a source
+rights decision. A results-only row or unmatched label SHALL remain a review
+item until a human resolves its relationship to the approved inclusion rule.
+This requirement is a proposal-only method delta, not an approved denominator.
+
+#### Scenario: Results label differs from product party label
+
+- **WHEN** an official Congress results table uses a distinct formation label
+  for a constituency that a product target might group under a broader name
+- **THEN** the mapping remains explicit and reviewable; name similarity or a
+  shared acronym does not merge the rows or grant a shared programme scope.
+
+#### Scenario: Erratum affects the other chamber
+
+- **WHEN** an erratum changes a Senate result but no Congress result
+- **THEN** the erratum is retained in the source revision trail without
+  changing the Congress candidature denominator or its coverage count.
+
+#### Scenario: Unresolved proclamation-to-results mismatch
+
+- **WHEN** a corrected proclaimed Congress row cannot be reconciled to the
+  applicable results evidence under the approved rule
+- **THEN** the manifest reports the mismatch and withholds a completeness
+  claim; it does not infer that the candidature had no programme or position.
+
 ### Requirement: Distinct document and rights records
 
 The system SHALL inventory each candidate general programme, territorial
