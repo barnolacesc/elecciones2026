@@ -438,3 +438,18 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P0.18 — Sumar 23J source-link audit (2026-11-06)
+
+- [x] Reconcile the registered Sumar 2023 landing/PDF pair against the live
+  publisher link and the current streamed PDF SHA-256. Record the landing
+  page's limited role, HTTP metadata, and unknown original publication date.
+  Evidence: `docs/2023-SUMAR-SOURCE-LINK-AUDIT-2026-11-06.md`.
+- [ ] Owner/editorial review: verify exact-byte authenticity, document and
+  candidature scope, annexes/replacements, publication chronology, and
+  version-specific reuse rights. No proposal, topic absence or comparison
+  approval follows from this audit.
+
+Validation: live publisher link and HTTP HEAD checks, streaming SHA-256
+matching the existing register, local register assertions and
+`git diff --check`. No PDF was retained or source record promoted. CI is
+engineering evidence only and cannot make the human decisions above.
