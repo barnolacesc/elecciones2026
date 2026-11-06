@@ -438,3 +438,9 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P0.15 — PACMA 23J document discovery (2026-11-06)
+
+- [x] Record a publisher-index-linked 23J PDF lead and a streaming byte identity without committing source bytes or extracted text. Evidence: `docs/2023-PACMA-SOURCE-DISCOVERY-2026-11-06.md`; `origin/main` `488b6f5` has no PACMA 2023 source row.
+- [ ] Owner/editorial review: reconcile the corrected official Congress candidature manifest and applicability, privately archive and verify bytes, investigate versions and publication-date evidence, and decide authenticity and use-specific rights separately. This discovery grants no approval, coverage denominator, topic absence, claim, or release.
+
+Validation: publisher index and PDF HTTP checks, streaming SHA-256, repository register inspection, and `git diff --check`. No source PDF, political answer, source-register row, public artifact, or routing was changed. CI cannot make a human review decision.
