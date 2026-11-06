@@ -371,6 +371,22 @@ PR #182 CI run 40858569921 did not execute steps: GitHub annotated both test
 jobs with an account payment/spending-limit block. Local structure checks
 passed; they are not equivalent to CI or editorial review.
 
+## P0.16 — Frente Obrero 23J document-role discovery (2026-11-06)
+
+- [x] Reconcile the four-source pilot and PR #101 gate; record a BOE 2023
+  candidature lead and the publisher's current, expressly non-electoral
+  programme as distinct evidence. Handoff:
+  `docs/2023-FRENTE-OBRERO-SOURCE-DISCOVERY-2026-11-06.md`.
+- [ ] Owner/editorial review: reconcile the exact 2023 inclusion/applicability
+  scope, search for election-specific and historical documents, and decide
+  each candidate's identity, role, chronology and rights. Do not treat the
+  current political programme as a 23J electoral source by default.
+- [ ] After review, propose any source/coverage row separately; P1 political
+  extraction, absence and comparison decisions remain unapproved.
+
+Validation: source-link and repository-state assertions plus `git diff --check`.
+No PDF bytes, political claims, rights, public output or implementation changed.
+
 ## P0.13 — BNG 2023 document discovery (2026-10-30)
 
 - [x] Record the official archive's three distinct 2023 general-election
@@ -437,4 +453,3 @@ statement or public output was changed; CI cannot supply a human decision.
 
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
-
