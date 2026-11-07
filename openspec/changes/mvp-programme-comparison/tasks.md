@@ -307,3 +307,21 @@ started because recent account payments failed or the spending limit needs to
 increase; both jobs have no runner or steps. This is an infrastructure blocker,
 not a failed test assertion. CI and human review remain pending.
 
+## E3.3 expired 2023 pilot delivery delegation — 2026-11-07
+
+The manual delivery workflow limits the `chad-openclaw` private-pilot exception
+to 2026-10-31. The CI authorization test still expected that exception to pass
+on the current date. The test now checks both sides of the fixed cutoff and
+requires the live expired exception to fail; the production authorization rule
+is unchanged. Owner-triggered delivery remains separately gated by the exact
+approval record, readiness and a trusted successful `main` run.
+
+On `origin/main` `488b6f5`, PR #101 remains conflicting, has no recorded review,
+and its older green checks do not cover current main. The latest CI test job
+also fails the independent source-index new-tab assertion; PR #204 owns that
+separate repair. A focused workflow-script probe passes under Python 3.11 for
+the cutoff and current date; `python3 -m py_compile tests/test_delivery.py` and
+`git diff --check` pass. The full test module cannot import the existing
+generator under local Python 3.11 because it uses newer f-string syntax;
+project CI is required. This change supplies no rights, editorial, delivery or
+publication approval.

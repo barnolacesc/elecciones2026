@@ -151,7 +151,7 @@ class DeliveryTests(unittest.TestCase):
                 self.assertIn(base, content)
                 self.assertNotIn('https://elecciones2026.es/', content)
 
-    def test_real_workflow_authorization_rejects_missing_approval_and_wrong_actor(self):
+    def test_real_workflow_authorization_rejects_expired_delegate_and_invalid_requests(self):
         import os
         import textwrap
         source = (ROOT / '.github/workflows/deliver.yml').read_text()
@@ -166,8 +166,16 @@ class DeliveryTests(unittest.TestCase):
         pilot = dict(environment, GITHUB_ACTOR='chad-openclaw',
                      GITHUB_TRIGGERING_ACTOR='chad-openclaw',
                      APPROVAL_RECORD='Cesc Telegram 2026-10-14 private 2023 pilot')
-        self.assertEqual(subprocess.run([sys.executable, '-c', code], env=pilot).returncode, 0)
+        self.assertIn('date.today() <= date(2026, 10, 31)', code)
+        at_deadline = code.replace('date.today()', 'date(2026, 10, 31)')
+        after_deadline = code.replace('date.today()', 'date(2026, 11, 1)')
+        self.assertEqual(subprocess.run([sys.executable, '-c', at_deadline],
+                                        env=pilot, capture_output=True).returncode, 0)
+        self.assertNotEqual(subprocess.run([sys.executable, '-c', after_deadline],
+                           env=pilot, capture_output=True).returncode, 0)
         self.assertNotEqual(subprocess.run([sys.executable, '-c', code],
+                           env=pilot, capture_output=True).returncode, 0)
+        self.assertNotEqual(subprocess.run([sys.executable, '-c', at_deadline],
                            env=dict(pilot, APPROVAL_RECORD='unrelated')).returncode, 0)
         for changes in [{'APPROVED': 'false'}, {'READY': ''}, {'APPROVAL_RECORD': ''},
                         {'GITHUB_REF': 'refs/heads/feature'}, {'GITHUB_ACTOR': 'someone-else'},
