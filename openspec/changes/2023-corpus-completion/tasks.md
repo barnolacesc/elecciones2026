@@ -355,6 +355,13 @@ implementation task is marked complete by this draft.
 Validation: `git diff --check` and a local structure/baseline check. CI is
 engineering evidence only; it cannot approve dates, rights or political claims.
 
+2026-11-07 ERC lead check: `PYTHONPATH=src python3 -m unittest
+tests.test_source_register -q` passed 9 tests; a four-row/rights/date assertion
+and `git diff --check` passed. Draft PR #212's first CI run
+`42356063880` failed in the same two pytest cases and Docker-container setup
+seen on current main run `42211358887`; its browser quiz step also failed.
+Neither run verifies source chronology or supplies a human review decision.
+
 ## P0.10 — Shared-document attribution draft (2026-10-29)
 
 - [x] Audit the current singular source/programme identity fields and PR
