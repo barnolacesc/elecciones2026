@@ -210,6 +210,10 @@ Re-run CI after billing is restored; local checks do not replace it.
   record the limited evidence in
   `docs/2023-SOURCE-IDENTITY-READINESS-2026-10-26.md`. This does not recheck
   publisher websites or private PDFs.
+- [x] Record the 2026-11-07 PP publisher article-to-PDF link and current
+  byte-identity recheck in `docs/2023-PP-SOURCE-LINK-AUDIT-2026-11-07.md`.
+  This is technical discovery evidence only; historic publication date,
+  source authenticity, rights and editorial review remain pending.
 - [x] Draft the exact-byte authenticity requirement, review boundary and
   fictional redirect/mirror/version cases in the provenance spec and design.
 - [ ] Owner/source-authenticity review: choose the evidence capture and
@@ -437,4 +441,3 @@ statement or public output was changed; CI cannot supply a human decision.
 
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
-
