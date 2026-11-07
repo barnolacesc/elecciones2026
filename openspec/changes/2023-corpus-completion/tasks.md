@@ -338,6 +338,9 @@ implementation task is marked complete by this draft.
 
 ## P0.9 — Source-version chronology gate (2026-10-29 draft)
 
+- [x] Record an ERC publisher-page chronology lead without assigning the
+  registered PDF an unproved publication date or rights decision. Evidence:
+  `docs/2023-ERC-VERSION-CHRONOLOGY-LEAD-2026-11-07.md`.
 - [x] Reconcile current main's four 2023 pilot source dates and rights, open
   PR #101 and its integration candidate, and the current CI execution state.
   Evidence: `docs/2023-TEMPORAL-PROVENANCE-AUDIT-2026-10-29.md`.
