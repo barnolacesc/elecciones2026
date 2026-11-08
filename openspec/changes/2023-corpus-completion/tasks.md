@@ -457,3 +457,12 @@ and fixture tests cannot replace human inspection or editorial review.
 Validation: `git diff --check`, repository-boundary and draft-structure checks.
 No source, political-content, rights or release test is satisfied by this PR;
 hosted CI remains a separate engineering gate, not human review.
+
+PR #216 [CI run 42463498603](https://github.com/c2ventures/elecciones2026/actions/runs/42463498603)
+executed and failed. Pytest reported 486 passed, two failures (delivery
+authorisation and provisional source-link expectation) and nine Docker parity
+setup errors because the test container did not become HTTP-ready; the rendered
+mobile job failed in the mock quiz browser check. This documentation-only PR
+changes none of those code or test paths. The findings need separate engineering
+triage; they are not rights, source or editorial review and are not waived by
+the local draft checks.
