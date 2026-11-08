@@ -94,6 +94,14 @@ Rights SHALL be decided separately per exact source/version and proposed use.
   traceable and dependent anchors enter re-review rather than being replaced
   in place.
 
+#### Scenario: Generic year link resolves to a different election
+- **WHEN** a publisher page labels a document only by year but the linked
+  document identifies a regional election rather than the target general
+  election
+- **THEN** that link cannot establish general-election document coverage or
+  candidature applicability; the document and any separate general-election
+  lead retain distinct scopes and pending source/rights review.
+
 ### Requirement: Current rights decision and withdrawal propagation
 
 For each exact 2023 source version and proposed use, the publication projection

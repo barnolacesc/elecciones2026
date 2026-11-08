@@ -438,3 +438,20 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P0.15 — UPN 2023 programme-link disambiguation (2026-11-08 draft)
+
+- [x] Reconcile the generic “Elecciones 2023” link with its actual foral and
+  municipal PDF target and the separate 23J general-election PDF lead. Record
+  the observation and limits in `docs/2023-UPN-SOURCE-DISCOVERY-2026-10-31.md`;
+  add a fictional cross-election scenario to the provenance draft. No source
+  row, PDF, political content, rights or approval changed.
+- [ ] Under the approved 2023 inclusion rule, privately verify the six-page
+  lead's exact bytes, publisher chain, date/version, scope and other applicable
+  documents; obtain separate human authenticity and use-rights decisions.
+  Exclude the 164-page foral/municipal document from general-election coverage
+  unless a reviewed, evidenced applicability decision says otherwise.
+
+Validation: source-viewer target/cover inspection, local DNS failure recorded,
+four pilot-source and pending-rights assertions, and `git diff --check`.
+These checks do not establish historical bytes, source rights or editorial
+approval. Hosted CI is reported separately.
