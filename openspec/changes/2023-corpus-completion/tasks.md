@@ -438,3 +438,19 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P0.15 — Junts 23J source-discovery lead (2026-11-08)
+
+- [x] Reconcile current four-row 2023 pilot and draft/conflicting PR #101; record
+  the dated betevé article/PDF response and two unverified publisher URL leads.
+  Evidence: `docs/2023-JUNTS-SOURCE-DISCOVERY-2026-11-08.md`. This does not
+  import or authenticate a PDF, add a source row or approve a political claim.
+- [ ] Owner/editorial review: decide exact 2023 candidature applicability,
+  publisher-to-byte identity, version chronology, document scope and separate
+  rights for each proposed use. A press-hosted copy and CI cannot approve these.
+- [ ] After the P0 rule and source reviews, reconcile any Junts row with the
+  complete candidature/document manifest and P1 search/coverage method. Use
+  fictional fixtures for new schema or validator work before real activation.
+
+Validation: repository assertions, live HTTP/DNS response checks and
+`git diff --check`. No source bytes, rights/editorial marks or public build
+changed. Hosted CI is a separate engineering check, not human review.
