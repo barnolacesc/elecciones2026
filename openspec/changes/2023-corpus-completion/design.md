@@ -873,3 +873,29 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P0.11-A draft — source acquisition outcome
+
+Status: proposal-only. The [PSOE 2026-11-08 recheck](../../../docs/2023-PSOE-SOURCE-ACQUISITION-RECHECK-2026-11-08.md)
+shows a publisher URL that the web viewer renders as a PDF while this runner
+receives a 200 HTML challenge or an HTTP/2 transport error. It is a lead, not
+a private PDF capture or a verified version. PR #101's conflicting editorial
+gate remains separate.
+
+The future private inventory should keep an append-only attempt ledger keyed
+to candidate document and access time. An attempt records method and URL
+chain, transport outcome, HTTP status, declared media type, actual byte
+signature, size, tool identity and a private evidence reference. A captured
+version is created only after type, size and hash checks on authorised bytes.
+The attempt can fail while the publisher discovery lead remains valid; a
+viewer-observed PDF cannot fill in a missing importer hash. A later alternate
+capture creates a new evidence event, not a retroactive success for the old
+attempt. The captured version still needs human publisher-identity,
+chronology, applicability and rights decisions before P1 use.
+
+Fictional acceptance cases: 200 HTML challenge; HTTP/2 transport error;
+viewer PDF plus importer HTML; authorised alternate-route PDF with a new
+hash; stable URL that later serves different bytes. Tests should verify no
+failed attempt creates a source version, `missing programme`, topic absence or
+rights approval. No downloader or real source record is implemented by this
+draft. The source owner must review acceptable acquisition methods, evidence
+retention and challenge handling before a concrete schema or importer change.

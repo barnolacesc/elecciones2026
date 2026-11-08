@@ -177,6 +177,40 @@ bytes SHALL remain distinct versions pending review.
 - **THEN** they are not counted as two programme versions or silently merged;
   the reviewer records whether they are mirrors of the same exact version.
 
+### Requirement: Distinct acquisition-attempt outcome
+
+For a candidate 2023 document, the private inventory SHALL retain dated
+acquisition attempts separately from document discovery, immutable captured
+versions, publisher authenticity and rights decisions. An attempt SHALL record
+the requested and final URLs, access method, response status, media type, byte
+signature or inspection result, and failure/challenge reason. HTTP success or a
+PDF rendering in a different access path SHALL NOT establish that the approved
+private importer acquired PDF bytes. A blocked or HTML-only attempt SHALL NOT
+turn a discovered candidate into an absent programme or a topic absence.
+Only verified captured bytes may receive a version hash and private archive
+reference. This is a proposal-only requirement pending source-owner review.
+
+#### Scenario: HTML challenge with HTTP success
+
+- **WHEN** a fictional direct PDF URL returns `200 text/html` to the importer
+- **THEN** the attempt is recorded as non-PDF/blocked, with no captured PDF
+  version or hash, while the document-discovery lead remains unresolved.
+
+#### Scenario: Viewer and importer disagree
+
+- **WHEN** a web viewer renders a PDF but the private importer receives an
+  HTML challenge or transport error at the same URL
+- **THEN** the two dated outcomes remain distinct and neither supplies the
+  other's missing byte identity, authenticity or rights evidence.
+
+#### Scenario: Alternate route later captures bytes
+
+- **WHEN** an authorised alternate route captures a verified PDF after a
+  blocked attempt
+- **THEN** the old attempt remains auditable and the new exact bytes enter
+  publisher-bound identity, chronology and rights review without inheriting
+  approval from the discovery URL.
+
 ### Requirement: Version-bound temporal provenance
 
 The inventory SHALL distinguish a document's evidenced publication date from
@@ -216,4 +250,3 @@ editorial approval SHALL remain independent decisions.
   date remains unknown
 - **THEN** the rights decision does not fill the date or prove historical
   availability; the publication policy handles that uncertainty separately.
-

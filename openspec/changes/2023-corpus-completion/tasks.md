@@ -438,3 +438,22 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P0.11-A — PSOE acquisition-state recheck (2026-11-08 draft)
+
+- [x] Reconcile `origin/main`, PR #101, the four pilot source rows and the
+  prior PSOE discovery; record publisher-path and runner-access divergence in
+  `docs/2023-PSOE-SOURCE-ACQUISITION-RECHECK-2026-11-08.md`. No PDF bytes or
+  real source record were added.
+- [x] Draft the distinct acquisition-attempt requirement, design and fictional
+  cases in this change. This is not approval to implement a fetcher or to
+  publish PSOE content.
+- [ ] Source owner reviews authorised acquisition paths, attempt evidence,
+  challenge classification, retention and recheck cadence, separate from
+  publisher identity, chronology and rights decisions.
+- [ ] After P0 review and PR #101 reconciliation, specify a concrete private
+  ledger and fixture tests. Verify that HTML/transport failures cannot create
+  captured versions, missing-programme/topic-absence claims or use rights.
+
+Validation: `git diff --check`, repository-boundary and draft-structure checks.
+No source, political-content, rights or release test is satisfied by this PR;
+hosted CI remains a separate engineering gate, not human review.
