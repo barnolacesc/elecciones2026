@@ -873,3 +873,35 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P0.16 draft — discovery-attempt provenance
+
+Status: proposal-only. This narrows P0.2's document-discovery handoff and
+does not authorize a source status, negative finding, acquisition-host change,
+rights use or implementation. The [dated repository audit](../../../docs/2023-DISCOVERY-ATTEMPT-EVIDENCE-2026-11-09.md)
+records the four-row pilot baseline and the distinct PR #215 access-path and
+PR #221 allowlist gates.
+
+Model each private technical attempt separately from an owner-reviewed
+document-discovery disposition. An attempt is keyed to election, candidature
+candidate, document role, URL, access path/method and UTC observation time;
+it records final URL/redirects, response metadata or transport error, bytes
+and hash only when actually acquired, and a private evidence reference. It
+must not carry access credentials, source text or political answers into Git.
+An indexed URL, successful HEAD and successful GET have different evidentiary
+weight. One 403, 404 or timeout is not a reviewed absence conclusion.
+
+A disposition references the exact set of attempts, approved scope and search
+protocol revision, human reviewer and decision evidence. `unresolved` is the
+safe default for blocked, contradictory or incomplete paths. A reviewed
+`not_located_by_search` is available only after an owner-approved stopping
+rule; it never means the programme did not exist. New official locations,
+changed bytes, candidature corrections or protocol changes invalidate the
+affected disposition and downstream coverage. Source authenticity, date,
+rights and P1 topic absence remain independent. The proposed names are not
+approved schema values.
+
+Before implementation, owners decide authorized alternate access, retry and
+archive evidence, redaction/retention, negative-search quorum and public
+wording. Fictional tests should cover HEAD/GET disagreement, a timeout then
+successful alternate official path, stale search-index URL, one 404 among
+several document leads, and a new URL after a reviewed negative search.

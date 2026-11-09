@@ -438,3 +438,22 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P0.16 — Discovery-attempt provenance (2026-11-09 draft)
+
+- [x] Reconcile current main's four 2023 pilot rows, private acquisition
+  allowlist, PR #101 integration state and the separate PR #215/#221 access
+  gates. Record the limited repository/PR evidence in
+  `docs/2023-DISCOVERY-ATTEMPT-EVIDENCE-2026-11-09.md`.
+- [x] Draft method-specific attempt/disposition design and four fictional
+  requirement scenarios. No publisher URL was retested; no source record,
+  allowlist, PDF, rights decision, claim or public artifact changed.
+- [ ] Owner/OpenSpec review: approve authorized access and retry paths,
+  negative-search stopping rule and quorum, private evidence retention and
+  redaction, and reader-facing limitations. This draft is not an approval.
+- [ ] After P0 scope review and PR #101 reconciliation, define the private
+  record schema and validator. Test divergent methods, recovered timeout,
+  stale index, partial 404 and invalidation with fictional fixtures before
+  any real negative-discovery state is considered.
+
+Validation: documentation structure and `git diff --check`; hosted CI and
+human source/editorial reviews remain separate gates.

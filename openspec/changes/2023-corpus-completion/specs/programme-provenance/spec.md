@@ -217,3 +217,43 @@ editorial approval SHALL remain independent decisions.
 - **THEN** the rights decision does not fill the date or prove historical
   availability; the publication policy handles that uncertainty separately.
 
+### Requirement: Discovery attempts shall not certify document absence
+
+The 2023 inventory SHALL preserve dated, method-specific technical discovery
+attempts separately from a human-reviewed document-discovery disposition.
+Access errors, contradictory paths, search-index entries and unverified URLs
+SHALL NOT by themselves establish that a programme was absent, complete, or
+applicable to a candidature. A reviewed `not located by search` disposition
+SHALL cite an approved candidature/document scope, search protocol, stopping
+rule and attempt set; it SHALL NOT become a topic-level `not stated` claim.
+New locations, changed bytes, corrected scope or protocol revision SHALL
+invalidate affected dispositions and coverage. Evidence in Git and public
+artifacts SHALL exclude credentials and private source contents.
+
+#### Scenario: HEAD and GET disagree
+
+- **WHEN** an authorized HEAD path returns 403 while a separate GET path
+  returns 404 for one candidate URL
+- **THEN** both method-specific observations are retained and discovery
+  remains unresolved; neither response certifies permanent absence.
+
+#### Scenario: Alternate official path succeeds
+
+- **WHEN** a request times out but a later authorized official path yields
+  candidate bytes
+- **THEN** the old error remains auditable and the new bytes enter separate
+  authenticity, chronology and rights review without inheriting approval.
+
+#### Scenario: Cached URL and one missing location
+
+- **WHEN** an index exposes a stale candidate URL or one of several relevant
+  document leads returns 404
+- **THEN** the inventory retains the lead and incomplete search state; it does
+  not infer that the candidature has no programme.
+
+#### Scenario: New location after negative search
+
+- **WHEN** a new publisher location is found after a reviewed `not located by
+  search` disposition
+- **THEN** that disposition and dependent source-coverage totals are invalidated
+  for review, without silently rewriting the prior attempt history.
