@@ -217,3 +217,44 @@ editorial approval SHALL remain independent decisions.
 - **THEN** the rights decision does not fill the date or prove historical
   availability; the publication policy handles that uncertainty separately.
 
+### Requirement: Unambiguous source-use scope for 2023 summaries
+
+The future 2023 source-use contract SHALL distinguish an outbound-link-only
+decision from a human decision that explicitly permits a neutral paraphrase
+for the exact source version. A link-only decision SHALL NOT authorize a
+summary, quote or redistribution. A summary-plus-link decision SHALL NOT
+authorize a quote or redistribution. The source register, programme status,
+validator, public label and tests SHALL use the same reviewed meaning; an
+ambiguous status name or free-text note SHALL NOT widen a permission. A
+withdrawal or narrower decision SHALL withhold dependent claims pending
+release review. This is a proposal-only requirement; it does not approve a
+legal use, status migration, real source or publication.
+
+#### Scenario: Link-only decision and a reviewed statement
+
+- **WHEN** a fictional exact source version has only a human outbound-link
+  decision and a statement has completed editorial review
+- **THEN** the outbound link may be eligible for display under its own gates,
+  but the statement summary, quotation and PDF copy remain ineligible.
+
+#### Scenario: Explicit summary decision without quotation permission
+
+- **WHEN** a fictional source version has a separate human decision for
+  neutral paraphrase and outbound link but no quotation permission
+- **THEN** a quote-free statement may proceed to the remaining provenance and
+  editorial gates; a verbatim quote and PDF copy remain ineligible.
+
+#### Scenario: Ambiguous legacy status
+
+- **WHEN** a source has an old `link_only` label without an explicit
+  version-bound decision for paraphrase
+- **THEN** no migration or public label silently treats it as permission for
+  a summary.
+
+#### Scenario: Narrowed use after a summary was approved
+
+- **WHEN** the human rights owner narrows a fictional source version from
+  summary-plus-link to outbound-link-only use
+- **THEN** the affected summary and dependent comparison are withheld from
+  the next publish set, prior decisions remain auditable, and an existing
+  served artifact enters owner-controlled correction or withdrawal review.

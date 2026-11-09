@@ -438,3 +438,22 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P0.17 — Source-use vocabulary reconciliation (2026-11-09 draft)
+
+- [x] Reconcile `origin/main` `488b6f5`, merged PR #166, open PR #101,
+  four pending 2023 source records and the contradictory `link_only` meanings.
+  Evidence: `docs/2023-LINK-ONLY-USE-CONTRACT-AUDIT-2026-11-09.md`.
+- [x] Draft a use-specific design and four fictional scenarios. No real
+  source, right, review mark, claim, public output or deployment changed.
+- [ ] Source-rights and editorial owners decide the lawful exact-version
+  link/paraphrase/quote/redistribution contract and approve a non-ambiguous
+  vocabulary, evidence store and Spanish label. Do not infer a decision from
+  the PR #101 reuse handoff, current code or passing tests.
+- [ ] After OpenSpec review, reconcile overlapping P0/P1 drafts and implement
+  one status/validator/programme/label migration with fictional fail-closed
+  tests and static/browser publish-set checks. Re-review any real rights
+  decision explicitly; do not auto-migrate `link_only` to summary permission.
+
+Validation for this draft: repository-state assertions, four-scenario
+structure check and `git diff --check`. Hosted CI and human review are
+separate and currently unresolved.

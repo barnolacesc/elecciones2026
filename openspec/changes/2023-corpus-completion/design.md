@@ -873,3 +873,30 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P0.17 draft — link-only versus summary-use contract
+
+Status: proposal-only, pending source-rights and editorial review. This
+package reconciles the present `link_only` technical gate with the P0
+requirement that an outbound-link decision does not authorize paraphrase.
+Evidence and the current four-source baseline are in
+`docs/2023-LINK-ONLY-USE-CONTRACT-AUDIT-2026-11-09.md`. It does not change
+rights records, code, political content or a served artifact.
+
+The private decision interface should name each exact source version/hash,
+permitted use (outbound link, neutral paraphrase, short quotation, PDF/text
+redistribution), human decider, decision date, conditions, evidence reference
+and effective/withdrawn state. The public projection receives only the
+approved scope and safe evidence reference. A single ambiguous status label or
+free-text note cannot silently grant a second use. Source authenticity,
+chronology, summary wording, topic coverage and relationship review remain
+independent; neither a source use decision nor CI grants those approvals.
+
+The owner must choose whether `link_only` stays literal with a separate
+summary decision, or whether a newly named combined status represents an
+explicit summary-plus-link decision while literal link-only remains distinct.
+The existing `link_only` records must not be auto-migrated. After review, the
+status vocabulary, source/programme mapping, validator, Spanish label and
+fictional tests should change as one bounded implementation package. A
+withdrawal or narrower permission must remove affected summaries and their
+dependent comparisons from the next publish set, with served-artifact
+correction handled by a separate owner-controlled release.
