@@ -104,3 +104,17 @@ Verification for this draft: parse the source register and example statements
 locally, inspect the relationship schema and OpenSpec draft, and run
 `git diff --check`. These checks establish only document and repository facts;
 they do not validate a political interpretation or replace human review.
+
+**Recorded result (2026-11-10):** the local register/statement/relationship
+assertions passed (4 unresolved sources, 8 unpublished statements, 6 inactive
+relationships), the focused provisional-pilot source test passed with
+`PYTHONPATH=src python3 -m unittest
+tests.test_provisional_2023.ProvisionalPilotTests.test_four_parties_eight_topics_and_exact_citations`,
+and `git diff --check` passed. [PR #226 CI run
+42800118645](https://github.com/c2ventures/elecciones2026/actions/runs/42800118645)
+failed: pytest reported the same 2 failures and 9 Docker-parity errors as
+[main run 41343879201](https://github.com/c2ventures/elecciones2026/actions/runs/41343879201),
+and the mock-quiz browser check again expected 2 but got 3. These are
+pre-existing baseline failures; this documentation-only draft neither repairs
+them nor has passing hosted CI. The later Docker, isolation and private-release
+jobs were skipped. No human editorial or OpenSpec review is recorded.
