@@ -130,6 +130,21 @@ test('pilot citation names its new-tab behavior in the rendered comparison', asy
   assert.equal(links[0].referrerPolicy, 'no-referrer');
 });
 
+test('missing pilot position describes a review gap, not programme absence', async () => {
+  const position = {
+    topic: 'housing', party: 'pp', measure_id: 'measure-1', measure_title: 'Medida',
+    title: 'Propuesta', summary: 'Texto de prueba', qualification: 'Sin matices',
+    page: 3, locator: 'Página 3', url: 'https://example.test/programa.pdf#page=3'
+  };
+  const { nodes } = await pilot('https://private.test/', [position]);
+  const cards = nodes['pilot-comparison'].children[0].children[1].children;
+  assert.equal(cards.length, 2);
+  assert.equal(cards[1].children[0].textContent, 'ERC');
+  assert.match(cards[1].children[1].textContent, /Sin posición incluida en el piloto/);
+  assert.match(cards[1].children[2].textContent, /No permite concluir si el programa completo la menciona/);
+  assert.doesNotMatch(cards[1].children[2].textContent, /No consta propuesta/);
+});
+
 test('valid pilot deep link restores the exact topic and party pair', async () => {
   const { nodes, location } = await pilot('https://private.test/?topic=housing&partyA=erc&partyB=pp');
   assert.equal(nodes['pilot-a'].value, 'erc');
