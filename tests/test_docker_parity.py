@@ -145,11 +145,11 @@ class TestDockerConfiguration(unittest.TestCase):
         # 2. ADR-0001 Cache-Control rules
         # Fingerprinted comparison JS is immutable; stable names revalidate.
         self.assertIn('Cache-Control "public, max-age=31536000, immutable"', content)
-        self.assertIn('location ~* ^/comparison-data\\.[0-9a-f]{16}\\.js$ {', content)
+        self.assertIn('location ~* "^/comparison-data\\.[0-9a-f]{16}\\.js$" {', content)
         self.assertIn('location ~* \\.(?:css|js)$ {', content)
         self.assertIn('location ^~ /tokens/ {', content)
         self.assertIn('Cache-Control "public, no-cache"', content)
-        self.assertLess(content.index('location ~* ^/comparison-data'), content.index('location ~* \\.(?:css|js)$'))
+        self.assertLess(content.index('location ~* "^/comparison-data'), content.index('location ~* \\.(?:css|js)$'))
         # HTML pages (300s, stale-while-revalidate=86400)
         self.assertIn('Cache-Control "public, max-age=300, stale-while-revalidate=86400"', content)
         # Security & crawler files (3600s, stale-while-revalidate=86400)
@@ -204,7 +204,6 @@ class TestLiveDockerContainerParity(unittest.TestCase):
                 "docker",
                 "run",
                 "-d",
-                "--rm",
                 "-p",
                 f"127.0.0.1:{cls.port}:8080",
                 "--read-only",
@@ -220,7 +219,7 @@ class TestLiveDockerContainerParity(unittest.TestCase):
             ]
             subprocess.run(run_cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=cls.env)
 
-            # Wait for container HTTP readiness
+            # Match the dedicated Docker smoke job's 30-second readiness budget.
             ready = False
             for _ in range(30):
                 try:
@@ -230,15 +229,49 @@ class TestLiveDockerContainerParity(unittest.TestCase):
                             ready = True
                             break
                 except Exception:
-                    time.sleep(0.2)
+                    time.sleep(1)
             if not ready:
-                raise RuntimeError("Docker test container failed to become ready on HTTP port")
+                # setUpClass failures bypass tearDownClass. Retain bounded startup
+                # evidence before cleaning up the test-owned container/image.
+                state = subprocess.run(
+                    ["docker", "inspect", "--format", "{{json .State}}", cls.container_name],
+                    capture_output=True,
+                    text=True,
+                    timeout=5,
+                    env=cls.env,
+                )
+                logs = subprocess.run(
+                    ["docker", "logs", "--tail", "40", cls.container_name],
+                    capture_output=True,
+                    text=True,
+                    timeout=5,
+                    env=cls.env,
+                )
+                subprocess.run(
+                    ["docker", "rm", "-f", cls.container_name],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                    timeout=10,
+                    env=cls.env,
+                )
+                subprocess.run(
+                    ["docker", "rmi", f"{cls.container_name}:latest"],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                    timeout=10,
+                    env=cls.env,
+                )
+                raise RuntimeError(
+                    "Docker test container failed to become ready on HTTP port; "
+                    f"state={state.stdout.strip() or state.stderr.strip()[:500]}; "
+                    f"logs={(logs.stdout + logs.stderr)[-2000:]}"
+                )
 
     @classmethod
     def tearDownClass(cls) -> None:
         if cls.docker_ready:
             subprocess.run(
-                ["docker", "stop", cls.container_name],
+                ["docker", "rm", "-f", cls.container_name],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
                 env=cls.env,
