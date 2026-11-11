@@ -217,3 +217,43 @@ editorial approval SHALL remain independent decisions.
 - **THEN** the rights decision does not fill the date or prove historical
   availability; the publication policy handles that uncertainty separately.
 
+### Requirement: Review language-variant document families before coverage aggregation
+
+For `es-gen-2023`, each distinct-language source file SHALL retain its own
+exact version/hash, publisher binding, locator, authenticity and rights state.
+A proposed translation or adaptation relationship between versions SHALL be a
+separate, evidenced, human-reviewed decision with a revision and scope; a
+shared publisher identifier, title or URL pattern SHALL NOT establish textual
+or page equivalence. Coverage SHALL distinguish document versions from
+reviewed document-role families and SHALL label its denominator. An unresolved
+variant SHALL NOT be silently deduplicated, counted as a second distinct
+programme, or used to justify a topic-absence claim. No rights, locator,
+search or editorial approval SHALL transfer between versions automatically.
+This requirement is proposal-only pending owner review.
+
+#### Scenario: Shared publisher ID without translation review
+
+- **WHEN** two fictional language PDFs share a publisher page ID but their
+  relation has not been reviewed
+- **THEN** both remain separately inventoried and family-level coverage stays
+  unresolved; neither version inherits the other's rights or page locations.
+
+#### Scenario: Reviewed translation with incomplete search
+
+- **WHEN** a reviewer accepts a version-bound translation relationship but one
+  relevant version has unsearched sections
+- **THEN** the inventory may label the reviewed family, but topic coverage
+  remains incomplete and cannot become `not stated` from the searched version.
+
+#### Scenario: Partial adaptation rather than equivalent translation
+
+- **WHEN** one fictional language file omits a section present in another
+- **THEN** reviewers record a partial adaptation with its scope, and the
+  omitted section is neither duplicated nor treated as a party's opposition.
+
+#### Scenario: One variant changes at the same URL
+
+- **WHEN** one member receives new bytes or its family decision is withdrawn
+- **THEN** affected family coverage, locators, topic searches and derived claims
+  enter re-review, while the unchanged member keeps its separately evidenced
+  status; prior revisions remain auditable.

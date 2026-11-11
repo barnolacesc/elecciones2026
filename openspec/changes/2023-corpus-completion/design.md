@@ -873,3 +873,34 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+
+## P0.18 draft — language-variant document coverage
+
+Status: proposal-only. This is the document-inventory relationship between
+exact language versions, not the P1 source-language review of a Spanish
+statement or the P0.10 candidature-applicability edge. It changes no source,
+rights, editorial or public record.
+
+The private inventory should assign each retrieved file an immutable
+`document_version_id` and exact hash. A separate `variant_family` decision
+references exact member versions, relation type (`translation`, `partial
+adaptation`, `independent`, or `unresolved`), directional scope, evidence,
+reviewer, date and revision. The relation must not be inferred from a common
+publisher page ID. A family may inform a reviewed document-role breadth count,
+while per-version rows preserve language, search visibility, page locators,
+rights and publication-date uncertainty. The public projection receives only
+approved coverage labels and limitations, never PDF bytes or private evidence.
+
+Changing member bytes, scope or relation disposition recomputes affected
+family coverage and places dependent searches, statements, comparisons and
+quiz citations into a version-bound review queue. No decision or locator is
+copied from the unchanged variant. Fictional tests should cover the four
+scenarios in `specs/programme-provenance/spec.md`, including both pending
+and partially adapted families.
+
+Owners must decide whether and when translated versions form one coverage
+family, whether all variants require full search before an absence conclusion,
+how partial adaptation affects counts, who reviews equivalence and what
+reader-facing Spanish limitations are appropriate. Reconcile this decision
+with P0 inclusion, document scope, source identity/rights and P1 language
+review before any schema or corpus implementation.

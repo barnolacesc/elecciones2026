@@ -438,3 +438,23 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+
+## P0.18 — Language-variant coverage handoff (2026-11-11 draft)
+
+- [x] Reconcile current four-row 2023 pilot, draft/conflicting PR #101 and
+  the publisher-page lead in draft PR #210. Record the inventory gap and
+  separate it from source authenticity, rights and P1 statement translation.
+  Evidence: `docs/2023-LANGUAGE-VARIANT-COVERAGE-AUDIT-2026-11-11.md`.
+- [x] Draft a version-bound family requirement, private decision design and
+  four fictional scenarios. No source PDF, political claim, rights decision,
+  review mark, coverage count or public artifact changed.
+- [ ] Owner/editorial review: decide the family unit, equivalence evidence,
+  partial-adaptation treatment, search obligation, reviewer and Spanish
+  coverage wording. PR #210's lead is not an approved equivalence decision.
+- [ ] After P0 and P1 method review, reconcile the approved contract with
+  overlapping open source/rights proposals, specify concrete schema and
+  validators, then test fictional variant families before any real 2023 row.
+
+Validation: `git diff --check` and a local structure/baseline check. Hosted CI
+is engineering evidence only; it cannot supply a language, rights or
+political-content review.
