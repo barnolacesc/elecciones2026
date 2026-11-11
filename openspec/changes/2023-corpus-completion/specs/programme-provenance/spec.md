@@ -217,3 +217,31 @@ editorial approval SHALL remain independent decisions.
 - **THEN** the rights decision does not fill the date or prove historical
   availability; the publication policy handles that uncertainty separately.
 
+
+### Requirement: Retrievable private evidence for source decisions
+
+The 2023 corpus workflow SHALL bind each proposed source-authenticity, document-applicability and reuse-rights decision to an immutable source version and an opaque private evidence reference. Before a decision can qualify for publication, an authorized reviewer SHALL be able to retrieve and inspect the referenced evidence and record a successful recheck. A public register, static artifact, CI log or pull request SHALL NOT contain private archive paths, PDF bytes, extracted text or rights correspondence. An absent, inaccessible, changed or misbound evidence object SHALL leave the dependent decision pending; a URL, checksum or past approval label alone SHALL NOT repair it. This is a proposed contract, not a decision that existing evidence is missing or that any source has reuse permission.
+
+#### Scenario: Hash exists but evidence is not retrievable
+
+- **GIVEN** a fictional 2023 document row with a checksum and a proposed rights decision
+- **WHEN** the authorized reviewer cannot retrieve the referenced decision evidence
+- **THEN** the rights decision remains pending for public use, even if the checksum and official URL are unchanged
+
+#### Scenario: Evidence belongs to another source version
+
+- **GIVEN** a fictional reviewer can retrieve an evidence object bound to source version A
+- **WHEN** the decision under review names source version B or a different election
+- **THEN** the workflow rejects that evidence as support for the decision on B and keeps B pending
+
+#### Scenario: Private evidence excluded from publication
+
+- **GIVEN** a fictional source has a valid private evidence reference and a reviewed public-use decision
+- **WHEN** the static and browser artifacts are generated
+- **THEN** they contain only approved public metadata and content, never the evidence locator, private file bytes or correspondence
+
+#### Scenario: Previously accepted evidence becomes unavailable
+
+- **GIVEN** a fictional previously accepted decision depends on a private evidence object
+- **WHEN** an integrity or access recheck fails before a new publication build
+- **THEN** dependent public use is withheld for review without silently treating the original decision as revoked or inventing a new legal conclusion

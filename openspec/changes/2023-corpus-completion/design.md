@@ -873,3 +873,25 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+
+## P0 evidence-custody handoff — draft 2026-11-11
+
+The existing P0 design names a private archive and evidence store but leaves its
+retrievability and decision-binding acceptance test to the owner. Propose a
+private manifest keyed by election ID, source ID, exact source version/hash,
+decision kind and opaque evidence ID. The evidence object itself, original PDF,
+extracted text, correspondence and store location stay outside Git, CI logs
+and public artifacts. An authorized human reviewer records a dated retrieval
+and integrity recheck against the bound version before a proposed decision can
+become publication-eligible. Access failure or changed binding blocks only the
+affected decision and its dependent projection; it does not assert that the
+underlying political claim or rights decision is false. Preserve the prior
+review history and a repair trail.
+
+The owner must select the store, access roles, retention period, recovery path,
+redaction policy and who may perform a recheck. These are open decisions, not
+agent-selected defaults. Reconcile this contract with P0 source identity,
+rights withdrawal, shared-document applicability and PR #101's already-merged
+technical gate before specifying a schema or implementation. Test only fictional
+missing, wrong-version, inaccessible and publication-leak cases after review.
+No real source or approval is changed by this draft.

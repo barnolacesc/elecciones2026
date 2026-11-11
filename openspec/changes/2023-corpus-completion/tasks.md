@@ -438,3 +438,16 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+
+## P0 evidence-custody contract — 2026-11-11 draft
+
+- [x] Audit the current four-row 2023 register and its `evidence_ref` schema;
+  draft the version-bound retrievability requirement and private/public design.
+  Evidence: `docs/2023-EVIDENCE-CUSTODY-AUDIT-2026-11-11.md` and the provenance
+  requirement above. This is proposal-only, not a source or rights review.
+- [ ] Owner/source-rights and editorial review: decide store operator, access
+  roles, retention/recovery, redaction, recheck owner and failure response.
+- [ ] After P0/PR #101 disposition and OpenSpec review, specify a concrete
+  private manifest and fictional tests for missing, wrong-version, inaccessible
+  and public-leak cases. Do not enter real approvals or source files through
+  this task.
