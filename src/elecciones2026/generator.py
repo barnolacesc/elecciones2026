@@ -1796,6 +1796,14 @@ def render_methodology_page(ctx: SiteContext) -> str:
     page_title = "Metodología editorial y privacidad · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Metodología editorial y privacidad · Elecciones 2026"
     page_description = "Marco metodológico, gobernanza editorial y aviso de privacidad para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Marco metodológico, gobernanza editorial, política de citas y aviso de privacidad de Elecciones 2026."
 
+    pilot_notice = (
+        '<aside class="notice" style="margin-top: var(--space-4);">'
+        '<strong>Aislamiento de elecciones y pruebas técnicas:</strong> '
+        'Los programas del piloto de 2023 se usan solo para ensayos privados. '
+        'No se comparan con programas de 2026.</aside>'
+        if ctx.election_id == "es-gen-2023" else ""
+    )
+
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
     </nav>
@@ -1853,9 +1861,7 @@ def render_methodology_page(ctx: SiteContext) -> str:
         <div class="coverage-cards" style="margin-top: var(--space-4);">
           {coverage_cards_2026}
         </div>
-        <aside class="notice" style="margin-top: var(--space-4);">
-          <strong>Aislamiento de elecciones y pruebas técnicas (Tarea 1.4):</strong> Los programas y ensayos del piloto de 2023 se emplean exclusivamente para la verificación técnica de esquemas. El comparador rechaza automáticamente cualquier comparación cruzada entre elecciones. Puede consultar el inventario técnico completo y sumas SHA-256 en la página de <a href="../fuentes/" class="action-link">registro de fuentes</a>.
-        </aside>
+        {pilot_notice}
       </article>
 
       <article class="party-card" id="rectificaciones">
@@ -1895,14 +1901,14 @@ def render_methodology_page(ctx: SiteContext) -> str:
 
 
 def render_sources_page(ctx: SiteContext) -> str:
-    """Render fuentes/index.html with source register, mobile cards, and 2026/2023 isolation (Package E2.4)."""
+    """Render only the selected election in the public source register."""
     formatted_date = format_date_spanish(ctx.build_date)
     rows_2026 = []
-    rows_2023 = []
     cards_2026 = []
-    cards_2023 = []
 
     for src in sorted(ctx.register.sources, key=lambda s: s.id):
+        if src.election_id != ctx.election_id:
+            continue
         badge = render_status_badge(ctx, src.status)
         url_link = f'<a href="{escape(src.official_url)}" target="_blank" rel="noopener noreferrer">Enlace oficial <span aria-hidden="true">↗</span> <span class="sr-only">(se abre en una ventana nueva)</span></a>' if src.official_url else "<em>No disponible</em>"
         hash_code = f"<code>{src.sha256[:12]}...</code>" if src.sha256 else "—"
@@ -1919,17 +1925,12 @@ def render_sources_page(ctx: SiteContext) -> str:
 
         card = render_source_coverage_card(ctx, src)
 
-        if src.election_id == "es-gen-2026":
-            rows_2026.append(row)
-            cards_2026.append(card)
-        else:
-            rows_2023.append(row)
-            cards_2023.append(card)
+        rows_2026.append(row)
+        cards_2026.append(card)
 
     cards_2026_html = "\n".join(cards_2026)
-    cards_2023_html = "\n".join(cards_2023)
     rows_2026_html = "".join(rows_2026)
-    rows_2023_html = "".join(rows_2023)
+    election_label = "Generales 2023 (ensayo privado)" if ctx.election_id == "es-gen-2023" else "Elecciones Generales 2026"
 
     hero_eyebrow = "REGISTRO DE FUENTES Y AUDITORÍA · GENERALES 2023 (ENSAYO PILOTO)" if ctx.election_id == "es-gen-2023" else "REGISTRO DE FUENTES Y AUDITORÍA"
     page_title = "Fuentes oficiales y trazabilidad · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Fuentes oficiales y trazabilidad · Elecciones 2026"
@@ -1950,7 +1951,7 @@ def render_sources_page(ctx: SiteContext) -> str:
     </section>
 
     <section style="margin-bottom: var(--space-8);">
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">1. Fuentes monitorizadas · Elecciones Generales 2026</h2>
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">Fuentes monitorizadas · {election_label}</h2>
       <div class="coverage-cards" style="margin-bottom: var(--space-4);">
         {cards_2026_html}
       </div>
@@ -1974,36 +1975,8 @@ def render_sources_page(ctx: SiteContext) -> str:
       </div>
     </section>
 
-    <section style="margin-bottom: var(--space-10);">
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">2. Fuentes históricas de ensayo · Piloto 2023</h2>
-      <aside class="notice" style="margin-bottom: var(--space-4);">
-        <strong>Aislamiento de elecciones (Tarea 1.4):</strong> Los documentos de 2023 se emplean exclusivamente para ensayos técnicos y validación de esquemas. El comparador rechaza automáticamente cualquier intento de comparar un programa de 2023 con uno de 2026.
-      </aside>
-      <div class="coverage-cards" style="margin-bottom: var(--space-4);">
-        {cards_2023_html}
-      </div>
-      <div class="coverage-table-container">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: var(--font-size-sm);">
-          <thead>
-            <tr style="background: var(--color-bg-surface-subtle); border-bottom: 2px solid var(--color-border-subtle);">
-              <th style="padding: var(--space-3);">Candidatura</th>
-              <th style="padding: var(--space-3);">Estado</th>
-              <th style="padding: var(--space-3);">Versión</th>
-              <th style="padding: var(--space-3);">Fecha consulta</th>
-              <th style="padding: var(--space-3);">SHA-256</th>
-              <th style="padding: var(--space-3);">Derechos</th>
-              <th style="padding: var(--space-3);">Acceso</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows_2023_html}
-          </tbody>
-        </table>
-      </div>
-    </section>
-
     <section style="margin-bottom: var(--space-8);">
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">3. Observaciones y canales editoriales</h2>
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">Observaciones y canales editoriales</h2>
       <article class="party-card">
         <p class="party-statement">Si detecta que una candidatura ha publicado un nuevo documento oficial, o que un enlace o suma de verificación difiere del original proclamado, remita la referencia a: <strong>editorial@elecciones2026.es</strong>. El registro de fuentes no admite formularios interactivos en línea en esta versión inicial (MVP) para preservar la cadena de custodia documental.</p>
         <p class="party-statement">Consulte el marco de inclusión y gobernanza en la <a href="../metodo/" class="action-link">página de metodología</a> o el <a href="../correcciones/" class="action-link">registro de correcciones</a>.</p>

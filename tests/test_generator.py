@@ -271,8 +271,9 @@ class TestStaticSiteGenerator(unittest.TestCase):
         self.assertTrue(fuentes_path.is_file())
         fuentes_html = fuentes_path.read_text(encoding="utf-8")
         self.assertIn("Fuentes oficiales y trazabilidad", fuentes_html)
-        self.assertIn("Piloto 2023", fuentes_html)
-        self.assertIn("Aislamiento de elecciones", fuentes_html)
+        self.assertNotIn("Piloto 2023", fuentes_html)
+        self.assertNotIn("23J-v1", fuentes_html)
+        self.assertIn("Elecciones Generales 2026", fuentes_html)
 
         # 5. Corrections page test
         corrections_path = self.output_dir / "correcciones" / "index.html"

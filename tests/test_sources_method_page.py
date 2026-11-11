@@ -4,7 +4,7 @@ Verifies acceptance criteria for OpenSpec Task 3.4:
 - Inclusion rule, source coverage, update date, and correction policy are readable on mobile.
 - No working report form is implied (static notice + deferred reporting).
 - Source coverage cards display status badges, version, date, SHA-256 hash/pending, and rights.
-- Pilot 2023 sources are strictly demarcated and isolated.
+- Public 2026 pages do not expose the private historical pilot.
 - 44px touch targets and responsive wrapping prevent horizontal overflow at 360/390/430px.
 """
 
@@ -137,12 +137,12 @@ class TestSourcesMethodCorrectionsPage(unittest.TestCase):
         for link in outbound_links:
             self.assertIn('rel="noopener noreferrer"', link, f"Outbound link missing rel in {link}")
 
-    def test_pilot_2023_isolation_notice(self) -> None:
-        """Verify pilot 2023 sources are strictly demarcated and isolated from 2026 general election."""
-        self.assertIn("Aislamiento de elecciones", self.metodo_html)
-        self.assertIn("2023", self.metodo_html)
-        self.assertIn("Aislamiento de elecciones", self.fuentes_html)
-        self.assertIn("Piloto 2023", self.fuentes_html)
+    def test_public_2026_pages_exclude_historical_pilot(self) -> None:
+        """The public source and method pages show only the current election."""
+        for html in (self.metodo_html, self.fuentes_html):
+            self.assertNotIn("Piloto 2023", html)
+            self.assertNotIn("ensayos del piloto de 2023", html)
+            self.assertIn("Elecciones 2026", html)
 
     def test_correction_policy_and_sla_guarantees(self) -> None:
         """Verify correction policy explains automatic invalidation, SLAs, Four-Eyes, and errata log."""
