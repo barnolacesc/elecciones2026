@@ -1,5 +1,14 @@
 # Elections 2026 — Roadmap draft 0.3
 
+**2026-11-11 direction:** Cesc has retired the 2023-first public delivery
+sequence. Prepare the website to show only the 2026 election. The 2023 pilot
+may remain as private engineering fixtures and historical evidence, but must
+not appear in the public 2026 source register or method copy. This direction
+supersedes the 2023-first paragraph below; it does not approve any unreviewed
+2026 programme, political claim, rights status, merge, or deployment. Review
+optional 2023 budget pages and the private pilot build separately before a
+2026-only release.
+
 **2026-11-01 delivery priority:** Cesc has directed the project to:
 1. **Hold off on pre-campaign hub:** Do not build or publish a pre-campaign hub or temporary landing before the official electoral campaign starts (13 November 2026).
 2. **Defer 2026 party loading:** Do not load real 2026 candidacies or premature manifestos until official party programmes are published during the campaign.
