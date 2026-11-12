@@ -886,6 +886,16 @@ def render_caveat(ctx: SiteContext, qualification: str) -> str:
               </div>"""
 
 
+def statement_source_url(stmt: StatementRecord) -> Optional[str]:
+    """Open the first physical PDF page while retaining the full visible locator."""
+    link = stmt.source_url
+    if link and stmt.source_page and "#" not in link:
+        first_page = re.match(r"^[1-9]\d*", stmt.source_page)
+        if first_page:
+            link += f"#page={first_page.group()}"
+    return link
+
+
 def render_source_citation(ctx: SiteContext, stmt: StatementRecord) -> str:
     """Render source citation link or missing note."""
     if stmt.statement_type == "not_found" or not stmt.source_url:
@@ -902,10 +912,7 @@ def render_source_citation(ctx: SiteContext, stmt: StatementRecord) -> str:
         locators.append(f"{ctx.i18n['statement']['section']} {stmt.source_section}")
     locator_text = " · ".join(locators) if locators else "Programa oficial"
 
-    source_url = stmt.source_url
-    if stmt.source_page and "#" not in source_url:
-        source_url += f"#page={stmt.source_page}"
-    url = escape(source_url)
+    url = escape(statement_source_url(stmt))
     sr_notice = escape(ctx.i18n["statement"]["opens_new_window"])
     return f"""<a class="source-citation" href="{url}" target="_blank" rel="noopener noreferrer">
                 <span aria-hidden="true">↗</span> Fuente: <span>{escape(locator_text)}</span>
@@ -1244,7 +1251,8 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
     """Project the validated HTML publish set; never load drafts or source bytes."""
     errors = []
     for stmt in ctx.statements.values():
-        errors.extend(stmt.validate(target_election_id=ctx.election_id))
+        errors.extend(stmt.validate(target_election_id=ctx.election_id,
+                                    taxonomy=ctx.taxonomy if ctx.production_records else None))
         if stmt.review_status != "approved":
             errors.append(f"Statement '{stmt.id}': only approved records may enter browser output.")
         if stmt.party_id not in ctx.parties:
@@ -1263,7 +1271,8 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
                 errors.append(f"Statement '{stmt.id}': source URL must be absolute HTTP(S) without credentials or unsafe characters.")
     for rel in ctx.relationships.values():
         errors.extend(rel.validate(target_election_id=ctx.election_id,
-                                   statements_by_id=ctx.statements, for_build=True))
+                                   statements_by_id=ctx.statements, for_build=True,
+                                   taxonomy=ctx.taxonomy if ctx.production_records else None))
         if any(pid not in ctx.parties for pid in rel.party_ids):
             errors.append(f"Relationship '{rel.id}': unknown party.")
         targets = [ctx.statements[sid] for sid in rel.statement_ids if sid in ctx.statements]
@@ -1288,9 +1297,7 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
         if stmt.source_section:
             locators.append(f"{ctx.i18n['statement']['section']} {stmt.source_section}")
         locator = " · ".join(locators)
-        link = stmt.source_url
-        if link and stmt.source_page and "#" not in link:
-            link += f"#page={stmt.source_page}"
+        link = statement_source_url(stmt)
         return {"statementId": stmt.id, "electionId": stmt.election_id,
                 "programmeId": stmt.programme_id, "sourceVersion": stmt.source_version,
                 "sourcePage": stmt.source_page, "sourceSection": stmt.source_section,
@@ -1555,7 +1562,7 @@ def render_home_page(ctx: SiteContext) -> str:
 
 
 def render_topic_index(ctx: SiteContext) -> str:
-    """Render temas/index.html listing all 8 taxonomy core topics."""
+    """Render temas/index.html listing the selected taxonomy topics."""
     cards_html = []
     for t in ctx.taxonomy.topics:
         # Count proposals
@@ -1579,7 +1586,7 @@ def render_topic_index(ctx: SiteContext) -> str:
 
     hero_eyebrow = "ENSAYO PILOTO PRIVADO · TAXONOMÍA GENERALES 2023" if ctx.election_id == "es-gen-2023" else "TAXONOMÍA ELECTORAL 2026"
     page_title = "Temas electorales · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Temas electorales · Elecciones 2026"
-    page_description = "Explora las propuestas electorales para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else "Explora las propuestas electorales para las Elecciones Generales 2026 agrupadas en 8 temas clave."
+    page_description = "Explora las propuestas electorales para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else f"Explora las propuestas electorales para las Elecciones Generales 2026 agrupadas en {len(ctx.taxonomy.topics)} temas clave."
 
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
@@ -2493,7 +2500,7 @@ def render_llms_txt(ctx: SiteContext) -> str:
 - [Metodología de Verificación]({ctx.canonical_base}/metodo/): Criterios objetivos de inclusión de candidaturas (Criterios A y B), límites de cita y política de rectificación.
 - [Registro de Fuentes Oficiales]({ctx.canonical_base}/fuentes/): Inventario de fuentes registradas, hashes SHA-256 y estados de cobertura.
 - [Registro de Correcciones Editoriales]({ctx.canonical_base}/correcciones/): Historial auditable de correcciones y tiempos de respuesta (SLAs Sev-1, Sev-2, Sev-3).
-- [Índice de Temas]({ctx.canonical_base}/temas/): Los 8 temas troncales de la taxonomía oficial de comparación.
+- [Índice de Temas]({ctx.canonical_base}/temas/): Los {len(ctx.taxonomy.topics)} temas de la taxonomía de comparación.
 - [Índice de Candidaturas]({ctx.canonical_base}/partidos/): Candidaturas monitorizadas según criterios objetivos de representación.
 
 ## Temas Electorales

@@ -228,6 +228,7 @@ async function checkKeyboard(page) {
     for (const width of widths) {
       const sourceContext = await browser.newContext({viewport: {width, height: 844}});
       const sourcePage = await sourceContext.newPage();
+      let expectedSourceLinks = 0;
       await sourcePage.route('**/quiz-data.*.js', async route => {
         const response = await route.fetch();
         const script = await response.text();
@@ -235,6 +236,7 @@ async function checkKeyboard(page) {
         bundle.mode = 'reviewed';
         bundle.election_id = 'layout-fixture';
         bundle.version = 'layout-only';
+        expectedSourceLinks = bundle.parties.filter(party => party.positions[0].value !== null).length;
         for (const party of bundle.parties) for (const position of party.positions) {
           if (position.value !== null) position.source = {
             statement_id: 'layout-only', programme_id: 'source-' + 'a'.repeat(80),
@@ -250,7 +252,8 @@ async function checkKeyboard(page) {
       await sourcePage.goto(`${base}/cuestionario/`, {waitUntil: 'networkidle'});
       await sourcePage.getByRole('button', {name: 'Empezar', exact: true}).click();
       await sourcePage.locator('#quiz-app summary').first().click();
-      assert.equal(await sourcePage.getByRole('link', {name: 'Abrir fuente oficial (ventana nueva)', exact: true}).count(), 2);
+      assert.ok(expectedSourceLinks >= 2, 'Long-source fixture must exercise multiple parties');
+      assert.equal(await sourcePage.getByRole('link', {name: 'Abrir fuente oficial (ventana nueva)', exact: true}).count(), expectedSourceLinks);
       await checkLayout(sourcePage, `${width}px: long source metadata`, width);
       if (width === 320) {
         await sourcePage.addStyleTag({content: 'html { font-size: 200% !important; }'});

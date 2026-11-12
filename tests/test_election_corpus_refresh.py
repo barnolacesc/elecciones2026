@@ -152,7 +152,7 @@ class ElectionCorpusRefreshTests(unittest.TestCase):
         self.extended_taxonomy()
         statement = replace(self.synthetic_approved_statement(), topic_id="synthetic-topic",
                             subtopic_id="synthetic-subtopic", reviews=[], review_status="draft",
-                            last_reviewed_date=None)
+                            last_reviewed_date=None, source_page="1-2, 5")
         (self.records / "statements").mkdir()
         path = self.records / "statements/test.json"
         path.write_text(json.dumps(asdict(statement)))
@@ -164,6 +164,17 @@ class ElectionCorpusRefreshTests(unittest.TestCase):
         ctx = self.load()
         self.assertEqual(len(ctx.taxonomy.topics), 9)
         self.assertEqual(list(ctx.statements), [statement.id])
+        payload = build_comparison_payload(ctx)
+        position = payload["measuresByTopic"]["synthetic-topic"][0]["positions"][statement.party_id]
+        self.assertEqual(position["sourcePage"], "1-2, 5")
+        self.assertTrue(position["sourceUrl"].endswith("#page=1"))
+        output = self.directory / "extended-output"
+        result = build_site(ROOT, output, content_dir=self.content, records_dir=self.records)
+        self.assertEqual(result.topics_count, 9)
+        self.assertIn("9 temas", (output / "llms.txt").read_text())
+        topic_html = (output / "temas/synthetic-topic/index.html").read_text()
+        self.assertIn("#page=1", topic_html)
+        self.assertIn("1-2, 5", topic_html)
         invalid = replace(approved, subtopic_id="rental-regulation")
         path.write_text(json.dumps(asdict(invalid)))
         with self.assertRaisesRegex(BuildValidationError, "not under topic"):

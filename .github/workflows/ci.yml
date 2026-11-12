@@ -308,10 +308,15 @@ jobs:
           echo "$HTML_HEADERS" | grep -i "x-frame-options: DENY"
           echo "$HTML_HEADERS" | grep -i "content-security-policy:"
 
-          # 2. Immutable static assets (31536000s, immutable)
+          # 2. Stable CSS must revalidate after a release or correction.
           CSS_HEADERS=$(curl -s -D - http://127.0.0.1:8080/styles.css -o /dev/null)
-          echo "$CSS_HEADERS" | grep -i "cache-control:.*max-age=31536000"
-          echo "$CSS_HEADERS" | grep -i "immutable"
+          echo "$CSS_HEADERS" | grep -i "cache-control:.*no-cache"
+
+          # Only the content-addressed comparison bundle is immutable.
+          BUNDLE_PATH=$(curl --silent --fail http://127.0.0.1:8080/ | python3 -c 'import re, sys; print(re.search(r"comparison-data\.[0-9a-f]{16}\.js", sys.stdin.read()).group())')
+          BUNDLE_HEADERS=$(curl --silent --fail -D - "http://127.0.0.1:8080/$BUNDLE_PATH" -o /dev/null)
+          echo "$BUNDLE_HEADERS" | grep -i "cache-control:.*max-age=31536000"
+          echo "$BUNDLE_HEADERS" | grep -i "immutable"
 
           # 3. Crawler policy files (3600s cache)
           ROBOTS_HEADERS=$(curl -s -D - http://127.0.0.1:8080/robots.txt -o /dev/null)

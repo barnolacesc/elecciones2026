@@ -186,3 +186,28 @@ owner GitHub actor is available, so the expired historical bot delegation does
 not block owner dispatch. Public activation, G4 evidence and actual political
 approvals remain outstanding; do not deploy the existing historical image
 through the public hostnames.
+
+## Hosted integration follow-up
+
+PR #237's first CI run (`43319062318`) passed the Python/Node data and security
+validation job, but failed two integration checks. The Docker workflow still
+expected immutable caching for stable CSS; it now checks CSS revalidation and
+immutability of the actual fingerprinted comparison bundle. The quiz's synthetic
+long-source fixture expected two links although three non-null positions exist;
+the test now checks the actual fixture count and requires multiple parties.
+That repaired check exposed fieldset/answer reflow at 320 px with 200% text; the
+intrinsic minimum width and long-word wrapping were corrected without weakening
+touch-target, clipping or contrast assertions.
+
+Local browser rerun passes the complete mock flow and long-source metadata
+regression, six privacy cases, and 67 keyboard/semantic/contrast checks. The
+current local Docker preview was rebuilt with BNG v2, eight active source
+objects, and build date 2026-11-12; 76/76 mobile checks pass again. CSS uses
+no-cache; the current comparison bundle is immutable; robots uses 3600 seconds.
+Production derives its default build date from the versioned source register,
+which removes a stale fixed Docker date. These remain private/pending artifacts.
+
+The extended-taxonomy test now renders the whole synthetic site and browser
+payload, rather than checking only record loading. Full page locators remain
+visible; PDF fragments open the first physical page instead of invalid range
+fragments. No real political approval was used for this synthetic verification.

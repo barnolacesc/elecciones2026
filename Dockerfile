@@ -16,7 +16,8 @@ COPY site/ /app/site/
 ARG ELECTION_ID=es-gen-2026
 ARG QUIZ_MODE=unavailable
 ARG PILOT_PROVISIONAL=0
-ARG BUILD_DATE=2026-11-11
+# Empty selects the deterministic source-register update date for production.
+ARG BUILD_DATE
 
 # Compile deterministic Spanish static site into /app/dist
 RUN PYTHONPATH=/app/src python3 -m elecciones2026.generator build \
