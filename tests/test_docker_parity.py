@@ -296,6 +296,13 @@ class TestLiveDockerContainerParity(unittest.TestCase):
         with urllib.request.urlopen(f"{origin}/{match.group(0)}", timeout=5) as resp:
             self.assertEqual(resp.status, 200)
             self.assertEqual(resp.headers.get("Cache-Control"), "public, max-age=31536000, immutable")
+        for route in ("cuestionario/", "simulador/"):
+            with urllib.request.urlopen(origin + "/" + route, timeout=5) as resp:
+                page = resp.read().decode("utf-8")
+            stylesheet = re.search(r'(?:quiz|simulator)\.[0-9a-f]{16}\.css', page)
+            self.assertIsNotNone(stylesheet)
+            with urllib.request.urlopen(origin + "/" + stylesheet.group(), timeout=5) as resp:
+                self.assertEqual(resp.headers.get("Cache-Control"), "public, max-age=31536000, immutable")
 
     def test_container_preserves_social_metadata_and_serves_preview_png(self) -> None:
         """E3.1a: verify the shipped home page is not replaced by the prototype."""

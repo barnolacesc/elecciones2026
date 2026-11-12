@@ -220,3 +220,12 @@ structured metadata. This corrects metadata defaults, not political statements.
 The mock performance observation still misses its 500 ms cold-delivery target
 (about 1.1–1.2 seconds under emulated latency/CPU); warm cases meet it. Exit code
 zero for the measurement script is not a performance release approval.
+
+The second hosted run (`43320432318`) passed data/security and browser jobs but
+found that fingerprinted quiz assets did not receive their expected immutable
+cache headers. The existing comparison-only rule is retained; an earlier rule
+now covers fingerprinted quiz/simulator JS and CSS while stable names still
+revalidate. Local immutable-asset tests and all 19 owned-loopback rollback and
+withdrawal checks pass (about 0.7 seconds for the measured rollback). This fixes
+the runtime policy rather than relaxing the recovery assertion. No remote host
+or public cache settings were changed.
