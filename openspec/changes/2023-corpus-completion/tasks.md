@@ -452,5 +452,11 @@ and fixture tests cannot replace human inspection or editorial review.
   schema and PR #101 disposition; implement only fictional eligibility and
   propagation tests before touching any real 2023 approval.
 
-Validation for this draft: structural assertions and `git diff --check`.
-Hosted CI is engineering evidence, not an eligibility or editorial decision.
+Validation: local Python 3.11 assertions confirmed the four pilot rights states,
+the current review-schema gap and four fictional WHEN/THEN scenarios;
+`git diff --check` passed. [PR #235 CI run 43201704961](https://github.com/c2ventures/elecciones2026/actions/runs/43201704961)
+failed in pytest (delivery authorization, provisional source-link count and
+Docker readiness) and the mock-quiz browser count (`3 !== 2`). The same
+signatures appear on the unchanged-main [run 41343879201](https://github.com/c2ventures/elecciones2026/actions/runs/41343879201);
+this documentation-only draft does not repair them. CI is engineering
+evidence, not an eligibility or editorial decision.
