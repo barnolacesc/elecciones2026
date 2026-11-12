@@ -250,7 +250,10 @@ async function checkKeyboard(page) {
       await sourcePage.goto(`${base}/cuestionario/`, {waitUntil: 'networkidle'});
       await sourcePage.getByRole('button', {name: 'Empezar', exact: true}).click();
       await sourcePage.locator('#quiz-app summary').first().click();
-      assert.equal(await sourcePage.getByRole('link', {name: 'Abrir fuente oficial (ventana nueva)', exact: true}).count(), 2);
+      const expectedSourceLinks = await sourcePage.evaluate(() =>
+        window.QuizBundle.parties.filter(party => party.positions[0].value !== null).length);
+      assert.ok(expectedSourceLinks > 0, 'Long-source fixture must exercise a citation');
+      assert.equal(await sourcePage.getByRole('link', {name: 'Abrir fuente oficial (ventana nueva)', exact: true}).count(), expectedSourceLinks);
       await checkLayout(sourcePage, `${width}px: long source metadata`, width);
       if (width === 320) {
         await sourcePage.addStyleTag({content: 'html { font-size: 200% !important; }'});
