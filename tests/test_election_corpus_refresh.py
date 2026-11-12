@@ -68,6 +68,8 @@ class ElectionCorpusRefreshTests(unittest.TestCase):
         self.assertEqual(ctx.relationships, {})
         self.assertEqual(len(ctx.parties), 13)
         self.assertTrue(all(not p.is_fixture for p in ctx.parties.values()))
+        self.assertTrue(all(p.inclusion_criterion == "pending_verification" for p in ctx.parties.values()))
+        self.assertTrue(all(p.territorial_scope == "pending_verification" for p in ctx.parties.values()))
         self.assertTrue(all(s.election_id == "es-gen-2026" for s in ctx.register.sources))
         self.assertEqual([s.id for s in ctx.register.sources if s.party_id == "bng"], ["src-2026-bng-v2"])
         payload = build_comparison_payload(ctx)

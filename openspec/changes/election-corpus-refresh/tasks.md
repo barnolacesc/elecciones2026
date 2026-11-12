@@ -211,3 +211,12 @@ The extended-taxonomy test now renders the whole synthetic site and browser
 payload, rather than checking only record loading. Full page locators remain
 visible; PDF fragments open the first physical page instead of invalid range
 fragments. No real political approval was used for this synthetic verification.
+
+A final metadata audit removed inferred parliamentary inclusion and territorial
+scope from source-only party entries: both are pending verification until a
+reviewed party record provides them. Production pages identify project records
+rather than claiming an official party registry, and omit unverified legal-name
+structured metadata. This corrects metadata defaults, not political statements.
+The mock performance observation still misses its 500 ms cold-delivery target
+(about 1.1–1.2 seconds under emulated latency/CPU); warm cases meet it. Exit code
+zero for the measurement script is not a performance release approval.

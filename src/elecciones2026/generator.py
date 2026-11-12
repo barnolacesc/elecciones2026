@@ -229,7 +229,8 @@ def load_and_validate_site_data(
                 ballot_name=src.candidature_name,
                 is_coalition=False,
                 coalition_members=[],
-                territorial_scope=src.scope,
+                territorial_scope="pending_verification" if production_records else src.scope,
+                inclusion_criterion="pending_verification" if production_records else "criterion_a_parliamentary_representation",
             )
 
     # For 2023 pilot rehearsal, restrict parties strictly to candidacies with 2023 sources
@@ -738,12 +739,14 @@ def build_structured_data(
             "legalName": party.official_name,
             "alternateName": party.short_name,
         }
+        if ctx.production_records and party.inclusion_criterion == "pending_verification":
+            party_entity.pop("legalName")
         src = next((s for s in ctx.register.sources if s.party_id == party.id and s.election_id == ctx.election_id), None)
         citations = []
         if src and src.official_url:
             citations.append({
                 "@type": "CreativeWork",
-                "name": f"Programa electoral {party.display_name}",
+                "name": f"Documento registrado de {party.display_name}" if ctx.production_records and src.status != "verified" else f"Programa electoral {party.display_name}",
                 "url": src.official_url,
                 "version": src.version,
                 "identifier": src.sha256 if src.sha256 else None,
@@ -1704,7 +1707,8 @@ def render_party_index(ctx: SiteContext) -> str:
         src = next((s for s in ctx.register.sources if s.party_id == pid and s.election_id == ctx.election_id), None)
         status = src.status if src else "missing"
         badge = render_status_badge(ctx, status)
-        scope = party.territorial_scope
+        scope = "Pendiente de verificación" if party.territorial_scope == "pending_verification" else party.territorial_scope
+        name_label = "Nombre registrado" if ctx.production_records else "Nombre oficial"
 
         cards.append(f"""<article class="party-card" style="margin-bottom: var(--space-4);">
         <div class="party-card-header">
@@ -1714,7 +1718,7 @@ def render_party_index(ctx: SiteContext) -> str:
             {badge}
           </div>
         </div>
-        <p class="party-statement"><strong>Nombre oficial:</strong> {escape(party.official_name)} · <strong>Ámbito:</strong> {escape(scope)}</p>
+        <p class="party-statement"><strong>{name_label}:</strong> {escape(party.official_name)} · <strong>Ámbito:</strong> {escape(scope)}</p>
         <div class="party-card-footer">
           <a class="source-citation" href="./{escape(pid)}/">Ver programa y propuestas →</a>
           <span class="source-date">{escape(party.short_name)}</span>
@@ -1724,6 +1728,8 @@ def render_party_index(ctx: SiteContext) -> str:
     hero_eyebrow = "ENSAYO PILOTO PRIVADO · CANDIDATURAS GENERALES 2023" if ctx.election_id == "es-gen-2023" else "CANDIDATURAS Y COBERTURA"
     page_title = "Candidaturas y partidos · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Candidaturas y partidos · Elecciones 2026"
     page_description = "Consulta las candidaturas y el estado de sus programas para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else "Consulta las candidaturas electorales y el estado de sus programas para las Elecciones Generales 2026."
+    registry_intro = ("Inventario del proyecto con las formaciones y los documentos registrados. Consulte el estado de verificación y las propuestas revisadas de cada formación."
+                      if ctx.production_records else "Registro oficial de partidos y coaliciones incluidos en el comparador bajo criterios públicos y auditables. Consulte el estado de publicación y las propuestas revisadas de cada formación.")
 
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
@@ -1732,7 +1738,7 @@ def render_party_index(ctx: SiteContext) -> str:
     <section class="hero" aria-labelledby="parties-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="parties-title" class="hero-title">Candidaturas seguidas</h1>
-      <p class="hero-intro">Registro oficial de partidos y coaliciones incluidos en el comparador bajo criterios públicos y auditables. Consulte el estado de publicación y las propuestas revisadas de cada formación.</p>
+      <p class="hero-intro">{registry_intro}</p>
     </section>
 
     <section class="parties-list" style="padding: var(--space-4) 0 var(--space-8);">
@@ -2548,10 +2554,10 @@ def render_llms_full_txt(ctx: SiteContext) -> str:
         p = ctx.parties[pid]
         src = next((s for s in ctx.register.sources if s.party_id == pid and s.election_id == ctx.election_id), None)
         sections.append(f"### Candidatura: {p.display_name} (`{p.id}`)")
-        sections.append(f"- Nombre oficial: {p.official_name}")
+        sections.append(f"- {'Nombre registrado' if ctx.production_records else 'Nombre oficial'}: {p.official_name}")
         sections.append(f"- Siglas: {p.short_name}")
-        sections.append(f"- Ámbito territorial: {p.territorial_scope}")
-        sections.append(f"- Criterio de inclusión: {p.inclusion_criterion}")
+        sections.append(f"- Ámbito territorial: {'Pendiente de verificación' if p.territorial_scope == 'pending_verification' else p.territorial_scope}")
+        sections.append(f"- Criterio de inclusión: {'Pendiente de verificación' if p.inclusion_criterion == 'pending_verification' else p.inclusion_criterion}")
         if src:
             sections.append(f"- Estado del programa: {src.status}")
             sections.append(f"- URL oficial: {src.official_url or 'No disponible'}")
