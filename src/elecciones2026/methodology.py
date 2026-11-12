@@ -7,6 +7,7 @@ and topic taxonomy according to docs/CONTENT-METHODOLOGY.md.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
@@ -92,13 +93,13 @@ class Taxonomy:
             topics=topics,
         )
 
-    def validate(self) -> list[str]:
+    def validate(self, *, allow_extensions: bool = False) -> list[str]:
         """Validate taxonomy integrity against policy rules."""
         errors: list[str] = []
         topic_ids = [t.id for t in self.topics]
 
         # Must have exactly the 8 core topics
-        if len(topic_ids) != len(CORE_TOPIC_IDS):
+        if not allow_extensions and len(topic_ids) != len(CORE_TOPIC_IDS):
             errors.append(
                 f"Expected exactly {len(CORE_TOPIC_IDS)} core topics, found {len(topic_ids)}."
             )
@@ -108,12 +109,14 @@ class Taxonomy:
             errors.append(f"Missing core topics: {sorted(missing_core)}.")
 
         unexpected = set(topic_ids) - set(CORE_TOPIC_IDS)
-        if unexpected:
+        if unexpected and not allow_extensions:
             errors.append(f"Unexpected topics: {sorted(unexpected)}.")
 
         # Check subtopics uniqueness and labels
         seen_topic_ids = set()
         for topic in self.topics:
+            if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", topic.id):
+                errors.append(f"Invalid topic ID: {topic.id}.")
             if topic.id in seen_topic_ids:
                 errors.append(f"Duplicate topic ID: {topic.id}.")
             seen_topic_ids.add(topic.id)
@@ -125,6 +128,8 @@ class Taxonomy:
 
             seen_subtopic_ids = set()
             for st in topic.subtopics:
+                if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", st.id):
+                    errors.append(f"Invalid subtopic ID: {st.id}.")
                 if st.id in seen_subtopic_ids:
                     errors.append(
                         f"Duplicate subtopic ID '{st.id}' under topic '{topic.id}'."

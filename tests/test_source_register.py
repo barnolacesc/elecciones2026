@@ -55,11 +55,15 @@ class TestSourceRegister(unittest.TestCase):
         for s in sources_2026:
             with self.subTest(source_id=s.id):
                 self.assertEqual(s.election_id, "es-gen-2026")
+                if s.status == "replaced":
+                    self.assertEqual(s.id, "src-2026-bng-v1")
+                    self.assertEqual(s.replacement_history[-1].superseded_by, "src-2026-bng-v2")
+                    continue
                 if s.party_id in discovered_parties:
                     self.assertEqual(s.status, "published-unverified")
                     self.assertIsNotNone(s.sha256, f"{s.id} must specify sha256 hash")
                     self.assertIsNotNone(s.direct_url, f"{s.id} must specify direct_url")
-                    self.assertEqual(s.retrieval_date, "2026-11-11")
+                    self.assertEqual(s.retrieval_date, "2026-11-12" if s.id == "src-2026-bng-v2" else "2026-11-11")
                 else:
                     self.assertEqual(s.status, "missing")
                     self.assertIsNone(s.sha256, f"Unpublished 2026 programmes must not have a sha256 hash: {s.id}")

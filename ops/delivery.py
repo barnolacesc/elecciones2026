@@ -35,15 +35,20 @@ def trusted_run(run: dict, run_id: str) -> None:
 
 def candidate(record: dict, run: dict) -> str:
     image = record.get("image", "")
+    valid_election_mode = (
+        (record.get("election_id") == "es-gen-2026"
+         and record.get("pilot_mode") == "approved-records-only")
+        or (record.get("election_id") == "es-gen-2023"
+            and record.get("pilot_mode") == "source-linked-provisional")
+    )
     if not (record.get("schema") == 1 and IMAGE_PATTERN.fullmatch(image)
             and record.get("revision") == run["head_sha"]
             and record.get("run_id") == str(run["id"])
             and record.get("run_attempt") == str(run["run_attempt"])
             and record.get("platform") == "linux/amd64"
             and record.get("classification") == "private-staging"
-            and record.get("election_id") == "es-gen-2023"
+            and valid_election_mode
             and record.get("quiz_mode") == "unavailable"
-            and record.get("pilot_mode") == "source-linked-provisional"
             and record.get("canonical_base") == "https://xn--eleccionesespaa2026-83b.es"
             and re.fullmatch(r"[a-f0-9]{64}", record.get("home_sha256", ""))):
         raise DeliveryError("Candidate evidence does not match the approved CI run")

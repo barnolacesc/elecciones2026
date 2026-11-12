@@ -22,6 +22,7 @@ from elecciones2026.generator import (
     format_date_spanish,
     load_and_validate_site_data,
     render_source_coverage_card,
+    render_methodology_page, render_sources_page, render_corrections_page,
 )
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -38,12 +39,12 @@ class TestSourcesMethodCorrectionsPage(unittest.TestCase):
         self.correcciones_html_path = SITE_DIR / "correcciones" / "index.html"
         self.css_path = SITE_DIR / "styles.css"
 
-        self.metodo_html = self.metodo_html_path.read_text(encoding="utf-8")
-        self.fuentes_html = self.fuentes_html_path.read_text(encoding="utf-8")
-        self.correcciones_html = self.correcciones_html_path.read_text(encoding="utf-8")
         self.css_content = self.css_path.read_text(encoding="utf-8")
 
         self.ctx = load_and_validate_site_data(ROOT_DIR)
+        self.metodo_html = render_methodology_page(self.ctx)
+        self.fuentes_html = render_sources_page(self.ctx)
+        self.correcciones_html = render_corrections_page(self.ctx)
         self.source_register = self.ctx.register
         self.parties = self.ctx.parties
 
@@ -128,7 +129,7 @@ class TestSourcesMethodCorrectionsPage(unittest.TestCase):
 
         # Verify hash and rights labels
         self.assertIn("SHA-256", self.metodo_html)
-        self.assertIn("Derechos cita", self.metodo_html)
+        self.assertIn("Uso autorizado:", self.metodo_html)
         self.assertIn("Enlace oficial", self.metodo_html)
 
         # Outbound links must have rel="noopener noreferrer"

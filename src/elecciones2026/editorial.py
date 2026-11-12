@@ -602,7 +602,8 @@ class EditorialApprovalGate:
 
         stmt_election_id = getattr(stmt, "election_id", "")
         if isinstance(stmt, SchemaStatementRecord):
-            errors.extend(stmt.validate(target_election_id=target_election_id or self.target_election_id))
+            errors.extend(stmt.validate(target_election_id=target_election_id or self.target_election_id,
+                                        taxonomy=self.taxonomy))
         expected_election = target_election_id or self.target_election_id
         if not stmt_election_id:
             errors.append(f"Statement '{stmt_id}' missing election_id.")

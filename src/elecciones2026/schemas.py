@@ -21,6 +21,7 @@ from elecciones2026.methodology import (
     CORE_TOPIC_IDS,
     ProgrammeRecord,
     ProgrammeStatus,
+    Taxonomy,
     load_programme,
 )
 
@@ -205,7 +206,7 @@ class StatementRecord:
             is_fixture=data.get("is_fixture", False),
         )
 
-    def validate(self, target_election_id: Optional[str] = None) -> list[str]:
+    def validate(self, target_election_id: Optional[str] = None, *, taxonomy: Optional[Taxonomy] = None) -> list[str]:
         errors: list[str] = []
 
         if not SEMVER_PATTERN.match(self.schema_version):
@@ -225,10 +226,14 @@ class StatementRecord:
         if not self.party_id or not ID_PATTERN.match(self.party_id):
             errors.append(f"Statement {self.id}: party_id '{self.party_id}' must be a valid slug.")
 
-        if self.topic_id not in CORE_TOPIC_IDS:
+        topic_ids = {t.id for t in taxonomy.topics} if taxonomy else set(CORE_TOPIC_IDS)
+        if self.topic_id not in topic_ids:
             errors.append(
-                f"Statement {self.id}: topic_id '{self.topic_id}' must be one of {CORE_TOPIC_IDS}."
+                f"Statement {self.id}: topic_id '{self.topic_id}' must be one of {sorted(topic_ids)}."
             )
+        if taxonomy and not any(t.id == self.topic_id and any(
+                s.id == self.subtopic_id for s in t.subtopics) for t in taxonomy.topics):
+            errors.append(f"Statement {self.id}: subtopic_id '{self.subtopic_id}' is not under topic '{self.topic_id}'.")
 
         if not self.subtopic_id or not ID_PATTERN.match(self.subtopic_id):
             errors.append(f"Statement {self.id}: subtopic_id '{self.subtopic_id}' must be a valid slug.")
@@ -395,6 +400,7 @@ class RelationshipRecord:
         target_election_id: Optional[str] = None,
         statements_by_id: Optional[dict[str, StatementRecord]] = None,
         for_build: bool = False,
+        taxonomy: Optional[Taxonomy] = None,
     ) -> list[str]:
         errors: list[str] = []
 
@@ -412,10 +418,14 @@ class RelationshipRecord:
         if not self.id or not ID_PATTERN.match(self.id):
             errors.append(f"Relationship ID '{self.id}' must be a valid lowercase kebab-case slug.")
 
-        if self.topic_id not in CORE_TOPIC_IDS:
+        topic_ids = {t.id for t in taxonomy.topics} if taxonomy else set(CORE_TOPIC_IDS)
+        if self.topic_id not in topic_ids:
             errors.append(
-                f"Relationship {self.id}: topic_id '{self.topic_id}' must be one of {CORE_TOPIC_IDS}."
+                f"Relationship {self.id}: topic_id '{self.topic_id}' must be one of {sorted(topic_ids)}."
             )
+        if taxonomy and not any(t.id == self.topic_id and any(
+                s.id == self.subtopic_id for s in t.subtopics) for t in taxonomy.topics):
+            errors.append(f"Relationship {self.id}: subtopic_id '{self.subtopic_id}' is not under topic '{self.topic_id}'.")
 
         if not self.subtopic_id or not ID_PATTERN.match(self.subtopic_id):
             errors.append(f"Relationship {self.id}: subtopic_id '{self.subtopic_id}' must be a valid slug.")

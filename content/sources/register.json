@@ -1,7 +1,7 @@
 {
   "$schema": "./register.schema.json",
   "version": "1.0.0",
-  "last_updated": "2026-11-11",
+  "last_updated": "2026-11-12",
   "description": "Versioned source register tracking official candidacies and programme publication for the 2026 Spanish general election and pilot rehearsal sources.",
   "elections": [
     {
@@ -256,7 +256,7 @@
       "language": "gl",
       "version": "29N-v1",
       "sha256": "fd5aef260b9c66d030b57b7b0e18914c8ad79384e2c46b2346d9fb4f6514a97d",
-      "status": "published-unverified",
+      "status": "replaced",
       "rights_review": {
         "status": "not_reviewed",
         "reviewed_by": null,
@@ -269,9 +269,47 @@
           "superseded_by": "src-2026-bng-v1",
           "replacement_date": "2026-11-11",
           "reason": "Official 29N programme located on official BNG portal."
+        },
+        {
+          "prior_version": "29N-v1",
+          "superseded_by": "src-2026-bng-v2",
+          "replacement_date": "2026-11-12",
+          "reason": "Publisher programme portal now links the 2026-11-12 revision; distinct bytes archived and extracted privately."
         }
       ],
       "notes": "Official general election programme in Galician (91 pages). Local validation pending."
+    },
+    {
+      "id": "src-2026-bng-v2",
+      "election_id": "es-gen-2026",
+      "party_id": "bng",
+      "candidature_name": "Bloque Nacionalista Galego",
+      "publisher": "BNG",
+      "scope": "general",
+      "official_url": "https://www.bng.gal/estaticas/programas-eleitorais.html",
+      "direct_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+      "filename": "BNG_2026_Programa_Electoral_29N_GL.pdf",
+      "publication_date": null,
+      "retrieval_date": "2026-11-12",
+      "language": "gl",
+      "version": "29N-v2",
+      "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+      "status": "published-unverified",
+      "rights_review": {
+        "status": "not_reviewed",
+        "reviewed_by": null,
+        "review_date": null,
+        "terms_notes": "Publisher revision acquired privately on 2026-11-12. Source-specific reuse decision and human editorial approval remain pending."
+      },
+      "replacement_history": [
+        {
+          "prior_version": "29N-v1",
+          "superseded_by": "src-2026-bng-v2",
+          "replacement_date": "2026-11-12",
+          "reason": "Publisher programme portal now links the 2026-11-12 revision; distinct bytes archived and extracted privately."
+        }
+      ],
+      "notes": "Publisher-linked 91-page revision. Extracted text differs only on the contents page (physical page 2); no existing draft measure cites that page. This technical comparison does not grant human review or confirm a publication date."
     },
     {
       "id": "src-2026-coalicion-canaria-v1",

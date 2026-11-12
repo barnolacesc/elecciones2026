@@ -26,7 +26,7 @@ The active target is an IONOS Ubuntu VPS with 1 vCPU and 1 GB RAM. Cloudflare pr
 
 ## Preview
 
-Run `docker compose up --build` and open `http://localhost:8080`. The default build uses `es-gen-2023` and keeps the quiz unavailable. Use `QUIZ_MODE=mock` only for a private fictional quiz preview. The serving image is pinned by digest. CI checks non-root, read-only serving and image parity.
+Run `docker compose up --build` and open `http://localhost:8080`. The default build uses the separate `es-gen-2026` production corpus and keeps the quiz unavailable. Source documents are registered; programme claims remain pending editorial review. Add reviewed records through the [2026 corpus workflow](content/elections/es-gen-2026/README.md). Use `ELECTION_ID=es-gen-2023` for the explicit historical rehearsal, or `QUIZ_MODE=mock` only for a private fictional quiz preview. The serving image is pinned by digest. CI checks non-root, read-only serving and image parity.
 
 Human statement, comparison, and source-rights reviews are required before 2023 claims can return. Political content must come from approved records in both HTML and browser output. A historical rehearsal does not pass G2 for 2026.
 

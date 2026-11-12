@@ -1,5 +1,11 @@
 # Elections 2026 — Roadmap draft 0.3
 
+**2026-11-11 owner direction:** Prepare the 2026 comparator from the programmes
+now registered by E0.4, remove the 2023 rehearsal from the default preview, and
+support incremental source additions. Package `E1.4-2026` in
+`election-corpus-refresh` supersedes the older deferral below for technical
+preparation. Source identity, rights, editorial review and release gates remain.
+
 **2026-11-01 delivery priority:** Cesc has directed the project to:
 1. **Hold off on pre-campaign hub:** Do not build or publish a pre-campaign hub or temporary landing before the official electoral campaign starts (13 November 2026).
 2. **Defer 2026 party loading:** Do not load real 2026 candidacies or premature manifestos until official party programmes are published during the campaign.

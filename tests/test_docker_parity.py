@@ -145,11 +145,11 @@ class TestDockerConfiguration(unittest.TestCase):
         # 2. ADR-0001 Cache-Control rules
         # Fingerprinted comparison JS is immutable; stable names revalidate.
         self.assertIn('Cache-Control "public, max-age=31536000, immutable"', content)
-        self.assertIn('location ~* ^/comparison-data\\.[0-9a-f]{16}\\.js$ {', content)
+        self.assertIn('location ~* "^/comparison-data\\.[0-9a-f]{16}\\.js$" {', content)
         self.assertIn('location ~* \\.(?:css|js)$ {', content)
         self.assertIn('location ^~ /tokens/ {', content)
         self.assertIn('Cache-Control "public, no-cache"', content)
-        self.assertLess(content.index('location ~* ^/comparison-data'), content.index('location ~* \\.(?:css|js)$'))
+        self.assertLess(content.index('location ~* "^/comparison-data'), content.index('location ~* \\.(?:css|js)$'))
         # HTML pages (300s, stale-while-revalidate=86400)
         self.assertIn('Cache-Control "public, max-age=300, stale-while-revalidate=86400"', content)
         # Security & crawler files (3600s, stale-while-revalidate=86400)
