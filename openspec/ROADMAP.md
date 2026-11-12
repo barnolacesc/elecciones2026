@@ -1,5 +1,13 @@
 # Project delivery roadmap
 
+## Current package (2026-11-11)
+
+`E1.4-2026` — 2026 corpus intake and election-scoped publication, under
+`election-corpus-refresh`. The owner now requests the current-election view.
+Its specs, design and tasks define technical preparation and incremental
+loading. Private extraction, complete point coverage, human editorial review
+and release are separate tracked steps; no approval is implied.
+
 ## 2023-first OpenSpec alignment (2026-10-19)
 
 The [current product priority](../docs/PRODUCT-ROADMAP-2023-2026.md) is a

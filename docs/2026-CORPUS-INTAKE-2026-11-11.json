@@ -1,0 +1,125 @@
+{
+  "package": "E1.4-2026",
+  "audit_date": "2026-11-11",
+  "election_id": "es-gen-2026",
+  "editorial_approval_granted": false,
+  "complete_point_coverage_verified": false,
+  "sources": [
+    {
+      "source_id": "src-2026-pp-v1",
+      "election_id": "es-gen-2026",
+      "sha256": "ae0c35d7ef3faf540acaa79d47abbe3ae2bf56a3a755c4e78a8f5bf3ea49789c",
+      "size_bytes": 12304990,
+      "rights_status": "not_reviewed",
+      "points_enumerated": 0,
+      "point_review_status": "pending",
+      "extraction_status": "verified_private_extraction",
+      "image_id": "sha256:cd68be1fcb3953aa9160f19f415f40004b0adc33003d647b97a882a88797e8a5",
+      "page_count": 64,
+      "empty_text_pages": [],
+      "pages_sha256": "c57264dcee8fe76347f66a43e43d7e4e6b42ea6766fad0752c41ca9bcf271501"
+    },
+    {
+      "source_id": "src-2026-erc-v1",
+      "election_id": "es-gen-2026",
+      "sha256": "61728d162a6e88d492d44a0b0994effb31f9e4abb85ebf8aea715d870a9b2e04",
+      "size_bytes": 300308,
+      "rights_status": "not_reviewed",
+      "points_enumerated": 0,
+      "point_review_status": "pending",
+      "extraction_status": "verified_private_extraction",
+      "image_id": "sha256:cd68be1fcb3953aa9160f19f415f40004b0adc33003d647b97a882a88797e8a5",
+      "page_count": 48,
+      "empty_text_pages": [
+        4,
+        47,
+        48
+      ],
+      "pages_sha256": "38b43a83d15c489a25da0f84f6ff15b1086b53fccdd8db200372b7188ccf95fd"
+    },
+    {
+      "source_id": "src-2026-pnv-v1",
+      "election_id": "es-gen-2026",
+      "sha256": "5af7a5b6f67c26bad87ef6c3ca01ae38aa1f1d7d9029efb32fc52482de0c1314",
+      "size_bytes": 509986,
+      "rights_status": "not_reviewed",
+      "points_enumerated": 0,
+      "point_review_status": "pending",
+      "extraction_status": "verified_private_extraction",
+      "image_id": "sha256:cd68be1fcb3953aa9160f19f415f40004b0adc33003d647b97a882a88797e8a5",
+      "page_count": 43,
+      "empty_text_pages": [],
+      "pages_sha256": "dbde73d0b21444567c9e7694c9983ca62a14897b6fdd195e3beea7368f7169e5"
+    },
+    {
+      "source_id": "src-2026-bng-v1",
+      "election_id": "es-gen-2026",
+      "sha256": "fd5aef260b9c66d030b57b7b0e18914c8ad79384e2c46b2346d9fb4f6514a97d",
+      "size_bytes": 1387491,
+      "rights_status": "not_reviewed",
+      "points_enumerated": 0,
+      "point_review_status": "pending",
+      "extraction_status": "verified_private_extraction",
+      "image_id": "sha256:cd68be1fcb3953aa9160f19f415f40004b0adc33003d647b97a882a88797e8a5",
+      "page_count": 91,
+      "empty_text_pages": [],
+      "pages_sha256": "695943c26128aa17725568822b7bab77b3659c55378cc7683c93d9bcce284097"
+    },
+    {
+      "source_id": "src-2026-coalicion-canaria-v1",
+      "election_id": "es-gen-2026",
+      "sha256": "3c40c0a6e38d8dd80ae1061d94b614f4e3f1b6492ec8c801834fb497f337044e",
+      "size_bytes": 69215587,
+      "rights_status": "not_reviewed",
+      "points_enumerated": 0,
+      "point_review_status": "pending",
+      "extraction_status": "blocked",
+      "blocker_type": "ArchiveError",
+      "blocker": "Archive file exceeds size limit"
+    },
+    {
+      "source_id": "src-2026-salf-v1",
+      "election_id": "es-gen-2026",
+      "sha256": "073425b9522da77608a0399923c2e0d3b9153776e8a0436ac8f0aea794b7893b",
+      "size_bytes": 19063086,
+      "rights_status": "not_reviewed",
+      "points_enumerated": 0,
+      "point_review_status": "pending",
+      "extraction_status": "blocked",
+      "blocker_type": "ActiveContentDetectedError",
+      "blocker": "Security policy violation: active or executable content detected in PDF: Prohibited active/executable PDF dictionary token: /js"
+    },
+    {
+      "source_id": "src-2026-partido-humanista-v1",
+      "election_id": "es-gen-2026",
+      "sha256": "c53ab576b0c57a091665795cb8676269b85cc6f9b7e22c9d65ce11d86502086f",
+      "size_bytes": 461126,
+      "rights_status": "not_reviewed",
+      "points_enumerated": 0,
+      "point_review_status": "pending",
+      "extraction_status": "verified_private_extraction",
+      "image_id": "sha256:cd68be1fcb3953aa9160f19f415f40004b0adc33003d647b97a882a88797e8a5",
+      "page_count": 31,
+      "empty_text_pages": [],
+      "pages_sha256": "346031c30386928d56fa18880e174492a25778c44f81f4b953898cbe41fcbed9"
+    },
+    {
+      "source_id": "src-2026-frente-obrero-v1",
+      "election_id": "es-gen-2026",
+      "sha256": "7b9f423f2c1ada187b6f42ed8dbf4e025356254d7a6b81830e114b818ef2e282",
+      "size_bytes": 1202338,
+      "rights_status": "not_reviewed",
+      "points_enumerated": 0,
+      "point_review_status": "pending",
+      "extraction_status": "verified_private_extraction",
+      "image_id": "sha256:cd68be1fcb3953aa9160f19f415f40004b0adc33003d647b97a882a88797e8a5",
+      "page_count": 64,
+      "empty_text_pages": [
+        1,
+        2,
+        64
+      ],
+      "pages_sha256": "1f5559ef0e8e26cefbead9ca892f69a8e2375c19a0ff0c5bf69aa04de901d829"
+    }
+  ]
+}

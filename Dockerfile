@@ -16,6 +16,8 @@ COPY site/ /app/site/
 ARG ELECTION_ID=es-gen-2026
 ARG QUIZ_MODE=unavailable
 ARG PILOT_PROVISIONAL=0
+# Empty selects the deterministic source-register update date for production.
+ARG BUILD_DATE
 
 # Compile deterministic Spanish static site into /app/dist
 RUN PYTHONPATH=/app/src python3 -m elecciones2026.generator build \
@@ -25,7 +27,7 @@ RUN PYTHONPATH=/app/src python3 -m elecciones2026.generator build \
     --election-id "$ELECTION_ID" \
     --quiz-mode "$QUIZ_MODE" \
     $(test "$PILOT_PROVISIONAL" = 1 && echo --pilot-provisional) \
-    --build-date 2026-10-10 \
+    --build-date "$BUILD_DATE" \
     --canonical-base "$CANONICAL_BASE"
 
 # Preserve generated home metadata; client-side assets are copied by the generator.

@@ -145,11 +145,11 @@ class TestDockerConfiguration(unittest.TestCase):
         # 2. ADR-0001 Cache-Control rules
         # Fingerprinted comparison JS is immutable; stable names revalidate.
         self.assertIn('Cache-Control "public, max-age=31536000, immutable"', content)
-        self.assertIn('location ~* ^/comparison-data\\.[0-9a-f]{16}\\.js$ {', content)
+        self.assertIn('location ~* "^/comparison-data\\.[0-9a-f]{16}\\.js$" {', content)
         self.assertIn('location ~* \\.(?:css|js)$ {', content)
         self.assertIn('location ^~ /tokens/ {', content)
         self.assertIn('Cache-Control "public, no-cache"', content)
-        self.assertLess(content.index('location ~* ^/comparison-data'), content.index('location ~* \\.(?:css|js)$'))
+        self.assertLess(content.index('location ~* "^/comparison-data'), content.index('location ~* \\.(?:css|js)$'))
         # HTML pages (300s, stale-while-revalidate=86400)
         self.assertIn('Cache-Control "public, max-age=300, stale-while-revalidate=86400"', content)
         # Security & crawler files (3600s, stale-while-revalidate=86400)
@@ -296,6 +296,13 @@ class TestLiveDockerContainerParity(unittest.TestCase):
         with urllib.request.urlopen(f"{origin}/{match.group(0)}", timeout=5) as resp:
             self.assertEqual(resp.status, 200)
             self.assertEqual(resp.headers.get("Cache-Control"), "public, max-age=31536000, immutable")
+        for route in ("cuestionario/", "simulador/"):
+            with urllib.request.urlopen(origin + "/" + route, timeout=5) as resp:
+                page = resp.read().decode("utf-8")
+            stylesheet = re.search(r'(?:quiz|simulator)\.[0-9a-f]{16}\.css', page)
+            self.assertIsNotNone(stylesheet)
+            with urllib.request.urlopen(origin + "/" + stylesheet.group(), timeout=5) as resp:
+                self.assertEqual(resp.headers.get("Cache-Control"), "public, max-age=31536000, immutable")
 
     def test_container_preserves_social_metadata_and_serves_preview_png(self) -> None:
         """E3.1a: verify the shipped home page is not replaced by the prototype."""

@@ -1,6 +1,6 @@
 # Proposal: Reuse the corpus pipeline for a separate election
 
-Status: proposal only; not implementation-ready. Roadmap phase: P4.
+Status: technical preparation requested on 2026-11-11; editorial and release gates remain open. Roadmap phase: P4. Bounded package: E1.4-2026 (corpus intake and election-scoped publication).
 
 ## Why
 
@@ -18,14 +18,15 @@ silently relabelled when 2026 programmes arrive.
 
 ## Capabilities
 
-### Modified Capabilities
+### New Capabilities
 
 - `programme-provenance`: election-scoped versioning and review.
 - `static-publication`: distinct election views and corrections.
-- `budget-data-bundle`: period-aware reuse, subject to budget-context review.
 
 ## Impact and gates
 
-Complete specs/design/tasks after the P0–P1 source model is reviewed. New
-political content and rights decisions need human approval; technical migration
-tests alone cannot authorize publication.
+The owner now requests the 2026 comparator and incremental programme loading.
+The accompanying specs/design/tasks define technical preparation. Budget reuse
+is deferred to its existing separate change. New political content and rights
+decisions need human approval; technical migration tests alone cannot authorize
+publication. Unverified originals remain outside Git and public artifacts.

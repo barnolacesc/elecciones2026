@@ -1,10 +1,16 @@
 {
   "version": "1.0.0",
   "allowed_hosts": [
-    "www.pp.es",
-    "static.esquerra.cat",
+    "coalicioncanaria.org",
+    "esquerrarepublicana.cat",
+    "frenteobrero.es",
     "movimientosumar.es",
-    "www.eaj-pnv.eus"
+    "partidohumanista.es",
+    "static.esquerra.cat",
+    "www.bng.gal",
+    "www.eaj-pnv.eus",
+    "www.pp.es",
+    "www.seacabolafiesta.com"
   ],
-  "notes": "Private acquisition for 2023 rehearsal sources (PP, ERC, Sumar, PNV). Review additions and redirect hosts explicitly; this policy grants no distribution or editorial approval."
+  "notes": "Private acquisition hosts for official party sources (2023 pilot and 2026 general election candidacies). Review additions and redirect hosts explicitly; this policy grants no distribution or editorial approval."
 }

@@ -19,6 +19,22 @@ establish capacity on the active IONOS host. Service and cost targets remain
 unchanged. The sections below are repeatable setup instructions; they do not
 mean the verified preview setup is still pending.
 
+## Current-election candidate preparation (E1.4-2026)
+
+CI now builds `es-gen-2026` with the strict production record directory and
+`pilot_mode=approved-records-only`. Candidate classification remains
+`private-staging`; an empty reviewed corpus means a pending private preview.
+The validator retains `es-gen-2023` / `source-linked-provisional` compatibility
+for reviewed operator-selected recovery. Mixed election/mode pairs and public
+classification are rejected. None of these technical changes grants source,
+reuse, editorial or public release approval.
+
+On 2026-11-12 apex and www resolve through Cloudflare but respond 521. The
+private preview responds 401. Read-only host inspection confirms valid Nginx
+syntax and a preview-only authenticated server block. Public activation must
+use the G4-approved current-election artifact; exposing the existing historical
+container is not an authorized substitute.
+
 ## 1. DNS delegation: keep DonDominio as registrar
 
 Current verified preview setup also requires the hostname-specific Disable RUM

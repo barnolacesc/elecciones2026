@@ -38,16 +38,8 @@
     },
     "topic_id": {
       "type": "string",
-      "enum": [
-        "housing",
-        "education",
-        "health-social-services",
-        "economy-work-tax",
-        "immigration",
-        "foreign-policy-eu",
-        "climate-energy",
-        "institutions-rights"
-      ]
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Membership is validated against the selected election taxonomy by the record validator."
     },
     "subtopic_id": {
       "type": "string",

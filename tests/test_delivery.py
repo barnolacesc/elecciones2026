@@ -27,6 +27,12 @@ RECORD = {'schema': 1, 'run_id': '123', 'run_attempt': '1', 'revision': 'b' * 40
           'pilot_mode': 'source-linked-provisional',
           'canonical_base': 'https://xn--eleccionesespaa2026-83b.es',
           'image': IMAGE, 'home_sha256': 'c' * 64}
+RECORD_2026 = {'schema': 1, 'run_id': '123', 'run_attempt': '1', 'revision': 'b' * 40,
+               'platform': 'linux/amd64', 'classification': 'private-staging',
+               'election_id': 'es-gen-2026', 'quiz_mode': 'unavailable',
+               'pilot_mode': 'approved-records-only',
+               'canonical_base': 'https://xn--eleccionesespaa2026-83b.es',
+               'image': IMAGE, 'home_sha256': 'c' * 64}
 ENV = {'VPS_HOST': '195.20.230.75', 'VPS_USER': 'deployer', 'VPS_SSH_PORT': '22',
        'VPS_SSH_KEY': 'test-only-key', 'VPS_KNOWN_HOSTS': 'test-only-trust',
        'STAGING_BASIC_AUTH': 'test-user:test-password'}
@@ -61,6 +67,65 @@ class DeliveryTests(unittest.TestCase):
                 record = dict(RECORD, **{field: value})
                 with self.assertRaises(delivery.DeliveryError):
                     delivery.candidate(record, RUN)
+
+    def test_2026_production_staging_candidate_and_mixed_mode_rejection(self):
+        # Current 2026 approved-record candidate passes
+        self.assertEqual(delivery.candidate(RECORD_2026, RUN), IMAGE)
+        # Historical 2023 provisional candidate passes for recovery
+        self.assertEqual(delivery.candidate(RECORD, RUN), IMAGE)
+
+        # Mixed election / pilot_mode combinations are rejected
+        mixed_cases = [
+            ({'election_id': 'es-gen-2026', 'pilot_mode': 'source-linked-provisional'},
+             "Reject 2026 election with provisional 2023 pilot mode"),
+            ({'election_id': 'es-gen-2023', 'pilot_mode': 'approved-records-only'},
+             "Reject 2023 election with 2026 approved-records-only mode"),
+            ({'election_id': 'es-gen-2026', 'pilot_mode': 'other'},
+             "Reject unknown pilot mode with 2026 election"),
+            ({'election_id': 'es-gen-2024', 'pilot_mode': 'approved-records-only'},
+             "Reject unapproved election ID"),
+        ]
+        for changes, msg in mixed_cases:
+            with self.subTest(msg=msg):
+                record = dict(RECORD_2026, **changes)
+                with self.assertRaises(delivery.DeliveryError):
+                    delivery.candidate(record, RUN)
+
+        # Public classifications must be strictly rejected
+        for pub_class in ['public', 'public-production', 'staging-public', '']:
+            with self.subTest(classification=pub_class):
+                with self.assertRaises(delivery.DeliveryError):
+                    delivery.candidate(dict(RECORD_2026, classification=pub_class), RUN)
+                with self.assertRaises(delivery.DeliveryError):
+                    delivery.candidate(dict(RECORD, classification=pub_class), RUN)
+
+    def test_workflow_candidate_and_build_consistency(self):
+        import re
+        ci_yaml = (ROOT / '.github/workflows/ci.yml').read_text()
+        # Verify Docker build step specifies 2026 production build args
+        build_match = re.search(
+            r'docker build [^\n]*--build-arg ELECTION_ID=(\S+)[^\n]*--build-arg QUIZ_MODE=(\S+)[^\n]*--build-arg PILOT_PROVISIONAL=(\S+)',
+            ci_yaml,
+        )
+        self.assertIsNotNone(build_match, "Candidate docker build command must be present")
+        election_arg, quiz_arg, pilot_arg = build_match.groups()
+        self.assertEqual(election_arg, 'es-gen-2026')
+        self.assertEqual(quiz_arg, 'unavailable')
+        self.assertEqual(pilot_arg, '0')
+
+        # Verify candidate release.json creation binds 2026 and approved-records-only consistently
+        self.assertIn("'classification': 'private-staging'", ci_yaml)
+        self.assertIn("'election_id': 'es-gen-2026'", ci_yaml)
+        self.assertIn("'quiz_mode': 'unavailable'", ci_yaml)
+        self.assertIn("'pilot_mode': 'approved-records-only'", ci_yaml)
+
+        # Verify separate historical quiz rehearsal explicitly remains es-gen-2023
+        quiz_rehearsal = re.search(
+            r'docker build [^\n]*--build-arg ELECTION_ID=(\S+)[^\n]*--build-arg QUIZ_MODE=mock[^\n]*-t elecciones2026:quiz-ci',
+            ci_yaml,
+        )
+        self.assertIsNotNone(quiz_rehearsal, "Quiz rehearsal docker build command must be present")
+        self.assertEqual(quiz_rehearsal.group(1), 'es-gen-2023')
 
     def test_missing_credentials_invalid_connections_and_public_staging_do_not_mutate(self):
         for changes in [{'VPS_SSH_KEY': ''}, {'VPS_KNOWN_HOSTS': ''},
@@ -166,7 +231,22 @@ class DeliveryTests(unittest.TestCase):
         pilot = dict(environment, GITHUB_ACTOR='chad-openclaw',
                      GITHUB_TRIGGERING_ACTOR='chad-openclaw',
                      APPROVAL_RECORD='Cesc Telegram 2026-10-14 private 2023 pilot')
-        self.assertEqual(subprocess.run([sys.executable, '-c', code], env=pilot).returncode, 0)
+        # Exercise both sides of the historical delegation expiry without
+        # extending authorization or depending on the test runner's date.
+        for day, expected in [('2026-10-31', 0), ('2026-11-01', 1)]:
+            frozen = (
+                "from datetime import date as RealDate\n"
+                "from unittest.mock import patch\n"
+                "class FrozenDate(RealDate):\n"
+                "    @classmethod\n"
+                f"    def today(cls): return cls.fromisoformat({day!r})\n"
+                "with patch('datetime.date', FrozenDate):\n"
+                f"    exec({code!r})\n"
+            )
+            with self.subTest(delegation_date=day):
+                self.assertEqual(subprocess.run(
+                    [sys.executable, '-c', frozen], env=pilot, capture_output=True,
+                ).returncode, expected)
         self.assertNotEqual(subprocess.run([sys.executable, '-c', code],
                            env=dict(pilot, APPROVAL_RECORD='unrelated')).returncode, 0)
         for changes in [{'APPROVED': 'false'}, {'READY': ''}, {'APPROVAL_RECORD': ''},

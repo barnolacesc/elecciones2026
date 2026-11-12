@@ -47,13 +47,27 @@ class TestSourceRegister(unittest.TestCase):
         party_ids = {s.party_id for s in sources_2026}
         self.assertTrue({"psoe", "pp", "vox", "sumar", "erc", "pnv"}.issubset(party_ids))
 
-        # Per the 2026-10-09 audit, no 2026 general election programme is published yet
+        # Per the 2026-11-11 audit, 8 candidates have discovered programmes registered as published-unverified.
+        # Pending formations (psoe, vox, sumar, ehbildu, junts) remain missing with null hash and direct URL.
+        discovered_parties = {
+            "pp", "erc", "pnv", "bng", "coalicion-canaria", "salf", "partido-humanista", "frente-obrero"
+        }
         for s in sources_2026:
             with self.subTest(source_id=s.id):
                 self.assertEqual(s.election_id, "es-gen-2026")
-                self.assertEqual(s.status, "missing")
-                self.assertIsNone(s.sha256, "Unpublished 2026 programmes must not have a sha256 hash")
-                self.assertIsNone(s.direct_url, "Unpublished 2026 programmes must not have a direct_url")
+                if s.status == "replaced":
+                    self.assertEqual(s.id, "src-2026-bng-v1")
+                    self.assertEqual(s.replacement_history[-1].superseded_by, "src-2026-bng-v2")
+                    continue
+                if s.party_id in discovered_parties:
+                    self.assertEqual(s.status, "published-unverified")
+                    self.assertIsNotNone(s.sha256, f"{s.id} must specify sha256 hash")
+                    self.assertIsNotNone(s.direct_url, f"{s.id} must specify direct_url")
+                    self.assertEqual(s.retrieval_date, "2026-11-12" if s.id == "src-2026-bng-v2" else "2026-11-11")
+                else:
+                    self.assertEqual(s.status, "missing")
+                    self.assertIsNone(s.sha256, f"Unpublished 2026 programmes must not have a sha256 hash: {s.id}")
+                    self.assertIsNone(s.direct_url, f"Unpublished 2026 programmes must not have a direct_url: {s.id}")
 
     def test_task_1_2_pilot_programmes_registered(self) -> None:
         """Verify source registration without asserting rights or human approval.

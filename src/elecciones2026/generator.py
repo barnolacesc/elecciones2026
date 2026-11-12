@@ -17,7 +17,7 @@ import re
 import shutil
 import sys
 import tempfile
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Any, Dict, List, Optional, Set, Tuple
 from urllib.parse import urlsplit
 
@@ -91,6 +91,7 @@ class SiteContext:
     corrections: list[CorrectionRecord]
     i18n: dict[str, Any]
     templates_dir: Path
+    production_records: bool = False
     budget_payload: Optional[dict] = None
     budget_manifest: Optional[dict] = None
     budget_bundle_id: Optional[str] = None
@@ -159,10 +160,17 @@ def load_and_validate_site_data(
     strict_approved: bool = True,
     custom_statements: Optional[list[StatementRecord]] = None,
     custom_relationships: Optional[list[RelationshipRecord]] = None,
+    records_dir: Optional[Path] = None,
 ) -> SiteContext:
     """Load and strictly validate all source records before publishing."""
     if content_dir is None:
         content_dir = root_dir / "content"
+    production_records = records_dir is not None
+    record_root = records_dir if production_records else content_dir / "examples"
+    if production_records:
+        if not record_root.is_dir():
+            raise BuildValidationError(f"Production records directory missing: {record_root}")
+        strict_approved = True
 
     base = urlsplit(canonical_base)
     if (base.scheme not in {"http", "https"} or not base.hostname
@@ -179,18 +187,36 @@ def load_and_validate_site_data(
 
     # 1. Load taxonomy
     taxonomy_file = content_dir / "taxonomy.json"
+    election_taxonomy = production_records and (record_root / "taxonomy.json").exists()
+    if election_taxonomy:
+        taxonomy_file = record_root / "taxonomy.json"
     if not taxonomy_file.exists():
         raise BuildValidationError(f"Taxonomy file missing: {taxonomy_file}")
     taxonomy = load_taxonomy(taxonomy_file)
+    if production_records:
+        taxonomy_errors = taxonomy.validate(allow_extensions=bool(election_taxonomy))
+        if taxonomy.election_id != election_id:
+            taxonomy_errors.append("Production taxonomy has an election mismatch.")
+        if not re.fullmatch(r"\d+\.\d+\.\d+", taxonomy.taxonomy_version):
+            taxonomy_errors.append("Production taxonomy requires a stable version, not a draft.")
+        if taxonomy_errors:
+            raise BuildValidationError("Invalid production taxonomy: " + "; ".join(taxonomy_errors))
 
     # 2. Load source register
     register_file = content_dir / "sources" / "register.json"
     if not register_file.exists():
         raise BuildValidationError(f"Source register missing: {register_file}")
     register = load_register(register_file)
+    if production_records:
+        if not build_date and not os.environ.get("SOURCE_DATE_EPOCH_DATE"):
+            resolved_date = register.last_updated
+        if election_id not in {e.id for e in register.elections}:
+            raise BuildValidationError(f"Unknown production election: {election_id}")
+        register = replace(register, sources=[s for s in register.sources
+                                              if s.election_id == election_id and s.status != "replaced"])
 
     # 3. Load parties
-    parties_file = content_dir / "examples" / "parties.json"
+    parties_file = record_root / "parties.json"
     parties = load_parties(parties_file)
     # Also add parties tracked in source register if missing
     for src in register.sources:
@@ -203,13 +229,18 @@ def load_and_validate_site_data(
                 ballot_name=src.candidature_name,
                 is_coalition=False,
                 coalition_members=[],
-                territorial_scope=src.scope,
+                territorial_scope="pending_verification" if production_records else src.scope,
+                inclusion_criterion="pending_verification" if production_records else "criterion_a_parliamentary_representation",
             )
 
     # For 2023 pilot rehearsal, restrict parties strictly to candidacies with 2023 sources
     if election_id == "es-gen-2023":
         pilot_party_ids = {s.party_id for s in register.sources if s.election_id == "es-gen-2023"}
         parties = {pid: p for pid, p in parties.items() if pid in pilot_party_ids}
+    if production_records:
+        source_party_ids = {s.party_id for s in register.sources}
+        if any(p.is_fixture or pid not in source_party_ids for pid, p in parties.items()):
+            raise BuildValidationError("Production parties must be non-fixture election-scoped source records.")
 
     # 4. Load translations
     i18n_file = content_dir / "i18n" / "es.json"
@@ -221,10 +252,12 @@ def load_and_validate_site_data(
         for s in custom_statements:
             statements[s.id] = s
     else:
-        stmt_dir = content_dir / "examples" / "statements"
+        stmt_dir = record_root / "statements"
         if stmt_dir.exists():
             for sf in sorted(stmt_dir.glob("*.json")):
                 stmt = load_statement(sf)
+                if stmt.id in statements:
+                    raise BuildValidationError(f"Duplicate statement: {stmt.id}")
                 statements[stmt.id] = stmt
 
     # 6. Load relationships
@@ -233,40 +266,58 @@ def load_and_validate_site_data(
         for r in custom_relationships:
             relationships[r.id] = r
     else:
-        rel_dir = content_dir / "examples" / "relationships"
+        rel_dir = record_root / "relationships"
         if rel_dir.exists():
             for rf in sorted(rel_dir.glob("*.json")):
                 rel = load_relationship(rf)
+                if rel.id in relationships:
+                    raise BuildValidationError(f"Duplicate relationship: {rel.id}")
                 relationships[rel.id] = rel
 
     # 7. Load corrections
     corrections: list[CorrectionRecord] = []
-    corr_dir = content_dir / "examples" / "corrections"
+    corr_dir = record_root / "corrections"
     if corr_dir.exists():
         for cf in sorted(corr_dir.glob("*.json")):
             corrections.append(load_correction(cf))
 
     # Perform validation checks
     validation_errors: list[str] = []
+    if production_records:
+        for correction in corrections:
+            validation_errors.extend(correction.validate(target_election_id=election_id))
+            if correction.is_fixture:
+                validation_errors.append(f"Correction '{correction.id}': production corrections cannot be fixtures.")
+        for programme_file in sorted((record_root / "programmes").glob("*.json")):
+            programme = load_programme(programme_file)
+            validation_errors.extend(programme.validate(target_election_id=election_id))
+            if programme.is_fixture:
+                validation_errors.append("Production programmes cannot be fixtures.")
 
     # Filter statements for the target election and validate review status
     filtered_statements: dict[str, StatementRecord] = {}
     for stmt_id, stmt in statements.items():
         if stmt.election_id != election_id:
-            if custom_statements is not None:
+            if custom_statements is not None or production_records:
                 validation_errors.append(f"Statement '{stmt.id}': explicit publish set has an election mismatch.")
             continue
 
-        if election_id == "es-gen-2023":
+        if election_id == "es-gen-2023" or production_records:
             # Repository drafts are audit material, outside the publish set.
             # Explicit caller-supplied drafts still fail strict publication checks.
-            if stmt.review_status != "approved" and custom_statements is None:
+            if stmt.review_status != "approved" and custom_statements is None and not production_records:
                 continue
-            validation_errors.extend(stmt.validate(target_election_id=election_id))
+            validation_errors.extend(stmt.validate(target_election_id=election_id,
+                                                   taxonomy=taxonomy if production_records else None))
             if stmt.review_status != "approved":
                 validation_errors.append(f"Statement '{stmt.id}' has unreviewed status '{stmt.review_status}'.")
             if stmt.is_fixture:
                 validation_errors.append(f"Statement '{stmt.id}': political pilot claims cannot be fixtures.")
+            if production_records:
+                for review in stmt.reviews:
+                    validation_errors.extend(review.validate(require_human=True))
+                    if review.content_sha256 != stmt.review_fingerprint():
+                        validation_errors.append(f"Statement '{stmt.id}': human approval must bind to the current content hash.")
             sources = [s for s in register.sources if s.election_id == election_id and s.party_id == stmt.party_id
                        and s.version == stmt.source_version and stmt.source_url in (s.direct_url, s.official_url)]
             if len(sources) != 1:
@@ -286,7 +337,7 @@ def load_and_validate_site_data(
                     validation_errors.append(f"Statement '{stmt.id}': source-specific reuse decision requires an evidence reference.")
                 if not rights.terms_notes.strip():
                     validation_errors.append(f"Statement '{stmt.id}': source-specific reuse decision requires its scope.")
-                programme_path = content_dir / "examples" / "programmes"
+                programme_path = record_root / "programmes"
                 programmes = [json.loads(p.read_text()) for p in sorted(programme_path.glob("*.json"))]
                 matches = [p for p in programmes if p.get("programme_id") == stmt.programme_id]
                 if len(matches) != 1 or any(matches[0].get(k) != value for k, value in (
@@ -334,9 +385,10 @@ def load_and_validate_site_data(
                         )
 
             # Topic taxonomy alignment
-            if stmt.topic_id not in CORE_TOPIC_IDS:
+            allowed_topics = {t.id for t in taxonomy.topics} if production_records else set(CORE_TOPIC_IDS)
+            if stmt.topic_id not in allowed_topics:
                 validation_errors.append(
-                    f"Statement '{stmt.id}' topic '{stmt.topic_id}' not in core topics {sorted(CORE_TOPIC_IDS)}."
+                    f"Statement '{stmt.id}' topic '{stmt.topic_id}' not in selected taxonomy {sorted(allowed_topics)}."
                 )
 
             # Quotation constraints under Spanish Intellectual Property Law (TRLPI Art. 32)
@@ -361,7 +413,7 @@ def load_and_validate_site_data(
     filtered_relationships: dict[str, RelationshipRecord] = {}
     for rel_id, rel in relationships.items():
         if rel.election_id != election_id:
-            if custom_relationships is not None:
+            if custom_relationships is not None or production_records:
                 validation_errors.append(f"Relationship '{rel.id}': explicit publish set has an election mismatch.")
             continue
 
@@ -369,12 +421,16 @@ def load_and_validate_site_data(
             # Exclude invalidated comparisons from active presentation
             continue
 
-        if election_id == "es-gen-2023":
-            if rel.review_status != "approved" and custom_relationships is None:
+        if election_id == "es-gen-2023" or production_records:
+            if rel.review_status != "approved" and custom_relationships is None and not production_records:
                 continue
-            validation_errors.extend(rel.validate(target_election_id=election_id, statements_by_id=filtered_statements, for_build=True))
+            validation_errors.extend(rel.validate(target_election_id=election_id, statements_by_id=filtered_statements,
+                                                  for_build=True, taxonomy=taxonomy if production_records else None))
             if rel.is_fixture:
                 validation_errors.append(f"Relationship '{rel.id}': political pilot comparisons cannot be fixtures.")
+            if production_records:
+                for review in rel.reviews:
+                    validation_errors.extend(review.validate(require_human=True))
 
         if strict_approved:
             if rel.review_status != "approved":
@@ -414,6 +470,7 @@ def load_and_validate_site_data(
         corrections=corrections,
         i18n=i18n,
         templates_dir=templates_dir,
+        production_records=production_records,
     )
 
 
@@ -432,6 +489,8 @@ def render_social_metadata(ctx: SiteContext, title: str, description: str, canon
     pilot = ctx.election_id == "es-gen-2023"
     site_name = "Generales 2023 · Ensayo piloto privado" if pilot else ctx.i18n["meta"]["site_name"]
     notice = "Ensayo piloto privado de 2023." if pilot else "Vista previa · Datos de prueba."
+    if ctx.production_records:
+        notice = "Vista previa de 2026 · Incorporación y revisión de programas en curso."
     image_url = f"{ctx.canonical_base}/{preview_image_path(ctx.root_dir)}"
     properties = {
         "og:type": "website",
@@ -680,12 +739,14 @@ def build_structured_data(
             "legalName": party.official_name,
             "alternateName": party.short_name,
         }
+        if ctx.production_records and party.inclusion_criterion == "pending_verification":
+            party_entity.pop("legalName")
         src = next((s for s in ctx.register.sources if s.party_id == party.id and s.election_id == ctx.election_id), None)
         citations = []
         if src and src.official_url:
             citations.append({
                 "@type": "CreativeWork",
-                "name": f"Programa electoral {party.display_name}",
+                "name": f"Documento registrado de {party.display_name}" if ctx.production_records and src.status != "verified" else f"Programa electoral {party.display_name}",
                 "url": src.official_url,
                 "version": src.version,
                 "identifier": src.sha256 if src.sha256 else None,
@@ -802,7 +863,8 @@ def render_preview_banner(ctx: SiteContext) -> str:
 
 def render_status_badge(ctx: SiteContext, status: str) -> str:
     """Render lifecycle status badge."""
-    label = ctx.i18n["status_badges"].get(status, status.capitalize())
+    key = "official" if status == "verified" else status.replace("-", "_")
+    label = ctx.i18n["status_badges"].get(key, "Estado pendiente de revisión")
     badge_class = f"status-badge status-badge-{escape(status)}"
     return f'<span class="{badge_class}">{escape(label)}</span>'
 
@@ -827,6 +889,16 @@ def render_caveat(ctx: SiteContext, qualification: str) -> str:
               </div>"""
 
 
+def statement_source_url(stmt: StatementRecord) -> Optional[str]:
+    """Open the first physical PDF page while retaining the full visible locator."""
+    link = stmt.source_url
+    if link and stmt.source_page and "#" not in link:
+        first_page = re.match(r"^[1-9]\d*", stmt.source_page)
+        if first_page:
+            link += f"#page={first_page.group()}"
+    return link
+
+
 def render_source_citation(ctx: SiteContext, stmt: StatementRecord) -> str:
     """Render source citation link or missing note."""
     if stmt.statement_type == "not_found" or not stmt.source_url:
@@ -843,10 +915,7 @@ def render_source_citation(ctx: SiteContext, stmt: StatementRecord) -> str:
         locators.append(f"{ctx.i18n['statement']['section']} {stmt.source_section}")
     locator_text = " · ".join(locators) if locators else "Programa oficial"
 
-    source_url = stmt.source_url
-    if stmt.source_page and "#" not in source_url:
-        source_url += f"#page={stmt.source_page}"
-    url = escape(source_url)
+    url = escape(statement_source_url(stmt))
     sr_notice = escape(ctx.i18n["statement"]["opens_new_window"])
     return f"""<a class="source-citation" href="{url}" target="_blank" rel="noopener noreferrer">
                 <span aria-hidden="true">↗</span> Fuente: <span>{escape(locator_text)}</span>
@@ -1054,6 +1123,9 @@ def render_base(
         feedback_label = escape(ctx.i18n.get("feedback", {}).get("link_text", "Buzón de propuestas"))
         nav_feedback_link = f'\n        <a class="nav-link" href="{root_path}propuestas/">{feedback_label}</a>'
 
+    if ctx.production_records:
+        preview_banner_text = "VISTA PREVIA · Incorporación de programas de 2026 · Revisión editorial pendiente"
+
     if base_template_file.exists():
         template = base_template_file.read_text(encoding="utf-8")
     else:
@@ -1182,7 +1254,8 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
     """Project the validated HTML publish set; never load drafts or source bytes."""
     errors = []
     for stmt in ctx.statements.values():
-        errors.extend(stmt.validate(target_election_id=ctx.election_id))
+        errors.extend(stmt.validate(target_election_id=ctx.election_id,
+                                    taxonomy=ctx.taxonomy if ctx.production_records else None))
         if stmt.review_status != "approved":
             errors.append(f"Statement '{stmt.id}': only approved records may enter browser output.")
         if stmt.party_id not in ctx.parties:
@@ -1201,7 +1274,8 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
                 errors.append(f"Statement '{stmt.id}': source URL must be absolute HTTP(S) without credentials or unsafe characters.")
     for rel in ctx.relationships.values():
         errors.extend(rel.validate(target_election_id=ctx.election_id,
-                                   statements_by_id=ctx.statements, for_build=True))
+                                   statements_by_id=ctx.statements, for_build=True,
+                                   taxonomy=ctx.taxonomy if ctx.production_records else None))
         if any(pid not in ctx.parties for pid in rel.party_ids):
             errors.append(f"Relationship '{rel.id}': unknown party.")
         targets = [ctx.statements[sid] for sid in rel.statement_ids if sid in ctx.statements]
@@ -1226,9 +1300,7 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
         if stmt.source_section:
             locators.append(f"{ctx.i18n['statement']['section']} {stmt.source_section}")
         locator = " · ".join(locators)
-        link = stmt.source_url
-        if link and stmt.source_page and "#" not in link:
-            link += f"#page={stmt.source_page}"
+        link = statement_source_url(stmt)
         return {"statementId": stmt.id, "electionId": stmt.election_id,
                 "programmeId": stmt.programme_id, "sourceVersion": stmt.source_version,
                 "sourcePage": stmt.source_page, "sourceSection": stmt.source_section,
@@ -1352,6 +1424,20 @@ def render_home_page(ctx: SiteContext) -> str:
         selector_eyebrow = escape(ctx.i18n['selector']['eyebrow'])
         page_title = f"{ctx.i18n['meta']['site_name']} · Comparador de programas electorales"
         page_description = ctx.i18n["meta"]["site_description"]
+
+    if ctx.production_records:
+        party_ids = sorted(ctx.parties)
+        party_a_id = active_rel.party_ids[0] if active_rel else (party_ids[0] if party_ids else "")
+        party_b_id = active_rel.party_ids[1] if active_rel else (party_ids[1] if len(party_ids) > 1 else "")
+        received = sum(s.sha256 is not None and s.direct_url is not None for s in ctx.register.sources)
+        mock_notice = f'''<aside class="notice" aria-label="Estado de incorporación">
+      <strong>{received} documentos registrados para 2026.</strong>
+      Las propuestas se incorporan tras comprobar la fuente y completar la revisión editorial.
+      La falta de propuestas revisadas no implica apoyo ni oposición.
+      <a href="./fuentes/">Consultar programas y cobertura</a>
+    </aside>'''
+        if not ctx.statements:
+            hero_intro = "Consulta los documentos registrados y los temas del comparador. Las propuestas están pendientes de revisión editorial."
 
     topic_options = []
     for t in ctx.taxonomy.topics:
@@ -1479,7 +1565,7 @@ def render_home_page(ctx: SiteContext) -> str:
 
 
 def render_topic_index(ctx: SiteContext) -> str:
-    """Render temas/index.html listing all 8 taxonomy core topics."""
+    """Render temas/index.html listing the selected taxonomy topics."""
     cards_html = []
     for t in ctx.taxonomy.topics:
         # Count proposals
@@ -1503,7 +1589,7 @@ def render_topic_index(ctx: SiteContext) -> str:
 
     hero_eyebrow = "ENSAYO PILOTO PRIVADO · TAXONOMÍA GENERALES 2023" if ctx.election_id == "es-gen-2023" else "TAXONOMÍA ELECTORAL 2026"
     page_title = "Temas electorales · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Temas electorales · Elecciones 2026"
-    page_description = "Explora las propuestas electorales para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else "Explora las propuestas electorales para las Elecciones Generales 2026 agrupadas en 8 temas clave."
+    page_description = "Explora las propuestas electorales para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else f"Explora las propuestas electorales para las Elecciones Generales 2026 agrupadas en {len(ctx.taxonomy.topics)} temas clave."
 
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
@@ -1621,7 +1707,8 @@ def render_party_index(ctx: SiteContext) -> str:
         src = next((s for s in ctx.register.sources if s.party_id == pid and s.election_id == ctx.election_id), None)
         status = src.status if src else "missing"
         badge = render_status_badge(ctx, status)
-        scope = party.territorial_scope
+        scope = "Pendiente de verificación" if party.territorial_scope == "pending_verification" else party.territorial_scope
+        name_label = "Nombre registrado" if ctx.production_records else "Nombre oficial"
 
         cards.append(f"""<article class="party-card" style="margin-bottom: var(--space-4);">
         <div class="party-card-header">
@@ -1631,7 +1718,7 @@ def render_party_index(ctx: SiteContext) -> str:
             {badge}
           </div>
         </div>
-        <p class="party-statement"><strong>Nombre oficial:</strong> {escape(party.official_name)} · <strong>Ámbito:</strong> {escape(scope)}</p>
+        <p class="party-statement"><strong>{name_label}:</strong> {escape(party.official_name)} · <strong>Ámbito:</strong> {escape(scope)}</p>
         <div class="party-card-footer">
           <a class="source-citation" href="./{escape(pid)}/">Ver programa y propuestas →</a>
           <span class="source-date">{escape(party.short_name)}</span>
@@ -1641,6 +1728,8 @@ def render_party_index(ctx: SiteContext) -> str:
     hero_eyebrow = "ENSAYO PILOTO PRIVADO · CANDIDATURAS GENERALES 2023" if ctx.election_id == "es-gen-2023" else "CANDIDATURAS Y COBERTURA"
     page_title = "Candidaturas y partidos · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Candidaturas y partidos · Elecciones 2026"
     page_description = "Consulta las candidaturas y el estado de sus programas para las Elecciones Generales 2023 (Ensayo piloto)." if ctx.election_id == "es-gen-2023" else "Consulta las candidaturas electorales y el estado de sus programas para las Elecciones Generales 2026."
+    registry_intro = ("Inventario del proyecto con las formaciones y los documentos registrados. Consulte el estado de verificación y las propuestas revisadas de cada formación."
+                      if ctx.production_records else "Registro oficial de partidos y coaliciones incluidos en el comparador bajo criterios públicos y auditables. Consulte el estado de publicación y las propuestas revisadas de cada formación.")
 
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
@@ -1649,7 +1738,7 @@ def render_party_index(ctx: SiteContext) -> str:
     <section class="hero" aria-labelledby="parties-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="parties-title" class="hero-title">Candidaturas seguidas</h1>
-      <p class="hero-intro">Registro oficial de partidos y coaliciones incluidos en el comparador bajo criterios públicos y auditables. Consulte el estado de publicación y las propuestas revisadas de cada formación.</p>
+      <p class="hero-intro">{registry_intro}</p>
     </section>
 
     <section class="parties-list" style="padding: var(--space-4) 0 var(--space-8);">
@@ -1683,13 +1772,13 @@ def render_party_detail(ctx: SiteContext, party: PartyInfo) -> str:
           <li><strong>Versión registrada:</strong> {escape(src.version)}</li>
           <li><strong>Fecha de consulta:</strong> {escape(src.retrieval_date)}</li>
           <li><strong>Hash SHA-256:</strong> {sha_display}</li>
-          <li><strong>Derechos de cita:</strong> {escape(src.rights_review.status)}</li>
+          <li><strong>Uso autorizado:</strong> {escape(rights_status_label(src.rights_review.status))}</li>
         </ul>"""
 
     stmts_sections = []
     if not party_stmts:
         stmts_sections.append("""<div class="notice" style="margin-top: var(--space-4);">
-          <p><strong>Programa no disponible:</strong> No se han registrado aún afirmaciones revisadas para esta candidatura.</p>
+          <p><strong>Propuestas pendientes de revisión:</strong> No se han registrado aún afirmaciones revisadas para esta candidatura.</p>
         </div>""")
     else:
         for s in party_stmts:
@@ -1884,6 +1973,10 @@ def render_methodology_page(ctx: SiteContext) -> str:
       </article>
     </section>"""
 
+    if ctx.production_records:
+        content = re.sub(r'<aside class="notice"[^>]*>\s*<strong>Aislamiento de elecciones.*?</aside>',
+                         '', content, flags=re.DOTALL)
+
     return render_base(
         ctx=ctx,
         title=page_title,
@@ -1935,6 +2028,37 @@ def render_sources_page(ctx: SiteContext) -> str:
     page_title = "Fuentes oficiales y trazabilidad · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Fuentes oficiales y trazabilidad · Elecciones 2026"
     page_description = "Inventario de fuentes primarias, versiones y hashes SHA-256 para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Inventario de fuentes primarias, versiones y hashes SHA-256 para las Elecciones 2026."
 
+    historical_inventory = "" if ctx.production_records else f'''
+    <section style="margin-bottom: var(--space-10);">
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">2. Fuentes históricas de ensayo · Piloto 2023</h2>
+      <aside class="notice" style="margin-bottom: var(--space-4);">
+        <strong>Aislamiento de elecciones (Tarea 1.4):</strong> Los documentos de 2023 se emplean exclusivamente para ensayos técnicos y validación de esquemas. El comparador rechaza automáticamente cualquier intento de comparar un programa de 2023 con uno de 2026.
+      </aside>
+      <div class="coverage-cards" style="margin-bottom: var(--space-4);">
+        {cards_2023_html}
+      </div>
+      <div class="coverage-table-container">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: var(--font-size-sm);">
+          <thead>
+            <tr style="background: var(--color-bg-surface-subtle); border-bottom: 2px solid var(--color-border-subtle);">
+              <th style="padding: var(--space-3);">Candidatura</th>
+              <th style="padding: var(--space-3);">Estado</th>
+              <th style="padding: var(--space-3);">Versión</th>
+              <th style="padding: var(--space-3);">Fecha consulta</th>
+              <th style="padding: var(--space-3);">SHA-256</th>
+              <th style="padding: var(--space-3);">Derechos</th>
+              <th style="padding: var(--space-3);">Acceso</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows_2023_html}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+'''
+
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
     </nav>
@@ -1974,33 +2098,7 @@ def render_sources_page(ctx: SiteContext) -> str:
       </div>
     </section>
 
-    <section style="margin-bottom: var(--space-10);">
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">2. Fuentes históricas de ensayo · Piloto 2023</h2>
-      <aside class="notice" style="margin-bottom: var(--space-4);">
-        <strong>Aislamiento de elecciones (Tarea 1.4):</strong> Los documentos de 2023 se emplean exclusivamente para ensayos técnicos y validación de esquemas. El comparador rechaza automáticamente cualquier intento de comparar un programa de 2023 con uno de 2026.
-      </aside>
-      <div class="coverage-cards" style="margin-bottom: var(--space-4);">
-        {cards_2023_html}
-      </div>
-      <div class="coverage-table-container">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: var(--font-size-sm);">
-          <thead>
-            <tr style="background: var(--color-bg-surface-subtle); border-bottom: 2px solid var(--color-border-subtle);">
-              <th style="padding: var(--space-3);">Candidatura</th>
-              <th style="padding: var(--space-3);">Estado</th>
-              <th style="padding: var(--space-3);">Versión</th>
-              <th style="padding: var(--space-3);">Fecha consulta</th>
-              <th style="padding: var(--space-3);">SHA-256</th>
-              <th style="padding: var(--space-3);">Derechos</th>
-              <th style="padding: var(--space-3);">Acceso</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows_2023_html}
-          </tbody>
-        </table>
-      </div>
-    </section>
+    {historical_inventory}
 
     <section style="margin-bottom: var(--space-8);">
       <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">3. Observaciones y canales editoriales</h2>
@@ -2408,7 +2506,7 @@ def render_llms_txt(ctx: SiteContext) -> str:
 - [Metodología de Verificación]({ctx.canonical_base}/metodo/): Criterios objetivos de inclusión de candidaturas (Criterios A y B), límites de cita y política de rectificación.
 - [Registro de Fuentes Oficiales]({ctx.canonical_base}/fuentes/): Inventario de fuentes registradas, hashes SHA-256 y estados de cobertura.
 - [Registro de Correcciones Editoriales]({ctx.canonical_base}/correcciones/): Historial auditable de correcciones y tiempos de respuesta (SLAs Sev-1, Sev-2, Sev-3).
-- [Índice de Temas]({ctx.canonical_base}/temas/): Los 8 temas troncales de la taxonomía oficial de comparación.
+- [Índice de Temas]({ctx.canonical_base}/temas/): Los {len(ctx.taxonomy.topics)} temas de la taxonomía de comparación.
 - [Índice de Candidaturas]({ctx.canonical_base}/partidos/): Candidaturas monitorizadas según criterios objetivos de representación.
 
 ## Temas Electorales
@@ -2456,10 +2554,10 @@ def render_llms_full_txt(ctx: SiteContext) -> str:
         p = ctx.parties[pid]
         src = next((s for s in ctx.register.sources if s.party_id == pid and s.election_id == ctx.election_id), None)
         sections.append(f"### Candidatura: {p.display_name} (`{p.id}`)")
-        sections.append(f"- Nombre oficial: {p.official_name}")
+        sections.append(f"- {'Nombre registrado' if ctx.production_records else 'Nombre oficial'}: {p.official_name}")
         sections.append(f"- Siglas: {p.short_name}")
-        sections.append(f"- Ámbito territorial: {p.territorial_scope}")
-        sections.append(f"- Criterio de inclusión: {p.inclusion_criterion}")
+        sections.append(f"- Ámbito territorial: {'Pendiente de verificación' if p.territorial_scope == 'pending_verification' else p.territorial_scope}")
+        sections.append(f"- Criterio de inclusión: {'Pendiente de verificación' if p.inclusion_criterion == 'pending_verification' else p.inclusion_criterion}")
         if src:
             sections.append(f"- Estado del programa: {src.status}")
             sections.append(f"- URL oficial: {src.official_url or 'No disponible'}")
@@ -2603,6 +2701,7 @@ def build_site(
     simulator_mode: str = "unavailable",
     simulator_file: Optional[Path] = None,
     pilot_provisional: bool = False,
+    records_dir: Optional[Path] = None,
 ) -> SiteBuildResult:
     """Generate the complete static site deterministically into output_dir.
 
@@ -2628,6 +2727,7 @@ def build_site(
         strict_approved=strict_approved,
         custom_statements=custom_statements,
         custom_relationships=custom_relationships,
+        records_dir=records_dir,
     )
 
     ctx.budget_payload = budget_payload
@@ -2973,6 +3073,7 @@ def main(args: Optional[list[str]] = None) -> int:
                          help="Simulator mode: unavailable (static info), mock (private preview), or reviewed.")
     build_p.add_argument("--simulator-file", type=Path, help="Versioned simulator profile JSON.")
     build_p.add_argument("--pilot-provisional", action="store_true", help="Private source-linked 2023 pilot only.")
+    build_p.add_argument("--records-dir", type=Path, help="Production records directory; defaults to content/elections/es-gen-2026 for 2026 builds.")
 
     # Command: check-determinism
     det_p = subparsers.add_parser("check-determinism", help="Verify build determinism across repeated runs.")
@@ -2985,8 +3086,12 @@ def main(args: Optional[list[str]] = None) -> int:
     val_p.add_argument("--root-dir", type=Path, default=Path.cwd(), help="Repository root directory.")
     val_p.add_argument("--content-dir", type=Path, default=None, help="Content directory.")
     val_p.add_argument("--election-id", type=str, default=DEFAULT_ELECTION_ID, help="Target election ID.")
+    val_p.add_argument("--records-dir", type=Path, help="Production records directory.")
 
     parsed = parser.parse_args(args)
+    records_dir = getattr(parsed, "records_dir", None)
+    if parsed.command in {"build", "validate"} and records_dir is None and parsed.election_id == "es-gen-2026":
+        records_dir = (parsed.content_dir or parsed.root_dir / "content") / "elections" / parsed.election_id
 
     if parsed.command == "build":
         try:
@@ -3004,6 +3109,7 @@ def main(args: Optional[list[str]] = None) -> int:
                 simulator_mode=parsed.simulator_mode,
                 simulator_file=parsed.simulator_file,
                 pilot_provisional=parsed.pilot_provisional,
+                records_dir=records_dir,
             )
             print(f"Build completed successfully in {res.output_dir}:")
             print(f"  - Topics: {res.topics_count}")
@@ -3036,6 +3142,7 @@ def main(args: Optional[list[str]] = None) -> int:
                 root_dir=parsed.root_dir,
                 content_dir=parsed.content_dir,
                 election_id=parsed.election_id,
+                records_dir=records_dir,
             )
             print(f"Data valid for election {ctx.election_id}:")
             print(f"  - {len(ctx.taxonomy.topics)} topics")
