@@ -438,3 +438,19 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P1 reviewer eligibility — 2026-11-12 draft
+
+- [x] Reconcile current main's four-source pilot, proposed 2026 editorial
+  policy, review schemas and PR #101 integration status. Evidence:
+  `docs/2023-REVIEWER-ELIGIBILITY-HANDOFF-2026-11-12.md`.
+- [x] Draft a version-bound assignment requirement, private-ledger design and
+  four fictional cases. No person, rights, political or publication decision
+  was made.
+- [ ] Owner/editorial review: approve the 2023 eligibility/recusal rule,
+  adjudicator, scope, quorum, evidence retention and correction wording.
+- [ ] After P0/P1 and OpenSpec review, reconcile with the current review
+  schema and PR #101 disposition; implement only fictional eligibility and
+  propagation tests before touching any real 2023 approval.
+
+Validation for this draft: structural assertions and `git diff --check`.
+Hosted CI is engineering evidence, not an eligibility or editorial decision.

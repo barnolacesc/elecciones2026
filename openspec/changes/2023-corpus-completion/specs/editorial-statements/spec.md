@@ -6,6 +6,49 @@ approval. Election scope: `es-gen-2023`. This extends the unarchived MVP
 
 ## ADDED Requirements
 
+### Requirement: Review assignment eligibility before counting a verdict
+
+For `es-gen-2023`, a human review verdict SHALL count toward a statement,
+topic-absence or cross-party relationship decision only when a separate,
+current human-authorized eligibility disposition covers that reviewer, role,
+exact record revision, election, candidature and territorial assignment under
+an approved 2023 recusal policy. A relationship assignment SHALL cover both
+operand candidatures. Distinct reviewer IDs, a verdict, or a declaration for a
+different assignment SHALL NOT establish eligibility. Eligibility and
+conflict disclosures SHALL remain private; public records and routine CI logs
+SHALL contain no political-affiliation details. A pending, withdrawn, expired
+or disputed eligibility decision SHALL fail closed for affected publication
+and preserve prior decisions for audit. This requirement is proposal-only;
+the 2023 policy and adjudicator require owner approval.
+
+#### Scenario: Distinct reviewers without eligibility evidence
+
+- **WHEN** two fictional people approve the same statement revision but one
+  assignment has no current eligibility disposition
+- **THEN** the dual-review gate remains unmet despite distinct reviewer IDs.
+
+#### Scenario: Relation reviewer covers only one party
+
+- **WHEN** a fictional relationship reviewer is eligible for one operand's
+  candidature but has no decision for the other under the approved scope
+- **THEN** the relation remains unpublished without changing either
+  independently reviewed statement.
+
+#### Scenario: Recusal after a prior verdict
+
+- **WHEN** a reviewer recuses or an eligibility decision is withdrawn for an
+  exact assignment after its verdict was counted
+- **THEN** affected statements, absence findings, relationships and quiz
+  dependencies enter a private impact/re-review queue; an unrelated verdict
+  remains separately traceable and no political disclosure enters the build.
+
+#### Scenario: New revision and stale attestation
+
+- **WHEN** a statement or relationship revision changes, or an attestation
+  expires before a subsequent review
+- **THEN** a prior assignment decision is not silently reused for the new
+  review, even if the summary text or reviewer ID appears unchanged.
+
 ### Requirement: Version-bound initiative candidates
 
 The private extraction queue SHALL bind each candidate measure to its election,

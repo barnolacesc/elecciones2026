@@ -873,3 +873,36 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P1 draft — reviewer eligibility and recusal
+
+Status: proposal-only for `es-gen-2023`; this section neither approves a
+reviewer nor changes a real review record. The proposed 2026 editorial policy
+describes political-affiliation recusal, but its G0 status does not make it a
+2023 rule. The P1 independent statement and relationship gates need a
+separate assignment-eligibility decision before a verdict counts.
+
+The private ledger should bind a policy revision, reviewer identity, review
+role, exact target record/revision, election, relevant candidature(s) and
+constituency, effective interval, adjudicator and disposition. Sensitive
+declarations and reasons stay in a restricted store, separate from the
+source/rights ledger and public build. The public projection needs only a
+non-sensitive decision reference and current pass/fail state. The adjudicator
+must not be the reviewer whose eligibility is being decided. Eligibility
+does not confer content, rights or source approval.
+
+For a relationship, the assignment scope includes both statement operands;
+for an absence finding, it includes the searched candidature/topic and
+document-set revision. If an assignment expires, is withdrawn, recused or
+disputed, a dependency report identifies the exact verdicts previously
+counted and downstream public statements, absence labels, relationships,
+coverage claims and quiz items. The affected publish set fails closed until
+the owner-designated process establishes a valid quorum. Unaffected reviews
+retain their own evidence. Neither recusal reason nor political preference is
+copied into Git, CI logs or reader-facing correction text.
+
+Owner decisions before implementation: the 2023 recusal and competitor-scope
+rule, roles and quorum, adjudicator and appeal path, attestation duration,
+private retention/access, whether any pre-existing review can be rechecked,
+and bounded Spanish correction wording. Fictional cases in the requirement
+delta test missing evidence, cross-party scope, late recusal and expiry;
+passing them would prove only technical enforcement, not impartiality.
