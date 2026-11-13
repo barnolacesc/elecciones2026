@@ -16,6 +16,10 @@ Every published position SHALL include a stable ID, party ID, topic/subtopic, ne
 - **WHEN** a position is draft, uncited, or references a superseded/unknown source
 - **THEN** the build rejects it rather than substituting a model-generated statement.
 
+#### Scenario: Duplicate IDs in an explicit publish set
+- **WHEN** two supplied statements or relationships have the same stable ID
+- **THEN** the build rejects the input before rendering instead of silently replacing one record with the other.
+
 ### Requirement: Distinguish absence from opposition
 The system SHALL represent `not_found` separately from explicit opposition and SHALL show coverage limitations.
 

@@ -307,3 +307,14 @@ started because recent account payments failed or the spending limit needs to
 increase; both jobs have no runner or steps. This is an infrastructure blocker,
 not a failed test assertion. CI and human review remain pending.
 
+## E1.3 explicit publish-set ID integrity — 2026-11-13
+
+- [x] Reject duplicate statement and relationship IDs supplied to the build
+  instead of silently retaining the last record. Two non-publishing regression
+  cases check that the build fails before output exists.
+- [x] Run Python 3.14 regression and CI on this branch. PR #241 run
+  `43418076598` passed test/schema/determinism/security, rendered mobile,
+  Docker parity and fork-isolation jobs; private release was skipped. Local
+  Python 3.11 cannot parse the existing generator. CI is engineering evidence,
+  not human editorial or release review. No corpus record, rights decision,
+  political approval or published artifact is changed by this package.

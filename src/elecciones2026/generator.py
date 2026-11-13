@@ -250,6 +250,8 @@ def load_and_validate_site_data(
     statements: dict[str, StatementRecord] = {}
     if custom_statements is not None:
         for s in custom_statements:
+            if s.id in statements:
+                raise BuildValidationError(f"Duplicate statement: {s.id}")
             statements[s.id] = s
     else:
         stmt_dir = record_root / "statements"
@@ -264,6 +266,8 @@ def load_and_validate_site_data(
     relationships: dict[str, RelationshipRecord] = {}
     if custom_relationships is not None:
         for r in custom_relationships:
+            if r.id in relationships:
+                raise BuildValidationError(f"Duplicate relationship: {r.id}")
             relationships[r.id] = r
     else:
         rel_dir = record_root / "relationships"
