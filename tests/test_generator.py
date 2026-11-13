@@ -29,7 +29,7 @@ from elecciones2026.generator import (
     load_and_validate_site_data,
     verify_determinism,
 )
-from elecciones2026.schemas import ReviewRecord, StatementRecord
+from elecciones2026.schemas import ReviewRecord, StatementRecord, load_relationship, load_statement
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT_DIR / "content"
@@ -45,6 +45,26 @@ class TestStaticSiteGenerator(unittest.TestCase):
     def tearDown(self) -> None:
         if self.temp_dir.exists():
             shutil.rmtree(self.temp_dir, ignore_errors=True)
+
+    def test_explicit_statement_ids_cannot_silently_overwrite(self) -> None:
+        statement = load_statement(CONTENT_DIR / "examples/statements/statement-2023-pilot-proposal.json")
+        with self.assertRaisesRegex(BuildValidationError, "Duplicate statement"):
+            build_site(
+                ROOT_DIR, self.output_dir, election_id="es-gen-2023",
+                custom_statements=[statement, statement], custom_relationships=[],
+            )
+        self.assertFalse(self.output_dir.exists())
+
+    def test_explicit_relationship_ids_cannot_silently_overwrite(self) -> None:
+        relationship = load_relationship(
+            CONTENT_DIR / "examples/relationships/relationship-2023-pilot-housing-divergence.json"
+        )
+        with self.assertRaisesRegex(BuildValidationError, "Duplicate relationship"):
+            build_site(
+                ROOT_DIR, self.output_dir, election_id="es-gen-2023",
+                custom_statements=[], custom_relationships=[relationship, relationship],
+            )
+        self.assertFalse(self.output_dir.exists())
 
     def test_empty_2023_comparison_links_to_coverage_without_claims(self) -> None:
         """A source-gated empty comparison still has a useful next step without JS."""
