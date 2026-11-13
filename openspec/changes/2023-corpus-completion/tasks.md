@@ -454,5 +454,8 @@ and fixture tests cannot replace human inspection or editorial review.
   adoption, cropped extraction and source-revision cases against both static
   and browser publish sets before real 2023 extraction.
 
-Validation for this proposal: repository evidence audit, OpenSpec structure
-checks and `git diff --check`. Passing CI is not editorial approval.
+Validation for this proposal: the local OpenSpec P1.8 structure assertions
+passed; `PYTHONPATH=src python3 -m unittest discover -s tests -p
+test_schemas.py -q` passed 27 tests; `git diff --check` passed. Local `pytest`
+was unavailable (`No module named pytest`); GitHub CI runs it separately.
+Passing CI is not editorial approval.
