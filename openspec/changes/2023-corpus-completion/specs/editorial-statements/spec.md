@@ -396,3 +396,54 @@ requirement grants no source rights or editorial approval.
 - **THEN** the range remains unresolved until the route, its output and the
   original page are reviewed; OCR text alone cannot approve a claim or absence.
 
+### Requirement: Attribute embedded voices before assigning a party position
+
+Before a candidate from `es-gen-2023` is published as a candidature's proposal
+or opposition, reviewers SHALL distinguish the issuing document's own
+position from any third-party position reported, quoted, rebutted or explicitly
+endorsed within the cited passage. The private decision SHALL be bound to the
+exact source version and locator, candidate revision, document issuer,
+attributed speaker when evidenced, rhetorical role and human review evidence.
+A quotation mark, named actor, source URL or extraction label SHALL NOT by
+itself establish endorsement or opposition. Unresolved voice SHALL withhold
+the affected statement and dependent relationship/quiz claims, but SHALL NOT
+be converted into `not_found` or silently remove unaffected reviewed measures.
+Source wording and private review evidence SHALL stay outside Git and the
+public artifact. This requirement does not grant source rights or approve any
+real 2023 interpretation.
+
+#### Scenario: Reported rival measure and issuer response
+
+- **WHEN** a fictional programme reports another actor's proposal and
+  explicitly rejects it
+- **THEN** the reported measure is not assigned to the issuer as its proposal;
+  the issuer's response may be a separate candidate only with its own
+  source-bound, reviewed object and scope.
+
+#### Scenario: Quoted supporter without adoption
+
+- **WHEN** a fictional programme quotes an outside supporter of a measure but
+  does not itself adopt the measure
+- **THEN** the supporter's position is not published as the candidature's
+  proposal or used as its operand in a cross-party relationship.
+
+#### Scenario: Explicit adoption of an external measure
+
+- **WHEN** a fictional issuer explicitly adopts a third party's measure
+- **THEN** reviewers retain evidence for the adoption and for the measure's
+  operative terms before considering an issuer-position statement; neither
+  evidence span alone settles the adopted scope.
+
+#### Scenario: Cropped extraction hides attribution
+
+- **WHEN** machine text omits the attribution preceding a reported claim and
+  the original page range has not passed visual inspection
+- **THEN** voice remains unresolved under the extraction-visibility gate and
+  no party position or topic absence is inferred from that span.
+
+#### Scenario: Source revision changes the voice
+
+- **WHEN** a source replacement or correction removes the issuer's adoption
+  of an outside measure
+- **THEN** the old voice disposition and dependent statement, relationship
+  and quiz approvals cannot carry to the new source version.

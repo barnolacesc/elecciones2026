@@ -438,3 +438,21 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P1.8 — Passage-level voice attribution (2026-11-13 draft)
+
+- [x] Reconcile `origin/main` `d13ba683`, PR #101 and the current statement
+  schema with P1.4 document applicability and P1.7 extraction visibility;
+  draft the passage-voice requirement, design and fictional cases. Evidence:
+  `docs/2023-EMBEDDED-VOICE-ATTRIBUTION-AUDIT-2026-11-13.md`. No real source,
+  statement, review, right, public output or routing is changed.
+- [ ] Editorial/OpenSpec review: decide passage-role vocabulary, indirect
+  speech and endorsement test, evidence granularity, reviewer quorum, and
+  whether voice attribution is a distinct review or a traceable part of the
+  existing independent statement review.
+- [ ] After P0/P1 review and PR #101 reconciliation, specify a private ledger
+  schema and fail-closed validator. Test fictional report/rebuttal, quotation,
+  adoption, cropped extraction and source-revision cases against both static
+  and browser publish sets before real 2023 extraction.
+
+Validation for this proposal: repository evidence audit, OpenSpec structure
+checks and `git diff --check`. Passing CI is not editorial approval.

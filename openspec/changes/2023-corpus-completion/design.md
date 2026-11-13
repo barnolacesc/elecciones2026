@@ -873,3 +873,33 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P1.8 draft — passage-level voice attribution
+
+Status: proposal-only for editorial and OpenSpec review. This refines P1.1's
+candidate-to-proposal interpretation, not P0 candidature/document scope or
+P1.4's document-to-candidature applicability. Evidence and fictional cases:
+[`docs/2023-EMBEDDED-VOICE-ATTRIBUTION-AUDIT-2026-11-13.md`](../../../docs/2023-EMBEDDED-VOICE-ATTRIBUTION-AUDIT-2026-11-13.md).
+
+The private extraction queue should retain a passage-voice disposition keyed
+to candidate, exact source version/hash and physical locator. It distinguishes
+the document issuer from any actor whose position is reported, rebutted or
+explicitly endorsed in that passage. It records the evidence span, reviewer,
+decision revision and unresolved ambiguity without putting source wording or
+private review notes in Git or the static artifact. Automated extraction may
+suggest a role; it cannot approve one. P1.7 visual completeness and P1.4
+document applicability remain upstream gates.
+
+Only an independently reviewed issuer position may become that candidature's
+public proposal or opposition statement. A third-party quotation or reported
+measure cannot be copied into the issuer's `party_id` merely because it appears
+in its programme. An explicit issuer response is a separate candidate; any
+claimed adoption needs evidence for both the adoption and the adopted measure.
+Unresolved voice blocks only affected statements and their dependent
+relationships/quiz mappings; it cannot yield `not_found` or erase unaffected
+reviewed measures. A source or disposition revision invalidates those
+dependencies for exact-version review.
+
+Before implementation, editorial owners must approve the role vocabulary,
+indirect-speech and endorsement rule, evidence span, reviewer quorum and
+whether a distinct voice-review record is needed. Fictional cases in the spec
+test attribution and invalidation, not any real political interpretation.
