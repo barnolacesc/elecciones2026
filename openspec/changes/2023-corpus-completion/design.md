@@ -873,3 +873,27 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P0.6 draft — historical coverage projection
+
+Status: proposal-only; no source or renderer is changed by this draft. The
+source register remains the private, versioned union of elections. The page
+projection should first select rows by the requested immutable election ID,
+then compute coverage cards, links and any counts from that selected set.
+The historical 2023 pilot must not borrow 2026 records to fill an unapproved
+2023 denominator. The two builds can share a renderer, but the rendered
+coverage section needs an election-specific heading and limited-pilot label.
+
+On `origin/main` `d13ba68`, `render_methodology_page` selects 2026 rows for
+both elections; `render_sources_page` renders a 2026 section before a 2023
+pilot section. These are presentation leaks, not evidence that 2026 sources
+are 2023 programmes. PR #230 independently changes the 2026 public surface
+and currently conflicts with main; its owner should reconcile that branch
+before this 2023-specific renderer work is implemented. PR #101's six
+candidate summaries and old CI remain a separate editorial/merge gate.
+
+Fictional acceptance cases: a mixed register with disjoint source IDs;
+same-party different-election versions; an empty 2023 selection; and a new
+2026 source added without changing the 2023 artifact. Test source and method
+HTML as well as the already-scoped comparison payload. Do not infer a
+complete party inventory from the pilot row count. Human owners still decide
+the 2023 inclusion rule and wording before public coverage claims.

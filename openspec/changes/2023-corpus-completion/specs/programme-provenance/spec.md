@@ -217,3 +217,32 @@ editorial approval SHALL remain independent decisions.
 - **THEN** the rights decision does not fill the date or prove historical
   availability; the publication policy handles that uncertainty separately.
 
+### Requirement: Election-scoped coverage projection (P0.6 draft)
+
+A 2023 rehearsal's source and method views SHALL project only source records
+bound to `es-gen-2023` when presenting its coverage. A source for another
+election SHALL NOT appear as part of the 2023 inventory or its denominator.
+The view SHALL label the pilot as incomplete until the 2023 inclusion rule,
+document inventory and rights decisions have human approval. This requirement
+does not remove the separate source history from the private register.
+
+#### Scenario: Mixed-election register
+
+- **WHEN** the private register contains both 2023 and 2026 source rows and a
+  2023 source or method page is built
+- **THEN** its coverage cards, links, heading and counts use only 2023 rows;
+  no 2026 source is presented as a 2023 programme.
+
+#### Scenario: Unapproved 2023 scope
+
+- **WHEN** four pilot source rows exist but no reviewed 2023 candidature
+  denominator or complete document-discovery decision exists
+- **THEN** the page labels them as a limited pilot inventory, not all eligible
+  2023 candidatures or complete topic coverage.
+
+#### Scenario: Current-election production build
+
+- **WHEN** a 2026 production source or method page is built from the same
+  private register
+- **THEN** it continues to show only eligible 2026 rows; a 2023 pilot source
+  is not introduced by this historical-projection change.

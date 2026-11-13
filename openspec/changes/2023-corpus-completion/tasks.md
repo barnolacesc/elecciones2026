@@ -57,6 +57,23 @@ The stacked PR has no automatic CI because `.github/workflows/ci.yml` targets
 pull requests into `main` only; run CI after PR #114 lands and this PR is
 retargeted. CI will remain engineering evidence, not human review.
 
+## P0.6 — Historical coverage projection draft (2026-11-13)
+
+- [x] Reconcile current mixed-election register, 2023 source/method renderers,
+  draft PRs #101 and #230, and current CI. Evidence:
+  `docs/2023-HISTORICAL-COVERAGE-PROJECTION-2026-11-13.md`.
+- [x] Draft election-scoped coverage requirement, three fictional scenarios
+  and a design boundary in this change. No renderer or real record changed.
+- [ ] Owner/editorial review: approve the 2023 pilot coverage label and
+  denominator wording. This draft does not approve the full 2023 scope.
+- [ ] Reconcile PR #230's 2026-only public surface first; then implement
+  historical source/method projection and acceptance tests against its
+  resolved base. Do not change PR #101's rights/review state here.
+
+Draft validation: register-count script and `git diff --check` passed.
+Python 3.14 is unavailable in this worktree, so no generator tests were run;
+CI on this spec PR checks engineering structure, not human editorial review.
+
 ## P1.2 — Comparison-set integrity (2026-10-23 draft)
 
 - [x] Draft the set-accounting requirement and asymmetric fictional scenarios
@@ -437,4 +454,3 @@ statement or public output was changed; CI cannot supply a human decision.
 
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
-
