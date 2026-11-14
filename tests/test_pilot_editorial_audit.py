@@ -195,7 +195,7 @@ class TestPilotEditorialAudit(unittest.TestCase):
             self.assertNotIn("private:rights:pp", html_text + browser_text)
             source["rights_review"]["evidence_ref"] = None
             register_path.write_text(json.dumps(register))
-            with self.assertRaisesRegex(BuildValidationError, "evidence reference"):
+            with self.assertRaisesRegex(ValueError, "rights grant requires a private evidence reference"):
                 load_and_validate_site_data(ROOT, custom_statements=[statement], **args)
             source["rights_review"]["evidence_ref"] = "private:rights:pp"
             programme["publication_date"] = "2023-07-05"
