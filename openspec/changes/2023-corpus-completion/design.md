@@ -873,3 +873,28 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P1.8 draft — comparison presentation order
+
+Status: proposal-only. See the dated comparison-order audit. P1.2 defines
+which reviewed measures belong to a pair/topic view; P1.8 governs only their
+presentation sequence and party display order. It neither chooses a political
+position nor changes source, rights, relationship, coverage or release gates.
+
+The current builder emits relationship-backed groups by relationship ID before
+unmatched statement groups by statement ID. This is deterministic, but the
+identifiers and paired status are not reviewed importance scores. Propose an
+explicit order-policy version in the private comparison-set ledger and a
+stable presentation key for each included group, with a review reason where
+editorial ordering is needed. A renderer consumes only the approved order and
+bounded method label; it must not rank by relationship type or source count.
+The static fallback and browser payload must use the same sequence. Preserve
+all unmatched and limitation entries even when the visual order changes.
+
+Before a schema or renderer change, the editorial owner must select the
+default ordering rule, tie resolution, treatment of several measures answering
+one policy question, party order, user-controlled sort semantics and Spanish
+method wording. Fictional fixtures should cover identifier renaming, paired
+versus unmatched entries, party reversal and incremental corpus additions.
+Mobile comprehension review must check whether readers infer endorsement from
+first position. Neither automated determinism nor this draft settles that
+interpretation.

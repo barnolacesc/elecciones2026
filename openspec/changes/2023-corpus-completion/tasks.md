@@ -438,3 +438,21 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P1.8 — Comparison presentation order (2026-11-14 draft)
+
+- [x] Reconcile current main, PR #101, open comparison/coverage PRs and the
+  generator's two-pass ID order. Draft the dated audit, requirement scenarios
+  and design handoff; no source, editorial record or runtime changed.
+- [ ] Editorial/OpenSpec review: decide the neutral measure and party default,
+  tie rule, multi-measure treatment, optional sort semantics and Spanish method
+  wording. Do not infer approval from identifier order or CI.
+- [ ] After P0 inclusion and P1.2 set-ledger review, specify the concrete
+  versioned order record and fictional static/browser acceptance tests.
+- [ ] Implement only in a separate approved package; verify complete set
+  preservation, keyboard/mobile comprehension and correction invalidation.
+  Real 2023 publication remains behind source, rights and editorial gates.
+
+Draft checks (2026-11-14): local structure assertions passed for one requirement,
+four WHEN/THEN scenarios, design, tasks and baseline references;
+`git diff --check` passed. No runtime or political content changed. PR CI is
+engineering evidence, not human review or a public release decision.

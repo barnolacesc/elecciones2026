@@ -210,3 +210,41 @@ individual statement reviews.
 - **THEN** the comparison may state the bounded numeric difference with its
   method and qualifications, without implying programme-wide superiority.
 
+### Requirement: Review comparison presentation order
+
+For a selected 2023 election, topic and candidature pair, the comparison
+SHALL use a versioned, human-reviewed measure-order rule. Neither relationship
+type, party identity, source availability, record ID nor file order SHALL
+silently assign prominence. Ordering SHALL preserve all entries in the
+reviewed comparison-set ledger, including unmatched measures and limitations;
+the page SHALL NOT label the first measure as the most important or most
+representative by virtue of its position. The party display order and any
+user-selectable ordering control SHALL have documented, neutral semantics. The final default and
+reader-facing Spanish explanation require editorial review before
+implementation or publication.
+
+#### Scenario: Identifier-only rename
+
+- **WHEN** a fictional measure receives a new stable record ID without a
+  substantive change
+- **THEN** its reviewed presentation priority does not change merely because
+  the identifier sorts differently.
+
+#### Scenario: Paired and unmatched measures
+
+- **WHEN** one reviewed relationship and one unmatched publishable measure
+  appear for the selected topic and parties
+- **THEN** both remain in the comparison-set ledger and displayed set; the
+  unmatched measure is not automatically demoted solely because it is unpaired.
+
+#### Scenario: Reverse selected parties
+
+- **WHEN** the visitor reverses the two selected candidatures
+- **THEN** each candidature retains its own source-linked text and
+  qualifications, with no change to measure inclusion or relationship type.
+
+#### Scenario: New reviewed measure
+
+- **WHEN** a new eligible measure enters the reviewed topic set
+- **THEN** the ledger and display order are recalculated under the same
+  reviewed rule without dropping or silently reclassifying an existing entry.
