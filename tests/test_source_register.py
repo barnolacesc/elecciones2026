@@ -218,7 +218,7 @@ class TestSourceRegister(unittest.TestCase):
                             "reason": "Errata corrigenda published by party",
                         }
                     ],
-                    "rights_review": {"status": "link_and_short_quote", "terms_notes": "None"},
+                    "rights_review": {"status": "not_reviewed", "terms_notes": "None"},
                 }
             ],
         }

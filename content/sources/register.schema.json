@@ -90,6 +90,20 @@
           "type": ["string", "null"],
           "description": "Private reference to the source-specific reuse decision."
         }
+      },
+      "if": {
+        "properties": {
+          "status": {"enum": ["link_only", "link_and_short_quote", "public_domain"]}
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "reviewed_by": {"type": "string", "minLength": 1, "pattern": "\\S"},
+          "review_date": {"type": "string", "format": "date"},
+          "evidence_ref": {"type": "string", "minLength": 1, "pattern": "\\S"}
+        },
+        "required": ["reviewed_by", "review_date", "evidence_ref"]
       }
     },
     "ReplacementRecord": {
