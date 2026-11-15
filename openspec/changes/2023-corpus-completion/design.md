@@ -873,3 +873,35 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+
+## P0.11 draft — source-version replacement lineage (2026-11-15)
+
+Status: proposal-only; see `docs/2023-REPLACEMENT-LINEAGE-HANDOFF-2026-11-15.md`.
+This is a private reconciliation design, not a schema migration or decision
+that any existing source was replaced.
+
+Model immutable source-version nodes and separately reviewed transition events.
+A node carries election ID, source ID, exact hash if bytes are held, document
+role/scope and candidature applicability. A transition carries predecessor and
+successor identities, scope, dated observation and private evidence reference,
+reviewer/disposition, and supersession/correction history. Unresolved legacy
+predecessors stay as leads, not synthetic verified nodes. A later same-URL
+retrieval is a new candidate node; a reviewer decides whether it is a
+replacement, parallel edition, annex or unrelated document. No event changes
+rights or content-review decisions by inheritance.
+
+Before projection, reconcile each accepted edge against node existence,
+election and document scope; reject self-edges, cycles, ambiguous targets and
+incompatible simultaneous effective successors. Keep rejected edges visible in
+a private audit report with IDs and reasons; do not pick a winner by date or
+list order. The owner-approved effective version set feeds coverage, while
+changes invalidate only dependent locators, topic-search findings, statements
+and relationships. Old versions remain auditable. Public output never receives
+private evidence or unreviewed source bytes. The source-rights and editorial
+release gates still run independently.
+
+Owner review must settle scope identity, parallel language editions, chronology,
+legacy predecessor treatment, reviewer authority and correction response.
+Only after P0.4/P0.9 and P1.4 decisions may tasks specify a concrete schema,
+validator and fictional graph fixtures. PR #101 is a separate conflicting
+pilot-summary integration, not evidence for a replacement transition.

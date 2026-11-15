@@ -217,3 +217,43 @@ editorial approval SHALL remain independent decisions.
 - **THEN** the rights decision does not fill the date or prove historical
   availability; the publication policy handles that uncertainty separately.
 
+
+### Requirement: Reviewable replacement lineage per document scope
+
+A future 2023 inventory SHALL preserve source-version identities separately
+from proposed replacement transitions. A transition SHALL name exact prior
+and successor versions, election ID, reviewed document scope, dated evidence
+and human source-review disposition before it can affect current coverage or
+public locators. The reconciler SHALL leave missing predecessors unresolved and
+SHALL reject self-edges, cycles, cross-election targets, incompatible scope and
+competing effective successors for one predecessor/scope. A URL change or new
+hash SHALL NOT by itself establish replacement. A reviewed transition SHALL
+retain the prior version and invalidate affected dependent locators, topic
+search conclusions, statements and relationships without transferring rights
+or editorial approval. This requirement is proposal-only until its record and
+review policy are approved.
+
+#### Scenario: Unresolved predecessor
+
+- **WHEN** a legacy event names a prior version but no exact prior source identity or evidence is retained
+- **THEN** the event remains an unresolved lead and cannot establish a replacement-derived coverage conclusion.
+
+#### Scenario: Cross-election or cyclic successor
+
+- **WHEN** a proposed successor points to another election, itself, or a cycle of version identities
+- **THEN** reconciliation rejects the transition and preserves the involved records for review rather than selecting a current version.
+
+#### Scenario: Conflicting successors
+
+- **WHEN** two different successors are claimed effective for one predecessor and document scope without an adjudicated chronology
+- **THEN** neither is silently selected as current and dependent coverage remains unresolved.
+
+#### Scenario: Scoped annex replacement
+
+- **WHEN** a reviewed successor replaces one territorial annex but not the general programme
+- **THEN** only the annex-dependent locators and conclusions enter re-review; the general programme is not marked replaced.
+
+#### Scenario: Same URL, different bytes
+
+- **WHEN** a later retrieval at the same URL has a different hash but no accepted source-review transition
+- **THEN** both versions remain distinct and the later file does not inherit authenticity, rights, editorial approval or historical availability.

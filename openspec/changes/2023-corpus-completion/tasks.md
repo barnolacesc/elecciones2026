@@ -438,3 +438,25 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+
+## P0.11 — Source-version replacement lineage (2026-11-15 draft)
+
+- [x] Reconcile `origin/main` `d13ba683`, the four pending 2023 pilot rows,
+  current replacement-history validation and draft PR #101; record the limited
+  evidence in `docs/2023-REPLACEMENT-LINEAGE-HANDOFF-2026-11-15.md`. Draft the
+  proposal-only requirement, design and five fictional scenarios. No source,
+  rights, political content, schema, runtime or public artifact changed.
+- [ ] Owner/source-review decision: approve document identity and scope,
+  parallel-edition and legacy-predecessor handling, effective chronology,
+  reviewer authority and correction policy. This draft supplies no approval.
+- [ ] After P0 source and P1 applicability review, specify private graph/event
+  records and validation. Reconcile PR #101 separately; use fictional valid,
+  unresolved, cross-election, cyclic, competing-successor and annex-scope
+  fixtures before touching a real 2023 record or public projection.
+
+Validation for this draft: one requirement/five WHEN/THEN scenarios,
+`git diff --check`, and 9 passing local source-register tests
+(`PYTHONPATH=src python3 -m unittest tests.test_source_register -q`). The
+local interpreter is Python 3.11, not the project Python 3.14 runtime.
+CI can check future graph mechanics but cannot authenticate a source or decide
+that one programme replaced another.
