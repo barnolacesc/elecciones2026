@@ -438,3 +438,20 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+
+## P0.17 — Parallel-format edition equivalence (2026-11-16 draft)
+
+- [x] Reconcile the PDF-only archive, current source-register contracts,
+  P0.4/P0.9/P0.10 and draft PR #101; draft the format-specific requirement,
+  private join and fictional cases. Evidence:
+  `docs/2023-FORMAT-EDITION-BOUNDARY-2026-11-16.md`, `design.md` and
+  `specs/programme-provenance/spec.md`. No source or public records changed.
+- [ ] Source owner and editorial reviewers decide edition/equivalence evidence,
+  partial-format treatment, rights scope, locator review and reader wording.
+  This draft and CI cannot approve any rendition or 2023 coverage count.
+- [ ] After P0 scope/rights review, define a concrete rendition/equivalence
+  schema and tests for the four fictional cases. Keep real variants and P1
+  search/citation activation behind exact-version human review.
+
+Draft validation: OpenSpec structure check and `git diff --check`; no PDF or
+political claim test applies to this specification-only package.

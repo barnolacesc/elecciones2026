@@ -873,3 +873,41 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+
+## P0.17 draft — parallel-format edition equivalence
+
+Status: proposal-only for source-owner and OpenSpec review. This does not
+assert that any actual 2023 programme has multiple formats, approve any source
+or rights decision, or change the present PDF-only acquisition tool. It is
+separate from P0.4's same-byte URL/mirror identity, P0.9's historical dating,
+P0.10's candidature attribution and P1.7's extraction visibility.
+
+### Proposed private join
+
+Keep a discovered rendition row for each exact format/version: election,
+claimed publisher, source/edition candidate, document role, format, language,
+URL/discovery path, retrieval or capture time, byte hash or immutable capture
+identity, locator model, authenticity state, rights state and evidence ref.
+An edition-equivalence edge names two exact rendition revisions, the compared
+scope (including annexes/sections), reviewer, decision and private evidence.
+`pending`, `equivalent_for_scope` and `distinct` are proposed decision states,
+not approved schema values. A shared title or normalized text match is only a
+review cue; stripping layout can erase tables, footnotes or qualifications.
+The approval must state its scope and cannot convey quotation permission or
+publisher authenticity across formats.
+
+The P0 reconciler should count reviewed editions separately from discovered
+renditions and preserve unresolved variants in the coverage report. P1 search
+and exact citations bind to the rendition actually checked; another format
+may offer an accessible public link only after its own locator and use review.
+A changed rendition invalidates its equivalence edges and affected search,
+statement and citation dependencies without rewriting the unchanged sibling.
+Private captures and full text remain outside Git and the served artifact.
+
+Owners must decide acceptable comparison evidence, whether a partial HTML
+summary counts as a separate document or companion, format-specific rights
+scope, reviewer roles and public wording for unresolved variants. Later
+implementation needs a reviewed schema and fictional tests for equal-title
+omission, scoped equivalence, independent web edit and pending alternate
+format. No real programme count or political conclusion follows from this
+draft.

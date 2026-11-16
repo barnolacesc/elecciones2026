@@ -217,3 +217,47 @@ editorial approval SHALL remain independent decisions.
 - **THEN** the rights decision does not fill the date or prove historical
   availability; the publication policy handles that uncertainty separately.
 
+### Requirement: Review parallel-format source editions separately
+
+For `es-gen-2023`, the inventory SHALL distinguish a document's election,
+claimed publisher, role and edition from each observed file or web format.
+A PDF, HTML page, accessible-text edition or print layout with the same title
+SHALL NOT be treated as identical content or as a replacement solely because
+of title, URL, date or apparent format. Each candidate rendition SHALL keep
+its own publisher path, capture/retrieval evidence, content identity, language,
+locator model and rights/use decision. A human source reviewer SHALL decide
+whether renditions are equivalent for a stated scope or are distinct editions;
+that decision SHALL identify the compared versions and retained evidence.
+Pending or conflicting equivalence SHALL leave document and topic coverage
+unresolved rather than double-counting one programme or silently dropping a
+variant. A rights grant or exact locator for one rendition SHALL NOT transfer
+to another by equivalence alone.
+
+#### Scenario: Matching title, different text
+
+- **WHEN** a fictional publisher offers HTML and PDF files with the same title
+  but the HTML omits a PDF annex or condition
+- **THEN** both renditions remain distinct pending review; neither the PDF's
+  topic search nor its rights/locator approvals cover the HTML by default.
+
+#### Scenario: Reviewed equivalent rendition
+
+- **WHEN** a reviewer establishes that two fictional formats carry the same
+  scoped content and records the exact versions and evidence
+- **THEN** the inventory may group them as one reviewed edition for document
+  counting while retaining both format-specific URLs, hashes or captures,
+  locators and use decisions.
+
+#### Scenario: Changed web rendition
+
+- **WHEN** a publisher edits an HTML rendition while a PDF remains unchanged
+- **THEN** the changed rendition receives a new identity and equivalence
+  review; the unchanged PDF and historical decision remain traceable, and
+  dependent coverage and citations are invalidated only where applicable.
+
+#### Scenario: Unapproved alternate format
+
+- **WHEN** one format is verified and another is discovered but not scoped
+- **THEN** the inventory reports the unresolved variant; it cannot claim
+  complete document/topic coverage or promote a locator from the verified
+  format to the unreviewed one.
