@@ -2,6 +2,23 @@
 
 Status: proposal-only. The checkboxes below are not implementation approval.
 
+## P1.1 — Proposal-modality boundary (2026-11-16 draft)
+
+- [x] Reconcile `origin/main` `d13ba683`, the four-row 2023 pilot, open PR
+  #101 and the existing P1.1 actionable-measure contract. Draft the dated
+  audit, requirement scenarios and private design. No corpus or code changed.
+- [ ] Owner/editorial review: decide speech-act/time-orientation vocabulary,
+  treatment of continuation promises, reviewer responsibility and whether
+  descriptive context can appear outside a proposal comparison.
+- [ ] After P0 scope/rights and P1 method review, reconcile this delta with
+  other open P1 drafts and specify the private record, validator and fictional
+  fixture tests. Keep real 2023 activation behind exact-source and human
+  statement/relationship approvals; PR #101 remains an independent blocker.
+
+Draft validation: document structure and `git diff --check`; no political
+content, rights, software or public output changed. CI is technical evidence,
+not editorial approval.
+
 P0.1 is the bounded specification/audit package in this PR; later packages
 require editorial review of this design and requirement delta.
 

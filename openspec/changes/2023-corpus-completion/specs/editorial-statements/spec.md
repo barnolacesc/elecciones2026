@@ -6,6 +6,53 @@ approval. Election scope: `es-gen-2023`. This extends the unarchived MVP
 
 ## ADDED Requirements
 
+### Requirement: Distinguish future proposals from descriptive passages
+
+Before a 2023 source passage is promoted to a proposal statement, the private
+review record SHALL bind a human-attributed classification of its speech act
+and time orientation to the exact source version and locator. A description of
+past action or current policy, a diagnosis, an aspiration without an actionable
+measure SHALL NOT be presented as the candidature's future proposal solely
+because it contains policy language.
+Mixed passages SHALL preserve separate exact locators and review dispositions
+for their descriptive and proposed parts. A source change or material
+reclassification SHALL invalidate dependent public statements, comparisons,
+coverage conclusions and quiz items for re-review. This requirement does not
+verify historical claims, approve reuse rights or infer topic-level absence.
+
+#### Scenario: Retrospective action
+
+- **WHEN** a fictional passage says an actor already completed a measure but
+  contains no future commitment
+- **THEN** it cannot enter the 2023 proposal set as a promised measure.
+
+#### Scenario: Existing policy described
+
+- **WHEN** a fictional passage describes a rule as currently in force without
+  committing to retain, extend or change it
+- **THEN** the rule is not converted into a future commitment by extraction.
+
+#### Scenario: Mixed retrospective and future passage
+
+- **WHEN** one fictional passage describes past action and separately commits
+  to a future instrument
+- **THEN** only the future instrument may be proposed for statement review,
+  with its exact locator and qualifications retained.
+
+#### Scenario: Explicit continuation commitment
+
+- **WHEN** a fictional passage explicitly commits to maintaining an identified
+  measure in the future
+- **THEN** reviewers may classify that commitment for proposal review, while
+  the historical or current-policy description remains a separate claim.
+
+#### Scenario: Source or interpretation changes
+
+- **WHEN** the source version changes or reviewers materially revise the
+  speech-act classification of a previously considered passage
+- **THEN** dependent statement, relationship, coverage and quiz decisions are
+  withheld until their exact versions are reviewed again.
+
 ### Requirement: Version-bound initiative candidates
 
 The private extraction queue SHALL bind each candidate measure to its election,

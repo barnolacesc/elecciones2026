@@ -80,6 +80,32 @@ states, but cannot resolve authenticity, rights or political interpretation.
 
 ## P1.1 draft — initiative and comparison method
 
+### P1.1 proposal-modality gate (2026-11-16 draft)
+
+The candidate queue needs a private, version-bound classification before an
+occurrence becomes a public proposal statement. Proposed fields for editorial
+review are source hash and locator, extracted occurrence ID, speech-act class,
+time orientation, the exact future action if present, reviewer/disposition,
+decision version and private evidence reference. These are design candidates,
+not an approved schema or a new right to publish.
+
+The queue retains descriptive occurrences for audit and search accounting but
+does not project them as promises. A mixed passage is split by supported
+meaning, not by a generic sentence boundary: the future part and its
+qualifications receive their own review, while past-action or current-policy
+language cannot silently supply a proposed measure. A continuation promise
+needs an explicit future commitment; an agent cannot infer it from a favourable
+description of an existing policy. The absence/search ledger remains a
+separate topic-level decision.
+
+Owners must decide classification vocabulary, review quorum, handling of
+reaffirmations and whether non-proposal context belongs in a separate product
+view. Fictional fixture tests should exercise retrospective, status-quo,
+aspirational, mixed and explicit-continuation passages, plus source/review
+revision invalidation. The public projection must fail closed on unresolved
+classification and preserve independent source-rights, statement and
+relationship gates. See the dated proposal-modality handoff audit.
+
 This section is a separate, proposal-only P1 method package. It depends on the
 P0 candidature/document manifest and rights decisions above; it does not
 approve that manifest, any statement, any relationship, or implementation.
