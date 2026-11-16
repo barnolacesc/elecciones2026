@@ -873,3 +873,38 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P1.8 draft — explicit-opposition classification boundary
+
+Status: proposal-only; this refines P1.1 interpretation and P1.2 comparison
+accounting. The current statement schema permits `explicit_proposal`,
+`explicit_opposition`, `qualification` and `not_found`, while the relationship
+schema permits `divergence`. Those labels alone do not establish a reviewable
+classification rule or an automatic mapping between them. No real 2023
+statement, source, relationship or published page is changed here.
+
+The proposed private decision record binds the candidate occurrence, source
+hash and locator, the opposed measure (if explicit), the proposed action (if
+any), qualifications, reviewer rationale, classification version and dependent
+IDs. It distinguishes: a concrete action to repeal or prevent; an explicit
+stance against a specific measure without an actionable instrument; a
+qualification on another proposal; and no supported mention after a separately
+approved search. One source sentence may support two distinct candidates only
+when reviewers can identify separate assertions or actions and explain the split. Classification
+changes invalidate dependent comparison, topic accounting and quiz selection;
+no old approval is inherited from the unchanged source hash.
+
+For comparisons, the private relation decision records the exact policy
+question and object, both statement versions, proposed relation, grounds,
+conditions and independent human review. A stance-only record must not become
+a negative counterpart to every proposal in its topic. The projection should
+show bounded source-linked wording only after the owner decides whether
+stance-only records belong in the proposal denominator and how they appear
+on a phone. Fictional fixtures should cover silence, vague objection, a
+repeal action, a comparable opposed measure, a different object in the same
+topic, duplicate counting and classification correction.
+
+Editorial owners must settle stance-only inclusion, one-versus-two record
+granularity, reviewer segregation, Spanish labels and coverage counting before
+implementation. P0 source scope and rights, exact-source review and PR #101's
+separate E1.4 gate remain pending; passing a schema or CI check cannot decide
+any of them.

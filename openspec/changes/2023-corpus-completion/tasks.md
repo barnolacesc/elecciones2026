@@ -438,3 +438,21 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P1.8 — Explicit-opposition classification boundary (2026-11-16 draft)
+
+- [x] Reconcile current `origin/main`, open draft/conflicting PR #101, the
+  merged #166 replacement and current statement/relationship enums. Draft
+  source-bound classification and comparison requirement scenarios plus the
+  private decision-flow design. No real position, review, rights or public
+  record changed.
+- [ ] Owner/editorial review: decide whether stance-only records enter the
+  proposal comparator, how repeal actions and rejection statements are split,
+  counts and Spanish wording, and reviewer segregation. This draft is not
+  approval of any political position or relationship.
+- [ ] After P0/P1 OpenSpec review, specify concrete private record and
+  validator contracts; test fictional silence, vague objection, repeal,
+  comparable and non-comparable measures, duplicate counts and correction
+  invalidation before real 2023 activation.
+
+Draft validation: structure checks and `git diff --check`; these verify the
+proposal shape only. Hosted CI is engineering evidence, not editorial review.

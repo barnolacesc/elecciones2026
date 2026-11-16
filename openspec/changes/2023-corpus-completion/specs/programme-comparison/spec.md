@@ -210,3 +210,34 @@ individual statement reviews.
 - **THEN** the comparison may state the bounded numeric difference with its
   method and qualifications, without implying programme-wide superiority.
 
+### Requirement: Do not infer divergence from opposition labels alone
+
+A comparison involving an `explicit_opposition` statement SHALL identify the
+exact policy measure opposed, the other statement's exact proposed measure,
+and the source-bound qualifications and scope of both. The relationship SHALL
+require its own human approval under the policy-question identity rule. A
+shared topic, an opposition label, or one side's `not_found` state SHALL NOT
+automatically create a `divergence` relationship or a topic-wide party stance.
+The display and coverage ledger SHALL identify whether an opposition-only
+record is included in the reviewed proposal set under the owner-approved
+method; absent that decision, it cannot silently alter proposal counts.
+
+#### Scenario: Different objects within one topic
+
+- **WHEN** a fictional candidature explicitly rejects measure X and another
+  proposes distinct measure Y in the same topic
+- **THEN** the site does not generate a divergence from the labels alone.
+
+#### Scenario: Comparable opposed measure
+
+- **WHEN** two fictional, reviewed statements address the same measure but
+  differ on its adoption, with material scope and conditions recorded
+- **THEN** a divergence can appear only after independent review of those
+  exact statement versions and the relation's grounds and caveats.
+
+#### Scenario: Opposition-only count pending policy
+
+- **WHEN** a reviewed stance has no actionable proposal and the inclusion
+  policy for such records remains undecided
+- **THEN** proposal totals and exhaustive comparison claims are withheld
+  rather than counting or dropping it without explanation.

@@ -396,3 +396,43 @@ requirement grants no source rights or editorial approval.
 - **THEN** the range remains unresolved until the route, its output and the
   original page are reviewed; OCR text alone cannot approve a claim or absence.
 
+### Requirement: Distinguish explicit opposition from a proposed action
+
+The private 2023 review queue SHALL retain the exact source version and locator
+for a candidate that explicitly rejects a specified policy measure. Reviewers
+SHALL distinguish that sourced stance from a proposed action to repeal, prevent
+or replace a measure, from a qualification on another proposal, and from a
+reviewed absence finding. The `explicit_opposition` label SHALL require a
+source-bound object of opposition and human interpretation review; silence, an
+unsearched range or a broad slogan SHALL NOT be classified as opposition. A
+single occurrence SHALL NOT inflate proposal and opposition counts by being
+entered twice without separately reviewable grounds. Reclassification SHALL
+invalidate dependent coverage, comparison and quiz decisions for re-review.
+
+#### Scenario: Silence is not opposition
+
+- **WHEN** a fictional source search finds no mention of a measure
+- **THEN** the candidate is not classified as `explicit_opposition`; the
+  separate reviewed absence protocol, if complete, governs any `not_found`.
+
+#### Scenario: Repeal action and stated rejection
+
+- **WHEN** a fictional passage both rejects a rule and proposes a concrete
+  repeal action
+- **THEN** reviewers preserve the exact wording and decide whether one
+  actionable proposal, an additional distinct stance, or only one record is
+  justified; neither count is duplicated automatically.
+
+#### Scenario: Unspecified object of rejection
+
+- **WHEN** a fictional passage expresses general dissatisfaction but does not
+  identify the measure being rejected
+- **THEN** it cannot become a source-specific `explicit_opposition` position
+  without further exact-source and human review.
+
+#### Scenario: Classification correction
+
+- **WHEN** reviewers change an approved candidate from opposition to a
+  qualification or proposal on the same source version
+- **THEN** old comparison, coverage and quiz dependencies remain withheld
+  until the new exact classification receives its own review.
