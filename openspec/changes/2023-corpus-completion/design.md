@@ -873,3 +873,69 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P0.18 draft — election-period source eligibility
+
+Status: proposal-only for owner and editorial review. This is a distinct
+*use-of-version* decision after P0.9 chronology evidence, not a new claim
+about when any real programme was published. It does not change the P0.11
+replacement-lineage or P0.17 format-equivalence drafts, source records,
+rights decisions, political content or public routing.
+
+### Observed boundary on 2026-11-17
+
+On `origin/main` `d13ba68`, the four registered `es-gen-2023` pilot sources
+(PP, ERC, PNV and Sumar) have `publication_date: null`, status
+`published-unverified`, and rights `not_reviewed`. These are four source
+rows, not a complete candidature denominator. The register records a
+`2023-07-23` election date, but no approved historical-source cutoff or
+version-specific period-eligibility decision. Draft PR #101 remains at
+`f8506a1`, conflicting with main and without GitHub reviews; its old green
+checks do not establish a combined-tree result or any human decision.
+Main CI run `43325747158` passed on `d13ba68`; it cannot answer the period
+question either. The current version chronology draft distinguishes claimed
+publication from observation and retrieval but does not itself decide which
+version can represent what a voter could read during the election period.
+
+### Proposed decision and projection
+
+The owner should first approve a versioned historical-use rule: the exact
+cutoff instant or interval and timezone, which election events define it,
+whether campaign-period and election-day uses differ, treatment of a
+post-cutoff correction, acceptable evidence precision, and the public wording
+for uncertainty. The election date in a register is context, not automatic
+approval of a midnight cutoff. An agent must not choose this policy.
+
+For each immutable source ID/version/hash, a separate human decision should
+bind the rule revision, accepted P0.9 chronology evidence, the decision
+maker/date and one of `eligible`, `ineligible` or `unresolved` for a stated
+historical use. A dated publisher landing page may prove a link existed
+without proving today's bytes existed then. A later retrieved source can be
+archived and studied privately while its vote-time status remains unresolved.
+A later revision must not inherit its predecessor's eligibility, locators,
+rights or statement reviews. An evidenced predecessor may remain usable for
+its approved period even when a successor is the current download. If an
+evidence interval straddles the cutoff, eligibility stays unresolved.
+
+The private inventory report should show all three states and retain excluded
+or unresolved documents, with a reason and exact rule/evidence revisions.
+Only an eligible, separately rights-cleared and editorially reviewed version
+may be described publicly as a contemporaneous 2023 programme. Where the
+rule or decision is unresolved, the build must not silently use the latest
+PDF as the voter-time position or turn the gap into `not stated`. Historical
+analysis of a later correction is a different, explicitly labelled use; it
+must not rewrite a pre-cutoff comparison. Source-period changes invalidate
+related page locators, statements, relationships, coverage and quiz citations
+for review. The rule decides temporal representation only; it grants no
+reuse right, claim approval or coverage completeness.
+
+### Review and fictional acceptance cases
+
+Before implementation, owners must decide the cutoff, event-evidence standard,
+post-cutoff correction treatment, reviewer role and reader-facing labels.
+Fictional cases should cover (1) a later retrieval with only a `2023` filename,
+(2) a pre-cutoff publisher page whose linked bytes are not identified,
+(3) an evidenced predecessor and a post-cutoff successor at one URL,
+(4) a publication interval crossing the cutoff, (5) a post-cutoff correction
+that changes a qualification, and (6) pending rights on a temporally eligible
+version. No case may promote a real source or claim. After review, the schema
+and validator can implement the approved policy; this draft is not that gate.

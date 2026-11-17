@@ -217,3 +217,57 @@ editorial approval SHALL remain independent decisions.
 - **THEN** the rights decision does not fill the date or prove historical
   availability; the publication policy handles that uncertainty separately.
 
+
+### Requirement: Decide election-period eligibility per source version
+
+For the `es-gen-2023` historical comparator, the inventory SHALL distinguish
+an evidenced source chronology from an approved decision that an exact source
+version can represent the selected election period. The decision SHALL bind a
+human-approved, versioned cutoff/use rule, the source ID and hash/version,
+accepted chronology evidence, human decider and decision date. Until the rule
+and version-specific decision exist, eligibility SHALL remain unresolved.
+A register election date, URL, filename, later retrieval, rights grant or
+editorial approval SHALL NOT by itself establish contemporaneous availability.
+Eligible, ineligible and unresolved versions SHALL remain visible to private
+coverage accounting; neither an ineligible nor unresolved version SHALL be
+silently presented as a voter-time programme or treated as a `not stated`
+position. A successor SHALL NOT inherit a predecessor's period decision.
+Changes to the rule or accepted chronology SHALL invalidate affected coverage,
+locators, statements, relationships and quiz citations for review. This
+requirement does not grant reuse rights or approve any political claim.
+
+#### Scenario: Later retrieval of an undated version
+
+- **WHEN** a fictional file retrieved after the election has a 2023-labelled
+  URL but no evidence linking its exact bytes to the approved period
+- **THEN** its period eligibility remains unresolved, even if its hash and
+  current publisher origin are verified.
+
+#### Scenario: Pre-period page with unknown linked bytes
+
+- **WHEN** a publisher page was observed before the cutoff but the source
+  version served at that time cannot be identified
+- **THEN** the observation is retained as chronology evidence but does not
+  automatically make the current PDF version eligible.
+
+#### Scenario: Replacement after the cutoff
+
+- **WHEN** an evidenced eligible version is replaced after the cutoff at the
+  same URL with a changed hash
+- **THEN** the former version retains its own decision and the successor
+  requires a new one; current-download status does not rewrite the earlier
+  comparison or carry forward its approvals.
+
+#### Scenario: Evidence interval straddles the cutoff
+
+- **WHEN** accepted evidence only bounds publication to an interval that
+  crosses the approved cutoff
+- **THEN** the version stays unresolved for that historical use rather than
+  receiving an invented exact date or an automatic eligible decision.
+
+#### Scenario: Temporally eligible but rights-pending
+
+- **WHEN** a fictional version has an approved period decision but no approved
+  source-use rights for the proposed publication
+- **THEN** period eligibility does not authorize a public summary, quote or
+  PDF redistribution.

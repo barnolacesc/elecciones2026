@@ -438,3 +438,24 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+
+## P0.18 — Election-period source eligibility (2026-11-17 draft)
+
+- [x] Reconcile `origin/main` `d13ba68`, the four 2023 pilot source rows,
+  PR #101 and current-main CI. Draft the separate period-use requirement,
+  design and fictional cases above. No source, rights, editorial, public or
+  routing record changed.
+- [ ] Owner/editorial review: approve the historical cutoff/use rule,
+  evidence precision, post-cutoff correction policy, review role and Spanish
+  uncertainty label. The registered election date is not this decision.
+- [ ] After P0.9 chronology, P0.11 replacement and P0.17 format-edition
+  review, specify a private version-bound decision schema and fail-closed
+  validator using fictional fixtures. Reconcile PR #101 before changing its
+  editorial or rights gates; no real 2023 version may inherit eligibility.
+- [ ] Verify that rule/evidence changes invalidate coverage, locators,
+  statements, relationships and quiz citations in both static and browser
+  projections before any real historical claim is activated.
+
+Validation for this draft: register-baseline assertions, OpenSpec structure
+check and `git diff --check`. Main CI is technical evidence only, and this
+proposal does not satisfy a human source-period or release gate.
