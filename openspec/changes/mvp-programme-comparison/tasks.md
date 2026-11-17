@@ -14,6 +14,8 @@
 - [x] 1.4 Add an immutable election ID to sources, positions, and builds; verify 2023 pilot pages are labelled 2023 and a 2023 source cannot appear in a 2026 comparison.
   - Evidence: Immutable `election_id` enforced across sources (`source_register.py`), programmes (`methodology.py`, `programme.schema.json`), position statements (`statement.schema.json`), comparative relationships (`relationship.schema.json`), and coverage records (`coverage.schema.json`). Verified by `test_election_scoping_isolation` in `tests/test_source_register.py`, `test_valid_2023_pilot_statement_labeled_2023` in `tests/test_schemas.py`, and `test_task_1_4_reject_cross_election_relationship` in `tests/test_schemas.py`, strictly rejecting cross-election comparisons between `es-gen-2023` and `es-gen-2026`.
 
+- [x] E1.1 register update-date contract (2026-11-17): align `last_updated` with the date-only value in the current source register and reject malformed, timestamp-shaped or impossible calendar dates in the loader. Focused source-register tests: 10 passed; `git diff --check` passed. This is technical metadata validation only; it does not verify any source, right, political statement, or 2023 inclusion decision.
+
 
 ## 2. Source and editorial validation
 
@@ -306,4 +308,3 @@ did not execute either test job. GitHub's check annotation says the job was not
 started because recent account payments failed or the spending limit needs to
 increase; both jobs have no runner or steps. This is an infrastructure blocker,
 not a failed test assertion. CI and human review remain pending.
-
