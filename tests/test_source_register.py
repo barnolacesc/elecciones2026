@@ -166,6 +166,44 @@ class TestSourceRegister(unittest.TestCase):
         self.assertIsNone(reg)
         self.assertTrue(any("verified status requires a valid" in e for e in errors))
 
+    def test_validation_rejects_malformed_present_hash_before_verification(self) -> None:
+        source = {
+            "id": "fictional-source-v1",
+            "election_id": "fictional-election",
+            "party_id": "fictional-party",
+            "candidature_name": "Fictional Party",
+            "publisher": "Fictional Party",
+            "official_url": "https://example.org/programme",
+            "direct_url": "https://example.org/programme.pdf",
+            "retrieval_date": "2026-10-09",
+            "status": "published-unverified",
+            "rights_review": {"status": "not_reviewed", "terms_notes": "Pending"},
+        }
+        register = {
+            "version": "1.0.0",
+            "last_updated": "2026-10-09",
+            "elections": [{
+                "id": "fictional-election",
+                "name": "Fictional election",
+                "election_date": "2026-11-29",
+                "call_decree": "Fictional decree",
+                "status": "active_monitoring",
+            }],
+            "sources": [source],
+        }
+
+        for digest in ("a" * 63, "A" * 64, 123):
+            with self.subTest(digest=digest):
+                source["sha256"] = digest
+                loaded, errors = load_register_from_dict(register)
+                self.assertIsNone(loaded)
+                self.assertTrue(any("sha256" in error for error in errors), errors)
+
+        source["sha256"] = "a" * 64
+        loaded, errors = load_register_from_dict(register)
+        self.assertEqual(errors, [])
+        self.assertIsNotNone(loaded)
+
     def test_validation_rejects_replaced_without_history(self) -> None:
         invalid_data = {
             "version": "1.0.0",

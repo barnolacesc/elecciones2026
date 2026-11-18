@@ -253,9 +253,18 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
         sha256 = item.get("sha256")
         direct_url = item.get("direct_url")
 
+        # The register schema constrains every supplied digest, not only
+        # digests whose source has completed verification.
+        if sha256 is not None and (
+            not isinstance(sha256, str) or SHA256_PATTERN.fullmatch(sha256) is None
+        ):
+            errors.append(
+                f"Record {record_id}: sha256 must be a 64-character lowercase hex digest when set."
+            )
+
         # Invariant: verified records must have sha256 and direct_url
         if status == "verified":
-            if not sha256 or not SHA256_PATTERN.match(sha256):
+            if sha256 is None:
                 errors.append(
                     f"Record {record_id}: verified status requires a valid 64-character lowercase hex sha256 hash."
                 )
