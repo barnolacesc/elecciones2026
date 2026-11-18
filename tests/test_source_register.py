@@ -1,6 +1,7 @@
 """Tests for the electoral programme source register."""
 
 import json
+from copy import deepcopy
 from pathlib import Path
 import unittest
 
@@ -16,6 +17,25 @@ REGISTER_PATH = Path(__file__).resolve().parent.parent / "content" / "sources" /
 
 
 class TestSourceRegister(unittest.TestCase):
+    def test_rejects_malformed_source_links_before_any_status_promotion(self) -> None:
+        baseline = json.loads(REGISTER_PATH.read_text(encoding="utf-8"))
+        for field, bad_url in (
+            ("official_url", "https://"),
+            ("official_url", "https://user@example.org/programme"),
+            ("direct_url", "javascript:alert(1)"),
+            ("direct_url", "https://"),
+            ("direct_url", "https://example.org/a\n.pdf"),
+            ("direct_url", "https://example.org:bad/programme.pdf"),
+        ):
+            with self.subTest(field=field, bad_url=bad_url):
+                candidate = deepcopy(baseline)
+                source = next(s for s in candidate["sources"] if s["election_id"] == "es-gen-2023")
+                self.assertEqual(source["status"], "published-unverified")
+                source[field] = bad_url
+                register, errors = load_register_from_dict(candidate)
+                self.assertIsNone(register)
+                self.assertTrue(any(field in error for error in errors), errors)
+
     def test_register_file_exists_and_loads(self) -> None:
         self.assertTrue(REGISTER_PATH.exists(), f"Missing register file at {REGISTER_PATH}")
         register = load_register(REGISTER_PATH)
