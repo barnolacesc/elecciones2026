@@ -249,6 +249,16 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
             errors.append(
                 f"Record {record_id}: publication_date '{pub_date}' must be YYYY-MM-DD."
             )
+        if (
+            isinstance(pub_date, str)
+            and isinstance(retrieval_date, str)
+            and DATE_PATTERN.fullmatch(pub_date)
+            and DATE_PATTERN.fullmatch(retrieval_date)
+            and pub_date > retrieval_date
+        ):
+            errors.append(
+                f"Record {record_id}: publication_date must not be after retrieval_date."
+            )
 
         sha256 = item.get("sha256")
         direct_url = item.get("direct_url")
