@@ -873,3 +873,36 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P1.8 draft — candidate-search omission reconciliation
+
+Status: proposal-only. P1.7 checks whether source ranges were readable;
+P1.3 records which ranges were searched and candidate dispositions. Neither
+alone tests whether a search method omitted actionable measures in readable
+text. This package specifies a private quality handoff, not a recall score,
+an implemented extractor, or approval of a complete 2023 corpus.
+
+For each `(election, candidature, topic, taxonomy revision, relevant source-set
+revision)`, retain the initial candidate set and a separately conducted
+quality pass under an owner-approved protocol. Each finding records source
+version/hash and locator, search method/version, finder, candidate identity
+proposal, reconciliation disposition, reviewer and private evidence reference.
+Record omissions, duplicates, false positives, ambiguous aims and unresolved
+ranges without copying source text or private notes into Git or the public
+build. Link duplicate occurrences through P1.6 initiative identity; do not
+discard a newly found measure merely because its wording resembles another.
+
+The owners must select a defensible full second pass or stratified sampling
+plan (including document roles, topics, page types and languages), reviewer
+independence, disagreement arbitration, and a stopping/rework rule. A sampled
+miss rate is a diagnostic for the sampled frame, not a measured recall rate
+for all 2023 programmes without a validated reference set. Any omission
+requires a documented impact decision for the affected search and comparison
+set. Unsampled required ranges stay unresolved under P1.3; zero observed misses
+does not imply completeness. Source, taxonomy or protocol revision invalidates
+the affected quality decision. Real findings and political interpretations
+remain subject to independent human review and rights gates.
+
+Fictional acceptance cases: a second pass finds an omitted measure; two tools
+find one occurrence; a zero-miss sample excludes an annex; and a changed source
+version invalidates the decision. Review the proposed method before defining
+a concrete ledger schema, validator or public coverage wording.

@@ -396,3 +396,43 @@ requirement grants no source rights or editorial approval.
 - **THEN** the range remains unresolved until the route, its output and the
   original page are reviewed; OCR text alone cannot approve a claim or absence.
 
+### Requirement: Reconcile candidate-search omissions before coverage claims
+
+For each 2023 candidature, topic and approved source-set revision, a private
+search-quality record SHALL account for independently discovered candidate
+measures, candidates omitted by the first extraction/search pass, duplicate
+findings and unresolved disagreements. It SHALL bind findings to exact source
+versions and locators, taxonomy revision, search method and reviewer decisions.
+The reviewed P1.3 search protocol SHALL define the second-pass or sampling
+method and the disposition required before a scoped coverage or absence claim.
+An empty machine queue, a high apparent yield, or a sample with no misses SHALL
+NOT establish exhaustive proposal recall. Neither this check nor its counts
+approve a political statement, source right or cross-party relationship.
+
+#### Scenario: Independent pass finds an omitted measure
+
+- **WHEN** a second search pass finds a locatable candidate absent from the
+  initial extraction queue
+- **THEN** the candidate enters review with its source locator and the
+  affected topic's completeness decision remains pending until the omission
+  and its search scope are reconciled.
+
+#### Scenario: Two passes find the same measure
+
+- **WHEN** two search methods return the same source occurrence
+- **THEN** the occurrence is reconciled under initiative-identity review and
+  is not counted as two proposals or as evidence of exhaustive search.
+
+#### Scenario: Sample contains no missed candidates
+
+- **WHEN** a reviewed sample contains no omissions but required source ranges
+  remain outside its approved search scope
+- **THEN** the unsampled ranges remain unresolved and no all-programme or
+  all-topic coverage claim follows from the sample result.
+
+#### Scenario: Changed source or search protocol
+
+- **WHEN** a relevant source version, taxonomy boundary or approved search
+  method changes
+- **THEN** the affected search-quality decision is invalidated for review;
+  earlier candidate dispositions remain traceable.

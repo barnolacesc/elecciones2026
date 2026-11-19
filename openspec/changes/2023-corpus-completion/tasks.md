@@ -438,3 +438,18 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P1.8 — Candidate-search omission reconciliation (2026-11-19 draft)
+
+- [x] Audit the current four-row 2023 pilot and P1.3/P1.7 search boundary;
+  draft a private search-quality requirement, design and fictional cases.
+  Evidence: `docs/2023-CANDIDATE-SEARCH-QUALITY-AUDIT-2026-11-19.md`.
+  No source, claim, right, approval, renderer or routing changed.
+- [ ] Owner/editorial review: choose the second-pass or sampling frame,
+  independence, disagreement procedure, rework threshold and permissible
+  coverage wording. No agent or CI run may approve completeness.
+- [ ] After P0 inclusion/source/rights and P1.3/P1.7 decisions, reconcile
+  this method with open P1 drafts and specify the ledger schema and fictional
+  tests. Keep real 2023 candidate promotion behind separate human review.
+
+Validation for this proposal: local requirement/scenario structure check and
+`git diff --check`. Hosted CI is engineering evidence, not editorial review.
