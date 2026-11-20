@@ -38,6 +38,44 @@ Status: planning complete; restricted private staging activation and hosted exte
 - [ ] 5.2 Coordinate the existing E3.4 off-host steady/cold-cache/burst scenarios against the actual 1-vCPU/1-GB target; record resource headroom, p95/errors/cache/bandwidth/cost and block launch if approved targets fail.
 - [ ] 5.3 Rehearse origin plus edge rollback and fresh-host restore, confirm recovery meets the approved target, and record the public G4 decision; leave MVP tasks 4.4/4.6 and load task 4.7 open until their own evidence is complete.
 
+## 6. Prepare the personal repository transfer (E3.3)
+
+Scope: prepare `c2ventures/elecciones2026` to move to
+`barnolacesc/elecciones2026`, retain IONOS and manual staging approval, and add
+the owner's requested developer profile link. No home-cluster migration.
+
+- [x] 6.1 Support both approved repository locations during transition, publish private images under the active owner, bind candidate evidence to that owner, and retain both exact image namespaces for rollback. Test trusted-main publication and delivery isolation before and after transfer.
+- [x] 6.2 Add a Spanish developer credit linking to `barnolacesc` in generated footers and a maintainer link in the README; preserve editorial notices, source attribution and existing copyright notices. Verify 2023 and 2026 output.
+- [x] 6.3 Document the ordered operator transfer, registry access, root-owned wrapper update, GitHub settings verification and rollback checks. Record local verification and live limits without changing accounts or infrastructure.
+- [ ] 6.4 After separate owner execution, verify the actual GitHub transfer, new-owner main CI publication, private image pull and approved IONOS staging delivery. Keep pending until live evidence exists.
+
+### Transfer preparation verification — 2026-11-20
+
+Prepared against main `d13ba68`. Python 3.14 unittest discovery: 540 tests,
+17 skips, no failures. The six existing Node behavior suites pass 65 tests.
+Transfer regressions execute the real workflow gates and package visibility
+check for both account types, reject untrusted events/repos and public packages,
+bind API provenance and candidate images to the active owner, and validate
+mixed-namespace rollback state. Generated 2023 and 2026 pages contain the
+Spanish profile credit while retaining their existing notices and outbound-link
+privacy attributes.
+
+The current 2026 AMD64 Docker build passes. The exact built image passes
+`nginx -t` and serves the profile credit over HTTP as UID 101 with a read-only
+filesystem and dropped capabilities. No image was pushed. Focused Ruff
+E9/F63/F7/F82, strict OpenSpec validation, 32 local documentation link targets
+and `git diff --check` pass. Actionlint passes with ShellCheck disabled; full
+actionlint reports only the pre-existing SC2034 unused mobile retry `attempt`
+warning. A second read-only review found no remaining blockers and independently
+passed the transfer workflow tests.
+
+Only GitHub secret names were inspected; no secret values were retrieved.
+Optional gated browser/PDF tests remain skipped locally; hosted CI must provide
+its own browser, scan and container rehearsal evidence. No transfer, package
+permission change, workflow dispatch, server update or deployment was performed.
+Task 6.4 and all unrelated incomplete E3.3 tasks remain open. The prepared host
+wrapper still needs an operator installation before new-owner delivery.
+
 ## Planning verification
 
 The finance deployment and test workflows at main revision `5c705d7f2be8cce74bc5b2434c078341d1b690c2` were reviewed read-only; secret values and live host settings were not inspected. The design records retained conventions and concrete security improvements.

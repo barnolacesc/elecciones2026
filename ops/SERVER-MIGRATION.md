@@ -5,6 +5,10 @@ server, including a future Hetzner host. This documents configuration and operat
 steps; it is not an automated provisioning script or permission to migrate now.
 The current setup record is dated **2026-10-12**. Package: **E3.3**.
 
+The planned transfer to `barnolacesc/elecciones2026` keeps IONOS. Follow the
+[repository transfer runbook](REPOSITORY-TRANSFER.md) for pending account,
+registry and wrapper steps; the dated evidence below does not verify that transfer.
+
 Replace uppercase placeholders such as `NEW_VPS_IP`, `OPERATOR_PUBLIC_IP` and
 `REVIEWED_CLOUDFLARE_CIDR` before running commands. Host commands assume an
 operator root shell; SSH and external probes explicitly marked Mac run locally.

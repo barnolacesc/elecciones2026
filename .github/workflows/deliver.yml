@@ -42,7 +42,7 @@ jobs:
               and os.environ['GITHUB_TRIGGERING_ACTOR'] == 'chad-openclaw'
               and os.environ['APPROVAL_RECORD'] == 'Cesc Telegram 2026-10-14 private 2023 pilot'
               and date.today() <= date(2026, 10, 31))
-          assert os.environ['GITHUB_REPOSITORY'] == 'c2ventures/elecciones2026'
+          assert os.environ['GITHUB_REPOSITORY'] in ('c2ventures/elecciones2026', 'barnolacesc/elecciones2026')
           assert os.environ['GITHUB_REF'] == 'refs/heads/main'
           assert (os.environ['GITHUB_ACTOR'] == 'barnolacesc'
                   and os.environ['GITHUB_TRIGGERING_ACTOR'] == 'barnolacesc') or pilot_delegate
@@ -74,7 +74,7 @@ jobs:
           name: release-candidate
           path: candidate
           github-token: ${{ github.token }}
-          repository: c2ventures/elecciones2026
+          repository: ${{ github.repository }}
           run-id: ${{ inputs.ci_run_id }}
       - name: Deliver digest through restricted SSH and verify HTTPS
         env:

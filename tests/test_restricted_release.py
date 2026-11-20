@@ -11,10 +11,27 @@ ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("restricted_release", ROOT / "ops/restricted_release.py")
 wrapper = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(wrapper)
-IMAGE = wrapper.REPOSITORY + "@sha256:" + "a" * 64
+IMAGE = wrapper.REPOSITORIES[0] + "@sha256:" + "a" * 64
 
 
 class RestrictedReleaseTests(unittest.TestCase):
+    def test_transition_accepts_both_exact_namespaces_and_mixed_rollback_state(self):
+        import json
+        images = [repository + '@sha256:' + 'a' * 64 for repository in wrapper.REPOSITORIES]
+        for image in images:
+            self.assertEqual(wrapper.parse_request(['deploy ' + image]), ['--image', image])
+            for invalid in (image.replace('/elecciones2026@', '/elecciones2026-copy@'),
+                            image.replace('@sha256:', ':latest@sha256:'),
+                            image.replace('ghcr.io/', 'ghcr.io/other/')):
+                with self.subTest(image=invalid), self.assertRaises(ValueError):
+                    wrapper.parse_request(['deploy ' + invalid])
+        with patch.object(wrapper, 'require_root_owned'), \
+                patch.object(wrapper.os.path, 'lexists', return_value=True), \
+                patch.object(Path, 'exists', return_value=True), \
+                patch.object(Path, 'read_text', return_value=json.dumps(
+                    {'current': images[1], 'previous': images[0]})):
+            wrapper.validate_installation()
+
     def test_only_exact_actions_and_allowlisted_digest_are_accepted(self):
         self.assertEqual(wrapper.parse_request(["deploy " + IMAGE]), ["--image", IMAGE])
         self.assertEqual(wrapper.parse_request(["rollback"]), ["--rollback"])
@@ -24,9 +41,9 @@ class RestrictedReleaseTests(unittest.TestCase):
             [" deploy " + IMAGE], ["deploy " + IMAGE + "\n"],
             ["deploy " + IMAGE + "; id"], ["deploy $(id)"],
             ["deploy `id`"], ["deploy " + IMAGE + " --state-dir /tmp"],
-            ["deploy " + IMAGE.replace(wrapper.REPOSITORY, "ghcr.io/other/site")],
-            ["deploy " + wrapper.REPOSITORY + ":latest"],
-            ["deploy " + wrapper.REPOSITORY + "@sha256:" + "A" * 64],
+            ["deploy " + IMAGE.replace(wrapper.REPOSITORIES[0], "ghcr.io/other/site")],
+            ["deploy " + wrapper.REPOSITORIES[0] + ":latest"],
+            ["deploy " + wrapper.REPOSITORIES[0] + "@sha256:" + "A" * 64],
             ["rollback\n"], ["deploy\t" + IMAGE], ["check\x00"],
         ]
         with patch.object(wrapper, "validate_installation") as validate, \

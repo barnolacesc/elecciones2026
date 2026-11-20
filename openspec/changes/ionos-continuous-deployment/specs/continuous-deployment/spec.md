@@ -17,6 +17,15 @@ The pipeline SHALL deploy only a tested revision from the canonical repository's
 - **WHEN** any required CI job fails or the production approval is absent
 - **THEN** the deployed site remains unchanged.
 
+#### Scenario: Personal repository transition
+- **WHEN** the repository is at `c2ventures/elecciones2026` or `barnolacesc/elecciones2026`
+- **THEN** trusted main CI publishes private candidates in the active owner's GHCR namespace and delivery accepts only matching CI provenance and image digests.
+- **AND** a fork, another repository, or a candidate from the other namespace is rejected.
+
+#### Scenario: Retained image after transfer
+- **WHEN** an operator requests rollback to a retained approved legacy image
+- **THEN** the reviewed VPS wrapper permits the two exact transition namespaces while continuing to reject mutable tags, foreign repositories and malformed requests.
+
 ### Requirement: Immutable verified artifact
 The delivery system SHALL deploy the exact scanned and tested image by digest, retain its revision and approval evidence, and serialize releases. It SHALL NOT build application artifacts on the VPS.
 
