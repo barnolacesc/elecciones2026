@@ -1,12 +1,15 @@
 # Project delivery roadmap
 
-## Current package (2026-11-11)
+## E1.4-2026 technical package (2026-11-11)
 
 `E1.4-2026` — 2026 corpus intake and election-scoped publication, under
 `election-corpus-refresh`. The owner now requests the current-election view.
 Its specs, design and tasks define technical preparation and incremental
 loading. Private extraction, complete point coverage, human editorial review
 and release are separate tracked steps; no approval is implied.
+The technical preparation was merged in PR #237; task 2.3 (source-use and
+editorial decisions for publishable records) remains open. The merge does not
+establish a reviewed 2023 corpus or authorize a public 2026 release.
 
 ## 2023-first OpenSpec alignment (2026-10-19)
 
@@ -18,14 +21,15 @@ history remain as audit context, not claims of completion.
 
 | Phase | OpenSpec change | Readiness / required next artifact |
 |---|---|---|
-| P0–P1: 2023 coverage, initiatives, comparisons | `2023-corpus-completion` plus existing `mvp-programme-comparison` | New proposal only; draft/review specs, design and tasks before implementation. Existing technical pipeline does not establish complete editorial coverage. |
+| P0–P1: 2023 coverage, initiatives, comparisons | `2023-corpus-completion` plus existing `mvp-programme-comparison` | Draft proposal, specs, design and tasks exist; owner/editorial review and the approved inclusion, source-rights and comparison decisions remain open. Not implementation-ready. The existing technical pipeline does not establish complete editorial coverage. |
 | P2: mobile comparator | `mvp-programme-comparison` | Existing implementation; audit and test actual phone flow against P2 acceptance. New bounded changes require updated tasks/specs. |
 | P3: reviewed quiz | `programme-alignment-quiz` | Mock foundation exists; reviewed 2023 question set and G5 release decision remain pending. |
-| P4: 2026 refresh and budget reuse | `election-corpus-refresh` plus existing `budget-context` | New refresh proposal only; complete specs/design/tasks after 2023 model is reviewed. Budget values require period/source reconciliation. |
+| P4: 2026 refresh and budget reuse | `election-corpus-refresh` plus existing `budget-context` | Draft refresh specs/design/tasks exist and technical preparation is merged; source-use and editorial task 2.3 remains open. This is not publication approval. Budget values require period/source reconciliation. |
 | P5: multi-source polls | `multi-source-poll-observatory` superseding CIS-only scope of `cis-data-observatory` | New proposal only; define a comparable, rights-safe method before implementation. |
 | P6: pactometer/hemicycle | `seat-coalition-simulator` | Existing private manual simulator foundation; reviewed rule/UX release gate remains. |
 
-No proposal-only change is implementation-ready. Each scheduled development run
+Draft artifacts do not make a proposal-only change implementation-ready. Each
+scheduled development run
 selects one bounded package, links its PR to the applicable change and tasks,
 and records evidence. Editorial approval, merge and release are distinct gates;
 automated runs cannot grant them. See the [daily development contract](../docs/PRODUCT-ROADMAP-2023-2026.md#daily-development-contract).
