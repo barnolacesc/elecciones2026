@@ -48,6 +48,26 @@ the owner's requested developer profile link. No home-cluster migration.
 - [x] 6.2 Add a Spanish developer credit linking to `barnolacesc` in generated footers and a maintainer link in the README; preserve editorial notices, source attribution and existing copyright notices. Verify 2023 and 2026 output.
 - [x] 6.3 Document the ordered operator transfer, registry access, root-owned wrapper update, GitHub settings verification and rollback checks. Record local verification and live limits without changing accounts or infrastructure.
 - [ ] 6.4 After separate owner execution, verify the actual GitHub transfer, new-owner main CI publication, private image pull and approved IONOS staging delivery. Keep pending until live evidence exists.
+- [x] 6.5 Resolve PR #266 hosted mobile and runtime-image scan failures; verify the existing rendered mobile checks and the unchanged HIGH/CRITICAL image scan policy on the corrected candidate.
+
+### Hosted CI correction — 2026-11-20
+
+Run `44759185318` failed 12 layout checks because the new footer profile link
+was 14px high. Footer links now provide a 44px minimum touch height. The
+unchanged rendered mobile audit passes 69/69 locally at 360/390/430px.
+
+The same run's retained Trivy report found four CRITICAL and two HIGH nginx
+findings in `1.30.6-r1`, all reporting `1.30.7-r0` as the fixed version. Updated
+the unprivileged runtime to `1.30.7-alpine3.24`, pinned to the registry-confirmed
+index digest `sha256:0c53a1f2890c3526bfd201440f0fd3970e5b78f80630f58284aad0d34b5ec7bd`.
+The AMD64 image builds, runs as UID 101 and passes read-only `nginx -t`.
+Trivy 0.75.0 scans the saved exact image with the existing HIGH/CRITICAL,
+`ignore-unfixed=false`, exit-code 1 policy: zero findings. No ignore or severity
+policy was relaxed. Updated the existing pinned-runtime contract test.
+
+Full Python discovery again passes 540 tests with 17 skips; strict OpenSpec
+validation and whitespace checks pass. Hosted confirmation of the correction
+is pending. Task 6.4 remains open; no transfer or live deployment occurred.
 
 ### Transfer preparation verification — 2026-11-20
 
