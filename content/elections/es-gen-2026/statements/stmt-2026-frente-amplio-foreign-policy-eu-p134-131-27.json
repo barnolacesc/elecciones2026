@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-foreign-policy-eu-p134-131-27",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a49e9f24885455109b75852322fa6cd991624dd0ba52990efa39bc2c5ff1472e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "134",
+  "source_section": "17.2. Cooperación internacional y ayuda al desarrollo",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "development-cooperation",
+  "summary": "Aprobar un nuevo Contrato de Gestión para fortalecer a la Agencia Española de Cooperación Internacional para el Desarrollo",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

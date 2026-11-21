@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-culture-sport-p78-71-59",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Quedan excluidas las salas que cobren alquiler de espacio a los músicos participantes"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "e22d423d18872a51d154382f11155c5ec8ce3670d575831c2d45c2535080cd16"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "78",
+  "source_section": "271",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "cultural-access-patronage-and-creators",
+  "summary": "Otorgar subvenciones públicas directas a salas de conciertos para promover actuaciones en directo, vetando el acceso a salas que cobren alquiler a los músicos.",
+  "summary_en": null,
+  "topic_id": "culture-sport"
+}

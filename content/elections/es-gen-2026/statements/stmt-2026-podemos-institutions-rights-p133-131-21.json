@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-institutions-rights-p133-131-21",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "251d83df4676a5dc42e224cdbe592c427919b4a01031a579f4001d51acab3551"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "133",
+  "source_section": "429. Despenalización del cannabis y legalización de su uso con fines medicinales y recreativos.",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "public-safety-and-penal-policy",
+  "summary": "Promover la despenalización del cultivo y tenencia de cannabis para uso personal y colectivo, regular los clubes sociales y legalizar su uso medicinal y recreativo bajo control estatal.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

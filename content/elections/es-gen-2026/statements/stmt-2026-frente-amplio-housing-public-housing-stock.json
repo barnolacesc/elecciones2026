@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-housing-public-housing-stock",
+  "party_id": "frente-amplio",
+  "topic_id": "housing",
+  "subtopic_id": "public-housing-stock",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone dedicar de forma permanente el 1 % del PIB anual a crear un parque público de vivienda, principalmente de alquiler.",
+  "review_status": "approved",
+  "programme_id": "frente-amplio-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "source_page": "10",
+  "source_section": "1.1, Plan Estatal de vivienda pública y asequible en alquiler",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/habitatge-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "bfb2b76c859d266f1c95a14649b817f8bd17b0ebbb6f1484e20b1ae7c8b5b717"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

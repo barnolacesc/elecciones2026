@@ -42,32 +42,36 @@ class TestSourceRegister(unittest.TestCase):
     def test_2026_sources_tracking_status(self) -> None:
         register = load_register(REGISTER_PATH)
         sources_2026 = get_sources_for_election(register, "es-gen-2026")
-        self.assertGreaterEqual(len(sources_2026), 6)
-
-        party_ids = {s.party_id for s in sources_2026}
-        self.assertTrue({"psoe", "pp", "vox", "sumar", "erc", "pnv"}.issubset(party_ids))
-
-        # Per the 2026-11-11 audit, 8 candidates have discovered programmes registered as published-unverified.
-        # Pending formations (psoe, vox, sumar, ehbildu, junts) remain missing with null hash and direct URL.
-        discovered_parties = {
-            "pp", "erc", "pnv", "bng", "coalicion-canaria", "salf", "partido-humanista", "frente-obrero"
+        verified_parties = {
+            "pp", "erc", "pnv", "bng", "coalicion-canaria", "salf", "partido-humanista",
+            "psoe", "vox", "frente-amplio", "ehbildu", "junts",
+            "podemos", "compromis-front-valencia",
         }
+        partial_parties = {"upn-pp", "frente-obrero"}
+        replacements = {
+            "src-2026-bng-v1": "src-2026-bng-v2",
+            "src-2026-vox-v1": "src-2026-vox-v2",
+            "src-2026-frente-obrero-v1": "src-2026-frente-obrero-v2",
+        }
+        active = [source for source in sources_2026 if source.status != "replaced"]
+        self.assertCountEqual([s.party_id for s in active], verified_parties | partial_parties)
+        self.assertEqual({s.id for s in sources_2026 if s.status == "replaced"}, set(replacements))
         for s in sources_2026:
             with self.subTest(source_id=s.id):
                 self.assertEqual(s.election_id, "es-gen-2026")
                 if s.status == "replaced":
-                    self.assertEqual(s.id, "src-2026-bng-v1")
-                    self.assertEqual(s.replacement_history[-1].superseded_by, "src-2026-bng-v2")
+                    self.assertEqual(s.replacement_history[-1].superseded_by, replacements[s.id])
                     continue
-                if s.party_id in discovered_parties:
-                    self.assertEqual(s.status, "published-unverified")
-                    self.assertIsNotNone(s.sha256, f"{s.id} must specify sha256 hash")
+                if s.party_id in verified_parties:
+                    self.assertEqual(s.rights_review.status, "link_only")
+                    self.assertEqual(s.status, "verified")
+                    self.assertRegex(s.sha256 or "", r"^[0-9a-f]{64}$")
                     self.assertIsNotNone(s.direct_url, f"{s.id} must specify direct_url")
-                    self.assertEqual(s.retrieval_date, "2026-11-12" if s.id == "src-2026-bng-v2" else "2026-11-11")
                 else:
-                    self.assertEqual(s.status, "missing")
-                    self.assertIsNone(s.sha256, f"Unpublished 2026 programmes must not have a sha256 hash: {s.id}")
-                    self.assertIsNone(s.direct_url, f"Unpublished 2026 programmes must not have a direct_url: {s.id}")
+                    self.assertEqual(s.rights_review.status, "not_reviewed")
+                    self.assertEqual(s.status, "partial")
+                    self.assertIsNone(s.sha256)
+                    self.assertIsNone(s.direct_url)
 
     def test_task_1_2_pilot_programmes_registered(self) -> None:
         """Verify source registration without asserting rights or human approval.

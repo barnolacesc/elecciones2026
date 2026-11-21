@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-institutions-rights-p42-41-11",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "39d4d24233df3cd1f2fce7871943a15bc66858fdc0f3727a3754404d80c92592"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "42",
+  "source_section": "GESTIÓN, SEGUIMIENTO Y FINANCIACIÓN 04",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Promover una dotación financiera europea ajustada a las necesidades vascas en materia industrial, energética, tecnológica, social y territorial.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

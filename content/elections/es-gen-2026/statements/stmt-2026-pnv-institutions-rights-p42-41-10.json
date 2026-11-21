@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-institutions-rights-p42-41-10",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [
+    "En fondos que afecten al marco competencial vasco"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "0d781dbe2c88a676180fdc794082bb0a9bf16d323060fead3992d0e83215b855"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "42",
+  "source_section": "GESTIÓN, SEGUIMIENTO Y FINANCIACIÓN 03",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Garantizar la participación vasca directa en los procedimientos de programación, ejecución y control de fondos comunitarios que incidan en sus competencias.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

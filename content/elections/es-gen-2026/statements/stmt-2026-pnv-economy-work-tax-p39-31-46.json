@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-economy-work-tax-p39-31-46",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "8e94d63fd710193ef16e58e033753b6a6ae80fa09fbc9c89685c1740ebcecc3d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "39",
+  "source_section": "CONCIERTO ECONÓMICO 02",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Garantizar que las medidas fiscales estatales no vulneren la autonomía fiscal concertada de Euskadi ni sus mecanismos de relación bilateral.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

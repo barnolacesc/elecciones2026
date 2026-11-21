@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-education-p80-71-84",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Plazo máximo de cuatro años"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "147f1748ddb8877388a94f02b3ef902bd2fb32690f91debf73bd7f1122525daf"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "80",
+  "source_section": "281",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "early-childhood-education",
+  "summary": "Construir en cuatro años la red de plazas públicas para garantizar gratuidad y universalidad de 0 a 3 años frenando licencias privadas y absorbiendo guarderías y autónomos.",
+  "summary_en": null,
+  "topic_id": "education"
+}

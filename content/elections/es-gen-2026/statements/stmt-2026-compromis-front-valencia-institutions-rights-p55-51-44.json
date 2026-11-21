@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-institutions-rights-p55-51-44",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "7f6e86d8c8dab088612576c6478a834a5e152633ed5833a1c465f25a8ab68f46"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "55",
+  "source_section": "DRETS HUMANS I LEGALITAT INTERNACIONAL",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "judicial-governance-and-cgpj",
+  "summary": "Reformar la Ley Orgánica del Poder Judicial para facultar a los juzgados a juzgar crímenes de derecho humanitario internacional bajo principio de jurisdicción universal",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-housing-public-housing-stock",
+  "party_id": "bng",
+  "topic_id": "housing",
+  "subtopic_id": "public-housing-stock",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone ceder sin coste al Instituto Galego da Vivenda e Solo los terrenos y las viviendas de la Sareb para destinarlos al parque público de alquiler.",
+  "review_status": "approved",
+  "programme_id": "bng-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "source_page": "13",
+  "source_section": "2.1, Vivenda",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/habitatge-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "f70bb17f6e5e8472a4d1c26d0692fde1162f364eb753425fa9095a89fe216416"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

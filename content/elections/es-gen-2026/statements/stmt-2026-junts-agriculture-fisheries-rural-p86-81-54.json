@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-agriculture-fisheries-rural-p86-81-54",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3ce92a6c3bf68217cb2fb668aba7ad3c8de9ee6d0fe92030abc950e8ad2f9873"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "86",
+  "source_section": "Objectiu 3 / 3.2",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "agricultural-policy-and-food-chain",
+  "summary": "Mejorar la red de caminos y accesos agrícolas de titularidad pública acondicionándola a la maquinaria pesada del campo.",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

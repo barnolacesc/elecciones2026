@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-health-social-services-p91-91-3",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "7f2c873fa8da8d5c8203f4ea43f82bd0e05181f1f11a97b05dd6e381612de461"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "91",
+  "source_section": "306",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "mental-health-and-coverage",
+  "summary": "Garantizar el acceso gratuito a la atención psicológica en el Sistema Nacional de Salud incorporando más profesionales en Atención Primaria y servicios sociales",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-climate-energy-p105-101-22",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "En tramos donde existan dudas razonables sobre su seguridad"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5b1a620a60008a3dbeed3817dec952d4703e73c45a08c395410fcffba1db0abf"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "105",
+  "source_section": "344",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Poner en marcha un plan de choque con aumento inmediato de personal en control y seguridad, más financiación en mantenimiento y reducción o suspensión de tráfico ante dudas de seguridad.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

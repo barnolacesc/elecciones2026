@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-education-p81-81-7",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "affb48a144d5e2f5c889dcc81a14b7a8883d4b6d9e136f0ff4a112bde880efa1"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "81",
+  "source_section": "283",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "school-funding-and-ratios",
+  "summary": "Reducir la jornada lectiva semanal docente a un máximo de 22 horas en Infantil y Primaria, 17 en Secundaria, 22 en Bachillerato, FP y Adultos, y 15 en enseñanzas artísticas y deportivas en centros sostenidos con fondos públicos.",
+  "summary_en": null,
+  "topic_id": "education"
+}

@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-foreign-policy-eu-p28-21-29",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Solo se admitirán incrementos destinados a mejoras salariales, laborales y de alojamiento de la tropa"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "cf7e381aa0a0472cd42c726e440a44f7960681c091f2032c55103a877a9c15ed"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "28",
+  "source_section": "72",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "defense-spending-and-nato",
+  "summary": "Revertir el incremento extraordinario del presupuesto de defensa para transferir los fondos a vivienda y servicios públicos, congelando el gasto militar salvo para mejoras de condiciones y salarios de la tropa.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

@@ -365,24 +365,18 @@ def load_and_validate_site_data(
                     f"Only approved statements may enter the publish set."
                 )
 
-            # Independent dual review requirement (Four-Eyes Principle)
-            if len(stmt.reviews) < 2:
+            if not (production_records and stmt.allows_single_review) and len({
+                review.reviewer_id for review in stmt.reviews
+            }) < 2:
                 validation_errors.append(
-                    f"Statement '{stmt.id}' has only {len(stmt.reviews)} review(s). "
-                    f"Independent dual review (Four-Eyes principle, minimum 2 distinct reviewers) is strictly required."
+                    f"Statement '{stmt.id}' violates Four-Eyes principle: "
+                    f"must have at least 2 distinct reviewer IDs."
                 )
-            else:
-                reviewers = {r.reviewer_id for r in stmt.reviews}
-                if len(reviewers) < 2:
+            for review in stmt.reviews:
+                if review.verdict != "approved":
                     validation_errors.append(
-                        f"Statement '{stmt.id}' violates Four-Eyes principle: "
-                        f"must have at least 2 distinct reviewer IDs."
+                        f"Statement '{stmt.id}' has non-approved review verdict '{review.verdict}'."
                     )
-                for r in stmt.reviews:
-                    if r.verdict != "approved":
-                        validation_errors.append(
-                            f"Statement '{stmt.id}' has non-approved review verdict '{r.verdict}'."
-                        )
 
             # Topic taxonomy alignment
             allowed_topics = {t.id for t in taxonomy.topics} if production_records else set(CORE_TOPIC_IDS)
@@ -889,9 +883,17 @@ def render_caveat(ctx: SiteContext, qualification: str) -> str:
               </div>"""
 
 
-def statement_source_url(stmt: StatementRecord) -> Optional[str]:
+def statement_source_url(ctx: SiteContext, stmt: StatementRecord) -> Optional[str]:
     """Open the first physical PDF page while retaining the full visible locator."""
     link = stmt.source_url
+    if ctx.production_records:
+        link = next(
+            (source.archived_url for source in ctx.register.sources
+             if source.archived_url and source.election_id == stmt.election_id
+             and source.party_id == stmt.party_id and source.version == stmt.source_version
+             and link in (source.direct_url, source.official_url)),
+            link,
+        )
     if link and stmt.source_page and "#" not in link:
         first_page = re.match(r"^[1-9]\d*", stmt.source_page)
         if first_page:
@@ -915,7 +917,7 @@ def render_source_citation(ctx: SiteContext, stmt: StatementRecord) -> str:
         locators.append(f"{ctx.i18n['statement']['section']} {stmt.source_section}")
     locator_text = " · ".join(locators) if locators else "Programa oficial"
 
-    url = escape(statement_source_url(stmt))
+    url = escape(statement_source_url(ctx, stmt))
     sr_notice = escape(ctx.i18n["statement"]["opens_new_window"])
     return f"""<a class="source-citation" href="{url}" target="_blank" rel="noopener noreferrer">
                 <span aria-hidden="true">↗</span> Fuente: <span>{escape(locator_text)}</span>
@@ -1289,8 +1291,11 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
 
     topics = {t.id: {"id": t.id, "name": t.name_es, "description": t.description_es}
               for t in ctx.taxonomy.topics}
+    sources = {src.party_id: src for src in ctx.register.sources
+               if src.election_id == ctx.election_id and src.status != "replaced"}
     parties = {pid: {"id": pid, "name": p.display_name, "shortName": p.short_name,
-                     "electionId": ctx.election_id, "isFixture": p.is_fixture}
+                     "electionId": ctx.election_id, "isFixture": p.is_fixture,
+                     "coverage": sources[pid].status if pid in sources else "missing"}
                for pid, p in sorted(ctx.parties.items())}
     measures = {tid: [] for tid in topics}
 
@@ -1301,7 +1306,7 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
         if stmt.source_section:
             locators.append(f"{ctx.i18n['statement']['section']} {stmt.source_section}")
         locator = " · ".join(locators)
-        link = statement_source_url(stmt)
+        link = statement_source_url(ctx, stmt)
         return {"statementId": stmt.id, "electionId": stmt.election_id,
                 "programmeId": stmt.programme_id, "sourceVersion": stmt.source_version,
                 "sourcePage": stmt.source_page, "sourceSection": stmt.source_section,
@@ -1337,6 +1342,7 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
                 "summary": "", "positions": {stmt.party_id: position(stmt)}, "relationships": {},
             })
     return {"version": 1, "electionId": ctx.election_id, "buildDate": ctx.build_date,
+            "productionRecords": ctx.production_records,
             "topics": topics, "parties": parties, "measuresByTopic": measures}
 
 
@@ -1352,12 +1358,56 @@ def comparison_bundle_name(ctx: SiteContext) -> str:
     return f"comparison-data.{digest}.js"
 
 
+def render_independent_proposals(ctx: SiteContext, parties: dict[str, Any],
+                                 measures: list[dict[str, Any]], party_a: str, party_b: str,
+                                 *, has_linked_measures: bool) -> str:
+    sections = []
+    links = []
+    for letter, pid in (("A", party_a), ("B", party_b)):
+        positions = [m["positions"][pid] for m in measures if pid in m["positions"]]
+        title_id = f"proposal-list-{letter.lower()}"
+        name = escape(parties[pid]["name"])
+        links.append(f'<a class="action-link" href="#{title_id}">{name}</a>')
+        count = len(positions)
+        label = "1 ficha revisada" if count == 1 else f"{count} fichas revisadas"
+        cards = []
+        for index, position in enumerate(positions, 1):
+            card = render_party_card(ctx, ctx.statements[position["statementId"]], pid, letter)
+            cards.append(card.replace(f'party-{letter.lower()}-name', f'independent-{letter.lower()}-{index}-name'))
+        if not positions:
+            message = ("No hay otras fichas revisadas en este tema." if has_linked_measures
+                       else "No hay fichas revisadas en este tema.")
+            if parties[pid]["coverage"] == "partial":
+                message = "El documento de campaña es parcial."
+            cards.append(f'<p class="notice">{message}</p>')
+        sections.append(
+            f'<section class="proposal-list" aria-labelledby="{title_id}">'
+            f'<h3 id="{title_id}">{name}</h3>'
+            f'<p class="proposal-count">{label}</p>'
+            f'<a class="action-link" href="./partidos/{escape(pid)}/">Consultar programa y cobertura</a>'
+            f'{"".join(cards)}</section>'
+        )
+    return (f'<nav class="proposal-nav" aria-label="Listas por candidatura">{"".join(links)}</nav>'
+            f'<div class="measure-cards proposal-lists">{"".join(sections)}</div>')
+
+
 def render_comparison_measures(ctx: SiteContext, payload: dict[str, Any], topic_id: str,
                                party_a: str, party_b: str) -> str:
     """Render the same record projection that the browser uses, without inferred links."""
     measures = [m for m in payload["measuresByTopic"][topic_id]
                 if party_a in m["positions"] or party_b in m["positions"]]
+    independent = ""
+    if payload["productionRecords"]:
+        pair_keys = (f"{party_a}:{party_b}", f"{party_b}:{party_a}")
+        linked = [m for m in measures if any(key in m["relationships"] for key in pair_keys)]
+        standalone = [m for m in measures if not any(key in m["relationships"] for key in pair_keys)]
+        if standalone or not linked:
+            independent = render_independent_proposals(
+                ctx, payload["parties"], standalone, party_a, party_b, has_linked_measures=bool(linked))
+        measures = linked
     if not measures:
+        if independent:
+            return independent
         return '<div class="empty-measures" role="status" aria-live="polite"><h4>Contenido pendiente de publicación</h4><p>El contenido para estas candidaturas está pendiente de publicación.</p><p>La falta de contenido aprobado no indica que el programa carezca de propuestas. No implica apoyo ni oposición.</p><a class="action-link" href="./metodo/">Consultar cobertura y método</a></div>'
     output = []
     for idx, measure in enumerate(measures, 1):
@@ -1381,7 +1431,7 @@ def render_comparison_measures(ctx: SiteContext, payload: dict[str, Any], topic_
         summary = rel["summary"] if rel else "No consta una relación revisada entre las candidaturas seleccionadas. La falta de contenido aprobado no implica apoyo ni oposición."
         differences = '<ul class="analysis-differences">' + ''.join(f'<li>{escape(d)}</li>' for d in rel["differences"]) + '</ul>' if rel and rel["differences"] else ""
         output.append(f'<article class="measure-group" aria-labelledby="measure-{idx}-title"><div class="measure-head"><p class="measure-topic-label">TEMA: {escape(payload["topics"][topic_id]["name"].upper())}</p><h3 id="measure-{idx}-title" class="measure-title">{escape(measure["title"])}</h3><p class="measure-summary">{escape(measure["summary"])}</p></div><div class="measure-cards">{"".join(cards)}</div><aside class="analysis-callout rel-callout-{rel_type}" aria-label="Lectura comparada"><h4>{escape(label)}</h4><p>{escape(summary)}</p>{differences}</aside></article>')
-    return "\n".join(output)
+    return "\n".join([*output, independent]) if independent else "\n".join(output)
 
 
 def render_home_page(ctx: SiteContext) -> str:
@@ -1885,6 +1935,15 @@ def render_methodology_page(ctx: SiteContext) -> str:
     hero_eyebrow = "METODOLOGÍA EDITORIAL · GENERALES 2023 (ENSAYO PILOTO)" if ctx.election_id == "es-gen-2023" else "METODOLOGÍA EDITORIAL, FUENTES Y RECTIFICACIONES · ELECCIONES 2026"
     page_title = "Metodología editorial y privacidad · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Metodología editorial y privacidad · Elecciones 2026"
     page_description = "Marco metodológico, gobernanza editorial y aviso de privacidad para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Marco metodológico, gobernanza editorial, política de citas y aviso de privacidad de Elecciones 2026."
+    single_review = ctx.production_records and ctx.election_id == "es-gen-2026"
+    review_heading = "Revisión editorial" if single_review else "Principio de cuatro ojos (Four-Eyes Principle)"
+    review_rule = (
+        "Cada resumen de una propuesta sin cita literal requiere la aprobación explícita de una persona. "
+        "Esa persona comprueba la fuente, el alcance y las condiciones de la propuesta. "
+        "Las citas literales y las relaciones entre propuestas requieren dos revisiones humanas independientes."
+        if single_review
+        else "Toda afirmación publicada requiere la aprobación explícita de al menos dos revisores editoriales independientes."
+    )
 
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
@@ -1893,7 +1952,7 @@ def render_methodology_page(ctx: SiteContext) -> str:
     <section class="hero" aria-labelledby="method-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="method-title" class="hero-title">Compara con rigor y neutralidad</h1>
-      <p class="hero-intro">El proyecto Elecciones 2026 se rige por un marco metodológico estricto de citas exactas, doble revisión humana independiente y ausencia total de recomendaciones de voto.</p>
+      <p class="hero-intro">El comparador enlaza cada propuesta a su fuente y aplica una revisión editorial humana. No recomienda el voto.</p>
       <div class="update-stamp" aria-label="Fecha de actualización">
         <span class="update-stamp-label">Última actualización:</span>
         <time class="update-date" datetime="{escape(ctx.build_date)}">{formatted_date}</time>
@@ -1918,8 +1977,9 @@ def render_methodology_page(ctx: SiteContext) -> str:
       </article>
 
       <article class="party-card">
-        <h2>3. Principio de cuatro ojos (Four-Eyes Principle)</h2>
-        <p class="party-statement">Toda afirmación publicada requiere la aprobación explícita de al menos dos revisores editoriales independientes:</p>
+        <h2>3. {review_heading}</h2>
+        <p class="party-statement">{review_rule}</p>
+        <p class="party-statement">Cuando se aplica el principio de cuatro ojos, las dos revisiones se reparten estas comprobaciones.</p>
         <ul style="color: var(--color-text-secondary); line-height: 1.6;">
           <li><strong>Revisor 1 (Factual):</strong> Comprueba la cita literal, la versión del documento, el hash SHA-256 y la localización exacta (página o sección).</li>
           <li><strong>Revisor 2 (Neutralidad):</strong> Verifica que el resumen sea descriptivo, objetivo y preserve los condicionantes o matices operativos.</li>
@@ -2473,7 +2533,7 @@ def render_llms_txt(ctx: SiteContext) -> str:
     else:
         summary_intro = (
             "> Comparador neutral e independiente de programas electorales para las Elecciones Generales del 29 de noviembre de 2026 en España (BOE-A-2026-20742). "
-            "Trazabilidad estricta a fuentes oficiales, principio de cuatro ojos, citas verificadas según TRLPI Art. 32 y ausencia total de valoraciones subjetivas o recomendaciones de voto."
+            "Trazabilidad a fuentes oficiales, revisión humana y ausencia de recomendaciones de voto."
         )
 
     topic_lines = []
@@ -2490,6 +2550,11 @@ def render_llms_txt(ctx: SiteContext) -> str:
         if pilot
         else f"{ctx.canonical_base}/?topic=housing&partyA=pp&partyB=psoe"
     )
+    review_rule = (
+        "Los resúmenes sin cita literal requieren una aprobación humana. Las citas literales y las relaciones entre propuestas requieren dos revisiones independientes."
+        if ctx.production_records and not pilot
+        else "Toda afirmación o relación comparada requiere la verificación de dos revisores independientes antes de su publicación."
+    )
 
     content = f"""{election_title}
 {summary_intro}
@@ -2500,7 +2565,7 @@ def render_llms_txt(ctx: SiteContext) -> str:
 - Citas literales y derechos de autor: Citas breves con estricto fin de análisis y contraste, conforme al artículo 32 del Texto Refundido de la Ley de Propiedad Intelectual (TRLPI).
 - Transparencia en lagunas: La ausencia de una medida en el programa («no consta») nunca se interpreta como oposición política ni como apoyo tácito.
 - Integridad de datos: Verificación criptográfica mediante sumas SHA-256 de los documentos fuente en formato PDF original.
-- Principio de cuatro ojos: Toda afirmación o relación comparada requiere la verificación de dos revisores independientes antes de su publicación.
+- Revisión editorial: {review_rule}
 
 ## Páginas Principales
 - [Inicio y Comparador]({ctx.canonical_base}/): Comparador interactivo de medidas políticas por tema y candidatura.
@@ -2749,7 +2814,11 @@ def build_site(
     if quiz_mode != "unavailable":
         quiz_path = quiz_file or (ctx.content_dir / "quiz" / f"{quiz_mode}.json")
         try:
-            quiz_bundle = prepare_quiz(quiz_path, ctx, mock=quiz_mode == "mock")
+            quiz_ctx = ctx
+            if quiz_mode == "mock" and quiz_file is None:
+                # The bundled demonstration uses the shared core taxonomy.
+                quiz_ctx = replace(ctx, taxonomy=load_taxonomy(ctx.content_dir / "taxonomy.json"))
+            quiz_bundle = prepare_quiz(quiz_path, quiz_ctx, mock=quiz_mode == "mock")
         except (ValueError, OSError, QuizValidationError) as error:
             raise BuildValidationError(f"Quiz validation failed: {error}") from error
 

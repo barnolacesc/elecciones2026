@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-institutions-rights-p62-61-15",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [
+    "Tras la aprobación de la transferencia de la autopista a Galicia"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3f0068cb0632162ce18faa1653d3071fe1fdbb59b2e886d903aba346db099bdd"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "62",
+  "source_section": "5.2. INFRAESTRUTURAS VIARIAS",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Transferir la AP-9 a Galicia y anular la prórroga concedida en el año 2000 para que pase a ser pública y gratuita.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

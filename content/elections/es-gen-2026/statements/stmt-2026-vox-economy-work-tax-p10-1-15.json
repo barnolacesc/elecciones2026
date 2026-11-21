@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-vox-economy-work-tax-p10-1-15",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-21",
+  "party_id": "vox",
+  "policy_instrument": null,
+  "programme_id": "vox-2026-v2",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-21",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "acc411805fe431f91cde4c85fae03b65121fd10fdfbb4fbc9478c4d3670f95cf"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "10",
+  "source_section": "5",
+  "source_url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+  "source_version": "2026-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "scientific-research-and-talent",
+  "summary": "Incrementar la inversión en I+D+i, los incentivos fiscales a la innovación y la transferencia de conocimiento entre centros de investigación y empresas",
+  "summary_en": null,
+  "topic_id": "science-innovation-digital"
+}

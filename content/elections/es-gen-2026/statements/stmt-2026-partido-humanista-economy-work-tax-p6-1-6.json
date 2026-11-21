@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-partido-humanista-economy-work-tax-p6-1-6",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "partido-humanista",
+  "policy_instrument": null,
+  "programme_id": "partido-humanista-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "19f1a3c8bf4d08b9f2943ed45114032172bc8afd040bee80db03e79cd045f3ea"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "6",
+  "source_section": "1. Economía y Empleo - Propuesta 2",
+  "source_url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Establecer una tasa sobre transacciones financieras especulativas del 0,5% en operaciones bursátiles de alta frecuencia para recaudar 20.000 millones de euros.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

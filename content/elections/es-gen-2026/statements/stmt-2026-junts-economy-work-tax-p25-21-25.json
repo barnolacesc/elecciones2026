@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-economy-work-tax-p25-21-25",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "587a013ea6c9476c594f05d5982a685795a16408e2df792321e2d1a7cd0277ad"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "25",
+  "source_section": "2.9. Reformar la Llei de propietat intel·lectual",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Reformar la Ley de propiedad intelectual para que los creadores conozcan cuándo sus obras entrenan inteligencia artificial, puedan reservar sus derechos y reciban remuneración adecuada.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

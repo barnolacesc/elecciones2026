@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-institutions-rights-p40-31-57",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3b194cd9b8f6595bb0a0d9636319e196d2b2a994dfbad58900c64e7b3e3fc68d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "40",
+  "source_section": "DESCLASIFICACIÓN Y ESCLARECIMIENTO DE HECHOS 05",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Garantizar el acceso público a los expedientes oficiales de la actuación policial registrada en los Sanfermines del año 1978.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

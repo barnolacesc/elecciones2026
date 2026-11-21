@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-salf-institutions-rights-p27-21-33",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "salf",
+  "policy_instrument": null,
+  "programme_id": "salf-29N-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "c57e3c800b5eda6988e4adaac635970f26e62d31f889490d721fb7aaa21e6609"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "27",
+  "source_section": "6",
+  "source_url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "judicial-governance-and-cgpj",
+  "summary": "Elegir al Fiscal General del Estado por mayoría de tres quintos del Congreso entre fiscales con 25 años de carrera para un mandato de seis años no coincidente con la legislatura",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

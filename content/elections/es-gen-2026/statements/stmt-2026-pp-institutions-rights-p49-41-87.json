@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-institutions-rights-p49-41-87",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-21",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-21",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2591c062c64ca67441fbb10c1ae14d098c6ce97db4e06580a1d4c6bb2d1b452c"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "49",
+  "source_section": "196",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rural-development-and-generational-renewal",
+  "summary": "Exigir el cumplimiento vinculante del Mecanismo Rural de Garantía para analizar previamente la repercusión de cualquier regulación en el medio rural.",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-health-social-services-p89-81-64",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d7d9801e024c6d5baca1eecb61d8ef7b0eb518c9ce23f18b9afc37a9ed18d73c"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "89",
+  "source_section": "302",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "waiting-lists-and-management",
+  "summary": "Dotar a la Alta Inspección Sanitaria de recursos para fiscalizar conciertos, contratos menores y fondos públicos sanitarios.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

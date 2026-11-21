@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-immigration-p49-41-70",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "68e494f920436b521f96c8993ebfe064e03f2391e8b2ebebbd0719a921660fd7"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "49",
+  "source_section": "4. Punts de programa / Objectiu 5 / 5.4",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "unaccompanied-minors",
+  "summary": "Exigir compensación económica estatal para autonomías con acogida de menores migrantes superior a la media y preservar la regularidad de jóvenes extutelados si se forman y aprenden catalán",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

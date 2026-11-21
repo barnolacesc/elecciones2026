@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-housing-p47-41-41",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Que ofrezcan contratos de arrendamiento indefinidos y precios al menos 5 % por debajo del índice estatal simultáneamente"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5562e1805d8bc4ac3a8c932a855dfd97067b2b7dc1a18e919fe9faac757b3dc5"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "47",
+  "source_section": "3.3. Que las rentas del capital tributen como las del trabajo",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rental-regulation",
+  "summary": "Condicionar las reducciones y deducciones del IRPF por arrendamiento de vivienda a contratos indefinidos con rentas al menos un 5 % inferiores al índice de precios estatal.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

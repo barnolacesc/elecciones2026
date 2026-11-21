@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-agriculture-fisheries-rural-p87-81-30",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "dcd6dbdda3f1f47969af1c6bd42a5c85a0f430ccf1e6ad2fcc813d459c3d7dd5"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "87",
+  "source_section": "7.1. Sostenibilidad económica y social",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "agricultural-policy-and-food-chain",
+  "summary": "Aprobar un Pacto de Estado y una Ley de Futuro de la Agricultura, la Ganadería y la Alimentación para articular la transición agroecológica.",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

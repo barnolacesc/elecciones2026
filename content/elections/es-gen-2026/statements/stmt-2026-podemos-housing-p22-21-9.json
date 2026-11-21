@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-housing-p22-21-9",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Mientras se completa la prohibición del uso turístico de viviendas residenciales"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "9e1cdaff7ff0cb857c14cf33f20369fd25eccbf2cc8f83839bafcd3d381d2eb9"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "22",
+  "source_section": "53",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tourist-accommodation",
+  "summary": "Subir el IVA de los servicios de alojamiento en pisos turísticos al 21 % de manera transitoria mientras se prohíbe el uso turístico residencial.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

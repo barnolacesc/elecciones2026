@@ -18,7 +18,11 @@ They MUST NOT fall back to fictional examples or historical statements.
 ### Requirement: Verify real political records
 Every production statement MUST resolve to one verified election-scoped source
 and a matching programme hash/version. Applicable reuse approval, publication
-dates, exact locators and independent human reviews MUST pass the existing gates.
+dates and exact locators MUST pass the existing gates. A 2026 programme
+summary without a verbatim quotation requires one named human approval bound
+to the approved content and provenance. Automated checks may support that
+review. Verbatim quotations and comparison relationships require two human
+approvals.
 
 #### Scenario: Unverified source
 - **WHEN** a production claim references a source without reuse approval

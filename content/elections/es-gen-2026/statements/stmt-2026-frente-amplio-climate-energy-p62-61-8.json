@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p62-61-8",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Aplica a instalaciones renovables de más de 5 MW"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "9a26303cfc358966b4e58560a69ef31664bf5e73492f2d24e294522eef54ebac"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "62",
+  "source_section": "5.1",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "renewables-and-grid",
+  "summary": "Abrir a la participación local al menos el 20 % del capital o rentas equivalentes en proyectos renovables de más de 5 MW para vecinos, ayuntamientos o comunidades energéticas.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

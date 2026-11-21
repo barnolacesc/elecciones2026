@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-education-p103-101-15",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "325c60f7caada208166438a85fbf90098692c85e749706347908a1b48ab758bd"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "103",
+  "source_section": "451",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "curriculum-and-languages",
+  "summary": "Poner en marcha una Estrategia Nacional de Competencia Lectora, fortalecer bibliotecas escolares y públicas, librerías de barrio, universalizar el acceso a la Biblioteca Nacional, permitir altas digitales y digitalizar archivos.",
+  "summary_en": null,
+  "topic_id": "education"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-health-social-services-p38-31-44",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "8228bb4b4ce9771ea416e03515f5e153234da004eb68b5f343fbe8c4515428d6"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "38",
+  "source_section": "3.2. SANIDADE",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "waiting-lists-and-management",
+  "summary": "Establecer un marco legal que fomente la permanencia laboral estable de los especialistas en el sistema sanitario público por un plazo equivalente a su formación",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

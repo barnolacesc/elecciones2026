@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p82-81-10",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "64241ada3b1ccc4ac145eb955464faa9b707b6ecc4a4d5417c17a831ab6283c2"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "82",
+  "source_section": "Planificación estratégica y regulación estricta de centros de datos",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Crear una tasa sobre la actividad económica de los servicios digitales vinculados a centros de datos con retorno a los municipios acogedores y exigencia de contratación y formación local.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

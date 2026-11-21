@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "bng-2026-v1",
+  "candidacy_id": "bng",
+  "title": "29N. Xerais 2026. Programa electoral",
+  "status": "official",
+  "version": "29N-v2",
+  "publisher": "BNG",
+  "official_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "publication_date": "2026-11-12",
+  "retrieval_date": "2026-11-12",
+  "language": "gl",
+  "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+  "rights_status": "verified_link_only",
+  "is_fixture": false
+}

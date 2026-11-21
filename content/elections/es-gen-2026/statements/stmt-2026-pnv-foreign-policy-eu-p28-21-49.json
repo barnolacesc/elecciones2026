@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-foreign-policy-eu-p28-21-49",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [
+    "Respetando la singularidad y capacidad de actuación del modelo vasco de cooperación"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5a5298ff0ca32d673a8beb4a4fd39301a51a1fc91c6a479c7481298bafc8dd99"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "28",
+  "source_section": "08",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "development-cooperation",
+  "summary": "Fortalecer la cooperación internacional para el desarrollo respetando el modelo y la capacidad de gestión del sistema vasco de cooperación",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

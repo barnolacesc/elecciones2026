@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-institutions-rights-p50-41-113",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [
+    "Con especial compensación para Alicante"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "851c2ae6629d7c81319e944dac4be4c64c10ec9f7dddcc78314a38df830e2d28"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "50",
+  "source_section": "MODEL DE FINANÇAMENT AUTONÒMIC I INVERSIONS",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Asignar y ejecutar inversiones territoriales del Estado en la Comunitat Valenciana ajustadas a su peso poblacional, compensando la provincia de Alicante.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-economy-work-tax-p50-41-95",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-21",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-21",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "bd2319546c6463dfa20f77594acdc6281c66f880da1d715df3e6791f881e8b9b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "50",
+  "source_section": "203",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rural-development-and-generational-renewal",
+  "summary": "Adelantar hasta el 70% de las subvenciones PAC a jóvenes incorporados al sector primario junto con deducciones fiscales y relevo de titularidad por jubilación.",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

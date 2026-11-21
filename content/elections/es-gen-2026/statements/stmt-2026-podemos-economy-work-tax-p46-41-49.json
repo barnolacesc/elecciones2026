@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-economy-work-tax-p46-41-49",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Para trabajadoras y trabajadores con personas dependientes, enfermas o menores de edad a su cargo"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "36d79ff5d88ed1b16fde8d6dfa90fbd50d89bf5402e997df48977db85215c4ed"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "46",
+  "source_section": "140",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "working-hours-reduction",
+  "summary": "Garantizar el derecho a la flexibilización horaria, reducción de jornada y excedencias laborales por cuidado de dependientes, enfermos o menores de edad.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

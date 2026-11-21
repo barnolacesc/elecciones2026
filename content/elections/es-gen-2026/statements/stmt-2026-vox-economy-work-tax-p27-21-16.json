@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-vox-economy-work-tax-p27-21-16",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-21",
+  "party_id": "vox",
+  "policy_instrument": null,
+  "programme_id": "vox-2026-v2",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-21",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d7cbc7af397f602e053bf0f9e49859f4eb5d9178bb53d1d523f8a7597716c960"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "27",
+  "source_section": "37",
+  "source_url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+  "source_version": "2026-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "artificial-intelligence-and-digital-rights",
+  "summary": "Promover la I+D y aplicación de la inteligencia artificial facilitando su implantación en pymes y autónomos, además de programas formativos para trabajadores y jóvenes",
+  "summary_en": null,
+  "topic_id": "science-innovation-digital"
+}

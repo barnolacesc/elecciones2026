@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-economy-work-tax-p19-11-75",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b318a37ca9738baf97f439a2528d7c3d23bc97965c84663159a24b3514c1b2cc"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "19",
+  "source_section": "2.3. NA DEFENSA DO SISTEMA PÚBLICO DE PENSIÓNS",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "pensions-and-social-security",
+  "summary": "Financiar el sistema de pensiones vía presupuestos e impuestos a la riqueza, destopar las bases máximas y reducir bonificaciones a cotizaciones empresariales.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

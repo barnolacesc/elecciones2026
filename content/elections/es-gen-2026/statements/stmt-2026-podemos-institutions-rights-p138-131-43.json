@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-institutions-rights-p138-131-43",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a01cd4db0afc46d9a92b61d1142d1d54dfd222e7896712800f856e2ab9a4b5d7"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "138",
+  "source_section": "441. Garantía del Derecho a la Información Veraz y de Lucha contra la Desinformación.",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Limitar la concentración mediática fijando restricciones estrictas a la entrada de capital extranjero y de firmas de sectores estratégicos como banca, energía o telecomunicaciones.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

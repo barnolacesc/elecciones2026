@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-economy-work-tax-p60-51-52",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a3312c6b3e20488f863be7eae841ed62c5171474dfcc81bfe5a09ad6cfff2313"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "60",
+  "source_section": "178",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "labor-regulations-and-smi",
+  "summary": "Ampliar los permisos de nacimiento, adopción y acogimiento a 26 semanas remuneradas e intransferibles por progenitor, y duplicar la duración en familias monoparentales con opción de transferir la mitad a familiares hasta segundo grado.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

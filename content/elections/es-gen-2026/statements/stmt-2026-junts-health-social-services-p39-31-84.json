@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-health-social-services-p39-31-84",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [
+    "Exención para ingresos que no superen 2,5 veces el IPREM"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "4a44cab75f7c4e5c118266cb12678d69c049440711324cf1f5b1031f75a47976"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "39",
+  "source_section": "2.3",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Revisar el copago de los servicios de soporte haciéndolo progresivo y estableciendo la exención completa a quienes perciban rentas inferiores a 2,5 veces el IPREM.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

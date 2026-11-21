@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-climate-energy-p67-61-32",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "bdd2c52dcaa1f43216e6fa3ba22ecb410d5c8336776afec9f7297c448ae8f13e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "67",
+  "source_section": "3) En materia de patrimonio natural e biodiversidade",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Aplicar los objetivos de biodiversidad para 2030 del marco Kunming-Montreal: conservar el 30% de zonas terrestres, marinas y costeras, restaurar el 20% de ecosistemas degradados, reducir a la mitad las especies invasoras y la pérdida de nutrientes, y reducir en dos tercios los químicos y plaguicidas.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

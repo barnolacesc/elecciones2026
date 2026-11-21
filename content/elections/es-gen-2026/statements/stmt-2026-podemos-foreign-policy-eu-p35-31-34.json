@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-foreign-policy-eu-p35-31-34",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "dfe021309560f4c132b0549165862645694e0a2f920b39d9ca8d8e0e4f05244d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "35",
+  "source_section": "101. Refuerzo de la ayuda humanitaria a la población refugiada saharaui y protección de los defensores de derechos humanos.",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "development-cooperation",
+  "summary": "Incrementar la ayuda humanitaria para la población refugiada saharaui y estrechar la cooperación con agencias de Naciones Unidas y ONGs.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

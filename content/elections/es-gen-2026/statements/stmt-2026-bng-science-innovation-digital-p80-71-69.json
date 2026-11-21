@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-science-innovation-digital-p80-71-69",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "1da237237ff4aa321bc7c5dcaffe00bbdc97f06f7c110c25d3d1d38947a6edf5"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "80",
+  "source_section": "8.6",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "artificial-intelligence-and-digital-rights",
+  "summary": "Imponer por ley la interoperabilidad obligatoria de redes sociales y servicios de mensajería mediante el uso de protocolos abiertos y federados",
+  "summary_en": null,
+  "topic_id": "science-innovation-digital"
+}

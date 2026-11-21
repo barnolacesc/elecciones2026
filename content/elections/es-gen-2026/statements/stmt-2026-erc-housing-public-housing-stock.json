@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-housing-public-housing-stock",
+  "party_id": "erc",
+  "topic_id": "housing",
+  "subtopic_id": "public-housing-stock",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone transferir de inmediato y sin coste a la Generalitat la titularidad de los inmuebles de la Sareb y Casa 47 para ampliar el parque público de vivienda.",
+  "review_status": "approved",
+  "programme_id": "erc-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "source_page": "19",
+  "source_section": "B.A, medida 57",
+  "qualifications": [
+    "El traspaso incluiría los recursos necesarios para rehabilitar los inmuebles."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/habitatge-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "f46d90e26b198396001aa6da9e368d2f659abcc9a7527181a47b18ec11a7e278"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-climate-energy-p62-61-12",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "04bf03a2131178d571edf98281a9775de118374963cc95637d67d8240670462d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "62",
+  "source_section": "5. INFRAESTRUTURAS PÚBLICAS E ORDENACIÓN TERRITORIAL",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Declarar el ferrocarril como modalidad prioritaria frente al resto de transportes terrestres e incorporarlo al PNIEC con objetivos medibles por año.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

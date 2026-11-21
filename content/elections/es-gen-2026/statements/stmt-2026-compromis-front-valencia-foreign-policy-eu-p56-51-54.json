@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-foreign-policy-eu-p56-51-54",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "0d0498fb5f77145c3ee173486893fe9ae72949db74c2df171bdb156ce1a1cea5"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "56",
+  "source_section": "UNIÓ EUROPEA",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "international-trade-treaties",
+  "summary": "Recurrir ante el TJUE los acuerdos comerciales contrarios a la protección ambiental y sectorial propia y las normas del Pacto Europeo de Migración y Asilo",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

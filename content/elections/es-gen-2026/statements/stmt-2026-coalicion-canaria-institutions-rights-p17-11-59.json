@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-institutions-rights-p17-11-59",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-21",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-21",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "903abfec3f18550b784c8a22a3eb514b85af66b464d003874ab3bb87e37842fe"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "17",
+  "source_section": "75",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "air-and-maritime-transport-insular-mobility",
+  "summary": "Proteger y consolidar la bonificación del 75 % en las tarifas de transporte aéreo y marítimo para personas residentes en Canarias frente a subidas abusivas.",
+  "summary_en": null,
+  "topic_id": "infrastructure-mobility"
+}

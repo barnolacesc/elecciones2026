@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-climate-energy-p121-121-1",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d3084198d4ac29a38fe8e848314b144bf3682dea34d5f338aa371dc72e3aa51a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "121",
+  "source_section": "394",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Desarrollar íntegramente la Ley 7/2023 por vía reglamentaria y adaptar la normativa al futuro marco europeo de perros y gatos asegurando su aplicación a todos los perros, incluidos los de caza, deportivos, profesionales o de trabajo.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

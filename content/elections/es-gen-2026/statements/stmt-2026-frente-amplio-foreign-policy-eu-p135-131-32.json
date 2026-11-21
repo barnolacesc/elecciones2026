@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-foreign-policy-eu-p135-131-32",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "6bb6c9325f1b52c3d016e2f8b4a7c0c06482bb9eb4f338ebd37b7b819c6f1fc6"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "135",
+  "source_section": "Una Europa autónoma y con voz propia en el mundo",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "defense-spending-and-nato",
+  "summary": "Desarrollar un marco europeo de seguridad sujeto a control parlamentario que aplique las previsiones del artículo 42.7 del Tratado de la Unión Europea orientado a la ciudadanía y no a la industria militar",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

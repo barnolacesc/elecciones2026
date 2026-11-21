@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p141-141-4",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Las sendas no aplican si arriesgan la estabilidad social o si el desempleo o pobreza superan el promedio de los cinco paises con menor tasa de la UE"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "0a879755458f9c8a5f318be729109df930870f634114f3fd92c0471cb92ee257"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "141",
+  "source_section": "18. HACIA UNA DEMOCRACIA AVANZADA",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "electoral-law-and-constitution",
+  "summary": "Modificar el articulo 135 de la Constitucion para suprimir la prioridad del pago de la deuda e impedir aplicar sendas de estabilidad si amenazan la estabilidad social o con indicadores de desempleo y pobreza superiores a los cinco menores de la UE",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

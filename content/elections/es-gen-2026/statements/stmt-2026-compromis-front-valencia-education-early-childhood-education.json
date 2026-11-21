@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-education-early-childhood-education",
+  "party_id": "compromis-front-valencia",
+  "topic_id": "education",
+  "subtopic_id": "early-childhood-education",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone ampliar la red pública de educación de 0 a 3 años y avanzar hacia la gratuidad con financiación estatal y acuerdos con las administraciones responsables.",
+  "review_status": "approved",
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "source_page": "10",
+  "source_section": "Educació, p. impresa 9",
+  "qualifications": [
+    "El programa pide condiciones laborales dignas para el profesorado."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact eight-statement Education batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "4f83e7daf024c2df6166eea306750f4a55824ff721e7fe1d925de630a0d24523"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

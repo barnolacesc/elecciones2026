@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p71-71-3",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Con restricciones de fondeo y sobreexplotación pesquera"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "cc0965b2867f4d074e6460ea96b305523caab933476ecc5551d6401c18ac03da"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "71",
+  "source_section": "5.3",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Elevar al 30 % la protección del mar Mediterráneo en áreas marinas estratégicas para la conservación de la posidonia y crear una Estrategia Nacional de Conservación de la Posidonia Oceánica.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

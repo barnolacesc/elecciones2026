@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-agriculture-fisheries-rural-p71-71-2",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f17471d8227e3f032a79e948b9d62fc92f5e7dbb62ef0bfe21b1a2a0bc8059f1"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "71",
+  "source_section": "279",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rural-development-and-generational-renewal",
+  "summary": "Reforzar la innovación y el emprendimiento juvenil rural consolidando los Centros de Innovación Territorial y extendiendo programas como Campus Rural",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

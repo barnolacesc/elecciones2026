@@ -1,0 +1,38 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p101-101-2",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Los contratos no podrán referirse a puestos estructurales o estatutarios de las administraciones públicas",
+    "Las retribuciones se fijarán según los convenios colectivos aplicables"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2ccf872ebe39f41fc16017ccb567384b4188d00a978a80c1a596419c7f6507ae"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "101",
+  "source_section": "EMPLEO PÚBLICO DE CALIDAD",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "labor-regulations-and-smi",
+  "summary": "Implementar un Plan de Empleo Garantizado mediante convenios interadministrativos y colaboración público-social, dirigido preferentemente a desempleados de larga duración.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "podemos-2026-v1",
+  "candidacy_id": "podemos",
+  "title": "Así de básico: paz, casa y trabajo",
+  "status": "official",
+  "version": "2026-v1",
+  "publisher": "Podemos",
+  "official_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "publication_date": "2026-11-18",
+  "retrieval_date": "2026-11-20",
+  "language": "es",
+  "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+  "rights_status": "verified_link_only",
+  "is_fixture": false
+}

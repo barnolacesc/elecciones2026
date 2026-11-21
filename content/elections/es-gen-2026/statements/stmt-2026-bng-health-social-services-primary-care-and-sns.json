@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-health-social-services-primary-care-and-sns",
+  "party_id": "bng",
+  "topic_id": "health-social-services",
+  "subtopic_id": "primary-care-and-sns",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone aumentar la financiación de la sanidad pública hasta alcanzar, como mínimo, el promedio de inversión por habitante de la Unión Europea.",
+  "review_status": "approved",
+  "programme_id": "bng-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "source_page": "37",
+  "source_section": "3.2, Sanidade",
+  "qualifications": [
+    "La propuesta se formula mientras el Estado mantenga la legislación básica y el modelo de financiación actual. Pide dar más peso a la dispersión y al envejecimiento de la población."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/salut-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "4b7c4125da4fc41fd8c25f7f539fab07ce80a3e6e9e1d54e576fd535a4a5fefe"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

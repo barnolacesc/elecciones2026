@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-infrastructure-mobility-p106-101-30",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "7348b21efec7221d0621b9bc053a67eefb5aa384592b28f073381c3f14cc93a6"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "106",
+  "source_section": "351",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "air-and-maritime-transport-insular-mobility",
+  "summary": "Impedir nuevas privatizaciones de torres de control aeroportuarias e iniciar la recuperación de las privatizadas.",
+  "summary_en": null,
+  "topic_id": "infrastructure-mobility"
+}

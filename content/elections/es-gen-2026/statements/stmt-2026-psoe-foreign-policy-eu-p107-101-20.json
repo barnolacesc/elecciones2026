@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-foreign-policy-eu-p107-101-20",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "581dfe6a3c03c22b8b9bb785419167fdaf386855e43a869934f2c7745095e7db"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "107",
+  "source_section": "456",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "bilateral-relations",
+  "summary": "Promover la reforma de la ONU y del Consejo de Seguridad limitando el derecho a veto y aumentando la voz del Sur Global, respaldar la Corte Penal Internacional y facilitar la participación juvenil multilateral.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

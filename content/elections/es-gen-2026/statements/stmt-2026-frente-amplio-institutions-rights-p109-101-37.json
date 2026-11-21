@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p109-101-37",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "dc8b1d73d0ce9d5c7fef5c5d802fb320c49e3395003d24922c1dc0d5d910a228"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "109",
+  "source_section": "12.1. Un nuevo marco de financiación local",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Exigir que toda ley estatal o autonómica que atribuya nuevas competencias a las entidades locales incorpore memoria económica y garantice los recursos necesarios para su ejercicio.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,515 +1,703 @@
 {
   "$schema": "./register.schema.json",
-  "version": "1.0.0",
-  "last_updated": "2026-11-12",
   "description": "Versioned source register tracking official candidacies and programme publication for the 2026 Spanish general election and pilot rehearsal sources.",
   "elections": [
     {
+      "call_decree": "Real Decreto 806/2026 (BOE-A-2026-20742)",
+      "election_date": "2026-11-29",
       "id": "es-gen-2026",
       "name": "Elecciones Generales 2026 (29 de noviembre de 2026)",
-      "election_date": "2026-11-29",
-      "call_decree": "Real Decreto 806/2026 (BOE-A-2026-20742)",
       "status": "active_monitoring"
     },
     {
+      "call_decree": "Real Decreto 400/2023",
+      "election_date": "2023-07-23",
       "id": "es-gen-2023",
       "name": "Elecciones Generales 2023 (23 de julio de 2023)",
-      "election_date": "2023-07-23",
-      "call_decree": "Real Decreto 400/2023",
       "status": "pilot_rehearsal"
     }
   ],
+  "last_updated": "2026-11-20",
   "sources": [
     {
-      "id": "src-2026-psoe-v0",
-      "election_id": "es-gen-2026",
-      "party_id": "psoe",
       "candidature_name": "Partido Socialista Obrero Español",
+      "direct_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "PROGRAMA_PSOE_29N26.pdf",
+      "id": "src-2026-psoe-v1",
+      "language": "es",
+      "notes": "The PSOE published the programme on 15 November: https://www.psoe.es/actualidad/noticias-actualidad/pedro-sanchez-el-29n-haremos-un-referendum-en-favor-de-la-buena-politica-frente-a-la-mala-educacion-de-la-derecha-y-la-ultraderecha/. The verified campaign PDF matches the archived SHA-256.",
+      "official_url": "https://lafuerzadelagente.es/programa",
+      "party_id": "psoe",
+      "publication_date": "2026-11-15",
       "publisher": "PSOE",
-      "scope": "general",
-      "official_url": "https://www.psoe.es/transparencia/informacion-politica-organizativa/programa/",
-      "direct_url": null,
-      "filename": null,
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
-      "language": "es",
-      "version": "0.0",
-      "sha256": null,
-      "status": "missing",
+      "replacement_history": [
+        {
+          "prior_version": "0.0",
+          "reason": "The 29 November 2026 programme was located on an official campaign or party site.",
+          "replacement_date": "2026-11-20",
+          "superseded_by": "src-2026-psoe-v1"
+        }
+      ],
+      "retrieval_date": "2026-11-20",
       "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+        "evidence_ref": "editorial/habitatge-salut/source-reuse-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
       },
-      "replacement_history": [],
-      "notes": "Official transparency and party channels checked on 2026-11-11. General election 2026 programme not yet located; status remains missing."
+      "scope": "general",
+      "sha256": "e9c8341339538b550641b6ddb1c3fdfeef7fda6a8a1a4be9e8d6a44cbc229bf5",
+      "status": "verified",
+      "version": "2026-v1"
     },
     {
-      "id": "src-2026-pp-v1",
-      "election_id": "es-gen-2026",
-      "party_id": "pp",
       "candidature_name": "Partido Popular",
-      "publisher": "Partido Popular",
-      "scope": "general",
-      "official_url": "https://www.pp.es/actualidad/documentos/",
       "direct_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+      "election_id": "es-gen-2026",
       "filename": "PP_2026_Reconstruccion_Nacional_ES.pdf",
-      "publication_date": "2026-11-01",
-      "retrieval_date": "2026-11-11",
+      "id": "src-2026-pp-v1",
       "language": "es",
-      "version": "2026-v1",
+      "notes": "Programme presentation on 10 November: https://www.pp.es/wp-content/uploads/2026/11/26.11.10-ANF-Intervencion-presentacion-programa-electoral.pdf",
+      "official_url": "https://www.pp.es/actualidad/documentos/",
+      "party_id": "pp",
+      "publication_date": "2026-11-10",
+      "publisher": "Partido Popular",
+      "replacement_history": [
+        {
+          "prior_version": "0.0",
+          "reason": "Official 2026 programme Reconstrucción Nacional published on official PP document portal.",
+          "replacement_date": "2026-11-11",
+          "superseded_by": "src-2026-pp-v1"
+        }
+      ],
+      "retrieval_date": "2026-11-11",
+      "rights_review": {
+        "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
+      },
+      "scope": "general",
       "sha256": "ae0c35d7ef3faf540acaa79d47abbe3ae2bf56a3a755c4e78a8f5bf3ea49789c",
-      "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Official 2026 programme downloaded on 2026-11-11; rights review and human editorial approval pending."
-      },
-      "replacement_history": [
-        {
-          "prior_version": "0.0",
-          "superseded_by": "src-2026-pp-v1",
-          "replacement_date": "2026-11-11",
-          "reason": "Official 2026 programme Reconstrucción Nacional published on official PP document portal."
-        }
-      ],
-      "notes": "Official 2026 general election programme Reconstrucción Nacional (64 pages). Content and editorial review pending."
+      "status": "verified",
+      "version": "2026-v1"
     },
     {
-      "id": "src-2026-vox-v0",
-      "election_id": "es-gen-2026",
-      "party_id": "vox",
       "candidature_name": "VOX",
+      "direct_url": "https://www.voxespana.es/wp-content/uploads/2026/11/Programa-completo-A5-1.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "Programa-completo-A5-1.pdf",
+      "id": "src-2026-vox-v1",
+      "language": "es",
+      "notes": "Publisher PDF for the 29 November 2026 general election. Editorial review is pending.",
+      "official_url": "https://www.voxespana.es/programa-",
+      "party_id": "vox",
+      "publication_date": "2026-11-12",
       "publisher": "VOX",
-      "scope": "general",
-      "official_url": "https://www.voxespana.es/programa/programa-electoral-Vox",
-      "direct_url": null,
-      "filename": null,
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
-      "language": "es",
-      "version": "0.0",
-      "sha256": null,
-      "status": "missing",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
-      },
-      "replacement_history": [],
-      "notes": "Official transparency and party channels checked on 2026-11-11. General election 2026 programme not yet located; status remains missing."
-    },
-    {
-      "id": "src-2026-sumar-v0",
-      "election_id": "es-gen-2026",
-      "party_id": "sumar",
-      "candidature_name": "Movimiento Sumar",
-      "publisher": "Movimiento Sumar",
-      "scope": "general",
-      "official_url": "https://movimientosumar.es/programa-electoral-23j/",
-      "direct_url": null,
-      "filename": null,
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
-      "language": "es",
-      "version": "0.0",
-      "sha256": null,
-      "status": "missing",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
-      },
-      "replacement_history": [],
-      "notes": "Official transparency and party channels checked on 2026-11-11. General election 2026 programme not yet located; status remains missing."
-    },
-    {
-      "id": "src-2026-erc-v1",
-      "election_id": "es-gen-2026",
-      "party_id": "erc",
-      "candidature_name": "Esquerra Republicana de Catalunya",
-      "publisher": "Esquerra Republicana",
-      "scope": "general",
-      "official_url": "https://esquerrarepublicana.cat/",
-      "direct_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
-      "filename": "ERC_2026_Programa_Electoral_CA.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
-      "language": "ca",
-      "version": "2026-v1",
-      "sha256": "61728d162a6e88d492d44a0b0994effb31f9e4abb85ebf8aea715d870a9b2e04",
-      "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Programme downloaded on 2026-11-11; rights review and human editorial approval pending."
-      },
       "replacement_history": [
         {
           "prior_version": "0.0",
-          "superseded_by": "src-2026-erc-v1",
-          "replacement_date": "2026-11-11",
-          "reason": "Official domain link discovered via secondary source."
-        }
-      ],
-      "notes": "Official-domain link discovered via secondary source (48 pages). HTTP 403 on automated fetch; election edition identity and content review pending."
-    },
-    {
-      "id": "src-2026-pnv-v1",
-      "election_id": "es-gen-2026",
-      "party_id": "pnv",
-      "candidature_name": "Euzko Alderdi Jeltzalea - Partido Nacionalista Vasco",
-      "publisher": "EAJ-PNV",
-      "scope": "general",
-      "official_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
-      "direct_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
-      "filename": "EAJ_PNV_2026_Programa_Electoral_29N_ES.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
-      "language": "es",
-      "version": "29N-v1",
-      "sha256": "5af7a5b6f67c26bad87ef6c3ca01ae38aa1f1d7d9029efb32fc52482de0c1314",
-      "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Programme downloaded on 2026-11-11; rights review and human editorial approval pending."
-      },
-      "replacement_history": [
+          "reason": "The 29 November 2026 programme was located on an official campaign or party site.",
+          "replacement_date": "2026-11-20",
+          "superseded_by": "src-2026-vox-v1"
+        },
         {
-          "prior_version": "0.0",
-          "superseded_by": "src-2026-pnv-v1",
-          "replacement_date": "2026-11-11",
-          "reason": "Official 29N programme located on official document portal."
+          "prior_version": "2026-v1",
+          "reason": "Use the separately scanned mirror for citations. Preserve the quarantined source record and its hash.",
+          "replacement_date": "2026-11-20",
+          "superseded_by": "src-2026-vox-v2"
         }
       ],
-      "notes": "Official 29N programme (43 pages). Local validation pending."
-    },
-    {
-      "id": "src-2026-ehbildu-v0",
-      "election_id": "es-gen-2026",
-      "party_id": "ehbildu",
-      "candidature_name": "Euskal Herria Bildu",
-      "publisher": "EH Bildu",
-      "scope": "general",
-      "official_url": "https://ehbildu.eus/",
-      "direct_url": null,
-      "filename": null,
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
-      "language": "eu",
-      "version": "0.0",
-      "sha256": null,
-      "status": "missing",
+      "retrieval_date": "2026-11-20",
       "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
         "review_date": null,
-        "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
-      },
-      "replacement_history": [],
-      "notes": "Official transparency and party channels checked on 2026-11-11. General election 2026 programme not yet located; status remains missing."
-    },
-    {
-      "id": "src-2026-junts-v0",
-      "election_id": "es-gen-2026",
-      "party_id": "junts",
-      "candidature_name": "Junts per Catalunya",
-      "publisher": "Junts per Catalunya",
-      "scope": "general",
-      "official_url": "https://junts.cat/",
-      "direct_url": null,
-      "filename": null,
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
-      "language": "ca",
-      "version": "0.0",
-      "sha256": null,
-      "status": "missing",
-      "rights_review": {
-        "status": "not_reviewed",
         "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Document not yet published for the 2026 general election. Rights review will be conducted upon publication."
+        "status": "not_reviewed",
+        "terms_notes": "Reuse and human editorial reviews are pending."
       },
-      "replacement_history": [],
-      "notes": "Official transparency and party channels checked on 2026-11-11. General election 2026 programme not yet located; status remains missing."
-    },
-    {
-      "id": "src-2026-bng-v1",
-      "election_id": "es-gen-2026",
-      "party_id": "bng",
-      "candidature_name": "Bloque Nacionalista Galego",
-      "publisher": "BNG",
       "scope": "general",
-      "official_url": "https://www.bng.gal/",
-      "direct_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/03/26_bng_xerais_documentos_programa_electoral.pdf",
-      "filename": "BNG_2026_Programa_Electoral_29N_GL.pdf",
-      "publication_date": "2026-11-03",
-      "retrieval_date": "2026-11-11",
-      "language": "gl",
-      "version": "29N-v1",
-      "sha256": "fd5aef260b9c66d030b57b7b0e18914c8ad79384e2c46b2346d9fb4f6514a97d",
+      "sha256": "065abf6720be2f7b19b8e911920c2ee2ce5c2059d0ae8bf09770bc790ed11b65",
       "status": "replaced",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Programme downloaded on 2026-11-11; rights review and human editorial approval pending."
-      },
+      "version": "2026-v1"
+    },
+    {
+      "candidature_name": "Frente Amplio",
+      "direct_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "ProgramaFrenteAmplio.pdf",
+      "id": "src-2026-frente-amplio-v1",
+      "language": "es",
+      "notes": "Programme publication reported by https://dequepartido.es/partidos/sumar/. The 151-page publisher PDF matches the reviewed SHA-256.",
+      "official_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+      "party_id": "frente-amplio",
+      "publication_date": "2026-11-16",
+      "publisher": "Frente Amplio",
       "replacement_history": [
         {
           "prior_version": "0.0",
-          "superseded_by": "src-2026-bng-v1",
+          "reason": "The 2026 Frente Amplio coalition programme replaces the 2023 Sumar link in the 2026 register.",
+          "replacement_date": "2026-11-20",
+          "superseded_by": "src-2026-frente-amplio-v1"
+        }
+      ],
+      "retrieval_date": "2026-11-20",
+      "rights_review": {
+        "evidence_ref": "editorial/educacio-29n-v1/source-reuse-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
+      },
+      "scope": "general",
+      "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+      "status": "verified",
+      "version": "2026-v1"
+    },
+    {
+      "archived_url": "https://img.beteve.cat/wp-content/uploads/2026/11/ERC-programa-electoral-29-N-2026-2026-11-12.pdf",
+      "candidature_name": "Esquerra Republicana de Catalunya",
+      "direct_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "ERC_2026_Programa_Electoral_CA.pdf",
+      "id": "src-2026-erc-v1",
+      "language": "ca",
+      "notes": "Publication of the 48-page edition reported by https://comparavoto.es/partidos/erc/. The publisher URL now serves different bytes. The betevé copy matches the reviewed SHA-256.",
+      "official_url": "https://esquerrarepublicana.cat/",
+      "party_id": "erc",
+      "publication_date": "2026-11-10",
+      "publisher": "Esquerra Republicana",
+      "replacement_history": [
+        {
+          "prior_version": "0.0",
+          "reason": "Official domain link discovered via secondary source.",
           "replacement_date": "2026-11-11",
-          "reason": "Official 29N programme located on official BNG portal."
+          "superseded_by": "src-2026-erc-v1"
+        }
+      ],
+      "retrieval_date": "2026-11-11",
+      "rights_review": {
+        "evidence_ref": "editorial/educacio-29n-v1/source-reuse-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
+      },
+      "scope": "general",
+      "sha256": "61728d162a6e88d492d44a0b0994effb31f9e4abb85ebf8aea715d870a9b2e04",
+      "status": "verified",
+      "version": "2026-v1"
+    },
+    {
+      "candidature_name": "Euzko Alderdi Jeltzalea - Partido Nacionalista Vasco",
+      "direct_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+      "election_id": "es-gen-2026",
+      "filename": "EAJ_PNV_2026_Programa_Electoral_29N_ES.pdf",
+      "id": "src-2026-pnv-v1",
+      "language": "es",
+      "notes": "Programme presentation: https://www.eaj-pnv.eus/noticias/eajpnv-presenta-programa-electoral-atenemos_58703.html. The 43-page edition is dated 9 November by https://www.guiaelecciones.com/elecciones/generales/2026-noviembre/programas/pnv/.",
+      "official_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+      "party_id": "pnv",
+      "publication_date": "2026-11-09",
+      "publisher": "EAJ-PNV",
+      "replacement_history": [
+        {
+          "prior_version": "0.0",
+          "reason": "Official 29N programme located on official document portal.",
+          "replacement_date": "2026-11-11",
+          "superseded_by": "src-2026-pnv-v1"
+        }
+      ],
+      "retrieval_date": "2026-11-11",
+      "rights_review": {
+        "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
+      },
+      "scope": "general",
+      "sha256": "5af7a5b6f67c26bad87ef6c3ca01ae38aa1f1d7d9029efb32fc52482de0c1314",
+      "status": "verified",
+      "version": "29N-v1"
+    },
+    {
+      "candidature_name": "Euskal Herria Bildu",
+      "direct_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "PROGRAMA-CAS.pdf",
+      "id": "src-2026-ehbildu-v1",
+      "language": "es",
+      "notes": "Publication of the 30-page Spanish edition: https://comparavoto.es/partidos/bildu/. Publisher campaign site: https://posibleegin.ehbildu.eus/programa/.",
+      "official_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+      "party_id": "ehbildu",
+      "publication_date": "2026-11-16",
+      "publisher": "EH Bildu",
+      "replacement_history": [
+        {
+          "prior_version": "0.0",
+          "reason": "The 29 November 2026 programme was located on an official campaign or party site.",
+          "replacement_date": "2026-11-20",
+          "superseded_by": "src-2026-ehbildu-v1"
+        }
+      ],
+      "retrieval_date": "2026-11-20",
+      "rights_review": {
+        "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
+      },
+      "scope": "general",
+      "sha256": "ceb655c9c8ebb036a15fa7829865d6e2d178525eb7db92629d702ac5e8d16047",
+      "status": "verified",
+      "version": "2026-v1"
+    },
+    {
+      "candidature_name": "Junts per Catalunya",
+      "direct_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+      "id": "src-2026-junts-v1",
+      "language": "ca",
+      "notes": "Contemporaneous reporting on the published 90-page programme: https://naciodigital.cat/politica/concert-economic-menys-impostos-i-control-migratori-aixi-es-el-programa-de-junts.html.",
+      "official_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+      "party_id": "junts",
+      "publication_date": "2026-11-18",
+      "publisher": "Junts per Catalunya",
+      "replacement_history": [
+        {
+          "prior_version": "0.0",
+          "reason": "The 29 November 2026 programme was located on an official campaign or party site.",
+          "replacement_date": "2026-11-20",
+          "superseded_by": "src-2026-junts-v1"
+        }
+      ],
+      "retrieval_date": "2026-11-20",
+      "rights_review": {
+        "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
+      },
+      "scope": "general",
+      "sha256": "cde2c5f3f30b66c72dd4f4bae3d22e9f6bc3e0ee4362da72f9e32e85129374b6",
+      "status": "verified",
+      "version": "2026-v1"
+    },
+    {
+      "candidature_name": "Bloque Nacionalista Galego",
+      "direct_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/03/26_bng_xerais_documentos_programa_electoral.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "BNG_2026_Programa_Electoral_29N_GL.pdf",
+      "id": "src-2026-bng-v1",
+      "language": "gl",
+      "notes": "Official general election programme in Galician (91 pages). Local validation pending.",
+      "official_url": "https://www.bng.gal/",
+      "party_id": "bng",
+      "publication_date": "2026-11-03",
+      "publisher": "BNG",
+      "replacement_history": [
+        {
+          "prior_version": "0.0",
+          "reason": "Official 29N programme located on official BNG portal.",
+          "replacement_date": "2026-11-11",
+          "superseded_by": "src-2026-bng-v1"
         },
         {
           "prior_version": "29N-v1",
-          "superseded_by": "src-2026-bng-v2",
+          "reason": "Publisher programme portal now links the 2026-11-12 revision; distinct bytes archived and extracted privately.",
           "replacement_date": "2026-11-12",
-          "reason": "Publisher programme portal now links the 2026-11-12 revision; distinct bytes archived and extracted privately."
+          "superseded_by": "src-2026-bng-v2"
         }
       ],
-      "notes": "Official general election programme in Galician (91 pages). Local validation pending."
+      "retrieval_date": "2026-11-11",
+      "rights_review": {
+        "review_date": null,
+        "reviewed_by": null,
+        "status": "not_reviewed",
+        "terms_notes": "Programme downloaded on 2026-11-11; rights review and human editorial approval pending."
+      },
+      "scope": "general",
+      "sha256": "fd5aef260b9c66d030b57b7b0e18914c8ad79384e2c46b2346d9fb4f6514a97d",
+      "status": "replaced",
+      "version": "29N-v1"
     },
     {
-      "id": "src-2026-bng-v2",
-      "election_id": "es-gen-2026",
-      "party_id": "bng",
       "candidature_name": "Bloque Nacionalista Galego",
-      "publisher": "BNG",
-      "scope": "general",
-      "official_url": "https://www.bng.gal/estaticas/programas-eleitorais.html",
       "direct_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+      "election_id": "es-gen-2026",
       "filename": "BNG_2026_Programa_Electoral_29N_GL.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-11-12",
+      "id": "src-2026-bng-v2",
       "language": "gl",
-      "version": "29N-v2",
-      "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
-      "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Publisher revision acquired privately on 2026-11-12. Source-specific reuse decision and human editorial approval remain pending."
-      },
+      "notes": "Publication date for the current 91-page revision: https://comparavoto.es/partidos/bng/. The registered 12 November PDF is also linked from https://www.bng.gal/estaticas/programas-eleitorais.html.",
+      "official_url": "https://www.bng.gal/estaticas/programas-eleitorais.html",
+      "party_id": "bng",
+      "publication_date": "2026-11-12",
+      "publisher": "BNG",
       "replacement_history": [
         {
           "prior_version": "29N-v1",
-          "superseded_by": "src-2026-bng-v2",
+          "reason": "Publisher programme portal now links the 2026-11-12 revision; distinct bytes archived and extracted privately.",
           "replacement_date": "2026-11-12",
-          "reason": "Publisher programme portal now links the 2026-11-12 revision; distinct bytes archived and extracted privately."
+          "superseded_by": "src-2026-bng-v2"
         }
       ],
-      "notes": "Publisher-linked 91-page revision. Extracted text differs only on the contents page (physical page 2); no existing draft measure cites that page. This technical comparison does not grant human review or confirm a publication date."
+      "retrieval_date": "2026-11-12",
+      "rights_review": {
+        "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
+      },
+      "scope": "general",
+      "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+      "status": "verified",
+      "version": "29N-v2"
     },
     {
-      "id": "src-2026-coalicion-canaria-v1",
-      "election_id": "es-gen-2026",
-      "party_id": "coalicion-canaria",
       "candidature_name": "Coalición Canaria",
-      "publisher": "Coalición Canaria",
-      "scope": "general",
-      "official_url": "https://coalicioncanaria.org/",
       "direct_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+      "election_id": "es-gen-2026",
       "filename": "Coalicion_Canaria_2026_Programa_Electoral_29N_ES.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
+      "id": "src-2026-coalicion-canaria-v1",
       "language": "es",
-      "version": "29N-v1",
+      "notes": "Publisher presentation: https://coalicioncanaria.org/cc-y-primero-canarias-presentan-diez-grandes-causas-y-cien-medidas-para-defender-canarias-en-madrid/.",
+      "official_url": "https://coalicioncanaria.org/",
+      "party_id": "coalicion-canaria",
+      "publication_date": "2026-11-09",
+      "publisher": "Coalición Canaria",
+      "replacement_history": [],
+      "retrieval_date": "2026-11-11",
+      "rights_review": {
+        "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
+      },
+      "scope": "general",
       "sha256": "3c40c0a6e38d8dd80ae1061d94b614f4e3f1b6492ec8c801834fb497f337044e",
-      "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Programme downloaded on 2026-11-11; rights review and human editorial approval pending."
-      },
-      "replacement_history": [],
-      "notes": "Official 29NOV programme (23 pages). File size 69.2 MB exceeds default 50 MB threshold; content and editorial review pending."
+      "status": "verified",
+      "version": "29N-v1"
     },
     {
-      "id": "src-2026-salf-v1",
-      "election_id": "es-gen-2026",
-      "party_id": "salf",
       "candidature_name": "Se Acabó La Fiesta",
-      "publisher": "Se Acabó La Fiesta",
-      "scope": "general",
-      "official_url": "https://www.seacabolafiesta.com/",
       "direct_url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d",
+      "election_id": "es-gen-2026",
       "filename": "SALF_2026_Contrato_Electoral_29N_ES.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
+      "id": "src-2026-salf-v1",
       "language": "es",
-      "version": "29N-v1",
+      "notes": "The publisher campaign identifies the reviewed 40-page 29-N contract. The publisher PDF is archived. The direct download returned an automated-access HTTP 403 during this check. Publication evidence: https://www.seacabolafiesta.com/ https://tupartidocorrupto.com/elecciones/programas/salf",
+      "official_url": "https://www.seacabolafiesta.com/",
+      "party_id": "salf",
+      "publication_date": "2026-11-10",
+      "publisher": "Se Acabó La Fiesta",
+      "replacement_history": [],
+      "retrieval_date": "2026-11-11",
+      "rights_review": {
+        "status": "link_only",
+        "reviewed_by": "cesc",
+        "review_date": "2026-11-20",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution.",
+        "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21/source/src-2026-salf-v1"
+      },
+      "scope": "general",
       "sha256": "073425b9522da77608a0399923c2e0d3b9153776e8a0436ac8f0aea794b7893b",
-      "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Programme downloaded on 2026-11-11; rights review and human editorial approval pending."
-      },
-      "replacement_history": [],
-      "notes": "Official electoral contract 29N (40 pages). File contains active content dictionary token (/js) triggering security policy rejection in importer; content review pending."
+      "status": "verified",
+      "version": "29N-v1"
     },
     {
-      "id": "src-2026-partido-humanista-v1",
-      "election_id": "es-gen-2026",
-      "party_id": "partido-humanista",
       "candidature_name": "Partido Humanista",
-      "publisher": "Partido Humanista",
-      "scope": "general",
-      "official_url": "https://partidohumanista.es/",
       "direct_url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf",
-      "filename": "Partido_Humanista_2026_Programa_Generales_ES.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
-      "language": "es",
-      "version": "2026-v1",
-      "sha256": "c53ab576b0c57a091665795cb8676269b85cc6f9b7e22c9d65ce11d86502086f",
-      "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Programme downloaded on 2026-11-11; rights review and human editorial approval pending."
-      },
-      "replacement_history": [],
-      "notes": "Official general election programme 2026 (31 pages). Local validation pending."
-    },
-    {
-      "id": "src-2026-frente-obrero-v1",
       "election_id": "es-gen-2026",
-      "party_id": "frente-obrero",
-      "candidature_name": "Frente Obrero",
-      "publisher": "Frente Obrero",
-      "scope": "general",
-      "official_url": "https://frenteobrero.es/nuestro-programa-2/",
-      "direct_url": "https://frenteobrero.es/wp-content/uploads/2026/10/Programa.pdf",
-      "filename": "Frente_Obrero_Programa_Politico_FECHA_NO_CONFIRMADA_ES.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-11-11",
+      "filename": "Partido_Humanista_2026_Programa_Generales_ES.pdf",
+      "id": "src-2026-partido-humanista-v1",
       "language": "es",
-      "version": "2026-v1",
-      "sha256": "7b9f423f2c1ada187b6f42ed8dbf4e025356254d7a6b81830e114b818ef2e282",
-      "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Programme downloaded on 2026-11-11; rights review and human editorial approval pending."
-      },
+      "notes": "The publisher list identifies the 2026 general-election programme. The publisher download matches the archive hash. A dated secondary programme listing reports 9 November. Publication evidence: https://www.partidohumanista.es/propuestas.html https://sinmitin.com/partidos/partido-humanista?eleccion=2026",
+      "official_url": "https://partidohumanista.es/",
+      "party_id": "partido-humanista",
+      "publication_date": "2026-11-09",
+      "publisher": "Partido Humanista",
       "replacement_history": [],
-      "notes": "Political programme (64 pages). Specific 29N 2026 election edition not confirmed; local validation pending."
+      "retrieval_date": "2026-11-11",
+      "rights_review": {
+        "status": "link_only",
+        "reviewed_by": "cesc",
+        "review_date": "2026-11-20",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution.",
+        "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21/source/src-2026-partido-humanista-v1"
+      },
+      "scope": "general",
+      "sha256": "c53ab576b0c57a091665795cb8676269b85cc6f9b7e22c9d65ce11d86502086f",
+      "status": "verified",
+      "version": "2026-v1"
     },
     {
-      "id": "src-2023-pp-v1",
-      "election_id": "es-gen-2023",
-      "party_id": "pp",
-      "candidature_name": "Partido Popular",
-      "publisher": "Partido Popular",
-      "scope": "general",
-      "official_url": "https://www.pp.es/categoria/elecciones-generales/",
-      "direct_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
-      "filename": "programa_electoral_pp_23j_feijoo_2023.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-10-10",
+      "candidature_name": "Frente Obrero",
+      "direct_url": "https://frenteobrero.es/wp-content/uploads/2026/10/Programa.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "Frente_Obrero_Programa_Politico_FECHA_NO_CONFIRMADA_ES.pdf",
+      "id": "src-2026-frente-obrero-v1",
       "language": "es",
-      "version": "23J-v1",
+      "notes": "Political programme (64 pages). Specific 29N 2026 election edition not confirmed; local validation pending.",
+      "official_url": "https://frenteobrero.es/nuestro-programa-2/",
+      "party_id": "frente-obrero",
+      "publication_date": null,
+      "publisher": "Frente Obrero",
+      "replacement_history": [
+        {
+          "prior_version": "2026-v1",
+          "reason": "The general document does not describe itself as an election programme. Use the campaign commitments for partial coverage.",
+          "replacement_date": "2026-11-20",
+          "superseded_by": "src-2026-frente-obrero-v2"
+        }
+      ],
+      "retrieval_date": "2026-11-11",
+      "rights_review": {
+        "review_date": null,
+        "reviewed_by": null,
+        "status": "not_reviewed",
+        "terms_notes": "Programme downloaded on 2026-11-11; rights review and human editorial approval pending."
+      },
+      "scope": "general",
+      "sha256": "7b9f423f2c1ada187b6f42ed8dbf4e025356254d7a6b81830e114b818ef2e282",
+      "status": "replaced",
+      "version": "2026-v1"
+    },
+    {
+      "candidature_name": "Unión del Pueblo Navarro en coalición con el Partido Popular",
+      "direct_url": null,
+      "election_id": "es-gen-2026",
+      "filename": null,
+      "id": "src-2026-upn-pp-v1",
+      "language": "es",
+      "notes": "Campaign commitments page for the joint candidacy in Navarra. A full joint programme remains unconfirmed.",
+      "official_url": "https://upn-pp.es/#compromisos",
+      "party_id": "upn-pp",
+      "publication_date": null,
+      "publisher": "UPN–PP",
+      "replacement_history": [],
+      "retrieval_date": "2026-11-20",
+      "rights_review": {
+        "review_date": null,
+        "reviewed_by": null,
+        "status": "not_reviewed",
+        "terms_notes": "Reuse and human editorial reviews are pending."
+      },
+      "scope": "general",
+      "sha256": null,
+      "status": "partial",
+      "version": "2026-v1"
+    },
+    {
+      "candidature_name": "Podemos",
+      "direct_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "programa-electoral-paz-casa-y-trabajo.pdf",
+      "id": "src-2026-podemos-v1",
+      "language": "es",
+      "notes": "PDF publication dated 18 November by https://lagavetaelectoral.org/partidos/pod/. The 141-page edition is linked at https://pazcasaytrabajo.es/programa.",
+      "official_url": "https://pazcasaytrabajo.es/programa",
+      "party_id": "podemos",
+      "publication_date": "2026-11-18",
+      "publisher": "Podemos",
+      "replacement_history": [],
+      "retrieval_date": "2026-11-20",
+      "rights_review": {
+        "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
+      },
+      "scope": "general",
+      "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+      "status": "verified",
+      "version": "2026-v1"
+    },
+    {
+      "candidature_name": "Compromís: Front Valencià",
+      "direct_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+      "id": "src-2026-compromis-front-valencia-v1",
+      "language": "ca",
+      "notes": "Exact 57-page edition listed on 18 November: https://www.programaselectorales.es/generales-2026-11-29/compromis/. Its coalition download and the registered Compromís download have identical SHA-256.",
+      "official_url": "https://compromis.net/info/programes/",
+      "party_id": "compromis-front-valencia",
+      "publication_date": "2026-11-18",
+      "publisher": "Compromís: Front Valencià",
+      "replacement_history": [],
+      "retrieval_date": "2026-11-20",
+      "rights_review": {
+        "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+        "review_date": "2026-11-20",
+        "reviewed_by": "cesc",
+        "status": "link_only",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution."
+      },
+      "scope": "general",
+      "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+      "status": "verified",
+      "version": "2026-v1"
+    },
+    {
+      "candidature_name": "Partido Popular",
+      "direct_url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+      "election_id": "es-gen-2023",
+      "filename": "programa_electoral_pp_23j_feijoo_2023.pdf",
+      "id": "src-2023-pp-v1",
+      "language": "es",
+      "notes": "Registered 2023 source for private review. Existing URL, source version, and SHA-256 are retained. Human verification and rights approval evidence is pending.",
+      "official_url": "https://www.pp.es/categoria/elecciones-generales/",
+      "party_id": "pp",
+      "publication_date": null,
+      "publisher": "Partido Popular",
+      "replacement_history": [],
+      "retrieval_date": "2026-10-10",
+      "rights_review": {
+        "review_date": null,
+        "reviewed_by": null,
+        "status": "not_reviewed",
+        "terms_notes": "Human rights approval evidence is unavailable. No quotation permission is asserted."
+      },
+      "scope": "general",
       "sha256": "c93baafc88bdcb33adcd7e8be9dc309b09056362183ad7b7767f3d5134313108",
       "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Human rights approval evidence is unavailable. No quotation permission is asserted."
-      },
-      "replacement_history": [],
-      "notes": "Registered 2023 source for private review. Existing URL, source version, and SHA-256 are retained. Human verification and rights approval evidence is pending."
+      "version": "23J-v1"
     },
     {
-      "id": "src-2023-erc-v1",
-      "election_id": "es-gen-2023",
-      "party_id": "erc",
       "candidature_name": "Esquerra Republicana de Catalunya",
-      "publisher": "Esquerra Republicana de Catalunya",
-      "scope": "general",
-      "official_url": "https://www.esquerra.cat/transparencia/programes-electorals/",
       "direct_url": "https://static.esquerra.cat/uploads/20230905/e2023-programa.pdf",
+      "election_id": "es-gen-2023",
       "filename": "e2023-programa.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-10-10",
+      "id": "src-2023-erc-v1",
       "language": "ca",
-      "version": "23J-v1",
+      "notes": "Registered 2023 source for private review. Existing URL, source version, and SHA-256 are retained. Human verification and rights approval evidence is pending.",
+      "official_url": "https://www.esquerra.cat/transparencia/programes-electorals/",
+      "party_id": "erc",
+      "publication_date": null,
+      "publisher": "Esquerra Republicana de Catalunya",
+      "replacement_history": [],
+      "retrieval_date": "2026-10-10",
+      "rights_review": {
+        "review_date": null,
+        "reviewed_by": null,
+        "status": "not_reviewed",
+        "terms_notes": "Human rights approval evidence is unavailable. No quotation permission is asserted."
+      },
+      "scope": "general",
       "sha256": "760db25e48422b74a9b0c3172cab16cf39d010345849e50b921ff8bf61be2854",
       "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Human rights approval evidence is unavailable. No quotation permission is asserted."
-      },
-      "replacement_history": [],
-      "notes": "Registered 2023 source for private review. Existing URL, source version, and SHA-256 are retained. Human verification and rights approval evidence is pending."
+      "version": "23J-v1"
     },
     {
-      "id": "src-2023-pnv-v1",
-      "election_id": "es-gen-2023",
-      "party_id": "pnv",
       "candidature_name": "Euzko Alderdi Jeltzalea - Partido Nacionalista Vasco",
-      "publisher": "EAJ-PNV",
-      "scope": "general",
-      "official_url": "https://www.eaj-pnv.eus/es/documentos/20945/con-voz-propia-programa-electoral-23-j",
       "direct_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/20945/pdf/con-voz-propia-programa-electoral-23-j",
+      "election_id": "es-gen-2023",
       "filename": "con-voz-propia-programa-electoral-23-j.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-10-09",
+      "id": "src-2023-pnv-v1",
       "language": "es",
-      "version": "23J-v1",
+      "notes": "Registered 2023 source for private review. Existing URL, source version, and SHA-256 are retained. Human verification and rights approval evidence is pending.",
+      "official_url": "https://www.eaj-pnv.eus/es/documentos/20945/con-voz-propia-programa-electoral-23-j",
+      "party_id": "pnv",
+      "publication_date": null,
+      "publisher": "EAJ-PNV",
+      "replacement_history": [],
+      "retrieval_date": "2026-10-09",
+      "rights_review": {
+        "review_date": null,
+        "reviewed_by": null,
+        "status": "not_reviewed",
+        "terms_notes": "Human rights approval evidence is unavailable. No quotation permission is asserted."
+      },
+      "scope": "general",
       "sha256": "46fec3a017cdc5c4e506fa5e228b97690071d5a03dfd3d8128392aa20f57d132",
       "status": "published-unverified",
-      "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
-        "review_date": null,
-        "terms_notes": "Human rights approval evidence is unavailable. No quotation permission is asserted."
-      },
-      "replacement_history": [],
-      "notes": "Registered 2023 source for private review. Existing URL, source version, and SHA-256 are retained. Human verification and rights approval evidence is pending."
+      "version": "23J-v1"
     },
     {
-      "id": "src-2023-sumar-v1",
-      "election_id": "es-gen-2023",
-      "party_id": "sumar",
       "candidature_name": "Movimiento Sumar",
-      "publisher": "Movimiento Sumar",
-      "scope": "general",
-      "official_url": "https://movimientosumar.es/programa-electoral-23j/",
       "direct_url": "https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf",
+      "election_id": "es-gen-2023",
       "filename": "Un-Programa-para-ti.pdf",
-      "publication_date": null,
-      "retrieval_date": "2026-10-09",
+      "id": "src-2023-sumar-v1",
       "language": "es",
-      "version": "23J-v1",
-      "sha256": "d5ccdac0d20f1b93a5f703f180d086041bd988835072dd5cb5d1378bf0195820",
-      "status": "published-unverified",
+      "notes": "Registered 2023 source for private review. Existing URL, source version, and SHA-256 are retained. Human verification and rights approval evidence is pending.",
+      "official_url": "https://movimientosumar.es/programa-electoral-23j/",
+      "party_id": "sumar",
+      "publication_date": null,
+      "publisher": "Movimiento Sumar",
+      "replacement_history": [],
+      "retrieval_date": "2026-10-09",
       "rights_review": {
-        "status": "not_reviewed",
-        "reviewed_by": null,
         "review_date": null,
+        "reviewed_by": null,
+        "status": "not_reviewed",
         "terms_notes": "Human rights approval evidence is unavailable. No quotation permission is asserted."
       },
+      "scope": "general",
+      "sha256": "d5ccdac0d20f1b93a5f703f180d086041bd988835072dd5cb5d1378bf0195820",
+      "status": "published-unverified",
+      "version": "23J-v1"
+    },
+    {
+      "candidature_name": "Frente Obrero",
+      "direct_url": null,
+      "election_id": "es-gen-2026",
+      "filename": null,
+      "id": "src-2026-frente-obrero-v2",
+      "language": "es",
+      "notes": "Campaign commitments are available. The linked political programme identifies itself as a general document.",
+      "official_url": "https://frenteobrero.es/#programa",
+      "party_id": "frente-obrero",
+      "publication_date": null,
+      "publisher": "Frente Obrero",
       "replacement_history": [],
-      "notes": "Registered 2023 source for private review. Existing URL, source version, and SHA-256 are retained. Human verification and rights approval evidence is pending."
+      "retrieval_date": "2026-11-20",
+      "rights_review": {
+        "review_date": null,
+        "reviewed_by": null,
+        "status": "not_reviewed",
+        "terms_notes": "Programme downloaded on 2026-11-11; rights review and human editorial approval pending."
+      },
+      "scope": "general",
+      "sha256": null,
+      "status": "partial",
+      "version": "2026-v2"
+    },
+    {
+      "candidature_name": "VOX",
+      "direct_url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+      "election_id": "es-gen-2026",
+      "filename": "Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+      "id": "src-2026-vox-v2",
+      "language": "es",
+      "notes": "The party presented the programme on 12 November. The reviewed 66-page betevé copy has different bytes from the quarantined download. The betevé copy passed the unchanged intake scanner and the networkless archive worker. Publication evidence: https://www.voxespana.es/abascal/es-sentido-comun-estas-son-las-medidas-de-vox-para-el-29n-20261112 https://beteve.cat/politica/programes-electorals-29n-eleccions-generals-2026-pdf/",
+      "official_url": "https://www.voxespana.es/abascal/es-sentido-comun-estas-son-las-medidas-de-vox-para-el-29n-20261112",
+      "party_id": "vox",
+      "publication_date": "2026-11-12",
+      "publisher": "VOX",
+      "replacement_history": [],
+      "retrieval_date": "2026-11-20",
+      "rights_review": {
+        "status": "link_only",
+        "reviewed_by": "cesc",
+        "review_date": "2026-11-20",
+        "terms_notes": "Owner approved neutral summaries and source links. Permission excludes verbatim quotations and PDF redistribution.",
+        "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21/source/src-2026-vox-v2"
+      },
+      "scope": "general",
+      "sha256": "f83024014fac82244eb074f31ac221d79a580faca0d66559fec2a9385da74e08",
+      "status": "verified",
+      "version": "2026-v2"
     }
-  ]
+  ],
+  "version": "1.0.0"
 }

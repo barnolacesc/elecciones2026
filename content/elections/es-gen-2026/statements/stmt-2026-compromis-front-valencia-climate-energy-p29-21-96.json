@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-climate-energy-p29-21-96",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [
+    "Meta del 30% de cobertura arbórea urbana para el año 2040"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "551f54776d6e0b190fa2bc8b4c264e2e5d8ddecf721747ccfa016edf36548825"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "29",
+  "source_section": "MODEL DE CIUTAT I URBANISME",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Crear un programa estatal de renaturalización urbana con autonomías y municipios para alcanzar una masa arbórea del 30% en núcleos urbanos en 2040, priorizando zonas de isla de calor.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

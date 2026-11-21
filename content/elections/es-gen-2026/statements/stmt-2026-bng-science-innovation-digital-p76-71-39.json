@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-science-innovation-digital-p76-71-39",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ff90f22c02b13dbb3c6b6c8fe2b980356aac572c6858385e4bb3e8ab3c398500"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "76",
+  "source_section": "8.1",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "artificial-intelligence-and-digital-rights",
+  "summary": "Redirigir fondos públicos de innovación hacia IA distribuida y modelos de lenguaje reducidos y especializados con aprendizaje federado y bajo consumo",
+  "summary_en": null,
+  "topic_id": "science-innovation-digital"
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "psoe-2026-v1",
+  "candidacy_id": "psoe",
+  "title": "La fuerza de seguir avanzando",
+  "status": "official",
+  "version": "2026-v1",
+  "publisher": "PSOE",
+  "official_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "publication_date": "2026-11-15",
+  "retrieval_date": "2026-11-20",
+  "language": "es",
+  "sha256": "e9c8341339538b550641b6ddb1c3fdfeef7fda6a8a1a4be9e8d6a44cbc229bf5",
+  "rights_status": "verified_link_only",
+  "is_fixture": false
+}

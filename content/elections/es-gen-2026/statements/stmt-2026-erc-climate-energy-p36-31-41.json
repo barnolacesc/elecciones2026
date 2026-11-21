@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-climate-energy-p36-31-41",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ffe9284c82f27f2ab7dfb4d1fe7e0ad9043ac1c23cfda4bc2cebfc1053010d9d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "36",
+  "source_section": "207",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "animal-welfare-and-protection",
+  "summary": "Modificar la ley estatal de protección animal para suprimir la exclusión de los perros empleados en caza, trabajo y actividades afines.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

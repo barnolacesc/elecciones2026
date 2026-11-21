@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p140-131-53",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "985a0da57a6d5ed7106a974bf34bc7e1d0f8cc0dfc38a76b8c9f7c9bc0bc9ccb"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "140",
+  "source_section": "18.1. Hacia una República Federal para alcanzar la democracia real",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "electoral-law-and-constitution",
+  "summary": "Consagrar en la Constitución la actualización periódica de las pensiones y la protección de la vivienda, la salud, la interrupción del embarazo, el medioambiente, la digitalización y el clima",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

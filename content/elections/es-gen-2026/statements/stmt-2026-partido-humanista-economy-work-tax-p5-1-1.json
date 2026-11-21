@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-partido-humanista-economy-work-tax-p5-1-1",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "partido-humanista",
+  "policy_instrument": null,
+  "programme_id": "partido-humanista-2026-v1",
+  "qualifications": [
+    "Las empresas participadas que no alcancen el 50% del capital social deben implementar mecanismos de cogestión paritaria con la propiedad"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "8657df4898f8f57879e34829f8574ac303004383c572cb10e68582442ca8b405"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "5",
+  "source_section": "1. Economía y Empleo - Propuesta 1",
+  "source_url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Establecer exenciones fiscales para impulsar la creación y desarrollo de Sociedades Laborales y empresas participadas que adopten mecanismos de cogestión paritaria.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

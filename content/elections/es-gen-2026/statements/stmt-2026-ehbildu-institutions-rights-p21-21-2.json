@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-ehbildu-institutions-rights-p21-21-2",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-21",
+  "party_id": "ehbildu",
+  "policy_instrument": null,
+  "programme_id": "ehbildu-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-21",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "bf47874dcda41311eac007944deb9df11c716b776c53a14a34d454f24936cd22"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "21",
+  "source_section": "• Potenciar la soberanía digital, desarrollar infraestructuras tecnológicas propias, gobernanza de datos y capacidad de computación",
+  "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "scientific-research-and-talent",
+  "summary": "Promover la participación de agentes vascos en proyectos de gigafactores de IA en EuroHPC y priorizar el software libre y estándares abiertos",
+  "summary_en": null,
+  "topic_id": "science-innovation-digital"
+}

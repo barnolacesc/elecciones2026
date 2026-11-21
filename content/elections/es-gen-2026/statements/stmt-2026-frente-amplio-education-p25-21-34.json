@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-education-p25-21-34",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "64770523070948aaccf2bb2b0144146cb3cb82f4c6771c31c0fa67ecaaa0f2e4"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "25",
+  "source_section": "2.2. Derecho a cuidar y a recibir cuidados",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "early-childhood-education",
+  "summary": "Aumentar en un veinte por ciento la dotación financiera del Plan Corresponsables para actividades extraescolares y campamentos garantizando servicios de conciliación universales.",
+  "summary_en": null,
+  "topic_id": "education"
+}

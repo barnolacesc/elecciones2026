@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p81-81-2",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Cuando la aportación pública sea relevante"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "9a780c73c3a0adbff25a91b02afd6419194647a4fe5f1fa4a63f8813c564dc14"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "81",
+  "source_section": "Reforma de la Ley de Industria y gobernanza empresarial",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Condicionar las ayudas públicas a compromisos de empleo, inversión y cumplimiento fiscal, incorporando participaciones o retornos, cláusulas de devolución y límites al reparto de dividendos.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

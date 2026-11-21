@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-immigration-p65-61-25",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "68f409fc625cef8865e23b5fed1fa3be33144016f1cfdca03b8b8f1d7431d4e0"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "65",
+  "source_section": "205",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "regularization-processes",
+  "summary": "Derogar la Ley de Extranjería para aprobar una nueva Ley Integral que suprima las devoluciones en caliente y garantice la regularización de menores no acompañados y extutelados",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

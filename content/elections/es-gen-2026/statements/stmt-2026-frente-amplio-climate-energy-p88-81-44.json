@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p88-81-44",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "974f821ed67a5291f8eb4b3c8efdce64def7382bcb0ceb7b93f4ca99d8a4651f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "88",
+  "source_section": "7.2. Sostenibilidad medioambiental: descarbonización de la agricultura, la ganadería y la pesca",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Crear un banco público de tierras estatal, establecer techos de superficie por comprador y otorgar prioridad en compra o alquiler a agricultores jóvenes y familiares.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

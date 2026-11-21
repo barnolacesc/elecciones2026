@@ -400,6 +400,12 @@ Every document in `content/sources/register.json` must undergo rights review bef
 4. **Lead Editor (`lead_editor`):** Resolves reviewer disputes, approves correction records, and validates human gates G0 and G2.
 
 ### 5.2 Four-Eyes Principle and Segregation Rules
+
+**2026-11-20 owner decision (E1.4-2026).** A 2026 production programme
+summary without a verbatim quotation requires one named human approval bound
+to its content and provenance. Source identity, reuse, and evidence rules
+still apply. The dual-review rules below apply to quotations, comparison
+relationships, and the historical corpus.
 - **Four-Eyes Requirement:** Every published statement must be audited and approved by at least two distinct human reviewers (`reviewed_by_1 != reviewed_by_2`).
 - **Segregation of Drafter:** A drafter cannot act as Reviewer 2 (`drafter != reviewed_by_2`).
 - **Conflict of Interest:** Reviewers must disclose political party affiliations. Active party members or campaign participants are disqualified from reviewing materials for that party and its direct electoral opponents.

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-health-social-services-p34-31-28",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "0064183e0cf2bd833e1ab8e1debadc635df56e35a835c5f0aa7a93e2df69f664"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "34",
+  "source_section": "ACCESO Y FUNCIONAMIENTO DEL FONDO 01",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Modificar el Real Decreto 483/2025 para habilitar el acceso a las indemnizaciones del fondo de amianto a la totalidad de los colectivos de la Ley 21/2022.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

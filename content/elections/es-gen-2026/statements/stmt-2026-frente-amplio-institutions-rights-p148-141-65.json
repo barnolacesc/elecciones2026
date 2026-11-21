@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p148-141-65",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Requiere resolucion judicial firme y el resultado no modificara el fallo de la sentencia original"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "4a1ec9e5f2ddb0725b475ef87378322f09844acee67b3c0c4dc01e0833320981"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "148",
+  "source_section": "18.7. Modernización, renovación y democratización del acceso al sistema judicial",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "judicial-governance-and-cgpj",
+  "summary": "Restablecer la responsabilidad civil directa de jueces y magistrados por perjuicios causados por dolo o culpa grave una vez firme la sentencia",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-foreign-policy-eu-p136-131-39",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f428d2c12960e2f2a82d4573b1113271405c52a45d5295698c058c0c2f13182d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "136",
+  "source_section": "Democratización y ampliación del mandato del Banco Central Europeo (BCE)",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "eu-treaties-and-fiscal-rules",
+  "summary": "Otorgar al Parlamento Europeo la potestad de designar a los miembros del Comité Ejecutivo del BCE y de cesarlos mediante mayorías reforzadas",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

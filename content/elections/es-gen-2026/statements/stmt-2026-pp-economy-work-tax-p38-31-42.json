@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-economy-work-tax-p38-31-42",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-21",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [
+    "En colaboración con el sector y las comunidades autónomas"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-21",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "04fba285c3b4156f0836222c17fd7c62ce9a519270d9237b5792808d050e94ea"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "38",
+  "source_section": "135",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "cultural-access-patronage-and-creators",
+  "summary": "Aprobar una nueva Ley de Mecenazgo con incentivos fiscales para el apoyo privado a proyectos de cultura, ciencia y deporte, actualizando la normativa de protección del patrimonio histórico.",
+  "summary_en": null,
+  "topic_id": "culture-sport"
+}

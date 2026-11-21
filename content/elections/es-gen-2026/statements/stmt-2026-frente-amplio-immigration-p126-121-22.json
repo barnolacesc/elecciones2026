@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-immigration-p126-121-22",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a0c94f7e6f8f2abc8d476c829c2999853af143cc738a7a2dda0ae39625c71a31"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "126",
+  "source_section": "16.2",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "regularization-processes",
+  "summary": "Resolver con medios suficientes todas las solicitudes de la regularización extraordinaria de 2026 para impedir exclusiones debidas a demoras administrativas.",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

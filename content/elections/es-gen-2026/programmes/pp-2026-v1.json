@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "pp-2026-v1",
+  "candidacy_id": "pp",
+  "title": "La Reconstrucción Nacional",
+  "status": "official",
+  "version": "2026-v1",
+  "publisher": "Partido Popular",
+  "official_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "publication_date": "2026-11-10",
+  "retrieval_date": "2026-11-11",
+  "language": "es",
+  "sha256": "ae0c35d7ef3faf540acaa79d47abbe3ae2bf56a3a755c4e78a8f5bf3ea49789c",
+  "rights_status": "verified_link_only",
+  "is_fixture": false
+}

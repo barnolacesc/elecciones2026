@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-economy-work-tax-p48-41-76",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-21",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-21",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ed35a6cbf3ee040285ffc8b6fe0026b3ed2bb94e214d9fea66394fcbe9470163"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "48",
+  "source_section": "190",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "artificial-intelligence-and-digital-rights",
+  "summary": "Habilitar entornos controlados de prueba para IA con plazos de respuesta en treinta días y transformar la Agencia Española de Supervisión de Inteligencia Artificial en entidad de asistencia técnica a pymes.",
+  "summary_en": null,
+  "topic_id": "science-innovation-digital"
+}

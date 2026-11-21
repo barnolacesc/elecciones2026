@@ -746,7 +746,7 @@ def stage_corpus(
                 "Evidence excerpts are excluded from statement fields and preserved privately separately by reference and text hash",
                 "Exact page coordinates are preserved with gaps comma-separated; contiguous ranges only",
                 "Proposed taxonomy classifications (12 topics / 64 subtopics) are recorded as private proposals only",
-                "Production generator strictly rejects these draft records until actual human dual-review approval",
+                "The production build requires recorded human approval for each draft summary",
             ],
         }
 

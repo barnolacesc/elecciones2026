@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-health-social-services-primary-care-and-sns",
+  "party_id": "podemos",
+  "topic_id": "health-social-services",
+  "subtopic_id": "primary-care-and-sns",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone una ley integral de atención primaria que le asigne al menos el 25 % del presupuesto sanitario, con el objetivo de invertir 700 euros por habitante al año.",
+  "review_status": "approved",
+  "programme_id": "podemos-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "source_page": "90",
+  "source_section": "Servicios públicos para garantizar vidas dignas, medida 305",
+  "qualifications": [
+    "Plantea un máximo de 1.300 pacientes por profesional de medicina de familia y 800 menores por profesional de pediatría, con ratios y plantillas adaptadas a las necesidades de cada zona."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/salut-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "f7d483e1eb1aef6d0e984e3c74d1d4b03a568933070b2def6eee833c4c10965a"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

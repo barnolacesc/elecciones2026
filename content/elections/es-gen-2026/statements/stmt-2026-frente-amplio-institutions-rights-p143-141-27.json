@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p143-141-27",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f2276160f2e7589453ccfa0a2e61f840f6aab97d4aa79f560acc0634dc1c4322"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "143",
+  "source_section": "18.4. Deberes y derechos de las Fuerzas y Cuerpos de Seguridad del Estado para servir en un Estado democrático",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Evaluar la equidad algoritmica en las herramientas utilizadas para la evaluacion del riesgo",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

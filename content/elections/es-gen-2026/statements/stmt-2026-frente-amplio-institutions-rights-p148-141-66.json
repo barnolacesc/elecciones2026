@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p148-141-66",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Se abre una sola via extraordinaria evaluada para quienes cuenten con dos anos de experiencia acreditada"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "faa215b372b97f8754114baa18e5993e7cf81a57d9c972ab6daa6db44070f620"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "148",
+  "source_section": "18.7. Modernización, renovación y democratización del acceso al sistema judicial",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "judicial-governance-and-cgpj",
+  "summary": "Requerir especializacion o experiencia previa para servir en juzgados y secciones de violencia sobre la mujer y habilitar una via extraordinaria de acreditacion",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-housing-tourist-accommodation",
+  "party_id": "pnv",
+  "topic_id": "housing",
+  "subtopic_id": "tourist-accommodation",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone regular los alquileres turísticos y los de temporada para proteger la oferta de viviendas de alquiler residencial.",
+  "review_status": "approved",
+  "programme_id": "pnv-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "source_page": "8",
+  "source_section": "1.1, medida 04",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/habitatge-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "6f0ade428c0d5fd4f267c3e3375d5db9411a4806b9dc9687945acde0d21f036b"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

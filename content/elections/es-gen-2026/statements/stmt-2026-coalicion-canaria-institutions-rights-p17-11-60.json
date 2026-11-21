@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-institutions-rights-p17-11-60",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-21",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-21",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2f7cbfc48a1ce88e5b60720fc6968f2f1bd0d5852eec7b93b20ffd78049d3c54"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "17",
+  "source_section": "76",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "air-and-maritime-transport-insular-mobility",
+  "summary": "Reclamar la revisión de las obligaciones de servicio público en el transporte para asegurar frecuencias, tarifas justas y enlaces directos entre La Palma, La Gomera y El Hierro.",
+  "summary_en": null,
+  "topic_id": "infrastructure-mobility"
+}

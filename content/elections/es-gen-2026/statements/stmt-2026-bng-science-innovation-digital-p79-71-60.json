@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-science-innovation-digital-p79-71-60",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "05e26916f11b6da27de54df33b307ca59e32ef7d39a4ed239dda83353d86ab2b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "79",
+  "source_section": "8.5",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "digital-connectivity-and-telecommunications",
+  "summary": "Aprobar una ley de infraestructuras digitales públicas y crear una red estatal de almacenamiento y computación como alternativa a nubes transnacionales",
+  "summary_en": null,
+  "topic_id": "science-innovation-digital"
+}

@@ -1,0 +1,17 @@
+{
+  "candidacy_id": "vox",
+  "election_id": "es-gen-2026",
+  "is_fixture": false,
+  "language": "es",
+  "official_url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+  "programme_id": "vox-2026-v2",
+  "publication_date": "2026-11-12",
+  "publisher": "VOX",
+  "retrieval_date": "2026-11-20",
+  "rights_status": "verified_link_only",
+  "schema_version": "1.0.0",
+  "sha256": "f83024014fac82244eb074f31ac221d79a580faca0d66559fec2a9385da74e08",
+  "status": "official",
+  "title": "Es sentido común",
+  "version": "2026-v2"
+}

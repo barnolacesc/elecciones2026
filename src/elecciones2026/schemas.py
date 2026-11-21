@@ -157,6 +157,10 @@ class StatementRecord:
     correction_id: Optional[str] = None
     is_fixture: bool = False
 
+    @property
+    def allows_single_review(self) -> bool:
+        return self.election_id == "es-gen-2026" and not self.is_fixture and self.quote is None
+
     def review_fingerprint(self) -> str:
         """Bind a decision to the exact claim, qualification and source locator."""
         fields = ("election_id", "id", "party_id", "programme_id", "topic_id", "subtopic_id",
@@ -256,7 +260,8 @@ class StatementRecord:
             if r.content_sha256 is not None and r.content_sha256 != self.review_fingerprint():
                 errors.append(f"Statement {self.id}: review fingerprint does not match current content and provenance.")
             r_errors = r.validate(
-                require_human=self.election_id == "es-gen-2023" and self.review_status == "approved",
+                require_human=(self.election_id == "es-gen-2023" or self.allows_single_review)
+                and self.review_status == "approved",
                 fixture=self.is_fixture and self.election_id != "es-gen-2023",
             )
             for re_err in r_errors:
@@ -312,15 +317,18 @@ class StatementRecord:
                     f"Statement {self.id}: quotation must specify at least one locator: source_page or source_section."
                 )
 
-        # Dual review requirement for approved status
         if self.review_status == "approved":
             if self.election_id == "es-gen-2023" and any(not r.content_sha256 for r in self.reviews):
                 errors.append(f"Statement {self.id}: political pilot approval requires a review fingerprint for each reviewer.")
+            if self.allows_single_review and any(not r.content_sha256 for r in self.reviews):
+                errors.append(f"Statement {self.id}: programme summary approval requires a review fingerprint.")
             if self.election_id == "es-gen-2023" and self.is_fixture:
                 errors.append(f"Statement {self.id}: fixture approvals cannot publish political pilot claims.")
             approved_reviews = [r for r in self.reviews if r.verdict == "approved"]
             reviewer_ids = {r.reviewer_id for r in approved_reviews}
-            if len(approved_reviews) < 2 or len(reviewer_ids) < 2:
+            if self.allows_single_review and not reviewer_ids:
+                errors.append(f"Statement {self.id}: programme summary requires at least one human approval.")
+            elif not self.allows_single_review and len(reviewer_ids) < 2:
                 errors.append(
                     f"Statement {self.id}: approved review_status requires dual approval by at least two distinct reviewers (found {len(reviewer_ids)})."
                 )

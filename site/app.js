@@ -1154,6 +1154,33 @@
       '</article>';
   }
 
+  function renderIndependentProposals(measures, partyAKey, partyBKey, hasLinkedMeasures) {
+    const links = [];
+    const sections = [[partyAKey, 'A'], [partyBKey, 'B']].map(function ([partyKey, letter]) {
+      const party = PARTIES[partyKey];
+      const headingId = 'proposal-list-' + letter.toLowerCase();
+      const name = escapeHtml(party.name);
+      links.push('<a class="action-link" href="#' + headingId + '">' + name + '</a>');
+      const entries = measures.filter(measure => Object.hasOwn(measure.positions, partyKey));
+      const count = entries.length === 1 ? '1 ficha revisada' : entries.length + ' fichas revisadas';
+      let cards = entries.map((measure, index) =>
+        renderPartyCardHtml(getPositionForParty(measure, partyKey), letter, 'independent-' + (index + 1))
+      ).join('');
+      if (!entries.length) {
+        const message = party.coverage === 'partial' ? 'El documento de campaña es parcial.' :
+          hasLinkedMeasures ? 'No hay otras fichas revisadas en este tema.' : 'No hay fichas revisadas en este tema.';
+        cards = '<p class="notice">' + message + '</p>';
+      }
+      return '<section class="proposal-list" aria-labelledby="' + headingId + '">' +
+        '<h3 id="' + headingId + '">' + name + '</h3>' +
+        '<p class="proposal-count">' + count + '</p>' +
+        '<a class="action-link" href="./partidos/' + encodeURIComponent(partyKey) + '/">Consultar programa y cobertura</a>' +
+        cards + '</section>';
+    });
+    return '<nav class="proposal-nav" aria-label="Listas por candidatura">' + links.join('') + '</nav>' +
+      '<div class="measure-cards proposal-lists">' + sections.join('') + '</div>';
+  }
+
   function init() {
     const form = document.getElementById('selection-form');
     const topicSelect = document.getElementById('topic-select');
@@ -1263,7 +1290,22 @@
       // Dynamically render all grouped measures into measuresContainer
       if (measuresContainer) {
         let allMeasuresHtml = '';
-        if (measures.length === 0) {
+        if (payloadMatchesElection && PUBLISH_DATA && PUBLISH_DATA.productionRecords) {
+          const linked = [];
+          const standalone = [];
+          const direct = partyAKey + ':' + partyBKey;
+          const reverse = partyBKey + ':' + partyAKey;
+          for (const measure of measures) {
+            if (measure.relationships[direct] || measure.relationships[reverse]) linked.push(measure);
+            else standalone.push(measure);
+          }
+          allMeasuresHtml = linked.map((measure, i) =>
+            renderMeasureGroupHtml(measure, topicData.name, partyAKey, partyBKey, i + 1)
+          ).join('');
+          if (standalone.length || !linked.length) {
+            allMeasuresHtml += renderIndependentProposals(standalone, partyAKey, partyBKey, linked.length > 0);
+          }
+        } else if (measures.length === 0) {
           allMeasuresHtml = '<div class="empty-measures" role="status" aria-live="polite">' +
             '<p class="empty-measures-icon" aria-hidden="true">—</p>' +
             '<h4 class="empty-measures-title">Contenido pendiente de publicación</h4>' +

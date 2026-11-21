@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-foreign-policy-eu-p131-131-6",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Mientras persista la ocupación ilegal o el riesgo de genocidio"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b5e677159bd66fa2e49a85a7dcc8f29f334d87539bbec7cd56e2668bcd528d9b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "131",
+  "source_section": "Embargo integral de armas y medidas frente a Israel y la ocupación en Palestina",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "defense-spending-and-nato",
+  "summary": "Aprobar una ley de embargo integral y permanente de armas a Israel que elimine excepciones gubernamentales, vete tránsitos militares y prohíba contratos públicos o cooperación militar e industrial de defensa",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

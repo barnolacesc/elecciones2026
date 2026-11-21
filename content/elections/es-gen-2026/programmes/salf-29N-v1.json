@@ -1,0 +1,17 @@
+{
+  "candidacy_id": "salf",
+  "election_id": "es-gen-2026",
+  "is_fixture": false,
+  "language": "es",
+  "official_url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d",
+  "programme_id": "salf-29N-v1",
+  "publication_date": "2026-11-10",
+  "publisher": "Se Acabó La Fiesta",
+  "retrieval_date": "2026-11-11",
+  "rights_status": "verified_link_only",
+  "schema_version": "1.0.0",
+  "sha256": "073425b9522da77608a0399923c2e0d3b9153776e8a0436ac8f0aea794b7893b",
+  "status": "official",
+  "title": "Contrato electoral simplificado",
+  "version": "29N-v1"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-housing-public-housing-stock",
+  "party_id": "junts",
+  "topic_id": "housing",
+  "subtopic_id": "public-housing-stock",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone transferir sin coste a la Generalitat y a los ayuntamientos la propiedad de todas las viviendas y terrenos que la Sareb y Casa 47 tienen en Cataluña.",
+  "review_status": "approved",
+  "programme_id": "junts-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "source_page": "18",
+  "source_section": "Bloc 2, Objectiu 5, medida 5.2",
+  "qualifications": [
+    "La cesión incluiría un fondo específico para acondicionar los inmuebles y hacerlos habitables."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/habitatge-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "e0cf1bb81c36bb5b70a828600ff86e9e47c011af0a2dbf585c2098cdcf65428f"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

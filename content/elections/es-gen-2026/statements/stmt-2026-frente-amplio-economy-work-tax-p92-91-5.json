@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p92-91-5",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Condicionado a la prohibición de despedir"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ff454cae3affefe8383a673a53e04b4cc6d7ba5a1b857494ec5ead4a19606a7c"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "92",
+  "source_section": "8.1",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Poner en marcha un Plan Nacional de Adopción de Inteligencia Artificial y tecnologías digitales para pymes, autónomos y economía social, con la meta de alcanzar un 90 % de intensidad digital básica en 2030.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

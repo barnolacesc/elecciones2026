@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p66-61-44",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Restringido a autónomos y agricultores para vehículos de reparto o agrarios"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "6dfd6ea92b7d480c35678a85c58104638794bb2d64eab237d02688f8b69c0606"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "66",
+  "source_section": "5.2",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Conceder subvenciones de hasta 8.000 euros y deducciones de IRPF de hasta 25.000 euros para autónomos y agricultores que renueven vehículos de trabajo por eléctricos.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

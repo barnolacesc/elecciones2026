@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-education-early-childhood-education",
+  "party_id": "erc",
+  "topic_id": "education",
+  "subtopic_id": "early-childhood-education",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone financiar con recursos estatales el acceso universal y gratuito a una plaza pública de educación infantil de 0 a 3 años.",
+  "review_status": "approved",
+  "programme_id": "erc-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "source_page": "11",
+  "source_section": "A.C, medida 20",
+  "qualifications": [
+    "La implantación sería progresiva y la financiación, estable y suficiente para cubrir el coste real del servicio."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact six-statement batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/educacio-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "30c492671a378fbb4c67f485ef6ab7749c5676d6df43ac5aa83f0d8621a251ad"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

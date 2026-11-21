@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p67-61-49",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Aplica a vehículos pesados de transporte de mercancías de más de 3,5 toneladas con bonificaciones laborales y de proximidad"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "17bb72d5adb4a797f2a71ef5bb9118ddb2227cbb02c817c84305a4ae4fb33a27"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "67",
+  "source_section": "5.2",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Implantar el cobro por uso tipo euroviñeta para vehículos de transporte pesado de mercancías de más de 3,5 toneladas en autovías con exenciones y bonificaciones por movilidad laboral.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}
