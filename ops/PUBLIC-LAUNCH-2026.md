@@ -32,13 +32,22 @@ ten verified routes. A short loopback trial completed 1,600 requests
 at 200 requests/s with scheduled p95 of 2.45 ms. Sustained traffic and
 Cloudflare cache checks remain open.
 
-The apex and www currently return Cloudflare 521. The preview returns 401
-with authentication, no-store and noindex. The precise public origin fault
-is unverified. Keep preview authentication active during public cutover.
-The launch configuration keeps the authenticated preview on port 8080 and
-routes the apex to a separate public image on port 8081. The staging file
-owns the single default server. The www virtual host redirects to the apex
-and preserves the request path and query.
+The apex pointed to a different origin, and www pointed to the registrar
+parking service. Both proxied records now route to the intended IONOS
+origin. A temporary external HTTPS probe returned its exact marker before
+cleanup. The apex still has no public application route. The preview returns
+401 with authentication, no-store and noindex. The launch configuration
+keeps staging on port 8080 and routes the apex to a separate image on port
+8081. Staging owns the default server.
+
+Cloudflare now validates the origin certificate for the apex, www and
+preview. HTTP and www requests return 308 to the HTTPS apex and preserve
+the path and query. The apex-only cache rule covers GET and HEAD. It uses
+origin cache headers and bypasses caching when they are absent. Two distinct
+query variants of the temporary HTML probe each returned MISS then HIT.
+Direct external requests to the origin's HTTPS and public-container ports
+timed out from the preflight client. DNSSEC signing is enabled at Cloudflare
+and awaits the DS record at the registrar.
 
 The owner requested the public cutover. On 2026-11-21, Cesc explicitly
 took responsibility for the departed Project Partner's signoff for
