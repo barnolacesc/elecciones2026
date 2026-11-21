@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-institutions-rights-p29-21-66",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "9a99a4eb26b731492008a0839ad0d81686d9dac3d5af4cffa24b7eafb5c4057a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "29",
+  "source_section": "91",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "transparency-and-anti-corruption",
+  "summary": "Aprobar una nueva Ley de Secretos Oficiales que derogue la de 1968, fijando plazos máximos de clasificación y control judicial de la reserva.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-institutions-rights-p62-61-9",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "271b2d85d9a83ee6a77253e86af865c6ab6fbb8558ecd89842160e9226e5db39"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "62",
+  "source_section": "189. Derecho al cuidado más allá de los modelos tradicionales.",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Crear un marco legal que reconozca diversas relaciones afectivas y de convivencia como redes de cuidados con efectos jurídicos en permisos retribuidos y crianza de menores",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

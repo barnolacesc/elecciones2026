@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-health-social-services-p51-51-6",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "06ca8d82f0e487620c676a8f8169cd483833fdaf826e977bb799d0bac301182e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "51",
+  "source_section": "148. Sostenibilidad, atención y recuperación especializada a las mujeres que han sufrido violencias sexuales",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "primary-care-and-sns",
+  "summary": "Garantizar el presupuesto necesario para sostener el modelo de atención 24/7 habilitado desde los centros de crisis para mujeres víctimas de violencias sexuales según la Ley Orgánica 10/2022.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p107-101-27",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b54d7a65c7fbce031f75b78a982473592398c7f2fce2d527e6d549d937603d2d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "107",
+  "source_section": "11.3. Infraestructuras e inversión en todo el territorio",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Incrementar la capacidad del transporte de mercancías por ferrocarril mediante ampliación de apartaderos, modernización de terminales intermodales y conexión ferroviaria directa con los puertos de interés general.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

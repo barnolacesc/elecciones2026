@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-vox-economy-work-tax-p9-1-7",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "vox",
+  "policy_instrument": null,
+  "programme_id": "vox-2026-v2",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "867f6d83705868fc726c7119e72889c7c7d4d8777504adcc6f177c9d92a148a7"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "9",
+  "source_section": "2",
+  "source_url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+  "source_version": "2026-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Rebajar el tipo general y el reducido del IVA con prioridad en productos esenciales y de primera necesidad",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

@@ -1,0 +1,38 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-housing-p8-1-1",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Siempre y cuando el precio resultante no quede por debajo del 60% del precio medio actual en la correspondiente zona",
+    "Si la vivienda nunca ha sido puesta antes en alquiler, el precio inicial será el 60% del precio medio actual de la zona"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "6588e2ed15f552f5002622606adfb5e2a196d75428d75e443037974146029eeb"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "8",
+  "source_section": "1. Bajar los alquileres un 40% por ley",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rental-regulation",
+  "summary": "Aprobar por ley una reducción del 40 % de los precios del alquiler aplicable a contratos vigentes, renovaciones, prórrogas y nuevos contratos, fijando el precio un 40 % menor al anterior sin bajar del 60 % del precio medio de la zona, o en el 60 % del precio medio para viviendas nunca antes alquiladas",
+  "summary_en": null,
+  "topic_id": "housing"
+}

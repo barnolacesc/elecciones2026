@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-housing-p13-11-12",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2774008a7ea4da312513ac716a5c942573ef94fe11cb96d76f9fe47847898042"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "13",
+  "source_section": "2.1 VIVENDA",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "evictions-and-vulnerability",
+  "summary": "Garantizar el acceso de las personas vulnerables a las ayudas para la mejora de la eficiencia energética y de la accesibilidad en vivienda.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

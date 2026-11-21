@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-ehbildu-health-social-services-p13-11-32",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "ehbildu",
+  "policy_instrument": null,
+  "programme_id": "ehbildu-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "8bdb4d34bc4a514d550fabb377937228be0643244b0f1dcd2245d734286caf36"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "13",
+  "source_section": "1.7",
+  "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Fomentar prestaciones autonómicas de apoyo a la crianza adaptadas a costes territoriales y compatibles con el IMV",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

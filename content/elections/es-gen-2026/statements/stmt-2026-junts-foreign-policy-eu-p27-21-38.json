@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-foreign-policy-eu-p27-21-38",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "fba562ed91600ac0c7923df2a5c49d6385e5cca5e95390a14ae66594b0c5e73b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "27",
+  "source_section": "2.4. Volem que l’Estat doni suport a una reforma europea",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "eu-treaties-and-fiscal-rules",
+  "summary": "Exigir apoyo estatal a una reforma de la Unión Europea que refuerce el Parlamento Europeo, la subsidiariedad, la protección de minorías y la ampliación del voto por mayoría cualificada.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

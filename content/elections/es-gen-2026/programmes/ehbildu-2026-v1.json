@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "ehbildu-2026-v1",
+  "candidacy_id": "ehbildu",
+  "title": "Posible Egin. Garantía y derechos",
+  "status": "official",
+  "version": "2026-v1",
+  "publisher": "EH Bildu",
+  "official_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "publication_date": "2026-11-16",
+  "retrieval_date": "2026-11-20",
+  "language": "es",
+  "sha256": "ceb655c9c8ebb036a15fa7829865d6e2d178525eb7db92629d702ac5e8d16047",
+  "rights_status": "verified_link_only",
+  "is_fixture": false
+}

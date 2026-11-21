@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-housing-p12-11-12",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b0758f700f580b8f05f1064d0978e3296f079a333f132a04577759c9aa531842"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "12",
+  "source_section": "Creación de la Agencia Estatal de la Vivienda (AEV) y del Registro Estatal de Arrendamientos (REA)",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rental-regulation",
+  "summary": "Crear la Agencia Estatal de la Vivienda dotada de cuerpo inspector y facultad sancionadora de hasta 1.000.000 de euros por infracciones graves.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

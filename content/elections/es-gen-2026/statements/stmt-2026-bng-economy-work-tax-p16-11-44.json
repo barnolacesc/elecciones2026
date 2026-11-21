@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-economy-work-tax-p16-11-44",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "12eb355ea729b1c0052f39b59d29ffb064712c0d7d3056cab5c5ed600ae9636f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "16",
+  "source_section": "2.2. MÁIS DEREITOS PARA A CLASE TRABALLADORA",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "working-hours-reduction",
+  "summary": "Reducir obligatoriamente la jornada laboral en las actividades con mayor índice de siniestralidad y peligro.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

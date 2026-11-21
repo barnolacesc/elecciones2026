@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p18-11-47",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Exceptúa viviendas en régimen de alquiler asequible y estable, participaciones menores heredadas o entidades sin ánimo de lucro"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "39c01168d104e3b00aa17cd3969271ecb18ee57f7ac8309740c735c05c7048a9"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "18",
+  "source_section": "Fiscalidad progresiva de la propiedad inmobiliaria, IBI penalizador y ventajas fiscales para vivienda social y cooperativas",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Crear un tributo del 10 % sobre el valor de inmuebles para empresas desde el primero y particulares desde el cuarto si el patrimonio excede 800.000 euros, exceptuando alquileres asequibles.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

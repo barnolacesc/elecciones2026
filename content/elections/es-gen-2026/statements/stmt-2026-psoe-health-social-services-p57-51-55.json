@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-health-social-services-p57-51-55",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "737849e0059f3809402fcd9743704825de614bb788c7a0325c4d8a210e312a5f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "57",
+  "source_section": "204",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Poner en funcionamiento el Sistema de Información Estatal de Servicios Sociales con datos homogéneos para todas las administraciones.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-institutions-rights-p75-71-41",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "0a4c3291bea5b84110cae7dcc75f72ba4118604d85963119a32ad34d0482e5d7"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "75",
+  "source_section": "253",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "transparency-and-anti-corruption",
+  "summary": "Reestructurar el Instituto de la Cinematografía y de las Artes Audiovisuales (ICAA) e incrementar su presupuesto, su plantilla y revisar sus criterios de valoración.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-institutions-rights-p50-41-63",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "26d5605d5298815a312940242205c7868ba3ec2c036ff3b4ac86688c3c6b70c9"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "50",
+  "source_section": "4.3.2",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Transferir los espacios portuarios estatales en desuso para usos dotacionales y sociales de los municipios",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

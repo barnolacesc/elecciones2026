@@ -12,7 +12,8 @@
 
 - [x] 2.1 Reconcile the eight local originals with registered hashes, run permitted isolated extraction and record per-document results and unresolved blockers without committing full text.
 - [x] 2.2 Read every eligible programme completely; enumerate every substantive point with page/section, qualifications and taxonomy mapping in private review records. Verify page coverage and account explicitly for unmapped and unreadable content.
-- [ ] 2.3 Obtain source identity/reuse decisions and two independent human reviews of every publishable statement and relationship; import approved records and verify the strict production build. Do not grant review marks automatically.
+- [x] 2.3 Obtain source identity/reuse decisions and one named human approval for each 2026 summary, or two for a verbatim quotation or comparison relationship. Import approved records and verify the strict production build. Do not grant review marks automatically.
+- [x] 2.4 Apply the owner's single-review policy to unquoted 2026 summaries, verify review fingerprints and source gates, and document a batch approval workflow.
 
 ## Evidence
 
@@ -229,3 +230,154 @@ revalidate. Local immutable-asset tests and all 19 owned-loopback rollback and
 withdrawal checks pass (about 0.7 seconds for the measured rollback). This fixes
 the runtime policy rather than relaxing the recovery assertion. No remote host
 or public cache settings were changed.
+
+## 2026-11-20 programme intake
+
+Registered the publisher PDFs for PSOE, VOX, Frente Amplio, EH Bildu and
+Junts with SHA-256 hashes and pending reuse and editorial review. The 2026
+Frente Amplio source replaces a 2023 Sumar link in the current-election
+register. Registered the UPN–PP campaign commitments as partial coverage.
+A complete joint programme is still unconfirmed.
+
+Private extraction and verification passed for Frente Amplio (151 pages),
+EH Bildu (30 pages) and Junts (90 pages). The PSOE original passed archive
+verification and its extraction was rejected by the isolated worker. The
+VOX PDF remains in private quarantine because the intake scanner detected
+an embedded-file token. Source and editorial review for the new material
+remain open under task 2.3.
+
+The source register validated. Python 3.14 ran 534 tests with 17 skipped
+and no failures. The local Docker preview served the current-election
+home page, all six new source links and both new candidature pages. The
+current build contains 13 registered PDFs, one partial web source and
+zero approved proposals.
+
+## 2026-11-20 single-review policy
+
+The 2026 production build accepts one named human approval for an unquoted
+summary. It rejects a missing approval, an automated approval, a missing
+fingerprint and a fingerprint that no longer matches the summary. Tests also
+cover the quotation and source rights gates. The private six-statement
+education batch awaits confirmation of its exact drafts and source decisions.
+
+Python 3.14 ran 535 tests with 17 skipped and no failures. All 68 schema and
+fixture checks passed. OpenSpec validation passed. The Docker preview serves
+the revised editorial rule on the method page.
+
+## 2026-11-20 approved Education batch
+
+The owner approved the six exact summary fingerprints in
+`educacio-29n-v1` and approved source links and neutral summaries for both
+reviewed versions. The production corpus contains the six unquoted
+summaries and two programme records. The publisher's current ERC URL
+returned a different hash. The two independent public copies matched
+the reviewed ERC hash. Statement citations use the matching betevé copy
+and retain the approved provenance fields.
+
+The strict build and local Docker preview served all six summaries.
+The comparison payload carries the page-specific links and has no
+comparison relationships. Python 3.14 ran 535 tests with 17 skipped and
+no failures. All 68 schema and fixture checks passed. The public
+apex and www returned 521 and authenticated preview returned 401.
+Task 2.3 remains open for the rest of the corpus. Public G4 remains open.
+
+## 2026-11-20 additional intake and review queue
+
+Registered the campaign PDFs for Podemos and Compromís: Front Valencià.
+The isolated archive worker extracted and verified 141 and 57 pages,
+respectively. Source reuse and editorial decisions remain pending.
+UPN–PP remains partial coverage. A fresh PSOE extraction attempt returned
+a parser diagnostic, and the VOX intake scanner again rejected its PDF.
+
+Prepared a private eight-statement Education batch and indexed 1,433
+existing drafts by candidature and topic. Held 211 drafts for source
+identity, editorial corrections or taxonomy issues. The index and
+draft records stay outside Git. All six previously approved summaries
+remain in the publish set.
+
+Python 3.14 ran 535 tests with 17 skipped and no failures, and all 68
+schema and fixture checks passed. The local Docker preview served both
+new candidature pages, 15 registered PDFs and six approved summaries.
+
+## 2026-11-20 second approved Education batch
+
+The owner approved the eight Education summaries and authorized neutral
+summaries and source links for the eight exact programme versions.
+Registered the source decisions and page-specific citations. All eight
+publisher downloads matched the archived SHA-256 values before import.
+Publication date evidence is recorded in the source register.
+
+The strict build and Docker preview served 14 Education summaries across
+10 candidatures. All eight newly served summaries and PDF page links
+match the approved batch. Python 3.14 ran 535 tests with 17 skipped and
+no failures. All 68 schema and fixture checks passed. Task 2.3 remains
+open for the rest of the corpus.
+
+## 2026-11-20 Housing and Health review batches
+
+Prepared private batches of ten Housing and ten Health summaries for the
+ten programmes with existing permission for neutral summaries and links.
+Prepared two more PSOE summaries using cited PDF pages that returned no
+parser diagnostics and corresponding publisher web sections. The complete
+PSOE extraction still returns a marked-content parser diagnostic. A
+structural check of the VOX PDF found no listed attachments or JavaScript.
+The intake scanner still flags this source and the PDF remains quarantined.
+
+Validated the 22 drafts, their source hashes and their review fingerprints.
+The owner approved all three exact batches and confirmed the editorial
+review date as 2026-11-20. The owner also authorized neutral summaries
+and links to the registered PSOE programme. Recorded eleven verified
+programme versions and imported 22 new summaries after strict validation.
+
+The local Docker preview served 36 approved summaries with page-specific
+citations: 14 for Education, 11 for Housing and 11 for Health and Social
+Services. Python 3.14 ran 535 tests with 17 skipped and no failures. All
+68 schema and fixture checks passed.
+
+## 2026-11-20 consolidated private review batch
+
+Prepared `corpus-29n-revisio-v1` with 5,585 unquoted draft summaries, 14
+election-specific programmes, and 989 physical PDF pages. Antigravity
+workers returned 113 initial page ledgers. Coordinator checks reconciled
+page evidence, locators, source hashes, qualifications and numeric claims.
+The manifest binds every draft to its review fingerprint and source version.
+No new human reviews or reuse decisions were recorded.
+
+The private classification proposal retains the eight core topics and adds
+four topics. The batch includes three source reuse decisions and partial
+coverage for the UPN–PP and Frente Obrero campaign pages. A separate VOX
+mirror passed the intake scanner. The quarantined publisher download
+remains in the source history. The archived SALF PDF was checked locally
+after an automated download returned HTTP 403.
+
+The package verifier checked all 5,585 draft records, the hashes listed
+in the manifest, and the manifest digest in the approval text. A second
+compile reproduced the manifest. A strict isolated build tested the
+proposed taxonomy and source register against the 36 already approved
+summaries and rendered the two partial source links. Python 3.14 ran
+535 tests with 17 skipped and no failures. All 68 schema and fixture
+checks passed. OpenSpec strict validation passed. The batch was ready for the
+owner's decision and import. The public release gate remained open.
+
+## 2026-11-21 consolidated batch approval and import
+
+Cesc approved all 5,585 summaries in `corpus-29n-revisio-v1` on 2026-11-21
+and confirmed 2026-11-20 as the review date. The same decision approved
+taxonomy version 1.1.0, neutral summaries and source links for the three
+listed versions, and partial campaign coverage for UPN–PP and Frente
+Obrero. Decision reference: `editorial/corpus-29n-revisio-v1/approval-2026-11-21`.
+Reviewed manifest SHA-256:
+`d47547acd4e1ed80dcc89859c29a60941ede2b9fb15cd5f04bdce774082feb8c`.
+
+The three source decisions apply to `src-2026-vox-v2` (betevé copy),
+`src-2026-salf-v1`, and `src-2026-partido-humanista-v1`. Every imported
+approval retains its original content fingerprint. The production record
+set has no verbatim quotations or comparison relationships. Both partial
+coverage records link to campaign pages.
+
+Two strict builds produced identical files with 5,621 approved summaries,
+14 verified programmes, 12 topics and two partial sources. The local
+Docker preview served every expected comparison statement ID and both
+partial coverage states. All 68 schema and fixture checks passed.
+Python 3.14 ran 535 tests with 17 skipped and no failures. OpenSpec
+strict validation passed. G4 remains open.

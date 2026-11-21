@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-immigration-p22-21-8",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "4ff48adde625dfe6a26acec3913c5936277d6818fe6f3a9f060d4b3782c4424f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "22",
+  "source_section": "2.5. ACOLLIDA, INCLUSIÓN E DEREITOS DAS PERSOAS INMIGRANTES",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "regularization-processes",
+  "summary": "Promover la regularización administrativa de personas migrantes para suprimir la irregularidad como vía de explotación laboral.",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

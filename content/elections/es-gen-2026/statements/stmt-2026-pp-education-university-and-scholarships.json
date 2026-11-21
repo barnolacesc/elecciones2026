@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-education-university-and-scholarships",
+  "party_id": "pp",
+  "topic_id": "education",
+  "subtopic_id": "university-and-scholarships",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone una prueba común de acceso a la universidad en todo el territorio nacional.",
+  "review_status": "approved",
+  "programme_id": "pp-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "source_page": "32",
+  "source_section": "3.1, medida 95",
+  "qualifications": [
+    "Las condiciones básicas de la prueba, incluida su evaluación, se acordarían con las comunidades autónomas y los órganos de representación de las universidades."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact eight-statement Education batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "ab5d3518fab97749a657464e76c283d486fc6d9995b95c53b1b67db40711eefb"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

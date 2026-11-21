@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-institutions-rights-p31-31-7",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "68e1e0435555bdf0abc366272f638c100b96ade09f9ab96ce9b9cc59152236ea"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "31",
+  "source_section": "2.8.2. MEMORIA DEMOCRÁTICA",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Modificar la Ley de Memoria para terminar con la impunidad del franquismo y asegurar la tutela judicial efectiva a víctimas y familias",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

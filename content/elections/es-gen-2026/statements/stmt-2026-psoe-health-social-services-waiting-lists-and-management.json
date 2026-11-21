@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-health-social-services-waiting-lists-and-management",
+  "party_id": "psoe",
+  "topic_id": "health-social-services",
+  "subtopic_id": "waiting-lists-and-management",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone eliminar las listas de espera consolidando la financiación pública de la sanidad en torno al 7 % del PIB y reforzando el carácter público del Sistema Nacional de Salud.",
+  "review_status": "approved",
+  "programme_id": "psoe-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "source_page": "49",
+  "source_section": "Compromiso 136, p. impresa 50",
+  "qualifications": [
+    "También plantea aumentar progresivamente la inversión en prevención hasta alcanzar la media europea."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/psoe-habitatge-salut-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "271f0a677c439e37af333392f0e08162bf93de1f7aeae8b80959b5892e12a293"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

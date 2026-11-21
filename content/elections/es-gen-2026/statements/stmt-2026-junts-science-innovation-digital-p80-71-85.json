@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-science-innovation-digital-p80-71-85",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3c058ac45cc3532b14e960ec63381b48c33bae7b8ec9f1a3b7629c0ba7a2322c"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "80",
+  "source_section": "4. Punts de programa. 4.2",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "digital-connectivity-and-telecommunications",
+  "summary": "Almacenar los datos públicos catalanes en infraestructuras de proximidad y distribuir centros de datos de alta eficiencia fuera de la primera corona metropolitana.",
+  "summary_en": null,
+  "topic_id": "science-innovation-digital"
+}

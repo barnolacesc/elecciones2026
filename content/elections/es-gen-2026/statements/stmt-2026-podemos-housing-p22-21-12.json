@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-housing-p22-21-12",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Inmuebles adquiridos durante los dos años fiscales anteriores"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "7345ce3e3b96ed0512390c258bd322d5d01f91a5457a6d22c1270890d2a775fa"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "22",
+  "source_section": "55",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "mortgage-and-purchasing",
+  "summary": "Implantar un gravamen específico sobre las ganancias derivadas de la transmisión de inmuebles adquiridos durante los dos ejercicios fiscales previos.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

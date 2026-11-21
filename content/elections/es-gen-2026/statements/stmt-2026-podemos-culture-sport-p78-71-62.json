@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-culture-sport-p78-71-62",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f7ce27f2b9d3b7649b005553fba83511717a9bbfd6ec6baba3be46984683de89"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "78",
+  "source_section": "274",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "cultural-access-patronage-and-creators",
+  "summary": "Subir las cuotas de programación reservadas a espectáculos de danza en teatros nacionales y auditorios públicos de todo el territorio.",
+  "summary_en": null,
+  "topic_id": "culture-sport"
+}

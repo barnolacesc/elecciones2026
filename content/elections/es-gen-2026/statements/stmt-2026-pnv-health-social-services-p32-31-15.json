@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-health-social-services-p32-31-15",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "71d2b463b731dc34e6a6c32ef471fae2cb08ce31882ffabb13958f368c771683"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "32",
+  "source_section": "MEDICAMENTOS, INVESTIGACIÓN Y TRATAMIENTOS 06",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "primary-care-and-sns",
+  "summary": "Regularizar el empleo terapéutico del cannabis fijando los requisitos sanitarios y de seguridad necesarios.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

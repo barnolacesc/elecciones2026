@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-ehbildu-institutions-rights-p21-21-9",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "ehbildu",
+  "policy_instrument": null,
+  "programme_id": "ehbildu-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2e26100d339d44c7696a787f37571f05789b69f8c7754f4ce7fee4ba0778a487"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "21",
+  "source_section": "• Medidas para proteger a los/as menores de edad en los entornos digitales",
+  "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Desactivar por defecto la recomendación algorítmica por perfiles a menores e implantar límites de tiempo y avisos no adictivos con enfoque de género",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

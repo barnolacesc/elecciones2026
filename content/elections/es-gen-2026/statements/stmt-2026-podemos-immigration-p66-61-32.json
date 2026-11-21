@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-immigration-p66-61-32",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Para las personas con bajos ingresos"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "968575a301f0ec1d488205cc30e2c0c90397eb49583b4d4451e202118fc30154"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "66",
+  "source_section": "207",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "regularization-processes",
+  "summary": "Suprimir las tasas de trámites administrativos de regularización y nacionalidad para rentas bajas y conceder asistencia legal gratuita",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

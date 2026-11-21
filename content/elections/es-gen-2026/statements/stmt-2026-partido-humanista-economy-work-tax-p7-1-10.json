@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-partido-humanista-economy-work-tax-p7-1-10",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "partido-humanista",
+  "policy_instrument": null,
+  "programme_id": "partido-humanista-2026-v1",
+  "qualifications": [
+    "Créditos cobrando únicamente gastos mínimos de gestión y destinados exclusivamente a primera vivienda habitual, economía social, transición ecológica, pymes y empresas participadas"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3b676d49c6c1798ba21405766bf11a2691aac1597d5b61610d93c1fb0c476407"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "7",
+  "source_section": "1. Economía y Empleo - Propuesta 4",
+  "source_url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Crear una Red Bancaria Pública mediante entidades con participación estatal para otorgar créditos al 0% de interés destinados a primera vivienda, economía social, pymes y transición ecológica.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

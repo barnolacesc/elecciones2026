@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-vox-housing-p24-21-7",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "vox",
+  "policy_instrument": null,
+  "programme_id": "vox-2026-v2",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "4274a9c491e8214426a46db8852f3d5f244df8ae1dece18652e9a9913b7de8d6"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "24",
+  "source_section": "31",
+  "source_url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+  "source_version": "2026-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "evictions-and-vulnerability",
+  "summary": "Ejecutar el desalojo de viviendas okupadas en menos de 24 horas y restituir de inmediato la posesión al propietario",
+  "summary_en": null,
+  "topic_id": "housing"
+}

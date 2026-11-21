@@ -22,6 +22,10 @@ Budget, quiz and historical content remain outside this package.
 - Apply the existing real-source provenance and rights gates to production
   2026 records, including independently reviewed relationships. Empty production
   directories produce an explicit pending state, never fixture fallback.
+- With the owner acting as sole editor, accept one recorded human approval
+  for a 2026 programme summary that contains no verbatim quotation. Bind the
+  approval to the exact summary and source coordinates. Retain dual review for
+  verbatim quotations, comparison relationships and historical records.
 - Filter source and party output to the requested election. Historical records
   remain in Git for audit; no historical programme inventory is rendered in the
   2026 source view.

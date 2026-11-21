@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-education-p45-41-24",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ddc63eab029181fcb18a715c4f59b00efb11a6d24a6d6ca518e7d8fee49c2985"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "45",
+  "source_section": "253",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "university-and-scholarships",
+  "summary": "Suprimir las tasas de reposición en las universidades y centros de investigación y ampliar los programas estatales de retención de talento y condiciones retributivas de doctorandos.",
+  "summary_en": null,
+  "topic_id": "education"
+}

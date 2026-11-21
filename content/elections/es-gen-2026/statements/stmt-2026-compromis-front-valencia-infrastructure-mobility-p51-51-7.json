@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-infrastructure-mobility-p51-51-7",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "9f3c2e0c18c8f481c6feac042c68a92dc266edf47ee238bf58d38e54b6f326fd"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "51",
+  "source_section": "actuacions",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rail-transport-and-high-speed",
+  "summary": "Publicar un calendario de electrificación de Sagunt-Terol, mejorar la línea C5 y estudiar la extensión del servicio hasta Barracas",
+  "summary_en": null,
+  "topic_id": "infrastructure-mobility"
+}

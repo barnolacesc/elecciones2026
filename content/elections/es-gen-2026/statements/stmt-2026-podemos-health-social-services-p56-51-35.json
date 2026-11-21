@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-health-social-services-p56-51-35",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "1c9e9ec11dd0126fd82601d5ce55c7c7d971879877ae6eea1f2cc106ef64aed0"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "56",
+  "source_section": "166",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "primary-care-and-sns",
+  "summary": "Garantizar el acceso libre y gratuito a métodos anticonceptivos irreversibles en la sanidad pública según la mera voluntad de la mujer, sin requisitos de edad ni maternidad previa.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

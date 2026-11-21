@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-institutions-rights-p87-81-50",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ac4a7090968514ff7eb798d95297c997e538d6914b6937a6443b1ddc5672876e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "87",
+  "source_section": "298",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "transparency-and-anti-corruption",
+  "summary": "Establecer la elección democrática de directivos de centros de investigación por sufragio directo de trabajadores y aplicar protocolos contra acoso laboral y violencia de género.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

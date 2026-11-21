@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-foreign-policy-eu-p30-21-43",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ba3368d33bbd9b14c1db9cc1263af43c095cbbe1c86b3cdeac99546b7cb9b5bc"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "30",
+  "source_section": "81",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "bilateral-relations",
+  "summary": "Configurar un marco de colaboración con los países de la Vecindad Sur centrado en emergencia climática, transición ecológica, derechos sociales y sustitución del enfoque exclusivo de control fronterizo.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

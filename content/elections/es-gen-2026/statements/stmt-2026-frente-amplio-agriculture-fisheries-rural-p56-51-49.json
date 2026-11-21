@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-agriculture-fisheries-rural-p56-51-49",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "4dbc16e0e3b76a18b35b4b108772d69d42fb196b763780cc5786945ebb20cfe0"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "56",
+  "source_section": "4.2",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "agricultural-policy-and-food-chain",
+  "summary": "Crear un Fondo de Estabilización de Productos Alimenticios Básicos para amortiguar oscilaciones de precios y aumentar la transparencia de costes",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

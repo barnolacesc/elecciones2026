@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-economy-work-tax-p41-41-9",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [
+    "Atendiendo especialmente a sectores con alto desgaste físico o psicológico"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b6170da90c7b205b2a437efebd12e3ef5f68c592d739c3244657efe0e244667e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "41",
+  "source_section": "PERSONES MAJORS",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "pensions-and-social-security",
+  "summary": "Establecer mecanismos para facilitar la jubilación progresiva, atendiendo especialmente a sectores con alto desgaste físico o psicológico.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

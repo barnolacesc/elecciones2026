@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-foreign-policy-eu-p13-11-4",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d5fa8cd3dee66962d071d11237b85cd7442bb6d67a95250a72e1dc6393e2cc70"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "13",
+  "source_section": "4",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "eu-treaties-and-fiscal-rules",
+  "summary": "Reducir la deuda pública conforme a las reglas fiscales europeas, supeditar cualquier nuevo gasto a su financiación garantizada y ampliar competencias de la AIReF para evaluar gasto y deuda.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

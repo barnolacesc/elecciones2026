@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-economy-work-tax-p29-21-59",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "95f4e4d7c2e0629c4149e0cca427e4bb7bbe55e92594a0ec8ac941480a4c6fb4"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "29",
+  "source_section": "126",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Sustituir los PERTE que vencen en 2026 por planes industriales estratégicos con gestión descentralizada territorialmente para canalizar recursos retenidos por la administración central.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

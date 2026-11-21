@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-economy-work-tax-p47-41-61",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a54c7e5f1ffdc63aee756041635faf3e0466c77d8c8732eada512723dac05bf4"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "47",
+  "source_section": "177",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Fijar por ley la exención de IRPF para los perceptores del salario mínimo interprofesional vinculando el umbral de tributación a las subidas del SMI.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

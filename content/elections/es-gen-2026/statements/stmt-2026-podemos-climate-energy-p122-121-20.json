@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-climate-energy-p122-121-20",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "99dd1c76a911d8d20ab6336909fb381611649db3ed90d88448cd6c4af9412406"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "122",
+  "source_section": "399",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Endurecer los estándares de bienestar animal ganadero reduciendo densidades de cría de pollos y erradicando el sacrificio de pollitos, la alimentación forzada de foie gras, granjas peleteras y mutilaciones sistemáticas.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

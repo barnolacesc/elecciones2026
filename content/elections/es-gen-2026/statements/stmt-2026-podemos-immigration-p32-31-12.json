@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-immigration-p32-31-12",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f787eb9b9d4e52076e26a7c359170183ae81a285d711e24c57e381c8c0c35d1b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "32",
+  "source_section": "86",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "reception-and-asylum",
+  "summary": "Garantizar procedimientos de asilo con asistencia letrada, interpretación e identificación de colectivos vulnerables, rechazando expulsiones colectivas y devoluciones ilegales.",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

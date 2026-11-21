@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-education-p13-11-14",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "6fc264b8829d8165085194a0e3bba379b3af8502767204fefb042bc40b8a2f28"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "13",
+  "source_section": "31",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "curriculum-and-languages",
+  "summary": "Establecer cuotas de reserva audiovisual del 50 % para lenguas oficiales en obras europeas, con cuotas del 25 % en TVE y plataformas para lenguas distintas del castellano",
+  "summary_en": null,
+  "topic_id": "education"
+}

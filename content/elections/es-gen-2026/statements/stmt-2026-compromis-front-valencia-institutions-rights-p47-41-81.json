@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-institutions-rights-p47-41-81",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5fa160688c1612b34c17c7b2c28528fc93d3f10c5261b2da826149b4e6f18bc0"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "47",
+  "source_section": "LLUITA CONTRA LES VIOLÈNCIES MASCLISTES",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "judicial-governance-and-cgpj",
+  "summary": "Reforzar las unidades policiales especializadas, los juzgados de violencia sobre la mujer, la medicina forense y el turno de oficio específico.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

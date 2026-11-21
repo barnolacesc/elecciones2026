@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-housing-p19-11-41",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "098d79e2690218f7bf9925560a58a0b01a409c582446d596d0570e5568dc0e2d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "19",
+  "source_section": "58",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "public-housing-stock",
+  "summary": "Reformar la ley estatal de suelo imponiendo el deber legal de edificar en los plazos fijados y habilitando mecanismos de venta forzosa frente a la retención de suelo",
+  "summary_en": null,
+  "topic_id": "housing"
+}

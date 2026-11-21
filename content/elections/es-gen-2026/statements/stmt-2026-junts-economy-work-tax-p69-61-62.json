@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-economy-work-tax-p69-61-62",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "eeb9a0737cae6b7b2a1960ca15c6a9ae00139e3d8eebf7a14870b26a28bac885"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "69",
+  "source_section": "2.6",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Acelerar la rebaja del tipo de gravamen del impuesto sobre sociedades para pymes, microempresas y cooperativas.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

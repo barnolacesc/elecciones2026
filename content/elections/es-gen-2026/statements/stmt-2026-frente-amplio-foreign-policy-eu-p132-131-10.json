@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-foreign-policy-eu-p132-131-10",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "8a0786fbd425b718642b467f659b9f5e301dbd127e773a439a334de485e6f02b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "132",
+  "source_section": "Autodeterminación del pueblo saharaui y cumplimiento de las sentencias del TJUE",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "bilateral-relations",
+  "summary": "Retirar formalmente el apoyo del Gobierno español al plan de autonomía marroquí y defender un referéndum de autodeterminación del pueblo saharaui supervisado por la ONU con opción explícita de independencia",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

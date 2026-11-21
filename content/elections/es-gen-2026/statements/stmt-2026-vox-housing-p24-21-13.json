@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-vox-housing-p24-21-13",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "vox",
+  "policy_instrument": null,
+  "programme_id": "vox-2026-v2",
+  "qualifications": [
+    "Aplicable a familias españolas en su primera vivienda habitual"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5e75ac694945894f1de86ac1a5439fb736cecc8664c7b1cc4699f491d9a40465"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "24",
+  "source_section": "34",
+  "source_url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+  "source_version": "2026-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "mortgage-and-purchasing",
+  "summary": "Fijar un tipo del 0% de IVA para compra de primera vivienda habitual nueva y bonificación del 100% en ITP para segunda mano, junto con la deducción por inversión en vivienda habitual",
+  "summary_en": null,
+  "topic_id": "housing"
+}

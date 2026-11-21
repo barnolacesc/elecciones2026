@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-housing-p41-41-1",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d427473ce3437b7b953e93d776781928874a2e0b1d4e06a2fee9a031257b8f8a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "41",
+  "source_section": "144",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "public-housing-stock",
+  "summary": "Construir un millón de viviendas mediante la movilización de suelo público y privado en colaboración con las comunidades autónomas y entidades locales.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

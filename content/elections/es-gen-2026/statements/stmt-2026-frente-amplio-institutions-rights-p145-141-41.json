@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p145-141-41",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "La objecion de conciencia no podra obstaculizar el acceso efectivo de la ciudadania a sus derechos"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2c0d8a9ed3d45024a431b0623e824d2f41964329e9d09f531d8c4dadd3c23d75"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "145",
+  "source_section": "18.4. Deberes y derechos de las Fuerzas y Cuerpos de Seguridad del Estado para servir en un Estado democrático",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Aprobar una ley reguladora de la objecion de conciencia con proteccion laboral para quien la ejerza sin limitar el acceso de la ciudadania a derechos",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-foreign-policy-eu-p130-121-48",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "55585b089494e5ca12361cc0efa05b8b3cf373c0f3f26d1febb1923543ecdf7a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "130",
+  "source_section": "17.1",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "development-cooperation",
+  "summary": "Incrementar los medios económicos y el compromiso institucional con la Agenda 2030 y las agendas de Naciones Unidas para consolidar una alianza mundial contra la desnutrición y el hambre.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-housing-p11-11-8",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [
+    "con medidas justificadas, proporcionadas y compatibles con el marco jurídico europeo"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d84451add5b99f9760937f1a85cf5dd9f8e242b342cc9d92e6abbe4f128cf308"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "11",
+  "source_section": "26",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "mortgage-and-purchasing",
+  "summary": "Reclamar ante la Unión Europea un régimen específico para Canarias que permita limitar la compra foránea de vivienda y hacer viable una Ley Canaria de Residencia.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

@@ -1,0 +1,38 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-institutions-rights-p31-31-5",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [
+    "Sin incremento de plantilla ni de gasto",
+    "Vigente hasta que la tasa de interinidad de puestos singularizados sea inferior al 8%"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "65c397b8ea3eb5c7f174f510fbade43427ab2b971ab5774a4b5d3aa7c3246f93"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "31",
+  "source_section": "4.6",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Reservar una cuota de plazas con perfil lingüístico acreditado en la Administración de Justicia hasta situar la interinidad por razón de lengua bajo el 8%.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

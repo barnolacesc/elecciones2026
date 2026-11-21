@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-housing-p59-51-71",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [
+    "Con atención prioritaria en el medio rural"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "e119b6ecd9e815a8fa480c7db78c13d5fcc67b33136e385c9fed2b483d59148e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "59",
+  "source_section": "219",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "public-housing-stock",
+  "summary": "Facilitar la adaptación funcional de los domicilios de personas mayores para apoyar su permanencia autónoma, especialmente en zonas rurales.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

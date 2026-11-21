@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-housing-p15-11-34",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "En procesos de desahucio por impago de hipoteca de primera vivienda"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "87d1f99b18f9254954b39b36f40332b85c1e0196afbca3c65337d2bfc664cd66"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "15",
+  "source_section": "1.4. Ni un desahucio más",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "evictions-and-vulnerability",
+  "summary": "Asumir el Estado la hipoteca y la primera vivienda de familias vulnerables para integrarla al parque público con alquiler social, activando tanteo y retracto urgente y exigiendo alquiler social a grandes tenedores.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

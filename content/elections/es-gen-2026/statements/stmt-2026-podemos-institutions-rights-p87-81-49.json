@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-institutions-rights-p87-81-49",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "79360cc15f56752de0eb01f7549443bb748f95ffee5f514a0674bb9861f3ca44"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "87",
+  "source_section": "298",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "transparency-and-anti-corruption",
+  "summary": "Realizar una auditoría integral contra la burocracia investigadora, crear una plataforma única de convocatorias y un modelo único de currículum evaluable.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

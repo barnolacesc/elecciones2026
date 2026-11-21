@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-economy-work-tax-p18-11-45",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2688185a0d131d44050028c0969ae1d8be408cdc789a33fbca975dba2f7816d5"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "18",
+  "source_section": "2.5 AGRICULTURA, GANADERÍA Y CADENA ALIMENTARIA 05",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Garantizar financiación estatal para sanidad animal, seguros agrarios y emergencias del sector, evitando su asunción exclusiva por las entidades vascas.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

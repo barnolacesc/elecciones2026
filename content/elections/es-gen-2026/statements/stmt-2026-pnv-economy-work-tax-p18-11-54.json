@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-economy-work-tax-p18-11-54",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "7bf19e662238fda1aaea94fdfa32dd8391fbc76fe532643e47e1e6341141ed85"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "18",
+  "source_section": "2.5 FLOTA, EMPLEO Y PROTECCIÓN SOCIAL 14",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Erradicar la pesca ilegal y el 'dumping' exigiendo normas laborales y sanitarias a las importaciones y aplicando la Ley de Cadena Alimentaria a los precios pesqueros.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

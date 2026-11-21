@@ -13,6 +13,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Optional
+from urllib.parse import urlsplit
 
 SHA256_PATTERN = re.compile(r"^[a-f0-9]{64}$")
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -78,6 +79,7 @@ class SourceRecord:
     rights_review: RightsReview
     replacement_history: list[ReplacementRecord]
     notes: str
+    archived_url: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -252,6 +254,19 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
 
         sha256 = item.get("sha256")
         direct_url = item.get("direct_url")
+        archived_url = item.get("archived_url")
+        if archived_url is not None:
+            try:
+                parsed = urlsplit(archived_url)
+                valid_archive_url = (
+                    parsed.scheme == "https" and parsed.hostname and parsed.port in (None, 443)
+                    and not (parsed.username or parsed.password or parsed.fragment)
+                    and not any(ord(char) <= 32 or ord(char) == 127 or char == "\\" for char in archived_url)
+                )
+            except (TypeError, ValueError):
+                valid_archive_url = False
+            if not valid_archive_url or status != "verified":
+                errors.append(f"Record {record_id}: archived_url requires a verified source and a safe HTTPS URL.")
 
         # Invariant: verified records must have sha256 and direct_url
         if status == "verified":
@@ -323,6 +338,7 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
                 rights_review=rights_review,
                 replacement_history=replacement_records,
                 notes=item.get("notes", ""),
+                archived_url=archived_url,
             )
         )
 

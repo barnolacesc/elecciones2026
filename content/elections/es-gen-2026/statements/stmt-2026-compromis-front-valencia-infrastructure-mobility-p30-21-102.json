@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-infrastructure-mobility-p30-21-102",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "cecb8a05c6bf9fe7a0d2156bbac8c586ead03de81bb09e729e44659b1fbeecb2"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "30",
+  "source_section": "MODEL DE CIUTAT I URBANISME",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "public-transit-and-infrastructure-planning",
+  "summary": "Financiar la peatonalización de calles, entornos escolares y carriles bici, adaptando la normativa de tráfico para agilizar la recuperación de espacio peatonal por los ayuntamientos.",
+  "summary_en": null,
+  "topic_id": "infrastructure-mobility"
+}

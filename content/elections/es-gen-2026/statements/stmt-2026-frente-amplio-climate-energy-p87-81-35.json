@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p87-81-35",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "En zonas de incidencia de grandes incendios"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "fd8f2213ae9fa7b467eda438d5b0e8fb4aa1b77def048efd895b10a4cd24536e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "87",
+  "source_section": "7.1. Sostenibilidad económica y social",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Poner en marcha un Plan de Empleo Forestal con contratación local en zonas afectadas por grandes incendios dentro del marco del Plan de Empleo Garantizado.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

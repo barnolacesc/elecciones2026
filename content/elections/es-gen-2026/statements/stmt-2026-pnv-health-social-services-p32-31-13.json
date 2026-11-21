@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-health-social-services-p32-31-13",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "246adefb577f26e446ca3fb231f220ffb918d80a8f6ce0a9ab9a048d9955fa81"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "32",
+  "source_section": "MEDICAMENTOS, INVESTIGACIÓN Y TRATAMIENTOS 04",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "primary-care-and-sns",
+  "summary": "Integrar con carácter permanente a los Gobiernos Vasco y Navarro en los organismos estatales de autorización, registro y fijación de precios farmacéuticos.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

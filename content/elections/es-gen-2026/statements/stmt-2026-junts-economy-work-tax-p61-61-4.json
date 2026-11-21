@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-economy-work-tax-p61-61-4",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [
+    "Con un límite de renta"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "49a8a5175997476744b2abe6dff6a28f5a7dd76dcd30081ee9afad6fb27a9d1f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "61",
+  "source_section": "4.2",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Aplicar en el tramo estatal del IRPF para menores de 35 años con límite de renta una exención total el primer año, reducción del 75 % el segundo, del 50 % el tercero y reducciones progresivas hasta el décimo año.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

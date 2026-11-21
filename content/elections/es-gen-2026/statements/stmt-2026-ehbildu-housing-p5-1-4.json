@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-ehbildu-housing-p5-1-4",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "ehbildu",
+  "policy_instrument": null,
+  "programme_id": "ehbildu-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "6cd25f8e6893c8ce28acb0c88a2ce65257e2b8cabd128e8cf67a2178c97658f3"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "5",
+  "source_section": "1.1. Vivienda",
+  "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tourist-accommodation",
+  "summary": "Presentar una Proposición de Ley para prohibir la publicidad y contratación de pisos turísticos ilegales en plataformas digitales.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

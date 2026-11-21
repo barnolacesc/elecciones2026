@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-economy-work-tax-p43-41-21",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "bfbae7e745d5bf10b36b0bdc0752fa3341568bafb7405d97851adfb1ad8d1ac1"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "43",
+  "source_section": "120",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Desarrollar el artículo 129.2 de la Constitución para promover la participación de los trabajadores en la gestión y en modelos cooperativos",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

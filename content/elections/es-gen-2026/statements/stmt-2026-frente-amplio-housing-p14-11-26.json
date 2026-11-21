@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-housing-p14-11-26",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "504f7b3a3a892e95f6bc9700468c503a0c5a6bc48250c9d403ae6746b43da964"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "14",
+  "source_section": "Prohibición de algoritmos inmobiliarios y software de fijación de rentas",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rental-regulation",
+  "summary": "Asignar a la CNMC y a la AEV la supervisión e imposición de auditorías periódicas e independientes sobre algoritmos y plataformas inmobiliarias frente a sesgos y coordinación de precios.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

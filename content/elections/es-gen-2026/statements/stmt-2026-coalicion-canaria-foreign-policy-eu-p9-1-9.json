@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-foreign-policy-eu-p9-1-9",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [
+    "acordando su destino con cabildos y ayuntamientos con participación ciudadana"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "69bd5d73872fad0006b30303b87334471331199bdbff996bff2444c474e43e19"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "9",
+  "source_section": "9. Recuperar espacios militares para la sociedad canaria",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "defense-spending-and-nato",
+  "summary": "Negociar el cese de la actividad militar, la cesión a las administraciones canarias y la recuperación ambiental para uso civil de terrenos e instalaciones militares, incluyendo el campo de tiro de Pájara.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

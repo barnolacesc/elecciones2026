@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p52-51-9",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "4b6d4a0a3d95f885d09b916aa6c4b749cf3b870a4ca3a918bb3997ccf2507d81"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "52",
+  "source_section": "4.1",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "labor-regulations-and-smi",
+  "summary": "Condicionar subvenciones y contratos públicos al cumplimiento del convenio sectorial y a un límite legal en la ratio salarial interna",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

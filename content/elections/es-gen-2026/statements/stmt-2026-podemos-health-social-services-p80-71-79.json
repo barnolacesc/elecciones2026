@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-health-social-services-p80-71-79",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a91d691300dc907c0df9411606ac27bdf4db042c06e430c7840e3617b7cc427a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "80",
+  "source_section": "280",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "disability-and-inclusion",
+  "summary": "Fijar en educación especial ratios de 6 alumnos con diversidad funcional intelectual, 4 con pluridiversidad funcional y de 1 a 4 con trastornos graves de conducta o TEA.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

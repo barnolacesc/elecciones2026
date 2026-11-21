@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-immigration-p48-41-61",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "fcdd4b90520649a8c31bc6f766b0c37138be6224da49448035c048135d31f65d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "48",
+  "source_section": "4. Punts de programa / Objectiu 2: Fluxos ordenats i immigració laboral planificada / 2.5",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "labor-migration-channels",
+  "summary": "Agilizar la homologación de títulos y cualificaciones profesionales y el canje de permisos de conducir para cubrir puestos vacantes en empresas catalanas",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

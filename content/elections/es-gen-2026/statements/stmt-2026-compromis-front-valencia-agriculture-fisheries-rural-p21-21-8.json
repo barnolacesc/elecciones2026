@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-agriculture-fisheries-rural-p21-21-8",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "00f316850129bc1d0878d5ea3406dcd7459dd2cf2244cb40e85a8907c37cc8ae"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "21",
+  "source_section": "AGRICULTURA I PESCA",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "agricultural-policy-and-food-chain",
+  "summary": "Impulsar estrategias estatales orientadas a la conservación productiva y valorización de cultivos y producciones tradicionales minoritarias.",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

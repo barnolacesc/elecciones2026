@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-culture-sport-p9-1-12",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ce96aaab81b4d0df8a90e1e6525edf4f11a38c791c2792301178a4172663ca99"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "9",
+  "source_section": "12",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "audiovisual-and-linguistic-diversity",
+  "summary": "Fijar por ley una dotación mínima estatal a las ayudas cinematográficas para producciones en catalán y occitano accesibles en lengua de signos catalana, e instaurar cuotas obligatorias de pantalla con supervisión pública en plataformas.",
+  "summary_en": null,
+  "topic_id": "culture-sport"
+}

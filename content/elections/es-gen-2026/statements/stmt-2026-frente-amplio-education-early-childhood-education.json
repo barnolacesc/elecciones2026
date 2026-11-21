@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-education-early-childhood-education",
+  "party_id": "frente-amplio",
+  "topic_id": "education",
+  "subtopic_id": "early-childhood-education",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone priorizar la creación de plazas públicas en todas las etapas, incluida la de 0 a 3 años, y avanzar gradualmente hacia el acceso a la educación pública para todo el alumnado.",
+  "review_status": "approved",
+  "programme_id": "frente-amplio-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "source_page": "31",
+  "source_section": "2.5, p. impresa 35",
+  "qualifications": [
+    "Mientras coexistan con la red pública, los centros sostenidos con fondos públicos tendrían prohibido cobrar cuotas obligatorias desde el inicio."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact six-statement batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/educacio-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "4b6464f35b88c493809e103e918edbee55fae578f6e984aa2c9addc02ad557c1"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

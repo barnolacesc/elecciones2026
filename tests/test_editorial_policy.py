@@ -172,20 +172,19 @@ class TestUnsupportedQuoteRejection(unittest.TestCase):
         self.assertTrue(any("does not exist in source register" in e for e in errors))
 
     def test_unsupported_quote_unverified_source_fails(self):
-        # 2026 sources in register are currently "missing" / unverified
         stmt = StatementRecord(
             id="stmt-test-unverified-src",
             election_id="es-gen-2026",
-            party_id="psoe",
+            party_id="vox",
             topic_id="housing",
             subtopic_id="rental-regulation",
             summary_es="Resumen neutral.",
-            source_id="src-2026-psoe-v0",
-            source_version="1.0",
+            source_id="src-2026-vox-v1",
+            source_version="2026-v1",
             status=StatementStatus.PUBLISHED,
             quote=QuoteRecord(
                 text="texto de cita",
-                source_id="src-2026-psoe-v0",
+                source_id="src-2026-vox-v1",
                 page="1",
             ),
             review=ReviewRecord(

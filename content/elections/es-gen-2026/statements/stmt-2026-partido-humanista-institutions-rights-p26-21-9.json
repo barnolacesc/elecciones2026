@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-partido-humanista-institutions-rights-p26-21-9",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "partido-humanista",
+  "policy_instrument": null,
+  "programme_id": "partido-humanista-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3c32e5ade5bccd4f5f799d91643be11babc21a324ac355b26e1d306e1099fc5e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "26",
+  "source_section": "Propuesta 1",
+  "source_url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Dotar de competencias y presupuesto a las administraciones situando el mayor grado de decisión en el nivel municipal, organizándose hacia arriba por acuerdo y delegación.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

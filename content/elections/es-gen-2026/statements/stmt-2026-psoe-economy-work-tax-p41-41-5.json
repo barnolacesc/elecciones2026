@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-economy-work-tax-p41-41-5",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [
+    "en el marco del diálogo social"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "efc760dbc410c40970320feffb1ef3aef83a4974fec4bcb412b078d8f7255c4a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "41",
+  "source_section": "107",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "pensions-and-social-security",
+  "summary": "Reformar la naturaleza jurídica de las mutuas colaboradoras para integrarlas como entidades gestoras de la Seguridad Social",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

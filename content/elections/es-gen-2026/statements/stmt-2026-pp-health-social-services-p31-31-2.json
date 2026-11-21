@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-health-social-services-p31-31-2",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [
+    "En coordinación con las Comunidades Autónomas"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "9849df7c06dc88f35bb293ec8ded75a28efee26f0e8050bd3dc91aeed9d7f52f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "31",
+  "source_section": "93",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "primary-care-and-sns",
+  "summary": "Garantizar, en coordinación con las comunidades autónomas, que la historia clínica y la historia social puedan ser consultadas desde cualquier servicio asistencial mediante una tarjeta y un historial únicos.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

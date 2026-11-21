@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-institutions-rights-p10-1-15",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "429c04c907994d75f8dd51895d8051efeb6e014d645fabde74d3f300cf933edf"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "10",
+  "source_section": "1. MÁIS FORZA PARA GALIZA",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Traspasar las competencias deportivas del Consejo Superior de Deportes y federaciones para que Galicia participe de forma oficial e independiente en competiciones internacionales.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

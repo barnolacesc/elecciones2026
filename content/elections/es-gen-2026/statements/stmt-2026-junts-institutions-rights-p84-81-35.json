@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-institutions-rights-p84-81-35",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [
+    "Plazo de doce meses financiado por la Administración estatal"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5c3c357dbed21675a0b9fbd357c8a1fef4860e813a6155e5cfca6c22846e6dbe"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "84",
+  "source_section": "Objectiu 5 / 5.4",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Otorgar un plazo de doce meses financiado por el Estado para que los consistorios depuren de oficio el censo de empadronamiento.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "junts-2026-v1",
+  "candidacy_id": "junts",
+  "title": "Catalunya al centre",
+  "status": "official",
+  "version": "2026-v1",
+  "publisher": "Junts per Catalunya",
+  "official_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "publication_date": "2026-11-18",
+  "retrieval_date": "2026-11-20",
+  "language": "ca",
+  "sha256": "cde2c5f3f30b66c72dd4f4bae3d22e9f6bc3e0ee4362da72f9e32e85129374b6",
+  "rights_status": "verified_link_only",
+  "is_fixture": false
+}

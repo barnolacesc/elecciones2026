@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-agriculture-fisheries-rural-p88-81-40",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "54ea8e7da0b8446892959695b4535b4d3e261e02157db0e0e8d50d5a7f9ebfbb"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "88",
+  "source_section": "7.1. Sostenibilidad económica y social",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "fisheries-and-marine-industry",
+  "summary": "Gestionar las cuotas pesqueras con criterios sociales e imponer mecanismos que obliguen a consumirlas para frenar la especulación.",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

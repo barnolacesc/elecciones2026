@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-immigration-p127-121-29",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5c9c9c7889de5b8813bc40544f9ac83ef1b66031d1bb3428a2b297df811c3eab"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "127",
+  "source_section": "16.2",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "border-control-and-security",
+  "summary": "Dotar de recursos suficientes al Defensor del Pueblo para actuar como órgano independiente de monitoreo del triaje y procedimientos fronterizos regulados en el Pacto Europeo de Migración y Asilo.",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

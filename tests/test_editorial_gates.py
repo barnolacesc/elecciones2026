@@ -10,6 +10,7 @@ Verifies Tasks 2.2 and 2.4 acceptance criteria:
 7. CLI entrypoints and CI build gate execution.
 """
 
+from dataclasses import replace
 from pathlib import Path
 import json
 import unittest
@@ -264,14 +265,30 @@ class TestEditorialApprovalGates(unittest.TestCase):
 
     def test_unlicensed_quote_from_unverified_source_fails_build(self):
         """Quote referencing an unverified source must fail build."""
+        source = next(s for s in self.register.sources if s.id == "src-2026-vox-v2")
+        unverified_source = replace(
+            source, id="src-test-unverified", status="published-unverified",
+            official_url="https://example.test/programme", direct_url="https://example.test/programme.pdf",
+        )
+        gate = EditorialApprovalGate(
+            target_election_id="es-gen-2026",
+            source_register=replace(self.register, sources=[unverified_source]),
+            taxonomy=self.taxonomy,
+            parties=self.parties,
+            programmes=self.programmes,
+        )
         stmt = self._make_valid_approved_statement(
             id="stmt-unverified-src",
             programme_id=None,
-            source_url="https://www.psoe.es/transparencia/informacion-politica-organizativa/programa/",
+            source_url=unverified_source.direct_url,
             quote="Cita de fuente no verificada",
         )
-        errors = self.gate.validate_statement(stmt, require_approved=True)
-        self.assertTrue(any("unsupported quote cannot pass review because source 'src-2026-psoe-v0' status is 'missing'" in e for e in errors))
+        errors = gate.validate_statement(stmt, require_approved=True)
+        self.assertTrue(any(
+            "unsupported quote cannot pass review because source 'src-test-unverified' "
+            "status is 'published-unverified'" in e
+            for e in errors
+        ))
 
     def test_unlicensed_quote_from_restricted_rights_source_fails_build(self):
         """Quote from a source with restricted rights must fail build."""

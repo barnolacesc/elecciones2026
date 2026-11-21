@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-housing-p14-11-24",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [
+    "Para viviendas vacías desde hace 5 o más años en manos de grandes propietarios"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "4c6f9caf03aadaa0377900cf208f3963a98afdf627c3ced7217ca66f995cc970"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "14",
+  "source_section": "2.1 VIVENDA",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "public-housing-stock",
+  "summary": "Facilitar a las CCAA medidas como el alquiler forzoso, la expropiación temporal o un canon mínimo de 10 euros por metro cuadrado a viviendas vacías durante 5 o más años de grandes tenedores.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

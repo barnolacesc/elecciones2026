@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-culture-sport-p13-11-12",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [
+    "Requiere dictamen técnico previo que avale la viabilidad y preserve el bien"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "583dc3e2762b6272c8561b964dbd02a5692c049ac3924ef8b13ca8e4717146f2"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "13",
+  "source_section": "29",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "cultural-heritage-and-institutions",
+  "summary": "Exigir que las pinturas murales de la Sala Capitular de Sigena permanezcan en el MNAC y reformar la ley estatal para prohibir traslados de bienes frágiles sin aval técnico previo",
+  "summary_en": null,
+  "topic_id": "culture-sport"
+}

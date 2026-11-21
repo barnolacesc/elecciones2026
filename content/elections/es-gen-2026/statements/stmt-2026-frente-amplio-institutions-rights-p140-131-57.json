@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p140-131-57",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ce936696d1640e4937b0f5ee94df1a31c509829339c699cb8be9fab875070f63"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "140",
+  "source_section": "18.1. Hacia una República Federal para alcanzar la democracia real",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "electoral-law-and-constitution",
+  "summary": "Transformar el Senado en una cámara representativa de naturaleza estrictamente territorial",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

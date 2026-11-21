@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p107-101-30",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "14349164d4a4ab3456c4bffd3152f588bcbb0612996de3d8db7a804252d49f69"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "107",
+  "source_section": "11.3. Infraestructuras e inversión en todo el territorio",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "water-management-and-drought",
+  "summary": "Priorizar inversiones en infraestructuras hidráulicas de adaptación climática y ejecutar con urgencia las actuaciones de gestión de riesgos e inundaciones del Plan Nacional de Adaptación al Cambio Climático.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

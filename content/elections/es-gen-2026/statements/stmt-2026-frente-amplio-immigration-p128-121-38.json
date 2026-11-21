@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-immigration-p128-121-38",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "plazo máximo de tres meses con silencio positivo ante falta de resolución"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "81eb17c8536d5d32ae1a90c081d9c94131f4c1316f5638ff5cca26503fd8bcf1"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "128",
+  "source_section": "16.2",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "reception-and-asylum",
+  "summary": "Establecer la obligación de resolver solicitudes de reagrupación familiar en un plazo de tres meses, reconociendo el silencio administrativo en sentido positivo.",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

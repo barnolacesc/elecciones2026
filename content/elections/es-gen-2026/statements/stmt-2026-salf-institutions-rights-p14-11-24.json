@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-salf-institutions-rights-p14-11-24",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "salf",
+  "policy_instrument": null,
+  "programme_id": "salf-29N-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f36c65d5717a26248843fc72de3707dd4696998ec682de380054f31a97443157"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "14",
+  "source_section": "12",
+  "source_url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Habilitar a personas físicas y jurídicas a invocar individualmente el umbral de no confiscatoriedad ante la Administración tributaria y la jurisdicción competente",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

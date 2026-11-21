@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-ehbildu-institutions-rights-p24-21-22",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "ehbildu",
+  "policy_instrument": null,
+  "programme_id": "ehbildu-2026-v1",
+  "qualifications": [
+    "cuando resulten refrendados por la sociedad vasca"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d5d9c036b7dd09b2d513120d078adc2d8d9b2f74b1f62e3f4cd84d5896876567"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "24",
+  "source_section": "2.1",
+  "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Respetar los acuerdos sobre nuevos marcos de estatus político pactados y ratificados en consulta por la sociedad vasca",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-economy-work-tax-p74-71-28",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Editoriales con contenidos que cumplan requisitos de diversidad, inclusión, no discriminación y derechos humanos"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "4f59223abc4800b04ebb125718c8e7f1e3adb15e17aa20cf31b46d9ba713f535"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "74",
+  "source_section": "240",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Crear una imprenta de carácter público para suministrar papel y servicio editorial a pequeñas editoriales independientes que acrediten criterios de diversidad e inclusión.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

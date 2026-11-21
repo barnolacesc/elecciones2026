@@ -13,6 +13,8 @@ silently relabelled when 2026 programmes arrive.
   items and published routes. Reject cross-election references by default.
 - Import each new 2026 source version through the same hash, rights, page,
   taxonomy, review and correction gates; show unavailable content honestly.
+- Allow one named human editor to approve source-linked 2026 summaries
+  without verbatim quotations.
 - Audit official budget periods and measures before reusing a 2023 budget view.
   Keep approved, extended and executed amounts separate.
 

@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-economy-work-tax-p43-41-27",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Cuando establezca condiciones más favorables para las personas trabajadoras"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "96eceed7978dd5ec0ce07feab157b2423147b3d91f60eac5f6c9f8dcad51a96f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "43",
+  "source_section": "123",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "labor-regulations-and-smi",
+  "summary": "Suprimir los arbitrajes obligatorios de descuelgue de convenios y asegurar que el convenio sectorial prevalezca sobre el de empresa cuando resulte más ventajoso.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-foreign-policy-eu-p27-21-36",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5b9616243db30420a8aa9e7605e7bb58d41c36591f2e23dc95373c58a0604392"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "27",
+  "source_section": "2.1. Reclamarem l’oficialitat plena i efectiva del català a la UE",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "eu-treaties-and-fiscal-rules",
+  "summary": "Reclamar la oficialidad plena del catalán en la Unión Europea dotándola de medios para su uso institucional, así como el reconocimiento y protección del aranés.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

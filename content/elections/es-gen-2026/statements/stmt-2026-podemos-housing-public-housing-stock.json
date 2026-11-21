@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-housing-public-housing-stock",
+  "party_id": "podemos",
+  "topic_id": "housing",
+  "subtopic_id": "public-housing-stock",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone incorporar al parque público todas las viviendas vacías o en construcción y todo el suelo edificable de la Sareb para destinarlos al alquiler social.",
+  "review_status": "approved",
+  "programme_id": "podemos-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "source_page": "10",
+  "source_section": "Las casas son para vivir, medida 9",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/habitatge-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "e28192a2eec158cd64ae7dfb561ededfc087c2d56e187ef636f1382d2c1897aa"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

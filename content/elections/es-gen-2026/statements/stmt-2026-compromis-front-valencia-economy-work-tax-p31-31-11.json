@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-economy-work-tax-p31-31-11",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "cb87f1c7aa7e984a02238257759a6c4c4f31a44533ac5e2e18fa301c124224f9"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "31",
+  "source_section": "RESPOSTA A LES EMERGÈNCIES",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "labor-regulations-and-smi",
+  "summary": "Financiar de manera estable la prevención y la gestión forestal todo el año y aprobar un estatuto estatal del bombero forestal que reconozca la profesión.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

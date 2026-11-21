@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-institutions-rights-p8-1-5",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a8678f7a57a10180febe299a5b7c09b1df8f7833577f645a2f7a9a35982d856c"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "8",
+  "source_section": "5",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Desclasificar archivos militares, judiciales y administrativos relativos a abusos y muertes en el servicio militar obligatorio entre 1976 y 2001, promoviendo una asunción de responsabilidad del Estado y medidas de reparación a las víctimas.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-housing-p11-11-11",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d335c03fc8c9040dc42136e28333a9539fcb01c35631aba6cbbaa3e73f16f50f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "11",
+  "source_section": "28",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "mortgage-and-purchasing",
+  "summary": "Reclamar incentivos fiscales estatales para la compra de primera vivienda dirigidos a jóvenes y familias con ingresos medios y bajos, y apoyo a la construcción industrializada.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

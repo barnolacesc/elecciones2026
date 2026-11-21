@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-economy-work-tax-p78-71-60",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2c3340da87e46f864c8fb90f56a1d359ec6b75fed4fb17afeea9f7fb0623a8cb"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "78",
+  "source_section": "272",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "labor-regulations-and-smi",
+  "summary": "Obligar a formalizar contratos por escrito en actuaciones en salas que fijen el abono del caché o porcentajes de entradas y de consumiciones de barra devengados por los músicos.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

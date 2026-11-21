@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-climate-energy-p28-21-84",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "55b8b518d28566ee4f68b4d860456bd231898b92f9d05d6312f6ba957b9d9823"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "28",
+  "source_section": "AIGUA",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Promover ante la UNESCO la declaración de la Albufera de Valencia, la isla de Tabarca y las islas Columbretes como Reservas de la Biosfera.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

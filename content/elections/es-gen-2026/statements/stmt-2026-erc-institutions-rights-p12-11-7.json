@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-institutions-rights-p12-11-7",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a6ec4c5785863d064bf1338bbf54033aaa313f0fc2b6c477c9415fc717195156"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "12",
+  "source_section": "24",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Tramitar el proyecto de ley para condonar de forma efectiva más de 17.100 millones de euros de deuda de la Generalitat con el Fondo de Liquidez Autonómica",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

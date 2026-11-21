@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-health-social-services-p57-51-49",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "12785fa1dd73f80c1a81069769261b1502cd56e6ffb4d4d5626abd0b375c3e6b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "57",
+  "source_section": "2.2",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Reducir los plazos de valoración, resolución y acceso efectivo a las prestaciones de la Ley de dependencia para asegurar una respuesta ágil.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

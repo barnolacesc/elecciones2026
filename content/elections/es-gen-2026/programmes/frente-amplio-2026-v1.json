@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "frente-amplio-2026-v1",
+  "candidacy_id": "frente-amplio",
+  "title": "Un programa como una casa",
+  "status": "official",
+  "version": "2026-v1",
+  "publisher": "Frente Amplio",
+  "official_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "publication_date": "2026-11-16",
+  "retrieval_date": "2026-11-20",
+  "language": "es",
+  "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+  "rights_status": "verified_link_only",
+  "is_fixture": false
+}

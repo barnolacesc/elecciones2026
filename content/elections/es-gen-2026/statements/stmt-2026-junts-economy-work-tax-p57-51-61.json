@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-economy-work-tax-p57-51-61",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "633ca9bf806b988526d55d7ba301e15cd4da29a52201eadab7a24176a9290bb0"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "57",
+  "source_section": "5.1",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "pensions-and-social-security",
+  "summary": "Revisar por ley anualmente las pensiones según el IPC de Cataluña para blindar el poder adquisitivo frente al mayor coste de vida.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

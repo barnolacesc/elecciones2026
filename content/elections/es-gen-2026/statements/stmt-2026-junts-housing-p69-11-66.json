@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-housing-p69-11-66",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [
+    "sujeto a límites de renta, precio y superficie y con obligación de residencia"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5a026f7806eedb0976ecabc6490ce4440139f9c86d5248b7be7bfa98e28f474b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "69",
+  "source_section": "3.4",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "mortgage-and-purchasing",
+  "summary": "Rebajar del 10 % al 5 % el tipo de IVA aplicable a autopromoción, vivienda habitual de obra nueva y vivienda social con topes de superficie, renta y precio.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

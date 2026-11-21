@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-ehbildu-education-p7-1-25",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "ehbildu",
+  "policy_instrument": null,
+  "programme_id": "ehbildu-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "51903d5d28bd0f50bfc92f5fa852ba1c8da2b23478184edc8dad8f87a82d6c8a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "7",
+  "source_section": "1.2. Empleo",
+  "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "university-and-scholarships",
+  "summary": "Agilizar la homologación y declaración de equivalencias de títulos formativos extranjeros.",
+  "summary_en": null,
+  "topic_id": "education"
+}

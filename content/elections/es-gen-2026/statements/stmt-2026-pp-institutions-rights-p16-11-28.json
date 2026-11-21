@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-institutions-rights-p16-11-28",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [
+    "Cuando conste conocimiento previo y posibilidad razonable de impedir los actos"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "589a140fc905a29f682f6b6910145916dce96a3409ac7b211ea8cf938e8a4f1e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "16",
+  "source_section": "25",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Exigir responsabilidades legales a padres o tutores que incumplan gravemente sus obligaciones de custodia y vigilancia ante la participación reiterada y conocida de menores en actos violentos.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

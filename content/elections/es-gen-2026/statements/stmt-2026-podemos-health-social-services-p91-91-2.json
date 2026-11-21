@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-health-social-services-p91-91-2",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "c4a9d9a9a30025bee34f4f487ab07612d1c8edd5e8251a0dfef4f9d6477a41ad"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "91",
+  "source_section": "306",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "mental-health-and-coverage",
+  "summary": "Aprobar una Ley General de Salud Mental que fije ratios mínimas por cada 100.000 habitantes de 18 psiquiatras, 18 psicólogos clínicos y 23 enfermeros especialistas, tiempos máximos de acceso y el fin de la contención mecánica",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-institutions-rights-p8-1-5",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "887c200f3143a18800272b9225d03f4aad042d6441e67b6fade18b97ee93e0d0"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "8",
+  "source_section": "5. Separar el REF de la financiación de los servicios públicos",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Impedir que los recursos del REF se computen como financiación ordinaria de sanidad, educación, dependencia o servicios sociales.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

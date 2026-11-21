@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p17-11-44",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Aplicable a empresas con promedio anual de 50 o más asalariados durante cinco años consecutivos"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "537b5081180ab262238e5821f315f1ab301f00c8d277497e1486fb49c82633d5"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "17",
+  "source_section": "1.7. Medidas fiscales",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Imponer a empresas privadas con 50 o más trabajadores durante 5 años un gravamen del 0,45 % sobre su masa salarial bruta para financiar la promoción de vivienda pública en alquiler asequible.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

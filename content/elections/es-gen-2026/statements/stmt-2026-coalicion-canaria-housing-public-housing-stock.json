@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-housing-public-housing-stock",
+  "party_id": "coalicion-canaria",
+  "topic_id": "housing",
+  "subtopic_id": "public-housing-stock",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone un fondo estatal de ocho años para cofinanciar vivienda pública y asequible.",
+  "review_status": "approved",
+  "programme_id": "coalicion-canaria-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "source_page": "10",
+  "source_section": "3, medida 22",
+  "qualifications": [
+    "La asignación para Canarias se ajustaría a sus necesidades. El fondo financiaría la construcción, compra y rehabilitación de viviendas y la adquisición de suelo, edificios y promociones disponibles."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/habitatge-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "7b8c7c6d8ef88a81158275cd391ab09358294224c4357357ac5ce83600d7171a"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

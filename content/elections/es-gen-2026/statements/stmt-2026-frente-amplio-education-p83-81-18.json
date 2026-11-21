@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-education-p83-81-18",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "402408515da133780782714aae9f699b73a41064d6c2a2a265e03d2a34022a63"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "83",
+  "source_section": "Transición ecológica, reindustrialización verde y marco europeo",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "vocational-training",
+  "summary": "Impulsar la Formación Profesional industrial e integrar los servicios públicos de empleo en los planes de reindustrialización territorial y sectorial.",
+  "summary_en": null,
+  "topic_id": "education"
+}

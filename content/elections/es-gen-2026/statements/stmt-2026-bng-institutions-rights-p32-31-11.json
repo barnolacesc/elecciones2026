@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-institutions-rights-p32-31-11",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a334d83417e521312f6a97b6dab54968fc6301d8ecab508bf4417ef514bd2e10"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "32",
+  "source_section": "2.8.3. MÁIS CALIDADE DEMOCRÁTICA",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "electoral-law-and-constitution",
+  "summary": "Promover modificaciones legales que permitan convocar referendos vinculantes en asuntos de interés, incluido el derecho de autodeterminación, y facilitar la participación social en fondos públicos",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

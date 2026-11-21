@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-health-social-services-p10-1-20",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "59f759c2b4c769615894f53557082c836d03230114a9d0a659947b3c563e7a1f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "10",
+  "source_section": "20. Accesibilidad en la vida diaria",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "disability-and-inclusion",
+  "summary": "Exigir que los programas estatales y europeos de vivienda, transporte, empleo y servicios públicos para Canarias incorporen las necesidades de personas con discapacidad y accesibilidad universal.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p84-81-27",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "c98a1fe701675500f8bb6d962230e5e6d144a6f0644f8a09e3475ecbf524df09"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "84",
+  "source_section": "6.3. Banca pública",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Crear el Banco Postal Estatal dotado con los activos de Correos y las acciones de CaixaBank en poder del FROB para facilitar crédito a pymes y autónomos.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-science-innovation-digital-p54-51-32",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "131b5c38df562131d95de193bfadb5d38533dedb42f1a3e44bfb29362a2ee04b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "54",
+  "source_section": "2.5",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "scientific-research-and-talent",
+  "summary": "Elevar la inversión conjunta en I+D respecto al PIB hasta alcanzar al menos la media europea, mediante criterios competitivos e incentivación de la inversión privada.",
+  "summary_en": null,
+  "topic_id": "science-innovation-digital"
+}

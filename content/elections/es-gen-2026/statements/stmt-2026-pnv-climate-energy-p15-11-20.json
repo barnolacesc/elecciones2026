@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-climate-energy-p15-11-20",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b7880559b1507b062f3f2c9f2a08633fbe56a6725c2570ba9bd08d70fe0b1245"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "15",
+  "source_section": "2.3 REDES ELÉCTRICAS Y PLANIFICACIÓN 03",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "renewables-and-grid",
+  "summary": "Establecer mecanismos de control, incentivos y sanciones para asegurar la ejecución puntual de las redes eléctricas planificadas.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

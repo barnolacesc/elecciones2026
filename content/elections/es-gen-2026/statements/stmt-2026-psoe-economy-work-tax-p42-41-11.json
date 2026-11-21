@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-economy-work-tax-p42-41-11",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "85efa6961f88d6d47a256a244329bc906d8439db60ec7266a266cf78d15083e3"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "42",
+  "source_section": "113",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "labor-regulations-and-smi",
+  "summary": "Reconocer el derecho a la protección por desempleo para becarios en prácticas curriculares y extracurriculares",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

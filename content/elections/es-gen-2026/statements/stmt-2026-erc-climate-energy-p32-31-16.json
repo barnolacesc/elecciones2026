@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-climate-energy-p32-31-16",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "701c34ad7bd513a978cbdd98de7267bb388cb385773bcb8451163b2ddb9a81e9"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "32",
+  "source_section": "152",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "water-management-and-drought",
+  "summary": "Desarrollar normativa estatal para permitir el uso de agua regenerada en actividades industriales y ganaderas sin riesgo para la salud pública.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-housing-p15-11-20",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "8184f13fa27687f54b7bae4e10a521177613ec1df1227958b3c9bd1f36fe1a4c"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "15",
+  "source_section": "37. Traspassar a la Generalitat tots els immobles de l’Administració General de l’Estat a Catalunya.",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "public-housing-stock",
+  "summary": "Traspasar a la Generalitat todos los inmuebles estatales y las viviendas de la SAREB en Cataluña junto con fondos para rehabilitación y destinarlas a VPO",
+  "summary_en": null,
+  "topic_id": "housing"
+}

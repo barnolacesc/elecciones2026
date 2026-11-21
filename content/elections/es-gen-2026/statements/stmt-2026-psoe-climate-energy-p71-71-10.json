@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-climate-energy-p71-71-10",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ec1f348a43d7e74f017071f71ed67dfbe8deb13b5aad3e5e9f0badcf1b9aa581"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "71",
+  "source_section": "286",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Promover las Zonas de Bajas Emisiones y la movilidad sostenible en los municipios para recortar emisiones y mejorar la calidad del aire",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

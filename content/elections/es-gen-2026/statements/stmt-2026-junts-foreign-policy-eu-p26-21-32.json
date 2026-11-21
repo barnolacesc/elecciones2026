@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-foreign-policy-eu-p26-21-32",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "75e1ecf386eadd67a20236ed0b0f9535e19c1a5eac7416c2ed7ae85ceffac6c5"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "26",
+  "source_section": "Competències a reclamar o millorar. 1. Participació europea efectiva",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "eu-treaties-and-fiscal-rules",
+  "summary": "Incorporar de forma estable a representantes de la Generalitat en las delegaciones estatales del Consejo de la UE y en la representación permanente, con acceso anticipado a documentos.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

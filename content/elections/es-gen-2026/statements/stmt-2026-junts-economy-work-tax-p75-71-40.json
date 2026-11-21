@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-economy-work-tax-p75-71-40",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "95176170a3718d90523800bab60b8ad637add81082fafb77c54214605f261e0e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "75",
+  "source_section": "4. Punts de programa. 5.2",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "pensions-and-social-security",
+  "summary": "Incorporar mecanismos correctores en la cotización por rendimientos reales agrarios para evitar que cosechas desfavorables o crisis de precios reduzcan la pensión.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

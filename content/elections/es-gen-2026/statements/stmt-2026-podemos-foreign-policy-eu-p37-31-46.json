@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-foreign-policy-eu-p37-31-46",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "7d38a3ea52adda45e738ea0e28aa042ebef122d1367fd1b2788116bc16acc120"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "37",
+  "source_section": "108",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "development-cooperation",
+  "summary": "Aprobar una normativa que vincule la ayuda al desarrollo de la UE con los Objetivos de Desarrollo Sostenible y garantice la seguridad y no criminalización del personal cooperante.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

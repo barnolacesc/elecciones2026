@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p104-101-10",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "728a7f96a2a0bc214a10636f1ea8a533145e99a248dec1f62ce6013029337910"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "104",
+  "source_section": "11.1. Reforma del modelo de financiación autonómica",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Establecer en la reforma de la financiación la obligación de las comunidades autónomas de financiar las competencias impropias que ejecutan las entidades locales en su nombre.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

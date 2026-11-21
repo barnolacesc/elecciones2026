@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p18-11-49",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Hasta que se apruebe la regulación de los proveedores sociales de vivienda"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "e828f387d0197952365af9e25b0291047eb85c426f2b24b30ee9e1dc62ce6b1d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "18",
+  "source_section": "Fiscalidad progresiva de la propiedad inmobiliaria, IBI penalizador y ventajas fiscales para vivienda social y cooperativas",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Aplicar tipo cero en el Impuesto sobre Sociedades a cooperativas de vivienda en cesión de uso sin ánimo de lucro y tercer sector de forma transitoria.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

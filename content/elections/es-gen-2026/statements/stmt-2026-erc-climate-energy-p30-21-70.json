@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-climate-energy-p30-21-70",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "94935b982b8645efc43c3a8bacd8f958d569222ac4fbb31a0225e291c0b1ba6b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "30",
+  "source_section": "137",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "renewables-and-grid",
+  "summary": "Desarrollar la reglamentación para incorporar almacenamiento, respuesta de la demanda y agregadores a los mercados eléctricos, implementando una plataforma neutral de datos con cesión sujeta a autorización del usuario.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

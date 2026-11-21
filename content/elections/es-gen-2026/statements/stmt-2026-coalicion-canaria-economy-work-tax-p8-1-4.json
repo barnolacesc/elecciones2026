@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-economy-work-tax-p8-1-4",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "06207b8baa6df59eab81d5d8b109dec17b5cecd477655db12c987d1f089773f3"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "8",
+  "source_section": "4. Proteger y actualizar el REF",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Proteger y actualizar el Régimen Económico y Fiscal aumentando la capacidad decisoria de Canarias sobre sus instrumentos y rechazando modificaciones estatales unilaterales sin la participación autonómica.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-foreign-policy-eu-p109-101-32",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "c0494e782ce3758e7d51179235082d5585e25955b162b70b2f9967d0fc2fdad2"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "109",
+  "source_section": "468",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "bilateral-relations",
+  "summary": "Defender la solución de dos Estados en Israel y Palestina, promoviendo sanciones europeas contra quienes la impidan y canalizando ayuda a la Autoridad Palestina y a la reconstrucción de Gaza.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

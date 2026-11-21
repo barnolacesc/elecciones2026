@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p68-61-60",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Gratuito en Canarias, Baleares, Ceuta y Melilla"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2953f2d851965d168659821f4ac4a7f437f9116a437090cbecb647220c8bd32f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "68",
+  "source_section": "5.2",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Subvencionar el alquiler municipal de bicicletas con rebajas del 50 % o gratuidad insular y crear carriles bici metropolitanos y vías ciclistas anexas a carreteras nuevas.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

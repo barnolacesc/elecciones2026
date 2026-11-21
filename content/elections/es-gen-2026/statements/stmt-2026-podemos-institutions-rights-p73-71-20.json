@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-institutions-rights-p73-71-20",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "7d649779f605b4d7593b73b783aa7aab9c2e1c4f49e8bfe161670413d275a9ae"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "73",
+  "source_section": "232",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "transparency-and-anti-corruption",
+  "summary": "Crear en el Ministerio de Cultura el Observatorio Estatal del Patrimonio para rescatar espacios patrimoniales o culturales en abandono y coordinar su protección.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

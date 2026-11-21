@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-vox-housing-p24-21-8",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "vox",
+  "policy_instrument": null,
+  "programme_id": "vox-2026-v2",
+  "qualifications": [
+    "Aplicable mientras dure la usurpación del inmueble"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "bb56f76c6cc1243d64a2e96aeb7c1583c98c21db5d8ff205273aced58774b1bb"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "24",
+  "source_section": "31",
+  "source_url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+  "source_version": "2026-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "evictions-and-vulnerability",
+  "summary": "Otorgar asistencia jurídica gratuita y exención de impuestos, cargas fiscales y suministros a los propietarios de inmuebles okupados durante la ocupación",
+  "summary_en": null,
+  "topic_id": "housing"
+}

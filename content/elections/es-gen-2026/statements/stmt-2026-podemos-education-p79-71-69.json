@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-education-p79-71-69",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "e6965f140d9cc360d0186bba10f2b1ef32d5d1443c3fc038e40c74f8d40f53cb"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "79",
+  "source_section": "279",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "school-funding-and-ratios",
+  "summary": "Aprobar un marco legislativo para la integración progresiva y de carácter voluntario de los centros concertados en la red pública salvaguardando las condiciones laborales del profesorado.",
+  "summary_en": null,
+  "topic_id": "education"
+}

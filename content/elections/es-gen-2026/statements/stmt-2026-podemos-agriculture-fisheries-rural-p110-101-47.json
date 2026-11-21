@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-agriculture-fisheries-rural-p110-101-47",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Continúa en página 111"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "0910bda6d82c98b4626749b824b02ba50082a194a3cb0788054e42184adc64b2"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "110",
+  "source_section": "362",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rural-development-and-generational-renewal",
+  "summary": "Crear un Banco Público de Tierras para facilitar suelo agrario a personas jóvenes, cooperativas y proyectos agroecológicos y restringir la concentración especulativa.",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

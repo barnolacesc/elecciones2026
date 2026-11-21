@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-foreign-policy-eu-p17-11-33",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "04d12694db9faf767521e7c6b3bfc0fa5474fbda211b6e8ef80cc6cff0d5d193"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "17",
+  "source_section": "50",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "defense-spending-and-nato",
+  "summary": "Fomentar la autonomía estratégica de la Unión Europea orientando su política de seguridad hacia la diplomacia en los presupuestos comunitarios",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

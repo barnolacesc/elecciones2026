@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-climate-energy-p58-51-41",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "4dea5b115b42d7a6420245ef65bb563dbc01a9c8dbb4f05ca8d3f68a6271d733"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "58",
+  "source_section": "4.6",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Suprimir el pase automático de permisos de investigación a concesiones de explotación minera, exigiéndoles evaluación pública o concurrencia.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

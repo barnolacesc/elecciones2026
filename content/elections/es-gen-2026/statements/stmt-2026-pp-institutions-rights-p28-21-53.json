@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-institutions-rights-p28-21-53",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [
+    "no haber ocupado esos cargos en los últimos cinco años"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ee38da25e7a96c4d2985a8e57077e529de6ad2be379b8672b8fb946e3885c299"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "28",
+  "source_section": "79",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "judicial-governance-and-cgpj",
+  "summary": "Inhabilitar para presidir el Consejo de Estado a quienes hayan sido cargos electos, de gobierno o directivos partidistas, sindicales o patronales en los 5 años previos.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

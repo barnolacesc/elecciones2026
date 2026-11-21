@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-ehbildu-housing-rental-regulation",
+  "party_id": "ehbildu",
+  "topic_id": "housing",
+  "subtopic_id": "rental-regulation",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone limitar de forma permanente al 2 % la subida anual de la renta de los contratos de alquiler cuando la inflación interanual supere ese porcentaje en la fecha de actualización.",
+  "review_status": "approved",
+  "programme_id": "ehbildu-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "source_version": "2026-v1",
+  "source_page": "5",
+  "source_section": "1.1, Vivienda",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/habitatge-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "0fd3203101935099ccec95adbf068558db134ffc2469db4eee355dd34da23c59"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

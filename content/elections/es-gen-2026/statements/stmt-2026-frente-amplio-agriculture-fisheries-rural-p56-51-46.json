@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-agriculture-fisheries-rural-p56-51-46",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "condicionados a situaciones de emergencia o abuso acreditado"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "dc66f8a38fa5c925b5117755702b1465bde2d5080d5f6fd42da4363ded9f1d3e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "56",
+  "source_section": "4.2",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "agricultural-policy-and-food-chain",
+  "summary": "Fijar topes de precios máximos en la cesta saludable de alimentos básicos ante emergencias o abusos comerciales acreditados",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

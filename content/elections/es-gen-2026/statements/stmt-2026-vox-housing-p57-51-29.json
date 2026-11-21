@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-vox-housing-p57-51-29",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "vox",
+  "policy_instrument": null,
+  "programme_id": "vox-2026-v2",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "078927c665b3a1e9df377a61b721e283dc8d8a7915dde6983f9d918956629f0e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "57",
+  "source_section": "108",
+  "source_url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+  "source_version": "2026-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "public-housing-stock",
+  "summary": "Auditar el patrimonio inmobiliario estatal para destinar inmuebles a necesidades de vivienda y servicios públicos, impidiendo cesiones a inmigrantes en situación irregular",
+  "summary_en": null,
+  "topic_id": "housing"
+}

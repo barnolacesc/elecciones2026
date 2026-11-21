@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-health-social-services-primary-care-and-sns",
+  "party_id": "pnv",
+  "topic_id": "health-social-services",
+  "subtopic_id": "primary-care-and-sns",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone adaptar el sistema MIR para que la oferta de plazas de formación se ajuste a las necesidades de especialistas sanitarios.",
+  "review_status": "approved",
+  "programme_id": "pnv-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "source_page": "32",
+  "source_section": "4.2, Profesionales y formación especializada, medida 01",
+  "qualifications": [
+    "Plantea evitar que queden plazas vacantes y agilizar la acreditación de nuevas unidades docentes."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/salut-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "1e4575e8d944fb2b921fb81e9bcf1e4102956d8ab2807c14f48463f07120c089"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-education-university-and-scholarships",
+  "party_id": "erc",
+  "topic_id": "education",
+  "subtopic_id": "university-and-scholarships",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone elevar de forma plurianual la inversión estatal en universidades en un importe equivalente al 0,07 % del PIB, para alcanzar un gasto público universitario del 1 % del PIB en 2030.",
+  "review_status": "approved",
+  "programme_id": "erc-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "source_page": "45",
+  "source_section": "C.G, medida 252",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact six-statement batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/educacio-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "ad84174a3a3e01b9af15c7c08bb67b08c4bd3097b71745e8e2fe7548acdb7f47"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

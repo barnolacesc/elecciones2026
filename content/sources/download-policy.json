@@ -2,15 +2,23 @@
   "version": "1.0.0",
   "allowed_hosts": [
     "coalicioncanaria.org",
+    "compromis.net",
     "esquerrarepublicana.cat",
+    "frenteamplio.info",
     "frenteobrero.es",
+    "img.beteve.cat",
+    "lafuerzadelagente.es",
     "movimientosumar.es",
     "partidohumanista.es",
+    "pazcasaytrabajo.es",
+    "posibleegin.ehbildu.eus",
     "static.esquerra.cat",
     "www.bng.gal",
     "www.eaj-pnv.eus",
     "www.pp.es",
-    "www.seacabolafiesta.com"
+    "www.seacabolafiesta.com",
+    "www.tualcentre.cat",
+    "www.voxespana.es"
   ],
   "notes": "Private acquisition hosts for official party sources (2023 pilot and 2026 general election candidacies). Review additions and redirect hosts explicitly; this policy grants no distribution or editorial approval."
 }

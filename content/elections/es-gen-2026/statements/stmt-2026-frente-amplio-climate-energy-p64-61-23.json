@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p64-61-23",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "0a43af5d5736dee98324fae00abef1c93f7fc3a18023e84eaf3035ebee8e0728"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "64",
+  "source_section": "5.1",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "renewables-and-grid",
+  "summary": "Regular el uso de hidrógeno renovable, biomasa, biogás y biocombustibles para restringirlos a sectores estratégicos difícilmente descarbonizables o con residuo disponible.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

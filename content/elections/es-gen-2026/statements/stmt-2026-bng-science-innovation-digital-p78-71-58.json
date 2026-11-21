@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-science-innovation-digital-p78-71-58",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "749bd455c6af458412ca0a48b788e616ffea2ae1c3a2715b8a85441d9ad533f8"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "78",
+  "source_section": "8.4. Datos e coñecemento en man común",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "artificial-intelligence-and-digital-rights",
+  "summary": "Promover la liberación segura para distintas culturas de modelos de IA de riesgo sistémico entrenados con conocimiento de interés común",
+  "summary_en": null,
+  "topic_id": "science-innovation-digital"
+}

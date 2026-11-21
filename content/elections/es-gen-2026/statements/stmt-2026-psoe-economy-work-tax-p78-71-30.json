@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-economy-work-tax-p78-71-30",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ea1fa34bfd9a93d50078b60cf86497ea71efe27f8b395969217beb983a889051"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "78",
+  "source_section": "306",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "labor-regulations-and-smi",
+  "summary": "Reforzar la transparencia retributiva y revisar clasificaciones profesionales y complementos que minusvaloran sectores feminizados, potenciando la negociación colectiva y la Inspección de Trabajo",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

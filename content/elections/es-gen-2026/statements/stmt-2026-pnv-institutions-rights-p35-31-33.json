@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-institutions-rights-p35-31-33",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f48db7a03584c30bd0020ab442ee5d74ba38695fac83f0c27c9f22dd0eb7dcce"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "35",
+  "source_section": "POBREZA INFANTIL Y PROTECCIÓN FRENTE A LA VIOLENCIA 02",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Garantizar la protección de los menores ante situaciones de maltrato y explotación optimizando la coordinación institucional.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

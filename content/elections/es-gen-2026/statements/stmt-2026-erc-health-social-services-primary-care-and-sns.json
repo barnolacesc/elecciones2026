@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-health-social-services-primary-care-and-sns",
+  "party_id": "erc",
+  "topic_id": "health-social-services",
+  "subtopic_id": "primary-care-and-sns",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone aumentar de forma estructural los fondos que el Estado transfiere a las administraciones sanitarias competentes para reforzar la atención primaria, hospitalaria y especializada y reducir las listas de espera.",
+  "review_status": "approved",
+  "programme_id": "erc-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "source_page": "41-42",
+  "source_section": "D, medida 234",
+  "qualifications": [
+    "La distribución respetaría las competencias de la Generalitat y tendría en cuenta la población real, su crecimiento, las necesidades asistenciales y el coste efectivo del servicio."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/salut-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "f1c6d410731abf8ea83b3af48a5dbf1cf83c9b02b441b5974d519d89e0853799"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

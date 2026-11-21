@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-education-p10-1-27",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "bc6c2b8d5a666b582ac38c2822107ae5182c00beca31fb99faca6805961cb6df"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "10",
+  "source_section": "1.4.03",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "curriculum-and-languages",
+  "summary": "Potenciar la coeducación y la formación afectivo-sexual en valores de igualdad, diversidad y erradicación de conductas discriminatorias o violentas.",
+  "summary_en": null,
+  "topic_id": "education"
+}

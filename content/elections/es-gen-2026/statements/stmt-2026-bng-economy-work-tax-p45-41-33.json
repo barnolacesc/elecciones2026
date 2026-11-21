@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-economy-work-tax-p45-41-33",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "762b0c5d8a1d36ba5d8a2c1adb08bb8a18eb9468aaaad6b244f9652b63676bd6"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "45",
+  "source_section": "4.2. SECTOR INDUSTRIAL",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Sanear los sectores industriales en crisis y desplegar una política de reindustrialización centrada en el impulso a la industria auxiliar",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

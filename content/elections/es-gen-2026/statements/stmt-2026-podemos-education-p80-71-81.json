@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-education-p80-71-81",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Las comunidades autónomas deben aportar un euro de fondos propios por cada dos recibidos sin derivar fondos a la concertada"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a19866021858372593dc8c9402b32b58d770aaac2bffaa0dbdad11170735862e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "80",
+  "source_section": "281",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "school-funding-and-ratios",
+  "summary": "Crear un fondo estatal exclusivo para centros públicos de gestión directa que obligue a las comunidades autónomas a cofinanciar un euro propio por cada dos transferidos sin financiar centros concertados.",
+  "summary_en": null,
+  "topic_id": "education"
+}

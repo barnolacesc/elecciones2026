@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-immigration-p128-121-37",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "registro obligatorio en máximo 5 días y formalización en máximo 21 días"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "32ed3810d76da6a3ca4bd31711fadf2d5dc8c71076fa98e361b93af1a2ecd9b8"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "128",
+  "source_section": "16.2",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "reception-and-asylum",
+  "summary": "Fijar un plazo de 5 días para registrar la solicitud de protección internacional y 21 días para formalizarla mediante entrevista, expidiendo de forma automática el documento de solicitante si se rebasan dichos términos.",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

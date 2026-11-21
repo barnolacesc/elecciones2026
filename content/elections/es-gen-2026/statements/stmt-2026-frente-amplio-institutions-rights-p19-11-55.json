@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p19-11-55",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f7ee51ae9ebd1336f4ae02c25fe7703309f93d718e18e37a9a82a77dc4268565"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "19",
+  "source_section": "1.9. Reforma constitucional del artículo 47 y exigibilidad judicial directa",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "electoral-law-and-constitution",
+  "summary": "Reformar la Constitución para trasladar el derecho a la vivienda a los derechos fundamentales, y reconocer mientras tanto por ley un derecho subjetivo judicialmente exigible prioritario a colectivos vulnerables.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

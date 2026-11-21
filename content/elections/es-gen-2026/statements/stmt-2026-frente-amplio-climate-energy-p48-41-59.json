@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p48-41-59",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "04afe5312f36343cb0daf87bd28bb473675e60cb7c0aa2367f9dc890b822c05a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "48",
+  "source_section": "3.5. Fiscalidad verde y sobre el lujo",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Modificar el impuesto sobre vehículos para calcularlo según emisiones reales de CO₂ y distintivo ambiental, habilitando recargos de hasta el 2,5 para vehículos sin etiqueta o emisiones superiores a 120 g/km.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-climate-energy-p123-121-25",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "salvo eutanasia veterinaria estrictamente necesaria"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "84a06094cd913f0663a26bd0379e8f8082e29e3a6d285ba0a8a4467d5eac2814"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "123",
+  "source_section": "401",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Aprobar una ley de grandes simios que vete su cría en cautividad para exhibición y sacrificio no eutanásico, limite traslados y experimentación, y marque el fin progresivo de su cautiverio.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

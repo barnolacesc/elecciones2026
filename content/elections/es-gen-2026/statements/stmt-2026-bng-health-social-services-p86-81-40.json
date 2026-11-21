@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-health-social-services-p86-81-40",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "28c5ed06c92e7766c5cd8268b867923adac586aecf1ae3d4eb064bfb8741e6ad"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "86",
+  "source_section": "9",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "mental-health-and-coverage",
+  "summary": "Aprobar planes contra la ludopatía y suprimir completamente la publicidad y promociones de juegos de azar en ámbitos recreativos y deportivos",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

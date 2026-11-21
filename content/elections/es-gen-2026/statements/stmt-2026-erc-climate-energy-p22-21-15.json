@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-climate-energy-p22-21-15",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "44928279724183ed1ebce5bee6070a4223eab0c6bad072dcb98098d601467395"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "22",
+  "source_section": "82",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Desplegar un programa público de inversiones en tecnologías verdes críticas, reorientar la deuda pública hacia bonos soberanos a largo plazo retirando beneficios fiscales a emisiones especulativas, y demandar una cláusula de inversión verde europea.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

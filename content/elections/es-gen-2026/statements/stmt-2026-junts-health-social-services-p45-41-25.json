@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-health-social-services-p45-41-25",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [
+    "Excluyendo la aportación de los usuarios beneficiarios"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "54441cc3d054e4a293320b55dad3838ff00db50959048eaacec9f332bfe645a5"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "45",
+  "source_section": "4. Punts de programa / Objectiu 2 / 2.1",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Asegurar que los presupuestos estatales financien el 50 % del gasto certificado en dependencia de las comunidades autónomas conforme a la Ley 39/2006 reformada por la Ley 4/2026",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

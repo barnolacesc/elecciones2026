@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-climate-energy-p14-11-20",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "403d64361b9f4b98958d7fea8e4d157ca785486d651d50a41193fefacc94d0c7"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "14",
+  "source_section": "29",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Aumentar durante 12 meses los descuentos del bono social eléctrico hasta el 60% para vulnerables y el 100% para vulnerables severos, limitando gasto habitacional y suministros al 30% de ingresos.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

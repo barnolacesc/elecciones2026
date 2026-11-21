@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-salf-institutions-rights-p11-11-1",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "salf",
+  "policy_instrument": null,
+  "programme_id": "salf-29N-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f4e32831434dd9dee3b65b1ad35a9aa29f838e349526de1d1a7e7dd89a1537f5"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "11",
+  "source_section": "13",
+  "source_url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "public-safety-and-penal-policy",
+  "summary": "Reformar la Ley de Seguridad Privada para otorgar a los vigilantes de seguridad la misma protección penal que a bomberos y sanitarios considerando su agresión como atentado, sin otorgarles la condición de agentes de la autoridad ni invadir competencias policiales",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

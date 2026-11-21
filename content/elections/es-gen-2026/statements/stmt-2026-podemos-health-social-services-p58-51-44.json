@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-health-social-services-p58-51-44",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "dc881033c3e588c381e423d3b59ef4a5cd1641a4bd126b9c9f9f642e72b7cf5e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "58",
+  "source_section": "174. Aprobación de una ley orgánica para adaptar el conjunto de la legislación española a la Convención Internacional los Derechos de las Personas con Discapacidad de la ONU",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "disability-and-inclusion",
+  "summary": "Aprobar a lo largo de la legislatura una ley orgánica integral para adaptar la legislación española a la Convención de la ONU en materias como acceso a la justicia, educación inclusiva y asistencia personal.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

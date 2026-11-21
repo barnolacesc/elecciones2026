@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-education-p82-81-12",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "c139e8fc3fb93e9adabce885c3865a8e0dc49e2fb7dff3a4a812ad0f3d67e807"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "82",
+  "source_section": "284",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "school-funding-and-ratios",
+  "summary": "Equiparar los calendarios escolares de todas las etapas educativas y armonizar los calendarios laborales de sus profesionales con independencia de la titularidad del centro.",
+  "summary_en": null,
+  "topic_id": "education"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-health-social-services-p16-11-28",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d64dd5f0594a796417d930a60024966b8f22e823252c61e2ba83ae6548a36da8"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "16",
+  "source_section": "2.3 CONSUMIDORES Y REGULACIÓN 11",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Preservar las ayudas a consumidores vulnerables mediante el bono social eléctrico y térmico, y mantener la Tarifa de Último Recurso de gas natural.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

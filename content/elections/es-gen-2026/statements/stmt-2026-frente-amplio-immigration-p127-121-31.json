@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-immigration-p127-121-31",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f87a9b5c8964b9f38aced04e95afe7b609f63595ee371c62dc31aba1404fe8b0"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "127",
+  "source_section": "16.2",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "reception-and-asylum",
+  "summary": "Suprimir la lista nacional de países seguros y rechazar la creación de centros de retorno en terceros países en el marco del Reglamento de Retorno europeo.",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

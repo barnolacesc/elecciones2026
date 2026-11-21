@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p40-31-81",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ac4366ef650e5960c24f25954c8a124db9f647c369972aa8170ce1d9fcfe11b5"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "40",
+  "source_section": "Protección integral frente a la violencia infantil y justicia adaptada",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Garantizar dotación financiera en todos los niveles administrativos para aplicar los instrumentos y estrategias operativas de la Ley Orgánica 8/2021 (LOPIVI).",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

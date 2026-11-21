@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p58-51-62",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "quienes han cotizado más de 40 años y tienen que acogerse a la misma de manera involuntaria"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "84fa7065fac9202c3040de7b0c0099fe6e87ee6f0562e767d3e185c49317e438"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "58",
+  "source_section": "4.3",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "pensions-and-social-security",
+  "summary": "Suprimir los coeficientes reductores de jubilación anticipada involuntaria para quienes acrediten más de 40 años cotizados",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

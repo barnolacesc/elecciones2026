@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-foreign-policy-eu-p49-41-88",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2d64ee758fddab97bb21922be3b231c0c5a64457c06443d68db669d9cccf6540"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "49",
+  "source_section": "197 MANTENDREMOS LA FINANCIACIÓN DE LA PAC, LA PESCA Y EL PROGRAMA POSEI DE APOYO A LAS REGIONES ULTRAPERIFÉRICAS EN EL NUEVO MARCO FINANCIERO PLURIANUAL 2028-2034",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "eu-treaties-and-fiscal-rules",
+  "summary": "Preservar sin reducciones presupuestarias las partidas de la PAC, pesca y el plan POSEI para regiones ultraperiféricas dentro del marco financiero plurianual 2028-2034.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

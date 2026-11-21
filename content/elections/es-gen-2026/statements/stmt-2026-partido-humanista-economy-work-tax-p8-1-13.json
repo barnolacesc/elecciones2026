@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-partido-humanista-economy-work-tax-p8-1-13",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "partido-humanista",
+  "policy_instrument": null,
+  "programme_id": "partido-humanista-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "54c7db86189ea7e6a116debc2c7c304f39660cd438b3d96400ff7bc65af41325"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "8",
+  "source_section": "2. Derecho a una vivienda digna - Propuesta 2",
+  "source_url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Derogar el régimen tributario especial de las SOCIMIs e igualar su gravamen al tipo general del Impuesto sobre Sociedades.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

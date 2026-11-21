@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-climate-energy-p101-101-1",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Aplica a municipios y núcleos urbanos a menos de 10 km o afectados de forma directa"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "4d9dc5d1b3d4107f866e28629c73cf7048fef9037ebd94788990be74b87abea0"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "101",
+  "source_section": "333",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "renewables-and-grid",
+  "summary": "Establecer una consulta ciudadana obligatoria para instalar plantas a partir de un tamaño determinado en municipios a menos de 10 km o afectados directamente.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

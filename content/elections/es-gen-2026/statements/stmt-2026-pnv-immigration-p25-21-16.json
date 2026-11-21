@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-immigration-p25-21-16",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [
+    "Rechazando la implantación de grandes centros como el previsto en Arana, Vitoria-Gasteiz"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d9871b87414104e9a62d867b1fde6824a77cb1be553621c5545a4b24e24633d2"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "25",
+  "source_section": "05",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "reception-and-asylum",
+  "summary": "Reclamar un acuerdo institucional para financiar y gestionar un modelo descentralizado de acogida a solicitantes de protección internacional rechazando macrocentros",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

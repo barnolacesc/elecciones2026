@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-housing-p15-11-27",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "1ab684642300a886b6d2b44fa74556eccccfb5f7ee8c979846dc03af4a58fa41"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "15",
+  "source_section": "1.4. Ni un desahucio más",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "evictions-and-vulnerability",
+  "summary": "Prohibir por ley desahucios de personas vulnerables sin alternativa habitacional digna y estable, asumiendo la administración el alquiler a precio de índice si el propietario es pequeño tenedor.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

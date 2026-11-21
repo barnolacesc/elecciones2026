@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-climate-energy-p10-1-10",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "e834ec6b0d9ee95634af33427722ad729d6f1aeadd5a95896bf3938f521ef133"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "10",
+  "source_section": "1. MÁIS FORZA PARA GALIZA",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "water-management-and-drought",
+  "summary": "Transferir a Galicia las competencias sobre las cuencas hidrográficas mediante la transferencia plena de la Confederación Hidrográfica Miño-Sil.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

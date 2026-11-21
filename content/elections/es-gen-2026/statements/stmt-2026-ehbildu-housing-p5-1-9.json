@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-ehbildu-housing-p5-1-9",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "ehbildu",
+  "policy_instrument": null,
+  "programme_id": "ehbildu-2026-v1",
+  "qualifications": [
+    "Cuando se produzca incremento de renta sobre el anterior contrato o sobre el índice de precios de referencia"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d2f66776ce715c9456f71a69319270d2b41628d4e1652895739c30a85ce545f6"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "5",
+  "source_section": "1.1. Vivienda",
+  "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rental-regulation",
+  "summary": "Suprimir cualquier deducción fiscal si se incrementa la renta respecto al contrato anterior o sobre el índice de referencia.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

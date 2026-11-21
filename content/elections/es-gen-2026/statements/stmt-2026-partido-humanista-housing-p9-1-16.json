@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-partido-humanista-housing-p9-1-16",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "partido-humanista",
+  "policy_instrument": null,
+  "programme_id": "partido-humanista-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "cef931360f5798d007c0c6288c7da6b153b8d9d53fc010fe49fc5ca184844291"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "9",
+  "source_section": "2. Derecho a una vivienda digna - Propuesta 5",
+  "source_url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "evictions-and-vulnerability",
+  "summary": "Reformar la Ley de Enjuiciamiento Civil para vetar desahucios socioeconómicos sin previa garantía pública de alternativa habitacional digna en la misma localidad.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

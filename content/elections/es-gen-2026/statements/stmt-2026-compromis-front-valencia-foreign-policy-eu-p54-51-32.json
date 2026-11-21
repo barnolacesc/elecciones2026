@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-foreign-policy-eu-p54-51-32",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a7629eac5273cfcaa6e2621f808e9741a87596c930bb0df807fcd8c331d11c01"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "54",
+  "source_section": "POLÍTICA EXTERIOR I DEFENSA",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "development-cooperation",
+  "summary": "Reformar instituciones financieras internacionales como el FMI o el Banco Mundial para subordinar sus reglas a los derechos humanos y aumentar el peso del Sur Global",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

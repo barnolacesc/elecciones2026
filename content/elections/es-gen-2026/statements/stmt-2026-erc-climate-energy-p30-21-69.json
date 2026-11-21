@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-climate-energy-p30-21-69",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5f986fa648a606f082f812899fc468ce6ed895c8211c2cd94f25b32c20793a68"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "30",
+  "source_section": "136",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "renewables-and-grid",
+  "summary": "Transponer al marco estatal las directivas europeas NIS2 y CER de resiliencia y ciberseguridad sobre infraestructuras energéticas de suministro crítico.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

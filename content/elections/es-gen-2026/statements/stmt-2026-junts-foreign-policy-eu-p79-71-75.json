@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-foreign-policy-eu-p79-71-75",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5209c0b49ef72e1ae9fbd059e5d64cfa8bbf1b866b435f7d25b76e93709c5f43"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "79",
+  "source_section": "2. Competències. Competències a reclamar o millorar. 4",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "eu-treaties-and-fiscal-rules",
+  "summary": "Integrar a Cataluña como autoridad colaboradora en la aplicación del Reglamento de Servicios Digitales europeo para supervisar contenidos, desinformación y protección del consumidor.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

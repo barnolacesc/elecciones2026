@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-ehbildu-economy-work-tax-p6-1-12",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "ehbildu",
+  "policy_instrument": null,
+  "programme_id": "ehbildu-2026-v1",
+  "qualifications": [
+    "Para micro, pequeñas y medianas empresas se fija reducción inicial a 35 horas y senda progresiva de hasta 3 años"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "1fe3d4fe9e067f4374dbac98074ec7f7ff321bf785ab503a8ff38a3c057407e7"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "6",
+  "source_section": "1.2. Empleo",
+  "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "working-hours-reduction",
+  "summary": "Reducir la jornada laboral mediante reforma del Estatuto de los Trabajadores hasta las 32 horas semanales o 4 días sin reducción salarial, con transición de hasta 3 años a 35 horas para pymes.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

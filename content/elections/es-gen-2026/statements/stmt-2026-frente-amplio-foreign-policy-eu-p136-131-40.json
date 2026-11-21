@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-foreign-policy-eu-p136-131-40",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "893950a03692f49a26dd54f242a0e70c7c821a057330f29a1f965a97cd7f14c7"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "136",
+  "source_section": "Democratización y ampliación del mandato del Banco Central Europeo (BCE)",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "eu-treaties-and-fiscal-rules",
+  "summary": "Revisar y limitar la remuneración de las reservas excedentarias depositadas en la facilidad de depósito del BCE únicamente a lo estrictamente necesario para la transmisión de la política monetaria.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

@@ -166,6 +166,11 @@
           "type": ["string", "null"],
           "format": "uri"
         },
+        "archived_url": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Public copy verified to match the registered source hash."
+        },
         "filename": {
           "type": ["string", "null"]
         },

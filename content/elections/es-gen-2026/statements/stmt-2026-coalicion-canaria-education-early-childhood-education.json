@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-education-early-childhood-education",
+  "party_id": "coalicion-canaria",
+  "topic_id": "education",
+  "subtopic_id": "early-childhood-education",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone reforzar la financiación estatal de la educación infantil de 0 a 3 años para ofrecer suficientes plazas públicas gratuitas y de calidad.",
+  "review_status": "approved",
+  "programme_id": "coalicion-canaria-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "source_page": "9",
+  "source_section": "2, medida 14",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact eight-statement Education batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "b4dbaca52a7457fff31955be54bd53dac2407c620823234514d6c332b5f68ade"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

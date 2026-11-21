@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-health-social-services-p9-1-15",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [
+    "mientras Canarias mantenga indicadores de pobreza superiores a la media"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3f232aab9a4259eaecd1a4fef8fb1ed1c608a38d0a1aa8bdc346bc9a47a844bf"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "9",
+  "source_section": "15. Reducir la pobreza infantil",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Defender programas estatales específicos contra la pobreza infantil y buscar un consenso estatal para una política común con ayudas a la crianza, vivienda, protección ante violencia digital, salud mental y apoyo a menores migrantes.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

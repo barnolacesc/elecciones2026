@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-salf-economy-work-tax-p15-11-28",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "salf",
+  "policy_instrument": null,
+  "programme_id": "salf-29N-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "98e0c215e30c2f7d3e1e4316da8b0e1d69f2c160682c27dd40f6364267cba2bb"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "15",
+  "source_section": "14",
+  "source_url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Prohibir a las entidades bancarias repercutir el coste de la devolución del rescate a los clientes bajo multa del triple de la cuantía, estableciendo además su carácter no deducible y su transmisibilidad ante adquisiciones corporativas",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

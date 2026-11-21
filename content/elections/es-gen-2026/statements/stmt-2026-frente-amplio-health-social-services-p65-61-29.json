@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-health-social-services-p65-61-29",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Dirigido a mayores de 65 años, enfermos crónicos, embarazadas y colectivos vulnerables"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "833a30e3e45bbb8b20e983aa3df158bd403fa7d417d153ba052944714d9eee04"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "65",
+  "source_section": "5.1",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Subvencionar la compra e instalación de equipos de refrigeración para personas en situación de vulnerabilidad clínica o por edad según la zona climática.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

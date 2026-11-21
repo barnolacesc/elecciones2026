@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-salf-housing-p6-1-9",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "salf",
+  "policy_instrument": null,
+  "programme_id": "salf-29N-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3d4d69d5a8c77348d29ff4af6606f532ed467339ee410a9f966c10c1970f8b41"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "6",
+  "source_section": "5",
+  "source_url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "public-housing-stock",
+  "summary": "Establecer plazos de concesión de licencias con silencio administrativo positivo de un mes en obra menor, dos en obra mayor y tres en grandes desarrollos, con indemnización municipal ante retrasos.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

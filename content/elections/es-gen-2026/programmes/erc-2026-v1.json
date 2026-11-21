@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "erc-2026-v1",
+  "candidacy_id": "erc",
+  "title": "Pel país. Per la gent. Pel futur.",
+  "status": "official",
+  "version": "2026-v1",
+  "publisher": "Esquerra Republicana",
+  "official_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "publication_date": "2026-11-10",
+  "retrieval_date": "2026-11-11",
+  "language": "ca",
+  "sha256": "61728d162a6e88d492d44a0b0994effb31f9e4abb85ebf8aea715d870a9b2e04",
+  "rights_status": "verified_link_only",
+  "is_fixture": false
+}

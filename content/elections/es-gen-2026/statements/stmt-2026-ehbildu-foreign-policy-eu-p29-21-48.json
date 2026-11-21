@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-ehbildu-foreign-policy-eu-p29-21-48",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "ehbildu",
+  "policy_instrument": null,
+  "programme_id": "ehbildu-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "06ac0ff9149dcf129b64bcefac8f2fe5c374e12e1b0f52d03b1393cfafbffba2"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "29",
+  "source_section": "3.2.7",
+  "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "defense-spending-and-nato",
+  "summary": "Decretar un embargo integral sobre la compraventa y transferencia de armamento con Israel y dotar de medidas materiales el reconocimiento del Estado de Palestina",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

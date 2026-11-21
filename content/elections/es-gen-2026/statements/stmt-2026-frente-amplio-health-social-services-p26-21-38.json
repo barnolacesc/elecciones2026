@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-health-social-services-p26-21-38",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "cb88495438c58d77aeb5dbb6da36bafce21351801231b849852ee2a166754adc"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "26",
+  "source_section": "2.3. Inclusión para que nadie quede atrás",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "mental-health-and-coverage",
+  "summary": "Crear redes comunitarias de acompañamiento psicosocial orientadas a prevenir problemas de salud mental derivados del aislamiento o la exclusión con foco en jóvenes y mayores.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

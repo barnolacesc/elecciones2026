@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-culture-sport-p72-71-15",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "teniendo en cuenta en todo momento sus particularidades lingüísticas y culturales"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "7734ab77f924f1d1fbca111f7f2491a2cd27b4455e1f93541c5c3c68db6b16fb"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "72",
+  "source_section": "230. Multiplicar por dos la partida de Cultura en los Presupuestos Generales del Estado en una legislatura.",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "cultural-access-patronage-and-creators",
+  "summary": "Dotar de recursos a las poblaciones con menos habitantes para asegurar su derecho al ocio y a la cultura sin desplazarse a núcleos urbanos, atendiendo a sus particularidades culturales y lingüísticas.",
+  "summary_en": null,
+  "topic_id": "culture-sport"
+}

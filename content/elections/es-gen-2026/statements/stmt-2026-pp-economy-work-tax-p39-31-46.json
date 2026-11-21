@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-economy-work-tax-p39-31-46",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [
+    "Condicionando la participación en el Mundial a albergar la final"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "437181ab475babb7e6484a88937ca9596c1f3cf638df785395882b4ca613fd55"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "39",
+  "source_section": "139",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "pensions-and-social-security",
+  "summary": "Regularizar las lagunas de cotización a la Seguridad Social de deportistas de alto nivel y condicionar la participación nacional en el Mundial de fútbol de 2030 a que la final se dispute en España.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

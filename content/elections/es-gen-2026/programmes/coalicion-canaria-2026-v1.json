@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "coalicion-canaria-2026-v1",
+  "candidacy_id": "coalicion-canaria",
+  "title": "Defiende Canarias",
+  "status": "official",
+  "version": "29N-v1",
+  "publisher": "Coalición Canaria",
+  "official_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "publication_date": "2026-11-09",
+  "retrieval_date": "2026-11-11",
+  "language": "es",
+  "sha256": "3c40c0a6e38d8dd80ae1061d94b614f4e3f1b6492ec8c801834fb497f337044e",
+  "rights_status": "verified_link_only",
+  "is_fixture": false
+}

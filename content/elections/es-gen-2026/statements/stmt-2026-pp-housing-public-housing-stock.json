@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-housing-public-housing-stock",
+  "party_id": "pp",
+  "topic_id": "housing",
+  "subtopic_id": "public-housing-stock",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone condicionar las mejoras en la financiación local y la flexibilización del uso de excedentes municipales al cumplimiento de objetivos de suelo, construcción y puesta a disposición de vivienda pública y asequible.",
+  "review_status": "approved",
+  "programme_id": "pp-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "source_page": "42",
+  "source_section": "4.1, medida 151",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/habitatge-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "7e51a10c1ad0c197a231ec4615662eb01ee052433860e612b0aeb48094ad2bb6"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

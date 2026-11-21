@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-vox-institutions-rights-p28-21-21",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "vox",
+  "policy_instrument": null,
+  "programme_id": "vox-2026-v2",
+  "qualifications": [
+    "Se excluyen materias de soberanía nacional, nacionalidad, residencia, permisos de trabajo a extranjeros e inmigración"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "e7b5dcdb6498ce2eadf7de317aa8466a5f618623ec863d563e3fb82c3f9fd53f"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "28",
+  "source_section": "41",
+  "source_url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf",
+  "source_version": "2026-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "transparency-and-anti-corruption",
+  "summary": "Establecer el silencio administrativo positivo y la declaración responsable como régimen general para proyectos y actividades sin riesgo",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

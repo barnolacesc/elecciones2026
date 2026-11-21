@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-institutions-rights-p37-31-35",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [
+    "Manteniendo el uso de lenguas cooficiales en el Senado"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b81ae5a8d61d9e35ca0af3a6755a77359d1b51d3c76aa7bc5efdd7c9132ddd4d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "37",
+  "source_section": "127",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Reformar el Reglamento del Congreso para que el castellano sea la lengua común exclusiva de los debates, así como la lengua de trabajo en conferencias de cooperación Estado-autonomías.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p16-11-38",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Desde 2027 en desarrollos urbanísticos"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b86bcc6870902d9b7716266ecdf5db23b541d0c2ef794620d07862452e77c6e0"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "16",
+  "source_section": "1.5. Rehabilitación energética integral del parque residencial vulnerable",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "emission-targets-and-decarbonization",
+  "summary": "Exigir estándares de consumo casi nulo o descarbonizados a nuevas licencias y prohibir calderas fósiles, redes y acometidas de gas en nuevos desarrollos desde 2027.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

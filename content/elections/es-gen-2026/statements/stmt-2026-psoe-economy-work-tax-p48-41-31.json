@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-economy-work-tax-p48-41-31",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [
+    "manteniendo los tipos del 19% hasta 6.000 € y 21% hasta 50.000 €"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "0486ef56c068d31b02f6127fa018822f640260fb30fc7e926f39885da290700d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "48",
+  "source_section": "130",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Aumentar los tipos impositivos sobre las rentas del capital a partir de 50.000 euros hasta un gravamen máximo del 35% por encima de 300.000 euros",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

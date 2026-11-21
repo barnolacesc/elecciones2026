@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-economy-work-tax-p61-61-8",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [
+    "Condicionados a mantener la actividad y la ocupación"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "60f5b2a284586f1372181fc9bea22a08bc43e10d73144ee9098855b4d36a288a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "61",
+  "source_section": "5.1",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Establecer incentivos en el impuesto sobre sociedades y transferir fondos estatales a la Generalitat para jóvenes que adquieran negocios viables en proceso de cierre por jubilación.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-education-early-childhood-education",
+  "party_id": "podemos",
+  "topic_id": "education",
+  "subtopic_id": "early-childhood-education",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone limitar las ratios del primer ciclo de educación infantil a 3 menores de un año, 5 de uno a dos años y 6 de dos a tres años por profesional.",
+  "review_status": "approved",
+  "programme_id": "podemos-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "source_page": "79",
+  "source_section": "Servicios públicos para garantizar vidas dignas",
+  "qualifications": [
+    "También prevé que todas las aulas del primer ciclo dispongan de una pareja educativa."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact eight-statement Education batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/educacio-29n-v2/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "083d3ad90f0636f5c48de12326acd4cc3c00bf03ed3d26f79a3970d7e3a0383d"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

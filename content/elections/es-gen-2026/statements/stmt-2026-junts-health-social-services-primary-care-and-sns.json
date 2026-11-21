@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-health-social-services-primary-care-and-sns",
+  "party_id": "junts",
+  "topic_id": "health-social-services",
+  "subtopic_id": "primary-care-and-sns",
+  "statement_type": "explicit_proposal",
+  "summary": "Reclama financiación sanitaria suficiente y plurianual para Cataluña, con el objetivo de avanzar hacia un gasto sanitario público del 8 % del PIB y dedicar el 25 % del presupuesto sanitario a atención primaria.",
+  "review_status": "approved",
+  "programme_id": "junts-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "source_page": "51",
+  "source_section": "La salut dels catalans al centre, medida 1.1",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/salut-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "f3f48099699f9eb2e10878630dfdc33d3d14cd8223f123449529d8a0e0b22a60"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

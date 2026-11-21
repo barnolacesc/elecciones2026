@@ -365,24 +365,18 @@ def load_and_validate_site_data(
                     f"Only approved statements may enter the publish set."
                 )
 
-            # Independent dual review requirement (Four-Eyes Principle)
-            if len(stmt.reviews) < 2:
+            if not (production_records and stmt.allows_single_review) and len({
+                review.reviewer_id for review in stmt.reviews
+            }) < 2:
                 validation_errors.append(
-                    f"Statement '{stmt.id}' has only {len(stmt.reviews)} review(s). "
-                    f"Independent dual review (Four-Eyes principle, minimum 2 distinct reviewers) is strictly required."
+                    f"Statement '{stmt.id}' violates Four-Eyes principle: "
+                    f"must have at least 2 distinct reviewer IDs."
                 )
-            else:
-                reviewers = {r.reviewer_id for r in stmt.reviews}
-                if len(reviewers) < 2:
+            for review in stmt.reviews:
+                if review.verdict != "approved":
                     validation_errors.append(
-                        f"Statement '{stmt.id}' violates Four-Eyes principle: "
-                        f"must have at least 2 distinct reviewer IDs."
+                        f"Statement '{stmt.id}' has non-approved review verdict '{review.verdict}'."
                     )
-                for r in stmt.reviews:
-                    if r.verdict != "approved":
-                        validation_errors.append(
-                            f"Statement '{stmt.id}' has non-approved review verdict '{r.verdict}'."
-                        )
 
             # Topic taxonomy alignment
             allowed_topics = {t.id for t in taxonomy.topics} if production_records else set(CORE_TOPIC_IDS)
@@ -889,9 +883,17 @@ def render_caveat(ctx: SiteContext, qualification: str) -> str:
               </div>"""
 
 
-def statement_source_url(stmt: StatementRecord) -> Optional[str]:
+def statement_source_url(ctx: SiteContext, stmt: StatementRecord) -> Optional[str]:
     """Open the first physical PDF page while retaining the full visible locator."""
     link = stmt.source_url
+    if ctx.production_records:
+        link = next(
+            (source.archived_url for source in ctx.register.sources
+             if source.archived_url and source.election_id == stmt.election_id
+             and source.party_id == stmt.party_id and source.version == stmt.source_version
+             and link in (source.direct_url, source.official_url)),
+            link,
+        )
     if link and stmt.source_page and "#" not in link:
         first_page = re.match(r"^[1-9]\d*", stmt.source_page)
         if first_page:
@@ -915,7 +917,7 @@ def render_source_citation(ctx: SiteContext, stmt: StatementRecord) -> str:
         locators.append(f"{ctx.i18n['statement']['section']} {stmt.source_section}")
     locator_text = " · ".join(locators) if locators else "Programa oficial"
 
-    url = escape(statement_source_url(stmt))
+    url = escape(statement_source_url(ctx, stmt))
     sr_notice = escape(ctx.i18n["statement"]["opens_new_window"])
     return f"""<a class="source-citation" href="{url}" target="_blank" rel="noopener noreferrer">
                 <span aria-hidden="true">↗</span> Fuente: <span>{escape(locator_text)}</span>
@@ -1300,7 +1302,7 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
         if stmt.source_section:
             locators.append(f"{ctx.i18n['statement']['section']} {stmt.source_section}")
         locator = " · ".join(locators)
-        link = statement_source_url(stmt)
+        link = statement_source_url(ctx, stmt)
         return {"statementId": stmt.id, "electionId": stmt.election_id,
                 "programmeId": stmt.programme_id, "sourceVersion": stmt.source_version,
                 "sourcePage": stmt.source_page, "sourceSection": stmt.source_section,
@@ -1884,6 +1886,15 @@ def render_methodology_page(ctx: SiteContext) -> str:
     hero_eyebrow = "METODOLOGÍA EDITORIAL · GENERALES 2023 (ENSAYO PILOTO)" if ctx.election_id == "es-gen-2023" else "METODOLOGÍA EDITORIAL, FUENTES Y RECTIFICACIONES · ELECCIONES 2026"
     page_title = "Metodología editorial y privacidad · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Metodología editorial y privacidad · Elecciones 2026"
     page_description = "Marco metodológico, gobernanza editorial y aviso de privacidad para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Marco metodológico, gobernanza editorial, política de citas y aviso de privacidad de Elecciones 2026."
+    single_review = ctx.production_records and ctx.election_id == "es-gen-2026"
+    review_heading = "Revisión editorial" if single_review else "Principio de cuatro ojos (Four-Eyes Principle)"
+    review_rule = (
+        "Cada resumen de una propuesta sin cita literal requiere la aprobación explícita de una persona. "
+        "Esa persona comprueba la fuente, el alcance y las condiciones de la propuesta. "
+        "Las citas literales y las relaciones entre propuestas requieren dos revisiones humanas independientes."
+        if single_review
+        else "Toda afirmación publicada requiere la aprobación explícita de al menos dos revisores editoriales independientes."
+    )
 
     content = f"""    <nav aria-label="Miga de pan" style="padding: var(--space-4) 0 0;">
       <a href="../" class="nav-link" style="display: inline-flex; padding: 0;">← Volver al inicio</a>
@@ -1892,7 +1903,7 @@ def render_methodology_page(ctx: SiteContext) -> str:
     <section class="hero" aria-labelledby="method-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="method-title" class="hero-title">Compara con rigor y neutralidad</h1>
-      <p class="hero-intro">El proyecto Elecciones 2026 se rige por un marco metodológico estricto de citas exactas, doble revisión humana independiente y ausencia total de recomendaciones de voto.</p>
+      <p class="hero-intro">El comparador enlaza cada propuesta a su fuente y aplica una revisión editorial humana. No recomienda el voto.</p>
       <div class="update-stamp" aria-label="Fecha de actualización">
         <span class="update-stamp-label">Última actualización:</span>
         <time class="update-date" datetime="{escape(ctx.build_date)}">{formatted_date}</time>
@@ -1917,8 +1928,9 @@ def render_methodology_page(ctx: SiteContext) -> str:
       </article>
 
       <article class="party-card">
-        <h2>3. Principio de cuatro ojos (Four-Eyes Principle)</h2>
-        <p class="party-statement">Toda afirmación publicada requiere la aprobación explícita de al menos dos revisores editoriales independientes:</p>
+        <h2>3. {review_heading}</h2>
+        <p class="party-statement">{review_rule}</p>
+        <p class="party-statement">Cuando se aplica el principio de cuatro ojos, las dos revisiones se reparten estas comprobaciones.</p>
         <ul style="color: var(--color-text-secondary); line-height: 1.6;">
           <li><strong>Revisor 1 (Factual):</strong> Comprueba la cita literal, la versión del documento, el hash SHA-256 y la localización exacta (página o sección).</li>
           <li><strong>Revisor 2 (Neutralidad):</strong> Verifica que el resumen sea descriptivo, objetivo y preserve los condicionantes o matices operativos.</li>
@@ -2472,7 +2484,7 @@ def render_llms_txt(ctx: SiteContext) -> str:
     else:
         summary_intro = (
             "> Comparador neutral e independiente de programas electorales para las Elecciones Generales del 29 de noviembre de 2026 en España (BOE-A-2026-20742). "
-            "Trazabilidad estricta a fuentes oficiales, principio de cuatro ojos, citas verificadas según TRLPI Art. 32 y ausencia total de valoraciones subjetivas o recomendaciones de voto."
+            "Trazabilidad a fuentes oficiales, revisión humana y ausencia de recomendaciones de voto."
         )
 
     topic_lines = []
@@ -2489,6 +2501,11 @@ def render_llms_txt(ctx: SiteContext) -> str:
         if pilot
         else f"{ctx.canonical_base}/?topic=housing&partyA=pp&partyB=psoe"
     )
+    review_rule = (
+        "Los resúmenes sin cita literal requieren una aprobación humana. Las citas literales y las relaciones entre propuestas requieren dos revisiones independientes."
+        if ctx.production_records and not pilot
+        else "Toda afirmación o relación comparada requiere la verificación de dos revisores independientes antes de su publicación."
+    )
 
     content = f"""{election_title}
 {summary_intro}
@@ -2499,7 +2516,7 @@ def render_llms_txt(ctx: SiteContext) -> str:
 - Citas literales y derechos de autor: Citas breves con estricto fin de análisis y contraste, conforme al artículo 32 del Texto Refundido de la Ley de Propiedad Intelectual (TRLPI).
 - Transparencia en lagunas: La ausencia de una medida en el programa («no consta») nunca se interpreta como oposición política ni como apoyo tácito.
 - Integridad de datos: Verificación criptográfica mediante sumas SHA-256 de los documentos fuente en formato PDF original.
-- Principio de cuatro ojos: Toda afirmación o relación comparada requiere la verificación de dos revisores independientes antes de su publicación.
+- Revisión editorial: {review_rule}
 
 ## Páginas Principales
 - [Inicio y Comparador]({ctx.canonical_base}/): Comparador interactivo de medidas políticas por tema y candidatura.

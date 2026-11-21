@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-health-social-services-p41-41-1",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Cuando la familia de origen no pueda proveer el cuidado"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "71e4a60efab9620897b57ad1a95122e94b6e84409c9153488b704e09c614ec15"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "41",
+  "source_section": "Acogimiento familiar, desinstitucionalización y vulnerabilidad",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Priorizar por ley el acogimiento familiar frente al residencial si la familia de origen no puede cuidar, facilitando recursos técnicos, capacitación y ayudas económicas.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

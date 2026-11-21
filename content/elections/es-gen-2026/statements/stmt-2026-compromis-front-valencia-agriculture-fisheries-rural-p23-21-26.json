@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-agriculture-fisheries-rural-p23-21-26",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3bdf1c854820cecda7c6c4596a4d926713e12c8d3b7f8f23b28624f441f9f7a9"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "23",
+  "source_section": "AGRICULTURA I PESCA",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rural-development-and-generational-renewal",
+  "summary": "Movilizar acuerdos y recursos públicos para facilitar el acceso a tierras agrarias, recuperar fincas abandonadas e impulsar el relevo generacional y cooperativo sin requerir patrimonio previo.",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

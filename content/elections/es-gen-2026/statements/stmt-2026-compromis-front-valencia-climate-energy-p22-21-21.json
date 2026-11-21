@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-climate-energy-p22-21-21",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [
+    "Carácter excepcional, con acuerdo entre cuencas y respeto a la cuenca cedente"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "31fcfb72c96676a14269b619b1e753092a13dc50ca9b2f4c1e847e96d6e62274"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "22",
+  "source_section": "AGRICULTURA I PESCA",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "water-management-and-drought",
+  "summary": "Condicionar los trasvases entre cuencas a su carácter excepcional, con acuerdo mutuo, disponibilidad contrastada y respeto prioritario a caudales ecológicos y a la cuenca cedente.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

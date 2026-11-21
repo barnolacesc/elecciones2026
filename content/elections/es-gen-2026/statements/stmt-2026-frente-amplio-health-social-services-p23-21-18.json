@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-health-social-services-p23-21-18",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "61a28445f26a8a8058457728ec9081b4dcd494664bc8c90510424db7190de5c2"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "23",
+  "source_section": "2.2. Derecho a cuidar y a recibir cuidados",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Implementar la Ley 4/2026 de modificación de la Ley de Dependencia potenciando la figura del asistente personal, los cuidados en viviendas y acuerdos con las autonomías sobre estándares mínimos e intensidades.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

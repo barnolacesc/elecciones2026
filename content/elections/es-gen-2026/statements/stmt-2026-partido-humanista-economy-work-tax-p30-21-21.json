@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-partido-humanista-economy-work-tax-p30-21-21",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "partido-humanista",
+  "policy_instrument": null,
+  "programme_id": "partido-humanista-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5d61ba065313a0110050658c48676f1f6bec84af3e358d43debced51c8d24c2b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "30",
+  "source_section": "Tabla de Fuentes de Financiación",
+  "source_url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Estimar una recaudación anual de 55.000 millones de euros mediante la reforma del IRPF en rentas del trabajo superiores a 120.000 euros y rentas del capital.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

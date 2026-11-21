@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-climate-energy-p17-11-33",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "267350747788033e8d888d6083939f53f9db8004897ecb8cdc20f080fc089f3c"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "17",
+  "source_section": "2.4 ECONOMÍA CIRCULAR Y RECUPERACIÓN DE SUELOS 04",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Fomentar la economía circular subvencionando la reparación, el reciclaje y la valorización de residuos para usos industriales.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

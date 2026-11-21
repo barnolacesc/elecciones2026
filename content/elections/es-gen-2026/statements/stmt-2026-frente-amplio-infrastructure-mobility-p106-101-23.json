@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-infrastructure-mobility-p106-101-23",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "79cc3f4f7f1107106c99f43db46181f9d91ee59210027488c4a2ce548527f024"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "106",
+  "source_section": "11.3. Infraestructuras e inversión en todo el territorio",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rail-transport-and-high-speed",
+  "summary": "Reasignar al sistema ferroviario los casi 13.000 millones de euros presupuestados para ampliación de aeropuertos en el plan DORA.",
+  "summary_en": null,
+  "topic_id": "infrastructure-mobility"
+}

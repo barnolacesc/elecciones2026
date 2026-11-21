@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p74-71-38",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3568081265ae598772d516c5add5651a6b92d10c6c048b6e22c620c75b19d5b8"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "74",
+  "source_section": "5.6",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "water-management-and-drought",
+  "summary": "Prohibir nuevas construcciones en terrenos con riesgo de inundación y en los primeros 500 metros de la costa y retirar progresivamente infraestructuras críticas en zonas de flujo preferente.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

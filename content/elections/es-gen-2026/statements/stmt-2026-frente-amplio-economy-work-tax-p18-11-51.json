@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-economy-work-tax-p18-11-51",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ca8f9f6ee7404ee90186b7975f2eb65fdaf18e1fed2641aa77557f6a51ad8425"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "18",
+  "source_section": "Impuesto penalizador a la compra no residencial e incremento progresivo del ITP",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "tax-reform-and-brackets",
+  "summary": "Imponer un recargo del 100 % en la tributación sobre compras de viviendas que no se destinen a residencia habitual, abarcando a no residentes y extracomunitarios.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

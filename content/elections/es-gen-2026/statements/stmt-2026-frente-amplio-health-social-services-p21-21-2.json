@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-health-social-services-p21-21-2",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Cobertura de 0 a 6 años en el primer año, de 7 a 12 años en el segundo año y de 13 a 18 años al cierre de mandato"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "e0a5c0c697b2580785e34903b27a53e05c7c724d068f97e2dd0e45e88762fa34"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "21",
+  "source_section": "2.1. Reducir la desigualdad y acabar con la pobreza",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "dependency-and-eldercare",
+  "summary": "Implantar la prestación universal por crianza en tres fases a lo largo de la legislatura financiadas mediante fiscalidad progresiva.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

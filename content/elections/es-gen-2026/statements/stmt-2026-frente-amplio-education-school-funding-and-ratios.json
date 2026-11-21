@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-education-school-funding-and-ratios",
+  "party_id": "frente-amplio",
+  "topic_id": "education",
+  "subtopic_id": "school-funding-and-ratios",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone una ley de financiación educativa con un mínimo de inversión estatal que alcance el 7 % del PIB en 2030.",
+  "review_status": "approved",
+  "programme_id": "frente-amplio-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "source_page": "31",
+  "source_section": "2.5, p. impresa 35",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact six-statement batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/educacio-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "3330bc8565068af864343bcf1607de7720661a28aa6c926bd2c719fad406e148"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-institutions-rights-p40-31-55",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "cde7cb05c047021152e57870e5a913e503a7df24de56a194bef16e461f275a6e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "40",
+  "source_section": "DESCLASIFICACIÓN Y ESCLARECIMIENTO DE HECHOS 03",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Facilitar el acceso a los archivos oficiales para clarificar las causas y circunstancias de la muerte de Mikel Zabalza.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

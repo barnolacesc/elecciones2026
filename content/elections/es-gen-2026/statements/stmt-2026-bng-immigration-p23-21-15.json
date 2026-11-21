@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-immigration-p23-21-15",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "c172729439f74ed33959f789f55475fe27a3656ef31367b7bc90b0ccd6ac197d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "23",
+  "source_section": "2.5. ACOLLIDA, INCLUSIÓN E DEREITOS DAS PERSOAS INMIGRANTES",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "reception-and-asylum",
+  "summary": "Dotar a las oficinas de extranjería de los recursos humanos y materiales necesarios para la atención de personas migrantes y solicitantes de asilo.",
+  "summary_en": null,
+  "topic_id": "immigration"
+}

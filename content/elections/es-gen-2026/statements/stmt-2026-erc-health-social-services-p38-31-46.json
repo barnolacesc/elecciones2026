@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-health-social-services-p38-31-46",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "e4e222d4b1a8bfbc39628cd48131ecc192a0d0e7476deda053ec24e11f36b36b"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "38",
+  "source_section": "212",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "primary-care-and-sns",
+  "summary": "Financiar planes de aislamiento acústico en viviendas y equipamientos afectados por infraestructuras aeroportuarias estatales, en particular en el aeropuerto de Barcelona-El Prat.",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

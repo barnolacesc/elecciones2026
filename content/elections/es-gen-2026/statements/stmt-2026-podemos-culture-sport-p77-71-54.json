@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-culture-sport-p77-71-54",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "d674d67271f84b4956d4f95c2dc18a9542a555fb7f061cef762bb5ed119a3c9a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "77",
+  "source_section": "266",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "cultural-access-patronage-and-creators",
+  "summary": "Fijar cuotas obligatorias en salas públicas estatales para la programación y difusión de montajes de compañías de teatro independiente y de autoras y autores noveles.",
+  "summary_en": null,
+  "topic_id": "culture-sport"
+}

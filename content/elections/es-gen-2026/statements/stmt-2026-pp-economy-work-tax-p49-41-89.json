@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-economy-work-tax-p49-41-89",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ec05615e97be6de8df5c2b0dcac943a9aaec083e6e0ac5a3e89e731159a45508"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "49",
+  "source_section": "198 PROTEGEREMOS LOS INGRESOS DE AGRICULTORES Y GANADEROS",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Crear un seguro de ingresos y rentas ante desajustes de mercado y reformar junto al sector la Ley de la Cadena Alimentaria para clarificar costes y márgenes.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

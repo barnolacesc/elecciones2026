@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-institutions-rights-p21-21-3",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [
+    "Con asignación de financiación, plazos y responsables para cada compromiso"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ef2465dda850b8a56012d1b6f49dc8cedcb7533b1356e8650ff9db45f6cc9335"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "21",
+  "source_section": "99",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Exigir en las Cortes Generales el cumplimiento íntegro y la financiación continuada de la Agenda Canaria y las medidas de la propuesta de Decreto Canarias.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

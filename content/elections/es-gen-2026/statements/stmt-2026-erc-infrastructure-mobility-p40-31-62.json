@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-infrastructure-mobility-p40-31-62",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "c130ab4fcbb7b306a711be07a735366db71f9fa42845169b566743a947ae75c2"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "40",
+  "source_section": "228",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rail-transport-and-high-speed",
+  "summary": "Impulsar los estudios informativos y asegurar financiación para construir el eje transversal ferroviario.",
+  "summary_en": null,
+  "topic_id": "infrastructure-mobility"
+}

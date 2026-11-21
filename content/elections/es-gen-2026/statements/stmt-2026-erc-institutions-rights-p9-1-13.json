@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-institutions-rights-p9-1-13",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "924184d034f0b589c23eddc3a1d089f753a9d134966b692caf66f3330671cbcc"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "9",
+  "source_section": "13. Reforçar la cooperació entre els territoris de parla catalana i el reconeixement de la unitat de la llengua.",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "electoral-law-and-constitution",
+  "summary": "Derogar el artículo 145 de la Constitución española para facilitar la cooperación bilateral entre Cataluña, la Comunidad Valenciana y las Islas Baleares, suprimiendo los posibles vetos estatales o de las Cortes Generales, y equiparar legalmente las denominaciones catalán y valenciano como sinónimas e intercambiables.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

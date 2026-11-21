@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-agriculture-fisheries-rural-p113-111-22",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "6c85c7098d1f99318487639c8907ebfd61c586e2193cf8da8c03d6bb492e8ff1"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "113",
+  "source_section": "371",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "agricultural-policy-and-food-chain",
+  "summary": "Proteger el olivar tradicional garantizando la trazabilidad del aceite y aplicando mecanismos de certificación y etiquetado",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

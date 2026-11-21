@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-education-p71-71-4",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "En cumplimiento de la Ley Orgánica 3/2020 y el Real Decreto 157/2022"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "11aa9d69a91d0acbd42ec909f264212c1eae5ad8723f46b6f937ad54f4815873"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "71",
+  "source_section": "225",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "curriculum-and-languages",
+  "summary": "Desarrollar en la Enseñanza Obligatoria la docencia de la Historia del Pueblo Gitano en coordinación con las comunidades autónomas.",
+  "summary_en": null,
+  "topic_id": "education"
+}

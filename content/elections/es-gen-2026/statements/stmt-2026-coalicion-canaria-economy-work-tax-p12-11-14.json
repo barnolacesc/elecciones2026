@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-economy-work-tax-p12-11-14",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "coalicion-canaria",
+  "policy_instrument": null,
+  "programme_id": "coalicion-canaria-2026-v1",
+  "qualifications": [
+    "mientras la situación del empleo en Canarias siga en desventaja frente a la media estatal"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "e5eaf5066c17668f161f3313edbd1493311208a0a8d6d382239cd80f7017c834"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "12",
+  "source_section": "31",
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "labor-regulations-and-smi",
+  "summary": "Defender la financiación estatal del Plan Integral de Empleo de Canarias y programas del REF mientras el desempleo insular esté en desventaja frente a la media estatal.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

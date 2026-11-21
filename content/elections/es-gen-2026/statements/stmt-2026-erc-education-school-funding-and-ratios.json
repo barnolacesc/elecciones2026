@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-education-school-funding-and-ratios",
+  "party_id": "erc",
+  "topic_id": "education",
+  "subtopic_id": "school-funding-and-ratios",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone destinar el 6 % del PIB estatal a educación para reforzar la escuela pública, reducir el alumnado por aula y mejorar los salarios del profesorado.",
+  "review_status": "approved",
+  "programme_id": "erc-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "source_page": "11",
+  "source_section": "A.C, medida 19",
+  "qualifications": [
+    "Los recursos se transferirían a las administraciones educativas competentes con criterios transparentes y con financiación para las nuevas obligaciones."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner approved the exact six-statement batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/educacio-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "b18ef601206f19aeb8cf3416b103338dfa000538b870a3692589e6b9dfaa828d"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

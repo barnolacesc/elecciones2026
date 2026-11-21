@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-foreign-policy-eu-p57-51-89",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "24b639ab53e7a8cd1193e6713e2cd179c6c1157f9cb6eb6857f9f129984a805d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "57",
+  "source_section": "244 EXIGIREMOS LA LIBERTAD DE LOS PRESOS POLÍTICOS Y APOYAREMOS LA TRANSICIÓN A LA DEMOCRACIA, PARTICULARMENTE EN CUBA, NICARAGUA Y VENEZUELA.",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "bilateral-relations",
+  "summary": "Reclamar la excarcelación de los presos políticos y secundar el proceso hacia la democracia en Cuba, Nicaragua y Venezuela",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

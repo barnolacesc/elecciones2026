@@ -14,7 +14,6 @@ from elecciones2026.generator import (
 from elecciones2026.schemas import ReviewRecord, load_statement
 
 ROOT = Path(__file__).resolve().parents[1]
-RECORDS = ROOT / "content/elections/es-gen-2026"
 
 
 class ElectionCorpusRefreshTests(unittest.TestCase):
@@ -25,6 +24,10 @@ class ElectionCorpusRefreshTests(unittest.TestCase):
         self.content = self.directory / "content"
         shutil.copytree(ROOT / "content", self.content)
         self.records = self.content / "elections/es-gen-2026"
+        for folder in ("programmes", "statements", "relationships"):
+            path = self.records / folder
+            if path.exists():
+                shutil.rmtree(path)
 
     def load(self, **kwargs):
         return load_and_validate_site_data(
@@ -55,25 +58,23 @@ class ElectionCorpusRefreshTests(unittest.TestCase):
             quote=None, qualifications=[], source_url=source["direct_url"],
             source_version=source["version"], review_status="approved", reviews=[],
             last_reviewed_date="2026-10-09")
-        reviews = [ReviewRecord(
-            name, "2026-10-09", "approved", "Synthetic test evidence only",
-            reviewer_kind="human", evidence_ref=f"test-only:{name}",
-            content_sha256=statement.review_fingerprint(),
-        ) for name in ("human-alex", "human-sam")]
-        return replace(statement, reviews=reviews)
+        return replace(statement, reviews=self.synthetic_reviews(statement))
 
     def test_empty_production_never_falls_back_to_examples(self):
         ctx = self.load()
         self.assertEqual(ctx.statements, {})
         self.assertEqual(ctx.relationships, {})
-        self.assertEqual(len(ctx.parties), 13)
+        self.assertEqual(len(ctx.parties), 16)
+        self.assertIn("frente-amplio", ctx.parties)
+        self.assertIn("upn-pp", ctx.parties)
+        self.assertNotIn("sumar", ctx.parties)
         self.assertTrue(all(not p.is_fixture for p in ctx.parties.values()))
         self.assertTrue(all(p.inclusion_criterion == "pending_verification" for p in ctx.parties.values()))
         self.assertTrue(all(p.territorial_scope == "pending_verification" for p in ctx.parties.values()))
         self.assertTrue(all(s.election_id == "es-gen-2026" for s in ctx.register.sources))
         self.assertEqual([s.id for s in ctx.register.sources if s.party_id == "bng"], ["src-2026-bng-v2"])
         payload = build_comparison_payload(ctx)
-        self.assertEqual(len(payload["topics"]), 8)
+        self.assertEqual(len(payload["topics"]), 12)
         self.assertFalse(any(payload["measuresByTopic"].values()))
 
     def test_missing_production_directory_fails(self):
@@ -89,7 +90,7 @@ class ElectionCorpusRefreshTests(unittest.TestCase):
             with self.subTest(election=election), self.assertRaises(BuildValidationError):
                 self.load(strict_approved=False)
 
-    def test_pending_rights_cannot_publish_even_with_two_reviews(self):
+    def test_pending_rights_cannot_publish_even_with_human_review(self):
         statement = self.synthetic_approved_statement()
         path = self.content / "sources/register.json"
         register = json.loads(path.read_text())
@@ -109,14 +110,24 @@ class ElectionCorpusRefreshTests(unittest.TestCase):
         path = self.records / "statements/test.json"
         path.write_text(json.dumps(asdict(statement)))
         self.assertEqual(list(self.load().statements), [statement.id])
-        for changes in ({"reviewer_kind": "automated"}, {"content_sha256": None}):
-            changed = replace(statement, reviews=[replace(r, **changes) for r in statement.reviews])
+        for changed in (
+            replace(statement, reviews=[]),
+            replace(statement, reviews=[replace(statement.reviews[0], reviewer_kind="automated")]),
+            replace(statement, reviews=[replace(statement.reviews[0], content_sha256=None)]),
+            replace(statement, summary="Otro resumen sintético."),
+        ):
             path.write_text(json.dumps(asdict(changed)))
-            with self.subTest(changes=changes), self.assertRaises(BuildValidationError):
+            with self.subTest(statement=changed), self.assertRaises(BuildValidationError):
                 self.load(strict_approved=False)
 
+    def test_verbatim_quote_still_requires_two_reviewers(self):
+        statement = replace(self.synthetic_approved_statement(), quote="Texto sintético.")
+        statement = replace(statement, reviews=self.synthetic_reviews(statement))
+        with self.assertRaisesRegex(BuildValidationError, "two distinct reviewers"):
+            self.load(custom_statements=[statement])
+
     def test_production_output_is_deterministic_without_historical_inventory(self):
-        results = [build_site(ROOT, self.directory / str(i), records_dir=RECORDS,
+        results = [build_site(ROOT, self.directory / str(i), content_dir=self.content, records_dir=self.records,
                               build_date="2026-11-11") for i in range(2)]
         self.assertEqual(results[0].file_hashes, results[1].file_hashes)
         for route in ("index.html", "fuentes/index.html", "metodo/index.html", "llms-full.txt"):
@@ -125,18 +136,26 @@ class ElectionCorpusRefreshTests(unittest.TestCase):
             self.assertNotIn("src-2023-", text)
             self.assertNotIn("Partido Ejemplo", text)
         home = (results[0].output_dir / "index.html").read_text()
-        self.assertIn("8 documentos registrados", home)
+        self.assertIn("14 documentos registrados", home)
         self.assertIn("pendientes de revisión editorial", home)
         self.assertNotIn("Aviso de maqueta técnica", home)
         self.assertNotIn("Datos de prueba", home)
         sources = (results[0].output_dir / "fuentes/index.html").read_text()
-        self.assertIn("Publicado sin verificar", sources)
+        self.assertIn("Documento parcial", sources)
+        self.assertIn('href="https://upn-pp.es/#compromisos"', sources)
+        self.assertIn('href="https://frenteobrero.es/#programa"', sources)
+        method = (results[0].output_dir / "metodo/index.html").read_text()
+        self.assertIn("requiere la aprobación explícita de una persona", method)
         self.assertNotIn(">Published-unverified<", sources)
 
     def test_cli_defaults_to_production_records(self):
         output = self.directory / "cli"
         self.assertEqual(main(["build", "--root-dir", str(ROOT), "--output-dir", str(output)]), 0)
         self.assertNotIn("Partido Ejemplo", (output / "index.html").read_text())
+        topic_html = (output / "temas/education/index.html").read_text()
+        self.assertIn("ERC-programa-electoral-29-N-2026-2026-11-12.pdf#page=11", topic_html)
+        self.assertIn("ProgramaFrenteAmplio.pdf#page=31", topic_html)
+        self.assertNotIn("e2026-programa.pdf#page=", topic_html)
 
     def extended_taxonomy(self):
         taxonomy = json.loads((self.content / "taxonomy.json").read_text())
@@ -184,10 +203,11 @@ class ElectionCorpusRefreshTests(unittest.TestCase):
 
     @staticmethod
     def synthetic_reviews(statement):
-        return [ReviewRecord(name, "2026-10-09", "approved", "Synthetic test evidence only",
-                             reviewer_kind="human", evidence_ref=f"test-only:{name}",
-                             content_sha256=statement.review_fingerprint())
-                for name in ("human-alex", "human-sam")]
+        return [ReviewRecord(
+            "human-alex", "2026-10-09", "approved", "Synthetic test evidence only",
+            reviewer_kind="human", evidence_ref="test-only:human-alex",
+            content_sha256=statement.review_fingerprint(),
+        )]
 
     def test_draft_cross_election_and_incomplete_taxonomies_fail(self):
         path, taxonomy = self.extended_taxonomy()

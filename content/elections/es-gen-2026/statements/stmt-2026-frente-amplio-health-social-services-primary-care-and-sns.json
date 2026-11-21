@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-health-social-services-primary-care-and-sns",
+  "party_id": "frente-amplio",
+  "topic_id": "health-social-services",
+  "subtopic_id": "primary-care-and-sns",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone seguir aumentando los fondos destinados específicamente a atención primaria para alcanzar el 25 % del presupuesto sanitario.",
+  "review_status": "approved",
+  "programme_id": "frente-amplio-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "source_page": "26",
+  "source_section": "2.4, Financiación, gobernanza y gestión de la sanidad pública, p. impresa 30",
+  "qualifications": [],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/salut-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "99f8f0c0787316a7ceef716f6c827071c74845c03b6ac1e0b3f498fdd4d63ee5"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

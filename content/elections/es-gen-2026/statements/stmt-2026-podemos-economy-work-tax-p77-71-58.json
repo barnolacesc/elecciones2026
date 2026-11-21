@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-economy-work-tax-p77-71-58",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "a69ef3df2ee2559824adafc81ec30aee135638c06bd6998503fdf2922e0523e2"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "77",
+  "source_section": "270. Creación de una plataforma pública de streaming para grupos y artistas musicales del Estado español alternativa a las existentes",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "industrial-policy-and-smes",
+  "summary": "Crear una plataforma pública estatal de streaming musical alternativa que retribuya a los músicos de manera proporcional al tráfico real que generen sus obras.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

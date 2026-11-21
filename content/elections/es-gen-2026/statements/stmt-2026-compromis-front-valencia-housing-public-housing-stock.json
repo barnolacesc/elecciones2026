@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-housing-public-housing-stock",
+  "party_id": "compromis-front-valencia",
+  "topic_id": "housing",
+  "subtopic_id": "public-housing-stock",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone dedicar cada año el 1 % del PIB a adquirir viviendas o promover vivienda protegida.",
+  "review_status": "approved",
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "source_page": "5",
+  "source_section": "1, Habitatge, p. impresa 4",
+  "qualifications": [
+    "Los proyectos serían de titularidad pública o se desarrollarían con cooperativas, empresas del tercer sector u otras sociedades privadas sin ánimo especulativo, en colaboración con comunidades autónomas y ayuntamientos."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/habitatge-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "a5b619f6f9fae7b5ed6bf0393afeee3abc7b081ee7cbfcb38e2e1b2938e7015e"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

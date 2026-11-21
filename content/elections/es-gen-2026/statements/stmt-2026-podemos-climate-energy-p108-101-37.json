@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-climate-energy-p108-101-37",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [
+    "Aplica a grandes propietarios y cuencas en situación o riesgo de sequía"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "97dc1aacc3eeb060c5fe4e0f910e6da422b6b65a02183ce066a0ebdaf88f293a"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "108",
+  "source_section": "358",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "water-management-and-drought",
+  "summary": "Imponer una moratoria inmediata a regadíos hiperintensivos de grandes propietarios y a nuevos regadíos en cuencas con sequía habitual, cortando el suministro a los existentes con riesgo hídrico.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

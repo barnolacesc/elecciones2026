@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p104-101-12",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Condicionada a no realizar dumping fiscal ni rebajas de impuestos a rentas altas"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "67f0da3b39296f2d40291e4f627ab6f43b3ba40657f8cdccb578281fa7edca76"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "104",
+  "source_section": "11.2. Condonación de deuda y prohibición del dumping fiscal",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Condonar deuda autonómica vinculándola a la prohibición del dumping fiscal y permitiendo destinar un 20 % del importe condonado al parque público de alquiler asequible.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

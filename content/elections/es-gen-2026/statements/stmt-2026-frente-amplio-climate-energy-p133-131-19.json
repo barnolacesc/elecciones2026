@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p133-131-19",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "af317d4d5af0c3773741108a3866efaa116bbaeed3e34c95e533f34f427b66c3"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "133",
+  "source_section": "Multilateralismo, mediación internacional, reforma de la ONU, justicia fiscal global",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "water-management-and-drought",
+  "summary": "Impulsar la creación de una Fuerza Mediterránea de intervención climática y protección civil para incendios, salvamento marítimo y lucha anticontaminación",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

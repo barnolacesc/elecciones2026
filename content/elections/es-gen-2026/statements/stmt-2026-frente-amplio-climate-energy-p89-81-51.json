@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p89-81-51",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [
+    "Para el año 2030 en la meta de protección oceánica"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "5aca5bcb28d7dc2e479a44b69ac35005e844c23ca3388c28892c6c66f96938c1"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "89",
+  "source_section": "7.2. Sostenibilidad medioambiental: descarbonización de la agricultura, la ganadería y la pesca",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "biodiversity-and-circular-economy",
+  "summary": "Proteger al menos el 30 % de los océanos para 2030, retirar subsidios públicos a flotas industriales, poner fin a la pesca de arrastre y priorizar la pesca artesanal.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

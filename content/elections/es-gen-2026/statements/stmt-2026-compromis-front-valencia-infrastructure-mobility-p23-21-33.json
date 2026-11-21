@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-compromis-front-valencia-infrastructure-mobility-p23-21-33",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "compromis-front-valencia",
+  "policy_instrument": null,
+  "programme_id": "compromis-front-valencia-2026-v1",
+  "qualifications": [
+    "Salvo retrasos ocasionados por causas de fuerza mayor"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b198c0a0f034a25233c41ce5ac692d4f37e7ba168b992b4760cc25b0477ae2d8"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "23",
+  "source_section": "DRETS DE LES PERSONES CONSUMIDORES",
+  "source_url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rail-transport-and-high-speed",
+  "summary": "Reforzar los regímenes de compensación a usuarios por demoras en el transporte público, particularmente en los servicios ferroviarios.",
+  "summary_en": null,
+  "topic_id": "infrastructure-mobility"
+}

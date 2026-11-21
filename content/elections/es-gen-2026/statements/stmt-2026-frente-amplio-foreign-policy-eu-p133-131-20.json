@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-foreign-policy-eu-p133-131-20",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "9d7250ffffd55d23d5eb02b198c928a44fe42852685917d3b587a5a1bfc2be00"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "133",
+  "source_section": "17.2. Cooperación internacional y ayuda al desarrollo",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "development-cooperation",
+  "summary": "Elevar los fondos de cooperación internacional para el desarrollo desde el 0,27 % hasta alcanzar el 0,7 % de la Renta Nacional Bruta",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

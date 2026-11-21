@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-psoe-foreign-policy-eu-p108-101-27",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "psoe",
+  "policy_instrument": null,
+  "programme_id": "psoe-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "3a3af4562b885460a48ddf0c4f2bbf5d037715c59f0191a1c0e0bbe6cda2f37c"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "108",
+  "source_section": "463",
+  "source_url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "development-cooperation",
+  "summary": "Impulsar la reforma del Banco Mundial y del Fondo Monetario Internacional y articular instrumentos de condonación o alivio de deudas para Estados afectados por emergencias o catástrofes.",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

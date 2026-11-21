@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-foreign-policy-eu-p89-81-43",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "ed3cf7ee6d3745eacaae289d1af83d62a4c55e97bcb484df2010a5a698c11537"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "89",
+  "source_section": "11. GALIZA POLA PAZ",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "defense-spending-and-nato",
+  "summary": "Promover la salida de España de la OTAN y abogar por la disolución de dicha alianza militar",
+  "summary_en": null,
+  "topic_id": "foreign-policy-eu"
+}

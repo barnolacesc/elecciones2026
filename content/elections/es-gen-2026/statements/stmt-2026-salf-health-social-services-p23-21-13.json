@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-salf-health-social-services-p23-21-13",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "salf",
+  "policy_instrument": null,
+  "programme_id": "salf-29N-v1",
+  "qualifications": [
+    "Inexistencia de cita pública en 48 horas"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b063f5bf8e8a6b010248238065bc96197245fd767e552af3ef0b21ef14f59f0e"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "23",
+  "source_section": "6",
+  "source_url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "primary-care-and-sns",
+  "summary": "Garantizar consulta médica en un plazo máximo de 48 horas o financiar una consulta privada a cargo del sistema sanitario público",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

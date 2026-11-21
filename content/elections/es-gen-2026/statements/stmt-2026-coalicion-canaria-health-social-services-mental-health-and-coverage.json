@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-coalicion-canaria-health-social-services-mental-health-and-coverage",
+  "party_id": "coalicion-canaria",
+  "topic_id": "health-social-services",
+  "subtopic_id": "mental-health-and-coverage",
+  "statement_type": "explicit_proposal",
+  "summary": "Propone aumentar las partidas de los Presupuestos Generales del Estado destinadas a la atención de salud mental en Canarias.",
+  "review_status": "approved",
+  "programme_id": "coalicion-canaria-2026-v1",
+  "summary_en": null,
+  "quote": null,
+  "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
+  "source_version": "29N-v1",
+  "source_page": "9",
+  "source_section": "2, medida 12",
+  "qualifications": [
+    "La financiación, acordada con la comunidad autónoma, se destinaría a mejorar la atención primaria y los servicios especializados. La evaluación serviría para detectar y corregir carencias en la atención."
+  ],
+  "policy_instrument": null,
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved this exact batch and confirmed the review date.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/salut-29n-v1/approval-2026-11-20",
+      "reported_date": null,
+      "content_sha256": "eb35ce861b9168f4d1e581d398c2ac7d7d332715b642e799e291103da353ed83"
+    }
+  ],
+  "last_reviewed_date": "2026-11-20",
+  "correction_id": null,
+  "is_fixture": false
+}

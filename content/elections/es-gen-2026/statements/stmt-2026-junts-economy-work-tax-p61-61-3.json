@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-junts-economy-work-tax-p61-61-3",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "junts",
+  "policy_instrument": null,
+  "programme_id": "junts-2026-v1",
+  "qualifications": [
+    "Siempre que se garanticen condiciones salariales adecuadas al puesto de trabajo"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "f2a126e7dc58a3bd59b273097a5f2f99e2c0ff4d6d2f2eacb46b315e7223d43d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "61",
+  "source_section": "4.1",
+  "source_url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "pensions-and-social-security",
+  "summary": "Ampliar a todos los jóvenes menores de 35 años o recién titulados las bonificaciones patronales a la Seguridad Social por contratación indefinida.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

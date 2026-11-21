@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "election_id": "es-gen-2026",
+  "programme_id": "pnv-2026-v1",
+  "candidacy_id": "pnv",
+  "title": "Euskadi Zaindu. Defendemos Euskadi.",
+  "status": "official",
+  "version": "29N-v1",
+  "publisher": "EAJ-PNV",
+  "official_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "publication_date": "2026-11-09",
+  "retrieval_date": "2026-11-11",
+  "language": "es",
+  "sha256": "5af7a5b6f67c26bad87ef6c3ca01ae38aa1f1d7d9029efb32fc52482de0c1314",
+  "rights_status": "verified_link_only",
+  "is_fixture": false
+}

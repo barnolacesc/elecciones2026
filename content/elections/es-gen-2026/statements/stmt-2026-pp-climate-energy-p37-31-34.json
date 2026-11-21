@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-climate-energy-p37-31-34",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "9f3f33da578f9877f9efbf2a9cad530098002b70cc7b6265b100216bc1bb4b93"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "37",
+  "source_section": "126",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "water-management-and-drought",
+  "summary": "Promover un Pacto Nacional del Agua movilizando hasta 40.000 millones de euros hasta 2030 para modernización de regadíos, desalación, reutilización, almacenamiento hidroeléctrico y seguridad de presas.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

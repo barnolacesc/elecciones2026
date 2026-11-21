@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-podemos-agriculture-fisheries-rural-p114-111-29",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "podemos",
+  "policy_instrument": null,
+  "programme_id": "podemos-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "2d9f73a9e7dbf381172cbbf78e0ba1087fa7c51692a38010f161ce80fa471c46"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "114",
+  "source_section": "374",
+  "source_url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rural-development-and-generational-renewal",
+  "summary": "Establecer ayudas directas para la instalación de nuevas personas jóvenes agricultoras y ganaderas",
+  "summary_en": null,
+  "topic_id": "agriculture-fisheries-rural"
+}

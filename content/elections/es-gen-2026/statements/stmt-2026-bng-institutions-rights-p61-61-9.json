@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-bng-institutions-rights-p61-61-9",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "bng",
+  "policy_instrument": null,
+  "programme_id": "bng-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "31877cc297c2b4848e1b5f7ecf859b52d7911c7cfaaa0be7e57b067f1f40627d"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "61",
+  "source_section": "5. INFRAESTRUTURAS PÚBLICAS E ORDENACIÓN TERRITORIAL",
+  "source_url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf",
+  "source_version": "29N-v2",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "territorial-model-and-sfa",
+  "summary": "Transferir a Galicia las líneas ferroviarias interiores para su gestión mediante la creación de la empresa pública GALTRÉN.",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

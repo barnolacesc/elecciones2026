@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-erc-economy-work-tax-p26-21-38",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "erc",
+  "policy_instrument": null,
+  "programme_id": "erc-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "28db6dea56209e319a143a7d776a133f9c7f09c9498a3db1fb006860d05c4a94"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "26",
+  "source_section": "105. Reduir la durada màxima de la jornada laboral setmanal a 37 hores i mitja sense reducció salarial.",
+  "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "working-hours-reduction",
+  "summary": "Reducir la jornada laboral semanal máxima a 37 horas y media sin merma salarial modificando el artículo 34 del Estatuto de los Trabajadores, respetando convenios colectivos más favorables y reforzando el registro horario digital e inspeccionable.",
+  "summary_en": null,
+  "topic_id": "economy-work-tax"
+}

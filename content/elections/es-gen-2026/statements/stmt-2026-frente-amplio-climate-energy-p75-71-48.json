@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-climate-energy-p75-71-48",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "453b5eb19d92e3d2fd44adec6f07a1a9c8b092770db6190576053b5a79e3e6cc"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "75",
+  "source_section": "5.7",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "animal-welfare-and-protection",
+  "summary": "Modificar la Ley 50/1999 sobre animales potencialmente peligrosos para reforzar su protección y la convivencia responsable.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

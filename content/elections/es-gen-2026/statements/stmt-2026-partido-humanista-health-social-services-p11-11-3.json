@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-partido-humanista-health-social-services-p11-11-3",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "partido-humanista",
+  "policy_instrument": null,
+  "programme_id": "partido-humanista-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b7869295e0f241e1fc2076cf85190432cd9c6d28200023a907c6040b60a71a26"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "11",
+  "source_section": "Propuesta 3",
+  "source_url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "mental-health-and-coverage",
+  "summary": "Contratar psicólogos clínicos hasta asegurar una ratio de 20 por cada 100.000 habitantes en Atención Primaria y suprimir la contención mecánica y el aislamiento forzado",
+  "summary_en": null,
+  "topic_id": "health-social-services"
+}

@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-salf-institutions-rights-p25-21-24",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "salf",
+  "policy_instrument": null,
+  "programme_id": "salf-29N-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "9bfa0a29215217139b852dbbbdc73fa36953c18e47e5c3fa36a92c4997ae37a8"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "25",
+  "source_section": "Modelo de macrocárcel SALF",
+  "source_url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Implantar un régimen penitenciario cerrado de máxima seguridad sin permisos de salida ni tercer grado, con trabajo obligatorio y compensación del daño para homicidas, violadores, narcotraficantes y corruptos",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}

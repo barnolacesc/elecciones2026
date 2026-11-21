@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pnv-climate-energy-p33-31-25",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pnv",
+  "policy_instrument": null,
+  "programme_id": "pnv-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "cbf447d06c95bc1fc7939cc633a0f022653c06e3def843950d21a06a311913a8"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "33",
+  "source_section": "PROTECCIÓN DE PERSONAS ELECTRODEPENDIENTES 03",
+  "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
+  "source_version": "29N-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "renewables-and-grid",
+  "summary": "Blindar a las personas electrodependientes contra cortes de luz, asignándoles el bono social de vulnerabilidad severa y bonificaciones en el consumo médico.",
+  "summary_en": null,
+  "topic_id": "climate-energy"
+}

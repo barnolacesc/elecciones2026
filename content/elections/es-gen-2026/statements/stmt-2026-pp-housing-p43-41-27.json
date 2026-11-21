@@ -1,0 +1,37 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-pp-housing-p43-41-27",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "pp",
+  "policy_instrument": null,
+  "programme_id": "pp-2026-v1",
+  "qualifications": [
+    "Al prorrogar tres años el contrato y aplicar una subida de renta inferior al IPC"
+  ],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "41a366e7dc988a48a1850096e3c59f8a5be50e670f1a570df47935ca1f5e9a60"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "43",
+  "source_section": "156",
+  "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "rental-regulation",
+  "summary": "Conceder una deducción en el IRPF o crédito fiscal al arrendador particular que prorrogue tres años el contrato de vivienda habitual subiendo la renta por debajo del IPC.",
+  "summary_en": null,
+  "topic_id": "housing"
+}

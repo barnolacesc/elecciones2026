@@ -1,0 +1,35 @@
+{
+  "correction_id": null,
+  "election_id": "es-gen-2026",
+  "id": "stmt-2026-frente-amplio-institutions-rights-p143-141-24",
+  "is_fixture": false,
+  "last_reviewed_date": "2026-11-20",
+  "party_id": "frente-amplio",
+  "policy_instrument": null,
+  "programme_id": "frente-amplio-2026-v1",
+  "qualifications": [],
+  "quote": null,
+  "review_status": "approved",
+  "reviews": [
+    {
+      "reviewer_id": "cesc",
+      "review_date": "2026-11-20",
+      "verdict": "approved",
+      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "reviewer_kind": "human",
+      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "reported_date": "2026-11-21",
+      "content_sha256": "b2c043b99bcb30d31bcb61d476b25dca82c143570c7a6c3331b491ecd9e022f6"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_page": "143",
+  "source_section": "18.4. Deberes y derechos de las Fuerzas y Cuerpos de Seguridad del Estado para servir en un Estado democrático",
+  "source_url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+  "source_version": "2026-v1",
+  "statement_type": "explicit_proposal",
+  "subtopic_id": "civil-liberties-and-equality",
+  "summary": "Regular por ley el uso de la fuerza policial, armamento y vigilancia restringiendo medios lesivos y adaptando protocolos a tribunales y organismos internacionales",
+  "summary_en": null,
+  "topic_id": "institutions-rights"
+}
