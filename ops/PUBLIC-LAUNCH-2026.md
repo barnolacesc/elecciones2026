@@ -52,11 +52,10 @@ routes the apex to a separate public image on port 8081. The staging file
 owns the single default server. The www virtual host redirects to the apex
 and preserves the request path and query.
 
-The owner has requested the public cutover. The signoff matrix still lists
-the Project Partner role. Record its replacement or explicitly amend the
-matrix before treating the request as complete G4 signoff. Confirm the
-release engineering review and infrastructure measurements on the same
-published digest before exposing it.
+The owner requested the public cutover. On 2026-11-21, Cesc explicitly
+took responsibility for the departed Project Partner's signoff for
+this launch. The infrastructure and release evidence still applies
+to the same published digest.
 
 ## Routing rehearsal
 
