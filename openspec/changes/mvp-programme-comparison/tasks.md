@@ -349,3 +349,12 @@ the strict build and served the 29 approved mappings as reviewed on
 2026-11-21. All 68 schema checks and 14 focused browser projection tests
 passed. UPN–PP remains partial. Public release remains under G4.
 Python unittest discovery ran 536 tests with 17 skips and no failures.
+
+### E3.2 comparison bundle compression
+
+The serving image builds a deterministic compressed comparison bundle.
+Nginx negotiates gzip at the existing immutable URL and continues to
+serve the original bytes to clients that request identity encoding.
+The container parity test checks cache headers, encoding negotiation,
+exact decompressed bytes and direct sidecar access. Local Docker parity
+passed. Public capacity acceptance remains a separate G4 check.

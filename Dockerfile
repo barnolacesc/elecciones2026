@@ -30,6 +30,16 @@ RUN PYTHONPATH=/app/src python3 -m elecciones2026.generator build \
     --build-date "$BUILD_DATE" \
     --canonical-base "$CANONICAL_BASE"
 
+# Precompute the large immutable comparison script once for the serving image.
+RUN python3 - <<'PYTHON'
+from gzip import compress
+from pathlib import Path
+
+for bundle in Path("/app/dist").glob("comparison-data.*.js"):
+    compressed = bundle.with_suffix(".js.gz")
+    compressed.write_bytes(compress(bundle.read_bytes(), compresslevel=6, mtime=0))
+PYTHON
+
 # Preserve generated home metadata; client-side assets are copied by the generator.
 
 # Stage 2: Minimal non-privileged runtime server

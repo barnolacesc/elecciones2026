@@ -10,6 +10,7 @@ Verifies acceptance criteria for OpenSpec tasks 4.1 and 4.5:
 
 from __future__ import annotations
 
+import gzip
 import os
 import re
 import shutil
@@ -293,9 +294,22 @@ class TestLiveDockerContainerParity(unittest.TestCase):
             html = resp.read().decode("utf-8")
         match = re.search(r'comparison-data\.[0-9a-f]{16}\.js', html)
         self.assertIsNotNone(match)
-        with urllib.request.urlopen(f"{origin}/{match.group(0)}", timeout=5) as resp:
+        bundle_url = f"{origin}/{match.group(0)}"
+        with urllib.request.urlopen(bundle_url, timeout=5) as resp:
             self.assertEqual(resp.status, 200)
             self.assertEqual(resp.headers.get("Cache-Control"), "public, max-age=31536000, immutable")
+            self.assertIsNone(resp.headers.get("Content-Encoding"))
+            original = resp.read()
+        request = urllib.request.Request(bundle_url, headers={"Accept-Encoding": "gzip"})
+        with urllib.request.urlopen(request, timeout=5) as resp:
+            compressed = resp.read()
+            self.assertEqual(resp.headers.get("Content-Encoding"), "gzip")
+            self.assertIn("Accept-Encoding", resp.headers.get("Vary", ""))
+            self.assertEqual(resp.headers.get("Content-Length"), str(len(compressed)))
+            self.assertEqual(gzip.decompress(compressed), original)
+        with self.assertRaises(urllib.error.HTTPError) as missing:
+            urllib.request.urlopen(bundle_url + ".gz", timeout=5)
+        self.assertEqual(missing.exception.code, 404)
         for route in ("cuestionario/", "simulador/"):
             with urllib.request.urlopen(origin + "/" + route, timeout=5) as resp:
                 page = resp.read().decode("utf-8")
