@@ -47,24 +47,25 @@ Docker or activate a container.
 
 ## 1. Prepare the files on your Mac
 
-Use GitHub CLI authenticated to the private repository. Download the exact reviewed
+Set `VPS_HOST` locally to the origin address from the operator's protected settings.
+Use GitHub CLI authenticated to the repository. Download the exact reviewed
 commit from the PR, not a moving branch. Replace `REVIEWED_COMMIT` with its full SHA:
 
 ```sh
 gh api repos/c2ventures/elecciones2026/tarball/REVIEWED_COMMIT \
   > /tmp/elecciones-deployment.tgz
-scp /tmp/elecciones-deployment.tgz root@195.20.230.75:/root/
+scp /tmp/elecciones-deployment.tgz root@"$VPS_HOST":/root/
 ```
 
 Generate the dedicated key as described in the design, if not already generated.
 Send only its public half to the VPS:
 
 ```sh
-scp ~/.ssh/elecciones2026_deploy.pub root@195.20.230.75:/root/
+scp ~/.ssh/elecciones2026_deploy.pub root@"$VPS_HOST":/root/
 ```
 
 The full private key belongs in the GitHub `production` environment secret
-`VPS_SSH_KEY`. Use `VPS_USER=deployer`, `VPS_HOST=195.20.230.75`, and independently
+`VPS_SSH_KEY`. Use `VPS_USER=deployer`, `VPS_HOST` with the verified origin address, and independently
 verified `VPS_KNOWN_HOSTS` secrets. Set variable `VPS_SSH_PORT=22`.
 
 ## 2. Install root-owned tooling on the VPS
@@ -145,7 +146,7 @@ Use the separately verified host-key file:
 ssh -T -i ~/.ssh/elecciones2026_deploy \
   -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes \
   -o UserKnownHostsFile=~/.ssh/elecciones2026_known_hosts \
-  deployer@195.20.230.75 check
+  deployer@"$VPS_HOST" check
 ```
 
 Expect the ready message. Repeat with `id` instead of `check`; expect rejection

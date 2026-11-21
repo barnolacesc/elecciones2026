@@ -17,13 +17,13 @@ operator root shell; SSH and external probes explicitly marked Mac run locally.
 
 | Component | Confirmed setup | Evidence or remaining limit |
 |---|---|---|
-| Host | IONOS, `195.20.230.75`, Ubuntu 22.04.5, AMD64, 1 vCPU, 856 MiB visible RAM | Owner terminal output; no swap; new-host capacity must be measured |
+| Host | IONOS, Ubuntu 22.04.5, AMD64, 1 vCPU, 856 MiB visible RAM | Owner terminal output; no swap; new-host capacity must be measured |
 | Previous services | Finance service stopped/disabled; containers removed; Docker group removed from deployer | Unrelated PostgreSQL volume retained; finance backup/restore not verified |
 | Updates | Host rebooted; latest owner login reports zero immediately applicable updates | ESM notices remain; no OS release upgrade performed |
 | Registry | Root login to private GHCR with account `barnolacesc` | Owner confirmed exact private candidate pull after refreshing login |
 | Registrar / DNS | Domain bought at DonDominio; nameservers delegated to Cloudflare | Owner confirmed active delegation; DNSSEC not verified |
 | Domain | `eleccionesespaña2026.es` / `xn--eleccionesespaa2026-83b.es` | Canonical base uses the ASCII HTTPS form |
-| Preview DNS | Proxied A record `preview` → `195.20.230.75` | External requests reach Cloudflare and the authenticated origin |
+| Preview DNS | Proxied A record `preview` → configured IONOS origin | External requests reach Cloudflare and the authenticated origin |
 | Origin TLS | Matching Origin CA certificate and key; apex plus wildcard SANs | OpenSSL parse, public-key match and SAN checks passed; expires 2028-10-10 |
 | Origin client authentication | Global Cloudflare Authenticated Origin Pulls (AOP), nginx client-certificate verification | AOP CA parsed; expires 2029-11-01; global AOP is not exclusive to this account |
 | Cloudflare TLS mode | Full (strict), reported configured by owner | External HTTPS succeeds; dashboard/API mode not independently exported |
@@ -153,7 +153,7 @@ actual membership/privilege review; an account name alone provides no boundary.
 Download an exact reviewed repository commit on the operator's Mac, transfer its
 archive using the operator account, and install the files using
 [restricted deployment setup](RESTRICTED-DEPLOYMENT.md), sections 1–3. That guide's
-`195.20.230.75` examples must be replaced with the new host IP. Routine releases
+Use the new host address from the operator's protected settings. Routine releases
 never upload a repository or executable wrapper through the deployer account.
 
 Validate root ownership, sudo syntax and the forced-command policy. Test the
