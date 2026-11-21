@@ -33,7 +33,7 @@ RECORD_2026 = {'schema': 1, 'run_id': '123', 'run_attempt': '1', 'revision': 'b'
                'pilot_mode': 'approved-records-only',
                'canonical_base': 'https://xn--eleccionesespaa2026-83b.es',
                'image': IMAGE, 'home_sha256': 'c' * 64}
-ENV = {'VPS_HOST': '195.20.230.75', 'VPS_USER': 'deployer', 'VPS_SSH_PORT': '22',
+ENV = {'VPS_HOST': '192.0.2.10', 'VPS_USER': 'deployer', 'VPS_SSH_PORT': '22',
        'VPS_SSH_KEY': 'test-only-key', 'VPS_KNOWN_HOSTS': 'test-only-trust',
        'STAGING_BASIC_AUTH': 'test-user:test-password'}
 

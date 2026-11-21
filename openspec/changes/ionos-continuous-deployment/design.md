@@ -4,7 +4,7 @@
 
 See [proposal.md](proposal.md) for motivation and package E3.3 scope. Existing CI validates content, browser behavior, deterministic builds, Docker parity, and local release/load rehearsals. Its production job only prints gate messages and does not depend on the mobile-accessibility job. `ops/release.py` already switches digest-pinned images, checks health, serializes operations, and restores the prior image on failure. `ops/compose.yaml` binds to loopback and limits the serving container to 256 MB.
 
-Owner-confirmed target: Ubuntu IONOS VPS at `195.20.230.75`, 1 vCPU, 1 GB RAM, finance service to be retired, Cloudflare routing, domain `eleccionesespaña2026.es`. ASCII DNS form: `xn--eleccionesespaa2026-83b.es`. Ubuntu version, CPU architecture, disk capacity, current proxy, and actual DNS configuration still need a read-only preflight. The repo assumes Hetzner, a 2-vCPU/8-GB benchmark, and `elecciones2026.es`; the Docker build uses Python 3.12 despite the Python 3.14 roadmap. Record the runtime mismatch without combining a Python migration into this package.
+Owner-confirmed target: Ubuntu IONOS VPS, 1 vCPU, 1 GB RAM, finance service to be retired, Cloudflare routing, domain `eleccionesespaña2026.es`. ASCII DNS form: `xn--eleccionesespaa2026-83b.es`. Ubuntu version, CPU architecture, disk capacity, current proxy, and actual DNS configuration still need a read-only preflight. The repo assumes Hetzner, a 2-vCPU/8-GB benchmark, and `elecciones2026.es`; the Docker build uses Python 3.12 despite the Python 3.14 roadmap. Record the runtime mismatch without combining a Python migration into this package.
 
 ## Goals / Non-Goals
 
@@ -111,7 +111,7 @@ The finance workflows establish an operational reference, not evidence that the 
 | Deploy identity | Dedicated username and public key | VPS restricted SSH account |
 | `VPS_SSH_KEY` | Dedicated deployment private key; matching public key is installed on the VPS | GitHub `production` environment secret only |
 | `VPS_KNOWN_HOSTS` | Independently verified host-key entry, including nonstandard port if used | GitHub `production` environment secret |
-| `VPS_HOST` | `195.20.230.75` (bare IP, without `http://`) | GitHub `production` environment secret; matches finance workflow naming |
+| `VPS_HOST` | Verified origin address (bare IP, without `http://`) | GitHub `production` environment secret; matches finance workflow naming |
 | `VPS_USER` | Reused `deployer` username with restricted release permissions | GitHub `production` environment secret; matches finance workflow naming |
 | `VPS_SSH_PORT` | Verified SSH port | GitHub `production` environment variable |
 | Runner path | GitHub-hosted runner to owner-approved public key-only SSH with connection limiting | CI/network owner configuration |
@@ -121,7 +121,7 @@ The finance workflows establish an operational reference, not evidence that the 
 | Repository administration | Authority to configure environment reviewers, branch checks, secrets, and package access | GitHub owner/admin setup |
 | Release approval | G0/G2/G3/G4 evidence, reviewed public corpus, accessibility/security/load evidence | Restricted release record and production approval |
 
-Configure `VPS_HOST=195.20.230.75`, `VPS_USER=deployer`, `VPS_SSH_KEY`, and `VPS_KNOWN_HOSTS` under repository **Settings → Environments → production → Environment secrets**. Reference them through the `secrets` context, for example `${{ secrets.VPS_HOST }}` and `${{ secrets.VPS_SSH_KEY }}`. Configure `VPS_SSH_PORT` under **Environment variables** and reference `${{ vars.VPS_SSH_PORT }}`. The public IP and username do not require secrecy, but storing them as secrets matches the owner's finance workflow and masks routine output.
+Configure `VPS_HOST`, `VPS_USER=deployer`, `VPS_SSH_KEY`, and `VPS_KNOWN_HOSTS` under repository **Settings → Environments → production → Environment secrets**. Reference them through the `secrets` context, for example `${{ secrets.VPS_HOST }}` and `${{ secrets.VPS_SSH_KEY }}`. Configure `VPS_SSH_PORT` under **Environment variables** and reference `${{ vars.VPS_SSH_PORT }}`. Store the host and deployment username in the protected environment. Keep origin addresses out of tracked operational material.
 
 Install only the matching public deployment key in root-owned `/etc/ssh/authorized_keys/deployer`; account-wide ForceCommand and forwarding/TTY restrictions prevent old home keys or mutable home configuration from bypassing this access policy. The owner explicitly chose the existing deployment key; rotate it separately when reviewing other systems that trust it. Never reuse a password. Matching secret names do not share values across repositories: provision each value explicitly in this repository's protected environment. The verified server host-key entry is separate from the deployment key pair. The owner reports production SSH secrets and port configured; API checks confirm main-only deployment rules. Registry pull and activation prerequisites remain pending.
 
@@ -148,7 +148,7 @@ No private keys, passwords, tokens, finance backups, or visitor data belong in a
 
 ## Open Questions
 
-- What are the SSH port, Ubuntu version, architecture, disk capacity, and current proxy/listeners for `195.20.230.75`? These determine provisioning values, not the release contract.
+- What are the SSH port, Ubuntu version, architecture, disk capacity, and current proxy/listeners for the verified IONOS origin? These determine provisioning values, not the release contract.
 - Has the GitHub-hosted runner verified restricted key-only SSH access from outside the operator IP? Delivery stays disabled until these prerequisites are satisfied.
 - Which notification route and external probe should receive release/availability failures?
 
