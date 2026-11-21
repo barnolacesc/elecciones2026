@@ -91,9 +91,12 @@ def main():
                 "-keyout", str(root / "origin.key"), "-out", str(root / "origin.pem"),
                 "-days", "1", "-subj", "/CN=election.example.invalid")
             shutil.copy(root / "origin.pem", root / "origin-pull-ca.pem")
-            for template in ("origin.conf", "staging-origin.conf"):
-                conf = root / template
-                conf.write_text(Path(__file__).with_name(template).read_text())
+            template_dir = Path(__file__).parent
+            staging = (template_dir / "staging-origin.conf").read_text()
+            public = (template_dir / "origin.conf").read_text()
+            for name, config in (("staging.conf", staging), ("staging-and-public.conf", staging + "\n" + public)):
+                conf = root / name
+                conf.write_text(config)
                 run("docker", "run", "--rm", "--user", "0", "--entrypoint", "nginx",
                     "-v", f"{root}:/etc/elecciones2026/tls:ro",
                     "-v", f"{conf}:/etc/nginx/conf.d/default.conf:ro", args.base_image, "-t")

@@ -47,16 +47,35 @@ or the live IONOS host and does not meet the load acceptance gate.
 The apex and www currently return Cloudflare 521. The preview returns 401
 with authentication, no-store and noindex. The precise public origin fault
 is unverified. Keep preview authentication active during public cutover.
-The staging and public nginx templates each own a default server, so a
-configuration that retains both hostnames needs a single default server
-and distinct published and staging upstreams. Exposing the existing staging
-upstream would permit a later private delivery to replace public content.
+The launch configuration keeps the authenticated preview on port 8080 and
+routes the apex to a separate public image on port 8081. The staging file
+owns the single default server. The www virtual host redirects to the apex
+and preserves the request path and query.
 
 The owner has requested the public cutover. The signoff matrix still lists
 the Project Partner role. Record its replacement or explicitly amend the
 matrix before treating the request as complete G4 signoff. Confirm the
 release engineering review and infrastructure measurements on the same
 published digest before exposing it.
+
+## Routing rehearsal
+
+The TLS fixture served different markers on the staging and public
+upstreams. The apex selected port 8081. The www host returned 308 and
+preserved the path and query. The preview required Basic authentication,
+served port 8080, and retained no-store and noindex. Nginx rejected a
+request without the fixture client certificate. IONOS has an origin
+certificate with both the apex and wildcard names. The live public
+configuration has not been enabled.
+
+The operator must keep distinct Compose project names, loopback ports
+and release state for staging and public traffic. Staging remains on
+port 8080 with the existing state. For the public site, use port 8081
+and a root-owned public state directory. Verify the approved image on
+loopback before adding the public virtual host. Test the combined nginx
+configuration, confirm both Cloudflare DNS targets and Full (strict) TLS,
+then verify the apex response, the www redirect and the preview challenge.
+Keep the public virtual host removable without changing the preview.
 
 ## G4 evidence to record
 

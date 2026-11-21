@@ -119,8 +119,8 @@ Install **only** `ops/staging-origin.conf` in nginx's enabled HTTP configuration
 for the first private release. Remove default HTTP sites/listeners after reviewing
 unrelated configurations. The staging template requires Basic authentication at
 the origin as well as AOP, sends `private, no-store`, and disables indexing.
-It does not route the apex. `ops/origin.conf` is the public alternative for a later
-G4-approved artifact; do not enable both copies of their default server.
+It does not route the apex. After G4, add `ops/origin.conf` beside it and
+serve the approved public image on loopback port 8081.
 Test with `nginx -t` before reload. Nginx's worker needs read access to the password
 file; only root must have write access.
 
