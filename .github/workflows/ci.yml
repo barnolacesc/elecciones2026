@@ -273,7 +273,7 @@ jobs:
 
       - name: Build pinned Docker image via multi-stage builder
         run: |
-          docker build --platform linux/amd64 --build-arg ELECTION_ID=es-gen-2026 --build-arg QUIZ_MODE=unavailable --build-arg PILOT_PROVISIONAL=0 --label org.opencontainers.image.source=https://github.com/c2ventures/elecciones2026 --label org.opencontainers.image.revision="$GITHUB_SHA" -t elecciones2026:ci .
+          docker build --platform linux/amd64 --build-arg ELECTION_ID=es-gen-2026 --build-arg QUIZ_MODE=unavailable --build-arg PILOT_PROVISIONAL=0 --label org.opencontainers.image.source="https://github.com/${GITHUB_REPOSITORY}" --label org.opencontainers.image.revision="$GITHUB_SHA" -t elecciones2026:ci .
 
       - name: Run preview container with read-only filesystem and dropped capabilities
         run: |
@@ -397,7 +397,7 @@ jobs:
           retention-days: 7
 
       - name: Save the tested candidate and provenance
-        if: github.repository == 'c2ventures/elecciones2026' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: contains(fromJSON('["c2ventures/elecciones2026","barnolacesc/elecciones2026"]'), github.repository) && github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           mkdir -p build/candidate
           docker save elecciones2026:ci --output build/candidate/image.tar
@@ -423,7 +423,7 @@ jobs:
           PYTHON
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        if: github.repository == 'c2ventures/elecciones2026' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: contains(fromJSON('["c2ventures/elecciones2026","barnolacesc/elecciones2026"]'), github.repository) && github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           name: tested-serving-image
           path: build/candidate/
@@ -449,7 +449,7 @@ jobs:
     name: Publish tested private release candidate (E3.3)
     runs-on: ubuntu-latest
     needs: [validate, mobile-accessibility, docker-parity, fork-pr-isolation]
-    if: github.repository == 'c2ventures/elecciones2026' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: contains(fromJSON('["c2ventures/elecciones2026","barnolacesc/elecciones2026"]'), github.repository) && github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       contents: read
       packages: write
@@ -472,7 +472,10 @@ jobs:
           mkdir -p "$DOCKER_CONFIG"
           python3 - <<'PYTHON'
           import json, os, urllib.request, urllib.error
-          request = urllib.request.Request('https://api.github.com/orgs/c2ventures/packages/container/elecciones2026', headers={'Authorization': 'Bearer ' + os.environ['REGISTRY_TOKEN'], 'Accept': 'application/vnd.github+json'})
+          accounts = {'c2ventures/elecciones2026': 'orgs/c2ventures',
+                      'barnolacesc/elecciones2026': 'users/barnolacesc'}
+          account = accounts[os.environ['GITHUB_REPOSITORY']]
+          request = urllib.request.Request(f'https://api.github.com/{account}/packages/container/elecciones2026', headers={'Authorization': 'Bearer ' + os.environ['REGISTRY_TOKEN'], 'Accept': 'application/vnd.github+json'})
           try:
               with urllib.request.urlopen(request, timeout=20) as response:
                   assert json.load(response)['visibility'] == 'private', 'Registry package must remain private'
@@ -490,7 +493,7 @@ jobs:
           assert record['image_id'] == subprocess.check_output(['docker', 'image', 'inspect', '--format', '{{.Id}}', 'elecciones2026:ci'], text=True).strip()
           PYTHON
           printf '%s' "$REGISTRY_TOKEN" | docker login ghcr.io --username "$REGISTRY_USER" --password-stdin >/dev/null
-          tag="ghcr.io/c2ventures/elecciones2026:ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          tag="ghcr.io/${GITHUB_REPOSITORY}:ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           docker tag elecciones2026:ci "$tag"
           docker push "$tag"
           export CANDIDATE_TAG="$tag"
@@ -500,7 +503,7 @@ jobs:
           image = json.loads(subprocess.check_output(['docker', 'image', 'inspect', os.environ['CANDIDATE_TAG']], text=True))[0]
           record = json.loads(Path('candidate/release.json').read_text())
           assert image['Id'] == record['image_id']
-          record['image'] = next(ref for ref in image['RepoDigests'] if ref.startswith('ghcr.io/c2ventures/elecciones2026@sha256:'))
+          record['image'] = next(ref for ref in image['RepoDigests'] if ref.startswith('ghcr.io/' + os.environ['GITHUB_REPOSITORY'] + '@sha256:'))
           Path('candidate/release.json').write_text(json.dumps(record, indent=2) + '\n')
           PYTHON
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

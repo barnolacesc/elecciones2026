@@ -6,6 +6,8 @@ CI already validates the site and rehearses releases, but its production gate do
 
 ## What Changes
 
+- Prepare the owner-requested transfer to `barnolacesc/elecciones2026` within E3.3: retain IONOS, bind CI and images to the active approved owner, preserve legacy rollback images, and add a developer profile credit. The GitHub transfer and live activation remain separate operator steps.
+
 - Extend package E3.3 with a reviewed GitHub Actions delivery path: test, scan, publish a private immutable Docker image, obtain production approval, and deploy the exact tested digest over restricted SSH.
 - Adapt origin operations for the smaller IONOS host and Cloudflare domain `eleccionesespaña2026.es`, with an owner-controlled finance-service retirement and measured resource limits.
 - Match the finance VPS workflow’s secret names and SSH delivery pattern, while requiring verified host keys, isolated access, CI-tested immutable images, release approval, and rollback. Define credentials, runner connectivity, release evidence, health checks, and owner setup. Keep private pilot content behind authenticated staging until public-release gates pass.

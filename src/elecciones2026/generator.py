@@ -1179,6 +1179,7 @@ def render_base(
     <div class="footer-inner">
       <span>{{ footer_org }}</span>
       <span>{{ footer_values }}</span>
+      <span>Desarrollado por <a href="https://github.com/barnolacesc" rel="noopener noreferrer">barnolacesc</a></span>
     </div>
   </footer>
 </body>

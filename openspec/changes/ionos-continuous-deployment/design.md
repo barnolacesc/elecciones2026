@@ -14,6 +14,28 @@ Owner-confirmed target: Ubuntu IONOS VPS at `195.20.230.75`, 1 vCPU, 1 GB RAM, f
 
 ## Decisions
 
+### Personal repository transition — 2026-11-20
+
+The owner selected `barnolacesc/elecciones2026` as the future repository and
+retained IONOS. During transition, CI accepts only that path and the existing
+`c2ventures/elecciones2026`, on trusted main pushes. The publishing namespace
+follows the active repository, and package visibility checks use the matching
+GitHub user or organization API. Delivery binds CI metadata and image digests
+to the active allowlisted `GITHUB_REPOSITORY`; one location cannot supply a
+candidate for the other. Private images and manual approval remain required.
+
+The root-owned VPS wrapper permits both exact image namespaces so retained
+legacy images remain available for rollback. The operator must install the
+reviewed wrapper and verify new private-registry access before new-owner
+delivery. Keep the legacy namespace until retained rollback images no longer
+need it. Follow `ops/REPOSITORY-TRANSFER.md` for the ordered account, host and
+post-transfer checks. This PR does not execute them.
+
+The generated Spanish footer credits development to `barnolacesc` through a
+plain GitHub link. The README identifies the maintainer and pending transfer.
+Existing source attributions, political reviews and copyright notices retain
+their recorded identity. No home-cluster deployment or domain change is included.
+
 ### 1. Extend the existing trusted workflow
 
 Keep PR jobs read-only. Add trusted-main image publication to existing CI with validation, mobile accessibility, Docker parity and isolation dependencies. A separate manually dispatched delivery workflow validates the successful canonical main CI run and its artifact before receiving production secrets. Never use `pull_request_target` or execute untrusted artifacts with release credentials. The delivery record must match the selected main run, revision and run attempt; mutable tags cannot select a release.

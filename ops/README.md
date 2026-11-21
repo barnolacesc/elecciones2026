@@ -8,6 +8,9 @@ verification record and repeatable Hetzner migration steps. Use
 [IONOS delivery setup](IONOS-DELIVERY.md) for workflow and registry details.
 OpenSpec tasks 4.4 and 4.6 remain open until their full live evidence exists.
 
+The pending move to the owner's personal GitHub account keeps this IONOS setup.
+Use the [repository transfer runbook](REPOSITORY-TRANSFER.md) before transferring.
+
 ## Release prerequisites
 
 Cesc and the project partner must record G0 approval. The dated setup record
