@@ -307,3 +307,14 @@ started because recent account payments failed or the spending limit needs to
 increase; both jobs have no runner or steps. This is an infrastructure blocker,
 not a failed test assertion. CI and human review remain pending.
 
+## E1.1 source-register container validation — 2026-11-18
+
+The source-register parser now reports validation errors for malformed root,
+election, source, rights-review and replacement-entry containers instead of
+raising `AttributeError`. This structural guard applies to both elections; it
+does not implement `2023-corpus-completion` or approve any source or claim.
+
+`PYTHONPATH=src python3 -m unittest tests.test_source_register tests.test_schemas
+-q` passed 37 tests on Python 3.11.2; `git diff --check` passed. Project Python
+3.14 and CI remain separate. PR #101 still has a merge conflict and no human
+reviews; its historical CI does not validate this change.

@@ -16,6 +16,22 @@ REGISTER_PATH = Path(__file__).resolve().parent.parent / "content" / "sources" /
 
 
 class TestSourceRegister(unittest.TestCase):
+    def test_malformed_register_containers_fail_with_diagnostics(self) -> None:
+        base = json.loads(REGISTER_PATH.read_text(encoding="utf-8"))
+        cases = (
+            (None, "root must be an object"),
+            ({**base, "elections": {"id": "es-gen-2023"}}, "at least one election"),
+            ({**base, "elections": [None, *base["elections"]]}, "Election entry 0: must be an object"),
+            ({**base, "sources": [None, *base["sources"]]}, "Source entry 0: must be an object"),
+            ({**base, "sources": [{**base["sources"][0], "rights_review": None}]}, "rights_review must be an object"),
+            ({**base, "sources": [{**base["sources"][0], "replacement_history": [None]}]}, "replacement_history entry must be an object"),
+        )
+        for data, diagnostic in cases:
+            with self.subTest(diagnostic=diagnostic):
+                register, errors = load_register_from_dict(data)
+                self.assertIsNone(register)
+                self.assertTrue(any(diagnostic in error for error in errors), errors)
+
     def test_register_file_exists_and_loads(self) -> None:
         self.assertTrue(REGISTER_PATH.exists(), f"Missing register file at {REGISTER_PATH}")
         register = load_register(REGISTER_PATH)

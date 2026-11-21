@@ -99,6 +99,8 @@ class SourceRegister:
 
 
 def _parse_rights_review(data: dict[str, Any], record_id: str) -> tuple[Optional[RightsReview], list[str]]:
+    if not isinstance(data, dict):
+        return None, [f"Record {record_id}: rights_review must be an object."]
     errors: list[str] = []
     status = data.get("status")
     if not status or status not in VALID_RIGHTS_STATUSES:
@@ -131,6 +133,8 @@ def _parse_rights_review(data: dict[str, Any], record_id: str) -> tuple[Optional
 
 
 def _parse_replacement(data: dict[str, Any], record_id: str) -> tuple[Optional[ReplacementRecord], list[str]]:
+    if not isinstance(data, dict):
+        return None, [f"Record {record_id}: replacement_history entry must be an object."]
     errors: list[str] = []
     prior_version = data.get("prior_version")
     superseded_by = data.get("superseded_by")
@@ -159,6 +163,8 @@ def _parse_replacement(data: dict[str, Any], record_id: str) -> tuple[Optional[R
 
 def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegister], list[str]]:
     """Parse and validate a dictionary into a SourceRegister."""
+    if not isinstance(data, dict):
+        return None, ["Source register root must be an object."]
     errors: list[str] = []
 
     version = data.get("version")
@@ -174,10 +180,14 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
     elections_data = data.get("elections", [])
     if not elections_data or not isinstance(elections_data, list):
         errors.append("Register must define at least one election in 'elections'.")
+        elections_data = []
 
     elections: list[ElectionRecord] = []
     election_ids: set[str] = set()
-    for el in elections_data:
+    for index, el in enumerate(elections_data):
+        if not isinstance(el, dict):
+            errors.append(f"Election entry {index}: must be an object.")
+            continue
         el_id = el.get("id")
         if not el_id:
             errors.append("Election record missing 'id'.")
@@ -211,7 +221,10 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
     sources: list[SourceRecord] = []
     source_ids: set[str] = set()
 
-    for item in sources_data:
+    for index, item in enumerate(sources_data):
+        if not isinstance(item, dict):
+            errors.append(f"Source entry {index}: must be an object.")
+            continue
         record_id = item.get("id", "unknown")
         if record_id in source_ids:
             errors.append(f"Duplicate source id '{record_id}'.")
