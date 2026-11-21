@@ -1,10 +1,17 @@
 # E3.3 personal repository transfer
 
-Status: preparation only. The repository is still private at
-`c2ventures/elecciones2026`. The planned destination is
-`barnolacesc/elecciones2026`. Keep IONOS, Cloudflare, the domain, staging
-authentication and manual release approval. This procedure does not authorize
-a public release or a home-cluster deployment.
+Status: repository transferred on 2026-11-21. GitHub reports the same repository
+ID under `barnolacesc/elecciones2026` with private visibility. Keep IONOS,
+Cloudflare, the domain, staging authentication and manual release approval.
+This procedure does not authorize a public release or a home-cluster deployment.
+
+The transition PR and its main CI passed before transfer. The operator
+installed and verified the dual-namespace wrapper. The previous and current
+images were available both locally on IONOS and in the legacy registry.
+The transfer preserved remote heads and tags, open pull requests, Actions,
+and the main-only production environment and secret names. The preview
+continued to return HTTP 401 without credentials. `DEPLOYMENT_READY` remains
+false while the personal registry publication and IONOS pull are verified.
 
 ## Before transfer
 
