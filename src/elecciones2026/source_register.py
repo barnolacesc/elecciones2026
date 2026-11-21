@@ -227,6 +227,11 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
         if not party_id:
             errors.append(f"Record {record_id}: missing party_id.")
 
+        for field_name in ("candidature_name", "publisher"):
+            value = item.get(field_name)
+            if not isinstance(value, str) or not value.strip():
+                errors.append(f"Record {record_id}: missing or blank {field_name}.")
+
         official_url = item.get("official_url")
         if not official_url or not official_url.startswith(("http://", "https://")):
             errors.append(f"Record {record_id}: missing or invalid official_url.")

@@ -307,3 +307,19 @@ started because recent account payments failed or the spending limit needs to
 increase; both jobs have no runner or steps. This is an infrastructure blocker,
 not a failed test assertion. CI and human review remain pending.
 
+
+## E1.1 source-attribution metadata guard — 2026-11-19
+
+The source-register parser rejects missing, null and whitespace-only
+`candidature_name` or `publisher` values before a source can be accepted. This
+enforces the existing provenance requirement without choosing a publisher or
+changing any source record. The guard applies to both election IDs.
+
+Baseline: `origin/main` `d13ba68` has four 2023 source rows, all
+`published-unverified` with `not_reviewed` rights. Draft PR #101 remains
+conflicting and has no human reviews; its 2026-10-12 green CI is historical.
+Local evidence: `PYTHONPATH=src python3 -m unittest tests.test_source_register
+tests.test_schemas -q` passed 37 tests on Python 3.11. Source-register CLI
+validation passed for the unchanged 18-row register; `git diff --check` passed.
+Project Python 3.14,
+PR CI, source authenticity, rights and editorial review remain separate gates.

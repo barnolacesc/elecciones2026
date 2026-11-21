@@ -16,6 +16,20 @@ REGISTER_PATH = Path(__file__).resolve().parent.parent / "content" / "sources" /
 
 
 class TestSourceRegister(unittest.TestCase):
+    def test_source_attribution_fields_cannot_be_blank(self) -> None:
+        base = json.loads(REGISTER_PATH.read_text(encoding="utf-8"))
+        for field_name in ("candidature_name", "publisher"):
+            for value in (None, "", "  \t"):
+                with self.subTest(field=field_name, value=value):
+                    data = json.loads(json.dumps(base))
+                    data["sources"][0][field_name] = value
+                    register, errors = load_register_from_dict(data)
+                    self.assertIsNone(register)
+                    self.assertTrue(
+                        any(f"missing or blank {field_name}" in error for error in errors),
+                        errors,
+                    )
+
     def test_register_file_exists_and_loads(self) -> None:
         self.assertTrue(REGISTER_PATH.exists(), f"Missing register file at {REGISTER_PATH}")
         register = load_register(REGISTER_PATH)

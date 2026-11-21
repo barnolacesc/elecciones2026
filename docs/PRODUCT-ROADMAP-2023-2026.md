@@ -17,6 +17,12 @@ some exact-content owner-reported records exist, but rights, coverage and
 relationship decisions still need their own evidence. Reconcile the current
 main branch, open issues/PRs, and source registers at the start of each cycle.
 
+**2026-11-19 E1.1 evidence:** `origin/main` `d13ba68` still has only four 2023
+source rows, all `published-unverified` with `not_reviewed` rights. Draft PR
+#101 remains conflicting with no human reviews. A source-attribution parser
+guard rejects blank candidature/publisher metadata; this is a technical
+provenance check, not a coverage, rights or editorial decision.
+
 ## Success definition
 
 A phone visitor arriving from a shared link can see that they are viewing the
