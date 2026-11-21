@@ -307,3 +307,17 @@ started because recent account payments failed or the spending limit needs to
 increase; both jobs have no runner or steps. This is an infrastructure blocker,
 not a failed test assertion. CI and human review remain pending.
 
+## E1.1 source ID parser/schema parity — 2026-11-21
+
+- [x] Reject absent, blank, malformed and non-string source IDs in the direct
+  register loader. The JSON schema already requires a lowercase slug; this
+  closes the path that previously accepted a missing ID as `unknown`.
+- [ ] Confirm the updated branch in CI and merge review. This guard does not
+  approve a source, reuse right, 2023 coverage rule, claim or publication.
+
+Baseline: `origin/main` `d13ba683`; draft PR #101 `f8506a10` remains dirty
+with six merge-tree conflict paths and zero reviews. Main has four 2023 source
+rows, all `published-unverified`/`not_reviewed`; these are not a complete
+inventory. Local `PYTHONPATH=src python3 -m unittest tests.test_source_register
+-v` passed 10 tests; `git diff --check` passed. Full project CI and human
+review remain separate gates.

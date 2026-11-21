@@ -211,11 +211,15 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
     sources: list[SourceRecord] = []
     source_ids: set[str] = set()
 
-    for item in sources_data:
-        record_id = item.get("id", "unknown")
-        if record_id in source_ids:
+    for index, item in enumerate(sources_data):
+        record_id = item.get("id")
+        if not isinstance(record_id, str) or not re.fullmatch(r"[a-z0-9-]+", record_id):
+            errors.append(f"Source entry {index}: id must be a non-empty lowercase slug.")
+            record_id = f"invalid-source-{index}"
+        elif record_id in source_ids:
             errors.append(f"Duplicate source id '{record_id}'.")
-        source_ids.add(record_id)
+        else:
+            source_ids.add(record_id)
 
         election_id = item.get("election_id")
         if not election_id or election_id not in election_ids:

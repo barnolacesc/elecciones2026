@@ -139,6 +139,19 @@ class TestSourceRegister(unittest.TestCase):
         self.assertIsNone(reg)
         self.assertTrue(any("missing party_id" in e for e in errors))
 
+    def test_source_id_must_match_schema_even_without_schema_validation(self) -> None:
+        base = json.loads(REGISTER_PATH.read_text(encoding="utf-8"))
+        for source_id in (None, "", "Bad-ID", [], 123):
+            with self.subTest(source_id=source_id):
+                source = {**base["sources"][0]}
+                if source_id is None:
+                    source.pop("id")
+                else:
+                    source["id"] = source_id
+                register, errors = load_register_from_dict({**base, "sources": [source]})
+                self.assertIsNone(register)
+                self.assertTrue(any("id must be a non-empty lowercase slug" in e for e in errors), errors)
+
     def test_validation_rejects_verified_without_hash(self) -> None:
         invalid_data = {
             "version": "1.0.0",
