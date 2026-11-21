@@ -1,6 +1,7 @@
 """Tests for the electoral programme source register."""
 
 import json
+from copy import deepcopy
 from pathlib import Path
 import unittest
 
@@ -16,6 +17,54 @@ REGISTER_PATH = Path(__file__).resolve().parent.parent / "content" / "sources" /
 
 
 class TestSourceRegister(unittest.TestCase):
+    def test_2023_provenance_dates_are_real_calendar_dates(self) -> None:
+        with REGISTER_PATH.open(encoding="utf-8") as stream:
+            baseline = json.load(stream)
+
+        for field, invalid in (
+            ("retrieval_date", "2026-02-31"),
+            ("publication_date", "2023-13-01"),
+            ("publication_date", 20230723),
+        ):
+            with self.subTest(field=field, invalid=invalid):
+                data = deepcopy(baseline)
+                source = next(s for s in data["sources"] if s["id"] == "src-2023-pp-v1")
+                source[field] = invalid
+                register, errors = load_register_from_dict(data)
+                self.assertIsNone(register)
+                self.assertTrue(any(field in error for error in errors), errors)
+
+        for field, invalid in (
+            ("review_date", "2023-02-29"),
+            ("review_date", []),
+        ):
+            with self.subTest(field=field, invalid=invalid):
+                data = deepcopy(baseline)
+                source = next(s for s in data["sources"] if s["id"] == "src-2023-pp-v1")
+                source["rights_review"][field] = invalid
+                register, errors = load_register_from_dict(data)
+                self.assertIsNone(register)
+                self.assertTrue(any("rights review date" in error for error in errors), errors)
+
+        data = deepcopy(baseline)
+        source = next(s for s in data["sources"] if s["id"] == "src-2023-pp-v1")
+        source["replacement_history"] = [
+            {
+                "prior_version": "23J-v1",
+                "superseded_by": "src-2023-pp-v2",
+                "replacement_date": "2023-04-31",
+                "reason": "Fictional fixture",
+            }
+        ]
+        register, errors = load_register_from_dict(data)
+        self.assertIsNone(register)
+        self.assertTrue(any("replacement date" in error for error in errors), errors)
+
+        source["replacement_history"][0]["replacement_date"] = "2024-02-29"
+        register, errors = load_register_from_dict(data)
+        self.assertIsNotNone(register)
+        self.assertEqual(errors, [])
+
     def test_register_file_exists_and_loads(self) -> None:
         self.assertTrue(REGISTER_PATH.exists(), f"Missing register file at {REGISTER_PATH}")
         register = load_register(REGISTER_PATH)

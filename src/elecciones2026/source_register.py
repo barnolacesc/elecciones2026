@@ -11,11 +11,24 @@ import json
 import re
 import sys
 from dataclasses import dataclass, field
+from datetime import date
 from pathlib import Path
 from typing import Any, Optional
 
 SHA256_PATTERN = re.compile(r"^[a-f0-9]{64}$")
-DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+DATE_PATTERN = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}")
+
+
+def _valid_calendar_date(value: object) -> bool:
+    """Require a canonical ISO date that exists on the calendar."""
+    if not isinstance(value, str) or not DATE_PATTERN.fullmatch(value):
+        return False
+    try:
+        date.fromisoformat(value)
+    except ValueError:
+        return False
+    return True
+
 
 VALID_STATUSES = {
     "missing",
@@ -108,7 +121,7 @@ def _parse_rights_review(data: dict[str, Any], record_id: str) -> tuple[Optional
         )
 
     review_date = data.get("review_date")
-    if review_date and not DATE_PATTERN.match(review_date):
+    if review_date is not None and not _valid_calendar_date(review_date):
         errors.append(f"Record {record_id}: rights review date '{review_date}' must be YYYY-MM-DD.")
 
     terms_notes = data.get("terms_notes")
@@ -141,7 +154,7 @@ def _parse_replacement(data: dict[str, Any], record_id: str) -> tuple[Optional[R
         errors.append(f"Record {record_id}: replacement record missing prior_version.")
     if not superseded_by:
         errors.append(f"Record {record_id}: replacement record missing superseded_by.")
-    if not replacement_date or not DATE_PATTERN.match(replacement_date):
+    if not _valid_calendar_date(replacement_date):
         errors.append(f"Record {record_id}: replacement date '{replacement_date}' must be YYYY-MM-DD.")
     if not reason:
         errors.append(f"Record {record_id}: replacement record missing reason.")
@@ -239,13 +252,13 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
             )
 
         retrieval_date = item.get("retrieval_date")
-        if not retrieval_date or not DATE_PATTERN.match(retrieval_date):
+        if not _valid_calendar_date(retrieval_date):
             errors.append(
                 f"Record {record_id}: retrieval_date '{retrieval_date}' must be YYYY-MM-DD."
             )
 
         pub_date = item.get("publication_date")
-        if pub_date and not DATE_PATTERN.match(pub_date):
+        if pub_date is not None and not _valid_calendar_date(pub_date):
             errors.append(
                 f"Record {record_id}: publication_date '{pub_date}' must be YYYY-MM-DD."
             )

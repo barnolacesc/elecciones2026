@@ -8,6 +8,7 @@
 - [ ] 1.2 Register two lawful pilot programme versions with official URLs, dates, rights status and SHA-256; verify hashes against downloaded originals and document accessibility.
   - Evidence: PP 2023 (`c93baa...`) and ERC 2023 (`760db2...`) registered in `content/sources/register.json` with official URLs, verified hashes, and rights status; verified by `tests/test_source_register.py` and package `E0.4`.
   - Reopened by issue #42 (2026-10-10): PP/ERC file hashes rechecked, but prior generic quotation-rights signoffs are unsupported. Source/programme states are now `published-unverified` with rights pending; historical technical registration evidence does not establish this acceptance gate.
+  - E0.4 validator follow-up (2026-11-14): `source_register.py` previously accepted an impossible 2023 retrieval date (`2026-02-31`). The parser now requires real calendar dates for retrieval, publication, rights review and replacement fields. Fictional invalid-date/type cases and a valid leap-day case pass in `tests/test_source_register.py` (10 focused tests); `git diff --check` passes. The host has Python 3.11 only, so full Python 3.14 CI remains pending. This is date-format validation, not evidence of when a real document was published, source rights, or completion of task 1.2.
 - [x] 1.3 Define versioned programme, claim, relationship and correction schemas; verify example valid and invalid records against the schema validator.
   - Evidence: Five JSON Schema (Draft 2020-12) specifications implemented in `content/schemas/` (`programme.schema.json`, `statement.schema.json`, `relationship.schema.json`, `coverage.schema.json`, `correction.schema.json`). Typed dataclasses, loaders, and validators implemented in `src/elecciones2026/schemas.py`. Versioned example fixtures in `content/examples/` for all record types (statements, relationships, coverage, corrections) and negative fixtures in `content/examples/invalid/` verifying rejection of unreviewed claims, missing provenance, `not_found` with coordinates, and single-reviewer corrections. Verified by 27 schema tests in `tests/test_schemas.py` and CLI `elecciones2026.schemas validate-all` integrated into CI.
 
@@ -306,4 +307,3 @@ did not execute either test job. GitHub's check annotation says the job was not
 started because recent account payments failed or the spending limit needs to
 increase; both jobs have no runner or steps. This is an infrastructure blocker,
 not a failed test assertion. CI and human review remain pending.
-
