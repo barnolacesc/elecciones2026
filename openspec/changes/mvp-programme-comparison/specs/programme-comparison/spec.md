@@ -36,6 +36,10 @@ The MVP SHALL let users select exactly two parties and one topic at a time, rest
 - **WHEN** the private 2023 pilot has no measure for the selected topic and candidacies
 - **THEN** it labels the gap as limited pilot coverage, avoids a claim about the full programmes, and offers a keyboard-accessible route to the pilot sources and limitations.
 
+#### Scenario: One pilot candidature has no included position for a selected measure
+- **WHEN** the private 2023 pilot shows a measure for one candidature but has no included position for the other
+- **THEN** the empty card identifies a pilot review gap and does not claim that the other full programme lacks that measure.
+
 #### Scenario: Keyboard submission reaches results
 - **WHEN** the reader submits a valid topic and party selection
 - **THEN** the result heading names that selection and receives keyboard focus before the measure content.

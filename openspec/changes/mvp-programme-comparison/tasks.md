@@ -307,3 +307,23 @@ started because recent account payments failed or the spending limit needs to
 increase; both jobs have no runner or steps. This is an infrastructure blocker,
 not a failed test assertion. CI and human review remain pending.
 
+## E2.3/P1 private-pilot empty-card wording — 2026-11-10
+
+- [x] Keep the interactive private pilot's one-sided measure card within its
+  actual review scope. A missing included position now states that the pilot
+  cannot establish whether the full programme mentions the measure. This
+  changes no source, summary, rights decision, approval or public routing.
+- [x] Add a fictional one-sided measure regression case. Local evidence:
+  `node --test tests/pilot_selection_behavior.cjs` passed 8/8;
+  `node --check site/pilot-2023.js` and `git diff --check` passed.
+- [ ] Investigate hosted CI failures, rerun it, and review the private
+  rendered comparison. This copy correction does not establish source
+  coverage, editorial approval or release.
+
+CI follow-up: [PR #227 run 42808663610](https://github.com/c2ventures/elecciones2026/actions/runs/42808663610)
+failed in the pytest and mock-quiz browser steps; the targeted Node selection
+step passed. The same two steps failed on `origin/main` `488b6f5` in
+[run 41343879201](https://github.com/c2ventures/elecciones2026/actions/runs/41343879201).
+The job-step API identifies those steps, but log download returned HTTP 401,
+so the assertion-level causes remain unverified. Do not call this PR CI-green
+or attribute the failures to this copy change without logs and a rerun.

@@ -66,9 +66,9 @@
   function emptyCard(party) {
     const article = element('article', '', 'card card-empty');
     article.append(element('span', names[party], 'party'));
-    article.append(element('h3', 'Sin propuesta registrada', 'empty-title'));
-    article.append(element('p', 'No consta propuesta específica sobre esta medida en el extracto analizado del programa de 2023.', 'empty-note'));
-    article.append(element('p', 'Matiz: Una medida ausente o no seleccionada no implica oposición.', 'qualification'));
+    article.append(element('h3', 'Sin posición incluida en el piloto', 'empty-title'));
+    article.append(element('p', 'Este piloto no incluye una posición de esta candidatura para la medida seleccionada. No permite concluir si el programa completo la menciona.', 'empty-note'));
+    article.append(element('p', 'Matiz: La falta de contenido en el piloto no implica apoyo ni oposición.', 'qualification'));
     return article;
   }
   const topic = document.getElementById('pilot-topic');
