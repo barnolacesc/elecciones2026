@@ -83,6 +83,11 @@ audit](2023-MOBILE-ACCEPTANCE-AUDIT-2026-10-26.md) records passing local
 artifact/Node contracts and the still-missing rendered, device, participant
 and source-review evidence. P2 exit is not met by those technical checks.
 
+**Source-index evidence (2026-11-05):** [PR #204](https://github.com/c2ventures/elecciones2026/pull/204)
+repairs the private 2023 source links' missing new-tab notice. Ten local pilot
+tests pass on Python 3.11. This is a link-label repair, not source, editorial,
+device or screen-reader acceptance; P2 exit remains open.
+
 ### P3 — Usable, defensible questionnaire
 
 - Replace provisional/mock items with a balanced set drawn only from reviewed
