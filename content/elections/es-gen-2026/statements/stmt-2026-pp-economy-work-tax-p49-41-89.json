@@ -3,7 +3,7 @@
   "election_id": "es-gen-2026",
   "id": "stmt-2026-pp-economy-work-tax-p49-41-89",
   "is_fixture": false,
-  "last_reviewed_date": "2026-11-20",
+  "last_reviewed_date": "2026-11-21",
   "party_id": "pp",
   "policy_instrument": null,
   "programme_id": "pp-2026-v1",
@@ -13,13 +13,13 @@
   "reviews": [
     {
       "reviewer_id": "cesc",
-      "review_date": "2026-11-20",
+      "review_date": "2026-11-21",
       "verdict": "approved",
-      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
       "reviewer_kind": "human",
-      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
       "reported_date": "2026-11-21",
-      "content_sha256": "ec05615e97be6de8df5c2b0dcac943a9aaec083e6e0ac5a3e89e731159a45508"
+      "content_sha256": "f1555493e78b154ad8b96f097d9db7638e235778b5d3bea335e9916b302b5e31"
     }
   ],
   "schema_version": "1.0.0",
@@ -28,8 +28,8 @@
   "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
   "source_version": "2026-v1",
   "statement_type": "explicit_proposal",
-  "subtopic_id": "industrial-policy-and-smes",
+  "subtopic_id": "agricultural-policy-and-food-chain",
   "summary": "Crear un seguro de ingresos y rentas ante desajustes de mercado y reformar junto al sector la Ley de la Cadena Alimentaria para clarificar costes y márgenes.",
   "summary_en": null,
-  "topic_id": "economy-work-tax"
+  "topic_id": "agriculture-fisheries-rural"
 }

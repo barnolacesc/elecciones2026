@@ -3,7 +3,7 @@
   "election_id": "es-gen-2026",
   "id": "stmt-2026-pp-institutions-rights-p38-31-41",
   "is_fixture": false,
-  "last_reviewed_date": "2026-11-20",
+  "last_reviewed_date": "2026-11-21",
   "party_id": "pp",
   "policy_instrument": null,
   "programme_id": "pp-2026-v1",
@@ -13,13 +13,13 @@
   "reviews": [
     {
       "reviewer_id": "cesc",
-      "review_date": "2026-11-20",
+      "review_date": "2026-11-21",
       "verdict": "approved",
-      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
       "reviewer_kind": "human",
-      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
       "reported_date": "2026-11-21",
-      "content_sha256": "55d00ec21959b3b6406da61ca793e4c878839437181f6529713e43cb199aa3c5"
+      "content_sha256": "5a54f8af21d445cb120295f7bc5d77041e14c154105c13282419d5784236add2"
     }
   ],
   "schema_version": "1.0.0",
@@ -28,8 +28,8 @@
   "source_url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf",
   "source_version": "2026-v1",
   "statement_type": "explicit_proposal",
-  "subtopic_id": "civil-liberties-and-equality",
+  "subtopic_id": "cultural-heritage-and-institutions",
   "summary": "Asegurar la representatividad y pluralidad en los comités, jurados e instituciones culturales del sector público y evitar vetos ideológicos en subvenciones culturales.",
   "summary_en": null,
-  "topic_id": "institutions-rights"
+  "topic_id": "culture-sport"
 }

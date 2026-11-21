@@ -3,7 +3,7 @@
   "election_id": "es-gen-2026",
   "id": "stmt-2026-erc-institutions-rights-p35-31-37",
   "is_fixture": false,
-  "last_reviewed_date": "2026-11-20",
+  "last_reviewed_date": "2026-11-21",
   "party_id": "erc",
   "policy_instrument": null,
   "programme_id": "erc-2026-v1",
@@ -13,13 +13,13 @@
   "reviews": [
     {
       "reviewer_id": "cesc",
-      "review_date": "2026-11-20",
+      "review_date": "2026-11-21",
       "verdict": "approved",
-      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
       "reviewer_kind": "human",
-      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
       "reported_date": "2026-11-21",
-      "content_sha256": "1d77fdd52e344dca7fde2f60c35aa9ae2102fc7cf179960d4673f17aa7f83f16"
+      "content_sha256": "a55b5ecc8aeaadcd3576c6e26a252850c125e48254b738c4014edc61f7861e79"
     }
   ],
   "schema_version": "1.0.0",
@@ -28,8 +28,8 @@
   "source_url": "https://esquerrarepublicana.cat/documents/e2026-programa.pdf",
   "source_version": "2026-v1",
   "statement_type": "explicit_proposal",
-  "subtopic_id": "civil-liberties-and-equality",
+  "subtopic_id": "artificial-intelligence-and-digital-rights",
   "summary": "Supervisar los sistemas de inteligencia artificial en ámbitos sensibles como empleo, educación, salud y justicia para evitar la discriminación algorítmica.",
   "summary_en": null,
-  "topic_id": "institutions-rights"
+  "topic_id": "science-innovation-digital"
 }

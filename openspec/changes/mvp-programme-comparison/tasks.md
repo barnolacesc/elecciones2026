@@ -328,3 +328,24 @@ Local Python discovery ran 536 tests with 17 skips and no failures. All
 with the 2026 comparator taxonomy extension and retained the shared core
 taxonomy for its fictional questionnaire. The serving image runs Nginx
 1.30.7. Hosted CI and the public release gate remain separate.
+
+### E2.3 topic mapping approval — 2026-11-21
+
+Cesc approved the topic and subtopic changes for all 29 records in
+`cobertura-parlamentaria-29n-v1` with review date 2026-11-21.
+Approval reference: `editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21`.
+Manifest SHA-256:
+`3f65fcdb61d008e03f9ba3870d93e1aba2eea3d022fbcd22683c7806d94b10db`.
+
+The import validated the previous review and source hashes, then bound
+the approval to each new fingerprint. The summaries, source locators and
+record IDs remain unchanged. The prior approvals remain in Git history.
+The 29 changes cover 13 previously empty party-topic cells. PP, Vox,
+ERC, EH Bildu, EAJ-PNV and Coalición Canaria each now have approved
+records in all 12 topics.
+
+The strict build retained 5,621 records. The local Docker bundle matched
+the strict build and served the 29 approved mappings as reviewed on
+2026-11-21. All 68 schema checks and 14 focused browser projection tests
+passed. UPN–PP remains partial. Public release remains under G4.
+Python unittest discovery ran 536 tests with 17 skips and no failures.

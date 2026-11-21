@@ -3,7 +3,7 @@
   "election_id": "es-gen-2026",
   "id": "stmt-2026-pnv-economy-work-tax-p14-11-7",
   "is_fixture": false,
-  "last_reviewed_date": "2026-11-20",
+  "last_reviewed_date": "2026-11-21",
   "party_id": "pnv",
   "policy_instrument": null,
   "programme_id": "pnv-2026-v1",
@@ -13,13 +13,13 @@
   "reviews": [
     {
       "reviewer_id": "cesc",
-      "review_date": "2026-11-20",
+      "review_date": "2026-11-21",
       "verdict": "approved",
-      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
       "reviewer_kind": "human",
-      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
       "reported_date": "2026-11-21",
-      "content_sha256": "9842c1310ace57fefa1185dae164c79f5a61f894848096e8c42858bd25c8cfee"
+      "content_sha256": "db368b5349f77455957e40c7b1e5c99644871faa3bb7132e73a4fe947a728f06"
     }
   ],
   "schema_version": "1.0.0",
@@ -28,8 +28,8 @@
   "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
   "source_version": "29N-v1",
   "statement_type": "explicit_proposal",
-  "subtopic_id": "industrial-policy-and-smes",
+  "subtopic_id": "scientific-research-and-talent",
   "summary": "Adaptar los programas estatales de I+D+i para facilitar a las empresas vascas financiación en digitalización, automatización, investigación y nuevas tecnologías.",
   "summary_en": null,
-  "topic_id": "economy-work-tax"
+  "topic_id": "science-innovation-digital"
 }
