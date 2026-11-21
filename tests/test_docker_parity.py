@@ -271,6 +271,13 @@ class TestLiveDockerContainerParity(unittest.TestCase):
             self.assertIn('<html lang="es">', body)
             self.assertTrue("Elecciones" in body or "Generales" in body)
 
+        request = urllib.request.Request(f"http://127.0.0.1:{self.port}/", headers={"Accept-Encoding": "gzip"})
+        with urllib.request.urlopen(request, timeout=5) as resp:
+            compressed = resp.read()
+            self.assertEqual(resp.headers.get("Content-Encoding"), "gzip")
+            self.assertEqual(resp.headers.get("Content-Length"), str(len(compressed)))
+            self.assertEqual(gzip.decompress(compressed).decode("utf-8"), body)
+
     def test_container_revalidates_stable_name_styles_and_scripts(self) -> None:
         """Stable URLs must not pin old comparison/quiz UI across releases."""
         if not self.docker_ready:
@@ -309,7 +316,8 @@ class TestLiveDockerContainerParity(unittest.TestCase):
             self.assertEqual(gzip.decompress(compressed), original)
         with self.assertRaises(urllib.error.HTTPError) as missing:
             urllib.request.urlopen(bundle_url + ".gz", timeout=5)
-        self.assertEqual(missing.exception.code, 404)
+        with missing.exception as response:
+            self.assertEqual(response.code, 404)
         for route in ("cuestionario/", "simulador/"):
             with urllib.request.urlopen(origin + "/" + route, timeout=5) as resp:
                 page = resp.read().decode("utf-8")

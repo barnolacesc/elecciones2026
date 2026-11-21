@@ -30,14 +30,16 @@ RUN PYTHONPATH=/app/src python3 -m elecciones2026.generator build \
     --build-date "$BUILD_DATE" \
     --canonical-base "$CANONICAL_BASE"
 
-# Precompute the large immutable comparison script once for the serving image.
+# Precompute gzip variants of static text files once for the serving image.
 RUN python3 - <<'PYTHON'
 from gzip import compress
 from pathlib import Path
 
-for bundle in Path("/app/dist").glob("comparison-data.*.js"):
-    compressed = bundle.with_suffix(".js.gz")
-    compressed.write_bytes(compress(bundle.read_bytes(), compresslevel=6, mtime=0))
+compressible = {".css", ".html", ".js", ".json", ".svg", ".txt", ".xml"}
+for asset in Path("/app/dist").rglob("*"):
+    if asset.suffix in compressible and asset.is_file():
+        compressed = asset.with_name(asset.name + ".gz")
+        compressed.write_bytes(compress(asset.read_bytes(), compresslevel=6, mtime=0))
 PYTHON
 
 # Preserve generated home metadata; client-side assets are copied by the generator.
