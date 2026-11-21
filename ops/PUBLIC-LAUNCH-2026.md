@@ -22,27 +22,15 @@ endpoints at the time of the check.
 
 ## Cutover preflight — 2026-11-21
 
-The exact comparator candidate is `aaee54c162f5dd6cca6725d6a1c09f38414fb837`
-from [PR #267](https://github.com/c2ventures/elecciones2026/pull/267).
-[PR CI](https://github.com/c2ventures/elecciones2026/actions/runs/44895647753)
-passed schema and security checks, rendered mobile and keyboard regression,
-Docker serving parity and fork isolation. Candidate publication was skipped
-because this was a pull-request run. The latest successful main artifact
-is `d13ba683888de17714ad958a8034916168889cc3` and has private-staging
-classification. It is not the comparator candidate above.
+[Main CI](https://github.com/barnolacesc/elecciones2026/actions/runs/44930014014)
+built the optimized comparator. [Authenticated delivery](https://github.com/barnolacesc/elecciones2026/actions/runs/44930546571)
+verified its exact homepage in staging. The candidate contains 5,621
+approved proposals. The quiz is unavailable in this build.
 
-A local Docker build from the exact comparator revision returned HTTP 200
-with the expected content and headers on ten endpoints. These included
-education, the Junts and Frente Obrero pages, sources, method, corrections,
-the sitemap and the comparator bundle. The sitemap and comparison pages
-use the public canonical host. The quiz remains unavailable in this
-candidate. This arm64 loopback build is not the hosted release digest.
-
-The PR load artifact recorded scheduled p95 of 502 ms steady, 503 ms cold,
-and 1,450 ms burst on its merge test revision. Origin peak reached
-732, 680 and 833 requests/s respectively, above the 200 requests/s target.
-The burst also dropped requests. The fixture does not represent Cloudflare
-or the live IONOS host and does not meet the load acceptance gate.
+An isolated IONOS container matched the build's homepage hash and served
+ten verified routes. A short loopback trial completed 1,600 requests
+at 200 requests/s with scheduled p95 of 2.45 ms. Sustained traffic and
+Cloudflare cache checks remain open.
 
 The apex and www currently return Cloudflare 521. The preview returns 401
 with authentication, no-store and noindex. The precise public origin fault
@@ -75,6 +63,13 @@ loopback before adding the public virtual host. Test the combined nginx
 configuration, confirm both Cloudflare DNS targets and Full (strict) TLS,
 then verify the apex response, the www redirect and the preview challenge.
 Keep the public virtual host removable without changing the preview.
+
+## First-release recovery
+
+If the first public release fails, disable only the public nginx
+virtual host and reload after a syntax check. Restore changed public
+DNS and cache settings if required. Verify that preview remains
+authenticated. Keep staging release state separate from public recovery.
 
 ## G4 evidence to record
 
