@@ -33,7 +33,7 @@ RUN PYTHONPATH=/app/src python3 -m elecciones2026.generator build \
 # Preserve generated home metadata; client-side assets are copied by the generator.
 
 # Stage 2: Minimal non-privileged runtime server
-FROM nginx/nginx-unprivileged:1.30.6-alpine3.24@sha256:517607ae849a46afbd400616a783e4ead0290f52d20ccc0618ccea1a49362474 AS runtime
+FROM nginx/nginx-unprivileged:1.30.7-alpine3.24@sha256:0c53a1f2890c3526bfd201440f0fd3970e5b78f80630f58284aad0d34b5ec7bd AS runtime
 
 # Upgrade security-sensitive packages to address known upstream advisories
 USER root
