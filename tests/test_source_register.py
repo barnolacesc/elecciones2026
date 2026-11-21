@@ -23,6 +23,17 @@ class TestSourceRegister(unittest.TestCase):
         self.assertGreaterEqual(len(register.elections), 2)
         self.assertGreaterEqual(len(register.sources), 10)
 
+    def test_register_update_date_matches_schema(self) -> None:
+        data = json.loads(REGISTER_PATH.read_text(encoding="utf-8"))
+        schema = json.loads((REGISTER_PATH.parent / "register.schema.json").read_text(encoding="utf-8"))
+        self.assertEqual(schema["properties"]["last_updated"]["format"], "date")
+        for invalid in (None, "2026-11-12T00:00:00Z", "2026-02-30", "2026-11-12extra"):
+            with self.subTest(value=invalid):
+                candidate = {**data, "last_updated": invalid}
+                register, errors = load_register_from_dict(candidate)
+                self.assertIsNone(register)
+                self.assertTrue(any("last_updated" in error for error in errors), errors)
+
     def test_mandatory_fields_present_in_all_sources(self) -> None:
         register = load_register(REGISTER_PATH)
         for s in register.sources:
@@ -118,7 +129,7 @@ class TestSourceRegister(unittest.TestCase):
     def test_validation_rejects_missing_mandatory_fields(self) -> None:
         invalid_data = {
             "version": "1.0.0",
-            "last_updated": "2026-10-09T00:00:00Z",
+            "last_updated": "2026-10-09",
             "elections": [{"id": "el1", "name": "Election 1", "election_date": "2026-11-29", "call_decree": "BOE", "status": "active_monitoring"}],
             "sources": [
                 {
@@ -142,7 +153,7 @@ class TestSourceRegister(unittest.TestCase):
     def test_validation_rejects_verified_without_hash(self) -> None:
         invalid_data = {
             "version": "1.0.0",
-            "last_updated": "2026-10-09T00:00:00Z",
+            "last_updated": "2026-10-09",
             "elections": [{"id": "el1", "name": "Election 1", "election_date": "2026-11-29", "call_decree": "BOE", "status": "active_monitoring"}],
             "sources": [
                 {
@@ -169,7 +180,7 @@ class TestSourceRegister(unittest.TestCase):
     def test_validation_rejects_replaced_without_history(self) -> None:
         invalid_data = {
             "version": "1.0.0",
-            "last_updated": "2026-10-09T00:00:00Z",
+            "last_updated": "2026-10-09",
             "elections": [{"id": "el1", "name": "Election 1", "election_date": "2026-11-29", "call_decree": "BOE", "status": "active_monitoring"}],
             "sources": [
                 {
@@ -194,7 +205,7 @@ class TestSourceRegister(unittest.TestCase):
     def test_validation_accepts_valid_replaced_record(self) -> None:
         valid_data = {
             "version": "1.0.0",
-            "last_updated": "2026-10-09T00:00:00Z",
+            "last_updated": "2026-10-09",
             "elections": [{"id": "el1", "name": "Election 1", "election_date": "2026-11-29", "call_decree": "BOE", "status": "active_monitoring"}],
             "sources": [
                 {

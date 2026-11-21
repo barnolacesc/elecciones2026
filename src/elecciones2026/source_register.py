@@ -10,6 +10,7 @@ import argparse
 import json
 import re
 import sys
+from datetime import date
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Optional
@@ -166,8 +167,13 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
         errors.append("Missing or invalid register version.")
 
     last_updated = data.get("last_updated")
-    if not last_updated:
-        errors.append("Missing register last_updated timestamp.")
+    if not isinstance(last_updated, str) or not DATE_PATTERN.fullmatch(last_updated):
+        errors.append("Register last_updated must be a YYYY-MM-DD calendar date.")
+    else:
+        try:
+            date.fromisoformat(last_updated)
+        except ValueError:
+            errors.append("Register last_updated must be a YYYY-MM-DD calendar date.")
 
     description = data.get("description", "")
 
