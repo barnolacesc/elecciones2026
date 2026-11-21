@@ -48,11 +48,11 @@ Docker or activate a container.
 ## 1. Prepare the files on your Mac
 
 Set `VPS_HOST` locally to the origin address from the operator's protected settings.
-Use GitHub CLI authenticated to the repository. Download the exact reviewed
+Run GitHub CLI from the repository. Download the exact reviewed
 commit from the PR, not a moving branch. Replace `REVIEWED_COMMIT` with its full SHA:
 
 ```sh
-gh api repos/c2ventures/elecciones2026/tarball/REVIEWED_COMMIT \
+gh api "repos/{owner}/{repo}/tarball/REVIEWED_COMMIT" \
   > /tmp/elecciones-deployment.tgz
 scp /tmp/elecciones-deployment.tgz root@"$VPS_HOST":/root/
 ```
@@ -65,8 +65,8 @@ scp ~/.ssh/elecciones2026_deploy.pub root@"$VPS_HOST":/root/
 ```
 
 The full private key belongs in the GitHub `production` environment secret
-`VPS_SSH_KEY`. Use `VPS_USER=deployer`, `VPS_HOST` with the verified origin address, and independently
-verified `VPS_KNOWN_HOSTS` secrets. Set variable `VPS_SSH_PORT=22`.
+`VPS_SSH_KEY`. Set `VPS_USER` to `deployer` and `VPS_HOST` to the verified origin address.
+Use an independently verified `VPS_KNOWN_HOSTS` secret. Set variable `VPS_SSH_PORT=22`.
 
 ## 2. Install root-owned tooling on the VPS
 

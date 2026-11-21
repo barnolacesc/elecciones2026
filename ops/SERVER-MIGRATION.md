@@ -80,15 +80,10 @@ content and release review.
 | Release state | `/var/lib/elecciones2026/release.json` | root-only state directory 700; current and previous digests |
 | `origin.conf` | Public alternative to staging nginx configuration | Requires approved public content and G4; never enable both default servers |
 
-Existing 1Password items reported by the owner:
-
-- `Elecciones Cloudflare Origin TLS`: certificate, private key, domain and expiry.
-- `deploy test personal finances`: reused deployment SSH key, explicitly retained
-  by the owner. Review other systems trusting it before a future rotation.
-- The GHCR pull token and separate staging password were saved/provisioned by the
-  owner. Record their actual item names in the private operations inventory.
-- The operator key is separate from the deployer key. Do not assume it is in the
-  same item or copy its private half into the VPS.
+Keep the origin TLS certificate and its private key, the deployment SSH key,
+the registry pull token, and the staging password in the private operations
+inventory. Keep the operator SSH key separate from the deployer key. Review
+other services that trust a key before rotation.
 
 No secret values belong in Git, chat, shell arguments or CI logs. Store restricted
 configuration/state backups outside the repository. Do not copy the old host's SSH
