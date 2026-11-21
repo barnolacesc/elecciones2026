@@ -123,6 +123,34 @@ class BrowserPublishSetTests(unittest.TestCase):
             self.assertEqual(before, {str(p.relative_to(out)): p.read_bytes() for p in out.rglob('*') if p.is_file()})
             self.assertFalse(list(Path(tmp).glob('.tmp_*')))
 
+    def test_production_junts_coverage_has_browser_static_parity(self):
+        ctx = load_and_validate_site_data(
+            ROOT, records_dir=ROOT / 'content/elections/es-gen-2026')
+        payload = build_comparison_payload(ctx)
+        for topic, measures in payload['measuresByTopic'].items():
+            with self.subTest(topic=topic):
+                self.assertTrue(any('junts' in measure['positions'] for measure in measures))
+        with tempfile.TemporaryDirectory() as tmp:
+            bundle = Path(tmp) / 'data.js'
+            bundle.write_text(comparison_bundle_script(ctx))
+            for opponent in ('erc', 'upn-pp', 'frente-obrero'):
+                with self.subTest(opponent=opponent):
+                    args = ('housing', 'junts', opponent)
+                    static = render_comparison_measures(ctx, payload, *args)
+                    node = subprocess.run(
+                        ['node', str(ROOT / 'tests/comparison_publish_behavior.cjs'), str(bundle), *args],
+                        cwd=ROOT, capture_output=True, text=True, check=True,
+                    )
+                    browser = json.loads(node.stdout)['html']
+                    for html in (static, browser):
+                        self.assertIn('href="#proposal-list-a"', html)
+                        self.assertIn('href="#proposal-list-b"', html)
+                        self.assertIn('href="./partidos/junts/"', html)
+                        self.assertIn('PROGRAMA-ELECTORAL_JUNTS_29N.pdf#page=', html)
+                        self.assertNotIn('El contenido de esta medida está pendiente', html)
+                        self.assertNotIn('Lectura comparada', html)
+                        self.assertEqual('El documento de campaña es parcial.' in html, opponent != 'erc')
+
     def test_failed_switch_restores_previous_directory_and_removes_owned_backup(self):
         with tempfile.TemporaryDirectory() as tmp:
             out, staging = Path(tmp) / 'site', Path(tmp) / 'candidate'

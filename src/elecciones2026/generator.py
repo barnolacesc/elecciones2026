@@ -1290,8 +1290,11 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
 
     topics = {t.id: {"id": t.id, "name": t.name_es, "description": t.description_es}
               for t in ctx.taxonomy.topics}
+    sources = {src.party_id: src for src in ctx.register.sources
+               if src.election_id == ctx.election_id and src.status != "replaced"}
     parties = {pid: {"id": pid, "name": p.display_name, "shortName": p.short_name,
-                     "electionId": ctx.election_id, "isFixture": p.is_fixture}
+                     "electionId": ctx.election_id, "isFixture": p.is_fixture,
+                     "coverage": sources[pid].status if pid in sources else "missing"}
                for pid, p in sorted(ctx.parties.items())}
     measures = {tid: [] for tid in topics}
 
@@ -1338,6 +1341,7 @@ def build_comparison_payload(ctx: SiteContext) -> dict[str, Any]:
                 "summary": "", "positions": {stmt.party_id: position(stmt)}, "relationships": {},
             })
     return {"version": 1, "electionId": ctx.election_id, "buildDate": ctx.build_date,
+            "productionRecords": ctx.production_records,
             "topics": topics, "parties": parties, "measuresByTopic": measures}
 
 
@@ -1353,12 +1357,56 @@ def comparison_bundle_name(ctx: SiteContext) -> str:
     return f"comparison-data.{digest}.js"
 
 
+def render_independent_proposals(ctx: SiteContext, parties: dict[str, Any],
+                                 measures: list[dict[str, Any]], party_a: str, party_b: str,
+                                 *, has_linked_measures: bool) -> str:
+    sections = []
+    links = []
+    for letter, pid in (("A", party_a), ("B", party_b)):
+        positions = [m["positions"][pid] for m in measures if pid in m["positions"]]
+        title_id = f"proposal-list-{letter.lower()}"
+        name = escape(parties[pid]["name"])
+        links.append(f'<a class="action-link" href="#{title_id}">{name}</a>')
+        count = len(positions)
+        label = "1 ficha revisada" if count == 1 else f"{count} fichas revisadas"
+        cards = []
+        for index, position in enumerate(positions, 1):
+            card = render_party_card(ctx, ctx.statements[position["statementId"]], pid, letter)
+            cards.append(card.replace(f'party-{letter.lower()}-name', f'independent-{letter.lower()}-{index}-name'))
+        if not positions:
+            message = ("No hay otras fichas revisadas en este tema." if has_linked_measures
+                       else "No hay fichas revisadas en este tema.")
+            if parties[pid]["coverage"] == "partial":
+                message = "El documento de campaña es parcial."
+            cards.append(f'<p class="notice">{message}</p>')
+        sections.append(
+            f'<section class="proposal-list" aria-labelledby="{title_id}">'
+            f'<h3 id="{title_id}">{name}</h3>'
+            f'<p class="proposal-count">{label}</p>'
+            f'<a class="action-link" href="./partidos/{escape(pid)}/">Consultar programa y cobertura</a>'
+            f'{"".join(cards)}</section>'
+        )
+    return (f'<nav class="proposal-nav" aria-label="Listas por candidatura">{"".join(links)}</nav>'
+            f'<div class="measure-cards proposal-lists">{"".join(sections)}</div>')
+
+
 def render_comparison_measures(ctx: SiteContext, payload: dict[str, Any], topic_id: str,
                                party_a: str, party_b: str) -> str:
     """Render the same record projection that the browser uses, without inferred links."""
     measures = [m for m in payload["measuresByTopic"][topic_id]
                 if party_a in m["positions"] or party_b in m["positions"]]
+    independent = ""
+    if payload["productionRecords"]:
+        pair_keys = (f"{party_a}:{party_b}", f"{party_b}:{party_a}")
+        linked = [m for m in measures if any(key in m["relationships"] for key in pair_keys)]
+        standalone = [m for m in measures if not any(key in m["relationships"] for key in pair_keys)]
+        if standalone or not linked:
+            independent = render_independent_proposals(
+                ctx, payload["parties"], standalone, party_a, party_b, has_linked_measures=bool(linked))
+        measures = linked
     if not measures:
+        if independent:
+            return independent
         return '<div class="empty-measures" role="status" aria-live="polite"><h4>Contenido pendiente de publicación</h4><p>El contenido para estas candidaturas está pendiente de publicación.</p><p>La falta de contenido aprobado no indica que el programa carezca de propuestas. No implica apoyo ni oposición.</p><a class="action-link" href="./metodo/">Consultar cobertura y método</a></div>'
     output = []
     for idx, measure in enumerate(measures, 1):
@@ -1382,7 +1430,7 @@ def render_comparison_measures(ctx: SiteContext, payload: dict[str, Any], topic_
         summary = rel["summary"] if rel else "No consta una relación revisada entre las candidaturas seleccionadas. La falta de contenido aprobado no implica apoyo ni oposición."
         differences = '<ul class="analysis-differences">' + ''.join(f'<li>{escape(d)}</li>' for d in rel["differences"]) + '</ul>' if rel and rel["differences"] else ""
         output.append(f'<article class="measure-group" aria-labelledby="measure-{idx}-title"><div class="measure-head"><p class="measure-topic-label">TEMA: {escape(payload["topics"][topic_id]["name"].upper())}</p><h3 id="measure-{idx}-title" class="measure-title">{escape(measure["title"])}</h3><p class="measure-summary">{escape(measure["summary"])}</p></div><div class="measure-cards">{"".join(cards)}</div><aside class="analysis-callout rel-callout-{rel_type}" aria-label="Lectura comparada"><h4>{escape(label)}</h4><p>{escape(summary)}</p>{differences}</aside></article>')
-    return "\n".join(output)
+    return "\n".join([*output, independent]) if independent else "\n".join(output)
 
 
 def render_home_page(ctx: SiteContext) -> str:
@@ -2765,7 +2813,11 @@ def build_site(
     if quiz_mode != "unavailable":
         quiz_path = quiz_file or (ctx.content_dir / "quiz" / f"{quiz_mode}.json")
         try:
-            quiz_bundle = prepare_quiz(quiz_path, ctx, mock=quiz_mode == "mock")
+            quiz_ctx = ctx
+            if quiz_mode == "mock" and quiz_file is None:
+                # The bundled demonstration uses the shared core taxonomy.
+                quiz_ctx = replace(ctx, taxonomy=load_taxonomy(ctx.content_dir / "taxonomy.json"))
+            quiz_bundle = prepare_quiz(quiz_path, quiz_ctx, mock=quiz_mode == "mock")
         except (ValueError, OSError, QuizValidationError) as error:
             raise BuildValidationError(f"Quiz validation failed: {error}") from error
 

@@ -307,3 +307,24 @@ started because recent account payments failed or the spending limit needs to
 increase; both jobs have no runner or steps. This is an infrastructure blocker,
 not a failed test assertion. CI and human review remain pending.
 
+
+## E2.3 follow-up — 2026 programme comparison
+
+The production comparator groups independent reviewed summaries by
+candidature. It shows each group's count and a link to that candidature's
+programme and coverage. Reviewed comparisons between the selected
+candidatures keep their measure layout. Partial campaign access has an
+explicit message. A source gap does not imply an unreviewed claim.
+
+Junts has 731 approved records across all 12 topics. Static HTML and the
+browser projection were tested against the real corpus with ERC, UPN–PP
+and Frente Obrero. Local Docker serves the updated view. The approval
+fingerprints and source records are unchanged. A private classification
+proposal identifies existing reviewed records for 13 party-topic gaps.
+It requires an editorial decision before changing those assignments.
+
+Local Python discovery ran 536 tests with 17 skips and no failures. All
+22 Node share and pilot checks passed. The default mock quiz build passed
+with the 2026 comparator taxonomy extension and retained the shared core
+taxonomy for its fictional questionnaire. The serving image runs Nginx
+1.30.7. Hosted CI and the public release gate remain separate.

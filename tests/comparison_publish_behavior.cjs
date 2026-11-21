@@ -9,10 +9,11 @@ for (const id of ['selection-form', 'topic-select', 'party-a-select', 'party-b-s
     classList: { add() {}, remove() {} }, setAttribute() {}, removeAttribute() {},
     addEventListener(type, handler) { this.handlers[type] = handler; } };
 }
-nodes['topic-select'].value = 'housing';
-nodes['party-a-select'].value = 'partido-ejemplo-a';
-nodes['party-b-select'].value = 'partido-ejemplo-b';
-const location = { href: 'https://preview.test/?topic=housing&partyA=partido-ejemplo-a&partyB=partido-ejemplo-b' };
+const [topic = 'housing', partyA = 'partido-ejemplo-a', partyB = 'partido-ejemplo-b'] = process.argv.slice(3);
+nodes['topic-select'].value = topic;
+nodes['party-a-select'].value = partyA;
+nodes['party-b-select'].value = partyB;
+const location = { href: 'https://preview.test/?' + new URLSearchParams({ topic, partyA, partyB }) };
 const document = { readyState: 'complete', body: { dataset: { election: 'es-gen-2026', comparison: 'validated' } },
   getElementById: id => nodes[id], querySelector: () => nodes.label };
 const window = { location, history: { replaceState(_, __, href) { location.href = href; } } };
