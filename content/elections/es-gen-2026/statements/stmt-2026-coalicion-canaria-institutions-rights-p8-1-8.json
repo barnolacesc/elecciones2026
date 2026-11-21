@@ -3,7 +3,7 @@
   "election_id": "es-gen-2026",
   "id": "stmt-2026-coalicion-canaria-institutions-rights-p8-1-8",
   "is_fixture": false,
-  "last_reviewed_date": "2026-11-20",
+  "last_reviewed_date": "2026-11-21",
   "party_id": "coalicion-canaria",
   "policy_instrument": null,
   "programme_id": "coalicion-canaria-2026-v1",
@@ -13,13 +13,13 @@
   "reviews": [
     {
       "reviewer_id": "cesc",
-      "review_date": "2026-11-20",
+      "review_date": "2026-11-21",
       "verdict": "approved",
-      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
       "reviewer_kind": "human",
-      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
       "reported_date": "2026-11-21",
-      "content_sha256": "4042b30e81aed7407f797dcdcef0db1fcbabba559eb939f7411430bcd43484f1"
+      "content_sha256": "2bed039fde18d712f794d5dbad306d1297ced2940f81f4f06a717f981e4a0581"
     }
   ],
   "schema_version": "1.0.0",
@@ -28,8 +28,8 @@
   "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
   "source_version": "29N-v1",
   "statement_type": "explicit_proposal",
-  "subtopic_id": "territorial-model-and-sfa",
+  "subtopic_id": "air-and-maritime-transport-insular-mobility",
   "summary": "Desarrollar la participación del Gobierno y cabildos en la planificación y gestión portuaria y aeroportuaria, actualizar inversiones en aeropuertos no capitalinos y negociar la gestión autonómica del Registro Especial de Buques.",
   "summary_en": null,
-  "topic_id": "institutions-rights"
+  "topic_id": "infrastructure-mobility"
 }

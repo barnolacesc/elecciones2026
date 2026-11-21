@@ -3,7 +3,7 @@
   "election_id": "es-gen-2026",
   "id": "stmt-2026-coalicion-canaria-economy-work-tax-p13-11-25",
   "is_fixture": false,
-  "last_reviewed_date": "2026-11-20",
+  "last_reviewed_date": "2026-11-21",
   "party_id": "coalicion-canaria",
   "policy_instrument": null,
   "programme_id": "coalicion-canaria-2026-v1",
@@ -13,13 +13,13 @@
   "reviews": [
     {
       "reviewer_id": "cesc",
-      "review_date": "2026-11-20",
+      "review_date": "2026-11-21",
       "verdict": "approved",
-      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
       "reviewer_kind": "human",
-      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
       "reported_date": "2026-11-21",
-      "content_sha256": "baa2637bd6be06bc48e9e3457ad139f0fc20022286d22507c753f40c527679df"
+      "content_sha256": "f1289c4514c055b13b56c583b869017839f7b4b9f5b1a2582bd75fd1988aeab1"
     }
   ],
   "schema_version": "1.0.0",
@@ -28,8 +28,8 @@
   "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
   "source_version": "29N-v1",
   "statement_type": "explicit_proposal",
-  "subtopic_id": "industrial-policy-and-smes",
+  "subtopic_id": "rural-development-and-generational-renewal",
   "summary": "Reclamar financiación estatal y europea para favorecer la incorporación de personas jóvenes a la agricultura, ganadería y pesca.",
   "summary_en": null,
-  "topic_id": "economy-work-tax"
+  "topic_id": "agriculture-fisheries-rural"
 }

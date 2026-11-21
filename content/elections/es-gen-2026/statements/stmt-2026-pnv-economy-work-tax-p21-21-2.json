@@ -3,7 +3,7 @@
   "election_id": "es-gen-2026",
   "id": "stmt-2026-pnv-economy-work-tax-p21-21-2",
   "is_fixture": false,
-  "last_reviewed_date": "2026-11-20",
+  "last_reviewed_date": "2026-11-21",
   "party_id": "pnv",
   "policy_instrument": null,
   "programme_id": "pnv-2026-v1",
@@ -15,13 +15,13 @@
   "reviews": [
     {
       "reviewer_id": "cesc",
-      "review_date": "2026-11-20",
+      "review_date": "2026-11-21",
       "verdict": "approved",
-      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
       "reviewer_kind": "human",
-      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
       "reported_date": "2026-11-21",
-      "content_sha256": "710ee70bf8d4ca9644d4b852228337f1e1974c02a1c6a1d156eaa179bd0fd766"
+      "content_sha256": "ef25657ee9b9d4d7fb3c705164a93fa52f15f6cc005d8c35bb5108632f0f9e43"
     }
   ],
   "schema_version": "1.0.0",
@@ -30,8 +30,8 @@
   "source_url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n",
   "source_version": "29N-v1",
   "statement_type": "explicit_proposal",
-  "subtopic_id": "tax-reform-and-brackets",
+  "subtopic_id": "cultural-access-patronage-and-creators",
   "summary": "Revisar el IVA cultural para incentivar la actividad de artistas y galerías dentro del marco de la normativa europea",
   "summary_en": null,
-  "topic_id": "economy-work-tax"
+  "topic_id": "culture-sport"
 }

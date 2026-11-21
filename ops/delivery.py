@@ -13,8 +13,7 @@ import tempfile
 import urllib.error
 import urllib.request
 
-REPOSITORY = "c2ventures/elecciones2026"
-IMAGE_PATTERN = re.compile(r"ghcr\.io/c2ventures/elecciones2026@sha256:[a-f0-9]{64}")
+TRUSTED_REPOSITORIES = ("c2ventures/elecciones2026", "barnolacesc/elecciones2026")
 STAGING_HOST = "preview.xn--eleccionesespaa2026-83b.es"
 
 
@@ -22,18 +21,28 @@ class DeliveryError(Exception):
     pass
 
 
+def trusted_repository() -> str:
+    repository = os.environ.get("GITHUB_REPOSITORY", "")
+    if repository not in TRUSTED_REPOSITORIES:
+        raise DeliveryError("Repository is not authorized for delivery")
+    return repository
+
+
 def trusted_run(run: dict, run_id: str) -> None:
+    repository = trusted_repository()
     if not (run_id.isdecimal() and str(run.get("id")) == run_id
             and run.get("event") == "push" and run.get("head_branch") == "main"
             and run.get("path") == ".github/workflows/ci.yml"
             and run.get("status") == "completed" and run.get("conclusion") == "success"
-            and run.get("repository", {}).get("full_name") == REPOSITORY
-            and run.get("head_repository", {}).get("full_name") == REPOSITORY
+            and run.get("repository", {}).get("full_name") == repository
+            and run.get("head_repository", {}).get("full_name") == repository
             and re.fullmatch(r"[a-f0-9]{40}", run.get("head_sha", ""))):
         raise DeliveryError("Only a successful canonical main push CI run is accepted")
 
 
 def candidate(record: dict, run: dict) -> str:
+    trusted_run(run, str(run["id"]))
+    image_pattern = re.escape("ghcr.io/" + trusted_repository()) + r"@sha256:[a-f0-9]{64}"
     image = record.get("image", "")
     valid_election_mode = (
         (record.get("election_id") == "es-gen-2026"
@@ -41,7 +50,7 @@ def candidate(record: dict, run: dict) -> str:
         or (record.get("election_id") == "es-gen-2023"
             and record.get("pilot_mode") == "source-linked-provisional")
     )
-    if not (record.get("schema") == 1 and IMAGE_PATTERN.fullmatch(image)
+    if not (record.get("schema") == 1 and re.fullmatch(image_pattern, image)
             and record.get("revision") == run["head_sha"]
             and record.get("run_id") == str(run["id"])
             and record.get("run_attempt") == str(run["run_attempt"])
@@ -56,10 +65,11 @@ def candidate(record: dict, run: dict) -> str:
 
 
 def read_run(run_id: str) -> dict:
+    repository = trusted_repository()
     if not run_id.isdecimal():
         raise DeliveryError("CI run ID must be numeric")
     request = urllib.request.Request(
-        f"https://api.github.com/repos/{REPOSITORY}/actions/runs/{run_id}",
+        f"https://api.github.com/repos/{repository}/actions/runs/{run_id}",
         headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}",
                  "Accept": "application/vnd.github+json"},
     )

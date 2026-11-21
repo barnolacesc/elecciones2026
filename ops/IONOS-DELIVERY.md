@@ -1,5 +1,9 @@
 # E3.3 IONOS delivery setup
 
+For the pending transfer to `barnolacesc/elecciones2026`, follow the
+[repository transfer runbook](REPOSITORY-TRANSFER.md) first. IONOS remains the
+hosting target; the transfer does not activate a public release.
+
 Status: the owner has completed registry login, Cloudflare delegation, origin TLS,
 authenticated preview nginx and SSH/UFW setup. Private staging activation and
 hosted external verification passed in delivery run 38182379207.

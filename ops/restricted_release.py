@@ -10,8 +10,10 @@ import sys
 
 INSTALL_DIR = Path("/opt/elecciones2026")
 STATE_DIR = Path("/var/lib/elecciones2026")
-REPOSITORY = "ghcr.io/c2ventures/elecciones2026"
-DEPLOY = re.compile(r"deploy (" + re.escape(REPOSITORY) + r"@sha256:[a-f0-9]{64})\Z")
+REPOSITORIES = ("ghcr.io/c2ventures/elecciones2026", "ghcr.io/barnolacesc/elecciones2026")
+# Retain the legacy namespace while approved rollback images still use it.
+DEPLOY = re.compile(r"deploy ((?:" + "|".join(map(re.escape, REPOSITORIES))
+                   + r")@sha256:[a-f0-9]{64})\Z")
 ENVIRONMENT = {
     "HOME": "/root",
     "PATH": "/usr/bin:/bin",

@@ -468,6 +468,28 @@ main {
   gap: var(--space-4);
 }
 
+.proposal-list {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.proposal-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.proposal-list h3 {
+  text-wrap: balance;
+}
+
+.proposal-count {
+  font-variant-numeric: tabular-nums;
+}
+
 .measure-group {
   margin-bottom: var(--space-8);
   padding-bottom: var(--space-8);
@@ -997,6 +1019,12 @@ footer {
   gap: var(--space-2);
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
+}
+
+.footer-inner a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 /* --------------------------------------------------

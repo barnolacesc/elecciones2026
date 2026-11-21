@@ -307,3 +307,45 @@ started because recent account payments failed or the spending limit needs to
 increase; both jobs have no runner or steps. This is an infrastructure blocker,
 not a failed test assertion. CI and human review remain pending.
 
+
+## E2.3 follow-up — 2026 programme comparison
+
+The production comparator groups independent reviewed summaries by
+candidature. It shows each group's count and a link to that candidature's
+programme and coverage. Reviewed comparisons between the selected
+candidatures keep their measure layout. Partial campaign access has an
+explicit message. A source gap does not imply an unreviewed claim.
+
+Junts has 731 approved records across all 12 topics. Static HTML and the
+browser projection were tested against the real corpus with ERC, UPN–PP
+and Frente Obrero. Local Docker serves the updated view. The approval
+fingerprints and source records are unchanged. A private classification
+proposal identifies existing reviewed records for 13 party-topic gaps.
+It requires an editorial decision before changing those assignments.
+
+Local Python discovery ran 536 tests with 17 skips and no failures. All
+22 Node share and pilot checks passed. The default mock quiz build passed
+with the 2026 comparator taxonomy extension and retained the shared core
+taxonomy for its fictional questionnaire. The serving image runs Nginx
+1.30.7. Hosted CI and the public release gate remain separate.
+
+### E2.3 topic mapping approval — 2026-11-21
+
+Cesc approved the topic and subtopic changes for all 29 records in
+`cobertura-parlamentaria-29n-v1` with review date 2026-11-21.
+Approval reference: `editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21`.
+Manifest SHA-256:
+`3f65fcdb61d008e03f9ba3870d93e1aba2eea3d022fbcd22683c7806d94b10db`.
+
+The import validated the previous review and source hashes, then bound
+the approval to each new fingerprint. The summaries, source locators and
+record IDs remain unchanged. The prior approvals remain in Git history.
+The 29 changes cover 13 previously empty party-topic cells. PP, Vox,
+ERC, EH Bildu, EAJ-PNV and Coalición Canaria each now have approved
+records in all 12 topics.
+
+The strict build retained 5,621 records. The local Docker bundle matched
+the strict build and served the 29 approved mappings as reviewed on
+2026-11-21. All 68 schema checks and 14 focused browser projection tests
+passed. UPN–PP remains partial. Public release remains under G4.
+Python unittest discovery ran 536 tests with 17 skips and no failures.

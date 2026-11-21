@@ -19,8 +19,8 @@ spec.loader.exec_module(delivery)
 IMAGE = 'ghcr.io/c2ventures/elecciones2026@sha256:' + 'a' * 64
 RUN = {'id': 123, 'run_attempt': 1, 'event': 'push', 'head_branch': 'main',
        'path': '.github/workflows/ci.yml', 'status': 'completed', 'conclusion': 'success',
-       'repository': {'full_name': delivery.REPOSITORY},
-       'head_repository': {'full_name': delivery.REPOSITORY}, 'head_sha': 'b' * 40}
+       'repository': {'full_name': delivery.TRUSTED_REPOSITORIES[0]},
+       'head_repository': {'full_name': delivery.TRUSTED_REPOSITORIES[0]}, 'head_sha': 'b' * 40}
 RECORD = {'schema': 1, 'run_id': '123', 'run_attempt': '1', 'revision': 'b' * 40,
           'platform': 'linux/amd64', 'classification': 'private-staging',
           'election_id': 'es-gen-2023', 'quiz_mode': 'unavailable',
@@ -39,6 +39,50 @@ ENV = {'VPS_HOST': '195.20.230.75', 'VPS_USER': 'deployer', 'VPS_SSH_PORT': '22'
 
 
 class DeliveryTests(unittest.TestCase):
+    def setUp(self):
+        context = patch.dict(delivery.os.environ, GITHUB_REPOSITORY=delivery.TRUSTED_REPOSITORIES[0])
+        context.start()
+        self.addCleanup(context.stop)
+
+    def test_transfer_binds_run_and_image_to_the_active_repository(self):
+        for repository in delivery.TRUSTED_REPOSITORIES:
+            run = copy.deepcopy(RUN)
+            run['repository']['full_name'] = repository
+            run['head_repository']['full_name'] = repository
+            record = dict(RECORD, image='ghcr.io/' + repository + '@sha256:' + 'a' * 64)
+            with self.subTest(repository=repository), \
+                    patch.dict(delivery.os.environ, GITHUB_REPOSITORY=repository):
+                delivery.trusted_run(run, '123')
+                self.assertEqual(delivery.candidate(record, run), record['image'])
+                for other in (*delivery.TRUSTED_REPOSITORIES, 'fork/elecciones2026'):
+                    if other == repository:
+                        continue
+                    with self.assertRaises(delivery.DeliveryError):
+                        delivery.candidate(dict(record, image='ghcr.io/' + other + '@sha256:' + 'a' * 64), run)
+                    foreign_run = copy.deepcopy(run)
+                    foreign_run['head_repository']['full_name'] = other
+                    with self.assertRaises(delivery.DeliveryError):
+                        delivery.candidate(record, foreign_run)
+
+    def test_run_api_uses_only_the_active_approved_repository(self):
+        import json
+        for repository in (*delivery.TRUSTED_REPOSITORIES, 'fork/elecciones2026', ''):
+            run = copy.deepcopy(RUN)
+            run['repository']['full_name'] = repository
+            run['head_repository']['full_name'] = repository
+            with self.subTest(repository=repository), \
+                    patch.dict(delivery.os.environ, GITHUB_REPOSITORY=repository, GH_TOKEN='test-token'), \
+                    patch.object(delivery.urllib.request, 'urlopen') as request:
+                request.return_value.__enter__.return_value.read.return_value = json.dumps(run).encode()
+                if repository in delivery.TRUSTED_REPOSITORIES:
+                    self.assertEqual(delivery.read_run('123'), run)
+                    self.assertEqual(request.call_args.args[0].full_url,
+                                     f'https://api.github.com/repos/{repository}/actions/runs/123')
+                else:
+                    with self.assertRaises(delivery.DeliveryError):
+                        delivery.read_run('123')
+                    request.assert_not_called()
+
     def test_only_successful_canonical_main_push_is_trusted(self):
         delivery.trusted_run(RUN, '123')
         for field, value in [('event', 'pull_request'), ('head_branch', 'feature'),
@@ -221,13 +265,18 @@ class DeliveryTests(unittest.TestCase):
         import textwrap
         source = (ROOT / '.github/workflows/deliver.yml').read_text()
         code = textwrap.dedent(source.split("python3 - <<'PYTHON'\n", 1)[1].split("          PYTHON", 1)[0])
-        environment = dict(os.environ, GITHUB_REPOSITORY=delivery.REPOSITORY,
+        environment = dict(os.environ, GITHUB_REPOSITORY=delivery.TRUSTED_REPOSITORIES[0],
                            GITHUB_REF='refs/heads/main', GITHUB_ACTOR='barnolacesc',
                            GITHUB_TRIGGERING_ACTOR='barnolacesc', APPROVED='true',
                            APPROVAL_RECORD='restricted-owner-review', READY='true')
         import sys
         result = subprocess.run([sys.executable, '-c', code], env=environment, capture_output=True)
         self.assertEqual(result.returncode, 0, result.stderr)
+        for repository in delivery.TRUSTED_REPOSITORIES:
+            with self.subTest(repository=repository):
+                result = subprocess.run([sys.executable, '-c', code],
+                                        env=dict(environment, GITHUB_REPOSITORY=repository), capture_output=True)
+                self.assertEqual(result.returncode, 0, result.stderr)
         pilot = dict(environment, GITHUB_ACTOR='chad-openclaw',
                      GITHUB_TRIGGERING_ACTOR='chad-openclaw',
                      APPROVAL_RECORD='Cesc Telegram 2026-10-14 private 2023 pilot')

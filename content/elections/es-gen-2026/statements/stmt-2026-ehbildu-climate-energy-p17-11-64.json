@@ -3,7 +3,7 @@
   "election_id": "es-gen-2026",
   "id": "stmt-2026-ehbildu-climate-energy-p17-11-64",
   "is_fixture": false,
-  "last_reviewed_date": "2026-11-20",
+  "last_reviewed_date": "2026-11-21",
   "party_id": "ehbildu",
   "policy_instrument": null,
   "programme_id": "ehbildu-2026-v1",
@@ -13,13 +13,13 @@
   "reviews": [
     {
       "reviewer_id": "cesc",
-      "review_date": "2026-11-20",
+      "review_date": "2026-11-21",
       "verdict": "approved",
-      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
       "reviewer_kind": "human",
-      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
       "reported_date": "2026-11-21",
-      "content_sha256": "3c4220a2e562b1128b5eaed862d5d72ffb9a00fdbe66779dc2b4d05a5def4673"
+      "content_sha256": "7e9bede605ff572d0b26139b305d45aa185c89dfc4da85dd3554240422418eb4"
     }
   ],
   "schema_version": "1.0.0",
@@ -28,8 +28,8 @@
   "source_url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
   "source_version": "2026-v1",
   "statement_type": "explicit_proposal",
-  "subtopic_id": "biodiversity-and-circular-economy",
+  "subtopic_id": "agricultural-policy-and-food-chain",
   "summary": "Aumentar las fincas de cultivo y ganadería ecológica e instaurar el sello oficial ECOREGENERATIVA para técnicas que restauren el suelo",
   "summary_en": null,
-  "topic_id": "climate-energy"
+  "topic_id": "agriculture-fisheries-rural"
 }

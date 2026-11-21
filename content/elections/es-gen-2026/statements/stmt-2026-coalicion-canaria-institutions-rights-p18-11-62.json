@@ -3,7 +3,7 @@
   "election_id": "es-gen-2026",
   "id": "stmt-2026-coalicion-canaria-institutions-rights-p18-11-62",
   "is_fixture": false,
-  "last_reviewed_date": "2026-11-20",
+  "last_reviewed_date": "2026-11-21",
   "party_id": "coalicion-canaria",
   "policy_instrument": null,
   "programme_id": "coalicion-canaria-2026-v1",
@@ -13,13 +13,13 @@
   "reviews": [
     {
       "reviewer_id": "cesc",
-      "review_date": "2026-11-20",
+      "review_date": "2026-11-21",
       "verdict": "approved",
-      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
       "reviewer_kind": "human",
-      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
       "reported_date": "2026-11-21",
-      "content_sha256": "b600f99594709db549d9287064ccf3a6bb5150d6256b10818373b42d236a2d29"
+      "content_sha256": "2c73df3f53507cd5e69273e499f5cbfdf60f4917596c4cedf4f242336b4fea23"
     }
   ],
   "schema_version": "1.0.0",
@@ -28,8 +28,8 @@
   "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
   "source_version": "29N-v1",
   "statement_type": "explicit_proposal",
-  "subtopic_id": "territorial-model-and-sfa",
+  "subtopic_id": "public-transit-and-infrastructure-planning",
   "summary": "Exigir financiación estatal estable para cubrir el coste de la gratuidad de guaguas y tranvías y financiar el 50 % de infraestructuras de transporte terrestre en Lanzarote y Fuerteventura.",
   "summary_en": null,
-  "topic_id": "institutions-rights"
+  "topic_id": "infrastructure-mobility"
 }

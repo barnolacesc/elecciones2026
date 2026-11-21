@@ -3,7 +3,7 @@
   "election_id": "es-gen-2026",
   "id": "stmt-2026-coalicion-canaria-institutions-rights-p19-11-73",
   "is_fixture": false,
-  "last_reviewed_date": "2026-11-20",
+  "last_reviewed_date": "2026-11-21",
   "party_id": "coalicion-canaria",
   "policy_instrument": null,
   "programme_id": "coalicion-canaria-2026-v1",
@@ -13,13 +13,13 @@
   "reviews": [
     {
       "reviewer_id": "cesc",
-      "review_date": "2026-11-20",
+      "review_date": "2026-11-21",
       "verdict": "approved",
-      "review_notes": "Owner explicitly approved every summary in the exact consolidated batch.",
+      "review_notes": "Owner approved the exact topic and subtopic changes for this previously approved summary.",
       "reviewer_kind": "human",
-      "evidence_ref": "editorial/corpus-29n-revisio-v1/approval-2026-11-21",
+      "evidence_ref": "editorial/cobertura-parlamentaria-29n-v1/approval-2026-11-21",
       "reported_date": "2026-11-21",
-      "content_sha256": "c095b20d1d82fb3f8669516e44a785497a1765eb34369995f0700cd0fbafc461"
+      "content_sha256": "7917ad25cdd61e0b3bf659269ef5bd0a4be6676ba4c372676877168d37c88671"
     }
   ],
   "schema_version": "1.0.0",
@@ -28,8 +28,8 @@
   "source_url": "https://coalicioncanaria.org/wp-content/uploads/2026/11/CCA-26-Programa_Electoral-29NOV.pdf",
   "source_version": "29N-v1",
   "statement_type": "explicit_proposal",
-  "subtopic_id": "civil-liberties-and-equality",
+  "subtopic_id": "sports-and-physical-activity",
   "summary": "Reclamar subvenciones estatales para financiar los viajes y traslados de deportistas y clubes canarios en torneos y competiciones oficiales.",
   "summary_en": null,
-  "topic_id": "institutions-rights"
+  "topic_id": "culture-sport"
 }

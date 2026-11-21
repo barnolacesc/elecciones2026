@@ -46,6 +46,21 @@ class TestStaticSiteGenerator(unittest.TestCase):
         if self.temp_dir.exists():
             shutil.rmtree(self.temp_dir, ignore_errors=True)
 
+    def test_developer_profile_credit_preserves_both_election_footers(self) -> None:
+        for election in ('es-gen-2023', 'es-gen-2026'):
+            target = self.output_dir / election
+            build_site(root_dir=ROOT_DIR, output_dir=target, election_id=election)
+            pages = list(target.rglob('*.html'))
+            self.assertTrue(pages)
+            for page in pages:
+                with self.subTest(election=election, page=page.relative_to(target)):
+                    html = page.read_text()
+                    self.assertIn('Desarrollado por <a href="https://github.com/barnolacesc" rel="noopener noreferrer">barnolacesc</a>', html)
+                    if election == 'es-gen-2023':
+                        self.assertIn('Ensayo privado y confidencial', html)
+                    else:
+                        self.assertIn('Neutralidad · Fuentes directas · Transparencia', html)
+
     def test_empty_2023_comparison_links_to_coverage_without_claims(self) -> None:
         """A source-gated empty comparison still has a useful next step without JS."""
         build_site(

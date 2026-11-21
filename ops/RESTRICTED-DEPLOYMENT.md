@@ -8,6 +8,8 @@ until the repository approval gate and runner connectivity are verified.
 
 For the current SSH/UFW, TLS, Cloudflare and nginx verification record, and future
 Hetzner migration, use the [server migration runbook](SERVER-MIGRATION.md).
+For the pending personal-account transfer and wrapper update order, use the
+[repository transfer runbook](REPOSITORY-TRANSFER.md).
 
 ## Initial host inventory (before proxy and firewall setup)
 
@@ -33,8 +35,9 @@ remains unverified. Preserve the unrelated PostgreSQL volume
 | `deployer.sudoers` | `/etc/sudoers.d/deployer`: permits only the release wrapper as root |
 | `deployer-sshd.conf` | `/etc/ssh/sshd_config.d/00-elecciones-deployer.conf`: account-wide forced command and root-managed keys |
 
-Allowed requests: `check`, `deploy ghcr.io/c2ventures/elecciones2026@sha256:`
-followed by exactly 64 lowercase hexadecimal digits, and `rollback`. The wrapper
+Allowed requests: `check`, `rollback`, and `deploy` with an image from exactly
+`ghcr.io/c2ventures/elecciones2026` or `ghcr.io/barnolacesc/elecciones2026`, followed
+by `@sha256:` and exactly 64 lowercase hexadecimal digits. The wrapper
 rejects other repositories, mutable tags, extra arguments, shell expressions,
 unprotected/symlinked installation paths, and foreign retained image references.
 State lives in `/var/lib/elecciones2026`; origin HTTP is fixed to loopback port
