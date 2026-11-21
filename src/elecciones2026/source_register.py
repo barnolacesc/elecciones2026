@@ -13,6 +13,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Optional
+from urllib.parse import urlsplit
 
 SHA256_PATTERN = re.compile(r"^[a-f0-9]{64}$")
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -39,6 +40,25 @@ VALID_ELECTION_STATUSES = {
     "pilot_rehearsal",
     "archived",
 }
+
+
+def _is_http_source_url(value: Any) -> bool:
+    """Check URL shape only; this does not authenticate a publisher or document."""
+    if not isinstance(value, str) or not value:
+        return False
+    if any(char.isspace() or ord(char) < 32 for char in value):
+        return False
+    try:
+        parsed = urlsplit(value)
+        return (
+            parsed.scheme in {"http", "https"}
+            and bool(parsed.hostname)
+            and parsed.username is None
+            and parsed.password is None
+            and parsed.port != 0
+        )
+    except ValueError:
+        return False
 
 
 @dataclass(frozen=True)
@@ -228,7 +248,7 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
             errors.append(f"Record {record_id}: missing party_id.")
 
         official_url = item.get("official_url")
-        if not official_url or not official_url.startswith(("http://", "https://")):
+        if not _is_http_source_url(official_url):
             errors.append(f"Record {record_id}: missing or invalid official_url.")
 
         status = item.get("status")
@@ -252,6 +272,8 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
 
         sha256 = item.get("sha256")
         direct_url = item.get("direct_url")
+        if direct_url is not None and not _is_http_source_url(direct_url):
+            errors.append(f"Record {record_id}: invalid direct_url; expected an absolute HTTP(S) URL.")
 
         # Invariant: verified records must have sha256 and direct_url
         if status == "verified":
@@ -259,7 +281,7 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
                 errors.append(
                     f"Record {record_id}: verified status requires a valid 64-character lowercase hex sha256 hash."
                 )
-            if not direct_url or not direct_url.startswith(("http://", "https://")):
+            if not _is_http_source_url(direct_url):
                 errors.append(
                     f"Record {record_id}: verified status requires a valid direct_url."
                 )
