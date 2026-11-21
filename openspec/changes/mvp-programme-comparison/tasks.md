@@ -349,3 +349,10 @@ the strict build and served the 29 approved mappings as reviewed on
 2026-11-21. All 68 schema checks and 14 focused browser projection tests
 passed. UPN–PP remains partial. Public release remains under G4.
 Python unittest discovery ran 536 tests with 17 skips and no failures.
+
+### E3.2 static origin compression
+
+The serving image builds deterministic gzip variants of static text files.
+Nginx negotiates the encoding at the same URLs. The container parity test
+checks encoding negotiation, exact decompressed bytes, cache headers and
+direct sidecar access. Public capacity acceptance remains a G4 check.

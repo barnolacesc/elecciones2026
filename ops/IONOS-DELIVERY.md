@@ -13,7 +13,7 @@ remaining limits and a future Hetzner migration option. The owner set
 still requires the owner-selected manual dispatch and artifact-linked approval.
 Set the variable false during preparation or migration; it is an activation
 prerequisite, not public-release approval.
-The target is Ubuntu 22.04 AMD64, 1 vCPU and 1 GB RAM, at `195.20.230.75`.
+The target is Ubuntu 22.04 AMD64, 1 vCPU and 1 GB RAM, with an operator-managed origin address.
 The owner retired the finance service and rebooted the host. Preserve unrelated
 volumes. Retained-data backup, full external firewall probes, monitoring and capacity evidence remain
 open in the OpenSpec task record.
@@ -57,7 +57,7 @@ report Active. Do not invent or use another zone's nameservers.
 
 First prepare authenticated staging at
 `preview.xn--eleccionesespaa2026-83b.es`. Add a proxied A record named `preview`
-with value `195.20.230.75`. Add no AAAA record until working IPv6 and its firewall
+with the origin address from the protected deployment settings. Add no AAAA record until working IPv6 and its firewall
 rules are verified. Do not route the apex or www to fixture/private pilot output.
 The public apex A record, www redirect and public cache rule are G4 actions.
 
