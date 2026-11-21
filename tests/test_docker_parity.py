@@ -27,7 +27,7 @@ COMPOSE_PATH = ROOT_DIR / "compose.yaml"
 NGINX_CONF_PATH = ROOT_DIR / "nginx" / "default.conf"
 
 PINNED_PYTHON_DIGEST = "sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4"
-PINNED_NGINX_DIGEST = "sha256:517607ae849a46afbd400616a783e4ead0290f52d20ccc0618ccea1a49362474"
+PINNED_NGINX_DIGEST = "sha256:0c53a1f2890c3526bfd201440f0fd3970e5b78f80630f58284aad0d34b5ec7bd"
 
 
 def find_free_port() -> int:
@@ -80,7 +80,7 @@ class TestDockerConfiguration(unittest.TestCase):
         # 2. Multi-stage runtime serving stage
         self.assertIn("AS runtime", content, "Dockerfile must define a runtime stage")
         self.assertIn(
-            f"nginx/nginx-unprivileged:1.30.6-alpine3.24@{PINNED_NGINX_DIGEST}",
+            f"nginx/nginx-unprivileged:1.30.7-alpine3.24@{PINNED_NGINX_DIGEST}",
             content,
             "Runtime stage must use digest-pinned unprivileged Nginx base image",
         )

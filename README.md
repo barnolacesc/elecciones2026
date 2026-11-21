@@ -4,6 +4,8 @@ This project will compare official party programmes for the Spanish general elec
 
 **Status (2026-10-12):** The static comparator and authenticated private hosting exist. PR #68 adds the mock quiz foundation. The 2023 political content is withdrawn pending authentic human review. The public site and real quiz are not approved for release.
 
+Maintained by [barnolacesc](https://github.com/barnolacesc). The planned personal repository is [barnolacesc/elecciones2026](https://github.com/barnolacesc/elecciones2026); the transfer is pending. Hosting remains on IONOS. See the [repository transfer runbook](ops/REPOSITORY-TRANSFER.md).
+
 Use the [GitHub task index](https://github.com/c2ventures/elecciones2026/issues/78) for remaining work. See the [current pilot audit](docs/PILOT-2023-AUDIT.md) for the content boundary.
 
 ## MVP

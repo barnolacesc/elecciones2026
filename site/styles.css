@@ -999,6 +999,12 @@ footer {
   color: var(--color-text-muted);
 }
 
+.footer-inner a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 /* --------------------------------------------------
    In-App Manifesto Excerpt Viewer (Dialog Modal)
    -------------------------------------------------- */
