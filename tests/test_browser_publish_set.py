@@ -143,8 +143,9 @@ class BrowserPublishSetTests(unittest.TestCase):
                     )
                     browser = json.loads(node.stdout)['html']
                     for html in (static, browser):
-                        self.assertIn('href="#proposal-list-a"', html)
-                        self.assertIn('href="#proposal-list-b"', html)
+                        self.assertNotIn('class="proposal-nav"', html)
+                        self.assertIn('id="proposal-list-a"', html)
+                        self.assertIn('id="proposal-list-b"', html)
                         self.assertIn('href="./partidos/junts/"', html)
                         self.assertIn('PROGRAMA-ELECTORAL_JUNTS_29N.pdf#page=', html)
                         self.assertNotIn('El contenido de esta medida está pendiente', html)
