@@ -1112,6 +1112,7 @@ def render_base(
                          if ctx.statements else
                          "Revisión humana y de derechos pendiente · No satisface G2 para 2026")
         nav_feedback_link = ""
+        topbar_quiz_link = ""
         if "Generales 2023" not in title:
             title = f"{title} · Generales 2023"
     else:
@@ -1126,6 +1127,8 @@ def render_base(
         footer_values = escape(ctx.i18n["footer"]["values"])
         feedback_label = escape(ctx.i18n.get("feedback", {}).get("link_text", "Buzón de propuestas"))
         nav_feedback_link = f'\n        <a class="nav-link" href="{root_path}propuestas/">{feedback_label}</a>'
+        quiz_label = escape(ctx.i18n["nav"].get("quiz", "Cuestionario"))
+        topbar_quiz_link = f'\n        <a class="nav-link" href="{root_path}cuestionario/">{quiz_label}</a>'
 
     if base_template_file.exists():
         template = base_template_file.read_text(encoding="utf-8")
@@ -1154,8 +1157,7 @@ def render_base(
     <div class="topbar-inner">
       {{ brand_link }}
       <nav class="nav-links" aria-label="Navegación principal">
-        <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>
-        <a class="nav-link" href="{{ root_path }}cuestionario/">{{ nav_quiz }}</a>
+        <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>{{ topbar_quiz_link }}
         <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>
         <details class="site-menu">
           <summary class="nav-link menu-toggle">Menú <span aria-hidden="true">+</span></summary>
@@ -1204,6 +1206,7 @@ def render_base(
         "{{ nav_corrections }}": escape(ctx.i18n["nav"]["corrections"]),
         "{{ nav_feedback }}": escape(ctx.i18n.get("feedback", {}).get("link_text", "Buzón de propuestas")),
         "{{ nav_feedback_link }}": nav_feedback_link,
+        "{{ topbar_quiz_link }}": topbar_quiz_link,
         "{{ footer_org }}": footer_org,
         "{{ footer_values }}": footer_values,
         "{{ content }}": content,
