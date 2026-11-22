@@ -210,7 +210,7 @@ jobs:
       - name: Check complete mock quiz flow and browser privacy boundaries
         run: |
           PYTHONPATH=src python -m elecciones2026.generator build --quiz-mode mock --output-dir build/quiz-browser
-          PYTHONPATH=src python -m elecciones2026.generator build --output-dir build/quiz-browser/unavailable
+          PYTHONPATH=src python -m elecciones2026.generator build --quiz-mode unavailable --output-dir build/quiz-browser/unavailable
           python -m http.server 8765 --bind 127.0.0.1 --directory build/quiz-browser > /tmp/quiz-http.log 2>&1 &
           quiz_server_pid=$!
           trap 'kill "$quiz_server_pid"' EXIT

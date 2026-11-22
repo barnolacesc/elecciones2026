@@ -14,7 +14,7 @@ COPY content/ /app/content/
 COPY site/ /app/site/
 
 ARG ELECTION_ID=es-gen-2026
-ARG QUIZ_MODE=unavailable
+ARG QUIZ_MODE=exploratory
 ARG PILOT_PROVISIONAL=0
 # Empty selects the deterministic source-register update date for production.
 ARG BUILD_DATE

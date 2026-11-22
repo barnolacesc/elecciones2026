@@ -1,0 +1,2838 @@
+{
+  "batch_id": "quiz-29n-subtitulos-v2",
+  "review_status": "draft",
+  "taxonomy_version": "1.1.0",
+  "items": [
+    {
+      "id": "quiz-29n-housing-01",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "statement": "Topar por ley los precios de los alquileres.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-housing-p12-11-1",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "12",
+        "section": "2.1 VIVENDA",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=12",
+        "summary": "Topar por ley los precios de los alquileres.",
+        "qualifications": [],
+        "source_statement_fingerprint": "3dee95c6e01d6cdc1c23aa63875d7fdc874aab98ffcba5b800e4b2e5d732c4a6"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La ley limita el precio inicial de determinados contratos nuevos de vivienda habitual en zonas declaradas tensionadas.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Arrendamientos Urbanos, artículo 17",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003#a17"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-housing-02",
+      "topic_id": "housing",
+      "subtopic_id": "evictions-and-vulnerability",
+      "statement": "Legislar el desalojo judicial de viviendas ocupadas en un plazo máximo de 48 horas desde la denuncia.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-pp-housing-p43-41-28",
+        "party_id": "pp",
+        "publisher": "Partido Popular",
+        "programme_id": "pp-2026-v1",
+        "version": "2026-v1",
+        "sha256": "ae0c35d7ef3faf540acaa79d47abbe3ae2bf56a3a755c4e78a8f5bf3ea49789c",
+        "page": "43",
+        "section": "157",
+        "url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf#page=43",
+        "summary": "Legislar el desalojo judicial de viviendas ocupadas en un plazo máximo de 48 horas desde la denuncia.",
+        "qualifications": [],
+        "source_statement_fingerprint": "53d795ffa75f5af674f87ac981f8df58c89ffc8e58f07dec08497edb6aeadd13"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Desde 2025, el allanamiento de morada y la usurpación pueden tramitarse por juicio rápido si se cumplen sus requisitos procesales.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Enjuiciamiento Criminal, artículo 795",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1882-6036#a795"
+          },
+          {
+            "label": "Fiscalía General del Estado · Circular 1/2025",
+            "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2025-17153"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-housing-03",
+      "topic_id": "housing",
+      "subtopic_id": "mortgage-and-purchasing",
+      "statement": "Regular la dación en pago obligatoria frente a impagos de hipotecas.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-housing-p15-11-30",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "15",
+        "section": "1.4. Ni un desahucio más",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=15",
+        "summary": "Regular la dación en pago obligatoria frente a impagos de hipotecas.",
+        "qualifications": [],
+        "source_statement_fingerprint": "3a432cbfef780909cf09471675bee304bf3ee4dc8490da98f01dbf093d36159b"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El Código de Buenas Prácticas contempla la dación en pago para hogares hipotecados que cumplan determinados requisitos de vulnerabilidad y condiciones.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "Banco de España · Código de Buenas Prácticas",
+            "url": "https://clientebancario.bde.es/pcb/es/menu-horizontal/productosservici/financiacion/deudores-hipotecarios-sin-recursos/guia-textual/Medidas-Codigo-Buenas-Practicas/dacion-en-pago-de-la-vivienda-habitual.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-housing-04",
+      "topic_id": "housing",
+      "subtopic_id": "tourist-accommodation",
+      "statement": "Fijar un IVA del 21% para alojamientos turísticos de corta duración.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-ehbildu-housing-p6-1-10",
+        "party_id": "ehbildu",
+        "publisher": "EH Bildu",
+        "programme_id": "ehbildu-2026-v1",
+        "version": "2026-v1",
+        "sha256": "ceb655c9c8ebb036a15fa7829865d6e2d178525eb7db92629d702ac5e8d16047",
+        "page": "6",
+        "section": "1.1. Vivienda",
+        "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=6",
+        "summary": "Fijar un IVA del 21% para alojamientos turísticos de corta duración.",
+        "qualifications": [],
+        "source_statement_fingerprint": "7b11b4685fe945c6b7841518bf59547184636e5e689b6e530e78b035d0c5174a"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Hasta el 30 de noviembre de 2026, el alquiler tributa al 10 % si incluye servicios de hostelería y, en general, está exento sin ellos. Desde el 1 de diciembre de 2026, el 10 % se aplica también a alquileres amueblados de hasta 30 noches por inquilino, salvo si la vivienda es la residencia habitual del arrendador.",
+        "reference_date": "2026-11-21",
+        "period": "Hasta el 30/11/2026 y desde el 1/12/2026.",
+        "references": [
+          {
+            "label": "Agencia Tributaria · IVA del alquiler turístico",
+            "url": "https://sede.agenciatributaria.gob.es/Sede/iva/iva-operaciones-inmobiliarias/alquilo-apartamento-turistico-tengo-que-iva.html"
+          },
+          {
+            "label": "BOE · Real Decreto-ley 29/2026, artículo 7",
+            "url": "https://www.boe.es/eli/es/rdl/2026/10/06/29/con"
+          },
+          {
+            "label": "BOE · Acuerdo de convalidación del Real Decreto-ley 29/2026",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-23755"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-housing-05",
+      "topic_id": "housing",
+      "subtopic_id": "mortgage-and-purchasing",
+      "statement": "Prohibir por ley la compra de inmuebles residenciales por fondos buitre y de capital riesgo.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-partido-humanista-housing-p8-1-12",
+        "party_id": "partido-humanista",
+        "publisher": "Partido Humanista",
+        "programme_id": "partido-humanista-2026-v1",
+        "version": "2026-v1",
+        "sha256": "c53ab576b0c57a091665795cb8676269b85cc6f9b7e22c9d65ce11d86502086f",
+        "page": "8",
+        "section": "2. Derecho a una vivienda digna - Propuesta 2",
+        "url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf#page=8",
+        "summary": "Prohibir por ley la compra de inmuebles residenciales por fondos buitre y de capital riesgo.",
+        "qualifications": [],
+        "source_statement_fingerprint": "73fe4da3b4e247c83a9d98a67b93a77b7c409b5c4939b724a443437dfc33d81c"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-housing-06",
+      "topic_id": "housing",
+      "subtopic_id": "public-housing-stock",
+      "statement": "Prohibir la venta al sector privado de viviendas del parque público y vetar su subasta y venta mediante procedimientos de ejecución.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-housing-p11-11-4",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "11",
+        "section": "17",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=11",
+        "summary": "Prohibir la venta al sector privado de viviendas del parque público y vetar su subasta y venta mediante procedimientos de ejecución.",
+        "qualifications": [],
+        "source_statement_fingerprint": "8b782e06e09341a743ade6fe685f48e9cc41da8a901316371f74f356af8f2f2a"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-housing-07",
+      "topic_id": "housing",
+      "subtopic_id": "evictions-and-vulnerability",
+      "statement": "Compensar de forma pública y directa a los pequeños propietarios por los costes derivados de la suspensión de desahucios a familias vulnerables.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-psoe-housing-p33-31-23",
+        "party_id": "psoe",
+        "publisher": "PSOE",
+        "programme_id": "psoe-2026-v1",
+        "version": "2026-v1",
+        "sha256": "e9c8341339538b550641b6ddb1c3fdfeef7fda6a8a1a4be9e8d6a44cbc229bf5",
+        "page": "33",
+        "section": "85",
+        "url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf#page=33",
+        "summary": "Compensar de forma pública y directa a los pequeños propietarios por los costes derivados de la suspensión de desahucios a familias vulnerables.",
+        "qualifications": [],
+        "source_statement_fingerprint": "30f7acdbca086b7d52ac90aa570b5846cdde673ff166c3189137bcc85154cadf"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-housing-08",
+      "topic_id": "housing",
+      "subtopic_id": "rental-regulation",
+      "statement": "Convertir todos los contratos de alquiler de vivienda habitual en contratos de duración indefinida por defecto",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-housing-p8-1-2",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "8",
+        "section": "2. Contratos de alquiler indefinidos",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=8",
+        "summary": "Convertir todos los contratos de alquiler de vivienda habitual en contratos de duración indefinida por defecto",
+        "qualifications": [],
+        "source_statement_fingerprint": "40cfe21aa24ad8cc1d92304cd1cb99ecbb06574e5bd27827e38d6505d8fd3562"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La duración se pacta. Si es inferior a 5 años, o a 7 si el arrendador es una persona jurídica, la ley establece prórrogas obligatorias hasta ese mínimo, con excepciones.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Arrendamientos Urbanos, artículo 9",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003#a9"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-education-01",
+      "topic_id": "education",
+      "subtopic_id": "school-funding-and-ratios",
+      "statement": "Prohibir el cobro de cuotas obligatorias o suplementarias en los colegios de educación concertada.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-education-p79-71-71",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "79",
+        "section": "279",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=79",
+        "summary": "Prohibir el cobro de cuotas obligatorias o suplementarias en los colegios de educación concertada.",
+        "qualifications": [],
+        "source_statement_fingerprint": "56b1caa6fd183070a4e36d98981798ac877d53b233bdad347a901e28ea0bbaf0"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La ley prohíbe cobrar por las enseñanzas gratuitas de los centros concertados. Las actividades extraescolares y los servicios escolares son voluntarios.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley Orgánica de Educación, artículo 88",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a88"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-education-02",
+      "topic_id": "education",
+      "subtopic_id": "early-childhood-education",
+      "statement": "Garantizar la gratuidad real de la educación infantil de 0 a 3 años",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-vox-education-p51-51-8",
+        "party_id": "vox",
+        "publisher": "VOX",
+        "programme_id": "vox-2026-v2",
+        "version": "2026-v2",
+        "sha256": "f83024014fac82244eb074f31ac221d79a580faca0d66559fec2a9385da74e08",
+        "page": "51",
+        "section": "94",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf#page=51",
+        "summary": "Garantizar la gratuidad real de la educación infantil de 0 a 3 años",
+        "qualifications": [],
+        "source_statement_fingerprint": "1b8aff6812995296b77700a415fcdf8676584112f19e355d391e4c62900470cc"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La ley establece la gratuidad del segundo ciclo de infantil (3 a 6 años). Para el primer ciclo (0 a 3 años), prevé ampliar las plazas públicas y avanzar gradualmente hacia la gratuidad.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley Orgánica de Educación, artículos 14 y 15",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#a15"
+          },
+          {
+            "label": "BOE · LOMLOE, disposición adicional tercera",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2020-17264#da-3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-education-03",
+      "topic_id": "education",
+      "subtopic_id": "university-and-scholarships",
+      "statement": "Alcanzar la gratuidad de tasas de grado, máster y doctorado en universidades públicas durante la próxima legislatura.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-education-p85-81-37",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "85",
+        "section": "294",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=85",
+        "summary": "Alcanzar la gratuidad de tasas de grado, máster y doctorado en universidades públicas durante la próxima legislatura.",
+        "qualifications": [],
+        "source_statement_fingerprint": "47b9bba68192c48e8f96619392bc016e49cc6b084acf8c5fe5dcd27f4e7f9e4b"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Las comunidades autónomas o administraciones competentes fijan los precios públicos de los estudios universitarios oficiales.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley Orgánica del Sistema Universitario, artículo 57",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#a57"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-education-04",
+      "topic_id": "education",
+      "subtopic_id": "curriculum-and-languages",
+      "statement": "Excluir la materia de Religión del currículo escolar y denunciar los acuerdos estatales con confesiones religiosas",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-education-p35-31-23",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "35",
+        "section": "3.1. EDUCACIÓN",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=35",
+        "summary": "Excluir la materia de Religión del currículo escolar y denunciar los acuerdos estatales con confesiones religiosas",
+        "qualifications": [],
+        "source_statement_fingerprint": "f2db6a846496396163518c5cf69bb078b3f818ef4b8c2400580357aa77a74cb0"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Los centros deben ofrecer Religión católica en los niveles previstos. Cursarla es voluntario para el alumnado.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley Orgánica de Educación, disposición adicional segunda",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-7899#dasegunda"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-education-05",
+      "topic_id": "education",
+      "subtopic_id": "curriculum-and-languages",
+      "statement": "Prohibir el uso de teléfonos móviles dentro de las aulas escolares.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-vox-education-p41-41-7",
+        "party_id": "vox",
+        "publisher": "VOX",
+        "programme_id": "vox-2026-v2",
+        "version": "2026-v2",
+        "sha256": "f83024014fac82244eb074f31ac221d79a580faca0d66559fec2a9385da74e08",
+        "page": "41",
+        "section": "69",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf#page=41",
+        "summary": "Prohibir el uso de teléfonos móviles dentro de las aulas escolares.",
+        "qualifications": [],
+        "source_statement_fingerprint": "f05e0514677b42916d3159b14a07e6a190fe2a73b6eb9cc7aa4b047d2692837c"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-education-06",
+      "topic_id": "education",
+      "subtopic_id": "university-and-scholarships",
+      "statement": "Implementar reválidas y una evaluación de acceso a la universidad (EVAU) única en todo el país.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-vox-education-p41-41-2",
+        "party_id": "vox",
+        "publisher": "VOX",
+        "programme_id": "vox-2026-v2",
+        "version": "2026-v2",
+        "sha256": "f83024014fac82244eb074f31ac221d79a580faca0d66559fec2a9385da74e08",
+        "page": "41",
+        "section": "66",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf#page=41",
+        "summary": "Implementar reválidas y una evaluación de acceso a la universidad (EVAU) única en todo el país.",
+        "qualifications": [],
+        "source_statement_fingerprint": "2f0f0ebaae19c9e0dfce5de75b241555217c012f4f5dde3e55e6fa56604879f8"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La prueba de acceso tiene reglas básicas estatales. Las administraciones educativas y las universidades organizan las pruebas en sus ámbitos.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Real Decreto 534/2024, artículos 17 y 18",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2024-11858#a18"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-education-07",
+      "topic_id": "education",
+      "subtopic_id": "school-funding-and-ratios",
+      "statement": "Incrementar el presupuesto destinado a educación hasta alcanzar un mínimo del 7% del PIB",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-education-p35-31-24",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "35",
+        "section": "3.1. EDUCACIÓN",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=35",
+        "summary": "Incrementar el presupuesto destinado a educación hasta alcanzar un mínimo del 7% del PIB",
+        "qualifications": [],
+        "source_statement_fingerprint": "9e75ed1f4b3858672198797234a96a78f6baa26566e14be85e655ace1c639dea"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El gasto público en educación en España fue del 4,48 % del PIB en 2024, según la estimación provisional del Ministerio de Educación que incluye los capítulos financieros.",
+        "reference_date": "2026-11-21",
+        "period": "2024 · dato provisional",
+        "references": [
+          {
+            "label": "Ministerio de Educación · Estadística del gasto público en educación de 2024",
+            "url": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/estadisticas/economicas/gasto/2024.html"
+          },
+          {
+            "label": "Ministerio de Educación · Nota estadística de 2024",
+            "url": "https://www.educacionfpydeportes.gob.es/dam/jcr%3A639436ff-68b1-4b43-9fbe-7046039ec1ad/notagasto2024-prov.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-education-08",
+      "topic_id": "education",
+      "subtopic_id": "university-and-scholarships",
+      "statement": "Financiar las universidades en función de las tasas de inserción laboral que alcancen sus titulados.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-salf-education-p34-31-25",
+        "party_id": "salf",
+        "publisher": "Se Acabó La Fiesta",
+        "programme_id": "salf-29N-v1",
+        "version": "29N-v1",
+        "sha256": "073425b9522da77608a0399923c2e0d3b9153776e8a0436ac8f0aea794b7893b",
+        "page": "34",
+        "section": "9",
+        "url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d#page=34",
+        "summary": "Financiar las universidades en función de las tasas de inserción laboral que alcancen sus titulados.",
+        "qualifications": [],
+        "source_statement_fingerprint": "b9c458464ad07d3b5e0cbc160f41dcf2466a8c00cc3846523a35053af3773899",
+        "verified_external_copy": "https://cdn.jsdelivr.net/gh/jynus/programas-electorales-29n-generales-2026@27306783086b11b09901529b82612da9c5371e22/documentos_originales/SALF_Contrato_Electoral_29N.pdf#page=34"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La ley universitaria prevé financiación adicional por objetivos estratégicos fijados en la programación plurianual.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley Orgánica del Sistema Universitario, artículo 56",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-7500#a56"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-health-social-services-01",
+      "topic_id": "health-social-services",
+      "subtopic_id": "primary-care-and-sns",
+      "statement": "Ampliar la cartera común de servicios del Sistema Nacional de Salud para incorporar la atención odontológica universal gratuita con asunción del coste por el Estado.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-erc-health-social-services-p42-41-7",
+        "party_id": "erc",
+        "publisher": "Esquerra Republicana",
+        "programme_id": "erc-2026-v1",
+        "version": "2026-v1",
+        "sha256": "61728d162a6e88d492d44a0b0994effb31f9e4abb85ebf8aea715d870a9b2e04",
+        "page": "42",
+        "section": "237",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/ERC-programa-electoral-29-N-2026-2026-11-12.pdf#page=42",
+        "summary": "Ampliar la cartera común de servicios del Sistema Nacional de Salud para incorporar la atención odontológica universal gratuita con asunción del coste por el Estado.",
+        "qualifications": [],
+        "source_statement_fingerprint": "01409928125a0c09131b0879c2a287ad302e299f9585cf37ea70c420a89c1ebf"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La cartera común del Sistema Nacional de Salud cubre prestaciones bucodentales básicas. El acceso a prestaciones adicionales depende del tratamiento y del grupo, como menores o embarazadas.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Cartera común del SNS, anexo II, apartado 9",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-16212#anii"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-health-social-services-02",
+      "topic_id": "health-social-services",
+      "subtopic_id": "dependency-and-eldercare",
+      "statement": "Evolucionar y expandir el Ingreso Mínimo Vital hasta configurarlo como una renta universal e incondicionada para toda la ciudadanía.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-health-social-services-p45-41-44",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "45",
+        "section": "135",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=45",
+        "summary": "Evolucionar y expandir el Ingreso Mínimo Vital hasta configurarlo como una renta universal e incondicionada para toda la ciudadanía.",
+        "qualifications": [],
+        "source_statement_fingerprint": "6df48fd54481242d27ec7193a5c0d67188c157e4aa7491be47e834708da4ca8e"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El Ingreso Mínimo Vital exige acreditar vulnerabilidad económica, además de otros requisitos.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley del Ingreso Mínimo Vital, artículos 10 y 11",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2021-21007#a11"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-health-social-services-03",
+      "topic_id": "health-social-services",
+      "subtopic_id": "waiting-lists-and-management",
+      "statement": "Derogar la Ley 15/1997 sobre nuevas formas de gestión del Sistema Nacional de Salud para impedir la privatización y externalización",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-ehbildu-health-social-services-p11-11-4",
+        "party_id": "ehbildu",
+        "publisher": "EH Bildu",
+        "programme_id": "ehbildu-2026-v1",
+        "version": "2026-v1",
+        "sha256": "ceb655c9c8ebb036a15fa7829865d6e2d178525eb7db92629d702ac5e8d16047",
+        "page": "11",
+        "section": "1.5.1",
+        "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=11",
+        "summary": "Derogar la Ley 15/1997 sobre nuevas formas de gestión del Sistema Nacional de Salud para impedir la privatización y externalización",
+        "qualifications": [],
+        "source_statement_fingerprint": "dd8748cd41a00cdfdfdad72ced521631b85bb7e6ad2786553327a587cf6f11a5"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La Ley 15/1997 permite la gestión sanitaria en distintas formas jurídicas y prevé acuerdos, convenios o contratos con entidades públicas o privadas.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley 15/1997, artículo único",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1997-9021"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-health-social-services-04",
+      "topic_id": "health-social-services",
+      "subtopic_id": "primary-care-and-sns",
+      "statement": "Regularizar el empleo terapéutico del cannabis fijando los requisitos sanitarios y de seguridad necesarios.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-pnv-health-social-services-p32-31-15",
+        "party_id": "pnv",
+        "publisher": "EAJ-PNV",
+        "programme_id": "pnv-2026-v1",
+        "version": "29N-v1",
+        "sha256": "5af7a5b6f67c26bad87ef6c3ca01ae38aa1f1d7d9029efb32fc52482de0c1314",
+        "page": "32",
+        "section": "MEDICAMENTOS, INVESTIGACIÓN Y TRATAMIENTOS 06",
+        "url": "https://www.eaj-pnv.eus/es/adjuntos-documentos/21765/pdf/programa-electoral-29n#page=32",
+        "summary": "Regularizar el empleo terapéutico del cannabis fijando los requisitos sanitarios y de seguridad necesarios.",
+        "qualifications": [],
+        "source_statement_fingerprint": "71d2b463b731dc34e6a6c32ef471fae2cb08ce31882ffabb13958f368c771683"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Desde 2025 hay una norma para preparados estandarizados de cannabis prescritos por especialistas y dispensados a través de farmacia hospitalaria.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Real Decreto 903/2025, artículos 7 a 9",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2025-20077#a7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-health-social-services-05",
+      "topic_id": "health-social-services",
+      "subtopic_id": "mental-health-and-coverage",
+      "statement": "Desarrollar la estrategia comunitaria Cero Contenciones para eliminar el uso de contenciones en los centros sanitarios de salud mental.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-health-social-services-p28-21-59",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "28",
+        "section": "2.4. Una sanidad pública más fuerte",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=28",
+        "summary": "Desarrollar la estrategia comunitaria Cero Contenciones para eliminar el uso de contenciones en los centros sanitarios de salud mental.",
+        "qualifications": [],
+        "source_statement_fingerprint": "93841acfb45dffcc651161f90d0c33fc242439ef11bbd802677a4ee444307ce9"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-health-social-services-06",
+      "topic_id": "health-social-services",
+      "subtopic_id": "dependency-and-eldercare",
+      "statement": "Suprimir la totalidad de ayudas y prestaciones sociales para personas en situación de estancia irregular",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-vox-health-social-services-p19-11-21",
+        "party_id": "vox",
+        "publisher": "VOX",
+        "programme_id": "vox-2026-v2",
+        "version": "2026-v2",
+        "sha256": "f83024014fac82244eb074f31ac221d79a580faca0d66559fec2a9385da74e08",
+        "page": "19",
+        "section": "19",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf#page=19",
+        "summary": "Suprimir la totalidad de ayudas y prestaciones sociales para personas en situación de estancia irregular",
+        "qualifications": [],
+        "source_statement_fingerprint": "acf4f52128d495435782befea9f2415729c23551a5331b934e78d92de5f8f20b"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-health-social-services-07",
+      "topic_id": "health-social-services",
+      "subtopic_id": "waiting-lists-and-management",
+      "statement": "Fijar plazos máximos asistenciales de 60 días para intervenciones quirúrgicas, 30 días para consultas con especialistas y 7 días para pruebas diagnósticas prioritarias",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-salf-health-social-services-p22-21-7",
+        "party_id": "salf",
+        "publisher": "Se Acabó La Fiesta",
+        "programme_id": "salf-29N-v1",
+        "version": "29N-v1",
+        "sha256": "073425b9522da77608a0399923c2e0d3b9153776e8a0436ac8f0aea794b7893b",
+        "page": "22",
+        "section": "2",
+        "url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d#page=22",
+        "summary": "Fijar plazos máximos asistenciales de 60 días para intervenciones quirúrgicas, 30 días para consultas con especialistas y 7 días para pruebas diagnósticas prioritarias",
+        "qualifications": [],
+        "source_statement_fingerprint": "2a6041fa04dc216719768595981333e9ad9ba949ca534f1ffae38d8243ad51f9",
+        "verified_external_copy": "https://cdn.jsdelivr.net/gh/jynus/programas-electorales-29n-generales-2026@27306783086b11b09901529b82612da9c5371e22/documentos_originales/SALF_Contrato_Electoral_29N.pdf#page=22"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La garantía estatal fija 180 días naturales para ciertas operaciones, como cataratas o prótesis de cadera. Las comunidades pueden fijar plazos menores.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Real Decreto 1039/2011, artículo 4 y anexo",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-14190"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-health-social-services-08",
+      "topic_id": "health-social-services",
+      "subtopic_id": "primary-care-and-sns",
+      "statement": "Prohibir por ley la venta y distribución de bebidas energéticas a menores de 16 años",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-health-social-services-p10-1-55",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "10",
+        "section": "SALUT PÚBLICA",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=10",
+        "summary": "Prohibir por ley la venta y distribución de bebidas energéticas a menores de 16 años",
+        "qualifications": [],
+        "source_statement_fingerprint": "6572134aea3e8a298a62d40af026ea7b95294a692991976b3816001f55435f64"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-economy-work-tax-01",
+      "topic_id": "economy-work-tax",
+      "subtopic_id": "labor-regulations-and-smi",
+      "statement": "Restituir el abono de los salarios de tramitación en los despidos.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-economy-work-tax-p15-11-33",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "15",
+        "section": "2.2. MÁIS DEREITOS PARA A CLASE TRABALLADORA",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=15",
+        "summary": "Restituir el abono de los salarios de tramitación en los despidos.",
+        "qualifications": [],
+        "source_statement_fingerprint": "616ed1cc4c50aa408ca079ba0620a6d46b6d8980c34b6e2545535086476faa0b"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Si un despido se declara improcedente y se opta por la readmisión, la ley reconoce salarios de tramitación. Hay reglas especiales para representantes de los trabajadores.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Estatuto de los Trabajadores, artículo 56",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a56"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-economy-work-tax-02",
+      "topic_id": "economy-work-tax",
+      "subtopic_id": "pensions-and-social-security",
+      "statement": "Restablecer con carácter ordinario la edad de jubilación legal en los 65 años",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-economy-work-tax-p8-1-37",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "8",
+        "section": "PENSIONS",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=8",
+        "summary": "Restablecer con carácter ordinario la edad de jubilación legal en los 65 años",
+        "qualifications": [],
+        "source_statement_fingerprint": "b36c7c39e04570f351798c65effe3550caa463f2ebb4b8fefdc5d6f24f3f9957"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "En 2026, la edad ordinaria de jubilación es de 65 años con al menos 38 años y 3 meses cotizados, y de 66 años y 10 meses por debajo de ese umbral.",
+        "reference_date": "2026-11-21",
+        "period": "2026",
+        "references": [
+          {
+            "label": "Seguridad Social · Edad ordinaria de jubilación",
+            "url": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963/28393/28396/28472/177422"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-economy-work-tax-03",
+      "topic_id": "economy-work-tax",
+      "subtopic_id": "pensions-and-social-security",
+      "statement": "Revalorizar anualmente las pensiones públicas de acuerdo con el IPC real.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-economy-work-tax-p18-11-70",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "18",
+        "section": "2.3. NA DEFENSA DO SISTEMA PÚBLICO DE PENSIÓNS",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=18",
+        "summary": "Revalorizar anualmente las pensiones públicas de acuerdo con el IPC real.",
+        "qualifications": [],
+        "source_statement_fingerprint": "993a552cee7623f91bc9d0dcee0020735bca5e9efc3b465e66690ee42dee9a8b"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Las pensiones contributivas se actualizan cada año con la media de las tasas interanuales del IPC de los doce meses anteriores a diciembre del año previo.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley General de la Seguridad Social, artículo 58",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724#a58"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-economy-work-tax-04",
+      "topic_id": "economy-work-tax",
+      "subtopic_id": "tax-reform-and-brackets",
+      "statement": "Eliminar las SOCIMIs como figura promotora de vivienda suprimiendo sus beneficios fiscales.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-ehbildu-economy-work-tax-p6-1-11",
+        "party_id": "ehbildu",
+        "publisher": "EH Bildu",
+        "programme_id": "ehbildu-2026-v1",
+        "version": "2026-v1",
+        "sha256": "ceb655c9c8ebb036a15fa7829865d6e2d178525eb7db92629d702ac5e8d16047",
+        "page": "6",
+        "section": "1.1. Vivienda",
+        "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=6",
+        "summary": "Eliminar las SOCIMIs como figura promotora de vivienda suprimiendo sus beneficios fiscales.",
+        "qualifications": [],
+        "source_statement_fingerprint": "538abbd32a205253c9f595d769150ce16dd2c580d1c12ccb39b3cdca2602ef30"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Las SOCIMI pueden acogerse a un régimen fiscal especial en el Impuesto sobre Sociedades, con requisitos y gravámenes específicos.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley 11/2009, artículos 8 y 9",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2009-17000#a9"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-economy-work-tax-05",
+      "topic_id": "economy-work-tax",
+      "subtopic_id": "tax-reform-and-brackets",
+      "statement": "Suprimir el impuesto sobre sucesiones y donaciones.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-junts-economy-work-tax-p68-61-58",
+        "party_id": "junts",
+        "publisher": "Junts per Catalunya",
+        "programme_id": "junts-2026-v1",
+        "version": "2026-v1",
+        "sha256": "cde2c5f3f30b66c72dd4f4bae3d22e9f6bc3e0ee4362da72f9e32e85129374b6",
+        "page": "68",
+        "section": "2.2",
+        "url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf#page=68",
+        "summary": "Suprimir el impuesto sobre sucesiones y donaciones.",
+        "qualifications": [],
+        "source_statement_fingerprint": "ba6c0f46997f8a1e610c10290e82f68de425f9afd809a19951fafd029db7a9f1"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El impuesto sigue vigente. En el régimen común, las comunidades autónomas pueden fijar reducciones, deducciones y bonificaciones propias.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Impuesto sobre Sucesiones y Donaciones",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1987-28141"
+          },
+          {
+            "label": "BOE · Ley 22/2009, artículo 48",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2009-20375#a48"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-economy-work-tax-06",
+      "topic_id": "economy-work-tax",
+      "subtopic_id": "working-hours-reduction",
+      "statement": "Propone reducir la jornada laboral a cuatro días y treinta y dos horas semanales sin reducción salarial.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-economy-work-tax-p7-1-20",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "7",
+        "section": "SALARIS I CONDICIONS LABORALS",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=7",
+        "summary": "Propone reducir la jornada laboral a cuatro días y treinta y dos horas semanales sin reducción salarial.",
+        "qualifications": [],
+        "source_statement_fingerprint": "c3b1cc35b542edc1e2ab7e2b99ea010bb3f2e50b4b18238f344fe1f3b5393011"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El máximo general de la jornada ordinaria es de 40 horas semanales de trabajo efectivo de promedio anual.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Estatuto de los Trabajadores, artículo 34",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a34"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-economy-work-tax-07",
+      "topic_id": "economy-work-tax",
+      "subtopic_id": "labor-regulations-and-smi",
+      "statement": "Prohibir de forma explícita que el SMI sea absorbido o compensado mediante complementos o pluses salariales",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-economy-work-tax-p51-51-3",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "51",
+        "section": "4.1",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=51",
+        "summary": "Prohibir de forma explícita que el SMI sea absorbido o compensado mediante complementos o pluses salariales",
+        "qualifications": [],
+        "source_statement_fingerprint": "d5a839332b247f58235965b83ab5ae9945c11e8f443b4612b8932c2f3816501d"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La revisión del salario mínimo no modifica los salarios que, en conjunto y en cómputo anual, ya sean superiores a ese mínimo.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Estatuto de los Trabajadores, artículo 27",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a27"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-economy-work-tax-08",
+      "topic_id": "economy-work-tax",
+      "subtopic_id": "financial-regulation-and-debt-relief",
+      "statement": "Obligar a las entidades financieras a facilitar y publicitar la apertura de cuentas de pago básicas a todas las personas.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-economy-work-tax-p11-11-11",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "11",
+        "section": "SERVEIS SOCIALS, SISTEMES DE CURES I INCLUSIÓ SOCIAL",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=11",
+        "summary": "Obligar a las entidades financieras a facilitar y publicitar la apertura de cuentas de pago básicas a todas las personas.",
+        "qualifications": [],
+        "source_statement_fingerprint": "83022a3ff7b9b8cde2d258c817dcb89ffb92e982e62d6bc535d4714be10d7e19"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Los bancos deben ofrecer una cuenta de pago básica a determinados grupos, como residentes legales en la UE o solicitantes de asilo, con causas de denegación tasadas.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Real Decreto-ley 19/2017, artículos 3 y 4",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2017-13644#a3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-immigration-01",
+      "topic_id": "immigration",
+      "subtopic_id": "border-control-and-security",
+      "statement": "Exigir el cierre definitivo de los Centros de Internamiento de Extranjeros",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-immigration-p56-51-58",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "56",
+        "section": "SOLIDARITAT GLOBAL I MIGRACIÓ",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=56",
+        "summary": "Exigir el cierre definitivo de los Centros de Internamiento de Extranjeros",
+        "qualifications": [],
+        "source_statement_fingerprint": "686078a3fa93a1633a825f347b9a9283cd32745034dcfcd4f454abd19e490389"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La normativa vigente prevé los CIE como centros no penitenciarios para la custodia cautelar en procedimientos de expulsión, devolución o regreso.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Reglamento de los CIE, artículo 1",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-2749#a1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-immigration-02",
+      "topic_id": "immigration",
+      "subtopic_id": "regularization-processes",
+      "statement": "Derogar la regularización extraordinaria de 2026, revisar individualmente los expedientes concedidos y vetar por ley orgánica cualquier proceso extraordinario de regularización colectiva",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-salf-immigration-p17-11-36",
+        "party_id": "salf",
+        "publisher": "Se Acabó La Fiesta",
+        "programme_id": "salf-29N-v1",
+        "version": "29N-v1",
+        "sha256": "073425b9522da77608a0399923c2e0d3b9153776e8a0436ac8f0aea794b7893b",
+        "page": "17",
+        "section": "2",
+        "url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d#page=17",
+        "summary": "Derogar la regularización extraordinaria de 2026, revisar individualmente los expedientes concedidos y vetar por ley orgánica cualquier proceso extraordinario de regularización colectiva",
+        "qualifications": [],
+        "source_statement_fingerprint": "aa89d823b289cc8e5b44a5279c9c1303966c008be5766f73760ce71b09ad2f32",
+        "verified_external_copy": "https://cdn.jsdelivr.net/gh/jynus/programas-electorales-29n-generales-2026@27306783086b11b09901529b82612da9c5371e22/documentos_originales/SALF_Contrato_Electoral_29N.pdf#page=17"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El decreto de abril de 2026 reguló una autorización extraordinaria de residencia y fijó el 30 de junio de 2026 como límite para solicitarla.",
+        "reference_date": "2026-11-21",
+        "period": "Plazo fijado en abril de 2026.",
+        "references": [
+          {
+            "label": "BOE · Real Decreto 316/2026 · Autorización extraordinaria",
+            "url": "https://www.boe.es/eli/es/rd/2026/04/14/316"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-immigration-03",
+      "topic_id": "immigration",
+      "subtopic_id": "unaccompanied-minors",
+      "statement": "Crear un sistema estatal vinculante de reparto territorial solidario de menores migrantes no acompañados financiado con fondos públicos",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-immigration-p69-61-44",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "69",
+        "section": "219",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=69",
+        "summary": "Crear un sistema estatal vinculante de reparto territorial solidario de menores migrantes no acompañados financiado con fondos públicos",
+        "qualifications": [],
+        "source_statement_fingerprint": "d2a778d3eaddb4ed77048df7180e741785a2a257d5f15ec1c1c2b73e983d2da4"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La Ley de Extranjería prevé traslados de menores no acompañados entre comunidades y ciudades autónomas cuando se declara una contingencia migratoria extraordinaria.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Real Decreto-ley 2/2025, artículo 35 bis de la Ley de Extranjería",
+            "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-5404"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-immigration-04",
+      "topic_id": "immigration",
+      "subtopic_id": "regularization-processes",
+      "statement": "Establecer la exigencia de conocimiento de la lengua catalana en los expedientes de arraigo y prórrogas de permisos",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-junts-immigration-p48-41-64",
+        "party_id": "junts",
+        "publisher": "Junts per Catalunya",
+        "programme_id": "junts-2026-v1",
+        "version": "2026-v1",
+        "sha256": "cde2c5f3f30b66c72dd4f4bae3d22e9f6bc3e0ee4362da72f9e32e85129374b6",
+        "page": "48",
+        "section": "4. Punts de programa / Objectiu 4 / 4.1",
+        "url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf#page=48",
+        "summary": "Establecer la exigencia de conocimiento de la lengua catalana en los expedientes de arraigo y prórrogas de permisos",
+        "qualifications": [],
+        "source_statement_fingerprint": "ba8c3ee98da3f098b2180fdd2a9ac4066855648e09dca80f220d40b955aeab1e"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El reglamento estatal de arraigo enumera requisitos generales y específicos según el tipo de autorización. El conocimiento de catalán no figura como requisito general.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Reglamento de extranjería, artículos 126 y 127",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a126"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-immigration-05",
+      "topic_id": "immigration",
+      "subtopic_id": "border-control-and-security",
+      "statement": "Retirar el permiso de residencia a extranjeros condenados a penas privativas de libertad superiores a un año",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-salf-immigration-p18-11-42",
+        "party_id": "salf",
+        "publisher": "Se Acabó La Fiesta",
+        "programme_id": "salf-29N-v1",
+        "version": "29N-v1",
+        "sha256": "073425b9522da77608a0399923c2e0d3b9153776e8a0436ac8f0aea794b7893b",
+        "page": "18",
+        "section": "6",
+        "url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d#page=18",
+        "summary": "Retirar el permiso de residencia a extranjeros condenados a penas privativas de libertad superiores a un año",
+        "qualifications": [],
+        "source_statement_fingerprint": "cde4851a6f6f74b6ae0301560f90357f157fb056c76b1d8b2ddffefee085a616",
+        "verified_external_copy": "https://cdn.jsdelivr.net/gh/jynus/programas-electorales-29n-generales-2026@27306783086b11b09901529b82612da9c5371e22/documentos_originales/SALF_Contrato_Electoral_29N.pdf#page=18"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Una condena por delito doloso castigado con más de un año de prisión puede dar lugar a la expulsión mediante expediente, salvo antecedentes cancelados.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Extranjería, artículo 57.2",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2000-544#a57"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-immigration-06",
+      "topic_id": "immigration",
+      "subtopic_id": "regularization-processes",
+      "statement": "Establecer la obligatoriedad municipal de empadronar a todos los residentes sin importar su situación administrativa",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-immigration-p56-51-61",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "56",
+        "section": "SOLIDARITAT GLOBAL I MIGRACIÓ",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=56",
+        "summary": "Establecer la obligatoriedad municipal de empadronar a todos los residentes sin importar su situación administrativa",
+        "qualifications": [],
+        "source_statement_fingerprint": "f8430add16d9e6e7e1d6646ded71c38ebd9f1cf13787b8433adfa925fe4d07c2"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "Quien vive habitualmente en España debe empadronarse y los ayuntamientos deben tramitar el alta de oficio a los residentes no inscritos. El padrón municipal no acredita residencia legal.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Bases del Régimen Local, artículos 15 y 18",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a15"
+          },
+          {
+            "label": "BOE · Reglamento de Población, artículo 73",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1986-21944#art73"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-immigration-07",
+      "topic_id": "immigration",
+      "subtopic_id": "border-control-and-security",
+      "statement": "Limitar las identificaciones policiales en via publica y prohibir su realizacion con el fin de aplicar la legislacion de extranjeria",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-immigration-p143-141-26",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "143",
+        "section": "18.4. Deberes y derechos de las Fuerzas y Cuerpos de Seguridad del Estado para servir en un Estado democrático",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=143",
+        "summary": "Limitar las identificaciones policiales en via publica y prohibir su realizacion con el fin de aplicar la legislacion de extranjeria",
+        "qualifications": [],
+        "source_statement_fingerprint": "bcbbab51b66e8b067b5932a5be97668c94e311ef690bd1c41a08e59fb916f321"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-immigration-08",
+      "topic_id": "immigration",
+      "subtopic_id": "regularization-processes",
+      "statement": "Suprimir la figura jurídica del arraigo y revocar las vías rápidas de adquisición de la nacionalidad española",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-vox-immigration-p15-11-12",
+        "party_id": "vox",
+        "publisher": "VOX",
+        "programme_id": "vox-2026-v2",
+        "version": "2026-v2",
+        "sha256": "f83024014fac82244eb074f31ac221d79a580faca0d66559fec2a9385da74e08",
+        "page": "15",
+        "section": "11",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf#page=15",
+        "summary": "Suprimir la figura jurídica del arraigo y revocar las vías rápidas de adquisición de la nacionalidad española",
+        "qualifications": [],
+        "source_statement_fingerprint": "71b0e79f9d950fd22d9581925af8a7499cd988d5b641487481ea70b88c365f20"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El reglamento de extranjería contempla varias autorizaciones de residencia temporal por arraigo, entre ellas el familiar, el social y el sociolaboral.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Reglamento de extranjería, artículo 125",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099#a125"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-foreign-policy-eu-01",
+      "topic_id": "foreign-policy-eu",
+      "subtopic_id": "defense-spending-and-nato",
+      "statement": "Promover la salida de España de la OTAN y abogar por la disolución de dicha alianza militar",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-foreign-policy-eu-p89-81-43",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "89",
+        "section": "11. GALIZA POLA PAZ",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=89",
+        "summary": "Promover la salida de España de la OTAN y abogar por la disolución de dicha alianza militar",
+        "qualifications": [],
+        "source_statement_fingerprint": "ed3cf7ee6d3745eacaae289d1af83d62a4c55e97bcb484df2010a5a698c11537"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "España es miembro de pleno derecho de la OTAN desde 1982.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "OTAN · Países miembros",
+            "url": "https://www.nato.int/en/about-us/organization/nato-member-countries"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-foreign-policy-eu-02",
+      "topic_id": "foreign-policy-eu",
+      "subtopic_id": "international-trade-treaties",
+      "statement": "Rechazar la ratificación del acuerdo de libre comercio UE-Mercosur y oponerse a su aplicación provisional hasta que se pronuncie el TJUE, exigiendo reciprocidad de normas.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-erc-foreign-policy-eu-p32-31-21",
+        "party_id": "erc",
+        "publisher": "Esquerra Republicana",
+        "programme_id": "erc-2026-v1",
+        "version": "2026-v1",
+        "sha256": "61728d162a6e88d492d44a0b0994effb31f9e4abb85ebf8aea715d870a9b2e04",
+        "page": "32",
+        "section": "157",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/ERC-programa-electoral-29-N-2026-2026-11-12.pdf#page=32",
+        "summary": "Rechazar la ratificación del acuerdo de libre comercio UE-Mercosur y oponerse a su aplicación provisional hasta que se pronuncie el TJUE, exigiendo reciprocidad de normas.",
+        "qualifications": [],
+        "source_statement_fingerprint": "fe43a1dcfccb1de2a22be13f4cd598e0e6f3fffaa93d40773568ced1fa3a54e5"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El acuerdo comercial interino UE–Mercosur se aplica de forma provisional desde el 1 de mayo de 2026, pendiente de la ratificación definitiva.",
+        "reference_date": "2026-11-21",
+        "period": "Situación a 21 de noviembre de 2026.",
+        "references": [
+          {
+            "label": "Comisión Europea · Acuerdo comercial UE–Mercosur",
+            "url": "https://commission.europa.eu/topics/trade/eu-mercosur-trade-agreement_en"
+          },
+          {
+            "label": "Diario Oficial de la UE · Aviso de aplicación provisional",
+            "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=OJ:L_202600868"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-foreign-policy-eu-03",
+      "topic_id": "foreign-policy-eu",
+      "subtopic_id": "defense-spending-and-nato",
+      "statement": "Promover la adhesión del Estado español al Tratado sobre la Prohibición de Armas Nucleares",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-ehbildu-foreign-policy-eu-p28-21-46",
+        "party_id": "ehbildu",
+        "publisher": "EH Bildu",
+        "programme_id": "ehbildu-2026-v1",
+        "version": "2026-v1",
+        "sha256": "ceb655c9c8ebb036a15fa7829865d6e2d178525eb7db92629d702ac5e8d16047",
+        "page": "28",
+        "section": "3.2.6",
+        "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=28",
+        "summary": "Promover la adhesión del Estado español al Tratado sobre la Prohibición de Armas Nucleares",
+        "qualifications": [],
+        "source_statement_fingerprint": "e44109467597b652d4f93f6701566d17d8f56d3ca41b7770892dd11099f9de26"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "A 20 de noviembre de 2026, España no figuraba entre los Estados parte del Tratado sobre la Prohibición de las Armas Nucleares.",
+        "reference_date": "2026-11-21",
+        "period": "20 de noviembre de 2026",
+        "references": [
+          {
+            "label": "Naciones Unidas · Estado del tratado",
+            "url": "https://treaties.un.org/pages/ViewDetails.aspx?chapter=26&clang=_en&mtdsg_no=XXVI-9&src=IND"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-foreign-policy-eu-04",
+      "topic_id": "foreign-policy-eu",
+      "subtopic_id": "bilateral-relations",
+      "statement": "Cesar el envío de armamento español a Ucrania priorizando una salida negociada y reforzar el envío de ayuda humanitaria",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-foreign-policy-eu-p89-81-45",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "89",
+        "section": "11. GALIZA POLA PAZ",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=89",
+        "summary": "Cesar el envío de armamento español a Ucrania priorizando una salida negociada y reforzar el envío de ayuda humanitaria",
+        "qualifications": [],
+        "source_statement_fingerprint": "b22e18eb093b2838e4ffe3ea485122e53b6c3f99e76a3899ff4a6bf106dcd7d5"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-foreign-policy-eu-05",
+      "topic_id": "foreign-policy-eu",
+      "subtopic_id": "international-trade-treaties",
+      "statement": "Suspender el Tratado de Asociación de la Unión Europea con Israel e interrumpir las relaciones comerciales y societarias con entidades israelíes",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-ehbildu-foreign-policy-eu-p29-21-47",
+        "party_id": "ehbildu",
+        "publisher": "EH Bildu",
+        "programme_id": "ehbildu-2026-v1",
+        "version": "2026-v1",
+        "sha256": "ceb655c9c8ebb036a15fa7829865d6e2d178525eb7db92629d702ac5e8d16047",
+        "page": "29",
+        "section": "3.2.7",
+        "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=29",
+        "summary": "Suspender el Tratado de Asociación de la Unión Europea con Israel e interrumpir las relaciones comerciales y societarias con entidades israelíes",
+        "qualifications": [],
+        "source_statement_fingerprint": "a805a1bf24fcb25ff74723efc273055d8801034c3c8244ebad6cfed47020b695"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-foreign-policy-eu-06",
+      "topic_id": "foreign-policy-eu",
+      "subtopic_id": "eu-treaties-and-fiscal-rules",
+      "statement": "Convocar un referéndum para la renegociación de los tratados europeos y un segundo referéndum sobre la salida de la Unión Europea si las instituciones comunitarias rechazan renegociar.",
+      "qualifications": [
+        "Si Bruselas rechaza renegociar los tratados"
+      ],
+      "source": {
+        "statement_id": "stmt-2026-salf-foreign-policy-eu-p35-31-28",
+        "party_id": "salf",
+        "publisher": "Se Acabó La Fiesta",
+        "programme_id": "salf-29N-v1",
+        "version": "29N-v1",
+        "sha256": "073425b9522da77608a0399923c2e0d3b9153776e8a0436ac8f0aea794b7893b",
+        "page": "35",
+        "section": "1",
+        "url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d#page=35",
+        "summary": "Convocar un referéndum para la renegociación de los tratados europeos y un segundo referéndum sobre la salida de la Unión Europea si las instituciones comunitarias rechazan renegociar.",
+        "qualifications": [
+          "Si Bruselas rechaza renegociar los tratados"
+        ],
+        "source_statement_fingerprint": "a0dfcfddf261826ddc57a0cbe086df8936fe91f122e0bdfa77af426d57c361e5",
+        "verified_external_copy": "https://cdn.jsdelivr.net/gh/jynus/programas-electorales-29n-generales-2026@27306783086b11b09901529b82612da9c5371e22/documentos_originales/SALF_Contrato_Electoral_29N.pdf#page=35"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-foreign-policy-eu-07",
+      "topic_id": "foreign-policy-eu",
+      "subtopic_id": "defense-spending-and-nato",
+      "statement": "Establecer el control parlamentario previo de las autorizaciones de exportación de armas y hacer públicas las actas de la Junta Interministerial correspondiente",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-foreign-policy-eu-p131-131-5",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "131",
+        "section": "Derecho internacional, jurisdicción universal y justicia penal",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=131",
+        "summary": "Establecer el control parlamentario previo de las autorizaciones de exportación de armas y hacer públicas las actas de la Junta Interministerial correspondiente",
+        "qualifications": [],
+        "source_statement_fingerprint": "dff395e8774e8d7cf28adf4b602f35051d1d05a9749e5cdcb30ea6b8a33d054e"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El Gobierno debe informar al Congreso cada seis meses sobre las exportaciones de material de defensa realizadas, según la ley de control del comercio exterior.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley 53/2007, artículo 16",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-22437#a16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-foreign-policy-eu-08",
+      "topic_id": "foreign-policy-eu",
+      "subtopic_id": "defense-spending-and-nato",
+      "statement": "Desmantelar y clausurar las bases militares extranjeras de Rota y Morón, reconvirtiéndolas en instalaciones públicas de investigación marina, logística humanitaria y renovables",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-partido-humanista-foreign-policy-eu-p17-11-17",
+        "party_id": "partido-humanista",
+        "publisher": "Partido Humanista",
+        "programme_id": "partido-humanista-2026-v1",
+        "version": "2026-v1",
+        "sha256": "c53ab576b0c57a091665795cb8676269b85cc6f9b7e22c9d65ce11d86502086f",
+        "page": "17",
+        "section": "Propuesta 3",
+        "url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf#page=17",
+        "summary": "Desmantelar y clausurar las bases militares extranjeras de Rota y Morón, reconvirtiéndolas en instalaciones públicas de investigación marina, logística humanitaria y renovables",
+        "qualifications": [],
+        "source_statement_fingerprint": "1659ca23b7f944607ebf9b288531655dba3cc6f73c13ecf38dbecd734b110f9d"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-climate-energy-01",
+      "topic_id": "climate-energy",
+      "subtopic_id": "nuclear-energy-lifecycle",
+      "statement": "Mantener el calendario de cierre definitivo de las centrales nucleares sin autorizar prórrogas e impulsar un plan de reindustrialización en las zonas afectadas.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-climate-energy-p27-21-70",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "27",
+        "section": "ENERGIA",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=27",
+        "summary": "Mantener el calendario de cierre definitivo de las centrales nucleares sin autorizar prórrogas e impulsar un plan de reindustrialización en las zonas afectadas.",
+        "qualifications": [],
+        "source_statement_fingerprint": "338075a87da2f295b0f8c54ba9e371beca19c093fb2503e4b593526628c56506"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-climate-energy-02",
+      "topic_id": "climate-energy",
+      "subtopic_id": "biodiversity-and-circular-economy",
+      "statement": "Implantar un sistema de depósito, devolución y retorno (SDDR) de envases para elevar la tasa de reciclaje.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-junts-climate-energy-p81-81-9",
+        "party_id": "junts",
+        "publisher": "Junts per Catalunya",
+        "programme_id": "junts-2026-v1",
+        "version": "2026-v1",
+        "sha256": "cde2c5f3f30b66c72dd4f4bae3d22e9f6bc3e0ee4362da72f9e32e85129374b6",
+        "page": "81",
+        "section": "Objectiu 3 / 3.2",
+        "url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf#page=81",
+        "summary": "Implantar un sistema de depósito, devolución y retorno (SDDR) de envases para elevar la tasa de reciclaje.",
+        "qualifications": [],
+        "source_statement_fingerprint": "7864acdb3066146b5701c4b465214a0d63fd48792c6a70805de070ac5263f6ae"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La norma exige implantar un sistema de depósito para determinadas botellas de plástico de hasta 3 litros si se incumplen los objetivos de recogida separada.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Real Decreto 1055/2022, artículo 47",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-22690#a47"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-climate-energy-03",
+      "topic_id": "climate-energy",
+      "subtopic_id": "biodiversity-and-circular-economy",
+      "statement": "Aprobar una moratoria inmediata a la construcción o ampliación de macrogranjas ganaderas intensivas.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-partido-humanista-climate-energy-p21-21-5",
+        "party_id": "partido-humanista",
+        "publisher": "Partido Humanista",
+        "programme_id": "partido-humanista-2026-v1",
+        "version": "2026-v1",
+        "sha256": "c53ab576b0c57a091665795cb8676269b85cc6f9b7e22c9d65ce11d86502086f",
+        "page": "21",
+        "section": "Propuesta 3",
+        "url": "https://partidohumanista.es/Documentos/Programas/Programa%20Generales%202026.pdf#page=21",
+        "summary": "Aprobar una moratoria inmediata a la construcción o ampliación de macrogranjas ganaderas intensivas.",
+        "qualifications": [],
+        "source_statement_fingerprint": "0586c58fc216a551a30b8ad8cf8b1ed7d65bab733573d3afd9232d0dd3ab9345"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-climate-energy-04",
+      "topic_id": "climate-energy",
+      "subtopic_id": "emission-targets-and-decarbonization",
+      "statement": "Derogar normativas derivadas del Pacto Verde y eliminar la obligatoriedad de las Zonas de Bajas Emisiones",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-vox-climate-energy-p29-21-25",
+        "party_id": "vox",
+        "publisher": "VOX",
+        "programme_id": "vox-2026-v2",
+        "version": "2026-v2",
+        "sha256": "f83024014fac82244eb074f31ac221d79a580faca0d66559fec2a9385da74e08",
+        "page": "29",
+        "section": "44",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf#page=29",
+        "summary": "Derogar normativas derivadas del Pacto Verde y eliminar la obligatoriedad de las Zonas de Bajas Emisiones",
+        "qualifications": [],
+        "source_statement_fingerprint": "f01377cfed88b89b3b22661b0e83714e2207f88cec47979eb58fe9d8fee44707"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La ley exige zonas de bajas emisiones en ciudades de más de 50.000 habitantes, territorios insulares y municipios de más de 20.000 que superen límites de contaminación.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Cambio Climático, artículo 14",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2021-8447#a14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-climate-energy-05",
+      "topic_id": "climate-energy",
+      "subtopic_id": "emission-targets-and-decarbonization",
+      "statement": "Establecer un impuesto sobre el queroseno utilizado en los vuelos de ámbito nacional.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-climate-energy-p47-41-51",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "47",
+        "section": "3.5. Fiscalidad verde y sobre el lujo",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=47",
+        "summary": "Establecer un impuesto sobre el queroseno utilizado en los vuelos de ámbito nacional.",
+        "qualifications": [],
+        "source_statement_fingerprint": "8f7d74bbaa6856bd79cade69b548d5e0584e35f24951133d426678f797a0d192"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El combustible utilizado en navegación aérea está exento del Impuesto sobre Hidrocarburos, salvo el destinado a la aviación privada de recreo.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Impuestos Especiales, artículo 51",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-28741#a51"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-climate-energy-06",
+      "topic_id": "climate-energy",
+      "subtopic_id": "renewables-and-grid",
+      "statement": "Adquirir la mayoría absoluta del accionariado de Repsol a través del Estado mediante la Empresa Pública de Energía.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-climate-energy-p18-11-29",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "18",
+        "section": "37",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=18",
+        "summary": "Adquirir la mayoría absoluta del accionariado de Repsol a través del Estado mediante la Empresa Pública de Energía.",
+        "qualifications": [],
+        "source_statement_fingerprint": "f9aa9db860d60474b8ec543bb9224e9954c90711a96c5c6cafbe44ed72be5480"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-climate-energy-07",
+      "topic_id": "climate-energy",
+      "subtopic_id": "coastal-planning-and-coastal-law",
+      "statement": "Aprobar una nueva Ley de Costas para dar seguridad a los negocios y soluciones legales a los núcleos históricos",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-pp-climate-energy-p51-51-7",
+        "party_id": "pp",
+        "publisher": "Partido Popular",
+        "programme_id": "pp-2026-v1",
+        "version": "2026-v1",
+        "sha256": "ae0c35d7ef3faf540acaa79d47abbe3ae2bf56a3a755c4e78a8f5bf3ea49789c",
+        "page": "51",
+        "section": "208",
+        "url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf#page=51",
+        "summary": "Aprobar una nueva Ley de Costas para dar seguridad a los negocios y soluciones legales a los núcleos históricos",
+        "qualifications": [],
+        "source_statement_fingerprint": "85f0c2c7e18a9308081c138cd2f0b60e1e73bd08a2eec408c0005d9d4209ccd5"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-climate-energy-08",
+      "topic_id": "climate-energy",
+      "subtopic_id": "animal-welfare-and-protection",
+      "statement": "Modificar la ley estatal de protección animal para suprimir la exclusión de los perros empleados en caza, trabajo y actividades afines.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-erc-climate-energy-p36-31-41",
+        "party_id": "erc",
+        "publisher": "Esquerra Republicana",
+        "programme_id": "erc-2026-v1",
+        "version": "2026-v1",
+        "sha256": "61728d162a6e88d492d44a0b0994effb31f9e4abb85ebf8aea715d870a9b2e04",
+        "page": "36",
+        "section": "207",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/ERC-programa-electoral-29-N-2026-2026-11-12.pdf#page=36",
+        "summary": "Modificar la ley estatal de protección animal para suprimir la exclusión de los perros empleados en caza, trabajo y actividades afines.",
+        "qualifications": [],
+        "source_statement_fingerprint": "ffe9284c82f27f2ab7dfb4d1fe7e0ad9043ac1c23cfda4bc2cebfc1053010d9d"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La ley estatal de bienestar animal excluye de su ámbito a los perros de caza y a determinados animales empleados en actividades profesionales.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Protección de los Derechos y el Bienestar de los Animales, artículo 1",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-7936#a1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-institutions-rights-01",
+      "topic_id": "institutions-rights",
+      "subtopic_id": "electoral-law-and-constitution",
+      "statement": "Rebajar la edad del derecho de voto a los 16 años.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-institutions-rights-p35-31-41",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "35",
+        "section": "TRANSPARÈNCIA I PARTICIPACIÓ",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=35",
+        "summary": "Rebajar la edad del derecho de voto a los 16 años.",
+        "qualifications": [],
+        "source_statement_fingerprint": "14d0bb2bbb2d437742048f5d15194d993d20207a54c9dfd502738506d4958a22"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La edad mínima para votar en las elecciones generales españolas está fijada en 18 años.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley Electoral, artículo 2",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#a2"
+          },
+          {
+            "label": "BOE · Constitución, artículo 12",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-institutions-rights-02",
+      "topic_id": "institutions-rights",
+      "subtopic_id": "civil-liberties-and-equality",
+      "statement": "Derogar la Ley de Seguridad Ciudadana (conocida como ley mordaza).",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-erc-institutions-rights-p7-1-18",
+        "party_id": "erc",
+        "publisher": "Esquerra Republicana",
+        "programme_id": "erc-2026-v1",
+        "version": "2026-v1",
+        "sha256": "61728d162a6e88d492d44a0b0994effb31f9e4abb85ebf8aea715d870a9b2e04",
+        "page": "7",
+        "section": "A. Autodeterminació, democràcia i drets",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/ERC-programa-electoral-29-N-2026-2026-11-12.pdf#page=7",
+        "summary": "Derogar la Ley de Seguridad Ciudadana (conocida como ley mordaza).",
+        "qualifications": [],
+        "source_statement_fingerprint": "2ead31a84f7df01862c3e6dd168de76d1de7cf4bc08ea5e7f7edec817a94cb4e"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La Ley de Seguridad Ciudadana vigente regula las identificaciones policiales y prevé sanciones administrativas en materia de seguridad.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley Orgánica de Protección de la Seguridad Ciudadana",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-3442"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-institutions-rights-03",
+      "topic_id": "institutions-rights",
+      "subtopic_id": "judicial-governance-and-cgpj",
+      "statement": "Suprimir la prisión permanente revisable y las medidas de libertad vigilada posteriores al cumplimiento de la condena.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-institutions-rights-p30-21-60",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "30",
+        "section": "2.8.1. DEREITOS E LIBERDADES CÍVICAS",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=30",
+        "summary": "Suprimir la prisión permanente revisable y las medidas de libertad vigilada posteriores al cumplimiento de la condena.",
+        "qualifications": [],
+        "source_statement_fingerprint": "770e9bb42abd9c578ae9a87ef710306df613e1d1931346931e1c305beefe3faa"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El Código Penal prevé la prisión permanente revisable y contempla la libertad vigilada tras el cumplimiento de determinadas penas de prisión.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Código Penal, artículo 92",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a92"
+          },
+          {
+            "label": "BOE · Código Penal, artículo 106",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a106"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-institutions-rights-04",
+      "topic_id": "institutions-rights",
+      "subtopic_id": "civil-liberties-and-equality",
+      "statement": "Prohibir el uso del burka y el niqab en los espacios públicos",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-salf-institutions-rights-p19-11-49",
+        "party_id": "salf",
+        "publisher": "Se Acabó La Fiesta",
+        "programme_id": "salf-29N-v1",
+        "version": "29N-v1",
+        "sha256": "073425b9522da77608a0399923c2e0d3b9153776e8a0436ac8f0aea794b7893b",
+        "page": "19",
+        "section": "9",
+        "url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d#page=19",
+        "summary": "Prohibir el uso del burka y el niqab en los espacios públicos",
+        "qualifications": [],
+        "source_statement_fingerprint": "d09096eadc3b600ede2feb016227e30edd9173878ce44b332c9a0388488f02b2",
+        "verified_external_copy": "https://cdn.jsdelivr.net/gh/jynus/programas-electorales-29n-generales-2026@27306783086b11b09901529b82612da9c5371e22/documentos_originales/SALF_Contrato_Electoral_29N.pdf#page=19"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-institutions-rights-05",
+      "topic_id": "institutions-rights",
+      "subtopic_id": "judicial-governance-and-cgpj",
+      "statement": "Suprimir los aforamientos parlamentarios y judiciales para evitar distinciones ante los tribunales.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-institutions-rights-p35-31-45",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "35",
+        "section": "TRANSPARÈNCIA I PARTICIPACIÓ",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=35",
+        "summary": "Suprimir los aforamientos parlamentarios y judiciales para evitar distinciones ante los tribunales.",
+        "qualifications": [],
+        "source_statement_fingerprint": "33b7659031956744bf25b0907931084b5b065af1f27b91544a06abda29211d55"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La Constitución atribuye las causas penales contra diputados y senadores a la Sala de lo Penal del Tribunal Supremo. El aforamiento judicial se regula por separado.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Constitución, artículo 71",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a71"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-institutions-rights-06",
+      "topic_id": "institutions-rights",
+      "subtopic_id": "territorial-model-and-sfa",
+      "statement": "Suprimir las diputaciones provinciales",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-salf-institutions-rights-p16-11-31",
+        "party_id": "salf",
+        "publisher": "Se Acabó La Fiesta",
+        "programme_id": "salf-29N-v1",
+        "version": "29N-v1",
+        "sha256": "073425b9522da77608a0399923c2e0d3b9153776e8a0436ac8f0aea794b7893b",
+        "page": "16",
+        "section": "Cómo se paga",
+        "url": "https://www.seacabolafiesta.com/SALF_Contrato_Electoral_29N.pdf?v=073425b9522d#page=16",
+        "summary": "Suprimir las diputaciones provinciales",
+        "qualifications": [],
+        "source_statement_fingerprint": "2b9f8875d32f0f4d9c5d416178afb11d6c28754ab53875af5c024f97630f7c0c",
+        "verified_external_copy": "https://cdn.jsdelivr.net/gh/jynus/programas-electorales-29n-generales-2026@27306783086b11b09901529b82612da9c5371e22/documentos_originales/SALF_Contrato_Electoral_29N.pdf#page=16"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La ley atribuye a las diputaciones provinciales funciones como asistir a los municipios y coordinar determinados servicios municipales.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Bases del Régimen Local, artículo 36",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a36"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-institutions-rights-07",
+      "topic_id": "institutions-rights",
+      "subtopic_id": "civil-liberties-and-equality",
+      "statement": "Derogar la Ley de Memoria Democrática y su marco normativo asociado",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-vox-institutions-rights-p30-21-27",
+        "party_id": "vox",
+        "publisher": "VOX",
+        "programme_id": "vox-2026-v2",
+        "version": "2026-v2",
+        "sha256": "f83024014fac82244eb074f31ac221d79a580faca0d66559fec2a9385da74e08",
+        "page": "30",
+        "section": "46",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/Vox-programa-electoral-29-N-2026-2026-11-13.pdf#page=30",
+        "summary": "Derogar la Ley de Memoria Democrática y su marco normativo asociado",
+        "qualifications": [],
+        "source_statement_fingerprint": "218c820ae131584254b678fa2f74d2381f34643123c5f49b7f95da7d41cbbb34"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La Ley de Memoria Democrática vigente incluye el reconocimiento de víctimas de la Guerra Civil y la dictadura y medidas para promover su reparación.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Memoria Democrática, artículo 1",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-17099#a1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-institutions-rights-08",
+      "topic_id": "institutions-rights",
+      "subtopic_id": "judicial-governance-and-cgpj",
+      "statement": "Suprimir la Audiencia Nacional y transferir el conjunto de sus competencias a los órganos de la jurisdicción ordinaria.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-institutions-rights-p131-131-7",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "131",
+        "section": "420",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=131",
+        "summary": "Suprimir la Audiencia Nacional y transferir el conjunto de sus competencias a los órganos de la jurisdicción ordinaria.",
+        "qualifications": [],
+        "source_statement_fingerprint": "bd06b55ff806c4230be808891eaf2ec32c274a32d19805dd1fd48a71561d04d9"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-infrastructure-mobility-01",
+      "topic_id": "infrastructure-mobility",
+      "subtopic_id": "rail-transport-and-high-speed",
+      "statement": "Restablecer la alta velocidad ferroviaria como servicio público exclusivo de Renfe, paralizando la segunda fase de liberalización y no renovando los acuerdos con operadores privados a finales de la década.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-infrastructure-mobility-p105-101-16",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "105",
+        "section": "11.3. Infraestructuras e inversión en todo el territorio",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=105",
+        "summary": "Restablecer la alta velocidad ferroviaria como servicio público exclusivo de Renfe, paralizando la segunda fase de liberalización y no renovando los acuerdos con operadores privados a finales de la década.",
+        "qualifications": [],
+        "source_statement_fingerprint": "b56b9ae9011845a1434acff441dea2401afde6373e55ee5d336e43409dac7a0f"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "En el segundo trimestre de 2026, Renfe, Iryo y Ouigo prestaban servicios de alta velocidad en corredores como Madrid–Alicante.",
+        "reference_date": "2026-11-21",
+        "period": "Segundo trimestre de 2026.",
+        "references": [
+          {
+            "label": "CNMC · Indicadores trimestrales del transporte ferroviario",
+            "url": "https://data.cnmc.es/transporte-y-postal/transporte/conjuntos-de-datos/indicadores-trimestrales-del-transporte-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-infrastructure-mobility-02",
+      "topic_id": "infrastructure-mobility",
+      "subtopic_id": "air-and-maritime-transport-insular-mobility",
+      "statement": "Revertir la gestión de las torres de control aéreo para asegurar su control público.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-infrastructure-mobility-p63-61-24",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "63",
+        "section": "5.3. PORTOS E AEROPORTOS",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=63",
+        "summary": "Revertir la gestión de las torres de control aéreo para asegurar su control público.",
+        "qualifications": [],
+        "source_statement_fingerprint": "dac781a6d31a8cfe4eeafe9314ee8e9e98cd7e53bb1e6b1e8c2bf06e84fdad4d"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-infrastructure-mobility-03",
+      "topic_id": "infrastructure-mobility",
+      "subtopic_id": "road-network-and-highway-safety",
+      "statement": "No renovar las concesiones de autopistas a corporaciones, pasando peajes a titularidad pública y abaratando, suprimiendo o eliminando tramos peligrosos o costosos.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-infrastructure-mobility-p107-101-35",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "107",
+        "section": "356",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=107",
+        "summary": "No renovar las concesiones de autopistas a corporaciones, pasando peajes a titularidad pública y abaratando, suprimiendo o eliminando tramos peligrosos o costosos.",
+        "qualifications": [],
+        "source_statement_fingerprint": "611cba1a700113b1da1f79e5d6e7e691cac5812b6c136ec1015de9b8eddabdef"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-infrastructure-mobility-04",
+      "topic_id": "infrastructure-mobility",
+      "subtopic_id": "rail-transport-and-high-speed",
+      "statement": "Efectuar una auditoría independiente de toda la red ferroviaria para verificar su seguridad.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-infrastructure-mobility-p61-61-10",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "61",
+        "section": "5. INFRAESTRUTURAS PÚBLICAS E ORDENACIÓN TERRITORIAL",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=61",
+        "summary": "Efectuar una auditoría independiente de toda la red ferroviaria para verificar su seguridad.",
+        "qualifications": [],
+        "source_statement_fingerprint": "b556bb6400c22776d2f9ad7991f82a135fa380f31cc987805cff7adcbb5fb3ed"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-infrastructure-mobility-05",
+      "topic_id": "infrastructure-mobility",
+      "subtopic_id": "air-and-maritime-transport-insular-mobility",
+      "statement": "Fijar Obligaciones de Servicio Público con precios máximos para vuelos entre Canarias, Baleares y la Península Ibérica.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-infrastructure-mobility-p107-101-33",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "107",
+        "section": "354",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=107",
+        "summary": "Fijar Obligaciones de Servicio Público con precios máximos para vuelos entre Canarias, Baleares y la Península Ibérica.",
+        "qualifications": [],
+        "source_statement_fingerprint": "65053e6130db49fce72b88d6c71d8ccd4644ecc580d3725f522f9f4e7283fffc"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-infrastructure-mobility-06",
+      "topic_id": "infrastructure-mobility",
+      "subtopic_id": "freight-rail-logistics-and-ports",
+      "statement": "Acelerar las obras del Corredor Mediterráneo, instalando el tercer carril entre Figueres y Portbou y separando el tráfico de mercancías del de pasajeros en Tarragona.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-erc-infrastructure-mobility-p40-31-64",
+        "party_id": "erc",
+        "publisher": "Esquerra Republicana",
+        "programme_id": "erc-2026-v1",
+        "version": "2026-v1",
+        "sha256": "61728d162a6e88d492d44a0b0994effb31f9e4abb85ebf8aea715d870a9b2e04",
+        "page": "40",
+        "section": "230",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/ERC-programa-electoral-29-N-2026-2026-11-12.pdf#page=40",
+        "summary": "Acelerar las obras del Corredor Mediterráneo, instalando el tercer carril entre Figueres y Portbou y separando el tráfico de mercancías del de pasajeros en Tarragona.",
+        "qualifications": [],
+        "source_statement_fingerprint": "7320175d8c720df2d096fc7cf3373c019295e7d0956c38f127090d07d8fae65b"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-infrastructure-mobility-07",
+      "topic_id": "infrastructure-mobility",
+      "subtopic_id": "air-and-maritime-transport-insular-mobility",
+      "statement": "Ejecutar ampliaciones en aeropuertos saturados adaptadas a las proyecciones de demanda y a las necesidades territoriales.",
+      "qualifications": [
+        "Ajustado a la demanda prevista y necesidades de conectividad territorial"
+      ],
+      "source": {
+        "statement_id": "stmt-2026-pp-infrastructure-mobility-p37-31-33",
+        "party_id": "pp",
+        "publisher": "Partido Popular",
+        "programme_id": "pp-2026-v1",
+        "version": "2026-v1",
+        "sha256": "ae0c35d7ef3faf540acaa79d47abbe3ae2bf56a3a755c4e78a8f5bf3ea49789c",
+        "page": "37",
+        "section": "125",
+        "url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf#page=37",
+        "summary": "Ejecutar ampliaciones en aeropuertos saturados adaptadas a las proyecciones de demanda y a las necesidades territoriales.",
+        "qualifications": [
+          "Ajustado a la demanda prevista y necesidades de conectividad territorial"
+        ],
+        "source_statement_fingerprint": "b67866e3b9d81c1c0dd2aa1207ddd48c8dec7f33203e227f0cadd40f250032ee"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-infrastructure-mobility-08",
+      "topic_id": "infrastructure-mobility",
+      "subtopic_id": "public-transit-and-infrastructure-planning",
+      "statement": "Garantizar conexiones de transporte de fin de semana y horarios nocturnos para facilitar ocio y participación juvenil en áreas rurales.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-infrastructure-mobility-p44-41-41",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "44",
+        "section": "JOVENTUT",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=44",
+        "summary": "Garantizar conexiones de transporte de fin de semana y horarios nocturnos para facilitar ocio y participación juvenil en áreas rurales.",
+        "qualifications": [],
+        "source_statement_fingerprint": "28718d822a9e48d430135093d8254a6a1a3cc7ad5eda00a4dca6eda817601e32"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-culture-sport-01",
+      "topic_id": "culture-sport",
+      "subtopic_id": "cultural-heritage-and-institutions",
+      "statement": "Derogar la Ley 18/2013 que califica y tutela la tauromaquia como patrimonio cultural.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-culture-sport-p34-31-35",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "34",
+        "section": "Financiación y modernización del sector público cultural",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=34",
+        "summary": "Derogar la Ley 18/2013 que califica y tutela la tauromaquia como patrimonio cultural.",
+        "qualifications": [],
+        "source_statement_fingerprint": "da8a20e92ae330455488b48b00e1089920a1a6ca1de439d4460cc17b4a38bb8e"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La Ley 18/2013 reconoce la tauromaquia como parte del patrimonio cultural y prevé medidas para su protección.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley 18/2013, artículos 2 y 3",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2013-11837#a2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-culture-sport-02",
+      "topic_id": "culture-sport",
+      "subtopic_id": "sports-and-physical-activity",
+      "statement": "Modificar la normativa estatal del deporte para permitir a las selecciones vascas competir oficialmente a nivel internacional",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-ehbildu-culture-sport-p26-21-35",
+        "party_id": "ehbildu",
+        "publisher": "EH Bildu",
+        "programme_id": "ehbildu-2026-v1",
+        "version": "2026-v1",
+        "sha256": "ceb655c9c8ebb036a15fa7829865d6e2d178525eb7db92629d702ac5e8d16047",
+        "page": "26",
+        "section": "2.6",
+        "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=26",
+        "summary": "Modificar la normativa estatal del deporte para permitir a las selecciones vascas competir oficialmente a nivel internacional",
+        "qualifications": [],
+        "source_statement_fingerprint": "1d0afcd424afc2d4ed4067b99821cdf767828fba7436c097b3a8df6aa7bca216"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-culture-sport-03",
+      "topic_id": "culture-sport",
+      "subtopic_id": "cultural-heritage-and-institutions",
+      "statement": "Garantizar el acceso gratuito a los museos de titularidad pública y a los centros de divulgación científica.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-culture-sport-p73-71-22",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "73",
+        "section": "234",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=73",
+        "summary": "Garantizar el acceso gratuito a los museos de titularidad pública y a los centros de divulgación científica.",
+        "qualifications": [],
+        "source_statement_fingerprint": "5d1f100034d5b281fd1fad10ede720d08eedc6f8fae360e8d4b744cc137e5887"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-culture-sport-04",
+      "topic_id": "culture-sport",
+      "subtopic_id": "cultural-access-patronage-and-creators",
+      "statement": "Ampliar el acceso a la cultura con precios asequibles, ayudas para personas con menos recursos y extendiendo el Bono Cultural Joven a la población de 16 a 30 años.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-culture-sport-p14-11-42",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "14",
+        "section": "CULTURA",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=14",
+        "summary": "Ampliar el acceso a la cultura con precios asequibles, ayudas para personas con menos recursos y extendiendo el Bono Cultural Joven a la población de 16 a 30 años.",
+        "qualifications": [],
+        "source_statement_fingerprint": "902dc93253f7b0f18a4bb79946e3e3e88701c009911904287c951273d19ad770"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La edición de 2026 del Bono Cultural Joven ofrece 400 euros a las personas que cumplen 18 años ese año.",
+        "reference_date": "2026-11-21",
+        "period": "Convocatoria de 2026",
+        "references": [
+          {
+            "label": "Ministerio de Cultura · Bono Cultural Joven 2026",
+            "url": "https://www.cultura.gob.es/actualidad/2026/11/261105-bcj-ultimos-datos.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-culture-sport-05",
+      "topic_id": "culture-sport",
+      "subtopic_id": "cultural-heritage-and-institutions",
+      "statement": "Modificar la Ley de Bases del Régimen Local para hacer obligatoria la presencia de bibliotecas públicas en municipios de más de 2.000 habitantes.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-culture-sport-p36-31-51",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "36",
+        "section": "Fortalecimiento y desarrollo de los sectores culturales",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=36",
+        "summary": "Modificar la Ley de Bases del Régimen Local para hacer obligatoria la presencia de bibliotecas públicas en municipios de más de 2.000 habitantes.",
+        "qualifications": [],
+        "source_statement_fingerprint": "74fb579ccccf9962e88b7e68504df8c6de14ee32956fccec11c7312ff11e4b23"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La Ley de Bases del Régimen Local obliga a prestar servicio de biblioteca pública a los municipios de más de 5.000 habitantes.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de Bases del Régimen Local, artículo 26",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1985-5392#a26"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-culture-sport-06",
+      "topic_id": "culture-sport",
+      "subtopic_id": "sports-and-physical-activity",
+      "statement": "Aprobar y desplegar el Estatuto del Deportista con medidas de protección social, salud, compatibilidad con estudios y transición tras la retirada.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-psoe-culture-sport-p55-51-37",
+        "party_id": "psoe",
+        "publisher": "PSOE",
+        "programme_id": "psoe-2026-v1",
+        "version": "2026-v1",
+        "sha256": "e9c8341339538b550641b6ddb1c3fdfeef7fda6a8a1a4be9e8d6a44cbc229bf5",
+        "page": "55",
+        "section": "186",
+        "url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf#page=55",
+        "summary": "Aprobar y desplegar el Estatuto del Deportista con medidas de protección social, salud, compatibilidad con estudios y transición tras la retirada.",
+        "qualifications": [],
+        "source_statement_fingerprint": "797baced58be29389efe68331738d7d998e2ea5f708139d5a9813b4b2a258f02"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-culture-sport-07",
+      "topic_id": "culture-sport",
+      "subtopic_id": "cultural-access-patronage-and-creators",
+      "statement": "Establecer un abono cinematográfico de 15 euros mensuales para personas menores de 25 años en acuerdo con el sector y consolidar el Bono Cultural Joven.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-psoe-culture-sport-p103-101-17",
+        "party_id": "psoe",
+        "publisher": "PSOE",
+        "programme_id": "psoe-2026-v1",
+        "version": "2026-v1",
+        "sha256": "e9c8341339538b550641b6ddb1c3fdfeef7fda6a8a1a4be9e8d6a44cbc229bf5",
+        "page": "103",
+        "section": "453",
+        "url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf#page=103",
+        "summary": "Establecer un abono cinematográfico de 15 euros mensuales para personas menores de 25 años en acuerdo con el sector y consolidar el Bono Cultural Joven.",
+        "qualifications": [],
+        "source_statement_fingerprint": "66bc55c1324b9db4ff993313a31a2657e8c1c6dbd44592203ec7d8df5cb8bab2"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-culture-sport-08",
+      "topic_id": "culture-sport",
+      "subtopic_id": "cultural-access-patronage-and-creators",
+      "statement": "Duplicar la dotación presupuestaria destinada a Cultura en los Presupuestos Generales del Estado a lo largo de una legislatura.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-culture-sport-p72-71-13",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "72",
+        "section": "230",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=72",
+        "summary": "Duplicar la dotación presupuestaria destinada a Cultura en los Presupuestos Generales del Estado a lo largo de una legislatura.",
+        "qualifications": [],
+        "source_statement_fingerprint": "9f472fd1d717fe593530e8ef711a4a51dc5f7138870bdc311458bccd5221b66b"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-science-innovation-digital-01",
+      "topic_id": "science-innovation-digital",
+      "subtopic_id": "artificial-intelligence-and-digital-rights",
+      "statement": "Prohibir las cajas de recompensa y dinámicas de azar encubiertas en videojuegos dirigidos o accesibles a menores, estableciendo sanciones graves para las empresas infractoras.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-science-innovation-digital-p121-121-4",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "121",
+        "section": "14. Sociedad digital y medios",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=121",
+        "summary": "Prohibir las cajas de recompensa y dinámicas de azar encubiertas en videojuegos dirigidos o accesibles a menores, estableciendo sanciones graves para las empresas infractoras.",
+        "qualifications": [],
+        "source_statement_fingerprint": "657d49b41f77e980732b1f79a93612a453ca9de95d65336e1932076f480632d5"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-science-innovation-digital-02",
+      "topic_id": "science-innovation-digital",
+      "subtopic_id": "artificial-intelligence-and-digital-rights",
+      "statement": "Imponer por ley la interoperabilidad obligatoria de redes sociales y servicios de mensajería mediante el uso de protocolos abiertos y federados",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-science-innovation-digital-p80-71-69",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "80",
+        "section": "8.6",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=80",
+        "summary": "Imponer por ley la interoperabilidad obligatoria de redes sociales y servicios de mensajería mediante el uso de protocolos abiertos y federados",
+        "qualifications": [],
+        "source_statement_fingerprint": "1da237237ff4aa321bc7c5dcaffe00bbdc97f06f7c110c25d3d1d38947a6edf5"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La norma europea prevé interoperabilidad para determinados servicios de mensajería de las plataformas designadas como guardianes de acceso.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "EUR-Lex · Reglamento de Mercados Digitales, artículo 7",
+            "url": "https://eur-lex.europa.eu/eli/reg/2022/1925/oj/spa"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-science-innovation-digital-03",
+      "topic_id": "science-innovation-digital",
+      "subtopic_id": "digital-connectivity-and-telecommunications",
+      "statement": "Aprobar una ley de infraestructuras digitales públicas y crear una red estatal de almacenamiento y computación como alternativa a nubes transnacionales",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-science-innovation-digital-p79-71-60",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "79",
+        "section": "8.5",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=79",
+        "summary": "Aprobar una ley de infraestructuras digitales públicas y crear una red estatal de almacenamiento y computación como alternativa a nubes transnacionales",
+        "qualifications": [],
+        "source_statement_fingerprint": "05e26916f11b6da27de54df33b307ca59e32ef7d39a4ed239dda83353d86ab2b"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-science-innovation-digital-04",
+      "topic_id": "science-innovation-digital",
+      "subtopic_id": "scientific-research-and-talent",
+      "statement": "Crear una línea de investigación prioritaria dotada de fondos y un centro de referencia para desarrollar y certificar métodos científicos sustitutivos de la experimentación con animales.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-science-innovation-digital-p123-121-29",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "123",
+        "section": "402",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=123",
+        "summary": "Crear una línea de investigación prioritaria dotada de fondos y un centro de referencia para desarrollar y certificar métodos científicos sustitutivos de la experimentación con animales.",
+        "qualifications": [],
+        "source_statement_fingerprint": "0b7a70ad3a19dfbaf2852ac6691557bd90401f1dbc49a149991735da3de4d3cb"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La normativa exige utilizar métodos sin animales vivos siempre que sea posible y sean científicamente satisfactorios.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Real Decreto 53/2013, artículo 4",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2013-1337#a4"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-science-innovation-digital-05",
+      "topic_id": "science-innovation-digital",
+      "subtopic_id": "digital-connectivity-and-telecommunications",
+      "statement": "Poner en marcha un plan de ayudas al despliegue de banda ancha a demanda mediante fibra óptica y bonos de conectividad",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-psoe-science-innovation-digital-p18-11-26",
+        "party_id": "psoe",
+        "publisher": "PSOE",
+        "programme_id": "psoe-2026-v1",
+        "version": "2026-v1",
+        "sha256": "e9c8341339538b550641b6ddb1c3fdfeef7fda6a8a1a4be9e8d6a44cbc229bf5",
+        "page": "18",
+        "section": "20",
+        "url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf#page=18",
+        "summary": "Poner en marcha un plan de ayudas al despliegue de banda ancha a demanda mediante fibra óptica y bonos de conectividad",
+        "qualifications": [],
+        "source_statement_fingerprint": "7f3769edaee598ed2241ddea20970cf60bc46c1cad02fe512ed2361302a47c2a"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-science-innovation-digital-06",
+      "topic_id": "science-innovation-digital",
+      "subtopic_id": "artificial-intelligence-and-digital-rights",
+      "statement": "Supervisar los sistemas de inteligencia artificial en ámbitos sensibles como empleo, educación, salud y justicia para evitar la discriminación algorítmica.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-erc-institutions-rights-p35-31-37",
+        "party_id": "erc",
+        "publisher": "Esquerra Republicana",
+        "programme_id": "erc-2026-v1",
+        "version": "2026-v1",
+        "sha256": "61728d162a6e88d492d44a0b0994effb31f9e4abb85ebf8aea715d870a9b2e04",
+        "page": "35",
+        "section": "203",
+        "url": "https://img.beteve.cat/wp-content/uploads/2026/11/ERC-programa-electoral-29-N-2026-2026-11-12.pdf#page=35",
+        "summary": "Supervisar los sistemas de inteligencia artificial en ámbitos sensibles como empleo, educación, salud y justicia para evitar la discriminación algorítmica.",
+        "qualifications": [],
+        "source_statement_fingerprint": "a55b5ecc8aeaadcd3576c6e26a252850c125e48254b738c4014edc61f7861e79"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-science-innovation-digital-07",
+      "topic_id": "science-innovation-digital",
+      "subtopic_id": "digital-connectivity-and-telecommunications",
+      "statement": "Aprobar una Hoja de Ruta del 6G que incluya proyectos piloto y gestión del espectro radioeléctrico",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-psoe-science-innovation-digital-p18-11-27",
+        "party_id": "psoe",
+        "publisher": "PSOE",
+        "programme_id": "psoe-2026-v1",
+        "version": "2026-v1",
+        "sha256": "e9c8341339538b550641b6ddb1c3fdfeef7fda6a8a1a4be9e8d6a44cbc229bf5",
+        "page": "18",
+        "section": "20",
+        "url": "https://lafuerzadelagente.es/programa/PROGRAMA_PSOE_29N26.pdf#page=18",
+        "summary": "Aprobar una Hoja de Ruta del 6G que incluya proyectos piloto y gestión del espectro radioeléctrico",
+        "qualifications": [],
+        "source_statement_fingerprint": "20790bac4fdd9808522dd0a92f84d154c5e6ef5d91b1db067177e8a8082f56e4"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-science-innovation-digital-08",
+      "topic_id": "science-innovation-digital",
+      "subtopic_id": "artificial-intelligence-and-digital-rights",
+      "statement": "Habilitar entornos controlados de prueba para IA con plazos de respuesta en treinta días y transformar la Agencia Española de Supervisión de Inteligencia Artificial en entidad de asistencia técnica a pymes.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-pp-economy-work-tax-p48-41-76",
+        "party_id": "pp",
+        "publisher": "Partido Popular",
+        "programme_id": "pp-2026-v1",
+        "version": "2026-v1",
+        "sha256": "ae0c35d7ef3faf540acaa79d47abbe3ae2bf56a3a755c4e78a8f5bf3ea49789c",
+        "page": "48",
+        "section": "190",
+        "url": "https://www.pp.es/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-PP-2026-RECONSTRUCCION-NACIONAL.pdf#page=48",
+        "summary": "Habilitar entornos controlados de prueba para IA con plazos de respuesta en treinta días y transformar la Agencia Española de Supervisión de Inteligencia Artificial en entidad de asistencia técnica a pymes.",
+        "qualifications": [],
+        "source_statement_fingerprint": "ed35a6cbf3ee040285ffc8b6fe0026b3ed2bb94e214d9fea66394fcbe9470163"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-agriculture-fisheries-rural-01",
+      "topic_id": "agriculture-fisheries-rural",
+      "subtopic_id": "agricultural-policy-and-food-chain",
+      "statement": "Regular por ley los precios de los alimentos básicos y aplicar medidas contra la especulación y los beneficios extraordinarios de la gran distribución alimentaria.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-agriculture-fisheries-rural-p21-21-4",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "21",
+        "section": "DEREITO A UNHA VIDA DIGNA",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=21",
+        "summary": "Regular por ley los precios de los alimentos básicos y aplicar medidas contra la especulación y los beneficios extraordinarios de la gran distribución alimentaria.",
+        "qualifications": [],
+        "source_statement_fingerprint": "a3d20be821f91957b9e895264b1718c23c45c172472cf9a2cfd8b57537c79ae2"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "La ley exige que el precio del contrato que recibe el productor primario supere su coste efectivo de producción. Esa regla se aplica al contrato en origen.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Ley de la Cadena Alimentaria, artículo 9",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2013-8554#a9"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-agriculture-fisheries-rural-02",
+      "topic_id": "agriculture-fisheries-rural",
+      "subtopic_id": "fisheries-and-marine-industry",
+      "statement": "Eximir a la pesca artesanal del sistema de Totales Admisibles de Capturas (TAC) y cuotas",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-bng-agriculture-fisheries-rural-p49-41-53",
+        "party_id": "bng",
+        "publisher": "BNG",
+        "programme_id": "bng-2026-v1",
+        "version": "29N-v2",
+        "sha256": "1ab47bae90bd6de4be2cd42e1999c635757359ef9789a6c402ba7d64d9530432",
+        "page": "49",
+        "section": "4.3.2",
+        "url": "https://www.bng.gal/media/bnggaliza/files/2026/11/12/26_bng_xerais_documentos_programa_electoral.pdf#page=49",
+        "summary": "Eximir a la pesca artesanal del sistema de Totales Admisibles de Capturas (TAC) y cuotas",
+        "qualifications": [],
+        "source_statement_fingerprint": "ef91f44140d05610cf4a32e397f2a09fb5dd58201e1157458c7986735e9f6d00"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "En la UE se fijan límites de captura para poblaciones reguladas y se reparten cuotas entre países, que las distribuyen entre sus flotas.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "Consejo de la UE · Límites de captura y cuotas",
+            "url": "https://www.consilium.europa.eu/es/policies/how-fishing-catch-limits-and-quotas-are-set/"
+          },
+          {
+            "label": "Comisión Europea · Límites de captura y cuotas pesqueras",
+            "url": "https://oceans-and-fisheries.ec.europa.eu/fisheries-management/fishing-quotas_en"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-agriculture-fisheries-rural-03",
+      "topic_id": "agriculture-fisheries-rural",
+      "subtopic_id": "agricultural-policy-and-food-chain",
+      "statement": "Prohibir la eliminación de pollitos macho en incubadoras mediante la técnica de sexado en el huevo.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-agriculture-fisheries-rural-p77-71-68",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "77",
+        "section": "5.7",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=77",
+        "summary": "Prohibir la eliminación de pollitos macho en incubadoras mediante la técnica de sexado en el huevo.",
+        "qualifications": [],
+        "source_statement_fingerprint": "d8b1fdd8489715a4d4428936ebaf35aacc608eee83c7ac750e5de4be545f4f09"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-agriculture-fisheries-rural-04",
+      "topic_id": "agriculture-fisheries-rural",
+      "subtopic_id": "agricultural-policy-and-food-chain",
+      "statement": "Prohibir la operativa en mercados de futuros sobre alimentos a operadores que no estén acreditados como productores directos",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-agriculture-fisheries-rural-p56-51-50",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "56",
+        "section": "4.2",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=56",
+        "summary": "Prohibir la operativa en mercados de futuros sobre alimentos a operadores que no estén acreditados como productores directos",
+        "qualifications": [],
+        "source_statement_fingerprint": "8ddd3c1431db0919567ffadeafd92eb69677fddca4ae4c8641d611d590d5b874"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-agriculture-fisheries-rural-05",
+      "topic_id": "agriculture-fisheries-rural",
+      "subtopic_id": "fisheries-and-marine-industry",
+      "statement": "Establecer procedimientos obligatorios de aturdimiento previo al sacrificio para peces y animales acuáticos de piscifactoría.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-frente-amplio-agriculture-fisheries-rural-p78-71-70",
+        "party_id": "frente-amplio",
+        "publisher": "Frente Amplio",
+        "programme_id": "frente-amplio-2026-v1",
+        "version": "2026-v1",
+        "sha256": "516c5c6caaa04d0bd6f28770a49ae312f79ff3ebcf48967db66adc4ce2335424",
+        "page": "78",
+        "section": "5.7",
+        "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=78",
+        "summary": "Establecer procedimientos obligatorios de aturdimiento previo al sacrificio para peces y animales acuáticos de piscifactoría.",
+        "qualifications": [],
+        "source_statement_fingerprint": "500b34a57b96c73e433593764f706f8923e965997d6981f894f0176e05a9da33"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-agriculture-fisheries-rural-06",
+      "topic_id": "agriculture-fisheries-rural",
+      "subtopic_id": "rural-development-and-generational-renewal",
+      "statement": "Eliminar las ayudas PAC a perceptores sin actividad agraria real y destinar esos fondos a agricultores y ganaderos jóvenes",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-podemos-agriculture-fisheries-rural-p114-111-27",
+        "party_id": "podemos",
+        "publisher": "Podemos",
+        "programme_id": "podemos-2026-v1",
+        "version": "2026-v1",
+        "sha256": "086211fb272f0eeceddfa630796e58e5f4910e81efb0385a43b563a2e3f097fb",
+        "page": "114",
+        "section": "374",
+        "url": "https://pazcasaytrabajo.es/programa-electoral/programa-electoral-paz-casa-y-trabajo.pdf#page=114",
+        "summary": "Eliminar las ayudas PAC a perceptores sin actividad agraria real y destinar esos fondos a agricultores y ganaderos jóvenes",
+        "qualifications": [],
+        "source_statement_fingerprint": "bd3ef9f2367990e0b0a72c285ef90ea19d0e1863c37e336a8e8adc319d83b88e"
+      },
+      "context": {
+        "kind": "baseline",
+        "status": "draft",
+        "text": "El Real Decreto 1048/2022 exige la condición de agricultor activo para recibir los pagos directos de la PAC, con sus requisitos y excepciones.",
+        "reference_date": "2026-11-21",
+        "period": null,
+        "references": [
+          {
+            "label": "BOE · Real Decreto 1048/2022, capítulo I del título II",
+            "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-23048"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quiz-29n-agriculture-fisheries-rural-07",
+      "topic_id": "agriculture-fisheries-rural",
+      "subtopic_id": "food-labelling-and-consumer-information",
+      "statement": "Mejorar el etiquetado comercial de consumo para distinguir nítidamente los productos veganos de los vegetarianos",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-junts-agriculture-fisheries-rural-p42-41-10",
+        "party_id": "junts",
+        "publisher": "Junts per Catalunya",
+        "programme_id": "junts-2026-v1",
+        "version": "2026-v1",
+        "sha256": "cde2c5f3f30b66c72dd4f4bae3d22e9f6bc3e0ee4362da72f9e32e85129374b6",
+        "page": "42",
+        "section": "4. Punts de programa / Objectiu 3 / 3.4",
+        "url": "https://www.tualcentre.cat/app/uploads/2026/11/PROGRAMA-ELECTORAL_JUNTS_29N.pdf#page=42",
+        "summary": "Mejorar el etiquetado comercial de consumo para distinguir nítidamente los productos veganos de los vegetarianos",
+        "qualifications": [],
+        "source_statement_fingerprint": "0c3e57f2afa08954aed778e9353be977a6ae2e2b4f0ff79acee9fcefc5a004a2"
+      },
+      "context": null
+    },
+    {
+      "id": "quiz-29n-agriculture-fisheries-rural-08",
+      "topic_id": "agriculture-fisheries-rural",
+      "subtopic_id": "agricultural-policy-and-food-chain",
+      "statement": "Crear un sistema de etiquetado agroalimentario que detalle de forma visible el porcentaje del precio final percibido por los productores.",
+      "qualifications": [],
+      "source": {
+        "statement_id": "stmt-2026-compromis-front-valencia-agriculture-fisheries-rural-p21-21-5",
+        "party_id": "compromis-front-valencia",
+        "publisher": "Compromís: Front Valencià",
+        "programme_id": "compromis-front-valencia-2026-v1",
+        "version": "2026-v1",
+        "sha256": "b62b06d43821397fbf7d6f65f992e13e44087c9e042808fbbc171b3f83ff212b",
+        "page": "21",
+        "section": "AGRICULTURA I PESCA",
+        "url": "https://compromis.net/wp-content/uploads/2026/11/PROGRAMA-ELECTORAL-FRONTVALENCIA.pdf#page=21",
+        "summary": "Crear un sistema de etiquetado agroalimentario que detalle de forma visible el porcentaje del precio final percibido por los productores.",
+        "qualifications": [],
+        "source_statement_fingerprint": "41e5decb5ee6bc4162ac771a17e788fb77291aee8886e5d017010d6dccefa95b"
+      },
+      "context": null
+    }
+  ]
+}
