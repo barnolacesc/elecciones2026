@@ -25,12 +25,10 @@
       {{ brand_link }}
       <nav class="nav-links" aria-label="Navegación principal">
         <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>{{ topbar_quiz_link }}
-        <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>
-        <a class="nav-link" href="{{ root_path }}presupuestos/2023/">{{ nav_budget }}</a>
+        <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>{{ topbar_budget_link }}
         <details class="site-menu">
           <summary class="nav-link menu-toggle">Menú <span aria-hidden="true">+</span></summary>
-          <div class="menu-links">
-        <a class="nav-link" href="{{ root_path }}presupuestos/2023/">{{ nav_budget }}</a>
+          <div class="menu-links">{{ menu_budget_link }}
         <a class="nav-link" href="{{ root_path }}cuestionario/">{{ nav_quiz }}</a>
         <a class="nav-link" href="{{ root_path }}partidos/">{{ nav_parties }}</a>
         <a class="nav-link" href="{{ root_path }}metodo/">{{ nav_methodology }}</a>

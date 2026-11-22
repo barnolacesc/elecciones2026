@@ -1113,6 +1113,8 @@ def render_base(
                          "Revisión humana y de derechos pendiente · No satisface G2 para 2026")
         nav_feedback_link = ""
         topbar_quiz_link = ""
+        topbar_budget_link = ""
+        menu_budget_link = ""
         if "Generales 2023" not in title:
             title = f"{title} · Generales 2023"
     else:
@@ -1129,6 +1131,9 @@ def render_base(
         nav_feedback_link = f'\n        <a class="nav-link" href="{root_path}propuestas/">{feedback_label}</a>'
         quiz_label = escape(ctx.i18n["nav"].get("quiz", "Cuestionario"))
         topbar_quiz_link = f'\n        <a class="nav-link" href="{root_path}cuestionario/">{quiz_label}</a>'
+        budget_label = escape(ctx.i18n["nav"].get("budget", "Presupuestos"))
+        topbar_budget_link = f'\n        <a class="nav-link" href="{root_path}presupuestos/2023/">{budget_label}</a>'
+        menu_budget_link = f'\n        <a class="nav-link" href="{root_path}presupuestos/2023/">{budget_label}</a>'
 
     if base_template_file.exists():
         template = base_template_file.read_text(encoding="utf-8")
@@ -1158,12 +1163,10 @@ def render_base(
       {{ brand_link }}
       <nav class="nav-links" aria-label="Navegación principal">
         <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>{{ topbar_quiz_link }}
-        <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>
-        <a class="nav-link" href="{{ root_path }}presupuestos/2023/">{{ nav_budget }}</a>
+        <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>{{ topbar_budget_link }}
         <details class="site-menu">
           <summary class="nav-link menu-toggle">Menú <span aria-hidden="true">+</span></summary>
-          <div class="menu-links">
-        <a class="nav-link" href="{{ root_path }}presupuestos/2023/">{{ nav_budget }}</a>
+          <div class="menu-links">{{ menu_budget_link }}
         <a class="nav-link" href="{{ root_path }}cuestionario/">{{ nav_quiz }}</a>
         <a class="nav-link" href="{{ root_path }}partidos/">{{ nav_parties }}</a>
         <a class="nav-link" href="{{ root_path }}metodo/">{{ nav_methodology }}</a>
@@ -1211,6 +1214,8 @@ def render_base(
         "{{ nav_feedback }}": escape(ctx.i18n.get("feedback", {}).get("link_text", "Buzón de propuestas")),
         "{{ nav_feedback_link }}": nav_feedback_link,
         "{{ topbar_quiz_link }}": topbar_quiz_link,
+        "{{ topbar_budget_link }}": topbar_budget_link,
+        "{{ menu_budget_link }}": menu_budget_link,
         "{{ footer_org }}": footer_org,
         "{{ footer_values }}": footer_values,
         "{{ content }}": content,
@@ -1515,6 +1520,53 @@ def render_home_page(ctx: SiteContext) -> str:
     default_topic = active_rel.topic_id if active_rel else "housing"
     measures_content = render_comparison_measures(ctx, payload, default_topic, party_a_id, party_b_id)
 
+    budget_hero_btn = ""
+    budget_home_section = ""
+    if ctx.election_id != "es-gen-2023":
+        budget_hero_btn = f"""
+        <a class="btn-share" href="./presupuestos/2023/" style="min-height: 44px; display: inline-flex; align-items: center; text-decoration: none;">
+          <span>Ver presupuestos (PGE)</span>
+          <span aria-hidden="true">→</span>
+        </a>"""
+        budget_home_section = """
+    <section id="presupuestos-seccion" class="budget-home-section" aria-labelledby="budget-home-title">
+      <div class="section-head">
+        <p class="hero-eyebrow">02 / PRESUPUESTOS DEL ESTADO</p>
+        <h2 id="budget-home-title">¿A dónde va el dinero público?</h2>
+        <p>Antes de evaluar las promesas de gasto de los programas electorales, consulta cómo se reparte el presupuesto oficial consolidado de España (PGE 2023: 485.986 millones de euros).</p>
+      </div>
+      <div class="budget-home-card">
+        <div class="budget-home-grid">
+          <div class="budget-home-item">
+            <span class="budget-home-pct">~39 %</span>
+            <strong>Pensiones públicas</strong>
+            <p>190.687 M€ · La mayor partida del Estado con diferencia.</p>
+          </div>
+          <div class="budget-home-item">
+            <span class="budget-home-pct">~14 %</span>
+            <strong>Transferencias a CC.AA.</strong>
+            <p>66.457 M€ · Financiación territorial que costea la sanidad y educación autonómicas.</p>
+          </div>
+          <div class="budget-home-item">
+            <span class="budget-home-pct">~6,4 %</span>
+            <strong>Deuda pública</strong>
+            <p>31.275 M€ · Pago de intereses de la deuda estatal.</p>
+          </div>
+          <div class="budget-home-item">
+            <span class="budget-home-pct">~40 %</span>
+            <strong>Resto de servicios</strong>
+            <p>Desempleo, I+D+i, infraestructuras, defensa, seguridad, justicia y agricultura.</p>
+          </div>
+        </div>
+        <div class="budget-home-action">
+          <a class="btn-primary" href="./presupuestos/2023/">
+            <span>Ver gráfico proporcional y claves del presupuesto</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>"""
+
     content = f"""    <section class="hero" aria-labelledby="hero-title">
       <p class="hero-eyebrow">{hero_eyebrow}</p>
       <h1 id="hero-title" class="hero-title">{hero_title_part1}<br><span class="hero-em">{hero_title_part2}</span></h1>
@@ -1524,11 +1576,7 @@ def render_home_page(ctx: SiteContext) -> str:
         <a class="btn-primary" href="#comparador">
           <span>{escape(ctx.i18n['hero']['cta'])}</span>
           <span aria-hidden="true">→</span>
-        </a>
-        <a class="btn-share" href="./presupuestos/2023/" style="min-height: 44px; display: inline-flex; align-items: center; text-decoration: none;">
-          <span>Ver presupuestos (PGE)</span>
-          <span aria-hidden="true">→</span>
-        </a>
+        </a>{budget_hero_btn}
       </div>
     </section>
 
@@ -1583,45 +1631,7 @@ def render_home_page(ctx: SiteContext) -> str:
     {'<script src="./budget-context.js" defer></script>' if ctx.budget_payload is not None else ""}
     <script src="./{comparison_bundle_name(ctx)}" defer></script>
     <script src="./app.js" defer></script>
-
-    <section id="presupuestos-seccion" class="budget-home-section" aria-labelledby="budget-home-title">
-      <div class="section-head">
-        <p class="hero-eyebrow">02 / PRESUPUESTOS DEL ESTADO</p>
-        <h2 id="budget-home-title">¿A dónde va el dinero público?</h2>
-        <p>Antes de evaluar las promesas de gasto de los programas electorales, consulta cómo se reparte el presupuesto oficial consolidado de España (PGE 2023: 485.986 millones de euros).</p>
-      </div>
-      <div class="budget-home-card">
-        <div class="budget-home-grid">
-          <div class="budget-home-item">
-            <span class="budget-home-pct">~39 %</span>
-            <strong>Pensiones públicas</strong>
-            <p>190.687 M€ · La mayor partida del Estado con diferencia.</p>
-          </div>
-          <div class="budget-home-item">
-            <span class="budget-home-pct">~14 %</span>
-            <strong>Transferencias a CC.AA.</strong>
-            <p>66.457 M€ · Financiación territorial que costea la sanidad y educación autonómicas.</p>
-          </div>
-          <div class="budget-home-item">
-            <span class="budget-home-pct">~6,4 %</span>
-            <strong>Deuda pública</strong>
-            <p>31.275 M€ · Pago de intereses de la deuda estatal.</p>
-          </div>
-          <div class="budget-home-item">
-            <span class="budget-home-pct">~40 %</span>
-            <strong>Resto de servicios</strong>
-            <p>Desempleo, I+D+i, infraestructuras, defensa, seguridad, justicia y agricultura.</p>
-          </div>
-        </div>
-        <div class="budget-home-action">
-          <a class="btn-primary" href="./presupuestos/2023/">
-            <span>Ver gráfico proporcional y claves del presupuesto</span>
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
+{budget_home_section}
     <section class="lower-sections">
       <div id="metodo">
         <p class="hero-eyebrow">{escape(ctx.i18n['methodology_summary']['eyebrow'])}</p>
