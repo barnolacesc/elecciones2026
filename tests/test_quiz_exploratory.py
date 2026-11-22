@@ -118,6 +118,22 @@ class ExploratoryQuizTests(unittest.TestCase):
             for name in files1:
                 self.assertEqual(files1[name], files2[name], f"Mismatch in {name}")
 
+    def test_topbar_menu_includes_cuestionario_link(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            out = Path(tmp_dir)
+            build_site(
+                ROOT,
+                out,
+                election_id="es-gen-2026",
+                records_dir=ROOT / "content/elections/es-gen-2026",
+                quiz_mode="exploratory",
+            )
+            index_html = (out / "index.html").read_text(encoding="utf-8")
+            nav_section = index_html.split('<nav class="nav-links"', 1)[1].split('</nav>', 1)[0]
+            top_links = nav_section.split('<details class="site-menu">', 1)[0]
+            self.assertIn('href="./cuestionario/"', top_links)
+            self.assertIn(">Cuestionario<", top_links)
+
     def test_unavailable_quiz_mode_preserves_static_notice(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             out = Path(tmpdir) / "dist"

@@ -1155,6 +1155,7 @@ def render_base(
       {{ brand_link }}
       <nav class="nav-links" aria-label="Navegación principal">
         <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>
+        <a class="nav-link" href="{{ root_path }}cuestionario/">{{ nav_quiz }}</a>
         <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>
         <details class="site-menu">
           <summary class="nav-link menu-toggle">Menú <span aria-hidden="true">+</span></summary>
