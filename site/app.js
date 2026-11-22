@@ -1155,12 +1155,10 @@
   }
 
   function renderIndependentProposals(measures, partyAKey, partyBKey, hasLinkedMeasures) {
-    const links = [];
     const sections = [[partyAKey, 'A'], [partyBKey, 'B']].map(function ([partyKey, letter]) {
       const party = PARTIES[partyKey];
       const headingId = 'proposal-list-' + letter.toLowerCase();
       const name = escapeHtml(party.name);
-      links.push('<a class="action-link" href="#' + headingId + '">' + name + '</a>');
       const entries = measures.filter(measure => Object.hasOwn(measure.positions, partyKey));
       const count = entries.length === 1 ? '1 ficha revisada' : entries.length + ' fichas revisadas';
       let cards = entries.map((measure, index) =>
@@ -1177,8 +1175,7 @@
         '<a class="action-link" href="./partidos/' + encodeURIComponent(partyKey) + '/">Consultar programa y cobertura</a>' +
         cards + '</section>';
     });
-    return '<nav class="proposal-nav" aria-label="Listas por candidatura">' + links.join('') + '</nav>' +
-      '<div class="measure-cards proposal-lists">' + sections.join('') + '</div>';
+    return '<div class="measure-cards proposal-lists">' + sections.join('') + '</div>';
   }
 
   function init() {

@@ -1359,12 +1359,10 @@ def render_independent_proposals(ctx: SiteContext, parties: dict[str, Any],
                                  measures: list[dict[str, Any]], party_a: str, party_b: str,
                                  *, has_linked_measures: bool) -> str:
     sections = []
-    links = []
     for letter, pid in (("A", party_a), ("B", party_b)):
         positions = [m["positions"][pid] for m in measures if pid in m["positions"]]
         title_id = f"proposal-list-{letter.lower()}"
         name = escape(parties[pid]["name"])
-        links.append(f'<a class="action-link" href="#{title_id}">{name}</a>')
         count = len(positions)
         label = "1 ficha revisada" if count == 1 else f"{count} fichas revisadas"
         cards = []
@@ -1384,8 +1382,7 @@ def render_independent_proposals(ctx: SiteContext, parties: dict[str, Any],
             f'<a class="action-link" href="./partidos/{escape(pid)}/">Consultar programa y cobertura</a>'
             f'{"".join(cards)}</section>'
         )
-    return (f'<nav class="proposal-nav" aria-label="Listas por candidatura">{"".join(links)}</nav>'
-            f'<div class="measure-cards proposal-lists">{"".join(sections)}</div>')
+    return f'<div class="measure-cards proposal-lists">{"".join(sections)}</div>'
 
 
 def render_comparison_measures(ctx: SiteContext, payload: dict[str, Any], topic_id: str,

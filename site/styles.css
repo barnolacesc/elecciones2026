@@ -475,13 +475,6 @@ main {
   min-width: 0;
 }
 
-.proposal-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  margin-bottom: var(--space-4);
-}
-
 .proposal-list h3 {
   text-wrap: balance;
 }
