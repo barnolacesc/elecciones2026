@@ -1,0 +1,340 @@
+{
+  "aggregate_topic_total": null,
+  "aggregation_note": "Mappings are context links, not a partition. No allocations, splits, topic sums, or estimated amounts are generated.",
+  "dataset_version": "2023-approved-retrieved-2026-10-11",
+  "mapping_version": "1.0.0",
+  "mappings": [
+    {
+      "aggregation_mode": "none",
+      "coverage_note_es": "La política de vivienda es contexto general; no indica el coste de cada propuesta.",
+      "coverage_state": "mapped",
+      "id": "pge-2023-topic-housing",
+      "label_es": "Vivienda",
+      "rationale": "Candidate context references from the proposal, verified against source codes; scope and relevance await human review.",
+      "review_refs": [],
+      "review_state": "draft",
+      "row_refs": [
+        {
+          "policy_code": "26",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 18
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        }
+      ],
+      "topic_amount": null,
+      "topic_id": "housing"
+    },
+    {
+      "aggregation_mode": "none",
+      "coverage_note_es": "La cifra estatal no equivale al gasto educativo de todas las administraciones.",
+      "coverage_state": "mapped",
+      "id": "pge-2023-topic-education",
+      "label_es": "Educación",
+      "rationale": "Candidate context references from the proposal, verified against source codes; scope and relevance await human review.",
+      "review_refs": [],
+      "review_state": "draft",
+      "row_refs": [
+        {
+          "policy_code": "32",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 22
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        }
+      ],
+      "topic_amount": null,
+      "topic_id": "education"
+    },
+    {
+      "aggregation_mode": "none",
+      "coverage_note_es": "Se muestran políticas distintas; no representan todo el gasto autonómico y local.",
+      "coverage_state": "mapped",
+      "id": "pge-2023-topic-health-social-services",
+      "label_es": "Sanidad y servicios sociales",
+      "rationale": "Candidate context references from the proposal, verified against source codes; scope and relevance await human review.",
+      "review_refs": [],
+      "review_state": "draft",
+      "row_refs": [
+        {
+          "policy_code": "31",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 21
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "23",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 15
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        }
+      ],
+      "topic_amount": null,
+      "topic_id": "health-social-services"
+    },
+    {
+      "aggregation_mode": "none",
+      "coverage_note_es": "Son políticas seleccionadas; no forman un total de la economía ni estiman el coste de cambios fiscales.",
+      "coverage_state": "partial",
+      "id": "pge-2023-topic-economy-work-tax",
+      "label_es": "Economía, trabajo y fiscalidad",
+      "rationale": "Candidate context references from the proposal, verified against source codes; scope and relevance await human review.",
+      "review_refs": [],
+      "review_state": "draft",
+      "row_refs": [
+        {
+          "policy_code": "21",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 13
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "24",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 16
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "25",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 17
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "28",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 19
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "43",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 26
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "93",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 33
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "42",
+          "relationship": "broad_related_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 25
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        }
+      ],
+      "topic_amount": null,
+      "topic_id": "economy-work-tax"
+    },
+    {
+      "aggregation_mode": "none",
+      "coverage_note_es": "La política combina inclusión, Seguridad Social y migración. No es una cifra exclusiva de inmigración.",
+      "coverage_state": "partial",
+      "id": "pge-2023-topic-immigration",
+      "label_es": "Inmigración",
+      "rationale": "Candidate context references from the proposal, verified against source codes; scope and relevance await human review.",
+      "review_refs": [],
+      "review_state": "draft",
+      "row_refs": [
+        {
+          "policy_code": "29",
+          "relationship": "broad_related_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 20
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        }
+      ],
+      "topic_amount": null,
+      "topic_id": "immigration"
+    },
+    {
+      "aggregation_mode": "none",
+      "coverage_note_es": "Son políticas distintas de acción exterior y defensa; no constituyen una cifra exclusiva de la Unión Europea o la OTAN.",
+      "coverage_state": "mapped",
+      "id": "pge-2023-topic-foreign-policy-eu",
+      "label_es": "Política exterior y Unión Europea",
+      "rationale": "Candidate context references from the proposal, verified against source codes; scope and relevance await human review.",
+      "review_refs": [],
+      "review_state": "draft",
+      "row_refs": [
+        {
+          "policy_code": "14",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 12
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "12",
+          "relationship": "direct_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 10
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        }
+      ],
+      "topic_amount": null,
+      "topic_id": "foreign-policy-eu"
+    },
+    {
+      "aggregation_mode": "none",
+      "coverage_note_es": "Las políticas incluyen industria e infraestructuras. No hay una cifra exclusiva de clima y energía en este desglose.",
+      "coverage_state": "partial",
+      "id": "pge-2023-topic-climate-energy",
+      "label_es": "Clima y energía",
+      "rationale": "Candidate context references from the proposal, verified against source codes; scope and relevance await human review.",
+      "review_refs": [],
+      "review_state": "draft",
+      "row_refs": [
+        {
+          "policy_code": "42",
+          "relationship": "broad_related_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 25
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "45",
+          "relationship": "broad_related_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 28
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        }
+      ],
+      "topic_amount": null,
+      "topic_id": "climate-energy"
+    },
+    {
+      "aggregation_mode": "none",
+      "coverage_note_es": "Son políticas relacionadas con justicia, seguridad e instituciones; no equivalen a un total del gasto en derechos.",
+      "coverage_state": "partial",
+      "id": "pge-2023-topic-institutions-rights",
+      "label_es": "Instituciones, justicia y derechos fundamentales",
+      "rationale": "Candidate context references from the proposal, verified against source codes; scope and relevance await human review.",
+      "review_refs": [],
+      "review_state": "draft",
+      "row_refs": [
+        {
+          "policy_code": "11",
+          "relationship": "broad_related_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 9
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "13",
+          "relationship": "broad_related_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 11
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "91",
+          "relationship": "broad_related_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 31
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        },
+        {
+          "policy_code": "92",
+          "relationship": "broad_related_context",
+          "source_locator": {
+            "column": "Total",
+            "csv_line": 32
+          },
+          "source_ref": "pge-2023-matrix-csv",
+          "source_version": "2023-approved-retrieved-2026-10-11"
+        }
+      ],
+      "topic_amount": null,
+      "topic_id": "institutions-rights"
+    }
+  ],
+  "overlapping_policy_references": {
+    "42": [
+      "economy-work-tax",
+      "climate-energy"
+    ]
+  },
+  "review_state": "draft",
+  "schema_version": "1.0.0",
+  "taxonomy_sha256": "1516d06efe46e682775e6bbd41b603eaa569b4674180e410d68cd759944e783b",
+  "taxonomy_version": "1.0.0",
+  "unmapped_policy_codes": [
+    "22",
+    "33",
+    "41",
+    "44",
+    "46",
+    "49",
+    "94",
+    "95"
+  ]
+}

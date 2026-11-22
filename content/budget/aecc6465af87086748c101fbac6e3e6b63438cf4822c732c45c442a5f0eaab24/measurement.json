@@ -1,0 +1,35 @@
+{
+  "accounting_basis": "approved_credits",
+  "blank_convention": "unavailable_pending_human_review",
+  "budget_year": 2023,
+  "denominator_amount_thousand_eur": "485985812.22",
+  "denominator_id": "official-grand-total-chapters-1-8",
+  "denominator_locator": {
+    "column": "Total",
+    "csv_line": 36
+  },
+  "display_precision": {
+    "amount_decimal_places": 2,
+    "share_percentage_decimal_places": 2
+  },
+  "display_unit": "million_eur",
+  "historical_note_es": "Datos históricos de 2023. No representan el presupuesto de 2026.",
+  "id": "pge-2023-chapters-1-8-consolidated",
+  "reconciliation_tolerances": {
+    "grand_total_thousand_eur": "0.00",
+    "policy_margin_thousand_eur": "0.00",
+    "section_margin_thousand_eur": "0.00"
+  },
+  "review_refs": [],
+  "review_state": "draft",
+  "rounding_mode": "ROUND_HALF_UP",
+  "rounding_note_es": "Importes y porcentajes redondeados a dos decimales. La suma de los porcentajes mostrados puede diferir de 100 %.",
+  "schema_version": "1.0.0",
+  "scope_limit_es": "Estas cifras no incluyen todo el gasto autonómico y local en sanidad, educación o servicios sociales.",
+  "scope_note_es": "Estado, organismos autónomos, otras entidades del sector público administrativo estatal con presupuesto limitativo y Seguridad Social. No es el total del gasto público en España.",
+  "source_ref": "pge-2023-matrix-csv",
+  "source_sha256": "c796efe9208fa9badc1894d0e0334024c75fbb5e00b8de4b30cb25145e695e7a",
+  "source_to_display_divisor": "1000",
+  "source_unit": "thousand_eur",
+  "version": "1.0.0"
+}

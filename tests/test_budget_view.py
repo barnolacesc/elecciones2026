@@ -46,6 +46,10 @@ class BudgetViewTests(unittest.TestCase):
         self.assertIn('no indican el coste', html)
         self.assertIn('sin redondear', html)
         self.assertIn(self.manifest['dataset_version'], html)
+        self.assertIn('Claves transparentes: ¿A dónde va el dinero y cómo se financia España?', html)
+        self.assertIn('País Vasco y Navarra', html)
+        self.assertIn('Cataluña', html)
+        self.assertIn('Civio', html)
         self.assertEqual(html.count('class="budget-policy"'), 2)
 
     def test_projection_is_scoped_and_no_inferred_topic_sum(self):

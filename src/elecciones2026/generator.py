@@ -1159,9 +1159,11 @@ def render_base(
       <nav class="nav-links" aria-label="Navegación principal">
         <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>{{ topbar_quiz_link }}
         <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>
+        <a class="nav-link" href="{{ root_path }}presupuestos/2023/">{{ nav_budget }}</a>
         <details class="site-menu">
           <summary class="nav-link menu-toggle">Menú <span aria-hidden="true">+</span></summary>
           <div class="menu-links">
+        <a class="nav-link" href="{{ root_path }}presupuestos/2023/">{{ nav_budget }}</a>
         <a class="nav-link" href="{{ root_path }}cuestionario/">{{ nav_quiz }}</a>
         <a class="nav-link" href="{{ root_path }}partidos/">{{ nav_parties }}</a>
         <a class="nav-link" href="{{ root_path }}metodo/">{{ nav_methodology }}</a>
@@ -1199,6 +1201,7 @@ def render_base(
         "{{ preview_banner }}": preview_banner,
         "{{ nav_comparator }}": escape(ctx.i18n["nav"]["comparator"]),
         "{{ nav_topics }}": escape(ctx.i18n["nav"]["topics"]),
+        "{{ nav_budget }}": escape(ctx.i18n["nav"].get("budget", "Presupuestos")),
         "{{ nav_quiz }}": escape(ctx.i18n["nav"].get("quiz", "Cuestionario")),
         "{{ nav_parties }}": escape(ctx.i18n["nav"]["parties"]),
         "{{ nav_methodology }}": escape(ctx.i18n["nav"]["methodology"]),
@@ -1522,6 +1525,10 @@ def render_home_page(ctx: SiteContext) -> str:
           <span>{escape(ctx.i18n['hero']['cta'])}</span>
           <span aria-hidden="true">→</span>
         </a>
+        <a class="btn-share" href="./presupuestos/2023/" style="min-height: 44px; display: inline-flex; align-items: center; text-decoration: none;">
+          <span>Ver presupuestos (PGE)</span>
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
 
@@ -1576,6 +1583,44 @@ def render_home_page(ctx: SiteContext) -> str:
     {'<script src="./budget-context.js" defer></script>' if ctx.budget_payload is not None else ""}
     <script src="./{comparison_bundle_name(ctx)}" defer></script>
     <script src="./app.js" defer></script>
+
+    <section id="presupuestos-seccion" class="budget-home-section" aria-labelledby="budget-home-title">
+      <div class="section-head">
+        <p class="hero-eyebrow">02 / PRESUPUESTOS DEL ESTADO</p>
+        <h2 id="budget-home-title">¿A dónde va el dinero público?</h2>
+        <p>Antes de evaluar las promesas de gasto de los programas electorales, consulta cómo se reparte el presupuesto oficial consolidado de España (PGE 2023: 485.986 millones de euros).</p>
+      </div>
+      <div class="budget-home-card">
+        <div class="budget-home-grid">
+          <div class="budget-home-item">
+            <span class="budget-home-pct">~39 %</span>
+            <strong>Pensiones públicas</strong>
+            <p>190.687 M€ · La mayor partida del Estado con diferencia.</p>
+          </div>
+          <div class="budget-home-item">
+            <span class="budget-home-pct">~14 %</span>
+            <strong>Transferencias a CC.AA.</strong>
+            <p>66.457 M€ · Financiación territorial que costea la sanidad y educación autonómicas.</p>
+          </div>
+          <div class="budget-home-item">
+            <span class="budget-home-pct">~6,4 %</span>
+            <strong>Deuda pública</strong>
+            <p>31.275 M€ · Pago de intereses de la deuda estatal.</p>
+          </div>
+          <div class="budget-home-item">
+            <span class="budget-home-pct">~40 %</span>
+            <strong>Resto de servicios</strong>
+            <p>Desempleo, I+D+i, infraestructuras, defensa, seguridad, justicia y agricultura.</p>
+          </div>
+        </div>
+        <div class="budget-home-action">
+          <a class="btn-primary" href="./presupuestos/2023/">
+            <span>Ver gráfico proporcional y claves del presupuesto</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <section class="lower-sections">
       <div id="metodo">
@@ -2778,19 +2823,26 @@ def build_site(
     simulator_file: Optional[Path] = None,
     pilot_provisional: bool = False,
     records_dir: Optional[Path] = None,
+    strict_budget: Optional[bool] = None,
 ) -> SiteBuildResult:
     """Generate the complete static site deterministically into output_dir.
 
     Uses an atomic staging directory to ensure that any validation failure
     aborts without creating a partially published site.
     """
+    if strict_budget is None:
+        strict_budget = strict_approved
     if pilot_provisional and (election_id != "es-gen-2023" or quiz_mode != "unavailable"):
         raise BuildValidationError("Provisional pilot is limited to the private 2023 build without the standard quiz.")
     budget_manifest, budget_payload = None, None
     if budget_bundle is not None:
         from elecciones2026.budget import BudgetError, load_bundle
         try:
-            budget_manifest, budget_payload = load_bundle(budget_bundle, (content_dir or root_dir / "content") / "taxonomy.json")
+            budget_manifest, budget_payload = load_bundle(
+                budget_bundle,
+                (content_dir or root_dir / "content") / "taxonomy.json",
+                require_publication=strict_budget,
+            )
         except (BudgetError, ValueError, KeyError, OSError) as error:
             raise BuildValidationError(f"Budget validation failed: {error}") from error
 
@@ -2929,7 +2981,8 @@ def build_site(
             from elecciones2026.budget import copy_reviewed_bundle
             try:
                 copy_reviewed_bundle(budget_bundle, staging_dir, ctx.content_dir / "taxonomy.json",
-                                     expected_manifest=ctx.budget_manifest)
+                                     expected_manifest=ctx.budget_manifest,
+                                     require_publication=strict_budget)
             except (BudgetError, ValueError, KeyError, OSError) as error:
                 raise BuildValidationError(f"Budget staging failed: {error}") from error
 
@@ -3186,6 +3239,8 @@ def main(args: Optional[list[str]] = None) -> int:
     build_p.add_argument("--election-id", type=str, default=DEFAULT_ELECTION_ID, help="Target election ID.")
     build_p.add_argument("--canonical-base", type=str, default=DEFAULT_CANONICAL_BASE, help="Canonical base URL.")
     build_p.add_argument("--strict", action="store_true", default=True, help="Enforce strict approved status.")
+    build_p.add_argument("--no-strict", dest="strict", action="store_false", help="Disable strict review gates for private preview.")
+    build_p.add_argument("--draft-budget", action="store_true", help="Allow draft budget bundle for preview.")
     build_p.add_argument("--budget-bundle", type=Path, help="Optional immutable budget bundle; requires human review.")
     build_p.add_argument("--quiz-mode", choices=("unavailable", "mock", "reviewed", "exploratory"), default=None,
                          help="Quiz mode: exploratory (2026 proposals), mock (fixture demo), reviewed (scored set), or unavailable.")
@@ -3222,6 +3277,7 @@ def main(args: Optional[list[str]] = None) -> int:
             else:
                 quiz_mode = "unavailable"
         try:
+            strict_budget = not parsed.draft_budget and parsed.strict
             res = build_site(
                 root_dir=parsed.root_dir,
                 output_dir=parsed.output_dir,
@@ -3231,6 +3287,7 @@ def main(args: Optional[list[str]] = None) -> int:
                 build_date=parsed.build_date,
                 strict_approved=parsed.strict,
                 budget_bundle=parsed.budget_bundle,
+                strict_budget=strict_budget,
                 quiz_mode=quiz_mode,
                 quiz_file=parsed.quiz_file,
                 simulator_mode=parsed.simulator_mode,

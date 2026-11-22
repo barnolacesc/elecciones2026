@@ -76,7 +76,20 @@ def measurement_notes(payload, manifest):
 
 def topic_projection(payload, manifest, topic_id):
     contract = payload['measurement.json']
-    mapping = next(item for item in payload['mapping.json']['mappings'] if item['topic_id'] == topic_id)
+    mapping = next((item for item in payload['mapping.json']['mappings'] if item['topic_id'] == topic_id), None)
+    denominator = contract['denominator_amount_thousand_eur']
+    if mapping is None:
+        result = {'topic_id': topic_id, 'title': 'Contexto presupuestario oficial · PGE 2023',
+                  'topic_label': topic_id, 'source_url': table_url(payload),
+                  'version': manifest['dataset_version'], 'rows': [],
+                  'notes': [contract['historical_note_es'], contract['scope_note_es'], contract['scope_limit_es'],
+                            'Sin correspondencia directa en la clasificación presupuestaria de 2023.',
+                            'Estas cifras no indican el coste de las propuestas de los partidos.',
+                            'Las políticas citadas pueden aparecer en otros temas. No se suman como partidas independientes.',
+                            f'Denominador: {display_amount(denominator)} millones de euros ({denominator.replace(".", ",")} miles de euros sin redondear).',
+                            contract['rounding_note_es']],
+                  'gap': 'No hay una cifra oficial separable para este tema con el ámbito y la fuente disponibles.'}
+        return result
     policies = {item['code']: item for item in payload['values.json']['margins'] if item['kind'] == 'policy'}
     denominator = contract['denominator_amount_thousand_eur']
     refs = mapping['row_refs'] if mapping['coverage_state'] not in {'not_available', 'not_comparable'} else []
@@ -109,6 +122,57 @@ def render_context(projection, budget_url):
     return (f'<h2>{escape(projection["title"])}</h2><p>{escape(projection["topic_label"])}</p>{body}'
             + ''.join(f'<p>{escape(note)}</p>' for note in projection['notes'])
             + f'<p>Versión de datos: {escape(projection["version"])}. <a href="{escape(budget_url, quote=True)}">Ver el presupuesto completo de 2023</a></p>')
+
+
+def budget_guide():
+    return (
+        '<section class="budget-guide" aria-labelledby="budget-guide-title">'
+        '<h2 id="budget-guide-title">Claves transparentes: ¿A dónde va el dinero y cómo se financia España?</h2>'
+        '<div class="budget-guide-grid">'
+        '<article class="budget-guide-card">'
+        '<h3>1. Los grandes bloques de gasto del Estado</h3>'
+        '<p>Casi la mitad del presupuesto estatal consolidado (<strong>~44 %</strong>) se destina a protección social: '
+        'las <strong>pensiones</strong> suponen 190.687 M€ (39,24 %), seguidas del desempleo (21.278 M€) y otras prestaciones. '
+        'El segundo mayor destino son las <strong>transferencias a comunidades autónomas y entes locales</strong> (~14 %, 66.457 M€), '
+        'y el tercero, los intereses de la <strong>deuda pública</strong> (~6,4 %, 31.275 M€).</p>'
+        '</article>'
+        '<article class="budget-guide-card">'
+        '<h3>2. ¿Por qué sanidad y educación parecen tan pequeñas en los PGE?</h3>'
+        '<p>En los PGE, la política de Sanidad representa solo el <strong>1,45 %</strong> (7.049 M€) y Educación el <strong>1,10 %</strong> (5.355 M€). '
+        '<strong>Esto no significa que España gaste eso en sanidad o colegios.</strong> Los hospitales, centros de salud e institutos están transferidos '
+        'a las 17 comunidades autónomas, que los costean con los más de 66.000 M€ de transferencias estatales y sus tributos autonómicos. '
+        'El Estado solo presupuesta gastos centrales como Ceuta y Melilla, becas generales o sanidad exterior.</p>'
+        '</article>'
+        '<article class="budget-guide-card">'
+        '<h3>3. País Vasco y Navarra: ¿están fuera de estos presupuestos?</h3>'
+        '<p><strong>Sí, en gran parte.</strong> País Vasco y Navarra cuentan con régimen foral (Concierto y Convenio Económico). '
+        'Sus haciendas forales recaudan directamente casi todos los impuestos y sufragan su propia sanidad, educación y policía autonómica. '
+        '<strong>No reciben transferencias del sistema común del PGE</strong>; en su lugar, pagan una cuota anual al Estado (el <em>Cupo</em> vasco '
+        'y la <em>Aportación</em> navarra) para contribuir a las competencias exclusivas no transferidas que ejerce el Estado (Defensa, Exteriores, etc.).</p>'
+        '</article>'
+        '<article class="budget-guide-card">'
+        '<h3>4. Cataluña: régimen común con competencias singulares</h3>'
+        '<p><strong>No está fuera del sistema:</strong> Cataluña forma parte del Régimen Común (LOFCA) y participa de las transferencias del PGE. '
+        'Sin embargo, asume competencias que en la mayoría de comunidades ejerce el Estado: los <strong>Mossos d\'Esquadra</strong> '
+        '(seguridad ciudadana) y las <strong>prisiones</strong> (instituciones penitenciarias). Su coste no aparece en los ministerios de Interior o Justicia en Madrid, '
+        'sino en el presupuesto de la Generalitat, financiado a través del sistema territorial.</p>'
+        '</article>'
+        '<article class="budget-guide-card">'
+        '<h3>5. Intereses de deuda vs. amortización de principal</h3>'
+        '<p>El gasto de deuda en estos PGE (Capítulo 3: 31.275 M€) corresponde exclusivamente a <strong>intereses de la deuda pública</strong>. '
+        'La amortización o devolución del capital prestado (principal) se clasifica en el Capítulo 9 (pasivos financieros), que queda excluido '
+        'del perímetro consolidado de los capítulos 1–8 para reflejar solo el gasto corriente y de capital operativo.</p>'
+        '</article>'
+        '<article class="budget-guide-card">'
+        '<h3>6. Cautelas metodológicas y fuentes</h3>'
+        '<p>Estas cifras corresponden a los <strong>créditos aprobados en la Ley de Presupuestos (PGE 2023, capítulos 1 a 8)</strong>, '
+        'no al gasto ejecutado final auditado a posteriori por la IGAE. No miden el coste ni la viabilidad de las promesas electorales. '
+        'Siguiendo las cautelas de proyectos de divulgación ciudadana como <em>¿Dónde van mis impuestos?</em> (Civio), '
+        'las comparaciones rigurosas deben atender a las competencias transferidas, al perímetro de capítulos y al ejercicio presupuestario analizado.</p>'
+        '</article>'
+        '</div>'
+        '</section>'
+    )
 
 
 def render_budget_content(payload, manifest, bundle_id, topic_labels, root_path='../../', preview=False, chart_url='./grafico.svg'):
@@ -159,6 +223,7 @@ def render_budget_content(payload, manifest, bundle_id, topic_labels, root_path=
             '<h1 id="budget-title">PGE 2023: presupuesto aprobado</h1>'
             f'<p class="budget-total">{escape(display_amount(denominator))} <span>millones de euros · total consolidado</span></p>'
             f'{overview(payload, chart_url, preview)}'
+            f'{budget_guide()}'
             '<details class="budget-expanded"><summary>Ver detalle completo y fuentes</summary>'
             f'{measurement_notes(payload, manifest)}'
             '<h2>Políticas de gasto, de mayor a menor importe</h2>'
