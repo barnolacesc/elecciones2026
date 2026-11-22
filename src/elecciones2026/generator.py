@@ -1179,6 +1179,7 @@ def render_base(
       <span>Desarrollado por <a href="https://github.com/barnolacesc" rel="noopener noreferrer">barnolacesc</a></span>
     </div>
   </footer>
+  <script src="{{ root_path }}pagination.js" defer></script>
 </body>
 </html>"""
 
@@ -1649,7 +1650,7 @@ def render_topic_index(ctx: SiteContext) -> str:
       <p class="hero-intro">Explora las 8 áreas clave definidas en la metodología neutral del proyecto. Cada área desglosa propuestas concretas con trazabilidad documental directa.</p>
     </section>
 
-    <section class="topics-grid" style="padding: var(--space-4) 0 var(--space-8);">
+    <section class="topics-grid" data-paginate="6" data-paginate-item-name="temas" style="padding: var(--space-4) 0 var(--space-8);">
       {"".join(cards_html)}
     </section>"""
 
@@ -1725,7 +1726,9 @@ def render_topic_detail(ctx: SiteContext, topic: Topic) -> str:
 
     {render_share_controls(ctx)}
     <script src="../../sharing.js" defer></script>
-    {"".join(subtopics_sections)}{budget_ctx_line}"""
+    <div class="subtopics-container" data-paginate="3" data-paginate-item-name="subtemas">
+    {"".join(subtopics_sections)}
+    </div>{budget_ctx_line}"""
 
     topic_schema = build_structured_data(
         ctx=ctx,
@@ -1789,7 +1792,7 @@ def render_party_index(ctx: SiteContext) -> str:
       <p class="hero-intro">{registry_intro}</p>
     </section>
 
-    <section class="parties-list" style="padding: var(--space-4) 0 var(--space-8);">
+    <section class="parties-list" data-paginate="6" data-paginate-item-name="candidaturas" style="padding: var(--space-4) 0 var(--space-8);">
       {"".join(cards)}
     </section>"""
 
@@ -1882,7 +1885,9 @@ def render_party_detail(ctx: SiteContext, party: PartyInfo) -> str:
 
     <section style="margin-bottom: var(--space-10);">
       <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-4);">Propuestas y posiciones revisadas</h2>
+      <div class="proposals-list" data-paginate="5" data-paginate-item-name="propuestas">
       {"".join(stmts_sections)}
+      </div>
     </section>"""
 
     party_schema = build_structured_data(
@@ -2092,7 +2097,7 @@ def render_sources_page(ctx: SiteContext) -> str:
       <aside class="notice" style="margin-bottom: var(--space-4);">
         <strong>Aislamiento de elecciones (Tarea 1.4):</strong> Los documentos de 2023 se emplean exclusivamente para ensayos técnicos y validación de esquemas. El comparador rechaza automáticamente cualquier intento de comparar un programa de 2023 con uno de 2026.
       </aside>
-      <div class="coverage-cards" style="margin-bottom: var(--space-4);">
+      <div class="coverage-cards" data-paginate="6" data-paginate-item-name="fuentes" style="margin-bottom: var(--space-4);">
         {cards_2023_html}
       </div>
       <div class="coverage-table-container">
@@ -2133,7 +2138,7 @@ def render_sources_page(ctx: SiteContext) -> str:
 
     <section style="margin-bottom: var(--space-8);">
       <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">1. Fuentes monitorizadas · Elecciones Generales 2026</h2>
-      <div class="coverage-cards" style="margin-bottom: var(--space-4);">
+      <div class="coverage-cards" data-paginate="6" data-paginate-item-name="fuentes" style="margin-bottom: var(--space-4);">
         {cards_2026_html}
       </div>
       <div class="coverage-table-container">
@@ -2245,7 +2250,9 @@ def render_corrections_page(ctx: SiteContext) -> str:
 
     <section style="margin-bottom: var(--space-10);">
       <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">Historial de rectificaciones auditadas</h2>
+      <div class="corrections-list" data-paginate="5" data-paginate-item-name="correcciones">
       {"".join(cards)}
+      </div>
     </section>"""
 
     return render_base(
@@ -3032,6 +3039,8 @@ def build_site(
             shutil.copytree(site_src / "tokens", staging_dir / "tokens", dirs_exist_ok=True)
         if (site_src / "app.js").exists():
             shutil.copy2(site_src / "app.js", staging_dir / "app.js")
+        if (site_src / "pagination.js").exists():
+            shutil.copy2(site_src / "pagination.js", staging_dir / "pagination.js")
 
         write_file_deterministic(staging_dir / comparison_bundle_name(ctx), comparison_bundle_script(ctx))
         shutil.copy2(site_src / "sharing.js", staging_dir / "sharing.js")

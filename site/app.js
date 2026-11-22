@@ -1219,6 +1219,47 @@
       partyBSelect.value = 'erc';
     }
 
+    const COMPARATOR_PAGE_SIZE = 5;
+    let comparisonPage = 1;
+
+    function renderPaginationControlsHtml(curPage, numPages, totalCount, label) {
+      let html = '<nav class="pagination-nav" aria-label="Paginación de ' + escapeHtml(label) + '">' +
+        '<div class="pagination-info" aria-hidden="true">' +
+        'Página ' + curPage + ' de ' + numPages + ' · Mostrando ' +
+        ((curPage - 1) * COMPARATOR_PAGE_SIZE + 1) + '–' +
+        Math.min(curPage * COMPARATOR_PAGE_SIZE, totalCount) + ' de ' + totalCount + ' ' + escapeHtml(label) +
+        '</div>' +
+        '<div class="pagination-controls" role="group" aria-label="Controles de paginación">';
+
+      // Previous button
+      if (curPage > 1) {
+        html += '<button type="button" class="pagination-btn pagination-btn-prev" data-comparison-page="' + (curPage - 1) + '" aria-label="Página anterior"><span aria-hidden="true">←</span> <span>Anterior</span></button>';
+      } else {
+        html += '<button type="button" class="pagination-btn pagination-btn-prev" disabled aria-disabled="true" aria-label="Página anterior"><span aria-hidden="true">←</span> <span>Anterior</span></button>';
+      }
+
+      // Page numbers
+      for (let p = 1; p <= numPages; p++) {
+        if (p === curPage) {
+          html += '<button type="button" class="pagination-btn pagination-page active" aria-current="page" aria-label="Página ' + p + ', actual">' + p + '</button>';
+        } else {
+          html += '<button type="button" class="pagination-btn pagination-page" data-comparison-page="' + p + '" aria-label="Página ' + p + '">' + p + '</button>';
+        }
+      }
+
+      // Next button
+      if (curPage < numPages) {
+        html += '<button type="button" class="pagination-btn pagination-btn-next" data-comparison-page="' + (curPage + 1) + '" aria-label="Página siguiente"><span>Siguiente</span> <span aria-hidden="true">→</span></button>';
+      } else {
+        html += '<button type="button" class="pagination-btn pagination-btn-next" disabled aria-disabled="true" aria-label="Página siguiente"><span>Siguiente</span> <span aria-hidden="true">→</span></button>';
+      }
+
+      html += '</div>' +
+        '<div class="sr-only" role="status" aria-live="polite">Página ' + curPage + ' de ' + numPages + '</div>' +
+        '</nav>';
+      return html;
+    }
+
     function validateSelection() {
       const partyA = partyASelect.value;
       const partyB = partyBSelect.value;
@@ -1299,11 +1340,22 @@
             if (measure.relationships[direct] || measure.relationships[reverse]) linked.push(measure);
             else standalone.push(measure);
           }
-          allMeasuresHtml = linked.map((measure, i) =>
-            renderMeasureGroupHtml(measure, topicData.name, partyAKey, partyBKey, i + 1)
+          const totalLinked = linked.length;
+          const totalPages = Math.ceil(totalLinked / COMPARATOR_PAGE_SIZE);
+          if (comparisonPage > totalPages && totalPages > 0) comparisonPage = totalPages;
+          if (comparisonPage < 1) comparisonPage = 1;
+          const startIdx = (comparisonPage - 1) * COMPARATOR_PAGE_SIZE;
+          const endIdx = Math.min(startIdx + COMPARATOR_PAGE_SIZE, totalLinked);
+          const pagedLinked = linked.slice(startIdx, endIdx);
+
+          allMeasuresHtml = pagedLinked.map((measure, i) =>
+            renderMeasureGroupHtml(measure, topicData.name, partyAKey, partyBKey, startIdx + i + 1)
           ).join('');
           if (standalone.length || !linked.length) {
             allMeasuresHtml += renderIndependentProposals(standalone, partyAKey, partyBKey, linked.length > 0);
+          }
+          if (totalPages > 1) {
+            allMeasuresHtml += renderPaginationControlsHtml(comparisonPage, totalPages, totalLinked, 'medidas');
           }
         } else if (measures.length === 0) {
           allMeasuresHtml = '<div class="empty-measures" role="status" aria-live="polite">' +
@@ -1314,8 +1366,18 @@
             '<a class="action-link" href="./metodo/">Consultar cobertura y método</a>' +
             '</div>';
         } else {
-          for (let i = 0; i < measures.length; i++) {
+          const totalItems = measures.length;
+          const totalPages = Math.ceil(totalItems / COMPARATOR_PAGE_SIZE);
+          if (comparisonPage > totalPages && totalPages > 0) comparisonPage = totalPages;
+          if (comparisonPage < 1) comparisonPage = 1;
+          const startIdx = (comparisonPage - 1) * COMPARATOR_PAGE_SIZE;
+          const endIdx = Math.min(startIdx + COMPARATOR_PAGE_SIZE, totalItems);
+
+          for (let i = startIdx; i < endIdx; i++) {
             allMeasuresHtml += renderMeasureGroupHtml(measures[i], topicData.name, partyAKey, partyBKey, i + 1);
+          }
+          if (totalPages > 1) {
+            allMeasuresHtml += renderPaginationControlsHtml(comparisonPage, totalPages, totalItems, 'medidas');
           }
         }
         measuresContainer.innerHTML = allMeasuresHtml;
@@ -1335,6 +1397,7 @@
     function updateComparison() {
       if (window.NeutralSharing.resetFeedback) window.NeutralSharing.resetFeedback();
       comparisonActive = true;
+      comparisonPage = 1;
       renderComparison();
       if (!validateSelection()) {
         window.history.replaceState({}, '', window.NeutralSharing.stableUrl(window.location.href, { pilot: isPilot2023 }));
@@ -1495,6 +1558,19 @@
 
     if (measuresContainer) {
       measuresContainer.addEventListener('click', function (evt) {
+        const pageBtn = evt.target && evt.target.closest ? evt.target.closest('[data-comparison-page]') : null;
+        if (pageBtn) {
+          const targetPage = parseInt(pageBtn.getAttribute('data-comparison-page'), 10);
+          if (!isNaN(targetPage) && targetPage !== comparisonPage) {
+            comparisonPage = targetPage;
+            renderComparison();
+            if (measuresContainer && typeof measuresContainer.scrollIntoView === 'function') {
+              measuresContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+          return;
+        }
+
         const btn = evt.target && evt.target.closest ? evt.target.closest('.btn-open-manifesto') : null;
         if (btn) {
           lastFocusedTrigger = btn;
