@@ -141,8 +141,12 @@ class BrowserPublishSetTests(unittest.TestCase):
                         ['node', str(ROOT / 'tests/comparison_publish_behavior.cjs'), str(bundle), *args],
                         cwd=ROOT, capture_output=True, text=True, check=True,
                     )
-                    browser = json.loads(node.stdout)['html']
+                    rendered = json.loads(node.stdout)
+                    self.assertEqual(len(rendered['paginatedLists']), 2 if opponent == 'erc' else 1)
+                    self.assertIn('Paginación de propuestas de Junts per Catalunya', rendered['paginatedLists'])
+                    browser = rendered['html']
                     for html in (static, browser):
+                        self.assertIn('data-paginate-label="Paginación de propuestas de Junts per Catalunya"', html)
                         self.assertNotIn('class="proposal-nav"', html)
                         self.assertIn('id="proposal-list-a"', html)
                         self.assertIn('id="proposal-list-b"', html)

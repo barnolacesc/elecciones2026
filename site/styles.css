@@ -468,7 +468,8 @@ main {
   gap: var(--space-4);
 }
 
-.proposal-list {
+.proposal-list,
+.proposal-list-cards {
   display: grid;
   align-content: start;
   gap: var(--space-3);
