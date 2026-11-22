@@ -342,6 +342,30 @@ def load_register_from_dict(data: dict[str, Any]) -> tuple[Optional[SourceRegist
             )
         )
 
+    # A replaced source must resolve to a later record in the same election.
+    # Do not infer candidature equivalence here: coalition/territorial identity
+    # needs a separate editorial decision.
+    by_id = {source.id: source for source in sources}
+    for source in sources:
+        if source.status != "replaced" or not source.replacement_history:
+            continue
+        seen: set[str] = set()
+        current = source
+        while current.status == "replaced" and current.replacement_history:
+            if current.id in seen:
+                errors.append(f"Record {source.id}: replacement chain contains a cycle.")
+                break
+            seen.add(current.id)
+            target_id = current.replacement_history[-1].superseded_by
+            target = by_id.get(target_id)
+            if target is None:
+                errors.append(f"Record {current.id}: replacement target '{target_id}' is not registered.")
+                break
+            if target.election_id != current.election_id:
+                errors.append(f"Record {current.id}: replacement target '{target_id}' belongs to another election.")
+                break
+            current = target
+
     if errors:
         return None, errors
 

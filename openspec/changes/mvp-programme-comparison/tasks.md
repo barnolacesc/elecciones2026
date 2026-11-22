@@ -356,3 +356,21 @@ The serving image builds deterministic gzip variants of static text files.
 Nginx negotiates the encoding at the same URLs. The container parity test
 checks encoding negotiation, exact decompressed bytes, cache headers and
 direct sidecar access. Public capacity acceptance remains a G4 check.
+
+### E1.1 replacement-target integrity — 2026-11-22
+
+- [x] Reconcile main `6d7cc5e`, the draft/conflicted PR #101 and open
+  provenance PRs. The current register has three `replaced` 2026 rows, each
+  pointing to a registered successor in the same election; the four 2023
+  pilot sources are still unreviewed and do not establish corpus coverage.
+- [x] Validate the final successor link of each replaced source: target must
+  exist, remain in the same election, and terminate without a cycle. A partial
+  successor remains valid; this does not decide candidature equivalence,
+  source rights, political content or release approval.
+- [x] Exercise fictional valid, missing, cross-election, self-cycle and
+  two-record-cycle cases. `PYTHONPATH=src python3 -m unittest
+  tests.test_source_register -q`: 9 tests passed on Python 3.11.
+- [ ] Re-run project Python 3.14 and hosted CI on the PR head; complete human
+  source/editorial review separately. PR #101's earlier green checks do not
+  validate current-main integration. A broader generator suite cannot import
+  under local Python 3.11 because it uses Python 3.14 f-string syntax.

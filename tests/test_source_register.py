@@ -1,6 +1,7 @@
 """Tests for the electoral programme source register."""
 
 import json
+from copy import deepcopy
 from pathlib import Path
 import unittest
 
@@ -223,13 +224,42 @@ class TestSourceRegister(unittest.TestCase):
                         }
                     ],
                     "rights_review": {"status": "link_and_short_quote", "terms_notes": "None"},
-                }
+                },
+                {
+                    "id": "src-1-v2", "election_id": "el1", "party_id": "party1",
+                    "official_url": "https://example.org", "retrieval_date": "2026-10-15",
+                    "status": "partial", "rights_review": {"status": "not_reviewed", "terms_notes": "None"},
+                },
             ],
         }
         reg, errors = load_register_from_dict(valid_data)
         self.assertEqual(errors, [])
         self.assertIsNotNone(reg)
         self.assertEqual(len(reg.sources[0].replacement_history), 1)
+
+        for name, expected in (
+            ("missing target", "not registered"),
+            ("cross-election target", "another election"),
+            ("self-cycle", "cycle"),
+            ("two-record cycle", "cycle"),
+        ):
+            with self.subTest(case=name):
+                case = deepcopy(valid_data)
+                if name == "missing target":
+                    case["sources"].pop()
+                elif name == "cross-election target":
+                    case["elections"].append({"id": "el2", "status": "archived"})
+                    case["sources"][1]["election_id"] = "el2"
+                elif name == "self-cycle":
+                    case["sources"][0]["replacement_history"][0]["superseded_by"] = "src-1-v1"
+                else:
+                    case["sources"][1].update(status="replaced", replacement_history=[{
+                        "prior_version": "2.0", "superseded_by": "src-1-v1",
+                        "replacement_date": "2026-10-16", "reason": "Fictional",
+                    }])
+                parsed, case_errors = load_register_from_dict(case)
+                self.assertIsNone(parsed)
+                self.assertTrue(any(expected in error for error in case_errors), case_errors)
 
 
 if __name__ == "__main__":
