@@ -483,15 +483,14 @@ def render_social_metadata(ctx: SiteContext, title: str, description: str, canon
     pilot = ctx.election_id == "es-gen-2023"
     site_name = "Generales 2023 · Ensayo piloto privado" if pilot else ctx.i18n["meta"]["site_name"]
     notice = "Ensayo piloto privado de 2023." if pilot else "Vista previa · Datos de prueba."
-    if ctx.production_records:
-        notice = "Vista previa de 2026 · Incorporación y revisión de programas en curso."
+    social_description = description if ctx.production_records else f"{notice} {description}"
     image_url = f"{ctx.canonical_base}/{preview_image_path(ctx.root_dir)}"
     properties = {
         "og:type": "website",
         "og:locale": "es_ES",
         "og:site_name": site_name,
         "og:title": title,
-        "og:description": f"{notice} {description}",
+        "og:description": social_description,
         "og:url": canonical_url,
         "og:image": image_url,
         "og:image:type": "image/png",
@@ -506,7 +505,7 @@ def render_social_metadata(ctx: SiteContext, title: str, description: str, canon
     twitter_tags = {
         "twitter:card": "summary_large_image",
         "twitter:title": title,
-        "twitter:description": f"{notice} {description}",
+        "twitter:description": social_description,
         "twitter:image": image_url,
         "twitter:image:alt": ctx.i18n["social_preview"]["image_alt"],
     }
@@ -846,12 +845,10 @@ def build_structured_data(
     }
 
 
-def render_preview_banner(ctx: SiteContext) -> str:
-    """Render preview notice banner."""
-    badge = escape(ctx.i18n["preview_banner"]["badge"])
-    text = escape(ctx.i18n["preview_banner"]["text"])
-    return f"""<aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
-    {badge} · {text}
+def render_preview_banner(text: str) -> str:
+    """Render a preview notice."""
+    return f"""  <aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
+    {escape(text)}
   </aside>"""
 
 
@@ -1099,14 +1096,17 @@ def render_base(
         )
     structured_data_html = safe_json_ld(structured_data)
 
+    preview_banner = ""
     if ctx.election_id == "es-gen-2023":
         brand_link = f"""<a class="brand" href="{root_path}" aria-label="Generales 2023 - Ensayo Piloto">
         <span class="brand-mark" aria-hidden="true">■</span>
         <span class="brand-text">Generales<span class="brand-year">2023</span></span>
         <span class="pilot-badge">Privado</span>
       </a>"""
-        preview_banner_text = ("ENSAYO PILOTO PRIVADO · Cobertura parcial"
-                               if ctx.statements else "ENSAYO PILOTO PRIVADO · Publicación pendiente")
+        preview_banner = render_preview_banner(
+            "ENSAYO PILOTO PRIVADO · Cobertura parcial"
+            if ctx.statements else "ENSAYO PILOTO PRIVADO · Publicación pendiente"
+        )
         footer_org = "Generales 2023 (piloto) · Ensayo privado y confidencial"
         footer_values = ("Posiciones visibles verificadas · No satisface G2 para 2026"
                          if ctx.statements else
@@ -1119,14 +1119,13 @@ def render_base(
         <span class="brand-mark" aria-hidden="true">■</span>
         <span class="brand-text">Elecciones<span class="brand-year">2026</span></span>
       </a>"""
-        preview_banner_text = f"{escape(ctx.i18n['preview_banner']['badge'])} · {escape(ctx.i18n['preview_banner']['text'])}"
+        if not ctx.production_records:
+            notice = ctx.i18n["preview_banner"]
+            preview_banner = render_preview_banner(f"{notice['badge']} · {notice['text']}")
         footer_org = escape(ctx.i18n["footer"]["org"])
         footer_values = escape(ctx.i18n["footer"]["values"])
         feedback_label = escape(ctx.i18n.get("feedback", {}).get("link_text", "Buzón de propuestas"))
         nav_feedback_link = f'\n        <a class="nav-link" href="{root_path}propuestas/">{feedback_label}</a>'
-
-    if ctx.production_records:
-        preview_banner_text = "VISTA PREVIA · Incorporación de programas de 2026 · Revisión editorial pendiente"
 
     if base_template_file.exists():
         template = base_template_file.read_text(encoding="utf-8")
@@ -1150,9 +1149,7 @@ def render_base(
 </head>
 <body class="theme-swiss" data-election="{{ election_id }}" data-swiss-accent="monochrome">
   <a class="skip-link" href="#contenido">{{ skip_to_content }}</a>
-  <aside class="preview-banner" role="status" aria-label="Aviso de prototipo">
-    {{ preview_banner_text }}
-  </aside>
+{{ preview_banner }}
   <header class="topbar" role="banner">
     <div class="topbar-inner">
       {{ brand_link }}
@@ -1195,7 +1192,7 @@ def render_base(
         "{{ root_path }}": root_path,
         "{{ brand_link }}": brand_link,
         "{{ skip_to_content }}": escape(ctx.i18n["nav"]["skip_to_content"]),
-        "{{ preview_banner_text }}": preview_banner_text,
+        "{{ preview_banner }}": preview_banner,
         "{{ nav_comparator }}": escape(ctx.i18n["nav"]["comparator"]),
         "{{ nav_topics }}": escape(ctx.i18n["nav"]["topics"]),
         "{{ nav_quiz }}": escape(ctx.i18n["nav"].get("quiz", "Cuestionario")),
