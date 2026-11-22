@@ -302,9 +302,11 @@ jobs:
       - name: Verify the exact image serves the exploratory questionnaire
         run: |
           base=http://127.0.0.1:8080
-          bundle=$(curl --fail --silent --show-error "$base/cuestionario/" | python3 -c 'import re, sys; print(re.search(r"quiz-exploratory-data\.[0-9a-f]{16}\.js", sys.stdin.read()).group())')
-          curl --fail --silent --show-error "$base/$bundle" --output /dev/null
-          curl --fail --silent --show-error "$base/quiz-exploratory.js" --output /dev/null
+          quiz_html=$(curl --fail --silent --show-error "$base/cuestionario/")
+          for asset in quiz-exploratory-data quiz-exploratory; do
+            filename=$(printf '%s' "$quiz_html" | grep -oE "$asset\.[0-9a-f]{16}\.js")
+            curl --fail --silent --show-error "$base/$filename" --output /dev/null
+          done
 
       - name: Verify ADR-0001 Cache-Control and security headers
         run: |
