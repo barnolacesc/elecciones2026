@@ -115,6 +115,9 @@ class DeliveryTests(unittest.TestCase):
     def test_2026_production_staging_candidate_and_mixed_mode_rejection(self):
         # Current 2026 approved-record candidate passes
         self.assertEqual(delivery.candidate(RECORD_2026, RUN), IMAGE)
+        self.assertEqual(delivery.candidate(dict(RECORD_2026, quiz_mode='exploratory'), RUN), IMAGE)
+        with self.assertRaises(delivery.DeliveryError):
+            delivery.candidate(dict(RECORD, quiz_mode='exploratory'), RUN)
         # Historical 2023 provisional candidate passes for recovery
         self.assertEqual(delivery.candidate(RECORD, RUN), IMAGE)
 
@@ -154,13 +157,13 @@ class DeliveryTests(unittest.TestCase):
         self.assertIsNotNone(build_match, "Candidate docker build command must be present")
         election_arg, quiz_arg, pilot_arg = build_match.groups()
         self.assertEqual(election_arg, 'es-gen-2026')
-        self.assertEqual(quiz_arg, 'unavailable')
+        self.assertEqual(quiz_arg, 'exploratory')
         self.assertEqual(pilot_arg, '0')
 
         # Verify candidate release.json creation binds 2026 and approved-records-only consistently
         self.assertIn("'classification': 'private-staging'", ci_yaml)
         self.assertIn("'election_id': 'es-gen-2026'", ci_yaml)
-        self.assertIn("'quiz_mode': 'unavailable'", ci_yaml)
+        self.assertIn("'quiz_mode': 'exploratory'", ci_yaml)
         self.assertIn("'pilot_mode': 'approved-records-only'", ci_yaml)
 
         # Verify separate historical quiz rehearsal explicitly remains es-gen-2023

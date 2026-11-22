@@ -169,3 +169,17 @@ This section records planning checks only. It does not complete the approval or 
 - Docker preview: `QUIZ_MODE=mock PORT=127.0.0.1:48775 docker compose up --build -d` — PASS. `/cuestionario/` returns HTTP 200; serving user is UID 101; root filesystem is read-only; health check is healthy. The preview remains bound to loopback. No public deployment or merge occurred.
 - Python compile checks, JavaScript syntax checks, fixed-input mock build hash comparison, and `git diff --check` — PASS. CI now includes quiz numeric and browser checks; the remote workflow was not run during this session.
 - Operator and reviewed-data guide: `docs/QUIZ.md`. Real party content, dual editorial review, selection/fairness and participant review, orientation/zoom/text-spacing checks, full accessibility audit, edge/origin privacy, load acceptance, release/rollback rehearsal, and G4/G5 approval remain open.
+
+### E4.4 exploratory 29-N publication decision
+
+On 2026-11-22, Cesc approved public activation of the 29-N exploratory
+questionnaire. This decision covers the version with 24 statements per
+draw and programme attribution and links after completion. The recorded
+55-subtitle approval and its source-bound corpus remain the editorial input.
+
+Two local mobile browser sessions verified 24 unique statements across
+12 topics, different draws, 24 results with source links, edit and reload
+behavior, and no answer-dependent requests, cookies, or browser storage
+during the tested flow. The CI image verifies the exploratory HTML and
+both browser assets before publishing its candidate record. The previous
+unavailable candidate remains available for withdrawal.
