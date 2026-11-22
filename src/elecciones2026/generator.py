@@ -1112,6 +1112,7 @@ def render_base(
                          if ctx.statements else
                          "Revisión humana y de derechos pendiente · No satisface G2 para 2026")
         nav_feedback_link = ""
+        topbar_quiz_link = ""
         if "Generales 2023" not in title:
             title = f"{title} · Generales 2023"
     else:
@@ -1126,6 +1127,8 @@ def render_base(
         footer_values = escape(ctx.i18n["footer"]["values"])
         feedback_label = escape(ctx.i18n.get("feedback", {}).get("link_text", "Buzón de propuestas"))
         nav_feedback_link = f'\n        <a class="nav-link" href="{root_path}propuestas/">{feedback_label}</a>'
+        quiz_label = escape(ctx.i18n["nav"].get("quiz", "Cuestionario"))
+        topbar_quiz_link = f'\n        <a class="nav-link" href="{root_path}cuestionario/">{quiz_label}</a>'
 
     if base_template_file.exists():
         template = base_template_file.read_text(encoding="utf-8")
@@ -1154,7 +1157,7 @@ def render_base(
     <div class="topbar-inner">
       {{ brand_link }}
       <nav class="nav-links" aria-label="Navegación principal">
-        <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>
+        <a class="nav-link" href="{{ root_path }}#comparador">{{ nav_comparator }}</a>{{ topbar_quiz_link }}
         <a class="nav-link" href="{{ root_path }}temas/">{{ nav_topics }}</a>
         <details class="site-menu">
           <summary class="nav-link menu-toggle">Menú <span aria-hidden="true">+</span></summary>
@@ -1204,6 +1207,7 @@ def render_base(
         "{{ nav_corrections }}": escape(ctx.i18n["nav"]["corrections"]),
         "{{ nav_feedback }}": escape(ctx.i18n.get("feedback", {}).get("link_text", "Buzón de propuestas")),
         "{{ nav_feedback_link }}": nav_feedback_link,
+        "{{ topbar_quiz_link }}": topbar_quiz_link,
         "{{ footer_org }}": footer_org,
         "{{ footer_values }}": footer_values,
         "{{ content }}": content,
@@ -2809,10 +2813,31 @@ def build_site(
         ctx.budget_projection_id = digest(canonical(budget_projections))
 
     from elecciones2026.quiz import QuizValidationError, prepare_quiz, render_quiz_content
-    if quiz_mode not in {"unavailable", "mock", "reviewed"}:
+    if quiz_mode not in {"unavailable", "mock", "reviewed", "exploratory"}:
         raise BuildValidationError("Invalid quiz mode.")
     quiz_bundle = None
-    if quiz_mode != "unavailable":
+    exploratory_bundle = None
+    if quiz_mode == "exploratory":
+        from elecciones2026.quiz_exploratory import (
+            ExploratoryQuizError,
+            validate_exploratory_bank,
+            render_exploratory_quiz_content,
+        )
+        exploratory_path = (
+            quiz_file
+            or (records_dir / "quiz-bank.json" if records_dir else None)
+            or (ctx.content_dir / "quiz-bank.json")
+            or (ctx.content_dir / "elections" / ctx.election_id / "quiz-bank.json")
+        )
+        if exploratory_path and exploratory_path.exists():
+            try:
+                raw_exploratory = json.loads(exploratory_path.read_text(encoding="utf-8"))
+                exploratory_bundle = validate_exploratory_bank(raw_exploratory, ctx)
+            except (ValueError, OSError, ExploratoryQuizError) as error:
+                raise BuildValidationError(f"Exploratory quiz validation failed: {error}") from error
+        else:
+            quiz_mode = "unavailable"
+    elif quiz_mode != "unavailable":
         quiz_path = quiz_file or (ctx.content_dir / "quiz" / f"{quiz_mode}.json")
         try:
             quiz_ctx = ctx
@@ -2935,7 +2960,20 @@ def build_site(
         quiz_style_name = f"quiz.{compute_sha256(quiz_style)[:16]}.css"
         shutil.copy2(quiz_style, staging_dir / quiz_style_name)
         quiz_scripts = []
-        if quiz_bundle is not None and quiz_bundle["available"]:
+        if exploratory_bundle is not None and exploratory_bundle.get("available"):
+            source = root_dir / "site" / "quiz-exploratory.js"
+            target = f"{source.stem}.{compute_sha256(source)[:16]}{source.suffix}"
+            shutil.copy2(source, staging_dir / target)
+            encoded = json.dumps(exploratory_bundle, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+            bundle_script = f"window.QuizExploratoryBundle = {encoded};\n"
+            digest = hashlib.sha256(bundle_script.encode()).hexdigest()[:16]
+            bundle_name = f"quiz-exploratory-data.{digest}.js"
+            write_file_deterministic(staging_dir / bundle_name, bundle_script)
+            quiz_scripts = [bundle_name, target]
+            quiz_content = render_exploratory_quiz_content()
+            quiz_title = "Cuestionario de propuestas · Elecciones 2026"
+            quiz_description = "Explora propuestas de los programas electorales del 29-N y consulta sus fuentes directas sin calcular afinidad partidista."
+        elif quiz_bundle is not None and quiz_bundle["available"]:
             for name in ("quiz-engine.js", "quiz-ui.js"):
                 source = root_dir / "site" / name
                 target = f"{source.stem}.{compute_sha256(source)[:16]}{source.suffix}"
@@ -2947,12 +2985,17 @@ def build_site(
             bundle_name = f"quiz-data.{digest}.js"
             write_file_deterministic(staging_dir / bundle_name, bundle_script)
             quiz_scripts.insert(0, bundle_name)
-        quiz_content = render_quiz_content(quiz_bundle)
+            quiz_content = render_quiz_content(quiz_bundle)
+            quiz_title = "Cuestionario de coincidencia"
+            quiz_description = ("Demostración privada con datos ficticios. No representa programas reales."
+                                if quiz_mode == "mock" else "Coincidencia con medidas revisadas.")
+        else:
+            quiz_content = render_quiz_content(quiz_bundle)
+            quiz_title = "Cuestionario de coincidencia"
+            quiz_description = "El cuestionario aún no está disponible."
+
         quiz_content += ''.join(f'<script src="../{name}" defer></script>\n' for name in quiz_scripts)
-        quiz_description = ("Demostración privada con datos ficticios. No representa programas reales."
-                            if quiz_mode == "mock" else "Coincidencia con medidas revisadas."
-                            if quiz_mode == "reviewed" else "El cuestionario aún no está disponible.")
-        quiz_html = render_base(ctx, "Cuestionario de coincidencia", quiz_description,
+        quiz_html = render_base(ctx, quiz_title, quiz_description,
                                 "/cuestionario/", quiz_content, root_path="../")
         # Fetch imported design tokens with the main stylesheet, avoiding a
         # second stylesheet request round trip before the local quiz can start.
@@ -2963,7 +3006,7 @@ def build_site(
         quiz_html = quiz_html.replace('<meta charset="utf-8">',
             '<meta charset="utf-8">\n<meta name="referrer" content="no-referrer">'
             f'\n<link rel="icon" href="../{preview_image_path(root_dir)}">')
-        if quiz_mode != "reviewed":
+        if quiz_mode not in {"reviewed", "exploratory"}:
             quiz_html = quiz_html.replace('<meta charset="utf-8">',
                 '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">')
         else:
@@ -3139,8 +3182,8 @@ def main(args: Optional[list[str]] = None) -> int:
     build_p.add_argument("--canonical-base", type=str, default=DEFAULT_CANONICAL_BASE, help="Canonical base URL.")
     build_p.add_argument("--strict", action="store_true", default=True, help="Enforce strict approved status.")
     build_p.add_argument("--budget-bundle", type=Path, help="Optional immutable budget bundle; requires human review.")
-    build_p.add_argument("--quiz-mode", choices=("unavailable", "mock", "reviewed"), default="unavailable",
-                         help="Mock quiz is opt-in for private preview; reviewed mode requires approved input.")
+    build_p.add_argument("--quiz-mode", choices=("unavailable", "mock", "reviewed", "exploratory"), default=None,
+                         help="Quiz mode: exploratory (2026 proposals), mock (fixture demo), reviewed (scored set), or unavailable.")
     build_p.add_argument("--quiz-file", type=Path, help="Versioned quiz authoring JSON.")
     build_p.add_argument("--simulator-mode", choices=("unavailable", "mock", "reviewed"), default="unavailable",
                          help="Simulator mode: unavailable (static info), mock (private preview), or reviewed.")
@@ -3167,6 +3210,12 @@ def main(args: Optional[list[str]] = None) -> int:
         records_dir = (parsed.content_dir or parsed.root_dir / "content") / "elections" / parsed.election_id
 
     if parsed.command == "build":
+        quiz_mode = parsed.quiz_mode
+        if quiz_mode is None:
+            if parsed.election_id == "es-gen-2026" and records_dir and (records_dir / "quiz-bank.json").exists():
+                quiz_mode = "exploratory"
+            else:
+                quiz_mode = "unavailable"
         try:
             res = build_site(
                 root_dir=parsed.root_dir,
@@ -3177,7 +3226,7 @@ def main(args: Optional[list[str]] = None) -> int:
                 build_date=parsed.build_date,
                 strict_approved=parsed.strict,
                 budget_bundle=parsed.budget_bundle,
-                quiz_mode=parsed.quiz_mode,
+                quiz_mode=quiz_mode,
                 quiz_file=parsed.quiz_file,
                 simulator_mode=parsed.simulator_mode,
                 simulator_file=parsed.simulator_file,
