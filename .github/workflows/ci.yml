@@ -273,7 +273,7 @@ jobs:
 
       - name: Build pinned Docker image via multi-stage builder
         run: |
-          docker build --platform linux/amd64 --build-arg ELECTION_ID=es-gen-2026 --build-arg QUIZ_MODE=unavailable --build-arg PILOT_PROVISIONAL=0 --label org.opencontainers.image.source="https://github.com/${GITHUB_REPOSITORY}" --label org.opencontainers.image.revision="$GITHUB_SHA" -t elecciones2026:ci .
+          docker build --platform linux/amd64 --build-arg ELECTION_ID=es-gen-2026 --build-arg QUIZ_MODE=exploratory --build-arg PILOT_PROVISIONAL=0 --label org.opencontainers.image.source="https://github.com/${GITHUB_REPOSITORY}" --label org.opencontainers.image.revision="$GITHUB_SHA" -t elecciones2026:ci .
 
       - name: Run preview container with read-only filesystem and dropped capabilities
         run: |
@@ -298,6 +298,15 @@ jobs:
           echo "Container failed to respond within 30s"
           docker logs preview_smoke
           exit 1
+
+      - name: Verify the exact image serves the exploratory questionnaire
+        run: |
+          base=http://127.0.0.1:8080
+          quiz_html=$(curl --fail --silent --show-error "$base/cuestionario/")
+          for asset in quiz-exploratory-data quiz-exploratory; do
+            filename=$(printf '%s' "$quiz_html" | grep -oE "$asset\.[0-9a-f]{16}\.js")
+            curl --fail --silent --show-error "$base/$filename" --output /dev/null
+          done
 
       - name: Verify ADR-0001 Cache-Control and security headers
         run: |
@@ -413,7 +422,7 @@ jobs:
               'platform': 'linux/amd64',
               'classification': 'private-staging',
               'election_id': 'es-gen-2026',
-              'quiz_mode': 'unavailable',
+              'quiz_mode': 'exploratory',
               'pilot_mode': 'approved-records-only',
               'canonical_base': 'https://xn--eleccionesespaa2026-83b.es',
               'home_sha256': subprocess.check_output(['docker', 'run', '--rm', '--read-only', '--cap-drop', 'ALL', '--entrypoint', 'sha256sum', 'elecciones2026:ci', '/usr/share/nginx/html/index.html'], text=True).split()[0],

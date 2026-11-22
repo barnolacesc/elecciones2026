@@ -46,9 +46,11 @@ def candidate(record: dict, run: dict) -> str:
     image = record.get("image", "")
     valid_election_mode = (
         (record.get("election_id") == "es-gen-2026"
-         and record.get("pilot_mode") == "approved-records-only")
+         and record.get("pilot_mode") == "approved-records-only"
+         and record.get("quiz_mode") in ("unavailable", "exploratory"))
         or (record.get("election_id") == "es-gen-2023"
-            and record.get("pilot_mode") == "source-linked-provisional")
+            and record.get("pilot_mode") == "source-linked-provisional"
+            and record.get("quiz_mode") == "unavailable")
     )
     if not (record.get("schema") == 1 and re.fullmatch(image_pattern, image)
             and record.get("revision") == run["head_sha"]
@@ -57,7 +59,6 @@ def candidate(record: dict, run: dict) -> str:
             and record.get("platform") == "linux/amd64"
             and record.get("classification") == "private-staging"
             and valid_election_mode
-            and record.get("quiz_mode") == "unavailable"
             and record.get("canonical_base") == "https://xn--eleccionesespaa2026-83b.es"
             and re.fullmatch(r"[a-f0-9]{64}", record.get("home_sha256", ""))):
         raise DeliveryError("Candidate evidence does not match the approved CI run")
