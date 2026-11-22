@@ -1,7 +1,15 @@
 # 29 November 2026 public release review
 
-Roadmap package E3.5. The G4 gate is open. This packet applies to the
-`es-gen-2026` comparator and the existing public IONOS/Cloudflare plan.
+Roadmap package E3.5. This packet applies to the `es-gen-2026` comparator
+and the existing public IONOS/Cloudflare plan.
+
+## Owner launch decision — 2026-11-22
+
+Cesc directed immediate activation of the approved comparator on the
+canonical domain and deferred the external load test. Operational follow-up
+includes capacity measurement, independent alerts, and full live recovery
+evidence. Those acceptance tasks remain open. The initial launch covers the
+approved static comparator. Its artifact has the quiz unavailable.
 
 ## Candidate and evidence
 
@@ -77,6 +85,20 @@ loopback before adding the public virtual host. Test the combined nginx
 configuration, confirm both Cloudflare DNS targets and Full (strict) TLS,
 then verify the apex response, the www redirect and the preview challenge.
 Keep the public virtual host removable without changing the preview.
+
+## Public activation — 2026-11-22
+
+The comparator route is active on the HTTPS apex. Five public responses
+matched the protected candidate, including the homepage, sources,
+corrections, sitemap and robots file. Cloudflare obfuscated contact
+addresses in sources and corrections. Decoding that transformation produced
+the expected responses. HTTP and www redirected with status 308 and
+preserved the path and query. Preview retained 401, no-store and noindex.
+
+The first smoke attempt removed the public route and reloaded nginx when
+the edge HTML differed from the candidate. A second attempt verified the
+Cloudflare transformation and passed. This exercises first-release routing
+recovery. Full live restore, purge and recovery timing remain open.
 
 ## First-release recovery
 
