@@ -1168,6 +1168,9 @@
         const message = party.coverage === 'partial' ? 'El documento de campaña es parcial.' :
           hasLinkedMeasures ? 'No hay otras fichas revisadas en este tema.' : 'No hay fichas revisadas en este tema.';
         cards = '<p class="notice">' + message + '</p>';
+      } else {
+        cards = '<div class="proposal-list-cards" data-paginate="5" data-paginate-item-name="propuestas"' +
+          ' data-paginate-label="Paginación de propuestas de ' + name + '">' + cards + '</div>';
       }
       return '<section class="proposal-list" aria-labelledby="' + headingId + '">' +
         '<h3 id="' + headingId + '">' + name + '</h3>' +
@@ -1378,6 +1381,11 @@
           }
         }
         measuresContainer.innerHTML = allMeasuresHtml;
+        if (window.EleccionesPagination) {
+          measuresContainer.querySelectorAll('.proposal-list-cards').forEach(function (list) {
+            window.EleccionesPagination.paginate(list);
+          });
+        }
       }
 
       if (comparisonActive && window.history && window.history.replaceState) {

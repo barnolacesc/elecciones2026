@@ -173,8 +173,12 @@
 
     function goToPage(targetPage) {
       if (targetPage < 1 || targetPage > totalPages || targetPage === currentPage) return;
+      const restoreFocus = controls.contains(document.activeElement);
       currentPage = targetPage;
       updateView(true);
+      if (restoreFocus) {
+        controls.querySelector('[aria-current="page"]').focus({ preventScroll: true });
+      }
       if (typeof options.onPageChange === 'function') {
         options.onPageChange(currentPage, totalPages);
       }

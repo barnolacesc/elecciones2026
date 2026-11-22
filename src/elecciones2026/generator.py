@@ -1380,6 +1380,11 @@ def render_independent_proposals(ctx: SiteContext, parties: dict[str, Any],
             if parties[pid]["coverage"] == "partial":
                 message = "El documento de campaña es parcial."
             cards.append(f'<p class="notice">{message}</p>')
+        else:
+            cards = [
+                f'<div class="proposal-list-cards" data-paginate="5" data-paginate-item-name="propuestas" '
+                f'data-paginate-label="Paginación de propuestas de {name}">{"".join(cards)}</div>'
+            ]
         sections.append(
             f'<section class="proposal-list" aria-labelledby="{title_id}">'
             f'<h3 id="{title_id}">{name}</h3>'
