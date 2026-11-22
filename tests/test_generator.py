@@ -55,7 +55,7 @@ class TestStaticSiteGenerator(unittest.TestCase):
             for page in pages:
                 with self.subTest(election=election, page=page.relative_to(target)):
                     html = page.read_text()
-                    self.assertIn('Desarrollado por <a href="https://github.com/barnolacesc" rel="noopener noreferrer">barnolacesc</a>', html)
+                    self.assertIn('Desarrollado por <a href="https://github.com/barnolacesc" rel="noopener noreferrer">barnolacesc</a> · <a href="https://github.com/barnolacesc/elecciones2026" rel="noopener noreferrer">Código en GitHub</a>', html)
                     if election == 'es-gen-2023':
                         self.assertIn('Ensayo privado y confidencial', html)
                     else:
