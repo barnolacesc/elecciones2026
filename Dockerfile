@@ -16,6 +16,7 @@ COPY site/ /app/site/
 ARG ELECTION_ID=es-gen-2026
 ARG QUIZ_MODE=exploratory
 ARG PILOT_PROVISIONAL=0
+ARG BUDGET_BUNDLE=/app/content/budget/aecc6465af87086748c101fbac6e3e6b63438cf4822c732c45c442a5f0eaab24
 # Empty selects the deterministic source-register update date for production.
 ARG BUILD_DATE
 
@@ -27,6 +28,7 @@ RUN PYTHONPATH=/app/src python3 -m elecciones2026.generator build \
     --election-id "$ELECTION_ID" \
     --quiz-mode "$QUIZ_MODE" \
     $(test "$PILOT_PROVISIONAL" = 1 && echo --pilot-provisional) \
+    $(test -n "$BUDGET_BUNDLE" && test -d "$BUDGET_BUNDLE" && echo --budget-bundle "$BUDGET_BUNDLE" --draft-budget) \
     --build-date "$BUILD_DATE" \
     --canonical-base "$CANONICAL_BASE"
 

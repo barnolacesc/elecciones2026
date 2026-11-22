@@ -484,8 +484,8 @@ def load_bundle(path, taxonomy_path=ROOT / "content/taxonomy.json", require_publ
 
 
 def copy_reviewed_bundle(bundle_path, destination, taxonomy_path=ROOT / "content/taxonomy.json",
-                         expected_manifest=None):
-    manifest, payload = load_bundle(bundle_path, taxonomy_path, require_publication=True)
+                         expected_manifest=None, require_publication=True):
+    manifest, payload = load_bundle(bundle_path, taxonomy_path, require_publication=require_publication)
     if expected_manifest is not None and manifest != expected_manifest:
         raise BudgetError("Budget bundle changed after page validation")
     # Write the validated in-memory snapshot, never reread source files while copying.

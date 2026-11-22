@@ -1,0 +1,58 @@
+{
+  "accounting_basis": "approved_credits",
+  "budget_year": 2023,
+  "build_date": "2026-10-11",
+  "correction_refs": [],
+  "dataset_version": "2023-approved-retrieved-2026-10-11",
+  "files": [
+    {
+      "bytes": 3,
+      "path": "corrections.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 3,
+      "path": "decisions.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 11656,
+      "path": "mapping.json",
+      "sha256": "3cefa11c55165fce968f93bd62aaac61fac5fed40d3bd10846749e0264cd91f5"
+    },
+    {
+      "bytes": 1550,
+      "path": "measurement.json",
+      "sha256": "0241b8a2ecd77fb70921418bf6b44c053d22c562ebe021501e7d1691ebe4f010"
+    },
+    {
+      "bytes": 3,
+      "path": "reviews.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 13280,
+      "path": "sections.json",
+      "sha256": "7b3e0a8cc69b5cfc17a7ca1c20384466f9f216bc77e10ec7fabcc9866cc7f4de"
+    },
+    {
+      "bytes": 2093,
+      "path": "source.json",
+      "sha256": "45902887a2b9f15c1d45bec3c5de3a558426147ef08d26aa2998b2458c24712f"
+    },
+    {
+      "bytes": 430716,
+      "path": "values.json",
+      "sha256": "bcf57def91f6de1c6738aa8ea703f0a56587c6fe13a3c719fa78a6cda0976f86"
+    }
+  ],
+  "is_fixture": false,
+  "mapping_version": "1.0.0",
+  "publication_state": "draft",
+  "review_refs": [],
+  "schema_version": "1.0.0",
+  "source_sha256": "c796efe9208fa9badc1894d0e0334024c75fbb5e00b8de4b30cb25145e695e7a",
+  "supersedes": null,
+  "taxonomy_sha256": "1516d06efe46e682775e6bbd41b603eaa569b4674180e410d68cd759944e783b",
+  "transform_version": "1.0.0"
+}

@@ -6,6 +6,7 @@ services:
       args:
         ELECTION_ID: ${ELECTION_ID:-es-gen-2026}
         QUIZ_MODE: ${QUIZ_MODE:-exploratory}
+        BUDGET_BUNDLE: ${BUDGET_BUNDLE:-/app/content/budget/aecc6465af87086748c101fbac6e3e6b63438cf4822c732c45c442a5f0eaab24}
     ports:
       - "${PORT:-127.0.0.1:8080}:8080"
     read_only: true
