@@ -438,3 +438,21 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P1.8 — Pairwise inference boundary (2026-11-22 draft)
+
+- [x] Reconcile current main's 2023 register and unpublished example records,
+  draft PR #101, merged PR #166, and the pair-keyed generator; draft a
+  no-transitive-inference requirement, design and fictional scenarios.
+  Evidence: `docs/2023-PAIRWISE-INFERENCE-AUDIT-2026-11-22.md`.
+- [ ] Editorial/OpenSpec review: settle policy-question identity, display
+  wording for more than two parties, direct-pair reviewer quorum and
+  correction dependencies. No real relationship approval is implied.
+- [ ] After P0/P1 gates and review, define a private relationship-ledger
+  schema and test the approved rule with fictional three-party fixtures in
+  static and browser projections before any 2023 activation.
+
+Validation for this draft: document-structure and whitespace checks passed.
+Existing comparison regression tests could not run here: this workspace has
+Python 3.11 only, while the generator uses Python 3.14 syntax; `pytest` is not
+installed in the system interpreter. CI cannot supply source rights or
+political interpretation.

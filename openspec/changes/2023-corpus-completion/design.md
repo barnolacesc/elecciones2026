@@ -873,3 +873,26 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P1.8 draft — pairwise inference boundary
+
+Status: proposal-only. This refines P1.2's comparison-set accounting for a
+future full-party view. It does not infer or approve any 2023 relationship,
+change the two-party renderer, or assert that the present generator makes
+transitive claims. Repository evidence and unresolved decisions are in
+`docs/2023-PAIRWISE-INFERENCE-AUDIT-2026-11-22.md`.
+
+Keep a private, version-bound relationship ledger keyed by election, exact
+statement versions, unordered candidature pair, policy question, reviewed
+scope and decision revision. A review of A–B and B–C is not a review of A–C,
+even if both decisions use the same label. The projection joins only direct,
+effective reviewed decisions for the selected pair; it may still show
+individually publishable unmatched statements under P1.2's scope wording.
+It must not synthesize a third edge, pairwise ranking or party-wide conclusion
+from graph paths. Source text and review evidence stay private.
+
+Fictional fixtures should cover a two-edge chain with no third edge, a chain
+whose qualifications differ, mixed relationship types, and a corrected middle
+operand. Compare static and browser publish sets for the absent third badge.
+Owners must settle the policy-question key, multi-party display wording,
+review quorum and dependency handling before a ledger schema or implementation
+is approved. P0 source/rights and P1 proposal review remain prerequisites.

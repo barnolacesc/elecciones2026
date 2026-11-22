@@ -210,3 +210,35 @@ individual statement reviews.
 - **THEN** the comparison may state the bounded numeric difference with its
   method and qualifications, without implying programme-wide superiority.
 
+### Requirement: Do not infer a relationship through a third candidature
+
+For `es-gen-2023`, each public agreement, divergence, partial-overlap or
+numeric-ranking claim SHALL be backed by a direct, effective human review of
+the exact statement versions, candidature pair, policy question and scope it
+describes. The comparison SHALL NOT infer an unreviewed pair's relationship
+from a path of other reviewed relationships, matching labels, shared topics
+or a common third candidature. The absence of a direct decision SHALL leave
+the pair unreviewed, not opposed or equivalent. Individually publishable
+statements MAY remain visible with bounded coverage wording under P1.2.
+This requirement does not approve a real relationship or its review quorum.
+
+#### Scenario: Two reviewed agreements do not establish a third
+
+- **WHEN** fictional A–B and B–C pairs each have a reviewed agreement but
+  no direct A–C decision exists
+- **THEN** A and C may retain their individually eligible statements, but
+  neither static nor browser output shows an A–C agreement badge or summary.
+
+#### Scenario: Qualifier or type differs across a chain
+
+- **WHEN** two reviewed edges have different qualifications or relationship
+  types, even under one topic or proposed policy-question key
+- **THEN** no A–C divergence, overlap or numeric order is inferred; direct
+  A–C evidence and independent review are still required.
+
+#### Scenario: Corrected middle operand
+
+- **WHEN** a statement used in A–B and B–C is corrected or withdrawn
+- **THEN** those incident edges and dependent display claims enter re-review;
+  the system neither synthesizes nor reclassifies an A–C edge from the
+  remaining graph.
