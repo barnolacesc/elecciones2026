@@ -151,6 +151,11 @@ class ElectionCorpusRefreshTests(unittest.TestCase):
     def test_cli_defaults_to_production_records(self):
         output = self.directory / "cli"
         self.assertEqual(main(["build", "--root-dir", str(ROOT), "--output-dir", str(output)]), 0)
+        for route in ("index.html", "temas/education/index.html", "fuentes/index.html"):
+            with self.subTest(route=route):
+                html = (output / route).read_text()
+                self.assertNotIn('class="preview-banner"', html)
+                self.assertNotIn("Vista previa de 2026", html)
         self.assertNotIn("Partido Ejemplo", (output / "index.html").read_text())
         topic_html = (output / "temas/education/index.html").read_text()
         self.assertIn("ERC-programa-electoral-29-N-2026-2026-11-12.pdf#page=11", topic_html)
