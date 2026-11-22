@@ -46,8 +46,13 @@ the path and query. The apex-only cache rule covers GET and HEAD. It uses
 origin cache headers and bypasses caching when they are absent. Two distinct
 query variants of the temporary HTML probe each returned MISS then HIT.
 Direct external requests to the origin's HTTPS and public-container ports
-timed out from the preflight client. DNSSEC signing is enabled at Cloudflare
-and awaits the DS record at the registrar.
+timed out from the preflight client.
+
+On 2026-11-22, the registrar accepted the DS record. Its digest matched the
+Cloudflare dashboard and both Cloudflare authoritative nameservers before
+submission. The registry had not yet published the DS at the first check.
+The apex still resolved through two public validating resolvers. Confirm
+the parent DS and authenticated DNS responses before closing this check.
 
 The owner requested the public cutover. On 2026-11-21, Cesc explicitly
 took responsibility for the departed Project Partner's signoff for
