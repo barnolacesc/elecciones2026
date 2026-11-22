@@ -1132,7 +1132,7 @@ def render_base(
         quiz_label = escape(ctx.i18n["nav"].get("quiz", "Cuestionario"))
         topbar_quiz_link = f'\n        <a class="nav-link" href="{root_path}cuestionario/">{quiz_label}</a>'
         budget_label = escape(ctx.i18n["nav"].get("budget", "Presupuestos"))
-        topbar_budget_link = f'\n        <a class="nav-link" href="{root_path}presupuestos/2023/">{budget_label}</a>'
+        topbar_budget_link = f'\n        <a class="nav-link nav-link-budget" href="{root_path}presupuestos/2023/">{budget_label}</a>'
         menu_budget_link = f'\n        <a class="nav-link" href="{root_path}presupuestos/2023/">{budget_label}</a>'
 
     if base_template_file.exists():

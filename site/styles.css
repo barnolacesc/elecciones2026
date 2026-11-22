@@ -1537,10 +1537,18 @@ footer {
   }
 }
 
+.nav-link-budget {
+  display: none;
+}
+
 @media (min-width: 760px) {
   .nav-links {
     width: auto;
     gap: 0.5rem;
+  }
+
+  .nav-link-budget {
+    display: inline-flex;
   }
 }
 
