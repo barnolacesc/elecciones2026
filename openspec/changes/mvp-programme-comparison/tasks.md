@@ -356,3 +356,11 @@ The serving image builds deterministic gzip variants of static text files.
 Nginx negotiates the encoding at the same URLs. The container parity test
 checks encoding negotiation, exact decompressed bytes, cache headers and
 direct sidecar access. Public capacity acceptance remains a G4 check.
+
+### E2.4 private 2023 source-index scope — 2026-11-23
+
+- [x] Keep the private `es-gen-2023` source index on the 2023 register rows;
+  retain the existing 2026-only production index and two-period mock view.
+- [ ] Confirm the focused build test on Python 3.14 and hosted CI. The local
+  Python 3.11 interpreter cannot parse the existing generator module. This
+  presentation fix does not approve source rights, coverage or publication.
