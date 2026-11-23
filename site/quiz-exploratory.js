@@ -147,6 +147,35 @@
     if (status) status.textContent = 'Respuestas completadas · Fuentes consultables';
     const resultItems = document.getElementById('result-items');
     if (!resultItems) return;
+    const partySummary = document.getElementById('party-summary-items');
+    if (partySummary) {
+      const totals = new Map();
+      for (const topic of batch) {
+        for (const item of topic.items) {
+          const source = item.source;
+          const key = source.party_id;
+          if (!totals.has(key)) {
+            totals.set(key, { name: source.publisher, shown: 0, yes: 0, no: 0, neutral: 0, omitted: 0 });
+          }
+          const total = totals.get(key);
+          total.shown++;
+          const choice = answers.get(item.id);
+          if (choice === 'Totalmente a favor' || choice === 'Más bien a favor') total.yes++;
+          else if (choice === 'Más bien en contra' || choice === 'Totalmente en contra') total.no++;
+          else if (choice === 'Ni a favor ni en contra') total.neutral++;
+          else total.omitted++;
+        }
+      }
+      const sorted = [...totals.entries()].sort((a, b) => a[1].name.localeCompare(b[1].name, 'es'));
+      partySummary.replaceChildren(...sorted.map(([partyId, total]) => {
+        const article = element('article', '');
+        article.className = 'party-response-total';
+        article.dataset.party = partyId;
+        article.append(element('h4', total.name));
+        article.append(element('p', `${total.shown} propuestas mostradas · Sí: ${total.yes} · No: ${total.no} · Neutral: ${total.neutral} · Omitidas o sin responder: ${total.omitted}`));
+        return article;
+      }));
+    }
     resultItems.replaceChildren(...batch.map(topic => {
       const section = element('section', '');
       section.className = 'result-topic-group';

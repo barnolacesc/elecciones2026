@@ -189,3 +189,14 @@ behavior, and no answer-dependent requests, cookies, or browser storage
 during the tested flow. The CI image verifies the exploratory HTML and
 both browser assets before publishing its candidate record. The previous
 unavailable candidate remains available for withdrawal.
+
+### E4.3 exploratory party response totals
+
+The exploratory result may count the visitor's own responses to the selected
+proposals by source party: in favour, against, neutral, and omitted or
+unanswered. Show the number of proposals drawn for each party because random
+selection does not guarantee equal party counts. Order parties alphabetically,
+keep source links on each proposal, and do not calculate an affinity score,
+infer positions on other proposals, or recommend a vote. Answers remain in
+page memory. This does not complete the separate reviewed alignment quiz's G5
+acceptance tasks.

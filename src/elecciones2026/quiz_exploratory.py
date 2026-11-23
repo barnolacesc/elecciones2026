@@ -59,6 +59,9 @@ def validate_exploratory_bank(data: dict, ctx) -> dict:
 
         source = item.get("source")
         require(isinstance(source, dict), f"Missing source dict in {item_id}")
+        party_id = source.get("party_id")
+        require(isinstance(party_id, str) and bool(party_id.strip()),
+                f"Missing source party ID in {item_id}")
         require(isinstance(source.get("publisher"), str) and bool(source["publisher"].strip()),
                 f"Missing source publisher in {item_id}")
         require(isinstance(source.get("page"), (str, int)), f"Missing source page in {item_id}")
@@ -76,6 +79,8 @@ def validate_exploratory_bank(data: dict, ctx) -> dict:
             approved_stmt = ctx.statements[stmt_id]
             require(approved_stmt.review_status == "approved",
                     f"Statement {stmt_id} is not approved.")
+            require(approved_stmt.party_id == party_id,
+                    f"Source party does not match approved statement in {item_id}.")
 
         copy_url = source.get("verified_external_copy")
         if copy_url:
@@ -114,6 +119,7 @@ def validate_exploratory_bank(data: dict, ctx) -> dict:
             "statement": statement,
             "qualifications": qualifications,
             "source": {
+                "party_id": party_id,
                 "publisher": source["publisher"],
                 "page": str(source["page"]),
                 "url": url,
@@ -162,8 +168,9 @@ def render_exploratory_quiz_content() -> str:
     <div class="quiz-notice">
       <strong>Privacidad y neutralidad:</strong> Tus respuestas se procesan únicamente en la memoria
       de esta pestaña y se borran al cerrarla o recargarla. No hay cuentas, cookies ni almacenamiento.
-      Al terminar podrás consultar qué partido propuso cada medida y el enlace directo a la página
-      de su programa original. Este ejercicio <em>no calcula afinidad partidista ni recomienda a quién votar</em>.
+      Al terminar podrás consultar qué partido propuso cada medida, cuántas de sus propuestas
+      seleccionadas apoyaste o rechazaste y el enlace directo a la página de su programa original.
+      Este ejercicio <em>no calcula afinidad partidista ni recomienda a quién votar</em>.
     </div>
   </div>
 
@@ -190,6 +197,11 @@ def render_exploratory_quiz_content() -> str:
     <p class="results-desc">
       A continuación puedes contrastar tu grado de acuerdo con la autoría de cada medida y abrir el documento oficial registrado.
     </p>
+    <section class="exploratory-party-summary" aria-labelledby="party-summary-heading">
+      <h3 id="party-summary-heading">Tus respuestas por partido</h3>
+      <p>Solo se cuentan las propuestas de cada partido que aparecieron en este cuestionario. Los partidos no tienen necesariamente el mismo número de propuestas. No es una puntuación de afinidad ni una recomendación de voto.</p>
+      <div id="party-summary-items"></div>
+    </section>
     <div class="results-toolbar">
       <button type="button" id="edit" class="button button-secondary">← Volver a mis respuestas</button>
       <button type="button" id="redraw-results" class="button">Nuevo cuestionario</button>
