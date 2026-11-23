@@ -44,7 +44,7 @@
   let last = '';
   let batch = [];
 
-  function draw() {
+  function draw({ focusAnswers = false } = {}) {
     let key;
     let attempts = 0;
     do {
@@ -55,12 +55,7 @@
     last = key;
     answers.clear();
     render();
-    if (panel) {
-      const firstInput = panel.querySelector('input');
-      if (firstInput && document.activeElement && document.activeElement !== drawBtn) {
-        firstInput.focus();
-      }
-    }
+    if (focusAnswers) panel?.querySelector('input')?.focus();
   }
 
   function render() {
@@ -82,7 +77,7 @@
 
           if (item.context && item.context.text) {
             const subtitle = element('p', item.context.text);
-            subtitle.className = 'measure-context';
+            subtitle.className = 'exploratory-context';
             subtitle.id = item.id + '-context';
             fieldset.setAttribute('aria-describedby', subtitle.id);
             fieldset.append(subtitle);
@@ -213,8 +208,10 @@
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
-  if (drawBtn) drawBtn.addEventListener('click', draw);
-  if (redrawResultsBtn) redrawResultsBtn.addEventListener('click', draw);
+  if (drawBtn) drawBtn.addEventListener('click', () => draw());
+  if (redrawResultsBtn) {
+    redrawResultsBtn.addEventListener('click', () => draw({ focusAnswers: true }));
+  }
   if (finish) finish.addEventListener('click', showResults);
   if (editBtn) {
     editBtn.addEventListener('click', () => {

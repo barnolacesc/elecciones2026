@@ -30,6 +30,12 @@ Owner review preparation (2026-10-12): [decision record](../../../docs/QUIZ-METH
 
 ## 3. E4.3 — Phone flow and scoring explanation
 
+### E4.3 exploratory questionnaire layout follow-up (2026-11-23)
+
+- [x] Improve question spacing, answer targets, focus and source disclosures in the existing 29-N exploratory questionnaire.
+  - Evidence: Chromium passed the generated-page regression at 320/360/390/430/1024 CSS px. The test covers answer target size, responsive columns, keyboard focus and selection, source disclosure, results and editing. Chromium and WebKit renders were also inspected at phone and desktop widths.
+  - The mock quiz browser flow and 11 scoring contracts passed locally. Live Docker parity could not complete locally because Docker Desktop's credential helper stalled. Manual assistive-technology and physical-device checks remain outside this evidence.
+
 ### E4.3 bounded follow-up — weight-reset focus (2026-10-25)
 
 Scope: private mock UI and its existing keyboard regression only. Baseline

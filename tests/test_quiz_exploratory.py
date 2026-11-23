@@ -1,11 +1,16 @@
 """Unit and integration tests for the 2026 exploratory questionnaire (E4.2 / E4.3)."""
 from copy import deepcopy
+from functools import partial
+from http.server import ThreadingHTTPServer
 import json
+import os
 from pathlib import Path
 import tempfile
+from threading import Thread
 import unittest
 
 from elecciones2026.generator import build_site, load_and_validate_site_data, BuildValidationError
+from elecciones2026.mobile_accessibility import QuietHandler
 from elecciones2026.quiz_exploratory import (
     ExploratoryQuizError,
     validate_exploratory_bank,
@@ -147,6 +152,70 @@ class ExploratoryQuizTests(unittest.TestCase):
             cuestionario_html = (out / "cuestionario/index.html").read_text(encoding="utf-8")
             self.assertIn("aún no está disponible", cuestionario_html)
             self.assertFalse(list(out.glob("quiz-exploratory-data.*.js")))
+
+
+@unittest.skipUnless(os.environ.get("ELECTIONS_TEST_EXPLORATORY_BROWSER") == "1",
+                     "Opt-in Chromium exploratory questionnaire test")
+class ExploratoryQuizBrowserTests(unittest.TestCase):
+    def test_answer_layout_focus_and_sources(self):
+        from playwright.sync_api import sync_playwright
+
+        with tempfile.TemporaryDirectory() as output, sync_playwright() as playwright:
+            build_site(
+                ROOT, Path(output), election_id="es-gen-2026", quiz_mode="exploratory",
+                records_dir=ROOT / "content/elections/es-gen-2026",
+            )
+            handler = partial(QuietHandler, directory=output)
+            with ThreadingHTTPServer(("127.0.0.1", 0), handler) as server:
+                thread = Thread(target=server.serve_forever, daemon=True)
+                thread.start()
+                try:
+                    with playwright.chromium.launch() as browser:
+                        for width in (320, 360, 390, 430, 1024):
+                            with self.subTest(width=width):
+                                page = browser.new_page(viewport={"width": width, "height": 800})
+                                try:
+                                    self.check_questionnaire(page, server.server_port, width)
+                                finally:
+                                    page.close()
+                finally:
+                    server.shutdown()
+                    thread.join()
+
+    def check_questionnaire(self, page, port, width):
+        from playwright.sync_api import expect
+
+        page.goto(f"http://127.0.0.1:{port}/cuestionario/")
+        labels = page.locator(".exploratory-answer")
+        expect(labels).to_have_count(144)
+        self.assertEqual(page.evaluate("document.activeElement.tagName"), "BODY")
+        self.assertLessEqual(page.evaluate("document.documentElement.scrollWidth"), width)
+        self.assertTrue(labels.evaluate_all("""(rows) => rows.every(row => {
+            const {left, right, width, height} = row.getBoundingClientRect();
+            return left >= 0 && right <= innerWidth && width >= 44 && height >= 44;
+        })"""))
+        first, second, third = (labels.nth(index) for index in range(3))
+        self.assertEqual(first.bounding_box()["y"] == second.bounding_box()["y"], width == 1024)
+        self.assertGreater(third.bounding_box()["y"], first.bounding_box()["y"])
+        radio = first.get_by_role("radio")
+        self.assertLess(radio.bounding_box()["width"], 24)
+        radio.focus()
+        expect(first).to_have_css("outline-style", "solid")
+        expect(radio).to_have_css("outline-style", "none")
+        page.keyboard.press("ArrowRight")
+        expect(second.get_by_role("radio")).to_be_checked()
+
+        source = page.locator(".exploratory-references summary").first
+        self.assertGreaterEqual(source.bounding_box()["height"], 44)
+        source.focus()
+        page.keyboard.press("Enter")
+        expect(source.locator("..").get_by_role("link").first).to_be_visible()
+        page.locator("#finish").click()
+        expect(page.locator("#results-heading")).to_be_focused()
+        expect(page.locator(".result-user-answer").first).to_contain_text("Más bien a favor")
+        page.locator("#edit").click()
+        expect(radio).to_be_focused()
+        expect(second.get_by_role("radio")).to_be_checked()
 
 
 if __name__ == "__main__":
