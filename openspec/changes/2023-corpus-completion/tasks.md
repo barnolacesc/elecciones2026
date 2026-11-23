@@ -438,3 +438,20 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P0.15 — Cumulative quotation-use review (2026-11-23 draft)
+
+- [x] Audit the per-extract `QuoteRecord.validate` ceiling and the four pending
+  2023 source-rights rows on `origin/main` `bf0cdb5`; draft a version-bound,
+  cross-route quotation accounting requirement and fictional scenarios in
+  `design.md` and `specs/programme-provenance/spec.md`. PR #101 remains draft,
+  conflicting and without a human review; this task does not resolve it.
+- [ ] Source-rights owner/OpenSpec review: decide aggregate-use scope, overlap
+  and repetition treatment, permission evidence, reviewer segregation and
+  correction policy. The per-extract ceiling is not a legal safe harbor.
+- [ ] After P0 source-use review and PR #101 reconciliation, specify a private
+  ledger and tests against fictional multi-route, overlap, replacement and
+  withdrawal cases. Do not activate real 2023 quotations until the current
+  source/version decision and editorial gates pass.
+
+Validation for this proposal: structural assertions and `git diff --check`.
+No PDF, political claim, source rights record or public artifact changed.

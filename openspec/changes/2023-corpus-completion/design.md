@@ -873,3 +873,41 @@ alternate processing, reviewer quorum, private evidence retention and the
 threshold for declaring a range searchable. Fictional acceptance cases are in
 `specs/editorial-statements/spec.md`. No real 2023 page is classified here.
 
+## P0.15 draft — cumulative quotation-use review
+
+Status: proposal-only. This refines the P0 source-use decision, not the
+per-extract validator or a legal permission. The current `QuoteRecord.validate`
+checks each extract against 40 words and 300 characters. It does not account
+for several individually short extracts from one source version across topic,
+party, comparison and quiz pages. The existing numerical limits are editorial
+ceilings, not proof that any aggregate use is lawful. The four registered 2023
+pilot sources remain `published-unverified` with rights `not_reviewed` on
+`origin/main` at `bf0cdb5`; this draft does not approve their use.
+
+Before a future 2023 publish set is accepted, propose a private quotation-use
+ledger keyed by exact election, source ID, source hash/version and build
+revision. It should enumerate each approved quotation ID and source locator,
+its normalized exact text fingerprint, every rendered route and occurrence,
+and totals for distinct source spans and displayed repetitions. Keep the
+private source text and rights evidence out of Git and the public artifact.
+Duplicate snippets on two routes are one distinct span but two displayed
+occurrences; neither count may be silently discarded. Overlapping or uncertain
+spans require review rather than automatic deduplication.
+
+The source-rights owner must decide the permitted aggregate use for that exact
+version and each output surface, its evidence, any conditions or expiry, and
+whether an additional permission or a quote-free presentation is needed. A
+per-extract pass, a `link_and_short_quote` label or a prior version's decision
+cannot substitute for this review. Until the decision is current and complete,
+withhold affected quotations from *both* static and browser publish sets;
+retaining a summary is a separate source-use and editorial decision. Any new
+quote, route, source version or rights restriction invalidates the aggregate
+decision and triggers a new projection check. CI can verify ledger consistency
+and fail-closed behavior, but cannot decide lawfulness.
+
+Before implementation, owners must specify how to count overlapping spans,
+the unit and scope of any permitted aggregate, route duplication treatment,
+reviewer identity/segregation and correction notice policy. Use fictional
+multi-route, repeated-snippet, overlapping-span, source-replacement and
+rights-withdrawal fixtures. Do not derive a numeric aggregate allowance from
+the per-extract 40-word/300-character check.

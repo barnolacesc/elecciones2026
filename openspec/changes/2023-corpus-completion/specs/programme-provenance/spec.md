@@ -217,3 +217,42 @@ editorial approval SHALL remain independent decisions.
 - **THEN** the rights decision does not fill the date or prove historical
   availability; the publication policy handles that uncertainty separately.
 
+### Requirement: Review cumulative quotation use by exact source version
+
+For a proposed 2023 publish set, the system SHALL account for all verbatim
+quotation occurrences from each exact source version across static pages and
+browser payloads before publication. The private accounting SHALL distinguish
+distinct source spans from repeated display occurrences, retain quotation and
+route IDs, and identify overlapping or unresolved spans. A per-quotation
+length check or rights label SHALL NOT establish that aggregate use is
+permitted. A current human source-rights decision SHALL cover the proposed
+aggregate and output surfaces; absent or invalidated decisions SHALL withhold
+affected quotations from both projections. This is a draft requirement for
+owner/OpenSpec review, not a legal conclusion or implementation approval.
+
+#### Scenario: Several short extracts from one document
+
+- **WHEN** fictional individually valid quotations from one source version
+  appear on several topic pages but no aggregate decision covers their use
+- **THEN** the build does not publish those quotations merely because each
+  satisfies the per-extract length ceiling.
+
+#### Scenario: One quotation repeated on two routes
+
+- **WHEN** the same fictional source span appears on a party page and a
+  comparison page
+- **THEN** accounting records one distinct span and both displayed
+  occurrences; it does not silently omit the repeated exposure.
+
+#### Scenario: Uncertain overlap and changed source version
+
+- **WHEN** two extracts may overlap or the document hash changes after an
+  aggregate decision
+- **THEN** the affected decision is pending renewed human review and neither
+  static nor browser output reuses it automatically.
+
+#### Scenario: Quote-free alternative
+
+- **WHEN** a human rights owner disallows the proposed aggregate quotations
+- **THEN** those quotations are withheld; any neutral summary remains subject
+  to its own source-use and editorial gates rather than being auto-approved.
