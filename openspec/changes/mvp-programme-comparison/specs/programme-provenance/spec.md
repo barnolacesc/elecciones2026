@@ -38,6 +38,10 @@ The public site SHALL list candidatures within the chosen official coverage scop
 - **WHEN** a party publishes an updated programme replacing an earlier verified document
 - **THEN** the earlier record is marked `replaced`, preserves its hash and publication date, points to the new version in `superseded_by`, and marks derived comparison records for re-evaluation.
 
+#### Scenario: Broken replacement chain
+- **WHEN** a replaced source points to an unregistered source, another election, or a cycle of replaced sources
+- **THEN** register validation fails before the chain can serve as provenance for any comparison. A successor may remain partial; validation does not certify its content, rights, or candidature equivalence.
+
 #### Scenario: Partial programme published
 - **WHEN** a party publishes a preliminary summary or partial commitment list
 - **THEN** the site marks it `partial`, links the official document, and explicitly notes its partial scope.
@@ -48,4 +52,3 @@ The system SHALL track candidacies meeting objective inclusion criteria (parliam
 #### Scenario: Coalition registered
 - **WHEN** an electoral coalition is formed for the 2026 election
 - **THEN** the validator requires `is_coalition: true`, explicit list of registered member party IDs, and does not conflate it with a prior election coalition of similar name.
-
