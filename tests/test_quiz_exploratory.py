@@ -42,6 +42,9 @@ class ExploratoryQuizTests(unittest.TestCase):
             for item in topic["items"]:
                 self.assertTrue(item["id"].startswith("quiz-29n-"))
                 self.assertTrue(item["source"]["url"].startswith("https://"))
+                self.assertEqual(item["source"]["party_id"],
+                                 next(raw["source"]["party_id"] for raw in self.raw_bank["items"]
+                                      if raw["id"] == item["id"]))
                 if item.get("context"):
                     self.assertTrue(bool(item["context"]["text"]))
                     for ref in item["context"]["references"]:
@@ -71,6 +74,12 @@ class ExploratoryQuizTests(unittest.TestCase):
         with self.assertRaises(ExploratoryQuizError):
             validate_exploratory_bank(bad, self.ctx)
 
+    def test_rejection_of_party_mismatch(self):
+        bad = deepcopy(self.raw_bank)
+        bad["items"][0]["source"]["party_id"] = "wrong-party"
+        with self.assertRaisesRegex(ExploratoryQuizError, "does not match"):
+            validate_exploratory_bank(bad, self.ctx)
+
     def test_build_site_with_exploratory_mode_generates_interactive_cuestionario(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             out = Path(tmpdir) / "dist"
@@ -86,6 +95,7 @@ class ExploratoryQuizTests(unittest.TestCase):
             self.assertIn('id="exploratory-form"', cuestionario_html)
             self.assertIn('id="topics"', cuestionario_html)
             self.assertIn('id="results"', cuestionario_html)
+            self.assertIn('id="party-summary-items"', cuestionario_html)
             self.assertNotIn("aún no está disponible", cuestionario_html)
             self.assertIn("/cuestionario/", (out / "sitemap.xml").read_text())
 
@@ -213,6 +223,18 @@ class ExploratoryQuizBrowserTests(unittest.TestCase):
         page.locator("#finish").click()
         expect(page.locator("#results-heading")).to_be_focused()
         expect(page.locator(".result-user-answer").first).to_contain_text("Más bien a favor")
+        summary = page.locator(".party-response-total")
+        self.assertEqual(summary.count(), len(set(page.evaluate("""() =>
+            [...document.querySelectorAll('.result-item-card')].map(card =>
+              window.QuizExploratoryBundle.topics.flatMap(topic => topic.items)
+                .find(item => item.id === card.dataset.item).source.party_id)
+        """))))
+        self.assertEqual(sum(int(text.split(' propuestas mostradas')[0]) for text in
+                             summary.locator('p').all_text_contents()), 24)
+        selected_party = page.evaluate("""() => window.QuizExploratoryBundle.topics
+            .flatMap(topic => topic.items).find(item =>
+              item.id === document.querySelector('.result-item-card').dataset.item).source.party_id""")
+        expect(page.locator(f'.party-response-total[data-party="{selected_party}"]')).to_contain_text('Sí: 1')
         page.locator("#edit").click()
         expect(radio).to_be_focused()
         expect(second.get_by_role("radio")).to_be_checked()

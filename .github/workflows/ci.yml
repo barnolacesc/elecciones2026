@@ -388,6 +388,9 @@ jobs:
           path: build/load/
 
       - name: Scan the exact serving image; block high and critical findings
+        # The default mirror can return 404 for its DB layer; use Trivy's primary registry.
+        env:
+          TRIVY_DB_REPOSITORY: ghcr.io/aquasecurity/trivy-db:2
         uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
         with:
           version: v0.75.0
