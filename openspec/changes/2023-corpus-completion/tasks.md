@@ -438,3 +438,19 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P0.16 — Document-role and applicability-scope handoff (2026-11-23)
+
+- [x] Reconcile current main's four 2023 source rows, JSON-schema `scope`
+  enum, loader behavior, PR #101 and adjacent validator PRs. Evidence:
+  `docs/2023-DOCUMENT-ROLE-SCOPE-HANDOFF-2026-11-23.md`.
+- [x] Draft a separate role/parity requirement, design and four fictional
+  cases. No source, rights, editorial or public record was changed.
+- [ ] Owner/editorial and OpenSpec review: decide role vocabulary, multiple-
+  role treatment, legacy `scope` migration, reviewer and applicability join.
+- [ ] After review, reconcile P0.2/P0.10/P1.4 and open validator PRs; specify
+  the schema/loader migration and fictional parity/invalidation tests before
+  implementation. Keep real 2023 activation behind source/rights/editorial
+  gates and PR #101's separate disposition.
+
+Validation: local parser reproduction, source-register tests and `git diff
+--check`. These are technical checks, not a reviewed role decision or CI.

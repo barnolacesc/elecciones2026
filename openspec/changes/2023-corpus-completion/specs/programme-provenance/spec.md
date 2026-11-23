@@ -94,6 +94,44 @@ Rights SHALL be decided separately per exact source/version and proposed use.
   traceable and dependent anchors enter re-review rather than being replaced
   in place.
 
+### Requirement: Reviewed document-role vocabulary and parser parity
+
+Before 2023 inventory rows for annexes, coalition documents or replacements
+are accepted, the inventory SHALL use a versioned, human-reviewed document-role
+vocabulary distinct from candidature/territorial applicability and source
+replacement lineage. The JSON schema and every loader SHALL agree on allowed
+roles and invalid values; an omitted or unknown role SHALL NOT silently become
+`general`. Role acceptance SHALL NOT establish source authenticity, rights,
+topic coverage or a publishable position. This is a proposal-only requirement
+pending owner and OpenSpec review.
+
+#### Scenario: Fictional annex with pending applicability
+
+- **WHEN** a fictional territorial annex has a valid reviewed role but no
+  approved edge to a candidature and constituency
+- **THEN** the document remains in private discovery accounting while its
+  applicability and dependent topic coverage remain pending.
+
+#### Scenario: Unknown role across validation entry points
+
+- **WHEN** a fictional source supplies an unknown role, an invalid type, or
+  omits a required role
+- **THEN** the JSON schema and loader reject it consistently without coercing
+  the row to a general programme.
+
+#### Scenario: Coalition document with shared bytes
+
+- **WHEN** one fictional coalition document is proposed for two ballot lists
+- **THEN** its role is recorded once, while each candidature applicability
+  edge requires separate evidence and review; neither edge grants reuse rights.
+
+#### Scenario: Existing pilot migration
+
+- **WHEN** the reviewed role contract is introduced beside the four current
+  `general` pilot rows
+- **THEN** their source status, rights, publication dates and political records
+  are preserved; migration does not mark any 2023 inventory complete.
+
 ### Requirement: Current rights decision and withdrawal propagation
 
 For each exact 2023 source version and proposed use, the publication projection

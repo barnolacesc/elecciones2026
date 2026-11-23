@@ -788,6 +788,32 @@ publisher/ballot evidence for an edge; edge-review quorum; public shared-source
 label and denominator wording. Reconcile with P0.2/P0.3, P1 document scope and
 PR #101/#166 before implementation.
 
+## P0.16 draft — document-role vocabulary and validation parity
+
+Status: proposal-only. Evidence:
+[`docs/2023-DOCUMENT-ROLE-SCOPE-HANDOFF-2026-11-23.md`](../../../docs/2023-DOCUMENT-ROLE-SCOPE-HANDOFF-2026-11-23.md).
+The checked-in source schema currently permits only `scope: general`, while
+the Python loader accepts an arbitrary scope string. Neither behavior is an
+approved 2023 annex/coalition inventory contract.
+
+Propose separate versioned concepts: document role for an exact source
+version; candidature/territorial applicability as the independently reviewed
+P0.10 edge; and replacement lineage for a superseded version. Do not treat a
+role enum, party ID, common hash, or official URL as applicability or rights
+evidence. The owner/editorial team must decide the role vocabulary, multiple-
+role treatment, legacy `scope` migration and reviewer before schema/code work.
+Unknown and unresolved values stay pending in the private discovery queue;
+they do not become `general` or a denominator for completeness.
+
+After those decisions, define a migration that keeps the four 2023 pilot
+versions and pending rights unchanged, updates the JSON schema and Python
+loader together, and tests both against fictional valid/invalid roles and
+pending candidature edges. P0.2 joins and P1.4 relevant-document search
+consume only reviewed role/applicability revisions. New annex discovery or a
+changed role/edge invalidates affected topic coverage; it never produces a
+`not stated` finding by itself. Keep private bytes/evidence out of Git and
+the static build. Reconcile open validator PRs before any implementation.
+
 ## P1.4 draft — qualification fidelity across summary and comparison
 
 Status: proposal-only for editorial and OpenSpec review. This package narrows
