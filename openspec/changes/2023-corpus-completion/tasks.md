@@ -438,3 +438,16 @@ statement or public output was changed; CI cannot supply a human decision.
 Validation: `git diff --check` and local document-structure checks only. CI
 and fixture tests cannot replace human inspection or editorial review.
 
+## P0.15 — PUM+J 23J source discovery (2026-11-24)
+
+- [x] Record a publisher-hosted 2023 general-election PDF lead and one
+  BOE-evidenced Congress candidature example without importing bytes or
+  promoting a source row. Evidence:
+  `docs/2023-PUMJ-SOURCE-DISCOVERY-2026-11-24.md`.
+- [ ] Under an owner-approved inclusion rule, reconcile all relevant Congress
+  candidatures and corrections. Human source/rights reviewers must then decide
+  document applicability, exact-byte authenticity and date, permitted reuse,
+  annex/replacement scope and private custody before P1 extraction.
+
+This proposal-only handoff changes no political content, rights decision,
+source register, implementation or public artifact. CI cannot approve it.
