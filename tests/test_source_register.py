@@ -269,6 +269,45 @@ class TestSourceRegister(unittest.TestCase):
         self.assertIsNotNone(reg)
         self.assertEqual(len(reg.sources[0].replacement_history), 1)
 
+    def test_publication_date_cannot_follow_retrieval(self) -> None:
+        source = {
+            "id": "fictional-source",
+            "election_id": "fictional-election",
+            "party_id": "fictional-party",
+            "official_url": "https://example.org/programme.pdf",
+            "retrieval_date": "2023-07-01",
+            "publication_date": "2023-07-02",
+            "status": "published-unverified",
+            "rights_review": {"status": "not_reviewed", "terms_notes": "Pending"},
+        }
+        data = {
+            "version": "1.0.0",
+            "last_updated": "2023-07-02T00:00:00Z",
+            "elections": [
+                {
+                    "id": "fictional-election",
+                    "name": "Fictional election",
+                    "election_date": "2023-07-23",
+                    "call_decree": "Fictional decree",
+                    "status": "pilot_rehearsal",
+                }
+            ],
+            "sources": [source],
+        }
+
+        register, errors = load_register_from_dict(data)
+        self.assertIsNone(register)
+        self.assertTrue(
+            any("publication_date must not be after retrieval_date" in error for error in errors)
+        )
+
+        for publication_date in ("2023-07-01", "2023-06-30", None):
+            with self.subTest(publication_date=publication_date):
+                source["publication_date"] = publication_date
+                register, errors = load_register_from_dict(data)
+                self.assertEqual(errors, [])
+                self.assertIsNotNone(register)
+
 
 if __name__ == "__main__":
     unittest.main()
