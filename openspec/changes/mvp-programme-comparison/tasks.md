@@ -8,6 +8,13 @@
 - [ ] 1.2 Register two lawful pilot programme versions with official URLs, dates, rights status and SHA-256; verify hashes against downloaded originals and document accessibility.
   - Evidence: PP 2023 (`c93baa...`) and ERC 2023 (`760db2...`) registered in `content/sources/register.json` with official URLs, verified hashes, and rights status; verified by `tests/test_source_register.py` and package `E0.4`.
   - Reopened by issue #42 (2026-10-10): PP/ERC file hashes rechecked, but prior generic quotation-rights signoffs are unsupported. Source/programme states are now `published-unverified` with rights pending; historical technical registration evidence does not establish this acceptance gate.
+  - E1.1 syntax guard (2026-11-18): The Python register loader now rejects
+    any supplied non-64-character lowercase hexadecimal SHA-256, matching the
+    existing JSON Schema before source verification. Fictional regression cases
+    first reproduced the gap. Local source-register tests (10), schema tests
+    (27), register CLI validation and `git diff --check` pass under Python 3.11.
+    Python 3.14 CI and human/source-rights gates remain separate. This does not
+    verify private PDF bytes or complete task 1.2.
 - [x] 1.3 Define versioned programme, claim, relationship and correction schemas; verify example valid and invalid records against the schema validator.
   - Evidence: Five JSON Schema (Draft 2020-12) specifications implemented in `content/schemas/` (`programme.schema.json`, `statement.schema.json`, `relationship.schema.json`, `coverage.schema.json`, `correction.schema.json`). Typed dataclasses, loaders, and validators implemented in `src/elecciones2026/schemas.py`. Versioned example fixtures in `content/examples/` for all record types (statements, relationships, coverage, corrections) and negative fixtures in `content/examples/invalid/` verifying rejection of unreviewed claims, missing provenance, `not_found` with coordinates, and single-reviewer corrections. Verified by 27 schema tests in `tests/test_schemas.py` and CLI `elecciones2026.schemas validate-all` integrated into CI.
 
