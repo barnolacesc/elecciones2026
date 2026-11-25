@@ -2147,12 +2147,16 @@ def render_sources_page(ctx: SiteContext) -> str:
     cards_2023_html = "\n".join(cards_2023)
     rows_2026_html = "".join(rows_2026)
     rows_2023_html = "".join(rows_2023)
+    pilot_2023 = ctx.election_id == "es-gen-2023"
+    primary_year = "2023" if pilot_2023 else "2026"
+    primary_cards_html = cards_2023_html if pilot_2023 else cards_2026_html
+    primary_rows_html = rows_2023_html if pilot_2023 else rows_2026_html
 
     hero_eyebrow = "REGISTRO DE FUENTES Y AUDITORÍA · GENERALES 2023 (ENSAYO PILOTO)" if ctx.election_id == "es-gen-2023" else "REGISTRO DE FUENTES Y AUDITORÍA"
     page_title = "Fuentes oficiales y trazabilidad · Generales 2023 (Ensayo piloto)" if ctx.election_id == "es-gen-2023" else "Fuentes oficiales y trazabilidad · Elecciones 2026"
     page_description = "Inventario de fuentes primarias, versiones y hashes SHA-256 para el ensayo de las Elecciones Generales 2023." if ctx.election_id == "es-gen-2023" else "Inventario de fuentes primarias, versiones y hashes SHA-256 para las Elecciones 2026."
 
-    historical_inventory = "" if ctx.production_records else f'''
+    historical_inventory = "" if ctx.production_records or pilot_2023 else f'''
     <section style="margin-bottom: var(--space-10);">
       <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">2. Fuentes históricas de ensayo · Piloto 2023</h2>
       <aside class="notice" style="margin-bottom: var(--space-4);">
@@ -2198,9 +2202,9 @@ def render_sources_page(ctx: SiteContext) -> str:
     </section>
 
     <section style="margin-bottom: var(--space-8);">
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">1. Fuentes monitorizadas · Elecciones Generales 2026</h2>
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">1. Fuentes monitorizadas · Elecciones Generales {primary_year}</h2>
       <div class="coverage-cards" data-paginate="6" data-paginate-item-name="fuentes" style="margin-bottom: var(--space-4);">
-        {cards_2026_html}
+        {primary_cards_html}
       </div>
       <div class="coverage-table-container">
         <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: var(--font-size-sm);">
@@ -2216,7 +2220,7 @@ def render_sources_page(ctx: SiteContext) -> str:
             </tr>
           </thead>
           <tbody>
-            {rows_2026_html}
+            {primary_rows_html}
           </tbody>
         </table>
       </div>
