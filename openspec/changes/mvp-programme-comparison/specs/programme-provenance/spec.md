@@ -16,6 +16,10 @@ The system SHALL register a programme only with election ID, party/candidature I
 - **WHEN** a source lacks a mandatory provenance field or its hash differs
 - **THEN** publication fails with a specific diagnostic.
 
+#### Scenario: Rights grant without decision evidence
+- **WHEN** a source declares `link_only`, `link_and_short_quote`, or `public_domain` without a named human reviewer, review date, and private decision-evidence reference
+- **THEN** register validation rejects the grant; source identity or a passing build cannot supply the missing rights decision.
+
 #### Scenario: Earlier election used for a pilot
 - **WHEN** a pilot registers a 2023 general-election programme
 - **THEN** its election ID remains 2023 and all generated pilot pages identify the 2023 election.

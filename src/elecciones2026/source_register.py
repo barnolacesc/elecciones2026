@@ -34,6 +34,7 @@ VALID_RIGHTS_STATUSES = {
     "public_domain",
     "permission_denied",
 }
+RIGHTS_GRANT_STATUSES = {"link_only", "link_and_short_quote", "public_domain"}
 
 VALID_ELECTION_STATUSES = {
     "active_monitoring",
@@ -119,6 +120,14 @@ def _parse_rights_review(data: dict[str, Any], record_id: str) -> tuple[Optional
     evidence_ref = data.get("evidence_ref")
     if evidence_ref is not None and (not isinstance(evidence_ref, str) or not evidence_ref.strip()):
         errors.append(f"Record {record_id}: rights_review evidence_ref must be a non-empty string when set.")
+
+    if status in RIGHTS_GRANT_STATUSES:
+        if not isinstance(data.get("reviewed_by"), str) or not data["reviewed_by"].strip():
+            errors.append(f"Record {record_id}: rights grant requires a named reviewer.")
+        if not review_date:
+            errors.append(f"Record {record_id}: rights grant requires a review date.")
+        if not isinstance(evidence_ref, str) or not evidence_ref.strip():
+            errors.append(f"Record {record_id}: rights grant requires a private evidence reference.")
 
     if errors:
         return None, errors
