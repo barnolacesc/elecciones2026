@@ -78,7 +78,7 @@ content and release review.
 | Staging password hash | `/etc/elecciones2026/staging.htpasswd` | root:www-data, 640 |
 | Root registry login | `/root/.docker/config.json` | directory 700, file 600; encoded credentials, not encryption |
 | Release state | `/var/lib/elecciones2026/release.json` | root-only state directory 700; current and previous digests |
-| `origin.conf` | Public alternative to staging nginx configuration | Requires approved public content and G4; never enable both default servers |
+| `origin.conf` | Separate public nginx virtual host on port 443 | Requires G4 and an approved public image on loopback port 8081. The staging configuration owns the only default server. |
 
 Keep the origin TLS certificate and its private key, the deployment SSH key,
 the registry pull token, and the staging password in the private operations

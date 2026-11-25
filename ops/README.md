@@ -43,10 +43,10 @@ states what is already verified.
    https://www.cloudflare.com/ips-v6; update after vendor changes. Record the
    effective rules and both address-family probes. Keep console access while
    changing SSH/firewall rules. Do not rely on UFW to filter Docker published ports.
-2. The production Compose file binds port 8080 to `127.0.0.1` only. Install
-   `staging-origin.conf` for the active private preview. Use `origin.conf` only
-   after G4 public approval. Verify the approved ASCII hostname, and
-   remove default host sites/listeners. Host nginx listens on 443 for IPv4/IPv6.
+2. Install `staging-origin.conf` for private preview on loopback port 8080.
+   After G4 approval, add `origin.conf` and use a separate Compose project on
+   loopback port 8081 for the approved public image. Keep exactly one default
+   host listener, in the staging file. Host nginx listens on 443 for IPv4/IPv6.
 3. Create an origin server certificate for the approved hostname (Cloudflare
    Origin CA or a public CA). Store cert/key at `/etc/elecciones2026/tls/origin.pem`
    and `origin.key` outside Git, with the key readable only by root. Install the
